@@ -1,0 +1,59 @@
+---
+title: "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas"
+author: "Your Name"
+format:
+  html:
+    toc: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+## Research question
+
+How should selected human stable-isotope distributions at La Bastida and Gatas be described, and what do different measures of center and dispersion reveal?
+
+## Case study
+
+Knipper, Corina, Cristina Rihuete-Herrada, Jordi Voltas, Petra Held, Vicente Lull, Rafael Micó, Roberto Risch, and Kurt W. Alt. 2020. Reconstructing Bronze Age Diets and Farming Strategies at the Early Bronze Age Sites of La Bastida and Gatas (Southeast Iberia) Using Stable Isotope Analysis. *PLOS ONE* 15(3): e0229398.
+
+```{r}
+library(tidyverse)
+
+dat <- read_csv("data/knipper2020_humans.csv", show_col_types = FALSE)
+
+glimpse(dat)
+```
+
+## 1. Inspect and describe
+
+- How many observations are available at each site?
+- Calculate mean, median, SD, IQR, minimum, and maximum for `d13c` and `d15n` **separately for La Bastida and Gatas**.
+
+```{r}
+# Your code
+```
+
+## 2. Visualize
+
+Create distribution and site-comparison plots for both `d13c` and `d15n`. You may use faceting rather than making four separate figures.
+
+```{r}
+# Your code
+```
+
+## 3. Interpret
+
+For each isotope distribution, compare the mean with the median and the SD with the IQR.
+
+Which measures of center and dispersion best represent the observed distributions? Explain why, referring to distribution shape, spread, and any unusual observations.
+
+## Final interpretation
+
+Answer the following questions in complete sentences:
+
+1. What is the unit of analysis?
+2. What descriptive statistical result matters most?
+3. What archaeological or anthropological interpretation is consistent with the observed distributions?
+4. What claim do these descriptive data alone **not** support?

@@ -1,0 +1,1175 @@
+---
+title: "Week 2 — Using R, RStudio, and Quarto"
+subtitle: "From commands to a reproducible anthropological workflow"
+date: "2026-09-14"
+---
+
+<div class="week-meta">
+**Class meetings:** 14 & 16 September 2026<br>
+**Focus:** R basics · RStudio projects · tidyverse · Quarto<br>
+**Practice dataset:** Knipper et al. 2020 human stable-isotope data<br>
+**Assessment:** Ungraded preparation for Assignment 1
+</div>
+
+```{r}
+#| label: setup
+#| include: false
+
+source("R/setup.R")
+
+data_file <- "data/knipper2020_humans.csv"
+```
+
+## Overview
+
+This week is about learning a **workflow**, not memorizing commands.
+
+R is the language we will use to work with data. RStudio is the environment in which we will organize and run that work. Quarto is the document system that brings **prose, R code, results, tables, figures, and citations** together in a reproducible report [@tierney2025].
+
+By the end of the week, you should be able to open an RStudio project, understand the basic structure of an R command, create and inspect R objects, import a CSV file, use a small set of tidyverse verbs, create a first `ggplot2` figure, and render a Quarto document from a clean R session.
+
+::: {.callout-note title="The Week 2 principle"}
+**Do not separate “doing the analysis” from “documenting the analysis.”**
+
+In ANTH418, the code that produces a result should live beside the explanation of what the result means.
+:::
+
+## Questions
+
+- What are R, RStudio, and Quarto, and how do they differ?
+- What is an R object, vector, function, data frame, or package?
+- How should files be organized so that code can find them reliably?
+- How do we import and inspect a real archaeological dataset?
+- What do `select()`, `filter()`, `mutate()`, `summarise()`, `group_by()`, and `|>` do?
+- How does a Quarto document turn code and prose into a reproducible HTML page?
+- What does one row in the Knipper teaching dataset represent?
+
+## Learning objectives
+
+By the end of Week 2, you should be able to:
+
+1. distinguish **R**, **RStudio**, and **Quarto**;
+2. use an **RStudio Project** and project-relative file paths rather than machine-specific paths;
+3. create and inspect basic R objects, vectors, and data frames;
+4. recognize common data types, including numeric, character, logical, and missing (`NA`) values;
+5. explain the basic syntax of an R function and use R's help system;
+6. import a CSV file with `read_csv()` and inspect it with `glimpse()`, `names()`, and `dim()`;
+7. use the native R pipe `|>` to build readable sequences of data operations;
+8. use introductory `dplyr` verbs to select, filter, transform, group, and summarize data;
+9. construct a simple `ggplot2` visualization;
+10. create named Quarto code cells, use basic `#|` cell options, and render a `.qmd` file; and
+11. re-render a document from a clean R session.
+
+## This week's two-class sequence
+
+| Class | Main focus | Practical outcome |
+|---|---|---|
+| **Monday, 14 September** | R, RStudio, projects, objects, vectors, functions, data frames | You can write and run basic R code and understand where your files live. |
+| **Wednesday, 16 September** | tidyverse, Quarto, data import, first archaeological dataset | You can import, inspect, filter, summarize, visualize, and render a reproducible document. |
+
+## Before class: install the software
+
+ANTH418 assumes **no previous programming experience**. Before beginning the exercises below, make sure that R and RStudio are installed and working on your computer.
+
+The three names can be confusing at first:
+
+> **R** is the language that performs the computation.<br>
+> **RStudio** is the application in which we will write and organize most of our R work.<br>
+> **Quarto** turns our code, results, figures, and writing into a reproducible document.
+
+### Step 1 — Install R
+
+Download R from the **Comprehensive R Archive Network (CRAN)**:
+
+<https://cran.r-project.org/>
+
+Choose the installer for your operating system:
+
+- **macOS:** choose *Download R for macOS* and install the current release appropriate for your Mac;
+- **Windows:** choose *Download R for Windows* → *base* → the current release; or
+- **Linux:** follow the instructions for your distribution.
+
+Use the standard/default installation options unless you have a specific reason to change them.
+
+::: {.callout-note title="R must be installed before RStudio"}
+RStudio does not replace R. It provides an easier environment for working with R, but it still needs an R installation on your computer.
+:::
+
+### Step 2 — Install RStudio Desktop
+
+Download the free **RStudio Desktop** from Posit:
+
+<https://posit.co/download/rstudio-desktop/>
+
+Install the current stable release for your operating system.
+
+On first launch, RStudio should normally find your R installation automatically.
+
+Current versions of RStudio include integrated support for Quarto and bundle a stable Quarto release. For most ANTH418 students, installing current R and current RStudio is therefore enough to begin working with `.qmd` files.
+
+### Step 3 — Check Quarto
+
+After installing RStudio, open it and choose the **Terminal** tab. Run:
+
+```bash
+quarto --version
+```
+
+You should see a version number.
+
+Then run:
+
+```bash
+quarto check
+```
+
+This checks whether Quarto can find the software it needs, including R and the Knitr execution engine.
+
+::: {.callout-tip title="Do I need to install Quarto separately?"}
+Usually **no** if you have installed a current release of RStudio, because RStudio bundles Quarto.
+
+If `quarto --version` does not work, or if you need a newer standalone Quarto release, install it from:
+
+<https://quarto.org/docs/get-started/>
+
+After installation, restart RStudio and run `quarto --version` again.
+:::
+
+### Step 4 — Install the R packages used in ANTH418
+
+Packages extend what R can do. For the first part of the course, the main package collection we need is the **tidyverse**.
+
+In the **R Console**, run:
+
+```r
+install.packages("tidyverse")
+```
+
+You normally install a package only once on a computer.
+
+Then test that it loads:
+
+```r
+library(tidyverse)
+```
+
+If the command finishes without an error, the package is available.
+
+::: {.callout-important title="Console or Terminal?"}
+RStudio contains both, but they serve different purposes.
+
+- Use the **R Console** for R commands such as `install.packages()` and `library()`.
+- Use the **Terminal** for system commands such as `quarto --version` and `quarto check`.
+
+We will use both during the course.
+:::
+
+### Step 5 — Verify the complete setup
+
+In the **R Console**, run:
+
+```r
+R.version.string
+1 + 1
+library(tidyverse)
+```
+
+You should see your R version, the result `2`, and no error when the tidyverse loads.
+
+In the **Terminal**, run:
+
+```bash
+quarto --version
+```
+
+If those checks work, you have the basic ANTH418 computational environment.
+
+### Step 6 — Make a tiny Quarto test document
+
+In RStudio choose:
+
+**File → New File → Quarto Document…**
+
+Choose **HTML** and create the document. Replace its body with:
+
+````markdown
+## My first R calculation
+
+```{r}
+2 + 2
+```
+````
+
+Save the file as something like:
+
+```text
+quarto_test.qmd
+```
+
+Then click **Render**.
+
+If an HTML page appears showing both the code and the result `4`, then R, RStudio, Knitr, and Quarto are communicating correctly.
+
+::: {.callout-note title="You do not need every optional tool"}
+`quarto check` may report that tools such as **TinyTeX**, **Jupyter**, or **Julia** are not installed. That is fine for the R-based HTML work in ANTH418.
+
+Do not install extra software simply to make every optional check appear as installed.
+:::
+
+### If installation fails
+
+Do not spend hours troubleshooting alone. Record:
+
+1. your operating system;
+2. the exact error message;
+3. what you were trying to install or run; and
+4. a screenshot if useful.
+
+Bring that information to class or office hours. Error messages are evidence: copy them exactly rather than paraphrasing them.
+
+
+## R, RStudio, and Quarto {.panel-tabset}
+
+### R
+
+**R** is a programming language and statistical computing environment.
+
+When you write
+
+```r
+mean(c(4, 7, 9))
+```
+
+R evaluates the instruction and returns a result.
+
+R is where the computation happens.
+
+### RStudio
+
+**RStudio** is an integrated development environment (IDE). It gives you a convenient place to work with R:
+
+- the **Source** pane for scripts and Quarto documents;
+- the **Console** for commands and output;
+- the **Environment** pane for objects currently in memory;
+- the **Files / Plots / Packages / Help** panes for navigating the project and inspecting results; and
+- project tools that help keep files, code, and working directories organized.
+
+An RStudio Project is especially important because it gives a project a stable root directory. Project-based organization prevents many file-path problems and makes analyses more portable [@tierney2025].
+
+### Quarto
+
+**Quarto** is a scientific and technical publishing system.
+
+A Quarto document can contain:
+
+- Markdown prose;
+- executable R code;
+- tables;
+- figures;
+- equations;
+- citations; and
+- cross-references.
+
+The `.qmd` source is the document you edit. Rendering turns it into an output such as HTML, PDF, or Word.
+
+::: {.callout-tip title="A useful mental model"}
+**R computes. RStudio organizes. Quarto communicates reproducibly.**
+:::
+
+## Projects and file paths
+
+A reproducible analysis should not depend on a path that only exists on your own computer.
+
+Avoid code such as:
+
+```r
+# Do not write paths like this in course work:
+read_csv("/Users/yourname/Desktop/my-course/data/file.csv")
+```
+
+and avoid beginning an analysis with:
+
+```r
+setwd("/Users/yourname/some/very/specific/location")
+```
+
+Instead, open the relevant RStudio Project and work with **relative paths**:
+
+```r
+read_csv("data/file.csv")
+```
+
+This is one of the workflow practices emphasized in *Quarto for Scientists*: keep the files for one project together and let the project establish a stable starting point for your analysis [@tierney2025].
+
+### Inspect your current project
+
+Run these commands in the Console:
+
+```{r}
+#| label: inspect-project
+#| eval: false
+
+getwd()
+list.files()
+file.exists("data")
+```
+
+::: {.exercise}
+**Your turn — read a file path.**
+
+In the path `data/knipper2020_humans.csv`:
+
+1. What is the directory?
+2. What is the file?
+3. Is the path absolute or relative?
+4. Why is this path more portable than one beginning with `/Users/...`?
+:::
+
+## Your first R commands
+
+R can be used like a calculator:
+
+```{r}
+#| label: basic-calculations
+
+2 + 2
+10 / 4
+3^2
+sqrt(81)
+```
+
+Lines beginning with `#` are comments:
+
+```r
+# R ignores this line.
+# Comments should explain why the code is doing something useful.
+```
+
+### Assignment: creating objects
+
+Use `<-` to assign a value to an object:
+
+```{r}
+#| label: create-objects
+
+site_name <- "La Bastida"
+n_individuals <- 48
+has_isotope_data <- TRUE
+
+site_name
+n_individuals
+has_isotope_data
+```
+
+The object name is on the left. The value is on the right.
+
+::: {.callout-important title="Objects exist in the current R session"}
+Creating `n_individuals <- 48` does **not** permanently save that value inside R.
+
+For a reproducible analysis, the code that creates an object should be written in your script or `.qmd` document so it can be recreated when the document is rendered.
+:::
+
+## Vectors and data types
+
+A **vector** contains multiple values of the same basic type. Thulin introduces vectors and data frames as fundamental structures for storing observations in R [@thulin2025].
+
+```{r}
+#| label: vectors
+
+sites <- c("La Bastida", "Gatas")
+sample_sizes <- c(48, 21)
+include_site <- c(TRUE, TRUE)
+
+sites
+sample_sizes
+include_site
+```
+
+Useful questions about an object include:
+
+```{r}
+#| label: inspect-vectors
+
+length(sample_sizes)
+class(sample_sizes)
+class(sites)
+class(include_site)
+```
+
+Common types you will encounter include:
+
+| R type | Example | Typical anthropological use |
+|---|---|---|
+| numeric | `11.52` | isotope value, age, length, count represented numerically |
+| character | `"Gatas"` | site name, category label, specimen code |
+| logical | `TRUE` | yes/no or inclusion flags |
+| missing | `NA` | value not recorded or not known |
+
+::: {.callout-warning title="`NA` is not zero"}
+`NA` means a value is missing. A recorded value of `0` is an observed value.
+
+This distinction will become a major analytical issue in Week 6.
+:::
+
+## Functions
+
+A **function** is a reusable set of instructions. A function usually takes one or more inputs—called **arguments**—and returns a result. This function-centered way of working is fundamental to R [@perkins2026; @thulin2025].
+
+```{r}
+#| label: functions
+
+isotope_values <- c(10.2, 11.4, 9.8, 12.1)
+
+mean(isotope_values)
+min(isotope_values)
+max(isotope_values)
+length(isotope_values)
+```
+
+The basic pattern is:
+
+```text
+function_name(argument)
+```
+
+Functions can have additional arguments:
+
+```{r}
+#| label: function-arguments
+
+values_with_missing <- c(10.2, 11.4, NA, 12.1)
+
+mean(values_with_missing)
+mean(values_with_missing, na.rm = TRUE)
+```
+
+### Ask R for help
+
+Use `?` or `help()`:
+
+```{r}
+#| label: help-system
+#| eval: false
+
+?mean
+help(mean)
+?read_csv
+```
+
+::: {.callout-tip title="Do not try to memorize every function"}
+Professional R users repeatedly consult documentation. The goal is to understand what you want to do, recognize the relevant function, read its arguments, and verify its behavior.
+:::
+
+## Data frames and tibbles
+
+Most ANTH418 datasets will be rectangular tables:
+
+- **rows** represent observations;
+- **columns** represent variables.
+
+In R, these are stored as data frames. Tidyverse packages commonly use a modern data-frame format called a **tibble**.
+
+```{r}
+#| label: create-tibble
+
+toy_data <- tibble(
+  individual = c("A", "B", "C"),
+  site = c("La Bastida", "La Bastida", "Gatas"),
+  d15n = c(10.4, 11.7, 9.9)
+)
+
+toy_data
+```
+
+Inspect its structure:
+
+```{r}
+#| label: inspect-tibble
+
+glimpse(toy_data)
+dim(toy_data)
+names(toy_data)
+```
+
+Before running any statistical analysis, make a habit of asking:
+
+> **What does one row represent?**
+
+That question is more important than knowing which button or function runs a statistical test.
+
+## Packages and the tidyverse
+
+R includes many functions by default. Additional functions are distributed in **packages**.
+
+For this course, we will use a deliberately small set of packages. The most common will come from the **tidyverse**, including:
+
+- `readr` for importing rectangular data;
+- `dplyr` for data manipulation;
+- `tidyr` for reshaping data;
+- `ggplot2` for visualization;
+- `stringr` for text; and
+- `forcats` for categorical variables.
+
+::: {.callout-note title="Install once; load each session"}
+You normally install a package once:
+
+```r
+install.packages("tidyverse")
+```
+
+Then load it in each new R session or reproducible document:
+
+```r
+library(tidyverse)
+```
+
+Do not put `install.packages()` inside a submitted analytical workflow.
+:::
+
+## The pipe: `|>`
+
+The native R pipe `|>` passes the result of one step into the next step.
+
+Without a pipe:
+
+```{r}
+#| label: no-pipe
+
+round(mean(c(10.2, 11.4, 9.8, 12.1)), 2)
+```
+
+With intermediate objects:
+
+```{r}
+#| label: intermediate-object
+
+x <- c(10.2, 11.4, 9.8, 12.1)
+x_mean <- mean(x)
+round(x_mean, 2)
+```
+
+With a pipe:
+
+```{r}
+#| label: basic-pipe
+
+c(10.2, 11.4, 9.8, 12.1) |>
+  mean() |>
+  round(2)
+```
+
+For data analysis, pipes are especially useful because they allow us to read the code from top to bottom as a sequence of operations.
+
+## Core `dplyr` verbs
+
+We will repeatedly use a small vocabulary of data verbs.
+
+| Verb | Main question |
+|---|---|
+| `select()` | Which **columns** do I need? |
+| `filter()` | Which **rows** do I need? |
+| `mutate()` | What **new or transformed variable** do I need? |
+| `arrange()` | In what **order** should the rows appear? |
+| `group_by()` | Which observations should be treated as **groups**? |
+| `summarise()` | What **summary** should I calculate? |
+| `count()` | How many observations occur in each category? |
+
+Here is a small example:
+
+```{r}
+#| label: dplyr-toy-example
+
+toy_data |>
+  filter(site == "La Bastida") |>
+  select(individual, d15n)
+```
+
+And a transformation:
+
+```{r}
+#| label: mutate-toy-example
+
+toy_data |>
+  mutate(d15n_rounded = round(d15n, 1))
+```
+
+## Quarto: prose and computation in one document
+
+A Quarto document has three important ingredients:
+
+1. **YAML metadata** at the top;
+2. **Markdown prose**; and
+3. **executable code cells**.
+
+A minimal document looks like this:
+
+````markdown
+---
+title: "My first Quarto report"
+format: html
+---
+
+## Question
+
+What does the dataset show?
+
+```{r}
+#| label: example-code
+1 + 1
+```
+````
+
+Quarto code-cell options begin with `#|`. *Quarto for Scientists* highlights options such as `eval`, `echo`, and `include`, which control whether code runs and whether code or output appears in the rendered document [@tierney2025].
+
+For example:
+
+````markdown
+```{r}
+#| label: example-not-run
+#| eval: false
+
+mean(my_data)
+```
+````
+
+### Three useful code-cell options
+
+| Option | Meaning |
+|---|---|
+| `eval: false` | show the code but do not run it |
+| `echo: false` | run the code but hide the source code |
+| `include: false` | run the code but hide both code and visible output |
+
+In ANTH418, important analytical code will usually remain visible because understanding the code is part of the course.
+
+## Useful RStudio shortcuts
+
+A few shortcuts save a great deal of time.
+
+| Action | macOS | Windows/Linux |
+|---|---|---|
+| Render document | `Cmd + Shift + K` | `Ctrl + Shift + K` |
+| Insert R code cell | `Cmd + Option + I` | `Ctrl + Alt + I` |
+| Run current code cell | `Cmd + Option + C` | `Ctrl + Alt + C` |
+| Save | `Cmd + S` | `Ctrl + S` |
+
+These shortcuts are also emphasized in *Quarto for Scientists* [@tierney2025].
+
+# Case study: your first archaeological dataset
+
+## Bronze Age La Bastida and Gatas
+
+The practice dataset comes from the stable-isotope research reported by Knipper and colleagues on Early Bronze Age La Bastida and Gatas in southeast Iberia [@knipper2020].
+
+The published study uses stable carbon and nitrogen isotope evidence to investigate diet, farming, animal management, and food webs. For Week 2, however, our goal is much narrower:
+
+> **Can we import, inspect, filter, summarize, and visualize the human isotope teaching data correctly?**
+
+We are **not yet** trying to complete the descriptive analysis required in Assignment 1.
+
+::: {.callout-note title="Why does our teaching file have 69 individuals?"}
+The published study describes an overall human sample of 75 individuals, but the reported human isotope results contain **48 individuals from La Bastida and 21 from Gatas**, for 69 analyzed human observations [@knipper2020].
+
+The validated ANTH418 teaching file follows those 69 analyzed observations. Do not infer the reason for the difference between the overall sample and analyzed isotope observations without checking the publication and supporting information.
+:::
+
+## Import the data
+
+First confirm that R can find the file:
+
+```{r}
+#| label: check-knipper-file
+
+file.exists(data_file)
+```
+
+Then import it:
+
+```{r}
+#| label: import-knipper
+
+if (!file.exists(data_file)) {
+  stop(
+    paste0(
+      "Missing ", data_file,
+      ". Copy the validated ANTH418 teaching file into the project's data/ directory."
+    )
+  )
+}
+
+knipper <- read_csv(
+  data_file,
+  show_col_types = FALSE
+)
+```
+
+## Inspect before analyzing
+
+Never begin by running a statistical test.
+
+Begin by inspecting the object:
+
+```{r}
+#| label: inspect-knipper
+
+glimpse(knipper)
+```
+
+The teaching file has **`r nrow(knipper)` rows** and **`r ncol(knipper)` columns**.
+
+Its variables are:
+
+```{r}
+#| label: knipper-names
+
+names(knipper)
+```
+
+The unit of analysis is **one sampled human individual**. The teaching file retains identifiers and archaeological classifications alongside the two isotope measurements. fileciteturn2file0
+
+### Variable map
+
+| Variable | R type in teaching file | Role in Week 2 |
+|---|---|---|
+| `source_row_id` | numeric/integer-like | traceability to source row |
+| `grave_no` | character | archaeological identifier |
+| `sample` | character | skeletal sample information |
+| `site` | character | La Bastida or Gatas |
+| `d13c` | numeric | stable carbon isotope value |
+| `d15n` | numeric | stable nitrogen isotope value |
+| `sex` | character | recorded sex classification |
+| `age_category` | character | recorded age category |
+| `chronology` | character | chronological classification |
+| `social_category` | character | social-category classification |
+
+::: {.callout-important title="Data types are not the same as measurement scales"}
+`glimpse()` tells you how R currently stores a variable. It does **not** by itself tell you the variable's archaeological meaning or its statistical measurement scale.
+
+We will return to measurement, proxies, and units of analysis in Week 3.
+:::
+
+## Count observations by site
+
+```{r}
+#| label: tbl-week02-site-counts
+#| tbl-cap: "Number of human isotope observations in the ANTH418 teaching file by archaeological site."
+
+site_counts <- knipper |>
+  count(site, name = "n")
+
+site_counts |>
+  knitr::kable()
+```
+
+As @tbl-week02-site-counts shows, the teaching file contains observations from two sites. The counts should be checked against the publication before you begin a substantive analysis.
+
+## Select columns
+
+Suppose we want a smaller working view containing only identifiers, site, and isotope values:
+
+```{r}
+#| label: select-knipper
+
+knipper |>
+  select(grave_no, site, d13c, d15n) |>
+  slice_head(n = 8)
+```
+
+`select()` changes the **columns** in the object being returned. It does not change the original `knipper` object unless you assign the result to a new object.
+
+## Filter rows
+
+To inspect only Gatas:
+
+```{r}
+#| label: filter-gatas
+
+gatas <- knipper |>
+  filter(site == "Gatas")
+
+glimpse(gatas)
+```
+
+Check the number of rows:
+
+```{r}
+#| label: count-gatas
+
+nrow(gatas)
+```
+
+Filtering changes which **rows** are retained.
+
+## Make a temporary transformed variable
+
+`mutate()` creates or transforms columns. Here we create a rounded value only for display:
+
+```{r}
+#| label: mutate-rounded
+
+knipper |>
+  mutate(d13c_rounded = round(d13c, 2)) |>
+  select(grave_no, site, d13c, d13c_rounded) |>
+  slice_head(n = 8)
+```
+
+The original measurement has not been changed in `knipper`; the transformed value exists only in the temporary result shown above.
+
+## Summarize without doing Assignment 1
+
+Week 4 will formally address measures of central tendency and dispersion. For now, we will practice `group_by()` and `summarise()` using only counts and observed ranges:
+
+```{r}
+#| label: range-summary
+
+knipper |>
+  group_by(site) |>
+  summarise(
+    n = n(),
+    min_d13c = min(d13c),
+    max_d13c = max(d13c),
+    min_d15n = min(d15n),
+    max_d15n = max(d15n),
+    .groups = "drop"
+  )
+```
+
+Read this pipeline as:
+
+> Start with `knipper` → group observations by `site` → compute one summary row for each site.
+
+## Your first `ggplot2` figure
+
+A `ggplot2` figure begins with a dataset and a mapping from variables to visual properties.
+
+```{r}
+#| label: fig-week02-isotope-scatter
+#| fig-cap: "Stable carbon and nitrogen isotope values for the 69 human observations in the ANTH418 teaching file. Each point represents one sampled individual."
+#| fig-alt: "Scatterplot of stable carbon isotope values on the horizontal axis and stable nitrogen isotope values on the vertical axis, with points distinguished by archaeological site."
+
+ggplot(
+  knipper,
+  aes(x = d13c, y = d15n, shape = site)
+) +
+  geom_point(size = 2.4, alpha = 0.75) +
+  labs(
+    x = expression(delta^13 * C~("\u2030")),
+    y = expression(delta^15 * N~("\u2030")),
+    shape = "Site"
+  ) +
+  theme_minimal()
+```
+
+@fig-week02-isotope-scatter is not a statistical test. It is an exploratory view of the joint distribution of two measured variables.
+
+Notice that we did not type “Figure 1” manually. Quarto generated the figure number and cross-reference from the code-cell label. This is exactly the kind of reproducible cross-referencing advocated in *Quarto for Scientists* [@tierney2025].
+
+## Reading R code as a sequence of questions
+
+Consider:
+
+```r
+knipper |>
+  filter(site == "Gatas") |>
+  select(grave_no, d13c, d15n) |>
+  arrange(d15n)
+```
+
+Read it as a sequence:
+
+1. Start with the human isotope dataset.
+2. Keep only Gatas.
+3. Keep only grave number and the two isotope variables.
+4. Order the observations by `d15n`.
+
+This is more useful than memorizing individual commands because the code mirrors the analytical decisions.
+
+# Guided practice
+
+## Exercise 1 — Project hygiene
+
+::: {.exercise}
+Without changing your working directory manually:
+
+1. run `getwd()`;
+2. run `list.files()`;
+3. check whether `data/knipper2020_humans.csv` exists; and
+4. explain why a project-relative path is preferable to a path beginning with `/Users/...`.
+:::
+
+::: {.callout-tip collapse="true" title="Check your work"}
+A typical check is:
+
+```r
+getwd()
+list.files()
+file.exists("data/knipper2020_humans.csv")
+```
+
+The important idea is not the exact directory printed by `getwd()`. It is that the analysis uses a stable project root and relative paths.
+:::
+
+## Exercise 2 — Inspect before analyzing
+
+::: {.exercise}
+Using `knipper`:
+
+1. determine its dimensions;
+2. list the column names;
+3. identify which columns R stores as numeric and which as character; and
+4. state in one sentence what one row represents.
+:::
+
+::: {.callout-tip collapse="true" title="Check your work"}
+Useful commands include:
+
+```r
+dim(knipper)
+names(knipper)
+glimpse(knipper)
+```
+
+The unit of analysis is one sampled human individual.
+:::
+
+## Exercise 3 — Select and filter
+
+::: {.exercise}
+Create an object called `bastida_isotopes` that:
+
+1. contains only observations from **La Bastida**; and
+2. retains only `grave_no`, `d13c`, and `d15n`.
+
+Then use `glimpse()` to inspect it.
+:::
+
+::: {.callout-tip collapse="true" title="Check your work"}
+```r
+bastida_isotopes <- knipper |>
+  filter(site == "La Bastida") |>
+  select(grave_no, d13c, d15n)
+
+glimpse(bastida_isotopes)
+```
+:::
+
+## Exercise 4 — Group and summarize
+
+::: {.exercise}
+Create a two-row table—one row for each site—showing:
+
+- the number of observations;
+- the minimum `d13c`; and
+- the maximum `d13c`.
+
+Do **not** calculate the full Assignment 1 descriptive statistics yet.
+:::
+
+::: {.callout-tip collapse="true" title="Check your work"}
+```r
+knipper |>
+  group_by(site) |>
+  summarise(
+    n = n(),
+    min_d13c = min(d13c),
+    max_d13c = max(d13c),
+    .groups = "drop"
+  )
+```
+:::
+
+## Exercise 5 — Modify a figure
+
+::: {.exercise}
+Copy the code for @fig-week02-isotope-scatter and make **one** purposeful change.
+
+Examples:
+
+- map `site` to `colour` instead of `shape`;
+- change point size;
+- add a clear title; or
+- facet the figure by site.
+
+Render the document and inspect the result.
+:::
+
+::: {.callout-tip collapse="true" title="One possible solution"}
+```r
+ggplot(
+  knipper,
+  aes(x = d13c, y = d15n, colour = site)
+) +
+  geom_point(size = 2.4, alpha = 0.75) +
+  facet_wrap(~ site) +
+  labs(
+    x = expression(delta^13 * C~("\u2030")),
+    y = expression(delta^15 * N~("\u2030")),
+    colour = "Site"
+  ) +
+  theme_minimal()
+```
+
+There are many valid solutions. The goal is to make a change you can explain.
+:::
+
+# Common errors and how to read them
+
+Learning R includes learning to read errors.
+
+## `object 'x' not found`
+
+R cannot find an object with that name.
+
+Check:
+
+- Did you create it?
+- Did you run the code cell that creates it?
+- Is the spelling identical?
+- Did you restart R without recreating the object?
+
+## `cannot open the connection` or `No such file or directory`
+
+R cannot find a file at the path you supplied.
+
+Check:
+
+```r
+getwd()
+file.exists("data/your_file.csv")
+```
+
+Then inspect the path rather than immediately using `setwd()`.
+
+## `could not find function`
+
+The function may belong to a package that has not been loaded.
+
+For example:
+
+```r
+library(tidyverse)
+```
+
+or use the explicit form:
+
+```r
+readr::read_csv("data/file.csv")
+```
+
+## The Console shows `+` instead of `>`
+
+R thinks your command is incomplete—often because of a missing parenthesis, quotation mark, or bracket. Thulin uses this as an example of how R signals an unfinished expression [@thulin2025].
+
+Press **Esc** to cancel, then inspect the command.
+
+# Rendering is the reproducibility test
+
+Running code interactively is not enough.
+
+A Quarto document should be able to rebuild its results in the correct order from the code written in the document.
+
+At the end of your work:
+
+1. save the `.qmd` file;
+2. restart R;
+3. do **not** manually recreate objects in the Console;
+4. render the document; and
+5. fix any errors revealed by the clean render.
+
+::: {.callout-important title="A document that only works because of objects left in your Environment is not reproducible"}
+Rendering from a clean session exposes hidden dependencies and missing steps.
+
+This habit will become increasingly important as ANTH418 analyses become more complex.
+:::
+
+## Quarto feature: inline R
+
+Quarto can place a computed value directly into prose.
+
+For example, after importing the dataset, this source:
+
+```markdown
+The teaching dataset contains `r nrow(knipper)` observations.
+```
+
+renders as:
+
+> The teaching dataset contains **`r nrow(knipper)` observations**.
+
+If the underlying dataset changes, the prose changes when the document is rendered. This helps prevent contradictions between text and computed results.
+
+# Reading guide
+
+## Required: Perkins
+
+Perkins's *Using R for Introductory Statistics in Social Sciences* is designed as a beginner-facing introduction to R for social-science analysis [@perkins2026]. For Week 2, concentrate on Chapter 2, **“Welcome to the R Environment” (pp. 3–17)**.
+
+While reading, make sure you can answer:
+
+- What is the role of the R environment?
+- How do you enter and execute commands?
+- What is an object?
+- How are functions used?
+- How should a beginner interpret R output and errors?
+
+You do not need to memorize commands. Re-run examples and change them.
+
+## Required: Thulin
+
+Thulin's *Modern Statistics with R* develops R from basic objects and functions into data wrangling and programming [@thulin2025].
+
+For Week 2, use the assigned chapters selectively:
+
+- **Chapter 1, Introduction (pp. 1–3):** understand the broader statistical-computing workflow.
+- **Chapter 2, The Basics (pp. 4–57):** prioritize objects, vectors, data frames, functions, indexing, importing data, and basic operations.
+- **Chapter 5, Dealing with Messy Data (pp. 158–211):** focus this week on data types and the sections introducing `dplyr`/`tidyr`, filtering, selecting, and chained operations. Do not try to memorize every data-cleaning recipe.
+- **Chapter 6, R Programming (pp. 212–247):** read for programming habits and the logic of reusable code. Iteration and more advanced programming will become more meaningful later in the course.
+
+Thulin's online edition emphasizes that real data are often messy and that modern R work combines importing, filtering, reshaping, visualization, inference, and programming rather than treating these as separate activities [@thulin2025].
+
+## Quarto for Scientists
+
+Use Tierney's *Quarto for Scientists* as a practical reference throughout the term [@tierney2025]. For Week 2, the most useful sections are:
+
+- workflow and RStudio Projects;
+- file paths and project organization;
+- the anatomy of a Quarto document;
+- code-cell labels and `#|` options;
+- keyboard shortcuts; and
+- figures, captions, citations, and cross-references.
+
+The goal is not to learn every Quarto option now. Learn enough to build a document that you can reliably render again next week.
+
+# Week 2 checklist
+
+Before Week 3, you should be able to say **yes** to each statement:
+
+- [ ] I can explain the difference between R, RStudio, and Quarto.
+- [ ] I can open the correct RStudio Project.
+- [ ] I can explain why `/Users/myname/...` is a poor path to put in shared code.
+- [ ] I can create an R object with `<-`.
+- [ ] I can create a vector with `c()`.
+- [ ] I can explain what a function and an argument are.
+- [ ] I can inspect a data frame with `glimpse()`, `dim()`, and `names()`.
+- [ ] I can import a CSV file with `read_csv()`.
+- [ ] I can use `select()` and `filter()`.
+- [ ] I can read a simple `|>` pipeline from top to bottom.
+- [ ] I can use `group_by()` and `summarise()` for a simple summary.
+- [ ] I can create a basic `ggplot2` figure.
+- [ ] I know what `NA` means.
+- [ ] I can name a Quarto code cell and use a `#|` option.
+- [ ] I can render a `.qmd` document from a clean R session.
+
+# Takeaways
+
+- **R:** data analysis is built from objects, functions, and explicit operations.
+- **RStudio:** project-based organization makes analytical work easier to manage and reproduce.
+- **Quarto:** prose, code, output, figures, tables, and citations can belong to one executable document.
+- **Data:** inspect the structure and unit of analysis before trying to answer a substantive question.
+- **Workflow:** use relative paths, write the code that creates every result, and test reproducibility by rendering from a clean session.
+- **Anthropology:** software does not decide what an observation means. Archaeological interpretation begins with understanding how the data were produced.
+
+# References {.unnumbered}
+
+::: {#refs}
+:::

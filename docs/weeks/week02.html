@@ -1,0 +1,2252 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2026-09-14">
+
+<title>Week 2 — Using R, RStudio, and Quarto – ANTH418: Anthropological Statistics</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-7ff37d7dbb752a0b62676bb39137b3a2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">ANTH418: Anthropological Statistics</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../syllabus.html"> 
+<span class="menu-text">Syllabus</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../lecture-notes/index.html"> 
+<span class="menu-text">Lecture Notes</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-study-guides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Study Guides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-study-guides">    
+        <li>
+    <a class="dropdown-item" href="../weeks/week02.html">
+ <span class="dropdown-text">Week 2 — R, RStudio &amp; Quarto</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../assignments/index.html"> 
+<span class="menu-text">Assignments</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../readings/index.html"> 
+<span class="menu-text">Readings</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../resources/index.html"> 
+<span class="menu-text">Resources</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning objectives</a></li>
+  <li><a href="#this-weeks-two-class-sequence" id="toc-this-weeks-two-class-sequence" class="nav-link" data-scroll-target="#this-weeks-two-class-sequence">This week’s two-class sequence</a></li>
+  <li><a href="#before-class-install-the-software" id="toc-before-class-install-the-software" class="nav-link" data-scroll-target="#before-class-install-the-software">Before class: install the software</a>
+  <ul class="collapse">
+  <li><a href="#step-1-install-r" id="toc-step-1-install-r" class="nav-link" data-scroll-target="#step-1-install-r">Step 1 — Install R</a></li>
+  <li><a href="#step-2-install-rstudio-desktop" id="toc-step-2-install-rstudio-desktop" class="nav-link" data-scroll-target="#step-2-install-rstudio-desktop">Step 2 — Install RStudio Desktop</a></li>
+  <li><a href="#step-3-check-quarto" id="toc-step-3-check-quarto" class="nav-link" data-scroll-target="#step-3-check-quarto">Step 3 — Check Quarto</a></li>
+  <li><a href="#step-4-install-the-r-packages-used-in-anth418" id="toc-step-4-install-the-r-packages-used-in-anth418" class="nav-link" data-scroll-target="#step-4-install-the-r-packages-used-in-anth418">Step 4 — Install the R packages used in ANTH418</a></li>
+  <li><a href="#step-5-verify-the-complete-setup" id="toc-step-5-verify-the-complete-setup" class="nav-link" data-scroll-target="#step-5-verify-the-complete-setup">Step 5 — Verify the complete setup</a></li>
+  <li><a href="#step-6-make-a-tiny-quarto-test-document" id="toc-step-6-make-a-tiny-quarto-test-document" class="nav-link" data-scroll-target="#step-6-make-a-tiny-quarto-test-document">Step 6 — Make a tiny Quarto test document</a></li>
+  <li><a href="#if-installation-fails" id="toc-if-installation-fails" class="nav-link" data-scroll-target="#if-installation-fails">If installation fails</a></li>
+  </ul></li>
+  <li><a href="#r-rstudio-and-quarto" id="toc-r-rstudio-and-quarto" class="nav-link" data-scroll-target="#r-rstudio-and-quarto">R, RStudio, and Quarto</a>
+  <ul class="collapse">
+  <li><a href="#r" id="toc-r" class="nav-link" data-scroll-target="#r">R</a></li>
+  <li><a href="#rstudio" id="toc-rstudio" class="nav-link" data-scroll-target="#rstudio">RStudio</a></li>
+  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto">Quarto</a></li>
+  </ul></li>
+  <li><a href="#projects-and-file-paths" id="toc-projects-and-file-paths" class="nav-link" data-scroll-target="#projects-and-file-paths">Projects and file paths</a>
+  <ul class="collapse">
+  <li><a href="#inspect-your-current-project" id="toc-inspect-your-current-project" class="nav-link" data-scroll-target="#inspect-your-current-project">Inspect your current project</a></li>
+  </ul></li>
+  <li><a href="#your-first-r-commands" id="toc-your-first-r-commands" class="nav-link" data-scroll-target="#your-first-r-commands">Your first R commands</a>
+  <ul class="collapse">
+  <li><a href="#assignment-creating-objects" id="toc-assignment-creating-objects" class="nav-link" data-scroll-target="#assignment-creating-objects">Assignment: creating objects</a></li>
+  </ul></li>
+  <li><a href="#vectors-and-data-types" id="toc-vectors-and-data-types" class="nav-link" data-scroll-target="#vectors-and-data-types">Vectors and data types</a></li>
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a>
+  <ul class="collapse">
+  <li><a href="#ask-r-for-help" id="toc-ask-r-for-help" class="nav-link" data-scroll-target="#ask-r-for-help">Ask R for help</a></li>
+  </ul></li>
+  <li><a href="#data-frames-and-tibbles" id="toc-data-frames-and-tibbles" class="nav-link" data-scroll-target="#data-frames-and-tibbles">Data frames and tibbles</a></li>
+  <li><a href="#packages-and-the-tidyverse" id="toc-packages-and-the-tidyverse" class="nav-link" data-scroll-target="#packages-and-the-tidyverse">Packages and the tidyverse</a></li>
+  <li><a href="#the-pipe" id="toc-the-pipe" class="nav-link" data-scroll-target="#the-pipe">The pipe: <code>|&gt;</code></a></li>
+  <li><a href="#core-dplyr-verbs" id="toc-core-dplyr-verbs" class="nav-link" data-scroll-target="#core-dplyr-verbs">Core <code>dplyr</code> verbs</a></li>
+  <li><a href="#quarto-prose-and-computation-in-one-document" id="toc-quarto-prose-and-computation-in-one-document" class="nav-link" data-scroll-target="#quarto-prose-and-computation-in-one-document">Quarto: prose and computation in one document</a>
+  <ul class="collapse">
+  <li><a href="#three-useful-code-cell-options" id="toc-three-useful-code-cell-options" class="nav-link" data-scroll-target="#three-useful-code-cell-options">Three useful code-cell options</a></li>
+  </ul></li>
+  <li><a href="#useful-rstudio-shortcuts" id="toc-useful-rstudio-shortcuts" class="nav-link" data-scroll-target="#useful-rstudio-shortcuts">Useful RStudio shortcuts</a></li>
+  <li><a href="#case-study-your-first-archaeological-dataset" id="toc-case-study-your-first-archaeological-dataset" class="nav-link" data-scroll-target="#case-study-your-first-archaeological-dataset">Case study: your first archaeological dataset</a>
+  <ul class="collapse">
+  <li><a href="#bronze-age-la-bastida-and-gatas" id="toc-bronze-age-la-bastida-and-gatas" class="nav-link" data-scroll-target="#bronze-age-la-bastida-and-gatas">Bronze Age La Bastida and Gatas</a></li>
+  <li><a href="#import-the-data" id="toc-import-the-data" class="nav-link" data-scroll-target="#import-the-data">Import the data</a></li>
+  <li><a href="#inspect-before-analyzing" id="toc-inspect-before-analyzing" class="nav-link" data-scroll-target="#inspect-before-analyzing">Inspect before analyzing</a>
+  <ul class="collapse">
+  <li><a href="#variable-map" id="toc-variable-map" class="nav-link" data-scroll-target="#variable-map">Variable map</a></li>
+  </ul></li>
+  <li><a href="#count-observations-by-site" id="toc-count-observations-by-site" class="nav-link" data-scroll-target="#count-observations-by-site">Count observations by site</a></li>
+  <li><a href="#select-columns" id="toc-select-columns" class="nav-link" data-scroll-target="#select-columns">Select columns</a></li>
+  <li><a href="#filter-rows" id="toc-filter-rows" class="nav-link" data-scroll-target="#filter-rows">Filter rows</a></li>
+  <li><a href="#make-a-temporary-transformed-variable" id="toc-make-a-temporary-transformed-variable" class="nav-link" data-scroll-target="#make-a-temporary-transformed-variable">Make a temporary transformed variable</a></li>
+  <li><a href="#summarize-without-doing-assignment-1" id="toc-summarize-without-doing-assignment-1" class="nav-link" data-scroll-target="#summarize-without-doing-assignment-1">Summarize without doing Assignment 1</a></li>
+  <li><a href="#your-first-ggplot2-figure" id="toc-your-first-ggplot2-figure" class="nav-link" data-scroll-target="#your-first-ggplot2-figure">Your first <code>ggplot2</code> figure</a></li>
+  <li><a href="#reading-r-code-as-a-sequence-of-questions" id="toc-reading-r-code-as-a-sequence-of-questions" class="nav-link" data-scroll-target="#reading-r-code-as-a-sequence-of-questions">Reading R code as a sequence of questions</a></li>
+  </ul></li>
+  <li><a href="#guided-practice" id="toc-guided-practice" class="nav-link" data-scroll-target="#guided-practice">Guided practice</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1-project-hygiene" id="toc-exercise-1-project-hygiene" class="nav-link" data-scroll-target="#exercise-1-project-hygiene">Exercise 1 — Project hygiene</a></li>
+  <li><a href="#exercise-2-inspect-before-analyzing" id="toc-exercise-2-inspect-before-analyzing" class="nav-link" data-scroll-target="#exercise-2-inspect-before-analyzing">Exercise 2 — Inspect before analyzing</a></li>
+  <li><a href="#exercise-3-select-and-filter" id="toc-exercise-3-select-and-filter" class="nav-link" data-scroll-target="#exercise-3-select-and-filter">Exercise 3 — Select and filter</a></li>
+  <li><a href="#exercise-4-group-and-summarize" id="toc-exercise-4-group-and-summarize" class="nav-link" data-scroll-target="#exercise-4-group-and-summarize">Exercise 4 — Group and summarize</a></li>
+  <li><a href="#exercise-5-modify-a-figure" id="toc-exercise-5-modify-a-figure" class="nav-link" data-scroll-target="#exercise-5-modify-a-figure">Exercise 5 — Modify a figure</a></li>
+  </ul></li>
+  <li><a href="#common-errors-and-how-to-read-them" id="toc-common-errors-and-how-to-read-them" class="nav-link" data-scroll-target="#common-errors-and-how-to-read-them">Common errors and how to read them</a>
+  <ul class="collapse">
+  <li><a href="#object-x-not-found" id="toc-object-x-not-found" class="nav-link" data-scroll-target="#object-x-not-found"><code>object 'x' not found</code></a></li>
+  <li><a href="#cannot-open-the-connection-or-no-such-file-or-directory" id="toc-cannot-open-the-connection-or-no-such-file-or-directory" class="nav-link" data-scroll-target="#cannot-open-the-connection-or-no-such-file-or-directory"><code>cannot open the connection</code> or <code>No such file or directory</code></a></li>
+  <li><a href="#could-not-find-function" id="toc-could-not-find-function" class="nav-link" data-scroll-target="#could-not-find-function"><code>could not find function</code></a></li>
+  <li><a href="#the-console-shows-instead-of" id="toc-the-console-shows-instead-of" class="nav-link" data-scroll-target="#the-console-shows-instead-of">The Console shows <code>+</code> instead of <code>&gt;</code></a></li>
+  </ul></li>
+  <li><a href="#rendering-is-the-reproducibility-test" id="toc-rendering-is-the-reproducibility-test" class="nav-link" data-scroll-target="#rendering-is-the-reproducibility-test">Rendering is the reproducibility test</a>
+  <ul class="collapse">
+  <li><a href="#quarto-feature-inline-r" id="toc-quarto-feature-inline-r" class="nav-link" data-scroll-target="#quarto-feature-inline-r">Quarto feature: inline R</a></li>
+  </ul></li>
+  <li><a href="#reading-guide" id="toc-reading-guide" class="nav-link" data-scroll-target="#reading-guide">Reading guide</a>
+  <ul class="collapse">
+  <li><a href="#required-perkins" id="toc-required-perkins" class="nav-link" data-scroll-target="#required-perkins">Required: Perkins</a></li>
+  <li><a href="#required-thulin" id="toc-required-thulin" class="nav-link" data-scroll-target="#required-thulin">Required: Thulin</a></li>
+  <li><a href="#quarto-for-scientists" id="toc-quarto-for-scientists" class="nav-link" data-scroll-target="#quarto-for-scientists">Quarto for Scientists</a></li>
+  </ul></li>
+  <li><a href="#week-2-checklist" id="toc-week-2-checklist" class="nav-link" data-scroll-target="#week-2-checklist">Week 2 checklist</a></li>
+  <li><a href="#takeaways" id="toc-takeaways" class="nav-link" data-scroll-target="#takeaways">Takeaways</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Week 2 — Using R, RStudio, and Quarto</h1>
+<p class="subtitle lead">From commands to a reproducible anthropological workflow</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 14, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="week-meta">
+<p><strong>Class meetings:</strong> 14 &amp; 16 September 2026<br> <strong>Focus:</strong> R basics · RStudio projects · tidyverse · Quarto<br> <strong>Practice dataset:</strong> Knipper et al.&nbsp;2020 human stable-isotope data<br> <strong>Assessment:</strong> Ungraded preparation for Assignment 1</p>
+</div>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>This week is about learning a <strong>workflow</strong>, not memorizing commands.</p>
+<p>R is the language we will use to work with data. RStudio is the environment in which we will organize and run that work. Quarto is the document system that brings <strong>prose, R code, results, tables, figures, and citations</strong> together in a reproducible report <span class="citation" data-cites="tierney2025">(<a href="#ref-tierney2025" role="doc-biblioref">Tierney 2025</a>)</span>.</p>
+<p>By the end of the week, you should be able to open an RStudio project, understand the basic structure of an R command, create and inspect R objects, import a CSV file, use a small set of tidyverse verbs, create a first <code>ggplot2</code> figure, and render a Quarto document from a clean R session.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="The Week 2 principle">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>The Week 2 principle
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Do not separate “doing the analysis” from “documenting the analysis.”</strong></p>
+<p>In ANTH418, the code that produces a result should live beside the explanation of what the result means.</p>
+</div>
+</div>
+</section>
+<section id="questions" class="level2">
+<h2 class="anchored" data-anchor-id="questions">Questions</h2>
+<ul>
+<li>What are R, RStudio, and Quarto, and how do they differ?</li>
+<li>What is an R object, vector, function, data frame, or package?</li>
+<li>How should files be organized so that code can find them reliably?</li>
+<li>How do we import and inspect a real archaeological dataset?</li>
+<li>What do <code>select()</code>, <code>filter()</code>, <code>mutate()</code>, <code>summarise()</code>, <code>group_by()</code>, and <code>|&gt;</code> do?</li>
+<li>How does a Quarto document turn code and prose into a reproducible HTML page?</li>
+<li>What does one row in the Knipper teaching dataset represent?</li>
+</ul>
+</section>
+<section id="learning-objectives" class="level2">
+<h2 class="anchored" data-anchor-id="learning-objectives">Learning objectives</h2>
+<p>By the end of Week 2, you should be able to:</p>
+<ol type="1">
+<li>distinguish <strong>R</strong>, <strong>RStudio</strong>, and <strong>Quarto</strong>;</li>
+<li>use an <strong>RStudio Project</strong> and project-relative file paths rather than machine-specific paths;</li>
+<li>create and inspect basic R objects, vectors, and data frames;</li>
+<li>recognize common data types, including numeric, character, logical, and missing (<code>NA</code>) values;</li>
+<li>explain the basic syntax of an R function and use R’s help system;</li>
+<li>import a CSV file with <code>read_csv()</code> and inspect it with <code>glimpse()</code>, <code>names()</code>, and <code>dim()</code>;</li>
+<li>use the native R pipe <code>|&gt;</code> to build readable sequences of data operations;</li>
+<li>use introductory <code>dplyr</code> verbs to select, filter, transform, group, and summarize data;</li>
+<li>construct a simple <code>ggplot2</code> visualization;</li>
+<li>create named Quarto code cells, use basic <code>#|</code> cell options, and render a <code>.qmd</code> file; and</li>
+<li>re-render a document from a clean R session.</li>
+</ol>
+</section>
+<section id="this-weeks-two-class-sequence" class="level2">
+<h2 class="anchored" data-anchor-id="this-weeks-two-class-sequence">This week’s two-class sequence</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Class</th>
+<th>Main focus</th>
+<th>Practical outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Monday, 14 September</strong></td>
+<td>R, RStudio, projects, objects, vectors, functions, data frames</td>
+<td>You can write and run basic R code and understand where your files live.</td>
+</tr>
+<tr class="even">
+<td><strong>Wednesday, 16 September</strong></td>
+<td>tidyverse, Quarto, data import, first archaeological dataset</td>
+<td>You can import, inspect, filter, summarize, visualize, and render a reproducible document.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="before-class-install-the-software" class="level2">
+<h2 class="anchored" data-anchor-id="before-class-install-the-software">Before class: install the software</h2>
+<p>ANTH418 assumes <strong>no previous programming experience</strong>. Before beginning the exercises below, make sure that R and RStudio are installed and working on your computer.</p>
+<p>The three names can be confusing at first:</p>
+<blockquote class="blockquote">
+<p><strong>R</strong> is the language that performs the computation.<br> <strong>RStudio</strong> is the application in which we will write and organize most of our R work.<br> <strong>Quarto</strong> turns our code, results, figures, and writing into a reproducible document.</p>
+</blockquote>
+<section id="step-1-install-r" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-install-r">Step 1 — Install R</h3>
+<p>Download R from the <strong>Comprehensive R Archive Network (CRAN)</strong>:</p>
+<p><a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a></p>
+<p>Choose the installer for your operating system:</p>
+<ul>
+<li><strong>macOS:</strong> choose <em>Download R for macOS</em> and install the current release appropriate for your Mac;</li>
+<li><strong>Windows:</strong> choose <em>Download R for Windows</em> → <em>base</em> → the current release; or</li>
+<li><strong>Linux:</strong> follow the instructions for your distribution.</li>
+</ul>
+<p>Use the standard/default installation options unless you have a specific reason to change them.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="R must be installed before RStudio">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>R must be installed before RStudio
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>RStudio does not replace R. It provides an easier environment for working with R, but it still needs an R installation on your computer.</p>
+</div>
+</div>
+</section>
+<section id="step-2-install-rstudio-desktop" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-install-rstudio-desktop">Step 2 — Install RStudio Desktop</h3>
+<p>Download the free <strong>RStudio Desktop</strong> from Posit:</p>
+<p><a href="https://posit.co/download/rstudio-desktop/" class="uri">https://posit.co/download/rstudio-desktop/</a></p>
+<p>Install the current stable release for your operating system.</p>
+<p>On first launch, RStudio should normally find your R installation automatically.</p>
+<p>Current versions of RStudio include integrated support for Quarto and bundle a stable Quarto release. For most ANTH418 students, installing current R and current RStudio is therefore enough to begin working with <code>.qmd</code> files.</p>
+</section>
+<section id="step-3-check-quarto" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-check-quarto">Step 3 — Check Quarto</h3>
+<p>After installing RStudio, open it and choose the <strong>Terminal</strong> tab. Run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> <span class="at">--version</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>You should see a version number.</p>
+<p>Then run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> check</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This checks whether Quarto can find the software it needs, including R and the Knitr execution engine.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Do I need to install Quarto separately?">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Do I need to install Quarto separately?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Usually <strong>no</strong> if you have installed a current release of RStudio, because RStudio bundles Quarto.</p>
+<p>If <code>quarto --version</code> does not work, or if you need a newer standalone Quarto release, install it from:</p>
+<p><a href="https://quarto.org/docs/get-started/" class="uri">https://quarto.org/docs/get-started/</a></p>
+<p>After installation, restart RStudio and run <code>quarto --version</code> again.</p>
+</div>
+</div>
+</section>
+<section id="step-4-install-the-r-packages-used-in-anth418" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-install-the-r-packages-used-in-anth418">Step 4 — Install the R packages used in ANTH418</h3>
+<p>Packages extend what R can do. For the first part of the course, the main package collection we need is the <strong>tidyverse</strong>.</p>
+<p>In the <strong>R Console</strong>, run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>You normally install a package only once on a computer.</p>
+<p>Then test that it loads:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>If the command finishes without an error, the package is available.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Console or Terminal?">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Console or Terminal?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>RStudio contains both, but they serve different purposes.</p>
+<ul>
+<li>Use the <strong>R Console</strong> for R commands such as <code>install.packages()</code> and <code>library()</code>.</li>
+<li>Use the <strong>Terminal</strong> for system commands such as <code>quarto --version</code> and <code>quarto check</code>.</li>
+</ul>
+<p>We will use both during the course.</p>
+</div>
+</div>
+</section>
+<section id="step-5-verify-the-complete-setup" class="level3">
+<h3 class="anchored" data-anchor-id="step-5-verify-the-complete-setup">Step 5 — Verify the complete setup</h3>
+<p>In the <strong>R Console</strong>, run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>R.version.string</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>You should see your R version, the result <code>2</code>, and no error when the tidyverse loads.</p>
+<p>In the <strong>Terminal</strong>, run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> <span class="at">--version</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>If those checks work, you have the basic ANTH418 computational environment.</p>
+</section>
+<section id="step-6-make-a-tiny-quarto-test-document" class="level3">
+<h3 class="anchored" data-anchor-id="step-6-make-a-tiny-quarto-test-document">Step 6 — Make a tiny Quarto test document</h3>
+<p>In RStudio choose:</p>
+<p><strong>File → New File → Quarto Document…</strong></p>
+<p>Choose <strong>HTML</strong> and create the document. Replace its body with:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## My first R calculation</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>::: {.cell}</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="in">```{.r .cell-code}</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>::: {.cell-output .cell-output-stdout}</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="in">[1] 4</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Save the file as something like:</p>
+<pre class="text"><code>quarto_test.qmd</code></pre>
+<p>Then click <strong>Render</strong>.</p>
+<p>If an HTML page appears showing both the code and the result <code>4</code>, then R, RStudio, Knitr, and Quarto are communicating correctly.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="You do not need every optional tool">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>You do not need every optional tool
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>quarto check</code> may report that tools such as <strong>TinyTeX</strong>, <strong>Jupyter</strong>, or <strong>Julia</strong> are not installed. That is fine for the R-based HTML work in ANTH418.</p>
+<p>Do not install extra software simply to make every optional check appear as installed.</p>
+</div>
+</div>
+</section>
+<section id="if-installation-fails" class="level3">
+<h3 class="anchored" data-anchor-id="if-installation-fails">If installation fails</h3>
+<p>Do not spend hours troubleshooting alone. Record:</p>
+<ol type="1">
+<li>your operating system;</li>
+<li>the exact error message;</li>
+<li>what you were trying to install or run; and</li>
+<li>a screenshot if useful.</li>
+</ol>
+<p>Bring that information to class or office hours. Error messages are evidence: copy them exactly rather than paraphrasing them.</p>
+</section>
+</section>
+<section id="r-rstudio-and-quarto" class="level2 panel-tabset">
+<h2 class="panel-tabset anchored" data-anchor-id="r-rstudio-and-quarto">R, RStudio, and Quarto</h2>
+<section id="r" class="level3">
+<h3 class="anchored" data-anchor-id="r">R</h3>
+<p><strong>R</strong> is a programming language and statistical computing environment.</p>
+<p>When you write</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">9</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>R evaluates the instruction and returns a result.</p>
+<p>R is where the computation happens.</p>
+</section>
+<section id="rstudio" class="level3">
+<h3 class="anchored" data-anchor-id="rstudio">RStudio</h3>
+<p><strong>RStudio</strong> is an integrated development environment (IDE). It gives you a convenient place to work with R:</p>
+<ul>
+<li>the <strong>Source</strong> pane for scripts and Quarto documents;</li>
+<li>the <strong>Console</strong> for commands and output;</li>
+<li>the <strong>Environment</strong> pane for objects currently in memory;</li>
+<li>the <strong>Files / Plots / Packages / Help</strong> panes for navigating the project and inspecting results; and</li>
+<li>project tools that help keep files, code, and working directories organized.</li>
+</ul>
+<p>An RStudio Project is especially important because it gives a project a stable root directory. Project-based organization prevents many file-path problems and makes analyses more portable <span class="citation" data-cites="tierney2025">(<a href="#ref-tierney2025" role="doc-biblioref">Tierney 2025</a>)</span>.</p>
+</section>
+<section id="quarto" class="level3">
+<h3 class="anchored" data-anchor-id="quarto">Quarto</h3>
+<p><strong>Quarto</strong> is a scientific and technical publishing system.</p>
+<p>A Quarto document can contain:</p>
+<ul>
+<li>Markdown prose;</li>
+<li>executable R code;</li>
+<li>tables;</li>
+<li>figures;</li>
+<li>equations;</li>
+<li>citations; and</li>
+<li>cross-references.</li>
+</ul>
+<p>The <code>.qmd</code> source is the document you edit. Rendering turns it into an output such as HTML, PDF, or Word.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="A useful mental model">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>A useful mental model
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>R computes. RStudio organizes. Quarto communicates reproducibly.</strong></p>
+</div>
+</div>
+</section>
+</section>
+<section id="projects-and-file-paths" class="level2">
+<h2 class="anchored" data-anchor-id="projects-and-file-paths">Projects and file paths</h2>
+<p>A reproducible analysis should not depend on a path that only exists on your own computer.</p>
+<p>Avoid code such as:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Do not write paths like this in course work:</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">"/Users/yourname/Desktop/my-course/data/file.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>and avoid beginning an analysis with:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"/Users/yourname/some/very/specific/location"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Instead, open the relevant RStudio Project and work with <strong>relative paths</strong>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">"data/file.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This is one of the workflow practices emphasized in <em>Quarto for Scientists</em>: keep the files for one project together and let the project establish a stable starting point for your analysis <span class="citation" data-cites="tierney2025">(<a href="#ref-tierney2025" role="doc-biblioref">Tierney 2025</a>)</span>.</p>
+<section id="inspect-your-current-project" class="level3">
+<h3 class="anchored" data-anchor-id="inspect-your-current-project">Inspect your current project</h3>
+<p>Run these commands in the Console:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>()</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">file.exists</span>(<span class="st">"data"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="exercise">
+<p><strong>Your turn — read a file path.</strong></p>
+<p>In the path <code>data/knipper2020_humans.csv</code>:</p>
+<ol type="1">
+<li>What is the directory?</li>
+<li>What is the file?</li>
+<li>Is the path absolute or relative?</li>
+<li>Why is this path more portable than one beginning with <code>/Users/...</code>?</li>
+</ol>
+</div>
+</section>
+</section>
+<section id="your-first-r-commands" class="level2">
+<h2 class="anchored" data-anchor-id="your-first-r-commands">Your first R commands</h2>
+<p>R can be used like a calculator:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">/</span> <span class="dv">4</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.5</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span><span class="sc">^</span><span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 9</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">81</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 9</code></pre>
+</div>
+</div>
+<p>Lines beginning with <code>#</code> are comments:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># R ignores this line.</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Comments should explain why the code is doing something useful.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="assignment-creating-objects" class="level3">
+<h3 class="anchored" data-anchor-id="assignment-creating-objects">Assignment: creating objects</h3>
+<p>Use <code>&lt;-</code> to assign a value to an object:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>site_name <span class="ot">&lt;-</span> <span class="st">"La Bastida"</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>n_individuals <span class="ot">&lt;-</span> <span class="dv">48</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>has_isotope_data <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>site_name</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "La Bastida"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>n_individuals</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 48</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>has_isotope_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>The object name is on the left. The value is on the right.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Objects exist in the current R session">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Objects exist in the current R session
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Creating <code>n_individuals &lt;- 48</code> does <strong>not</strong> permanently save that value inside R.</p>
+<p>For a reproducible analysis, the code that creates an object should be written in your script or <code>.qmd</code> document so it can be recreated when the document is rendered.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="vectors-and-data-types" class="level2">
+<h2 class="anchored" data-anchor-id="vectors-and-data-types">Vectors and data types</h2>
+<p>A <strong>vector</strong> contains multiple values of the same basic type. Thulin introduces vectors and data frames as fundamental structures for storing observations in R <span class="citation" data-cites="thulin2025">(<a href="#ref-thulin2025" role="doc-biblioref">Thulin 2025</a>)</span>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>sites <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"La Bastida"</span>, <span class="st">"Gatas"</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>sample_sizes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">48</span>, <span class="dv">21</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>include_site <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>sites</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "La Bastida" "Gatas"     </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>sample_sizes</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 48 21</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>include_site</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE TRUE</code></pre>
+</div>
+</div>
+<p>Useful questions about an object include:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(sample_sizes)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(sample_sizes)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "numeric"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(sites)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "character"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(include_site)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "logical"</code></pre>
+</div>
+</div>
+<p>Common types you will encounter include:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>R type</th>
+<th>Example</th>
+<th>Typical anthropological use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>numeric</td>
+<td><code>11.52</code></td>
+<td>isotope value, age, length, count represented numerically</td>
+</tr>
+<tr class="even">
+<td>character</td>
+<td><code>"Gatas"</code></td>
+<td>site name, category label, specimen code</td>
+</tr>
+<tr class="odd">
+<td>logical</td>
+<td><code>TRUE</code></td>
+<td>yes/no or inclusion flags</td>
+</tr>
+<tr class="even">
+<td>missing</td>
+<td><code>NA</code></td>
+<td>value not recorded or not known</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-warning callout-titled" title="`NA` is not zero">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span><code>NA</code> is not zero
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>NA</code> means a value is missing. A recorded value of <code>0</code> is an observed value.</p>
+<p>This distinction will become a major analytical issue in Week 6.</p>
+</div>
+</div>
+</section>
+<section id="functions" class="level2">
+<h2 class="anchored" data-anchor-id="functions">Functions</h2>
+<p>A <strong>function</strong> is a reusable set of instructions. A function usually takes one or more inputs—called <strong>arguments</strong>—and returns a result. This function-centered way of working is fundamental to R <span class="citation" data-cites="perkins2026 thulin2025">(<a href="#ref-perkins2026" role="doc-biblioref">Perkins 2026</a>; <a href="#ref-thulin2025" role="doc-biblioref">Thulin 2025</a>)</span>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>isotope_values <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">10.2</span>, <span class="fl">11.4</span>, <span class="fl">9.8</span>, <span class="fl">12.1</span>)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(isotope_values)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10.875</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(isotope_values)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 9.8</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(isotope_values)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 12.1</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(isotope_values)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+</div>
+<p>The basic pattern is:</p>
+<pre class="text"><code>function_name(argument)</code></pre>
+<p>Functions can have additional arguments:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>values_with_missing <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">10.2</span>, <span class="fl">11.4</span>, <span class="cn">NA</span>, <span class="fl">12.1</span>)</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(values_with_missing)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(values_with_missing, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 11.23333</code></pre>
+</div>
+</div>
+<section id="ask-r-for-help" class="level3">
+<h3 class="anchored" data-anchor-id="ask-r-for-help">Ask R for help</h3>
+<p>Use <code>?</code> or <code>help()</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>?mean</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(mean)</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>?read_csv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Do not try to memorize every function">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Do not try to memorize every function
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Professional R users repeatedly consult documentation. The goal is to understand what you want to do, recognize the relevant function, read its arguments, and verify its behavior.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="data-frames-and-tibbles" class="level2">
+<h2 class="anchored" data-anchor-id="data-frames-and-tibbles">Data frames and tibbles</h2>
+<p>Most ANTH418 datasets will be rectangular tables:</p>
+<ul>
+<li><strong>rows</strong> represent observations;</li>
+<li><strong>columns</strong> represent variables.</li>
+</ul>
+<p>In R, these are stored as data frames. Tidyverse packages commonly use a modern data-frame format called a <strong>tibble</strong>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>toy_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">individual =</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>),</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">site =</span> <span class="fu">c</span>(<span class="st">"La Bastida"</span>, <span class="st">"La Bastida"</span>, <span class="st">"Gatas"</span>),</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">d15n =</span> <span class="fu">c</span>(<span class="fl">10.4</span>, <span class="fl">11.7</span>, <span class="fl">9.9</span>)</span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a>toy_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  individual site        d15n
+  &lt;chr&gt;      &lt;chr&gt;      &lt;dbl&gt;
+1 A          La Bastida  10.4
+2 B          La Bastida  11.7
+3 C          Gatas        9.9</code></pre>
+</div>
+</div>
+<p>Inspect its structure:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(toy_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 3
+Columns: 3
+$ individual &lt;chr&gt; "A", "B", "C"
+$ site       &lt;chr&gt; "La Bastida", "La Bastida", "Gatas"
+$ d15n       &lt;dbl&gt; 10.4, 11.7, 9.9</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(toy_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3 3</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(toy_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "individual" "site"       "d15n"      </code></pre>
+</div>
+</div>
+<p>Before running any statistical analysis, make a habit of asking:</p>
+<blockquote class="blockquote">
+<p><strong>What does one row represent?</strong></p>
+</blockquote>
+<p>That question is more important than knowing which button or function runs a statistical test.</p>
+</section>
+<section id="packages-and-the-tidyverse" class="level2">
+<h2 class="anchored" data-anchor-id="packages-and-the-tidyverse">Packages and the tidyverse</h2>
+<p>R includes many functions by default. Additional functions are distributed in <strong>packages</strong>.</p>
+<p>For this course, we will use a deliberately small set of packages. The most common will come from the <strong>tidyverse</strong>, including:</p>
+<ul>
+<li><code>readr</code> for importing rectangular data;</li>
+<li><code>dplyr</code> for data manipulation;</li>
+<li><code>tidyr</code> for reshaping data;</li>
+<li><code>ggplot2</code> for visualization;</li>
+<li><code>stringr</code> for text; and</li>
+<li><code>forcats</code> for categorical variables.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled" title="Install once; load each session">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Install once; load each session
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You normally install a package once:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Then load it in each new R session or reproducible document:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Do not put <code>install.packages()</code> inside a submitted analytical workflow.</p>
+</div>
+</div>
+</section>
+<section id="the-pipe" class="level2">
+<h2 class="anchored" data-anchor-id="the-pipe">The pipe: <code>|&gt;</code></h2>
+<p>The native R pipe <code>|&gt;</code> passes the result of one step into the next step.</p>
+<p>Without a pipe:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">mean</span>(<span class="fu">c</span>(<span class="fl">10.2</span>, <span class="fl">11.4</span>, <span class="fl">9.8</span>, <span class="fl">12.1</span>)), <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10.88</code></pre>
+</div>
+</div>
+<p>With intermediate objects:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">10.2</span>, <span class="fl">11.4</span>, <span class="fl">9.8</span>, <span class="fl">12.1</span>)</span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>x_mean <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)</span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(x_mean, <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10.88</code></pre>
+</div>
+</div>
+<p>With a pipe:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="fl">10.2</span>, <span class="fl">11.4</span>, <span class="fl">9.8</span>, <span class="fl">12.1</span>) <span class="sc">|&gt;</span></span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>() <span class="sc">|&gt;</span></span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(<span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10.88</code></pre>
+</div>
+</div>
+<p>For data analysis, pipes are especially useful because they allow us to read the code from top to bottom as a sequence of operations.</p>
+</section>
+<section id="core-dplyr-verbs" class="level2">
+<h2 class="anchored" data-anchor-id="core-dplyr-verbs">Core <code>dplyr</code> verbs</h2>
+<p>We will repeatedly use a small vocabulary of data verbs.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Verb</th>
+<th>Main question</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>select()</code></td>
+<td>Which <strong>columns</strong> do I need?</td>
+</tr>
+<tr class="even">
+<td><code>filter()</code></td>
+<td>Which <strong>rows</strong> do I need?</td>
+</tr>
+<tr class="odd">
+<td><code>mutate()</code></td>
+<td>What <strong>new or transformed variable</strong> do I need?</td>
+</tr>
+<tr class="even">
+<td><code>arrange()</code></td>
+<td>In what <strong>order</strong> should the rows appear?</td>
+</tr>
+<tr class="odd">
+<td><code>group_by()</code></td>
+<td>Which observations should be treated as <strong>groups</strong>?</td>
+</tr>
+<tr class="even">
+<td><code>summarise()</code></td>
+<td>What <strong>summary</strong> should I calculate?</td>
+</tr>
+<tr class="odd">
+<td><code>count()</code></td>
+<td>How many observations occur in each category?</td>
+</tr>
+</tbody>
+</table>
+<p>Here is a small example:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>toy_data <span class="sc">|&gt;</span></span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(site <span class="sc">==</span> <span class="st">"La Bastida"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(individual, d15n)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  individual  d15n
+  &lt;chr&gt;      &lt;dbl&gt;
+1 A           10.4
+2 B           11.7</code></pre>
+</div>
+</div>
+<p>And a transformation:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>toy_data <span class="sc">|&gt;</span></span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">d15n_rounded =</span> <span class="fu">round</span>(d15n, <span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 4
+  individual site        d15n d15n_rounded
+  &lt;chr&gt;      &lt;chr&gt;      &lt;dbl&gt;        &lt;dbl&gt;
+1 A          La Bastida  10.4         10.4
+2 B          La Bastida  11.7         11.7
+3 C          Gatas        9.9          9.9</code></pre>
+</div>
+</div>
+</section>
+<section id="quarto-prose-and-computation-in-one-document" class="level2">
+<h2 class="anchored" data-anchor-id="quarto-prose-and-computation-in-one-document">Quarto: prose and computation in one document</h2>
+<p>A Quarto document has three important ingredients:</p>
+<ol type="1">
+<li><strong>YAML metadata</strong> at the top;</li>
+<li><strong>Markdown prose</strong>; and</li>
+<li><strong>executable code cells</strong>.</li>
+</ol>
+<p>A minimal document looks like this:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb77"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "My first Quarto report"</span></span>
+<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> html</span></span>
+<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb77-5"><a href="#cb77-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-6"><a href="#cb77-6" aria-hidden="true" tabindex="-1"></a><span class="fu">## Question</span></span>
+<span id="cb77-7"><a href="#cb77-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-8"><a href="#cb77-8" aria-hidden="true" tabindex="-1"></a>What does the dataset show?</span>
+<span id="cb77-9"><a href="#cb77-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-10"><a href="#cb77-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-11"><a href="#cb77-11" aria-hidden="true" tabindex="-1"></a>::: {.cell}</span>
+<span id="cb77-12"><a href="#cb77-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-13"><a href="#cb77-13" aria-hidden="true" tabindex="-1"></a><span class="in">```{.r .cell-code}</span></span>
+<span id="cb77-14"><a href="#cb77-14" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb77-15"><a href="#cb77-15" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-16"><a href="#cb77-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-17"><a href="#cb77-17" aria-hidden="true" tabindex="-1"></a>::: {.cell-output .cell-output-stdout}</span>
+<span id="cb77-18"><a href="#cb77-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-19"><a href="#cb77-19" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-20"><a href="#cb77-20" aria-hidden="true" tabindex="-1"></a><span class="in">[1] 2</span></span>
+<span id="cb77-21"><a href="#cb77-21" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-22"><a href="#cb77-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-23"><a href="#cb77-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-24"><a href="#cb77-24" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb77-25"><a href="#cb77-25" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Quarto code-cell options begin with <code>#|</code>. <em>Quarto for Scientists</em> highlights options such as <code>eval</code>, <code>echo</code>, and <code>include</code>, which control whether code runs and whether code or output appears in the rendered document <span class="citation" data-cites="tierney2025">(<a href="#ref-tierney2025" role="doc-biblioref">Tierney 2025</a>)</span>.</p>
+<p>For example:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb78"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>::: {.cell}</span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a><span class="in">```{.r .cell-code}</span></span>
+<span id="cb78-5"><a href="#cb78-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(my_data)</span>
+<span id="cb78-6"><a href="#cb78-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb78-7"><a href="#cb78-7" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="three-useful-code-cell-options" class="level3">
+<h3 class="anchored" data-anchor-id="three-useful-code-cell-options">Three useful code-cell options</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Option</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>eval: false</code></td>
+<td>show the code but do not run it</td>
+</tr>
+<tr class="even">
+<td><code>echo: false</code></td>
+<td>run the code but hide the source code</td>
+</tr>
+<tr class="odd">
+<td><code>include: false</code></td>
+<td>run the code but hide both code and visible output</td>
+</tr>
+</tbody>
+</table>
+<p>In ANTH418, important analytical code will usually remain visible because understanding the code is part of the course.</p>
+</section>
+</section>
+<section id="useful-rstudio-shortcuts" class="level2">
+<h2 class="anchored" data-anchor-id="useful-rstudio-shortcuts">Useful RStudio shortcuts</h2>
+<p>A few shortcuts save a great deal of time.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Action</th>
+<th>macOS</th>
+<th>Windows/Linux</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Render document</td>
+<td><code>Cmd + Shift + K</code></td>
+<td><code>Ctrl + Shift + K</code></td>
+</tr>
+<tr class="even">
+<td>Insert R code cell</td>
+<td><code>Cmd + Option + I</code></td>
+<td><code>Ctrl + Alt + I</code></td>
+</tr>
+<tr class="odd">
+<td>Run current code cell</td>
+<td><code>Cmd + Option + C</code></td>
+<td><code>Ctrl + Alt + C</code></td>
+</tr>
+<tr class="even">
+<td>Save</td>
+<td><code>Cmd + S</code></td>
+<td><code>Ctrl + S</code></td>
+</tr>
+</tbody>
+</table>
+<p>These shortcuts are also emphasized in <em>Quarto for Scientists</em> <span class="citation" data-cites="tierney2025">(<a href="#ref-tierney2025" role="doc-biblioref">Tierney 2025</a>)</span>.</p>
+</section>
+<section id="case-study-your-first-archaeological-dataset" class="level1">
+<h1>Case study: your first archaeological dataset</h1>
+<section id="bronze-age-la-bastida-and-gatas" class="level2">
+<h2 class="anchored" data-anchor-id="bronze-age-la-bastida-and-gatas">Bronze Age La Bastida and Gatas</h2>
+<p>The practice dataset comes from the stable-isotope research reported by Knipper and colleagues on Early Bronze Age La Bastida and Gatas in southeast Iberia <span class="citation" data-cites="knipper2020">(<a href="#ref-knipper2020" role="doc-biblioref">Knipper et al. 2020</a>)</span>.</p>
+<p>The published study uses stable carbon and nitrogen isotope evidence to investigate diet, farming, animal management, and food webs. For Week 2, however, our goal is much narrower:</p>
+<blockquote class="blockquote">
+<p><strong>Can we import, inspect, filter, summarize, and visualize the human isotope teaching data correctly?</strong></p>
+</blockquote>
+<p>We are <strong>not yet</strong> trying to complete the descriptive analysis required in Assignment 1.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Why does our teaching file have 69 individuals?">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Why does our teaching file have 69 individuals?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The published study describes an overall human sample of 75 individuals, but the reported human isotope results contain <strong>48 individuals from La Bastida and 21 from Gatas</strong>, for 69 analyzed human observations <span class="citation" data-cites="knipper2020">(<a href="#ref-knipper2020" role="doc-biblioref">Knipper et al. 2020</a>)</span>.</p>
+<p>The validated ANTH418 teaching file follows those 69 analyzed observations. Do not infer the reason for the difference between the overall sample and analyzed isotope observations without checking the publication and supporting information.</p>
+</div>
+</div>
+</section>
+<section id="import-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="import-the-data">Import the data</h2>
+<p>First confirm that R can find the file:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">file.exists</span>(data_file)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>Then import it:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(data_file)) {</span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(</span>
+<span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste0</span>(</span>
+<span id="cb81-4"><a href="#cb81-4" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Missing "</span>, data_file,</span>
+<span id="cb81-5"><a href="#cb81-5" aria-hidden="true" tabindex="-1"></a>      <span class="st">". Copy the validated ANTH418 teaching file into the project's data/ directory."</span></span>
+<span id="cb81-6"><a href="#cb81-6" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb81-7"><a href="#cb81-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb81-8"><a href="#cb81-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb81-9"><a href="#cb81-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-10"><a href="#cb81-10" aria-hidden="true" tabindex="-1"></a>knipper <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(</span>
+<span id="cb81-11"><a href="#cb81-11" aria-hidden="true" tabindex="-1"></a>  data_file,</span>
+<span id="cb81-12"><a href="#cb81-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">show_col_types =</span> <span class="cn">FALSE</span></span>
+<span id="cb81-13"><a href="#cb81-13" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="inspect-before-analyzing" class="level2">
+<h2 class="anchored" data-anchor-id="inspect-before-analyzing">Inspect before analyzing</h2>
+<p>Never begin by running a statistical test.</p>
+<p>Begin by inspecting the object:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(knipper)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 69
+Columns: 10
+$ source_row_id   &lt;dbl&gt; 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 1…
+$ grave_no        &lt;chr&gt; "BA 01", "BA 02", "BAS 4", "BA 05", "BA 06/1", "BA 06/…
+$ sample          &lt;chr&gt; "Costa", "Costa", "Phalanx media manus", "Costa", "Cos…
+$ site            &lt;chr&gt; "La Bastida", "La Bastida", "La Bastida", "La Bastida"…
+$ d13c            &lt;dbl&gt; -19.20070, -18.25818, -19.04190, -18.36669, -19.09329,…
+$ d15n            &lt;dbl&gt; 10.393354, 13.892656, 10.870000, 12.522246, 10.848756,…
+$ sex             &lt;chr&gt; "nd", "nd", "Male ?", "nd", "Male", "nd", "nd", "Male"…
+$ age_category    &lt;chr&gt; "Infans I", "Infans I", "Adult", "Infans I", "Young ad…
+$ chronology      &lt;chr&gt; "?", "3", "3", "3", NA, "3", "3", "2", "2", "3", "3", …
+$ social_category &lt;chr&gt; "5", "5", "3 – 4", "5", "4", "4", "5", "3", "3", "3", …</code></pre>
+</div>
+</div>
+<p>The teaching file has <strong>69 rows</strong> and <strong>10 columns</strong>.</p>
+<p>Its variables are:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(knipper)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "source_row_id"   "grave_no"        "sample"          "site"           
+ [5] "d13c"            "d15n"            "sex"             "age_category"   
+ [9] "chronology"      "social_category"</code></pre>
+</div>
+</div>
+<p>The unit of analysis is <strong>one sampled human individual</strong>. The teaching file retains identifiers and archaeological classifications alongside the two isotope measurements. fileciteturn2file0</p>
+<section id="variable-map" class="level3">
+<h3 class="anchored" data-anchor-id="variable-map">Variable map</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>R type in teaching file</th>
+<th>Role in Week 2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>source_row_id</code></td>
+<td>numeric/integer-like</td>
+<td>traceability to source row</td>
+</tr>
+<tr class="even">
+<td><code>grave_no</code></td>
+<td>character</td>
+<td>archaeological identifier</td>
+</tr>
+<tr class="odd">
+<td><code>sample</code></td>
+<td>character</td>
+<td>skeletal sample information</td>
+</tr>
+<tr class="even">
+<td><code>site</code></td>
+<td>character</td>
+<td>La Bastida or Gatas</td>
+</tr>
+<tr class="odd">
+<td><code>d13c</code></td>
+<td>numeric</td>
+<td>stable carbon isotope value</td>
+</tr>
+<tr class="even">
+<td><code>d15n</code></td>
+<td>numeric</td>
+<td>stable nitrogen isotope value</td>
+</tr>
+<tr class="odd">
+<td><code>sex</code></td>
+<td>character</td>
+<td>recorded sex classification</td>
+</tr>
+<tr class="even">
+<td><code>age_category</code></td>
+<td>character</td>
+<td>recorded age category</td>
+</tr>
+<tr class="odd">
+<td><code>chronology</code></td>
+<td>character</td>
+<td>chronological classification</td>
+</tr>
+<tr class="even">
+<td><code>social_category</code></td>
+<td>character</td>
+<td>social-category classification</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-important callout-titled" title="Data types are not the same as measurement scales">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Data types are not the same as measurement scales
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>glimpse()</code> tells you how R currently stores a variable. It does <strong>not</strong> by itself tell you the variable’s archaeological meaning or its statistical measurement scale.</p>
+<p>We will return to measurement, proxies, and units of analysis in Week 3.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="count-observations-by-site" class="level2">
+<h2 class="anchored" data-anchor-id="count-observations-by-site">Count observations by site</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>site_counts <span class="ot">&lt;-</span> knipper <span class="sc">|&gt;</span></span>
+<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(site, <span class="at">name =</span> <span class="st">"n"</span>)</span>
+<span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-4"><a href="#cb86-4" aria-hidden="true" tabindex="-1"></a>site_counts <span class="sc">|&gt;</span></span>
+<span id="cb86-5"><a href="#cb86-5" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="tbl-week02-site-counts" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-week02-site-counts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Number of human isotope observations in the ANTH418 teaching file by archaeological site.
+</figcaption>
+<div aria-describedby="tbl-week02-site-counts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="cell caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">site</th>
+<th style="text-align: right;">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Gatas</td>
+<td style="text-align: right;">21</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">La Bastida</td>
+<td style="text-align: right;">48</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>As <a href="#tbl-week02-site-counts" class="quarto-xref">Table&nbsp;1</a> shows, the teaching file contains observations from two sites. The counts should be checked against the publication before you begin a substantive analysis.</p>
+</section>
+<section id="select-columns" class="level2">
+<h2 class="anchored" data-anchor-id="select-columns">Select columns</h2>
+<p>Suppose we want a smaller working view containing only identifiers, site, and isotope values:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>knipper <span class="sc">|&gt;</span></span>
+<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(grave_no, site, d13c, d15n) <span class="sc">|&gt;</span></span>
+<span id="cb87-3"><a href="#cb87-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">8</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8 × 4
+  grave_no site        d13c  d15n
+  &lt;chr&gt;    &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt;
+1 BA 01    La Bastida -19.2  10.4
+2 BA 02    La Bastida -18.3  13.9
+3 BAS 4    La Bastida -19.0  10.9
+4 BA 05    La Bastida -18.4  12.5
+5 BA 06/1  La Bastida -19.1  10.8
+6 BA 06/2  La Bastida -18.5  11.2
+7 BA 07    La Bastida -18.5  12.5
+8 BA 12/1  La Bastida -18.5  11.9</code></pre>
+</div>
+</div>
+<p><code>select()</code> changes the <strong>columns</strong> in the object being returned. It does not change the original <code>knipper</code> object unless you assign the result to a new object.</p>
+</section>
+<section id="filter-rows" class="level2">
+<h2 class="anchored" data-anchor-id="filter-rows">Filter rows</h2>
+<p>To inspect only Gatas:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a>gatas <span class="ot">&lt;-</span> knipper <span class="sc">|&gt;</span></span>
+<span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(site <span class="sc">==</span> <span class="st">"Gatas"</span>)</span>
+<span id="cb89-3"><a href="#cb89-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb89-4"><a href="#cb89-4" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(gatas)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 21
+Columns: 10
+$ source_row_id   &lt;dbl&gt; 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67…
+$ grave_no        &lt;chr&gt; "GA 21", "GA 23", "GA 26", "GA 29/1", "GA 29/2", "GA 2…
+$ sample          &lt;chr&gt; "Costa", "Costa", "Phalanx media manus", "Costa", "Cra…
+$ site            &lt;chr&gt; "Gatas", "Gatas", "Gatas", "Gatas", "Gatas", "Gatas", …
+$ d13c            &lt;dbl&gt; -18.34431, -19.95119, -19.32216, -19.90637, -18.42646,…
+$ d15n            &lt;dbl&gt; 14.02, 9.05, 9.10, 8.75, 12.63, 12.07, 13.00, 12.33, 9…
+$ sex             &lt;chr&gt; "nd", "Female", "Female", "nd", "nd", "nd", "nd", "nd"…
+$ age_category    &lt;chr&gt; "Infans I", "Juvenile", "Young/Middle adult", "Infans …
+$ chronology      &lt;chr&gt; "3", "3", "2", "3", "3", "3", "3", "2", "2", "2", "3",…
+$ social_category &lt;chr&gt; "5", "4", "5", "4", "4", "4", "4", "5", "3 – 4", "3 – …</code></pre>
+</div>
+</div>
+<p>Check the number of rows:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(gatas)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 21</code></pre>
+</div>
+</div>
+<p>Filtering changes which <strong>rows</strong> are retained.</p>
+</section>
+<section id="make-a-temporary-transformed-variable" class="level2">
+<h2 class="anchored" data-anchor-id="make-a-temporary-transformed-variable">Make a temporary transformed variable</h2>
+<p><code>mutate()</code> creates or transforms columns. Here we create a rounded value only for display:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>knipper <span class="sc">|&gt;</span></span>
+<span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">d13c_rounded =</span> <span class="fu">round</span>(d13c, <span class="dv">2</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb93-3"><a href="#cb93-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(grave_no, site, d13c, d13c_rounded) <span class="sc">|&gt;</span></span>
+<span id="cb93-4"><a href="#cb93-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">8</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8 × 4
+  grave_no site        d13c d13c_rounded
+  &lt;chr&gt;    &lt;chr&gt;      &lt;dbl&gt;        &lt;dbl&gt;
+1 BA 01    La Bastida -19.2        -19.2
+2 BA 02    La Bastida -18.3        -18.3
+3 BAS 4    La Bastida -19.0        -19.0
+4 BA 05    La Bastida -18.4        -18.4
+5 BA 06/1  La Bastida -19.1        -19.1
+6 BA 06/2  La Bastida -18.5        -18.5
+7 BA 07    La Bastida -18.5        -18.5
+8 BA 12/1  La Bastida -18.5        -18.5</code></pre>
+</div>
+</div>
+<p>The original measurement has not been changed in <code>knipper</code>; the transformed value exists only in the temporary result shown above.</p>
+</section>
+<section id="summarize-without-doing-assignment-1" class="level2">
+<h2 class="anchored" data-anchor-id="summarize-without-doing-assignment-1">Summarize without doing Assignment 1</h2>
+<p>Week 4 will formally address measures of central tendency and dispersion. For now, we will practice <code>group_by()</code> and <code>summarise()</code> using only counts and observed ranges:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>knipper <span class="sc">|&gt;</span></span>
+<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(site) <span class="sc">|&gt;</span></span>
+<span id="cb95-3"><a href="#cb95-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb95-4"><a href="#cb95-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb95-5"><a href="#cb95-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">min_d13c =</span> <span class="fu">min</span>(d13c),</span>
+<span id="cb95-6"><a href="#cb95-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">max_d13c =</span> <span class="fu">max</span>(d13c),</span>
+<span id="cb95-7"><a href="#cb95-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">min_d15n =</span> <span class="fu">min</span>(d15n),</span>
+<span id="cb95-8"><a href="#cb95-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">max_d15n =</span> <span class="fu">max</span>(d15n),</span>
+<span id="cb95-9"><a href="#cb95-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb95-10"><a href="#cb95-10" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 6
+  site           n min_d13c max_d13c min_d15n max_d15n
+  &lt;chr&gt;      &lt;int&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+1 Gatas         21    -20.0    -18.3     8.23     14.0
+2 La Bastida    48    -19.5    -17.4     9.51     14.2</code></pre>
+</div>
+</div>
+<p>Read this pipeline as:</p>
+<blockquote class="blockquote">
+<p>Start with <code>knipper</code> → group observations by <code>site</code> → compute one summary row for each site.</p>
+</blockquote>
+</section>
+<section id="your-first-ggplot2-figure" class="level2">
+<h2 class="anchored" data-anchor-id="your-first-ggplot2-figure">Your first <code>ggplot2</code> figure</h2>
+<p>A <code>ggplot2</code> figure begins with a dataset and a mapping from variables to visual properties.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a>  knipper,</span>
+<span id="cb97-3"><a href="#cb97-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> d13c, <span class="at">y =</span> d15n, <span class="at">shape =</span> site)</span>
+<span id="cb97-4"><a href="#cb97-4" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb97-5"><a href="#cb97-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">2.4</span>, <span class="at">alpha =</span> <span class="fl">0.75</span>) <span class="sc">+</span></span>
+<span id="cb97-6"><a href="#cb97-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb97-7"><a href="#cb97-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">expression</span>(delta<span class="sc">^</span><span class="dv">13</span> <span class="sc">*</span> C<span class="sc">~</span>(<span class="st">"\u2030"</span>)),</span>
+<span id="cb97-8"><a href="#cb97-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">expression</span>(delta<span class="sc">^</span><span class="dv">15</span> <span class="sc">*</span> N<span class="sc">~</span>(<span class="st">"\u2030"</span>)),</span>
+<span id="cb97-9"><a href="#cb97-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">shape =</span> <span class="st">"Site"</span></span>
+<span id="cb97-10"><a href="#cb97-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb97-11"><a href="#cb97-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div id="fig-week02-isotope-scatter" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Scatterplot of stable carbon isotope values on the horizontal axis and stable nitrogen isotope values on the vertical axis, with points distinguished by archaeological site.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-week02-isotope-scatter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="week02_files/figure-html/fig-week02-isotope-scatter-1.png" class="img-fluid figure-img" alt="Scatterplot of stable carbon isotope values on the horizontal axis and stable nitrogen isotope values on the vertical axis, with points distinguished by archaeological site." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-week02-isotope-scatter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Stable carbon and nitrogen isotope values for the 69 human observations in the ANTH418 teaching file. Each point represents one sampled individual.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-week02-isotope-scatter" class="quarto-xref">Figure&nbsp;1</a> is not a statistical test. It is an exploratory view of the joint distribution of two measured variables.</p>
+<p>Notice that we did not type “Figure 1” manually. Quarto generated the figure number and cross-reference from the code-cell label. This is exactly the kind of reproducible cross-referencing advocated in <em>Quarto for Scientists</em> <span class="citation" data-cites="tierney2025">(<a href="#ref-tierney2025" role="doc-biblioref">Tierney 2025</a>)</span>.</p>
+</section>
+<section id="reading-r-code-as-a-sequence-of-questions" class="level2">
+<h2 class="anchored" data-anchor-id="reading-r-code-as-a-sequence-of-questions">Reading R code as a sequence of questions</h2>
+<p>Consider:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a>knipper <span class="sc">|&gt;</span></span>
+<span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(site <span class="sc">==</span> <span class="st">"Gatas"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb98-3"><a href="#cb98-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(grave_no, d13c, d15n) <span class="sc">|&gt;</span></span>
+<span id="cb98-4"><a href="#cb98-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(d15n)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Read it as a sequence:</p>
+<ol type="1">
+<li>Start with the human isotope dataset.</li>
+<li>Keep only Gatas.</li>
+<li>Keep only grave number and the two isotope variables.</li>
+<li>Order the observations by <code>d15n</code>.</li>
+</ol>
+<p>This is more useful than memorizing individual commands because the code mirrors the analytical decisions.</p>
+</section>
+</section>
+<section id="guided-practice" class="level1">
+<h1>Guided practice</h1>
+<section id="exercise-1-project-hygiene" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-1-project-hygiene">Exercise 1 — Project hygiene</h2>
+<div class="exercise">
+<p>Without changing your working directory manually:</p>
+<ol type="1">
+<li>run <code>getwd()</code>;</li>
+<li>run <code>list.files()</code>;</li>
+<li>check whether <code>data/knipper2020_humans.csv</code> exists; and</li>
+<li>explain why a project-relative path is preferable to a path beginning with <code>/Users/...</code>.</li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Check your work">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Check your work
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>A typical check is:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span>
+<span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>()</span>
+<span id="cb99-3"><a href="#cb99-3" aria-hidden="true" tabindex="-1"></a><span class="fu">file.exists</span>(<span class="st">"data/knipper2020_humans.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The important idea is not the exact directory printed by <code>getwd()</code>. It is that the analysis uses a stable project root and relative paths.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-2-inspect-before-analyzing" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-2-inspect-before-analyzing">Exercise 2 — Inspect before analyzing</h2>
+<div class="exercise">
+<p>Using <code>knipper</code>:</p>
+<ol type="1">
+<li>determine its dimensions;</li>
+<li>list the column names;</li>
+<li>identify which columns R stores as numeric and which as character; and</li>
+<li>state in one sentence what one row represents.</li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Check your work">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Check your work
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Useful commands include:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb100"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(knipper)</span>
+<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(knipper)</span>
+<span id="cb100-3"><a href="#cb100-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(knipper)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The unit of analysis is one sampled human individual.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-3-select-and-filter" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-3-select-and-filter">Exercise 3 — Select and filter</h2>
+<div class="exercise">
+<p>Create an object called <code>bastida_isotopes</code> that:</p>
+<ol type="1">
+<li>contains only observations from <strong>La Bastida</strong>; and</li>
+<li>retains only <code>grave_no</code>, <code>d13c</code>, and <code>d15n</code>.</li>
+</ol>
+<p>Then use <code>glimpse()</code> to inspect it.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Check your work">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Check your work
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a>bastida_isotopes <span class="ot">&lt;-</span> knipper <span class="sc">|&gt;</span></span>
+<span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(site <span class="sc">==</span> <span class="st">"La Bastida"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb101-3"><a href="#cb101-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(grave_no, d13c, d15n)</span>
+<span id="cb101-4"><a href="#cb101-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-5"><a href="#cb101-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(bastida_isotopes)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-4-group-and-summarize" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-4-group-and-summarize">Exercise 4 — Group and summarize</h2>
+<div class="exercise">
+<p>Create a two-row table—one row for each site—showing:</p>
+<ul>
+<li>the number of observations;</li>
+<li>the minimum <code>d13c</code>; and</li>
+<li>the maximum <code>d13c</code>.</li>
+</ul>
+<p>Do <strong>not</strong> calculate the full Assignment 1 descriptive statistics yet.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Check your work">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Check your work
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a>knipper <span class="sc">|&gt;</span></span>
+<span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(site) <span class="sc">|&gt;</span></span>
+<span id="cb102-3"><a href="#cb102-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb102-4"><a href="#cb102-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb102-5"><a href="#cb102-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">min_d13c =</span> <span class="fu">min</span>(d13c),</span>
+<span id="cb102-6"><a href="#cb102-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">max_d13c =</span> <span class="fu">max</span>(d13c),</span>
+<span id="cb102-7"><a href="#cb102-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb102-8"><a href="#cb102-8" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-5-modify-a-figure" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-5-modify-a-figure">Exercise 5 — Modify a figure</h2>
+<div class="exercise">
+<p>Copy the code for <a href="#fig-week02-isotope-scatter" class="quarto-xref">Figure&nbsp;1</a> and make <strong>one</strong> purposeful change.</p>
+<p>Examples:</p>
+<ul>
+<li>map <code>site</code> to <code>colour</code> instead of <code>shape</code>;</li>
+<li>change point size;</li>
+<li>add a clear title; or</li>
+<li>facet the figure by site.</li>
+</ul>
+<p>Render the document and inspect the result.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="One possible solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>One possible solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb103-2"><a href="#cb103-2" aria-hidden="true" tabindex="-1"></a>  knipper,</span>
+<span id="cb103-3"><a href="#cb103-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> d13c, <span class="at">y =</span> d15n, <span class="at">colour =</span> site)</span>
+<span id="cb103-4"><a href="#cb103-4" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb103-5"><a href="#cb103-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">2.4</span>, <span class="at">alpha =</span> <span class="fl">0.75</span>) <span class="sc">+</span></span>
+<span id="cb103-6"><a href="#cb103-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> site) <span class="sc">+</span></span>
+<span id="cb103-7"><a href="#cb103-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb103-8"><a href="#cb103-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">expression</span>(delta<span class="sc">^</span><span class="dv">13</span> <span class="sc">*</span> C<span class="sc">~</span>(<span class="st">"\u2030"</span>)),</span>
+<span id="cb103-9"><a href="#cb103-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">expression</span>(delta<span class="sc">^</span><span class="dv">15</span> <span class="sc">*</span> N<span class="sc">~</span>(<span class="st">"\u2030"</span>)),</span>
+<span id="cb103-10"><a href="#cb103-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">colour =</span> <span class="st">"Site"</span></span>
+<span id="cb103-11"><a href="#cb103-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb103-12"><a href="#cb103-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>There are many valid solutions. The goal is to make a change you can explain.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="common-errors-and-how-to-read-them" class="level1">
+<h1>Common errors and how to read them</h1>
+<p>Learning R includes learning to read errors.</p>
+<section id="object-x-not-found" class="level2">
+<h2 class="anchored" data-anchor-id="object-x-not-found"><code>object 'x' not found</code></h2>
+<p>R cannot find an object with that name.</p>
+<p>Check:</p>
+<ul>
+<li>Did you create it?</li>
+<li>Did you run the code cell that creates it?</li>
+<li>Is the spelling identical?</li>
+<li>Did you restart R without recreating the object?</li>
+</ul>
+</section>
+<section id="cannot-open-the-connection-or-no-such-file-or-directory" class="level2">
+<h2 class="anchored" data-anchor-id="cannot-open-the-connection-or-no-such-file-or-directory"><code>cannot open the connection</code> or <code>No such file or directory</code></h2>
+<p>R cannot find a file at the path you supplied.</p>
+<p>Check:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span>
+<span id="cb104-2"><a href="#cb104-2" aria-hidden="true" tabindex="-1"></a><span class="fu">file.exists</span>(<span class="st">"data/your_file.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Then inspect the path rather than immediately using <code>setwd()</code>.</p>
+</section>
+<section id="could-not-find-function" class="level2">
+<h2 class="anchored" data-anchor-id="could-not-find-function"><code>could not find function</code></h2>
+<p>The function may belong to a package that has not been loaded.</p>
+<p>For example:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb105"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>or use the explicit form:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"data/file.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="the-console-shows-instead-of" class="level2">
+<h2 class="anchored" data-anchor-id="the-console-shows-instead-of">The Console shows <code>+</code> instead of <code>&gt;</code></h2>
+<p>R thinks your command is incomplete—often because of a missing parenthesis, quotation mark, or bracket. Thulin uses this as an example of how R signals an unfinished expression <span class="citation" data-cites="thulin2025">(<a href="#ref-thulin2025" role="doc-biblioref">Thulin 2025</a>)</span>.</p>
+<p>Press <strong>Esc</strong> to cancel, then inspect the command.</p>
+</section>
+</section>
+<section id="rendering-is-the-reproducibility-test" class="level1">
+<h1>Rendering is the reproducibility test</h1>
+<p>Running code interactively is not enough.</p>
+<p>A Quarto document should be able to rebuild its results in the correct order from the code written in the document.</p>
+<p>At the end of your work:</p>
+<ol type="1">
+<li>save the <code>.qmd</code> file;</li>
+<li>restart R;</li>
+<li>do <strong>not</strong> manually recreate objects in the Console;</li>
+<li>render the document; and</li>
+<li>fix any errors revealed by the clean render.</li>
+</ol>
+<div class="callout callout-style-default callout-important callout-titled" title="A document that only works because of objects left in your Environment is not reproducible">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>A document that only works because of objects left in your Environment is not reproducible
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Rendering from a clean session exposes hidden dependencies and missing steps.</p>
+<p>This habit will become increasingly important as ANTH418 analyses become more complex.</p>
+</div>
+</div>
+<section id="quarto-feature-inline-r" class="level2">
+<h2 class="anchored" data-anchor-id="quarto-feature-inline-r">Quarto feature: inline R</h2>
+<p>Quarto can place a computed value directly into prose.</p>
+<p>For example, after importing the dataset, this source:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb107"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a>The teaching dataset contains 69 observations.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>renders as:</p>
+<blockquote class="blockquote">
+<p>The teaching dataset contains <strong>69 observations</strong>.</p>
+</blockquote>
+<p>If the underlying dataset changes, the prose changes when the document is rendered. This helps prevent contradictions between text and computed results.</p>
+</section>
+</section>
+<section id="reading-guide" class="level1">
+<h1>Reading guide</h1>
+<section id="required-perkins" class="level2">
+<h2 class="anchored" data-anchor-id="required-perkins">Required: Perkins</h2>
+<p>Perkins’s <em>Using R for Introductory Statistics in Social Sciences</em> is designed as a beginner-facing introduction to R for social-science analysis <span class="citation" data-cites="perkins2026">(<a href="#ref-perkins2026" role="doc-biblioref">Perkins 2026</a>)</span>. For Week 2, concentrate on Chapter 2, <strong>“Welcome to the R Environment” (pp.&nbsp;3–17)</strong>.</p>
+<p>While reading, make sure you can answer:</p>
+<ul>
+<li>What is the role of the R environment?</li>
+<li>How do you enter and execute commands?</li>
+<li>What is an object?</li>
+<li>How are functions used?</li>
+<li>How should a beginner interpret R output and errors?</li>
+</ul>
+<p>You do not need to memorize commands. Re-run examples and change them.</p>
+</section>
+<section id="required-thulin" class="level2">
+<h2 class="anchored" data-anchor-id="required-thulin">Required: Thulin</h2>
+<p>Thulin’s <em>Modern Statistics with R</em> develops R from basic objects and functions into data wrangling and programming <span class="citation" data-cites="thulin2025">(<a href="#ref-thulin2025" role="doc-biblioref">Thulin 2025</a>)</span>.</p>
+<p>For Week 2, use the assigned chapters selectively:</p>
+<ul>
+<li><strong>Chapter 1, Introduction (pp.&nbsp;1–3):</strong> understand the broader statistical-computing workflow.</li>
+<li><strong>Chapter 2, The Basics (pp.&nbsp;4–57):</strong> prioritize objects, vectors, data frames, functions, indexing, importing data, and basic operations.</li>
+<li><strong>Chapter 5, Dealing with Messy Data (pp.&nbsp;158–211):</strong> focus this week on data types and the sections introducing <code>dplyr</code>/<code>tidyr</code>, filtering, selecting, and chained operations. Do not try to memorize every data-cleaning recipe.</li>
+<li><strong>Chapter 6, R Programming (pp.&nbsp;212–247):</strong> read for programming habits and the logic of reusable code. Iteration and more advanced programming will become more meaningful later in the course.</li>
+</ul>
+<p>Thulin’s online edition emphasizes that real data are often messy and that modern R work combines importing, filtering, reshaping, visualization, inference, and programming rather than treating these as separate activities <span class="citation" data-cites="thulin2025">(<a href="#ref-thulin2025" role="doc-biblioref">Thulin 2025</a>)</span>.</p>
+</section>
+<section id="quarto-for-scientists" class="level2">
+<h2 class="anchored" data-anchor-id="quarto-for-scientists">Quarto for Scientists</h2>
+<p>Use Tierney’s <em>Quarto for Scientists</em> as a practical reference throughout the term <span class="citation" data-cites="tierney2025">(<a href="#ref-tierney2025" role="doc-biblioref">Tierney 2025</a>)</span>. For Week 2, the most useful sections are:</p>
+<ul>
+<li>workflow and RStudio Projects;</li>
+<li>file paths and project organization;</li>
+<li>the anatomy of a Quarto document;</li>
+<li>code-cell labels and <code>#|</code> options;</li>
+<li>keyboard shortcuts; and</li>
+<li>figures, captions, citations, and cross-references.</li>
+</ul>
+<p>The goal is not to learn every Quarto option now. Learn enough to build a document that you can reliably render again next week.</p>
+</section>
+</section>
+<section id="week-2-checklist" class="level1">
+<h1>Week 2 checklist</h1>
+<p>Before Week 3, you should be able to say <strong>yes</strong> to each statement:</p>
+<ul class="task-list">
+<li><label><input type="checkbox">I can explain the difference between R, RStudio, and Quarto.</label></li>
+<li><label><input type="checkbox">I can open the correct RStudio Project.</label></li>
+<li><label><input type="checkbox">I can explain why <code>/Users/myname/...</code> is a poor path to put in shared code.</label></li>
+<li><label><input type="checkbox">I can create an R object with <code>&lt;-</code>.</label></li>
+<li><label><input type="checkbox">I can create a vector with <code>c()</code>.</label></li>
+<li><label><input type="checkbox">I can explain what a function and an argument are.</label></li>
+<li><label><input type="checkbox">I can inspect a data frame with <code>glimpse()</code>, <code>dim()</code>, and <code>names()</code>.</label></li>
+<li><label><input type="checkbox">I can import a CSV file with <code>read_csv()</code>.</label></li>
+<li><label><input type="checkbox">I can use <code>select()</code> and <code>filter()</code>.</label></li>
+<li><label><input type="checkbox">I can read a simple <code>|&gt;</code> pipeline from top to bottom.</label></li>
+<li><label><input type="checkbox">I can use <code>group_by()</code> and <code>summarise()</code> for a simple summary.</label></li>
+<li><label><input type="checkbox">I can create a basic <code>ggplot2</code> figure.</label></li>
+<li><label><input type="checkbox">I know what <code>NA</code> means.</label></li>
+<li><label><input type="checkbox">I can name a Quarto code cell and use a <code>#|</code> option.</label></li>
+<li><label><input type="checkbox">I can render a <code>.qmd</code> document from a clean R session.</label></li>
+</ul>
+</section>
+<section id="takeaways" class="level1">
+<h1>Takeaways</h1>
+<ul>
+<li><strong>R:</strong> data analysis is built from objects, functions, and explicit operations.</li>
+<li><strong>RStudio:</strong> project-based organization makes analytical work easier to manage and reproduce.</li>
+<li><strong>Quarto:</strong> prose, code, output, figures, tables, and citations can belong to one executable document.</li>
+<li><strong>Data:</strong> inspect the structure and unit of analysis before trying to answer a substantive question.</li>
+<li><strong>Workflow:</strong> use relative paths, write the code that creates every result, and test reproducibility by rendering from a clean session.</li>
+<li><strong>Anthropology:</strong> software does not decide what an observation means. Archaeological interpretation begins with understanding how the data were produced.</li>
+</ul>
+</section>
+<section id="references" class="level1 unnumbered">
+<h1 class="unnumbered">References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-knipper2020" class="csl-entry" role="listitem">
+Knipper, Corina, Cristina Rihuete-Herrada, Jordi Voltas, et al. 2020. <span>“Reconstructing Bronze Age Diets and Farming Strategies at the Early Bronze Age Sites of La Bastida and Gatas (Southeast Iberia) Using Stable Isotope Analysis.”</span> <em>PLOS ONE</em> 15 (3): e0229398. <a href="https://doi.org/10.1371/journal.pone.0229398">https://doi.org/10.1371/journal.pone.0229398</a>.
+</div>
+<div id="ref-perkins2026" class="csl-entry" role="listitem">
+Perkins, Mark A. 2026. <em>Using r for Introductory Statistics in Social Sciences</em>. Springer. <a href="https://doi.org/10.1007/978-3-032-17145-0">https://doi.org/10.1007/978-3-032-17145-0</a>.
+</div>
+<div id="ref-thulin2025" class="csl-entry" role="listitem">
+Thulin, Måns. 2025. <em>Modern Statistics with r: From Wrangling and Exploring Data to Inference and Predictive Modelling</em>. 2nd ed. Chapman; Hall/CRC. <a href="https://www.modernstatisticswithr.com/">https://www.modernstatisticswithr.com/</a>.
+</div>
+<div id="ref-tierney2025" class="csl-entry" role="listitem">
+Tierney, Nicholas. 2025. <span>“Quarto for Scientists.”</span> <a href="https://qmd4sci.njtierney.com/">https://qmd4sci.njtierney.com/</a>.
+</div>
+</div>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

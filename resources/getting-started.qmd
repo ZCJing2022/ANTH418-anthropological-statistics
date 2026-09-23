@@ -1,0 +1,44 @@
+---
+title: "Getting Started with ANTH418"
+subtitle: "Install and verify the computational environment"
+toc: true
+---
+
+## What you need
+
+ANTH418 uses three main tools:
+
+- **R** — the statistical computing language;
+- **RStudio Desktop** — the environment in which we organize and run most R work;
+- **Quarto** — the publishing system that combines prose, code, results, figures, tables, and citations.
+
+You will also use the **tidyverse**, a collection of R packages for importing, transforming, summarizing, and visualizing data.
+
+## Step 1 — Install R
+
+Download R from the Comprehensive R Archive Network:
+
+<https://cran.r-project.org/>
+
+Choose the installer for your operating system and use the standard installation options.
+
+## Step 2 — Install RStudio Desktop
+
+Download the free RStudio Desktop:
+
+<https://posit.co/download/rstudio-desktop/>
+
+Install the current stable release.
+
+::: {.callout-note title="R must be installed before RStudio"}
+RStudio provides an interface for working with R, but it does not replace R itself.
+:::
+
+## Step 3 — Check Quarto
+
+Open RStudio and select the **Terminal** tab.
+
+Run:
+
+```bash
+quarto --version

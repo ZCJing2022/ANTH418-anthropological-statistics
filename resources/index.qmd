@@ -1,0 +1,40 @@
+---
+title: "Course Resources"
+subtitle: "R, RStudio, Quarto, reproducibility, and troubleshooting"
+toc: true
+---
+
+This section collects practical resources that you may need throughout ANTH418.
+
+The detailed introduction to R, RStudio, Quarto, project organization, Markdown, tidyverse, and reproducible workflow is in the [Week 2 Study Guide](../weeks/week02.qmd).
+
+## Getting Started
+
+[Getting Started with ANTH418](getting-started.qmd)
+
+Use this page when setting up your computer for the course or checking that your software installation is working.
+
+## R, RStudio, and Quarto
+
+[R, RStudio, and Quarto](r-rstudio-quarto.qmd)
+
+A short reference explaining the roles of the three main tools used in ANTH418 and the workflow we will follow throughout the course.
+
+## Troubleshooting
+
+[Troubleshooting](troubleshooting.qmd)
+
+Start here when:
+
+- R cannot find a file;
+- a package will not load;
+- Quarto will not render;
+- an object cannot be found;
+- your code works in the Console but not when rendering; or
+- you are unsure how to interpret an error message.
+
+## Core principle
+
+> **Rendering is the reproducibility test.**
+
+Your analysis should be able to rebuild itself from the code written in the `.qmd` file, without depending on objects left behind in the RStudio Environment.

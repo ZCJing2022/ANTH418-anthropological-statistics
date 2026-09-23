@@ -1,0 +1,26 @@
+---
+title: "ANTH418: Anthropological Statistics"
+subtitle: "University of British Columbia · 2026–2027 Term 1"
+toc: false
+---
+
+Welcome to **ANTH418: Anthropological Statistics**.
+
+This course develops practical statistical thinking for archaeology and anthropology through real research datasets, R, RStudio, and Quarto.
+
+::: {.callout-note title="Course workflow"}
+**inspect and prepare → describe → visualize → analyze → visualize the result → interpret**
+:::
+
+## Start here
+
+- [Course Syllabus](syllabus.qmd)
+- [Week 2 Study Guide](weeks/week02.qmd)
+- [Assignments](assignments/index.qmd)
+- [R, RStudio & Quarto Resources](resources/index.qmd)
+
+## Course platforms
+
+**This website** contains study guides, readings, assignment materials, datasets, and reproducible computational resources.
+
+**Canvas** remains the official location for announcements, deadlines, assignment submissions, grades, and individual course communications.

@@ -1,0 +1,63 @@
+project:
+  type: website
+  output-dir: docs
+  execute-dir: project
+
+  render:
+    - index.qmd
+    - syllabus.qmd
+    - lecture-notes/index.qmd
+    - weeks/week02.qmd
+    - assignments/index.qmd
+    - readings/index.qmd
+    - resources/*.qmd
+
+
+  resources:
+    - .nojekyll
+
+website:
+  title: "ANTH418: Anthropological Statistics"
+
+  navbar:
+    background: light
+    left:
+      - href: index.qmd
+        text: Home
+
+      - href: syllabus.qmd
+        text: Syllabus
+
+      - href: lecture-notes/index.qmd
+        text: Lecture Notes
+
+      - text: Study Guides
+        menu:
+          - href: weeks/week02.qmd
+            text: "Week 2 — R, RStudio & Quarto"
+
+      - href: assignments/index.qmd
+        text: Assignments
+
+      - href: readings/index.qmd
+        text: Readings
+
+      - href: resources/index.qmd
+        text: Resources
+
+  search: true
+  page-navigation: true
+  back-to-top-navigation: true
+
+format:
+  html:
+    css: styles.css
+    toc: true
+    toc-location: right
+    toc-depth: 3
+    smooth-scroll: true
+    code-copy: true
+    code-overflow: wrap
+    anchor-sections: true
+
+bibliography: references.bib

@@ -1,0 +1,32 @@
+# macOS
+.DS_Store
+
+# R / RStudio
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
+
+# Quarto temporary files
+.quarto/
+*.knit.md
+
+# Local rendered fragments
+*_files/
+
+# Do not ignore docs/
+# docs/ is intentionally tracked for GitHub Pages
+
+# Temporary files
+*.tmp
+*.bak
+*~
+
+# Instructor material must never belong here
+instructor/
+source/
+validation/
+scripts/
+
+/.quarto/
+**/*.quarto_ipynb

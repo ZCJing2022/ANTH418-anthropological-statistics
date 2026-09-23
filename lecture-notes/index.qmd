@@ -1,0 +1,103 @@
+---
+title: "Lecture Notes"
+subtitle: "Weekly Monday lectures"
+toc: true
+---
+
+Each Monday lecture introduces the main statistical concepts and methods for the week.
+
+The lecture notes are distributed through **Canvas**. The links below take you directly to the corresponding lecture materials.
+
+The Wednesday Study Guides and practice materials are available separately under [Study Guides](../weeks/week02.qmd).
+
+## Week 1 — Introduction
+
+**Monday lecture:** Introduction to Anthropological Statistics
+
+[Open Week 1 Introduction](https://canvas.ubc.ca/courses/190813/files/48077965?module_item_id=9753622)
+
+---
+
+## Week 2 — Using R, RStudio, and Quarto
+
+**Monday lecture:** Using R, RStudio, and Quarto
+
+[Open Week 2 Using R, RStudio, and Quarto](https://canvas.ubc.ca/courses/190813/files/48093707?module_item_id=9755286)
+
+[Open Week 2 Study Guide](../weeks/week02.qmd)
+
+---
+
+## Week 3 — Variables, Measurement, and Research Design
+
+**Monday lecture:** Variables, Measurement, and Research Design
+
+[Open Week 3 Measurement and Research Design](https://canvas.ubc.ca/courses/190813/files/48283716?module_item_id=9777077)
+
+---
+
+## Week 4
+
+**Monday lecture:** To be added
+
+Lecture notes will be posted on Canvas.
+
+---
+
+## Week 5
+
+Lecture notes will be posted on Canvas.
+
+---
+
+## Week 6
+
+Lecture notes will be posted on Canvas.
+
+---
+
+## Week 7
+
+Lecture notes will be posted on Canvas.
+
+---
+
+## Week 8
+
+Lecture notes will be posted on Canvas.
+
+---
+
+## Week 9
+
+Lecture notes will be posted on Canvas.
+
+---
+
+## Week 10
+
+Lecture notes will be posted on Canvas.
+
+---
+
+## Week 11
+
+Lecture notes will be posted on Canvas.
+
+---
+
+## Week 12
+
+Lecture notes will be posted on Canvas.
+
+---
+
+## Week 13
+
+Lecture notes will be posted on Canvas.
+
+---
+
+## Week 14
+
+Lecture notes will be posted on Canvas.

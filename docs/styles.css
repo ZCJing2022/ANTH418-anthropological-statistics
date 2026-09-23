@@ -1,0 +1,48 @@
+/* ANTH418: intentionally restrained so the site remains close to the
+   default Quarto appearance used by the syllabus. */
+
+:root {
+  --anth418-ink: #1a1a1a;
+  --anth418-muted: #5f6670;
+  --anth418-line: #e6e8eb;
+  --anth418-accent: #0b7285;
+  --anth418-soft: #f7f9fa;
+}
+
+body {
+  color: var(--anth418-ink);
+}
+
+.quarto-title .subtitle {
+  color: var(--anth418-muted);
+}
+
+.week-meta {
+  padding: 0.8rem 1rem;
+  margin: 1rem 0 1.5rem 0;
+  border-left: 4px solid var(--anth418-accent);
+  background: var(--anth418-soft);
+}
+
+.workflow {
+  font-weight: 600;
+  text-align: center;
+  padding: 0.8rem 1rem;
+  margin: 1.2rem 0;
+  border-top: 1px solid var(--anth418-line);
+  border-bottom: 1px solid var(--anth418-line);
+}
+
+.key-idea {
+  font-size: 1.06rem;
+}
+
+.exercise {
+  border-left: 3px solid var(--anth418-line);
+  padding-left: 1rem;
+  margin: 1rem 0;
+}
+
+.cell-output-display {
+  margin-bottom: 1rem;
+}

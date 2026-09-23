@@ -1,0 +1,135 @@
+---
+title: "Assignments"
+---
+
+The ten ANTH418 assignments use published archaeological and anthropological datasets.
+
+Each assignment package contains:
+
+- assignment `.qmd`;
+- README;
+- codebook;
+- provenance note; and
+- teaching dataset.
+
+Students may browse the materials online or download the complete assignment package as a ZIP file.
+
+------------------------------------------------------------------------
+
+## Assignment 1 — Describing Human Isotope Variation
+
+**Statistical method:** Descriptive statistics
+
+**Case study:** Bronze Age diet and farming at La Bastida and Gatas
+
+[View Assignment 1 materials](assignment01_knipper_descriptive/)
+
+[Download complete Assignment 1 package](../downloads/assignments/ANTH418_assignment01_knipper_descriptive.zip)
+
+------------------------------------------------------------------------
+
+## Assignment 2 — Visualizing Kinship Diversity with Kinbank
+
+**Statistical method:** Exploratory data analysis and visualization
+
+**Case study:** Cross-linguistic variation in kinship terminology using Kinbank
+
+[View Assignment 2 materials](assignment02_kinbank_visualization/)
+
+[Download complete Assignment 2 package](../downloads/assignments/ANTH418_assignment02_kinbank_visualization.zip)
+
+------------------------------------------------------------------------
+
+## Assignment 3 — Missing Data in the Seshat Moralizing Gods Debate
+
+**Statistical method:** Missing-data analysis and sensitivity analysis
+
+**Case study:** Treatment of missing observations in the Seshat moralizing-gods debate
+
+[View Assignment 3 materials](assignment03_seshat_missing/)
+
+[Download complete Assignment 3 package](../downloads/assignments/ANTH418_assignment03_seshat_missing.zip)
+
+------------------------------------------------------------------------
+
+## Assignment 4 — Sampling Archaeological Radiocarbon Data
+
+**Statistical method:** Sampling distributions, precision, and sampling bias
+
+**Case study:** Southern California archaeological radiocarbon determinations from p3k14c
+
+[View Assignment 4 materials](assignment04_p3k14c_sampling/)
+
+[Download complete Assignment 4 package](../downloads/assignments/ANTH418_assignment04_p3k14c_sampling.zip)
+
+------------------------------------------------------------------------
+
+## Assignment 5 — Statistical Inference at Teotihuacan
+
+**Statistical method:** Bootstrap confidence intervals and permutation tests
+
+**Case study:** Leporid stable-isotope variation at Teotihuacan
+
+[View Assignment 5 materials](assignment05_teotihuacan_inference/)
+
+[Download complete Assignment 5 package](../downloads/assignments/ANTH418_assignment05_teotihuacan_inference.zip)
+
+------------------------------------------------------------------------
+
+## Assignment 6 — Comparing Groups at Tell Tweini
+
+**Statistical method:** Independent-samples t-test and effect size
+
+**Case study:** Middle Bronze Age and Late Bronze Age plant-isotope comparison at Tell Tweini
+
+[View Assignment 6 materials](assignment06_tell_tweini_ttest/)
+
+[Download complete Assignment 6 package](../downloads/assignments/ANTH418_assignment06_tell_tweini_ttest.zip)
+
+------------------------------------------------------------------------
+
+## Assignment 7 — Raw-Material Variation in Highland Lesotho
+
+**Statistical method:** Chi-square test of independence
+
+**Case study:** Lithic raw-material composition across archaeological layers in Highland Lesotho
+
+[View Assignment 7 materials](assignment07_lesotho_chisquare/)
+
+[Download complete Assignment 7 package](../downloads/assignments/ANTH418_assignment07_lesotho_chisquare.zip)
+
+------------------------------------------------------------------------
+
+## Assignment 8 — Comparing Iron Geochemistry with ANOVA
+
+**Statistical method:** One-way ANOVA, post-hoc comparison, and robustness checks
+
+**Case study:** Roman-period iron-smelting geochemistry
+
+[View Assignment 8 materials](assignment08_iron_anova/)
+
+[Download complete Assignment 8 package](../downloads/assignments/ANTH418_assignment08_iron_anova.zip)
+
+------------------------------------------------------------------------
+
+## Assignment 9 — Hawaiian Kukui Isotopes
+
+**Statistical method:** Correlation and measures of association
+
+**Case study:** Kukui δ13C variation along elevation and rainfall gradients in Hawaiʻi
+
+[View Assignment 9 materials](assignment09_kukui_correlation/)
+
+[Download complete Assignment 9 package](../downloads/assignments/ANTH418_assignment09_kukui_correlation.zip)
+
+------------------------------------------------------------------------
+
+## Assignment 10 — Predicting Flake Mass
+
+**Statistical method:** Simple linear regression
+
+**Case study:** Predicting experimental flake mass from mean flake thickness
+
+[View Assignment 10 materials](assignment10_flake_regression/)
+
+[Download complete Assignment 10 package](../downloads/assignments/ANTH418_assignment10_flake_regression.zip)

@@ -1,0 +1,21 @@
+website: title: "ANTH418: Anthropological Statistics"
+
+navbar: background: light left: - href: index.qmd text: Home
+
+```
+  - href: syllabus.qmd
+    text: Syllabus
+
+  - text: Study Guides
+    menu:
+      - href: weeks/week02.qmd
+        text: "Week 2 — R, RStudio & Quarto"
+
+  - href: assignments/index.qmd
+    text: Assignments
+
+  - href: resources/index.qmd
+    text: Resources
+```
+
+search: true page-navigation: true back-to-top-navigation: true

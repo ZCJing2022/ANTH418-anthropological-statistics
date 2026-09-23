@@ -1,0 +1,786 @@
+[
+  {
+    "objectID": "resources/troubleshooting.html",
+    "href": "resources/troubleshooting.html",
+    "title": "ANTH418: Anthropological Statistics",
+    "section": "",
+    "text": "Back to top"
+  },
+  {
+    "objectID": "resources/index.html",
+    "href": "resources/index.html",
+    "title": "Course Resources",
+    "section": "",
+    "text": "This section collects practical resources that you may need throughout ANTH418.\nThe detailed introduction to R, RStudio, Quarto, project organization, Markdown, tidyverse, and reproducible workflow is in the Week 2 Study Guide."
+  },
+  {
+    "objectID": "resources/index.html#getting-started",
+    "href": "resources/index.html#getting-started",
+    "title": "Course Resources",
+    "section": "Getting Started",
+    "text": "Getting Started\nGetting Started with ANTH418\nUse this page when setting up your computer for the course or checking that your software installation is working."
+  },
+  {
+    "objectID": "resources/index.html#r-rstudio-and-quarto",
+    "href": "resources/index.html#r-rstudio-and-quarto",
+    "title": "Course Resources",
+    "section": "R, RStudio, and Quarto",
+    "text": "R, RStudio, and Quarto\nR, RStudio, and Quarto\nA short reference explaining the roles of the three main tools used in ANTH418 and the workflow we will follow throughout the course."
+  },
+  {
+    "objectID": "resources/index.html#troubleshooting",
+    "href": "resources/index.html#troubleshooting",
+    "title": "Course Resources",
+    "section": "Troubleshooting",
+    "text": "Troubleshooting\nTroubleshooting\nStart here when:\n\nR cannot find a file;\na package will not load;\nQuarto will not render;\nan object cannot be found;\nyour code works in the Console but not when rendering; or\nyou are unsure how to interpret an error message."
+  },
+  {
+    "objectID": "resources/index.html#core-principle",
+    "href": "resources/index.html#core-principle",
+    "title": "Course Resources",
+    "section": "Core principle",
+    "text": "Core principle\n\nRendering is the reproducibility test.\n\nYour analysis should be able to rebuild itself from the code written in the .qmd file, without depending on objects left behind in the RStudio Environment."
+  },
+  {
+    "objectID": "readings/index.html",
+    "href": "readings/index.html",
+    "title": "ANTH418: Anthropological Statistics",
+    "section": "",
+    "text": "website: title: “ANTH418: Anthropological Statistics”\nnavbar: background: light left: - href: index.qmd text: Home\n  - href: syllabus.qmd\n    text: Syllabus\n\n  - text: Study Guides\n    menu:\n      - href: weeks/week02.qmd\n        text: \"Week 2 — R, RStudio & Quarto\"\n\n  - href: assignments/index.qmd\n    text: Assignments\n\n  - href: resources/index.qmd\n    text: Resources\nsearch: true page-navigation: true back-to-top-navigation: true\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "weeks/week02.html",
+    "href": "weeks/week02.html",
+    "title": "Week 2 — Using R, RStudio, and Quarto",
+    "section": "",
+    "text": "Class meetings: 14 & 16 September 2026 Focus: R basics · RStudio projects · tidyverse · Quarto Practice dataset: Knipper et al. 2020 human stable-isotope data Assessment: Ungraded preparation for Assignment 1"
+  },
+  {
+    "objectID": "weeks/week02.html#overview",
+    "href": "weeks/week02.html#overview",
+    "title": "Week 2 — Using R, RStudio, and Quarto",
+    "section": "Overview",
+    "text": "Overview\nThis week is about learning a workflow, not memorizing commands.\nR is the language we will use to work with data. RStudio is the environment in which we will organize and run that work. Quarto is the document system that brings prose, R code, results, tables, figures, and citations together in a reproducible report (Tierney 2025).\nBy the end of the week, you should be able to open an RStudio project, understand the basic structure of an R command, create and inspect R objects, import a CSV file, use a small set of tidyverse verbs, create a first ggplot2 figure, and render a Quarto document from a clean R session.\n\n\n\n\n\n\nNoteThe Week 2 principle\n\n\n\nDo not separate “doing the analysis” from “documenting the analysis.”\nIn ANTH418, the code that produces a result should live beside the explanation of what the result means."
+  },
+  {
+    "objectID": "weeks/week02.html#questions",
+    "href": "weeks/week02.html#questions",
+    "title": "Week 2 — Using R, RStudio, and Quarto",
+    "section": "Questions",
+    "text": "Questions\n\nWhat are R, RStudio, and Quarto, and how do they differ?\nWhat is an R object, vector, function, data frame, or package?\nHow should files be organized so that code can find them reliably?\nHow do we import and inspect a real archaeological dataset?\nWhat do select(), filter(), mutate(), summarise(), group_by(), and |&gt; do?\nHow does a Quarto document turn code and prose into a reproducible HTML page?\nWhat does one row in the Knipper teaching dataset represent?"
+  },
+  {
+    "objectID": "weeks/week02.html#learning-objectives",
+    "href": "weeks/week02.html#learning-objectives",
+    "title": "Week 2 — Using R, RStudio, and Quarto",
+    "section": "Learning objectives",
+    "text": "Learning objectives\nBy the end of Week 2, you should be able to:\n\ndistinguish R, RStudio, and Quarto;\nuse an RStudio Project and project-relative file paths rather than machine-specific paths;\ncreate and inspect basic R objects, vectors, and data frames;\nrecognize common data types, including numeric, character, logical, and missing (NA) values;\nexplain the basic syntax of an R function and use R’s help system;\nimport a CSV file with read_csv() and inspect it with glimpse(), names(), and dim();\nuse the native R pipe |&gt; to build readable sequences of data operations;\nuse introductory dplyr verbs to select, filter, transform, group, and summarize data;\nconstruct a simple ggplot2 visualization;\ncreate named Quarto code cells, use basic #| cell options, and render a .qmd file; and\nre-render a document from a clean R session."
+  },
+  {
+    "objectID": "weeks/week02.html#this-weeks-two-class-sequence",
+    "href": "weeks/week02.html#this-weeks-two-class-sequence",
+    "title": "Week 2 — Using R, RStudio, and Quarto",
+    "section": "This week’s two-class sequence",
+    "text": "This week’s two-class sequence\n\n\n\n\n\n\n\n\nClass\nMain focus\nPractical outcome\n\n\n\n\nMonday, 14 September\nR, RStudio, projects, objects, vectors, functions, data frames\nYou can write and run basic R code and understand where your files live.\n\n\nWednesday, 16 September\ntidyverse, Quarto, data import, first archaeological dataset\nYou can import, inspect, filter, summarize, visualize, and render a reproducible document."
+  },
+  {
+    "objectID": "weeks/week02.html#before-class-install-the-software",
+    "href": "weeks/week02.html#before-class-install-the-software",
+    "title": "Week 2 — Using R, RStudio, and Quarto",
+    "section": "Before class: install the software",
+    "text": "Before class: install the software\nANTH418 assumes no previous programming experience. Before beginning the exercises below, make sure that R and RStudio are installed and working on your computer.\nThe three names can be confusing at first:\n\nR is the language that performs the computation. RStudio is the application in which we will write and organize most of our R work. Quarto turns our code, results, figures, and writing into a reproducible document.\n\n\nStep 1 — Install R\nDownload R from the Comprehensive R Archive Network (CRAN):\nhttps://cran.r-project.org/\nChoose the installer for your operating system:\n\nmacOS: choose Download R for macOS and install the current release appropriate for your Mac;\nWindows: choose Download R for Windows → base → the current release; or\nLinux: follow the instructions for your distribution.\n\nUse the standard/default installation options unless you have a specific reason to change them.\n\n\n\n\n\n\nNoteR must be installed before RStudio\n\n\n\nRStudio does not replace R. It provides an easier environment for working with R, but it still needs an R installation on your computer.\n\n\n\n\nStep 2 — Install RStudio Desktop\nDownload the free RStudio Desktop from Posit:\nhttps://posit.co/download/rstudio-desktop/\nInstall the current stable release for your operating system.\nOn first launch, RStudio should normally find your R installation automatically.\nCurrent versions of RStudio include integrated support for Quarto and bundle a stable Quarto release. For most ANTH418 students, installing current R and current RStudio is therefore enough to begin working with .qmd files.\n\n\nStep 3 — Check Quarto\nAfter installing RStudio, open it and choose the Terminal tab. Run:\nquarto --version\nYou should see a version number.\nThen run:\nquarto check\nThis checks whether Quarto can find the software it needs, including R and the Knitr execution engine.\n\n\n\n\n\n\nTipDo I need to install Quarto separately?\n\n\n\nUsually no if you have installed a current release of RStudio, because RStudio bundles Quarto.\nIf quarto --version does not work, or if you need a newer standalone Quarto release, install it from:\nhttps://quarto.org/docs/get-started/\nAfter installation, restart RStudio and run quarto --version again.\n\n\n\n\nStep 4 — Install the R packages used in ANTH418\nPackages extend what R can do. For the first part of the course, the main package collection we need is the tidyverse.\nIn the R Console, run:\ninstall.packages(\"tidyverse\")\nYou normally install a package only once on a computer.\nThen test that it loads:\nlibrary(tidyverse)\nIf the command finishes without an error, the package is available.\n\n\n\n\n\n\nImportantConsole or Terminal?\n\n\n\nRStudio contains both, but they serve different purposes.\n\nUse the R Console for R commands such as install.packages() and library().\nUse the Terminal for system commands such as quarto --version and quarto check.\n\nWe will use both during the course.\n\n\n\n\nStep 5 — Verify the complete setup\nIn the R Console, run:\nR.version.string\n1 + 1\nlibrary(tidyverse)\nYou should see your R version, the result 2, and no error when the tidyverse loads.\nIn the Terminal, run:\nquarto --version\nIf those checks work, you have the basic ANTH418 computational environment.\n\n\nStep 6 — Make a tiny Quarto test document\nIn RStudio choose:\nFile → New File → Quarto Document…\nChoose HTML and create the document. Replace its body with:\n## My first R calculation\n\n\n::: {.cell}\n\n```{.r .cell-code}\n2 + 2\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] 4\n```\n\n\n:::\n:::\nSave the file as something like:\nquarto_test.qmd\nThen click Render.\nIf an HTML page appears showing both the code and the result 4, then R, RStudio, Knitr, and Quarto are communicating correctly.\n\n\n\n\n\n\nNoteYou do not need every optional tool\n\n\n\nquarto check may report that tools such as TinyTeX, Jupyter, or Julia are not installed. That is fine for the R-based HTML work in ANTH418.\nDo not install extra software simply to make every optional check appear as installed.\n\n\n\n\nIf installation fails\nDo not spend hours troubleshooting alone. Record:\n\nyour operating system;\nthe exact error message;\nwhat you were trying to install or run; and\na screenshot if useful.\n\nBring that information to class or office hours. Error messages are evidence: copy them exactly rather than paraphrasing them."
+  },
+  {
+    "objectID": "weeks/week02.html#r-rstudio-and-quarto",
+    "href": "weeks/week02.html#r-rstudio-and-quarto",
+    "title": "Week 2 — Using R, RStudio, and Quarto",
+    "section": "R, RStudio, and Quarto",
+    "text": "R, RStudio, and Quarto\n\nR\nR is a programming language and statistical computing environment.\nWhen you write\nmean(c(4, 7, 9))\nR evaluates the instruction and returns a result.\nR is where the computation happens.\n\n\nRStudio\nRStudio is an integrated development environment (IDE). It gives you a convenient place to work with R:\n\nthe Source pane for scripts and Quarto documents;\nthe Console for commands and output;\nthe Environment pane for objects currently in memory;\nthe Files / Plots / Packages / Help panes for navigating the project and inspecting results; and\nproject tools that help keep files, code, and working directories organized.\n\nAn RStudio Project is especially important because it gives a project a stable root directory. Project-based organization prevents many file-path problems and makes analyses more portable (Tierney 2025).\n\n\nQuarto\nQuarto is a scientific and technical publishing system.\nA Quarto document can contain:\n\nMarkdown prose;\nexecutable R code;\ntables;\nfigures;\nequations;\ncitations; and\ncross-references.\n\nThe .qmd source is the document you edit. Rendering turns it into an output such as HTML, PDF, or Word.\n\n\n\n\n\n\nTipA useful mental model\n\n\n\nR computes. RStudio organizes. Quarto communicates reproducibly."
+  },
+  {
+    "objectID": "weeks/week02.html#projects-and-file-paths",
+    "href": "weeks/week02.html#projects-and-file-paths",
+    "title": "Week 2 — Using R, RStudio, and Quarto",
+    "section": "Projects and file paths",
+    "text": "Projects and file paths\nA reproducible analysis should not depend on a path that only exists on your own computer.\nAvoid code such as:\n# Do not write paths like this in course work:\nread_csv(\"/Users/yourname/Desktop/my-course/data/file.csv\")\nand avoid beginning an analysis with:\nsetwd(\"/Users/yourname/some/very/specific/location\")\nInstead, open the relevant RStudio Project and work with relative paths:\nread_csv(\"data/file.csv\")\nThis is one of the workflow practices emphasized in Quarto for Scientists: keep the files for one project together and let the project establish a stable starting point for your analysis (Tierney 2025).\n\nInspect your current project\nRun these commands in the Console:\n\ngetwd()\nlist.files()\nfile.exists(\"data\")\n\n\nYour turn — read a file path.\nIn the path data/knipper2020_humans.csv:\n\nWhat is the directory?\nWhat is the file?\nIs the path absolute or relative?\nWhy is this path more portable than one beginning with /Users/...?"
+  },
+  {
+    "objectID": "weeks/week02.html#your-first-r-commands",
+    "href": "weeks/week02.html#your-first-r-commands",
+    "title": "Week 2 — Using R, RStudio, and Quarto",
+    "section": "Your first R commands",
+    "text": "Your first R commands\nR can be used like a calculator:\n\n2 + 2\n\n[1] 4\n\n10 / 4\n\n[1] 2.5\n\n3^2\n\n[1] 9\n\nsqrt(81)\n\n[1] 9\n\n\nLines beginning with # are comments:\n# R ignores this line.\n# Comments should explain why the code is doing something useful.\n\nAssignment: creating objects\nUse &lt;- to assign a value to an object:\n\nsite_name &lt;- \"La Bastida\"\nn_individuals &lt;- 48\nhas_isotope_data &lt;- TRUE\n\nsite_name\n\n[1] \"La Bastida\"\n\nn_individuals\n\n[1] 48\n\nhas_isotope_data\n\n[1] TRUE\n\n\nThe object name is on the left. The value is on the right.\n\n\n\n\n\n\nImportantObjects exist in the current R session\n\n\n\nCreating n_individuals &lt;- 48 does not permanently save that value inside R.\nFor a reproducible analysis, the code that creates an object should be written in your script or .qmd document so it can be recreated when the document is rendered."
+  },
+  {
+    "objectID": "weeks/week02.html#vectors-and-data-types",
+    "href": "weeks/week02.html#vectors-and-data-types",
+    "title": "Week 2 — Using R, RStudio, and Quarto",
+    "section": "Vectors and data types",
+    "text": "Vectors and data types\nA vector contains multiple values of the same basic type. Thulin introduces vectors and data frames as fundamental structures for storing observations in R (Thulin 2025).\n\nsites &lt;- c(\"La Bastida\", \"Gatas\")\nsample_sizes &lt;- c(48, 21)\ninclude_site &lt;- c(TRUE, TRUE)\n\nsites\n\n[1] \"La Bastida\" \"Gatas\"     \n\nsample_sizes\n\n[1] 48 21\n\ninclude_site\n\n[1] TRUE TRUE\n\n\nUseful questions about an object include:\n\nlength(sample_sizes)\n\n[1] 2\n\nclass(sample_sizes)\n\n[1] \"numeric\"\n\nclass(sites)\n\n[1] \"character\"\n\nclass(include_site)\n\n[1] \"logical\"\n\n\nCommon types you will encounter include:\n\n\n\n\n\n\n\n\nR type\nExample\nTypical anthropological use\n\n\n\n\nnumeric\n11.52\nisotope value, age, length, count represented numerically\n\n\ncharacter\n\"Gatas\"\nsite name, category label, specimen code\n\n\nlogical\nTRUE\nyes/no or inclusion flags\n\n\nmissing\nNA\nvalue not recorded or not known\n\n\n\n\n\n\n\n\n\nWarningNA is not zero\n\n\n\nNA means a value is missing. A recorded value of 0 is an observed value.\nThis distinction will become a major analytical issue in Week 6."
+  },
+  {
+    "objectID": "weeks/week02.html#functions",
+    "href": "weeks/week02.html#functions",
+    "title": "Week 2 — Using R, RStudio, and Quarto",
+    "section": "Functions",
+    "text": "Functions\nA function is a reusable set of instructions. A function usually takes one or more inputs—called arguments—and returns a result. This function-centered way of working is fundamental to R (Perkins 2026; Thulin 2025).\n\nisotope_values &lt;- c(10.2, 11.4, 9.8, 12.1)\n\nmean(isotope_values)\n\n[1] 10.875\n\nmin(isotope_values)\n\n[1] 9.8\n\nmax(isotope_values)\n\n[1] 12.1\n\nlength(isotope_values)\n\n[1] 4\n\n\nThe basic pattern is:\nfunction_name(argument)\nFunctions can have additional arguments:\n\nvalues_with_missing &lt;- c(10.2, 11.4, NA, 12.1)\n\nmean(values_with_missing)\n\n[1] NA\n\nmean(values_with_missing, na.rm = TRUE)\n\n[1] 11.23333\n\n\n\nAsk R for help\nUse ? or help():\n\n?mean\nhelp(mean)\n?read_csv\n\n\n\n\n\n\n\nTipDo not try to memorize every function\n\n\n\nProfessional R users repeatedly consult documentation. The goal is to understand what you want to do, recognize the relevant function, read its arguments, and verify its behavior."
+  },
+  {
+    "objectID": "weeks/week02.html#data-frames-and-tibbles",
+    "href": "weeks/week02.html#data-frames-and-tibbles",
+    "title": "Week 2 — Using R, RStudio, and Quarto",
+    "section": "Data frames and tibbles",
+    "text": "Data frames and tibbles\nMost ANTH418 datasets will be rectangular tables:\n\nrows represent observations;\ncolumns represent variables.\n\nIn R, these are stored as data frames. Tidyverse packages commonly use a modern data-frame format called a tibble.\n\ntoy_data &lt;- tibble(\n  individual = c(\"A\", \"B\", \"C\"),\n  site = c(\"La Bastida\", \"La Bastida\", \"Gatas\"),\n  d15n = c(10.4, 11.7, 9.9)\n)\n\ntoy_data\n\n# A tibble: 3 × 3\n  individual site        d15n\n  &lt;chr&gt;      &lt;chr&gt;      &lt;dbl&gt;\n1 A          La Bastida  10.4\n2 B          La Bastida  11.7\n3 C          Gatas        9.9\n\n\nInspect its structure:\n\nglimpse(toy_data)\n\nRows: 3\nColumns: 3\n$ individual &lt;chr&gt; \"A\", \"B\", \"C\"\n$ site       &lt;chr&gt; \"La Bastida\", \"La Bastida\", \"Gatas\"\n$ d15n       &lt;dbl&gt; 10.4, 11.7, 9.9\n\ndim(toy_data)\n\n[1] 3 3\n\nnames(toy_data)\n\n[1] \"individual\" \"site\"       \"d15n\"      \n\n\nBefore running any statistical analysis, make a habit of asking:\n\nWhat does one row represent?\n\nThat question is more important than knowing which button or function runs a statistical test."
+  },
+  {
+    "objectID": "weeks/week02.html#packages-and-the-tidyverse",
+    "href": "weeks/week02.html#packages-and-the-tidyverse",
+    "title": "Week 2 — Using R, RStudio, and Quarto",
+    "section": "Packages and the tidyverse",
+    "text": "Packages and the tidyverse\nR includes many functions by default. Additional functions are distributed in packages.\nFor this course, we will use a deliberately small set of packages. The most common will come from the tidyverse, including:\n\nreadr for importing rectangular data;\ndplyr for data manipulation;\ntidyr for reshaping data;\nggplot2 for visualization;\nstringr for text; and\nforcats for categorical variables.\n\n\n\n\n\n\n\nNoteInstall once; load each session\n\n\n\nYou normally install a package once:\ninstall.packages(\"tidyverse\")\nThen load it in each new R session or reproducible document:\nlibrary(tidyverse)\nDo not put install.packages() inside a submitted analytical workflow."
+  },
+  {
+    "objectID": "weeks/week02.html#the-pipe",
+    "href": "weeks/week02.html#the-pipe",
+    "title": "Week 2 — Using R, RStudio, and Quarto",
+    "section": "The pipe: |>",
+    "text": "The pipe: |&gt;\nThe native R pipe |&gt; passes the result of one step into the next step.\nWithout a pipe:\n\nround(mean(c(10.2, 11.4, 9.8, 12.1)), 2)\n\n[1] 10.88\n\n\nWith intermediate objects:\n\nx &lt;- c(10.2, 11.4, 9.8, 12.1)\nx_mean &lt;- mean(x)\nround(x_mean, 2)\n\n[1] 10.88\n\n\nWith a pipe:\n\nc(10.2, 11.4, 9.8, 12.1) |&gt;\n  mean() |&gt;\n  round(2)\n\n[1] 10.88\n\n\nFor data analysis, pipes are especially useful because they allow us to read the code from top to bottom as a sequence of operations."
+  },
+  {
+    "objectID": "weeks/week02.html#core-dplyr-verbs",
+    "href": "weeks/week02.html#core-dplyr-verbs",
+    "title": "Week 2 — Using R, RStudio, and Quarto",
+    "section": "Core dplyr verbs",
+    "text": "Core dplyr verbs\nWe will repeatedly use a small vocabulary of data verbs.\n\n\n\nVerb\nMain question\n\n\n\n\nselect()\nWhich columns do I need?\n\n\nfilter()\nWhich rows do I need?\n\n\nmutate()\nWhat new or transformed variable do I need?\n\n\narrange()\nIn what order should the rows appear?\n\n\ngroup_by()\nWhich observations should be treated as groups?\n\n\nsummarise()\nWhat summary should I calculate?\n\n\ncount()\nHow many observations occur in each category?\n\n\n\nHere is a small example:\n\ntoy_data |&gt;\n  filter(site == \"La Bastida\") |&gt;\n  select(individual, d15n)\n\n# A tibble: 2 × 2\n  individual  d15n\n  &lt;chr&gt;      &lt;dbl&gt;\n1 A           10.4\n2 B           11.7\n\n\nAnd a transformation:\n\ntoy_data |&gt;\n  mutate(d15n_rounded = round(d15n, 1))\n\n# A tibble: 3 × 4\n  individual site        d15n d15n_rounded\n  &lt;chr&gt;      &lt;chr&gt;      &lt;dbl&gt;        &lt;dbl&gt;\n1 A          La Bastida  10.4         10.4\n2 B          La Bastida  11.7         11.7\n3 C          Gatas        9.9          9.9"
+  },
+  {
+    "objectID": "weeks/week02.html#quarto-prose-and-computation-in-one-document",
+    "href": "weeks/week02.html#quarto-prose-and-computation-in-one-document",
+    "title": "Week 2 — Using R, RStudio, and Quarto",
+    "section": "Quarto: prose and computation in one document",
+    "text": "Quarto: prose and computation in one document\nA Quarto document has three important ingredients:\n\nYAML metadata at the top;\nMarkdown prose; and\nexecutable code cells.\n\nA minimal document looks like this:\n---\ntitle: \"My first Quarto report\"\nformat: html\n---\n\n## Question\n\nWhat does the dataset show?\n\n\n::: {.cell}\n\n```{.r .cell-code}\n1 + 1\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] 2\n```\n\n\n:::\n:::\nQuarto code-cell options begin with #|. Quarto for Scientists highlights options such as eval, echo, and include, which control whether code runs and whether code or output appears in the rendered document (Tierney 2025).\nFor example:\n\n::: {.cell}\n\n```{.r .cell-code}\nmean(my_data)\n```\n:::\n\nThree useful code-cell options\n\n\n\n\n\n\n\nOption\nMeaning\n\n\n\n\neval: false\nshow the code but do not run it\n\n\necho: false\nrun the code but hide the source code\n\n\ninclude: false\nrun the code but hide both code and visible output\n\n\n\nIn ANTH418, important analytical code will usually remain visible because understanding the code is part of the course."
+  },
+  {
+    "objectID": "weeks/week02.html#useful-rstudio-shortcuts",
+    "href": "weeks/week02.html#useful-rstudio-shortcuts",
+    "title": "Week 2 — Using R, RStudio, and Quarto",
+    "section": "Useful RStudio shortcuts",
+    "text": "Useful RStudio shortcuts\nA few shortcuts save a great deal of time.\n\n\n\nAction\nmacOS\nWindows/Linux\n\n\n\n\nRender document\nCmd + Shift + K\nCtrl + Shift + K\n\n\nInsert R code cell\nCmd + Option + I\nCtrl + Alt + I\n\n\nRun current code cell\nCmd + Option + C\nCtrl + Alt + C\n\n\nSave\nCmd + S\nCtrl + S\n\n\n\nThese shortcuts are also emphasized in Quarto for Scientists (Tierney 2025)."
+  },
+  {
+    "objectID": "weeks/week02.html#bronze-age-la-bastida-and-gatas",
+    "href": "weeks/week02.html#bronze-age-la-bastida-and-gatas",
+    "title": "Week 2 — Using R, RStudio, and Quarto",
+    "section": "Bronze Age La Bastida and Gatas",
+    "text": "Bronze Age La Bastida and Gatas\nThe practice dataset comes from the stable-isotope research reported by Knipper and colleagues on Early Bronze Age La Bastida and Gatas in southeast Iberia (Knipper et al. 2020).\nThe published study uses stable carbon and nitrogen isotope evidence to investigate diet, farming, animal management, and food webs. For Week 2, however, our goal is much narrower:\n\nCan we import, inspect, filter, summarize, and visualize the human isotope teaching data correctly?\n\nWe are not yet trying to complete the descriptive analysis required in Assignment 1.\n\n\n\n\n\n\nNoteWhy does our teaching file have 69 individuals?\n\n\n\nThe published study describes an overall human sample of 75 individuals, but the reported human isotope results contain 48 individuals from La Bastida and 21 from Gatas, for 69 analyzed human observations (Knipper et al. 2020).\nThe validated ANTH418 teaching file follows those 69 analyzed observations. Do not infer the reason for the difference between the overall sample and analyzed isotope observations without checking the publication and supporting information."
+  },
+  {
+    "objectID": "weeks/week02.html#import-the-data",
+    "href": "weeks/week02.html#import-the-data",
+    "title": "Week 2 — Using R, RStudio, and Quarto",
+    "section": "Import the data",
+    "text": "Import the data\nFirst confirm that R can find the file:\n\nfile.exists(data_file)\n\n[1] TRUE\n\n\nThen import it:\n\nif (!file.exists(data_file)) {\n  stop(\n    paste0(\n      \"Missing \", data_file,\n      \". Copy the validated ANTH418 teaching file into the project's data/ directory.\"\n    )\n  )\n}\n\nknipper &lt;- read_csv(\n  data_file,\n  show_col_types = FALSE\n)"
+  },
+  {
+    "objectID": "weeks/week02.html#inspect-before-analyzing",
+    "href": "weeks/week02.html#inspect-before-analyzing",
+    "title": "Week 2 — Using R, RStudio, and Quarto",
+    "section": "Inspect before analyzing",
+    "text": "Inspect before analyzing\nNever begin by running a statistical test.\nBegin by inspecting the object:\n\nglimpse(knipper)\n\nRows: 69\nColumns: 10\n$ source_row_id   &lt;dbl&gt; 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 1…\n$ grave_no        &lt;chr&gt; \"BA 01\", \"BA 02\", \"BAS 4\", \"BA 05\", \"BA 06/1\", \"BA 06/…\n$ sample          &lt;chr&gt; \"Costa\", \"Costa\", \"Phalanx media manus\", \"Costa\", \"Cos…\n$ site            &lt;chr&gt; \"La Bastida\", \"La Bastida\", \"La Bastida\", \"La Bastida\"…\n$ d13c            &lt;dbl&gt; -19.20070, -18.25818, -19.04190, -18.36669, -19.09329,…\n$ d15n            &lt;dbl&gt; 10.393354, 13.892656, 10.870000, 12.522246, 10.848756,…\n$ sex             &lt;chr&gt; \"nd\", \"nd\", \"Male ?\", \"nd\", \"Male\", \"nd\", \"nd\", \"Male\"…\n$ age_category    &lt;chr&gt; \"Infans I\", \"Infans I\", \"Adult\", \"Infans I\", \"Young ad…\n$ chronology      &lt;chr&gt; \"?\", \"3\", \"3\", \"3\", NA, \"3\", \"3\", \"2\", \"2\", \"3\", \"3\", …\n$ social_category &lt;chr&gt; \"5\", \"5\", \"3 – 4\", \"5\", \"4\", \"4\", \"5\", \"3\", \"3\", \"3\", …\n\n\nThe teaching file has 69 rows and 10 columns.\nIts variables are:\n\nnames(knipper)\n\n [1] \"source_row_id\"   \"grave_no\"        \"sample\"          \"site\"           \n [5] \"d13c\"            \"d15n\"            \"sex\"             \"age_category\"   \n [9] \"chronology\"      \"social_category\"\n\n\nThe unit of analysis is one sampled human individual. The teaching file retains identifiers and archaeological classifications alongside the two isotope measurements. fileciteturn2file0\n\nVariable map\n\n\n\nVariable\nR type in teaching file\nRole in Week 2\n\n\n\n\nsource_row_id\nnumeric/integer-like\ntraceability to source row\n\n\ngrave_no\ncharacter\narchaeological identifier\n\n\nsample\ncharacter\nskeletal sample information\n\n\nsite\ncharacter\nLa Bastida or Gatas\n\n\nd13c\nnumeric\nstable carbon isotope value\n\n\nd15n\nnumeric\nstable nitrogen isotope value\n\n\nsex\ncharacter\nrecorded sex classification\n\n\nage_category\ncharacter\nrecorded age category\n\n\nchronology\ncharacter\nchronological classification\n\n\nsocial_category\ncharacter\nsocial-category classification\n\n\n\n\n\n\n\n\n\nImportantData types are not the same as measurement scales\n\n\n\nglimpse() tells you how R currently stores a variable. It does not by itself tell you the variable’s archaeological meaning or its statistical measurement scale.\nWe will return to measurement, proxies, and units of analysis in Week 3."
+  },
+  {
+    "objectID": "weeks/week02.html#count-observations-by-site",
+    "href": "weeks/week02.html#count-observations-by-site",
+    "title": "Week 2 — Using R, RStudio, and Quarto",
+    "section": "Count observations by site",
+    "text": "Count observations by site\n\nsite_counts &lt;- knipper |&gt;\n  count(site, name = \"n\")\n\nsite_counts |&gt;\n  knitr::kable()\n\n\n\nTable 1: Number of human isotope observations in the ANTH418 teaching file by archaeological site.\n\n\n\n\n\n\nsite\nn\n\n\n\n\nGatas\n21\n\n\nLa Bastida\n48\n\n\n\n\n\n\n\n\nAs Table 1 shows, the teaching file contains observations from two sites. The counts should be checked against the publication before you begin a substantive analysis."
+  },
+  {
+    "objectID": "weeks/week02.html#select-columns",
+    "href": "weeks/week02.html#select-columns",
+    "title": "Week 2 — Using R, RStudio, and Quarto",
+    "section": "Select columns",
+    "text": "Select columns\nSuppose we want a smaller working view containing only identifiers, site, and isotope values:\n\nknipper |&gt;\n  select(grave_no, site, d13c, d15n) |&gt;\n  slice_head(n = 8)\n\n# A tibble: 8 × 4\n  grave_no site        d13c  d15n\n  &lt;chr&gt;    &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt;\n1 BA 01    La Bastida -19.2  10.4\n2 BA 02    La Bastida -18.3  13.9\n3 BAS 4    La Bastida -19.0  10.9\n4 BA 05    La Bastida -18.4  12.5\n5 BA 06/1  La Bastida -19.1  10.8\n6 BA 06/2  La Bastida -18.5  11.2\n7 BA 07    La Bastida -18.5  12.5\n8 BA 12/1  La Bastida -18.5  11.9\n\n\nselect() changes the columns in the object being returned. It does not change the original knipper object unless you assign the result to a new object."
+  },
+  {
+    "objectID": "weeks/week02.html#filter-rows",
+    "href": "weeks/week02.html#filter-rows",
+    "title": "Week 2 — Using R, RStudio, and Quarto",
+    "section": "Filter rows",
+    "text": "Filter rows\nTo inspect only Gatas:\n\ngatas &lt;- knipper |&gt;\n  filter(site == \"Gatas\")\n\nglimpse(gatas)\n\nRows: 21\nColumns: 10\n$ source_row_id   &lt;dbl&gt; 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67…\n$ grave_no        &lt;chr&gt; \"GA 21\", \"GA 23\", \"GA 26\", \"GA 29/1\", \"GA 29/2\", \"GA 2…\n$ sample          &lt;chr&gt; \"Costa\", \"Costa\", \"Phalanx media manus\", \"Costa\", \"Cra…\n$ site            &lt;chr&gt; \"Gatas\", \"Gatas\", \"Gatas\", \"Gatas\", \"Gatas\", \"Gatas\", …\n$ d13c            &lt;dbl&gt; -18.34431, -19.95119, -19.32216, -19.90637, -18.42646,…\n$ d15n            &lt;dbl&gt; 14.02, 9.05, 9.10, 8.75, 12.63, 12.07, 13.00, 12.33, 9…\n$ sex             &lt;chr&gt; \"nd\", \"Female\", \"Female\", \"nd\", \"nd\", \"nd\", \"nd\", \"nd\"…\n$ age_category    &lt;chr&gt; \"Infans I\", \"Juvenile\", \"Young/Middle adult\", \"Infans …\n$ chronology      &lt;chr&gt; \"3\", \"3\", \"2\", \"3\", \"3\", \"3\", \"3\", \"2\", \"2\", \"2\", \"3\",…\n$ social_category &lt;chr&gt; \"5\", \"4\", \"5\", \"4\", \"4\", \"4\", \"4\", \"5\", \"3 – 4\", \"3 – …\n\n\nCheck the number of rows:\n\nnrow(gatas)\n\n[1] 21\n\n\nFiltering changes which rows are retained."
+  },
+  {
+    "objectID": "weeks/week02.html#make-a-temporary-transformed-variable",
+    "href": "weeks/week02.html#make-a-temporary-transformed-variable",
+    "title": "Week 2 — Using R, RStudio, and Quarto",
+    "section": "Make a temporary transformed variable",
+    "text": "Make a temporary transformed variable\nmutate() creates or transforms columns. Here we create a rounded value only for display:\n\nknipper |&gt;\n  mutate(d13c_rounded = round(d13c, 2)) |&gt;\n  select(grave_no, site, d13c, d13c_rounded) |&gt;\n  slice_head(n = 8)\n\n# A tibble: 8 × 4\n  grave_no site        d13c d13c_rounded\n  &lt;chr&gt;    &lt;chr&gt;      &lt;dbl&gt;        &lt;dbl&gt;\n1 BA 01    La Bastida -19.2        -19.2\n2 BA 02    La Bastida -18.3        -18.3\n3 BAS 4    La Bastida -19.0        -19.0\n4 BA 05    La Bastida -18.4        -18.4\n5 BA 06/1  La Bastida -19.1        -19.1\n6 BA 06/2  La Bastida -18.5        -18.5\n7 BA 07    La Bastida -18.5        -18.5\n8 BA 12/1  La Bastida -18.5        -18.5\n\n\nThe original measurement has not been changed in knipper; the transformed value exists only in the temporary result shown above."
+  },
+  {
+    "objectID": "weeks/week02.html#summarize-without-doing-assignment-1",
+    "href": "weeks/week02.html#summarize-without-doing-assignment-1",
+    "title": "Week 2 — Using R, RStudio, and Quarto",
+    "section": "Summarize without doing Assignment 1",
+    "text": "Summarize without doing Assignment 1\nWeek 4 will formally address measures of central tendency and dispersion. For now, we will practice group_by() and summarise() using only counts and observed ranges:\n\nknipper |&gt;\n  group_by(site) |&gt;\n  summarise(\n    n = n(),\n    min_d13c = min(d13c),\n    max_d13c = max(d13c),\n    min_d15n = min(d15n),\n    max_d15n = max(d15n),\n    .groups = \"drop\"\n  )\n\n# A tibble: 2 × 6\n  site           n min_d13c max_d13c min_d15n max_d15n\n  &lt;chr&gt;      &lt;int&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 Gatas         21    -20.0    -18.3     8.23     14.0\n2 La Bastida    48    -19.5    -17.4     9.51     14.2\n\n\nRead this pipeline as:\n\nStart with knipper → group observations by site → compute one summary row for each site."
+  },
+  {
+    "objectID": "weeks/week02.html#your-first-ggplot2-figure",
+    "href": "weeks/week02.html#your-first-ggplot2-figure",
+    "title": "Week 2 — Using R, RStudio, and Quarto",
+    "section": "Your first ggplot2 figure",
+    "text": "Your first ggplot2 figure\nA ggplot2 figure begins with a dataset and a mapping from variables to visual properties.\n\nggplot(\n  knipper,\n  aes(x = d13c, y = d15n, shape = site)\n) +\n  geom_point(size = 2.4, alpha = 0.75) +\n  labs(\n    x = expression(delta^13 * C~(\"\\u2030\")),\n    y = expression(delta^15 * N~(\"\\u2030\")),\n    shape = \"Site\"\n  ) +\n  theme_minimal()\n\n\n\n\n\n\n\nFigure 1: Stable carbon and nitrogen isotope values for the 69 human observations in the ANTH418 teaching file. Each point represents one sampled individual.\n\n\n\n\n\nFigure 1 is not a statistical test. It is an exploratory view of the joint distribution of two measured variables.\nNotice that we did not type “Figure 1” manually. Quarto generated the figure number and cross-reference from the code-cell label. This is exactly the kind of reproducible cross-referencing advocated in Quarto for Scientists (Tierney 2025)."
+  },
+  {
+    "objectID": "weeks/week02.html#reading-r-code-as-a-sequence-of-questions",
+    "href": "weeks/week02.html#reading-r-code-as-a-sequence-of-questions",
+    "title": "Week 2 — Using R, RStudio, and Quarto",
+    "section": "Reading R code as a sequence of questions",
+    "text": "Reading R code as a sequence of questions\nConsider:\nknipper |&gt;\n  filter(site == \"Gatas\") |&gt;\n  select(grave_no, d13c, d15n) |&gt;\n  arrange(d15n)\nRead it as a sequence:\n\nStart with the human isotope dataset.\nKeep only Gatas.\nKeep only grave number and the two isotope variables.\nOrder the observations by d15n.\n\nThis is more useful than memorizing individual commands because the code mirrors the analytical decisions."
+  },
+  {
+    "objectID": "weeks/week02.html#exercise-1-project-hygiene",
+    "href": "weeks/week02.html#exercise-1-project-hygiene",
+    "title": "Week 2 — Using R, RStudio, and Quarto",
+    "section": "Exercise 1 — Project hygiene",
+    "text": "Exercise 1 — Project hygiene\n\nWithout changing your working directory manually:\n\nrun getwd();\nrun list.files();\ncheck whether data/knipper2020_humans.csv exists; and\nexplain why a project-relative path is preferable to a path beginning with /Users/....\n\n\n\n\n\n\n\n\nTipCheck your work\n\n\n\n\n\nA typical check is:\ngetwd()\nlist.files()\nfile.exists(\"data/knipper2020_humans.csv\")\nThe important idea is not the exact directory printed by getwd(). It is that the analysis uses a stable project root and relative paths."
+  },
+  {
+    "objectID": "weeks/week02.html#exercise-2-inspect-before-analyzing",
+    "href": "weeks/week02.html#exercise-2-inspect-before-analyzing",
+    "title": "Week 2 — Using R, RStudio, and Quarto",
+    "section": "Exercise 2 — Inspect before analyzing",
+    "text": "Exercise 2 — Inspect before analyzing\n\nUsing knipper:\n\ndetermine its dimensions;\nlist the column names;\nidentify which columns R stores as numeric and which as character; and\nstate in one sentence what one row represents.\n\n\n\n\n\n\n\n\nTipCheck your work\n\n\n\n\n\nUseful commands include:\ndim(knipper)\nnames(knipper)\nglimpse(knipper)\nThe unit of analysis is one sampled human individual."
+  },
+  {
+    "objectID": "weeks/week02.html#exercise-3-select-and-filter",
+    "href": "weeks/week02.html#exercise-3-select-and-filter",
+    "title": "Week 2 — Using R, RStudio, and Quarto",
+    "section": "Exercise 3 — Select and filter",
+    "text": "Exercise 3 — Select and filter\n\nCreate an object called bastida_isotopes that:\n\ncontains only observations from La Bastida; and\nretains only grave_no, d13c, and d15n.\n\nThen use glimpse() to inspect it.\n\n\n\n\n\n\n\nTipCheck your work\n\n\n\n\n\nbastida_isotopes &lt;- knipper |&gt;\n  filter(site == \"La Bastida\") |&gt;\n  select(grave_no, d13c, d15n)\n\nglimpse(bastida_isotopes)"
+  },
+  {
+    "objectID": "weeks/week02.html#exercise-4-group-and-summarize",
+    "href": "weeks/week02.html#exercise-4-group-and-summarize",
+    "title": "Week 2 — Using R, RStudio, and Quarto",
+    "section": "Exercise 4 — Group and summarize",
+    "text": "Exercise 4 — Group and summarize\n\nCreate a two-row table—one row for each site—showing:\n\nthe number of observations;\nthe minimum d13c; and\nthe maximum d13c.\n\nDo not calculate the full Assignment 1 descriptive statistics yet.\n\n\n\n\n\n\n\nTipCheck your work\n\n\n\n\n\nknipper |&gt;\n  group_by(site) |&gt;\n  summarise(\n    n = n(),\n    min_d13c = min(d13c),\n    max_d13c = max(d13c),\n    .groups = \"drop\"\n  )"
+  },
+  {
+    "objectID": "weeks/week02.html#exercise-5-modify-a-figure",
+    "href": "weeks/week02.html#exercise-5-modify-a-figure",
+    "title": "Week 2 — Using R, RStudio, and Quarto",
+    "section": "Exercise 5 — Modify a figure",
+    "text": "Exercise 5 — Modify a figure\n\nCopy the code for Figure 1 and make one purposeful change.\nExamples:\n\nmap site to colour instead of shape;\nchange point size;\nadd a clear title; or\nfacet the figure by site.\n\nRender the document and inspect the result.\n\n\n\n\n\n\n\nTipOne possible solution\n\n\n\n\n\nggplot(\n  knipper,\n  aes(x = d13c, y = d15n, colour = site)\n) +\n  geom_point(size = 2.4, alpha = 0.75) +\n  facet_wrap(~ site) +\n  labs(\n    x = expression(delta^13 * C~(\"\\u2030\")),\n    y = expression(delta^15 * N~(\"\\u2030\")),\n    colour = \"Site\"\n  ) +\n  theme_minimal()\nThere are many valid solutions. The goal is to make a change you can explain."
+  },
+  {
+    "objectID": "weeks/week02.html#object-x-not-found",
+    "href": "weeks/week02.html#object-x-not-found",
+    "title": "Week 2 — Using R, RStudio, and Quarto",
+    "section": "object 'x' not found",
+    "text": "object 'x' not found\nR cannot find an object with that name.\nCheck:\n\nDid you create it?\nDid you run the code cell that creates it?\nIs the spelling identical?\nDid you restart R without recreating the object?"
+  },
+  {
+    "objectID": "weeks/week02.html#cannot-open-the-connection-or-no-such-file-or-directory",
+    "href": "weeks/week02.html#cannot-open-the-connection-or-no-such-file-or-directory",
+    "title": "Week 2 — Using R, RStudio, and Quarto",
+    "section": "cannot open the connection or No such file or directory",
+    "text": "cannot open the connection or No such file or directory\nR cannot find a file at the path you supplied.\nCheck:\ngetwd()\nfile.exists(\"data/your_file.csv\")\nThen inspect the path rather than immediately using setwd()."
+  },
+  {
+    "objectID": "weeks/week02.html#could-not-find-function",
+    "href": "weeks/week02.html#could-not-find-function",
+    "title": "Week 2 — Using R, RStudio, and Quarto",
+    "section": "could not find function",
+    "text": "could not find function\nThe function may belong to a package that has not been loaded.\nFor example:\nlibrary(tidyverse)\nor use the explicit form:\nreadr::read_csv(\"data/file.csv\")"
+  },
+  {
+    "objectID": "weeks/week02.html#the-console-shows-instead-of",
+    "href": "weeks/week02.html#the-console-shows-instead-of",
+    "title": "Week 2 — Using R, RStudio, and Quarto",
+    "section": "The Console shows + instead of >",
+    "text": "The Console shows + instead of &gt;\nR thinks your command is incomplete—often because of a missing parenthesis, quotation mark, or bracket. Thulin uses this as an example of how R signals an unfinished expression (Thulin 2025).\nPress Esc to cancel, then inspect the command."
+  },
+  {
+    "objectID": "weeks/week02.html#quarto-feature-inline-r",
+    "href": "weeks/week02.html#quarto-feature-inline-r",
+    "title": "Week 2 — Using R, RStudio, and Quarto",
+    "section": "Quarto feature: inline R",
+    "text": "Quarto feature: inline R\nQuarto can place a computed value directly into prose.\nFor example, after importing the dataset, this source:\nThe teaching dataset contains 69 observations.\nrenders as:\n\nThe teaching dataset contains 69 observations.\n\nIf the underlying dataset changes, the prose changes when the document is rendered. This helps prevent contradictions between text and computed results."
+  },
+  {
+    "objectID": "weeks/week02.html#required-perkins",
+    "href": "weeks/week02.html#required-perkins",
+    "title": "Week 2 — Using R, RStudio, and Quarto",
+    "section": "Required: Perkins",
+    "text": "Required: Perkins\nPerkins’s Using R for Introductory Statistics in Social Sciences is designed as a beginner-facing introduction to R for social-science analysis (Perkins 2026). For Week 2, concentrate on Chapter 2, “Welcome to the R Environment” (pp. 3–17).\nWhile reading, make sure you can answer:\n\nWhat is the role of the R environment?\nHow do you enter and execute commands?\nWhat is an object?\nHow are functions used?\nHow should a beginner interpret R output and errors?\n\nYou do not need to memorize commands. Re-run examples and change them."
+  },
+  {
+    "objectID": "weeks/week02.html#required-thulin",
+    "href": "weeks/week02.html#required-thulin",
+    "title": "Week 2 — Using R, RStudio, and Quarto",
+    "section": "Required: Thulin",
+    "text": "Required: Thulin\nThulin’s Modern Statistics with R develops R from basic objects and functions into data wrangling and programming (Thulin 2025).\nFor Week 2, use the assigned chapters selectively:\n\nChapter 1, Introduction (pp. 1–3): understand the broader statistical-computing workflow.\nChapter 2, The Basics (pp. 4–57): prioritize objects, vectors, data frames, functions, indexing, importing data, and basic operations.\nChapter 5, Dealing with Messy Data (pp. 158–211): focus this week on data types and the sections introducing dplyr/tidyr, filtering, selecting, and chained operations. Do not try to memorize every data-cleaning recipe.\nChapter 6, R Programming (pp. 212–247): read for programming habits and the logic of reusable code. Iteration and more advanced programming will become more meaningful later in the course.\n\nThulin’s online edition emphasizes that real data are often messy and that modern R work combines importing, filtering, reshaping, visualization, inference, and programming rather than treating these as separate activities (Thulin 2025)."
+  },
+  {
+    "objectID": "weeks/week02.html#quarto-for-scientists",
+    "href": "weeks/week02.html#quarto-for-scientists",
+    "title": "Week 2 — Using R, RStudio, and Quarto",
+    "section": "Quarto for Scientists",
+    "text": "Quarto for Scientists\nUse Tierney’s Quarto for Scientists as a practical reference throughout the term (Tierney 2025). For Week 2, the most useful sections are:\n\nworkflow and RStudio Projects;\nfile paths and project organization;\nthe anatomy of a Quarto document;\ncode-cell labels and #| options;\nkeyboard shortcuts; and\nfigures, captions, citations, and cross-references.\n\nThe goal is not to learn every Quarto option now. Learn enough to build a document that you can reliably render again next week."
+  },
+  {
+    "objectID": "syllabus.html",
+    "href": "syllabus.html",
+    "title": "Course Syllabus · 2026–2027 (Term 1)",
+    "section": "",
+    "text": "Course Schedule | Monday and Wednesday, 9:30–11:00 am\nLocation | BUCH B302\nInstructor | Professor Zhichun Jing\nEmail and Phone | z.jing@ubc.ca · 604-822-4937\nOffice Location | Lower Mall Research Station Room 337\nOffice Hours | Monday and Wednesday, 12:00–14:00, or by appointment"
+  },
+  {
+    "objectID": "syllabus.html#course-information",
+    "href": "syllabus.html#course-information",
+    "title": "Course Syllabus · 2026–2027 (Term 1)",
+    "section": "",
+    "text": "Course Schedule | Monday and Wednesday, 9:30–11:00 am\nLocation | BUCH B302\nInstructor | Professor Zhichun Jing\nEmail and Phone | z.jing@ubc.ca · 604-822-4937\nOffice Location | Lower Mall Research Station Room 337\nOffice Hours | Monday and Wednesday, 12:00–14:00, or by appointment"
+  },
+  {
+    "objectID": "syllabus.html#land-acknowledgement",
+    "href": "syllabus.html#land-acknowledgement",
+    "title": "Course Syllabus · 2026–2027 (Term 1)",
+    "section": "Land Acknowledgement",
+    "text": "Land Acknowledgement\nThroughout this course, we will gather at UBC Vancouver’s Point Grey Campus, located on the traditional, ancestral, and unceded territory of the xʷməθkʷəy̓əm (Musqueam) people. This land has been a place of learning for the Musqueam for millennia."
+  },
+  {
+    "objectID": "syllabus.html#course-description",
+    "href": "syllabus.html#course-description",
+    "title": "Course Syllabus · 2026–2027 (Term 1)",
+    "section": "Course Description",
+    "text": "Course Description\nThis course introduces statistical thinking and quantitative analysis for archaeology and anthropology. It is designed for students with little or no prior experience in statistics or programming. Its central goal is practical: students will learn how to move from an anthropological research question to an appropriate dataset, write understandable R code, conduct an appropriate statistical analysis, visualize the data and statistical results, and make a defensible anthropological interpretation.\nThe course combines fundamental concepts in research design, measurement, sampling, data quality, descriptive statistics, uncertainty, statistical inference, group comparison, association, and regression with sustained hands-on work in R, RStudio, and Quarto.\nEach topic will be learned through a recurring workflow:\n\ninspect and prepare the data → describe → visualize → analyze → visualize the result → interpret\n\nWeekly assignments use real datasets drawn from recent published research in archaeology, biological anthropology, cultural anthropology, and linguistic anthropology. The principal graded case studies were selected using four criteria:\n\nthe research question is anthropologically substantive;\nthe associated publication dates after 2000;\nthe underlying dataset is available online through a publication supplement or open research repository; and\nthe statistical question can be addressed transparently with methods appropriate to an introductory course.\n\nThe emphasis is not on memorizing formulas or treating software output as an answer. Students will repeatedly be asked to understand how the data were produced, write and explain their own code, choose suitable statistical procedures, produce clear figures and tables, evaluate effect size and uncertainty, and connect statistical results to archaeological or anthropological questions while recognizing assumptions and limitations."
+  },
+  {
+    "objectID": "syllabus.html#learning-objectives",
+    "href": "syllabus.html#learning-objectives",
+    "title": "Course Syllabus · 2026–2027 (Term 1)",
+    "section": "Learning Objectives",
+    "text": "Learning Objectives\nBy the end of the course, students will be able to:\n\nDemonstrate basic data, statistical, and digital literacy, including an understanding of variables, measurement scales, distributions, sampling, uncertainty, and common sources of bias.\nTranslate an archaeological or anthropological research question into an explicit unit of analysis, set of variables, and appropriate statistical strategy.\nWrite and explain introductory R code to import, inspect, clean, transform, summarize, sample, visualize, and analyze anthropological data.\nUse RStudio and Quarto to organize a reproducible workflow that integrates prose, code, tables, figures, and statistical output.\nApply and interpret introductory statistical methods, including descriptive statistics, confidence intervals, permutation tests, t-tests, chi-square tests, ANOVA, correlation, and simple linear regression.\nUse ggplot2 and related R tools to explore distributions and relationships and to visualize statistical results, effect sizes, uncertainty, and model fit where appropriate.\nEvaluate data provenance, missingness, sampling structure, assumptions, and dependence among observations, and communicate effect size, uncertainty, and limitations rather than relying on statistical significance alone.\nDistinguish between statistical result, anthropological interpretation, and causal explanation, and evaluate quantitative claims in published archaeological and anthropological research.\nUse computational and generative-AI tools responsibly as aids to learning while retaining responsibility for code comprehension, statistical reasoning, verification, interpretation, and authorship."
+  },
+  {
+    "objectID": "syllabus.html#prerequisite",
+    "href": "syllabus.html#prerequisite",
+    "title": "Course Syllabus · 2026–2027 (Term 1)",
+    "section": "Prerequisite",
+    "text": "Prerequisite\nANTH 100 (Introduction to Cultural Anthropology), ARCL 103 (Introduction to Archaeology), ARCL 140 (Bones: The Origins of Humanity), another Anthropology/Archaeology course, or permission of the instructor.\nNo previous statistics or programming course is required."
+  },
+  {
+    "objectID": "syllabus.html#core-readings-and-learning-resources",
+    "href": "syllabus.html#core-readings-and-learning-resources",
+    "title": "Course Syllabus · 2026–2027 (Term 1)",
+    "section": "Core Readings and Learning Resources",
+    "text": "Core Readings and Learning Resources\nStudents are not expected to read any textbook from cover to cover. Each teaching week will normally include at least one focused reading explaining the statistical subject or R technique, and at least one reading connected directly to the week’s archaeological or anthropological case study.\nMethod readings should be used actively: students are encouraged to run the R examples while reading rather than treating the books as passive background material.\n\nTextbooks\nAvailable online from the UBC Library:\n\nPerkins, Mark A. 2026. Using R for Introductory Statistics in Social Sciences. Springer, Cham.\nThulin, Måns. 2025. Modern Statistics with R: From Wrangling and Exploring Data to Inference and Predictive Modelling. Chapman and Hall/CRC.\nCarlson, David Lee. 2017. Quantitative Methods in Archaeology Using R. Cambridge University Press, Cambridge.\nBeecham, Roger. 2026. Visualization for Social Data Science. Chapman and Hall/CRC.\n\n\n\nCase-Study Readings\nReadings associated with the weekly datasets are listed in the course schedule. These readings are part of the statistical training. For each case, students should be able to identify:\n\nthe research question;\nthe unit of analysis;\nthe key variables and their measurement scales;\nhow the data were produced;\nthe analytical strategy;\nthe principal statistical result; and\nwhat the evidence does and does not justify anthropologically."
+  },
+  {
+    "objectID": "syllabus.html#software-and-computational-workflow",
+    "href": "syllabus.html#software-and-computational-workflow",
+    "title": "Course Syllabus · 2026–2027 (Term 1)",
+    "section": "Software and Computational Workflow",
+    "text": "Software and Computational Workflow\nStudents will use R, RStudio Desktop, and Quarto, all of which are free. Course examples will use a deliberately small and stable set of packages, especially tidyverse/ggplot2 and packages required for specific teaching datasets or analyses.\nMost practical work will follow the same six-step workflow:\n\nCode: load the dataset, inspect its structure, select variables, and prepare the data in R.\nDescribe: compute relevant descriptive statistics before running an inferential procedure.\nVisualize the data: use an appropriate plot to examine distributions, groups, outliers, or relationships.\nAnalyze: run the statistical procedure in R and extract the quantities needed for interpretation.\nVisualize the result: where useful, graph group differences, uncertainty, fitted relationships, residuals, or other model results rather than presenting raw console output alone.\nInterpret: explain the statistical result in relation to archaeological or anthropological research questions, including assumptions and limitations.\n\nAll graded computational work should be completed in a Quarto (.qmd) document unless an assignment specifies otherwise. A submission should contain only the R output necessary to support the analysis; long unedited console dumps should be avoided.\nStudents should be able to re-render their document from a clean R session and explain every substantive line of code included in the submission."
+  },
+  {
+    "objectID": "syllabus.html#course-data-and-reproducibility",
+    "href": "syllabus.html#course-data-and-reproducibility",
+    "title": "Course Syllabus · 2026–2027 (Term 1)",
+    "section": "Course Data and Reproducibility",
+    "text": "Course Data and Reproducibility\nAll ten graded assignments use real data derived from recent published archaeological or anthropological research. The original data are publicly available online through a journal supplement, Zenodo, GitHub, or another research repository.\nFor teaching purposes, the instructor may distribute a frozen, documented teaching file derived from the published source dataset. Such files may:\n\nretain only variables needed for the assignment;\nstandardize column names or file format;\npreserve source row identifiers;\nremove blank spreadsheet rows or source-identified invalid observations; and\nrestrict the analysis to a clearly documented subset when the full dataset is unnecessarily large or complex.\n\nTeaching files will not contain fabricated observations. Each assignment dataset will be accompanied by a short provenance note identifying the publication, original data source, variables retained, and any transformations or exclusions made before distribution.\nSome original publications use advanced methods such as Bayesian modeling, PCA, machine learning, mixed-effects models, or multivariate procedures that lie beyond ANTH418. Students are not expected to reproduce those methods. Instead, assignments use a clearly stated ANTH418-level question that can be answered with techniques taught in the course while preserving the original observations and archaeological or anthropological context."
+  },
+  {
+    "objectID": "syllabus.html#course-format-assignments-and-due-dates",
+    "href": "syllabus.html#course-format-assignments-and-due-dates",
+    "title": "Course Syllabus · 2026–2027 (Term 1)",
+    "section": "Course Format, Assignments, and Due Dates",
+    "text": "Course Format, Assignments, and Due Dates\nClass meetings combine concise explanation with substantial guided practice. In most two-class weeks, one class introduces the statistical logic and demonstrates the R workflow; the other functions primarily as a code-along/data-analysis lab in which students work with the week’s case-study dataset, create visualizations, conduct the analysis, and discuss interpretation. Weeks affected by holidays or the midterm break will be adjusted accordingly.\nWeeks 2 and 3 emphasize software, data structure, research design, reproducibility, and practice with real research datasets but do not carry graded weekly assignments. The ten graded assignments are distributed in Weeks 4–9 and Weeks 11–14.\nStudents are expected to attend and participate regularly because debugging, interpretation, and statistical judgment are learned through practice. Attendance and participation account for 20% of the final grade. Absences covered by an approved academic concession, accommodation, or other recognized circumstance will be handled in accordance with UBC policy. Students who anticipate or experience an extended absence should contact the instructor as early as possible.\n\nWeekly Assignments — 50%\nThere are ten graded assignments, each worth 5%, for a total of 50% of the final grade.\nEach assignment asks students to submit four connected products:\n\nworking and understandable R code;\nan appropriate statistical analysis;\none or more purposeful visualizations; and\na concise written interpretation tied to the anthropological research question.\n\nStudents may discuss code and statistical ideas with classmates during class unless instructed otherwise, but each student must understand the analysis and submit an independently written report.\nAssignments are normally due one week after they are distributed. Exact dates and any necessary adjustments will be posted on Canvas.\n\n\nResearch Project — 30%\nThe research project asks students to carry an analysis from a published archaeological or anthropological study and its original data through a transparent and reproducible workflow. Unlike the weekly assignments, where datasets are curated for teaching, the project requires students to make and document more of their own analytical decisions while remaining within statistical methods appropriate to an introductory course.\nThe project will include the following steps:\n\nSelect a published case study from a list provided by the instructor, or propose another case with an accessible original dataset subject to approval.\nDefine one or more research questions that can be evaluated with the available data and methods learned in this course.\nObtain and document the dataset, identify the unit of analysis, create or revise a codebook, and prepare the data for analysis.\nWrite a reproducible R workflow that carries out the necessary data preparation and statistical analysis.\nProduce clear visualizations of the data and, where appropriate, statistical estimates, uncertainty, or model results.\nEvaluate assumptions, uncertainty, effect size, data quality, dependence, and other limitations.\nCompare the statistical findings with the interpretation in the published study where appropriate. Students are not expected to reproduce advanced methods that lie outside the course; instead, they should clearly distinguish their ANTH418-level analysis from the fuller analysis in the publication.\nProduce a clear Quarto report that integrates prose, code, tables, figures, results, and references.\n\nSuitable public or course-supported data sources may include p3k14c, XRONOS, D-PLACE, Seshat, Kinbank, Cliopatria, the Comparative Archaeology Database when its relevant datasets are available, and the public repositories or journal supplements associated with the weekly case studies.\nStudents must verify that the chosen data are appropriate to their research question and that any dependence, repeated observations, spatial structure, or temporal structure is acknowledged.\nProject outline: A 100–200 word outline identifying the case study, dataset, and proposed research question(s) is due Monday, 9 November 2026.\nFinal report: Approximately 10–12 pages, excluding references and data/code appendices, following the citation style of either American Anthropologist or American Antiquity. The report must be rendered to PDF from Quarto and should include enough executable R code and documentation for the analysis to be reproduced.\nSubmit the PDF together with the .qmd file, dataset(s), codebook/README, and any other files necessary to reproduce the analysis in a single ZIP file via Canvas by Friday, 11 December 2026.\nThe project will be evaluated on:\n\ndata provenance and documentation;\nclarity and reproducibility of the R code;\nappropriateness and accuracy of the statistical analysis;\nquality of data and result visualizations;\ninterpretation of effect size and uncertainty;\ntreatment of assumptions and limitations;\nquality of archaeological or anthropological interpretation;\nclarity and organization; and\nproper citation and attribution."
+  },
+  {
+    "objectID": "syllabus.html#grading",
+    "href": "syllabus.html#grading",
+    "title": "Course Syllabus · 2026–2027 (Term 1)",
+    "section": "Grading",
+    "text": "Grading\n\n\n\nComponent\nWeight\n\n\n\n\nClass attendance and participation\n20%\n\n\nWeekly assignments\n50%\n\n\nResearch project\n30%\n\n\nTotal\n100%"
+  },
+  {
+    "objectID": "syllabus.html#policy-on-the-use-of-generative-artificial-intelligence",
+    "href": "syllabus.html#policy-on-the-use-of-generative-artificial-intelligence",
+    "title": "Course Syllabus · 2026–2027 (Term 1)",
+    "section": "Policy on the Use of Generative Artificial Intelligence",
+    "text": "Policy on the Use of Generative Artificial Intelligence\nGenerative artificial intelligence (GenAI), including large language models and systems that generate text, code, images, audio, or other content, is now part of the intellectual environment in which quantitative research and learning take place. This course therefore aims to teach students not simply whether AI can be used, but when it contributes to learning and when it interferes with it.\n\nGuiding principle: augmentation rather than automation.\n\nGenAI can be useful when it helps you ask a better question, clarify a statistical concept, understand an error message, debug code you have attempted, compare alternative analytical choices, test an interpretation, or identify weaknesses in reasoning or writing. It becomes counterproductive when it performs the statistical, programming, interpretive, or writing work that you are expected to learn to do yourself.\n\nPermitted Use by Activity\nWeekly assignments: GenAI may be used to clarify concepts, explain error messages, help debug code after you have attempted the task, suggest alternative plots or analysis strategies, or provide feedback on writing you have already produced. It may not replace the assigned analysis, produce an entire solution for submission, or substitute for your own interpretation of statistical output.\nResearch project: GenAI may assist with brainstorming, refining a research question, debugging, exploring possible analytical approaches, organizing a workflow, or providing feedback on a draft. It may not substitute for locating and evaluating scholarly sources, documenting or cleaning the data, creating the codebook, selecting and justifying methods, interpreting results, verifying references, or authoring the report.\nIn-class exercises or designated activities: Some activities may be AI-free when the purpose is to practice coding, interpretation, or statistical reasoning independently. Any such restriction will be stated by the instructor.\nStudents remain responsible for the accuracy, integrity, reproducibility, and authorship of everything they submit. You must be able to explain any R code, statistical procedure, output, figure, interpretation, or written argument included in your work.\n\n\nAccuracy, Verification, and Disclosure\nGenAI can produce plausible but incorrect statistical explanations, faulty R code, invented functions or packages, fabricated references, and oversimplified interpretations. Important claims must therefore be checked against original scholarly sources, course materials, R documentation, the actual dataset, and the statistical output generated by your own analysis.\nGenAI output should not be treated as anthropological evidence or scholarly authority. When AI-generated material is itself quoted, reproduced, or analyzed as an object of study, its source should be identified in accordance with UBC guidance. Otherwise, permitted GenAI use should normally be disclosed through a brief AI Use Statement rather than cited as scholarship.\nWhen GenAI materially contributes to submitted work in a context where its use is permitted, include a short statement at the end of the assignment or project identifying the tool, what it was used for, and how its suggestions were checked or revised. Full chat transcripts are not normally required, but students should retain relevant prompts and drafts in case clarification of the work process is needed.\n\nExample AI Use Statement:\n“I used [tool] to help interpret two R error messages and to suggest alternative ways to code a plot. I checked the suggested code against the course dataset and R documentation, revised it, and independently interpreted the final output.”\n\nUndisclosed or unauthorized use of GenAI that substitutes for work a student is expected to perform may constitute academic misconduct.\n\n\nPrivacy, Access, and Instructor Use\nDo not upload confidential information, restricted archaeological or anthropological data, culturally sensitive material, unpublished work belonging to others, student work, or any other information you are not authorized to share with a commercial GenAI system. Exercise similar caution with copyrighted books, articles, lecture slides, datasets, or other course materials.\nNo student is required to purchase a paid AI subscription for this course. All required coursework can be completed using course resources, R/RStudio, documentation, readings, office hours, and other permitted forms of assistance.\nThe instructor may use GenAI as a support tool in preparing teaching materials or routine course administration while remaining responsible for the accuracy, appropriateness, and academic judgment of all course content. Student work will not be submitted to external GenAI systems for assessment or analysis unless the system and use have been approved under applicable UBC privacy requirements. Final grading and substantive evaluation remain the responsibility of the instructor.\nAI-detection software will not, by itself, be treated as sufficient evidence of academic misconduct. Questions about authorship or AI use may instead be addressed by discussing a student’s sources, reasoning, code, drafts, prompts where relevant, and analytical process.\nIf you are uncertain whether a particular use of GenAI is permitted, ask the instructor before submitting the work.\nPlease read UBC’s guidelines of Learning With GenAI."
+  },
+  {
+    "objectID": "syllabus.html#academic-concession-and-accommodation-for-students",
+    "href": "syllabus.html#academic-concession-and-accommodation-for-students",
+    "title": "Course Syllabus · 2026–2027 (Term 1)",
+    "section": "Academic Concession and Accommodation for Students",
+    "text": "Academic Concession and Accommodation for Students\nRequests for extensions or other academic concessions will be considered in accordance with UBC and Faculty of Arts academic-concession policies. Students should contact the instructor as early as reasonably possible when circumstances affect their ability to complete coursework by a stated deadline.\nIf you miss marked coursework and are an Arts student, review the Faculty of Arts’ academic concession page and then complete Arts Academic Advising’s online academic concession form, so that an advisor can evaluate your concession case.\nIf you are a student in a different Faculty, please consult your Faculty’s webpage on academic concession, and then contact the instructor where appropriate.\nAcademic accommodations reduce barriers in the learning environment for students with disabilities or ongoing medical conditions. Students requiring academic accommodations must register with the Centre for Accessibility, which determines students’ eligibility in accordance with Policy LR7: Disability Accommodation Policy. Instructors are responsible for implementing approved accommodations in consultation with the Centre where necessary.\nStudents are not required to disclose the nature of a disability or ongoing medical condition to the instructor, and instructors should not request disability documentation. Students requiring accommodations should register with the Centre for Accessibility and provide their accommodation letter as early as possible."
+  },
+  {
+    "objectID": "syllabus.html#academic-integrity",
+    "href": "syllabus.html#academic-integrity",
+    "title": "Course Syllabus · 2026–2027 (Term 1)",
+    "section": "Academic Integrity",
+    "text": "Academic Integrity\nAcademic integrity is essential to the work of this course and to participation in the UBC academic community. Students are responsible for submitting work that represents their own learning and for appropriately acknowledging sources and permitted assistance.\nUnauthorized collaboration, plagiarism, cheating, falsification, or unauthorized use of generative AI may constitute academic misconduct. If you receive assistance from a tutor or another person, you remain responsible for ensuring that the assistance stays within the limits permitted for the assignment.\nIf you are uncertain about what is permitted for an assignment, consult the instructor before submitting your work.\nPlease consult the UBC Academic Calendar’s Academic Misconduct regulations for the University’s expectations and procedures."
+  },
+  {
+    "objectID": "syllabus.html#suggestions",
+    "href": "syllabus.html#suggestions",
+    "title": "Course Syllabus · 2026–2027 (Term 1)",
+    "section": "Suggestions",
+    "text": "Suggestions\nStudents are strongly encouraged to make suggestions about the pace, examples, readings, assignments, or other aspects of the course. Feedback is especially welcome when a statistical concept or R workflow would benefit from another explanation or more practice."
+  },
+  {
+    "objectID": "syllabus.html#week-1-9-september-2026",
+    "href": "syllabus.html#week-1-9-september-2026",
+    "title": "Course Syllabus · 2026–2027 (Term 1)",
+    "section": "Week 1 — 9 September 2026",
+    "text": "Week 1 — 9 September 2026\n\nIntroduction: Why Quantitative Anthropology?\nTopics\n\nWhat statistics can and cannot do in anthropology\nStatistical thinking, evidence, uncertainty, and interpretation\nComputational anthropology and reproducibility\nCourse workflow and expectations\n\nReadings\nRequired: Breslin, Samantha, and Kristoffer Albris.\n2026. Computational Anthropology. In Handbook of Digital and Computational Research Methods, edited by Anders Koed Madsen and Anders Kristian Munk, pp. 48–64. Edward Elgar Publishing Limited, United Kingdom.\nRequired: Vaiglova, Petra.\n2025. How Can We Improve Statistical Training in Archaeological Science? Journal of Archaeological Science 179:106220.\nChibnik, Michael.\n2025. Counting: Numerical Evidence in Anthropology and Other Fields. Journal of Anthropological Research 81(4):491–511.\nMarwick, Ben.\n2025. Is Archaeology a Science? Insights and Imperatives from 10,000 Articles and a Year of Reproducibility Reviews. Journal of Archaeological Science 180:106281.\nPaff, Stephen.\n2022. Anthropology by Data Science. Annals of Anthropological Practice 46(1):7–18.\nPreparation\nInstall R, RStudio, and Quarto (Quarto for Scientists; Welcome to Quarto®)."
+  },
+  {
+    "objectID": "syllabus.html#week-2-14-16-september-2026",
+    "href": "syllabus.html#week-2-14-16-september-2026",
+    "title": "Course Syllabus · 2026–2027 (Term 1)",
+    "section": "Week 2 — 14 & 16 September 2026",
+    "text": "Week 2 — 14 & 16 September 2026\n\nUsing R, RStudio, and Quarto\nTopics\n\nR objects, vectors, data frames, and functions\nRStudio projects\nImporting and inspecting tabular data\ntidyverse basics\nQuarto documents and reproducible reporting\nFirst encounter with a real archaeological dataset\n\nReadings\nRequired: Perkins, Mark A.\n2026. Using R for Introductory Statistics in Social Sciences. Chapter 2, “Welcome to the R Environment Introduction,” pp. 3–17.\nRequired: Thulin, Måns.\n2025. Modern Statistics with R: From Wrangling and Exploring Data to Inference and Predictive Modelling. 2nd ed. Chapman and Hall/CRC, New York. Chapter 1, Introduction, pp. 1–3; Chapter 2, The Basics, pp. 4–57; Chapter 5, Dealing with Messy Data, pp. 158–211; Chapter 6, R Programming, pp. 212–247.\nBeecham, Roger.\n2025. Visualization for Social Data Science. Chapter 1, Introduction, pp. 1–9; Chapter 2, Data Fundamentals, pp. 10–40.\nWickham, Hadley, Mine Çetinkaya-Rundel, and Garrett Grolemund.\n2023. R for Data Science: Import, Tidy, Transform, Visualize, and Model Data. Boston: O’Reilly. https://r4ds.hadley.nz/. Introduction, Whole Game, Import, Chapter 28 Quarto, Chapter 29 Quarto Formats.\nPractice\nUsing Quarto: Get Started; Tutorial: Hello, Quarto; Tutorial: Computations; Tutorial: Authoring.\nImport, inspect, filter, and summarize selected columns from the Knipper et al. dataset. This is an ungraded preparation exercise for Assignment 1."
+  },
+  {
+    "objectID": "syllabus.html#week-3-21-23-september-2026",
+    "href": "syllabus.html#week-3-21-23-september-2026",
+    "title": "Course Syllabus · 2026–2027 (Term 1)",
+    "section": "Week 3 — 21 & 23 September 2026",
+    "text": "Week 3 — 21 & 23 September 2026\n\nResearch Design, Measurement, Data Provenance, and Reproducibility\nTopics\n\nResearch questions and hypotheses\nUnit of analysis\nVariables and measurement scales\nObservation versus proxy\nSampling frame and data-generating process\nMetadata, codebooks, provenance, FAIR data\nComputational reproducibility\n\nReadings\nRequired: Bernard, H. Russell.\n2018. Research Methods in Anthropology: Qualitative and Quantitative Approaches. Lanham: Rowman & Littlefield. Chapter 4, Research Design: Experiments and Experimental Thinking, pp. 83–113; Chapter 15, Introduction to Qualitative and Quantitative Analysis, pp. 354–361.\nRequired: Vaesen, Krist, and Shumon T. Hussain.\n2026. The Perks and Perils of Replicability. American Antiquity 91(2):437–444.\nMarwick, Ben.\n2017. Computational Reproducibility in Archaeological Research: Basic Principles and a Case Study of Their Implementation. Journal of Archaeological Method and Theory 24(2):424–450.\nReiter, Samantha S., Robert Staniuk, Jan Kolář, Jelena Bulatović, Helene Agerskov Rose, Natalia E. Ryabogina, Claudia Speciale, et al.\n2024. The BIAD Standards: Recommendations for Archaeological Data Publication and Insights From the Big Interdisciplinary Archaeological Database. Open Archaeology 10(1):269–279.\nPractice\nResearch-design lab: What does one row represent? Compare archaeological observations, laboratory determinations, contexts, sites, and inferred behavioral events."
+  },
+  {
+    "objectID": "syllabus.html#week-4-28-september-2026",
+    "href": "syllabus.html#week-4-28-september-2026",
+    "title": "Course Syllabus · 2026–2027 (Term 1)",
+    "section": "Week 4 — 28 September 2026",
+    "text": "Week 4 — 28 September 2026\n\nMeasures of Central Tendency and Dispersion\nAssignment 1: Bronze Age Diet and Farming at La Bastida and Gatas\nTopics\n\nMean, median, mode\nRange, IQR, variance, standard deviation\nRobust versus non-robust summaries\nGrouped descriptive statistics\nLinking numerical summaries to archaeological questions\n\nReadings\nRequired: Perkins, Mark A.\n2026. Using R for Introductory Statistics in Social Sciences. Springer, Switzerland. Chapter 3, Statistical Concepts, pp. 19–37; Chapter 4, Running Descriptive Statistics and Frequencies in R, pp. 39–51.\nRequired: Lukesh, S. S., and S. Howe.\n1978. Protoapennine vs. Subapennine: Mathematical Distinction Between Two Ceramic Phases. Journal of Field Archaeology 5:339–347.\nCarlson, David Lee.\n2017. Quantitative Methods in Archaeology Using R. Cambridge University Press, Cambridge. Chapter 3, Looking at Data – Numerical Summaries, pp. 36–64.\nLlull, Vicente, Jordi Voltas Velasco, Robert Risch, Kurt W. Alt, Rafael Micó Pérez, Cristina Rihuete Herrada, Corina Knipper, and Petra Held.\n2020. Reconstructing Bronze Age Diets and Farming Strategies at the Early Bronze Age Sites of La Bastida and Gatas (Southeast Iberia) Using Stable Isotope Analysis. PLOS ONE 15(3):e0229398."
+  },
+  {
+    "objectID": "syllabus.html#week-5-5-7-october-2026",
+    "href": "syllabus.html#week-5-5-7-october-2026",
+    "title": "Course Syllabus · 2026–2027 (Term 1)",
+    "section": "Week 5 — 5 & 7 October 2026",
+    "text": "Week 5 — 5 & 7 October 2026\n\nExploratory Data Analysis and Visualization\nAssignment 2: Kinbank\nTopics\n\nExploratory data analysis\nCategorical and numerical variables\nBar charts, histograms, boxplots, and faceting\nVisual comparison across groups\nChoosing graphics that match the measurement scale\nDescription versus inference\nNon-independence in cross-cultural data\n\nReadings\nRequired: Beecham, Roger.\n2026. Visualization for Social Data Science. CRC Press, Milton. Chapter 3, Visualization Fundamentals, pp. 41–71; Chapter 4, Exploratory Data Analysis, pp. 73–96.\nRequired: Thulin, Måns.\n2025. Modern Statistics with R: From Wrangling and Exploring Data to Inference and Predictive Modelling. Chapman and Hall/CRC, New York. Chapter 4, Exploratory Data Analysis and Unsupervised Learning, pp. 98–157.\nPeterson, Christian E., C. Adam Berrey, and Robert D. Drennan.\n2026. Comparative Archaeology Reveals Recurrent but Nondeterministic Pathways through Complexification. Proceedings of the National Academy of Sciences 123(31):e2610959123.\nWickham, Hadley, Mine Çetinkaya-Rundel, and Garrett Grolemund.\n2023. R for Data Science: Import, Tidy, Transform, Visualize, and Model Data. Boston: O’Reilly. Visualize."
+  },
+  {
+    "objectID": "syllabus.html#week-6-14-october-2026",
+    "href": "syllabus.html#week-6-14-october-2026",
+    "title": "Course Syllabus · 2026–2027 (Term 1)",
+    "section": "Week 6 — 14 October 2026",
+    "text": "Week 6 — 14 October 2026\n\nTransformations, Missing Values, and Analytical Decisions\nAssignment 3: Missing Data in the Seshat Moralizing Gods Debate\nTopics\n\nMissing values in R\nNA versus a recorded zero\nComplete-case analysis\nRecoding and sensitivity analysis\nWhy analytical decisions can change substantive conclusions\nIntroduction to transformations and why they may be needed\n\nReadings\nRequired: Carlson, David Lee.\n2017. Quantitative Methods in Archaeology Using R. Cambridge University Press, Cambridge. Chapter 6, Transformations, pp. 126–143; Chapter 7, Missing Values, pp. 144–158.\nRequired: Thulin, Måns.\n2025. Modern Statistics with R: From Wrangling and Exploring Data to Inference and Predictive Modelling. Chapman and Hall/CRC, New York. Chapter 5, Dealing with Messy Data, pp. 158–211.\nBeheim, Bret, Quentin D. Atkinson, Joseph Bulbulia, et al.\n2021. Treatment of Missing Data Determined Conclusions Regarding Moralizing Gods. Nature 595:E29–E34.\nKirby, Kathryn R., Russell D. Gray, Simon J. Greenhill, et al.\n2016. D-PLACE: A Global Database of Cultural, Linguistic and Environmental Diversity. PLOS ONE 11(7):e0158391."
+  },
+  {
+    "objectID": "syllabus.html#week-7-19-21-october-2026",
+    "href": "syllabus.html#week-7-19-21-october-2026",
+    "title": "Course Syllabus · 2026–2027 (Term 1)",
+    "section": "Week 7 — 19 & 21 October 2026",
+    "text": "Week 7 — 19 & 21 October 2026\n\nProbability, Sampling, and Sampling Distributions\nAssignment 4: p3k14c Archaeological Radiocarbon Database\nTopics\n\nProbability as long-run frequency\nPopulation, sample, parameter, statistic\nRandom sampling\nSampling distributions\nStandard error\nSample size versus sample quality\nSelection bias and representativeness\nDates-as-data in archaeology\n\nReadings\nRequired: Bernard, H. Russell.\n2018. Research Methods in Anthropology: Qualitative and Quantitative Approaches. Lanham: Rowman & Littlefield. Chapter 5, Sampling I: the Basics, pp. 114–130; Chapter 6, Sampling II: Theory, pp. 131–144; Chapter 7, Sampling III: Nonprobability Samples and Choosing Informants, pp. 145–162.\nRequired: Thulin, Måns.\n2025. Modern Statistics with R: From Wrangling and Exploring Data to Inference and Predictive Modelling. Chapman and Hall/CRC, New York. Chapter 7, The Role of Simulation in Modern Statistics, pp. 248–273.\nBird, Darcy, Lux Miranda, Marc Vander Linden, Erick Robinson, R. Kyle Bocinsky, Chris Nicholson, José M. Capriles, et al.\n2022. P3k14c, a Synthetic Global Database of Archaeological Radiocarbon Dates. Scientific Data 9(1):27.\nGroßmann, Ralph, Mara Weinelt, and Johannes Müller.\n2023. Demographic Dynamics between 5500 and 3500 calBP (3550–1550 BCE) in Selected Study Regions of Central Europe and the Role of Regional Climate Influences. PLOS ONE 18(10):e0291956."
+  },
+  {
+    "objectID": "syllabus.html#week-8-26-28-october-2026",
+    "href": "syllabus.html#week-8-26-28-october-2026",
+    "title": "Course Syllabus · 2026–2027 (Term 1)",
+    "section": "Week 8 — 26 & 28 October 2026",
+    "text": "Week 8 — 26 & 28 October 2026\n\nConfidence Intervals and Hypothesis Testing\nAssignment 5: Teotihuacan Leporid Management\nTopics\n\nPoint estimate versus interval estimate\nBootstrap confidence intervals\nNull hypotheses\nPermutation tests\nNull distributions\np-values as tail probabilities under a null model\nStatistical versus archaeological significance\n\nReadings\nRequired: Carlson, David Lee.\n2017. Quantitative Methods in Archaeology Using R. Cambridge University Press, Cambridge. Chapter 8.2, Confidence Intervals, pp. 162–168; Chapter 8.3, Hypothesis Testing, pp. 169–170.\nRequired: Thulin, Måns.\n2024. Modern Statistics with R: From Wrangling and Exploring Data to Inference and Predictive Modelling. 2nd ed. Chapman and Hall/CRC, New York. Chapter 3.3, Hypothesis Testing and p-values, pp. 63–69; Chapter 3.3, Confidence Intervals, pp. 73–75.\nBeecham, Roger.\n2025. Visualization for Social Data Science. Chapter 7, Uncertainty, pp. 147–165.\nSomerville, Andrew D., Nawa Sugiyama, Linda R. Manzanilla, and Margaret J. Schoeninger.\n2016. Animal Management at the Ancient Metropolis of Teotihuacan, Mexico: Stable Isotope Analysis of Leporid (Cottontail and Jackrabbit) Bone Mineral. PLOS ONE 11(8):e0159982."
+  },
+  {
+    "objectID": "syllabus.html#week-9-2-4-november-2026",
+    "href": "syllabus.html#week-9-2-4-november-2026",
+    "title": "Course Syllabus · 2026–2027 (Term 1)",
+    "section": "Week 9 — 2 & 4 November 2026",
+    "text": "Week 9 — 2 & 4 November 2026\n\nComparing Two Groups: t-tests\nAssignment 6: Tell Tweini\nTopics\n\nComparing two means\nIndependent samples\nWelch’s t-test\nAssumptions and robustness\nConfidence interval for a difference\nEffect size and substantive interpretation\nParametric versus non-parametric alternatives\n\nReadings\nRequired: Carlson, David Lee.\n2017. Quantitative Methods in Archaeology Using R. Cambridge University Press, Cambridge. Chapter 8.4, Comparing Two Samples, pp. 171–177.\nRequired: Perkins, Mark A.\n2026. Using R for Introductory Statistics in Social Sciences. Springer, Switzerland. Chapter 7, Group Comparisons with Scale Dependent Variables, pp. 85–111.\nThulin, Måns.\n2024. Modern Statistics with R: From Wrangling and Exploring Data to Inference and Predictive Modelling. Chapman and Hall/CRC, New York. Chapter 3.6, Comparing Mean Values, pp. 76–83.\nFuller, Benjamin T., Simone Riehl, Veerle Linseele, Elena Marinova, Bea De Cupere, Joachim Bretschneider, Michael P. Richards, and Wim Van Neer.\n2024. Agropastoral and Dietary Practices of the Northern Levant Facing Late Holocene Climate and Environmental Change: Isotopic Analysis of Plants, Animals and Humans from Bronze to Iron Age Tell Tweini. PLOS ONE 19(6):e0301775."
+  },
+  {
+    "objectID": "syllabus.html#week-10-9-11-november-2026",
+    "href": "syllabus.html#week-10-9-11-november-2026",
+    "title": "Course Syllabus · 2026–2027 (Term 1)",
+    "section": "Week 10 — 9 & 11 November 2026",
+    "text": "Week 10 — 9 & 11 November 2026\n\nMidterm Break"
+  },
+  {
+    "objectID": "syllabus.html#week-11-16-18-november-2026",
+    "href": "syllabus.html#week-11-16-18-november-2026",
+    "title": "Course Syllabus · 2026–2027 (Term 1)",
+    "section": "Week 11 — 16 & 18 November 2026",
+    "text": "Week 11 — 16 & 18 November 2026\n\nChi-Square and Tests of Proportions\nAssignment 7: Lithic Raw Materials in Highland Lesotho\nTopics\n\nCounts and proportions\nContingency tables\nObserved versus expected counts\nChi-square test of independence\nStandardized residuals\nFisher’s exact test\nAssociation versus causation\n\nReadings\nRequired: Carlson, David Lee.\n2017. Quantitative Methods in Archaeology Using R. Cambridge University Press, Cambridge. Chapter 9.1, Categorical Data, pp. 190–197.\nRequired: Perkins, Mark A.\n2026. Using R for Introductory Statistics in Social Sciences. Springer, Switzerland. Chapter 6, The Chi-Square Family of Tests, pp. 73–84.\nGregory, Alex, Peter Mitchell, and Justin Pargeter.\n2023. Raw Material Surveys and Their Behavioral Implications in Highland Lesotho. Journal of Paleolithic Archaeology 6(1)."
+  },
+  {
+    "objectID": "syllabus.html#week-12-23-25-november-2026",
+    "href": "syllabus.html#week-12-23-25-november-2026",
+    "title": "Course Syllabus · 2026–2027 (Term 1)",
+    "section": "Week 12 — 23 & 25 November 2026",
+    "text": "Week 12 — 23 & 25 November 2026\n\nAnalysis of Variance\nAssignment 8: Roman-Period Iron-Smelting Geochemistry\nTopics\n\nComparing more than two group means\nBetween-group and within-group variability\nThe F statistic\nOne-way ANOVA\nAssumptions\nPost-hoc comparisons\nTukey HSD\nData quality and legacy datasets\n\nReadings\nRequired: Carlson, David Lee.\n2017. Quantitative Methods in Archaeology Using R. Cambridge University Press, Cambridge. Chapter 8.5, Comparing More Than Two Samples, pp. 178–189.\nRequired: Perkins, Mark A.\n2026. Using R for Introductory Statistics in Social Sciences. Springer, Switzerland. Chapter 7, Group Comparisons with Scale Dependent Variables, pp. 85–111.\nŻabiński, Grzegorz, Jarosław Gramacki, Artur Gramacki, Ivan S. Stepanov, and Marcin Woźniak.\n2023. Old Wine into New Wineskins? “Legacy Data” in Research on Roman Period East Germanic Iron Smelting. PLOS ONE 18(10):e0289771."
+  },
+  {
+    "objectID": "syllabus.html#week-13-30-november-2-december-2026",
+    "href": "syllabus.html#week-13-30-november-2-december-2026",
+    "title": "Course Syllabus · 2026–2027 (Term 1)",
+    "section": "Week 13 — 30 November & 2 December 2026",
+    "text": "Week 13 — 30 November & 2 December 2026\n\nMeasures of Association\nAssignment 9: Hawaiian Kukui Isotopes\nTopics\n\nScatterplots\nCovariance and correlation\nPearson’s r\nSpearman’s rank correlation\nr and r²\nOutliers and nonlinear patterns\nCorrelation versus causal explanation\nEnvironmental thresholds\n\nReadings\nRequired: Carlson, David Lee.\n2017. Quantitative Methods in Archaeology Using R. Cambridge University Press, Cambridge. Chapter 9.2, Numeric Data – Association, pp. 198–203.\nRequired: Perkins, Mark A.\n2026. Using R for Introductory Statistics in Social Sciences. Springer, Switzerland. Chapter 9, Correlation and Regression Modeling, pp. 143–177.\nLincoln, Noa Kekuewa, Mark D. McCoy, and Thegn N. Ladefoged.\n2018. Stable Carbon and Nitrogen Isotopes in Kukui (Aleurites moluccanus) Endocarp along Rainfall and Elevation Gradients: Archaeological Implications. PLOS ONE 13(10):e0204654."
+  },
+  {
+    "objectID": "syllabus.html#week-14-7-december-2026",
+    "href": "syllabus.html#week-14-7-december-2026",
+    "title": "Course Syllabus · 2026–2027 (Term 1)",
+    "section": "Week 14 — 7 December 2026",
+    "text": "Week 14 — 7 December 2026\n\nRegression Analysis\nAssignment 10: Predicting Flake Mass\nTopics\n\nRegression as a model of conditional expectation\nResponse and predictor variables\nIntercept and slope\nLeast squares\nFitted values and residuals\nR²\nTransformations\nPrediction versus explanation\nLimits of extrapolation\n\nReadings\nRequired: Carlson, David Lee.\n2017. Quantitative Methods in Archaeology Using R. Cambridge University Press, Cambridge. Chapter 9.3, Numeric Data – Regression, pp. 204–216.\nRequired: Perkins, Mark A.\n2026. Using R for Introductory Statistics in Social Sciences. Springer, Switzerland. Chapter 9, Correlation and Regression Modeling, pp. 143–177.\nThulin, Måns.\n2024. Modern Statistics with R: From Wrangling and Exploring Data to Inference and Predictive Modelling. Chapman and Hall/CRC, New York. Chapter 8, Regression Models, pp. 274–224.\nBustos-Pérez, Guillermo, and Javier Baena.\n2021. Predicting Flake Mass: A View from Machine Learning. Lithic Technology 46(2):130–142."
+  },
+  {
+    "objectID": "syllabus.html#final-research-project",
+    "href": "syllabus.html#final-research-project",
+    "title": "Course Syllabus · 2026–2027 (Term 1)",
+    "section": "Final Research Project",
+    "text": "Final Research Project\nDue Friday, 11 December 2026."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "ANTH418: Anthropological Statistics",
+    "section": "",
+    "text": "Welcome to ANTH418: Anthropological Statistics.\nThis course develops practical statistical thinking for archaeology and anthropology through real research datasets, R, RStudio, and Quarto."
+  },
+  {
+    "objectID": "index.html#start-here",
+    "href": "index.html#start-here",
+    "title": "ANTH418: Anthropological Statistics",
+    "section": "Start here",
+    "text": "Start here\n\nCourse Syllabus\nWeek 2 Study Guide\nAssignments\nR, RStudio & Quarto Resources"
+  },
+  {
+    "objectID": "index.html#course-platforms",
+    "href": "index.html#course-platforms",
+    "title": "ANTH418: Anthropological Statistics",
+    "section": "Course platforms",
+    "text": "Course platforms\nThis website contains study guides, readings, assignment materials, datasets, and reproducible computational resources.\nCanvas remains the official location for announcements, deadlines, assignment submissions, grades, and individual course communications."
+  },
+  {
+    "objectID": "lecture-notes/index.html",
+    "href": "lecture-notes/index.html",
+    "title": "Lecture Notes",
+    "section": "",
+    "text": "Each Monday lecture introduces the main statistical concepts and methods for the week.\nThe lecture notes are distributed through Canvas. The links below take you directly to the corresponding lecture materials.\nThe Wednesday Study Guides and practice materials are available separately under Study Guides."
+  },
+  {
+    "objectID": "lecture-notes/index.html#week-1-introduction",
+    "href": "lecture-notes/index.html#week-1-introduction",
+    "title": "Lecture Notes",
+    "section": "Week 1 — Introduction",
+    "text": "Week 1 — Introduction\nMonday lecture: Introduction to Anthropological Statistics\nOpen Week 1 Introduction"
+  },
+  {
+    "objectID": "lecture-notes/index.html#week-2-using-r-rstudio-and-quarto",
+    "href": "lecture-notes/index.html#week-2-using-r-rstudio-and-quarto",
+    "title": "Lecture Notes",
+    "section": "Week 2 — Using R, RStudio, and Quarto",
+    "text": "Week 2 — Using R, RStudio, and Quarto\nMonday lecture: Using R, RStudio, and Quarto\nOpen Week 2 Using R, RStudio, and Quarto\nOpen Week 2 Study Guide"
+  },
+  {
+    "objectID": "lecture-notes/index.html#week-3-variables-measurement-and-research-design",
+    "href": "lecture-notes/index.html#week-3-variables-measurement-and-research-design",
+    "title": "Lecture Notes",
+    "section": "Week 3 — Variables, Measurement, and Research Design",
+    "text": "Week 3 — Variables, Measurement, and Research Design\nMonday lecture: Variables, Measurement, and Research Design\nOpen Week 3 Measurement and Research Design"
+  },
+  {
+    "objectID": "lecture-notes/index.html#week-4",
+    "href": "lecture-notes/index.html#week-4",
+    "title": "Lecture Notes",
+    "section": "Week 4",
+    "text": "Week 4\nMonday lecture: To be added\nLecture notes will be posted on Canvas."
+  },
+  {
+    "objectID": "lecture-notes/index.html#week-5",
+    "href": "lecture-notes/index.html#week-5",
+    "title": "Lecture Notes",
+    "section": "Week 5",
+    "text": "Week 5\nLecture notes will be posted on Canvas."
+  },
+  {
+    "objectID": "lecture-notes/index.html#week-6",
+    "href": "lecture-notes/index.html#week-6",
+    "title": "Lecture Notes",
+    "section": "Week 6",
+    "text": "Week 6\nLecture notes will be posted on Canvas."
+  },
+  {
+    "objectID": "lecture-notes/index.html#week-7",
+    "href": "lecture-notes/index.html#week-7",
+    "title": "Lecture Notes",
+    "section": "Week 7",
+    "text": "Week 7\nLecture notes will be posted on Canvas."
+  },
+  {
+    "objectID": "lecture-notes/index.html#week-8",
+    "href": "lecture-notes/index.html#week-8",
+    "title": "Lecture Notes",
+    "section": "Week 8",
+    "text": "Week 8\nLecture notes will be posted on Canvas."
+  },
+  {
+    "objectID": "lecture-notes/index.html#week-9",
+    "href": "lecture-notes/index.html#week-9",
+    "title": "Lecture Notes",
+    "section": "Week 9",
+    "text": "Week 9\nLecture notes will be posted on Canvas."
+  },
+  {
+    "objectID": "lecture-notes/index.html#week-10",
+    "href": "lecture-notes/index.html#week-10",
+    "title": "Lecture Notes",
+    "section": "Week 10",
+    "text": "Week 10\nLecture notes will be posted on Canvas."
+  },
+  {
+    "objectID": "lecture-notes/index.html#week-11",
+    "href": "lecture-notes/index.html#week-11",
+    "title": "Lecture Notes",
+    "section": "Week 11",
+    "text": "Week 11\nLecture notes will be posted on Canvas."
+  },
+  {
+    "objectID": "lecture-notes/index.html#week-12",
+    "href": "lecture-notes/index.html#week-12",
+    "title": "Lecture Notes",
+    "section": "Week 12",
+    "text": "Week 12\nLecture notes will be posted on Canvas."
+  },
+  {
+    "objectID": "lecture-notes/index.html#week-13",
+    "href": "lecture-notes/index.html#week-13",
+    "title": "Lecture Notes",
+    "section": "Week 13",
+    "text": "Week 13\nLecture notes will be posted on Canvas."
+  },
+  {
+    "objectID": "lecture-notes/index.html#week-14",
+    "href": "lecture-notes/index.html#week-14",
+    "title": "Lecture Notes",
+    "section": "Week 14",
+    "text": "Week 14\nLecture notes will be posted on Canvas."
+  },
+  {
+    "objectID": "assignments/index.html",
+    "href": "assignments/index.html",
+    "title": "Assignments",
+    "section": "",
+    "text": "The ten ANTH418 assignments use published archaeological and anthropological datasets.\nEach assignment package contains:\nStudents may browse the materials online or download the complete assignment package as a ZIP file."
+  },
+  {
+    "objectID": "assignments/index.html#assignment-1-describing-human-isotope-variation",
+    "href": "assignments/index.html#assignment-1-describing-human-isotope-variation",
+    "title": "Assignments",
+    "section": "Assignment 1 — Describing Human Isotope Variation",
+    "text": "Assignment 1 — Describing Human Isotope Variation\nStatistical method: Descriptive statistics\nCase study: Bronze Age diet and farming at La Bastida and Gatas\nView Assignment 1 materials\nDownload complete Assignment 1 package"
+  },
+  {
+    "objectID": "assignments/index.html#assignment-2-visualizing-kinship-diversity-with-kinbank",
+    "href": "assignments/index.html#assignment-2-visualizing-kinship-diversity-with-kinbank",
+    "title": "Assignments",
+    "section": "Assignment 2 — Visualizing Kinship Diversity with Kinbank",
+    "text": "Assignment 2 — Visualizing Kinship Diversity with Kinbank\nStatistical method: Exploratory data analysis and visualization\nCase study: Cross-linguistic variation in kinship terminology using Kinbank\nView Assignment 2 materials\nDownload complete Assignment 2 package"
+  },
+  {
+    "objectID": "assignments/index.html#assignment-3-missing-data-in-the-seshat-moralizing-gods-debate",
+    "href": "assignments/index.html#assignment-3-missing-data-in-the-seshat-moralizing-gods-debate",
+    "title": "Assignments",
+    "section": "Assignment 3 — Missing Data in the Seshat Moralizing Gods Debate",
+    "text": "Assignment 3 — Missing Data in the Seshat Moralizing Gods Debate\nStatistical method: Missing-data analysis and sensitivity analysis\nCase study: Treatment of missing observations in the Seshat moralizing-gods debate\nView Assignment 3 materials\nDownload complete Assignment 3 package"
+  },
+  {
+    "objectID": "assignments/index.html#assignment-4-sampling-archaeological-radiocarbon-data",
+    "href": "assignments/index.html#assignment-4-sampling-archaeological-radiocarbon-data",
+    "title": "Assignments",
+    "section": "Assignment 4 — Sampling Archaeological Radiocarbon Data",
+    "text": "Assignment 4 — Sampling Archaeological Radiocarbon Data\nStatistical method: Sampling distributions, precision, and sampling bias\nCase study: Southern California archaeological radiocarbon determinations from p3k14c\nView Assignment 4 materials\nDownload complete Assignment 4 package"
+  },
+  {
+    "objectID": "assignments/index.html#assignment-5-statistical-inference-at-teotihuacan",
+    "href": "assignments/index.html#assignment-5-statistical-inference-at-teotihuacan",
+    "title": "Assignments",
+    "section": "Assignment 5 — Statistical Inference at Teotihuacan",
+    "text": "Assignment 5 — Statistical Inference at Teotihuacan\nStatistical method: Bootstrap confidence intervals and permutation tests\nCase study: Leporid stable-isotope variation at Teotihuacan\nView Assignment 5 materials\nDownload complete Assignment 5 package"
+  },
+  {
+    "objectID": "assignments/index.html#assignment-6-comparing-groups-at-tell-tweini",
+    "href": "assignments/index.html#assignment-6-comparing-groups-at-tell-tweini",
+    "title": "Assignments",
+    "section": "Assignment 6 — Comparing Groups at Tell Tweini",
+    "text": "Assignment 6 — Comparing Groups at Tell Tweini\nStatistical method: Independent-samples t-test and effect size\nCase study: Middle Bronze Age and Late Bronze Age plant-isotope comparison at Tell Tweini\nView Assignment 6 materials\nDownload complete Assignment 6 package"
+  },
+  {
+    "objectID": "assignments/index.html#assignment-7-raw-material-variation-in-highland-lesotho",
+    "href": "assignments/index.html#assignment-7-raw-material-variation-in-highland-lesotho",
+    "title": "Assignments",
+    "section": "Assignment 7 — Raw-Material Variation in Highland Lesotho",
+    "text": "Assignment 7 — Raw-Material Variation in Highland Lesotho\nStatistical method: Chi-square test of independence\nCase study: Lithic raw-material composition across archaeological layers in Highland Lesotho\nView Assignment 7 materials\nDownload complete Assignment 7 package"
+  },
+  {
+    "objectID": "assignments/index.html#assignment-8-comparing-iron-geochemistry-with-anova",
+    "href": "assignments/index.html#assignment-8-comparing-iron-geochemistry-with-anova",
+    "title": "Assignments",
+    "section": "Assignment 8 — Comparing Iron Geochemistry with ANOVA",
+    "text": "Assignment 8 — Comparing Iron Geochemistry with ANOVA\nStatistical method: One-way ANOVA, post-hoc comparison, and robustness checks\nCase study: Roman-period iron-smelting geochemistry\nView Assignment 8 materials\nDownload complete Assignment 8 package"
+  },
+  {
+    "objectID": "assignments/index.html#assignment-9-hawaiian-kukui-isotopes",
+    "href": "assignments/index.html#assignment-9-hawaiian-kukui-isotopes",
+    "title": "Assignments",
+    "section": "Assignment 9 — Hawaiian Kukui Isotopes",
+    "text": "Assignment 9 — Hawaiian Kukui Isotopes\nStatistical method: Correlation and measures of association\nCase study: Kukui δ13C variation along elevation and rainfall gradients in Hawaiʻi\nView Assignment 9 materials\nDownload complete Assignment 9 package"
+  },
+  {
+    "objectID": "assignments/index.html#assignment-10-predicting-flake-mass",
+    "href": "assignments/index.html#assignment-10-predicting-flake-mass",
+    "title": "Assignments",
+    "section": "Assignment 10 — Predicting Flake Mass",
+    "text": "Assignment 10 — Predicting Flake Mass\nStatistical method: Simple linear regression\nCase study: Predicting experimental flake mass from mean flake thickness\nView Assignment 10 materials\nDownload complete Assignment 10 package"
+  },
+  {
+    "objectID": "resources/getting-started.html",
+    "href": "resources/getting-started.html",
+    "title": "Getting Started with ANTH418",
+    "section": "",
+    "text": "ANTH418 uses three main tools:\n\nR — the statistical computing language;\nRStudio Desktop — the environment in which we organize and run most R work;\nQuarto — the publishing system that combines prose, code, results, figures, tables, and citations.\n\nYou will also use the tidyverse, a collection of R packages for importing, transforming, summarizing, and visualizing data."
+  },
+  {
+    "objectID": "resources/getting-started.html#what-you-need",
+    "href": "resources/getting-started.html#what-you-need",
+    "title": "Getting Started with ANTH418",
+    "section": "",
+    "text": "ANTH418 uses three main tools:\n\nR — the statistical computing language;\nRStudio Desktop — the environment in which we organize and run most R work;\nQuarto — the publishing system that combines prose, code, results, figures, tables, and citations.\n\nYou will also use the tidyverse, a collection of R packages for importing, transforming, summarizing, and visualizing data."
+  },
+  {
+    "objectID": "resources/getting-started.html#step-1-install-r",
+    "href": "resources/getting-started.html#step-1-install-r",
+    "title": "Getting Started with ANTH418",
+    "section": "Step 1 — Install R",
+    "text": "Step 1 — Install R\nDownload R from the Comprehensive R Archive Network:\nhttps://cran.r-project.org/\nChoose the installer for your operating system and use the standard installation options."
+  },
+  {
+    "objectID": "resources/getting-started.html#step-2-install-rstudio-desktop",
+    "href": "resources/getting-started.html#step-2-install-rstudio-desktop",
+    "title": "Getting Started with ANTH418",
+    "section": "Step 2 — Install RStudio Desktop",
+    "text": "Step 2 — Install RStudio Desktop\nDownload the free RStudio Desktop:\nhttps://posit.co/download/rstudio-desktop/\nInstall the current stable release.\n\n\n\n\n\n\nNoteR must be installed before RStudio\n\n\n\nRStudio provides an interface for working with R, but it does not replace R itself."
+  },
+  {
+    "objectID": "resources/getting-started.html#step-3-check-quarto",
+    "href": "resources/getting-started.html#step-3-check-quarto",
+    "title": "Getting Started with ANTH418",
+    "section": "Step 3 — Check Quarto",
+    "text": "Step 3 — Check Quarto\nOpen RStudio and select the Terminal tab.\nRun:\n```bash quarto –version"
+  },
+  {
+    "objectID": "resources/r-rstudio-quarto.html",
+    "href": "resources/r-rstudio-quarto.html",
+    "title": "ANTH418: Anthropological Statistics",
+    "section": "",
+    "text": "Back to top"
+  }
+]
