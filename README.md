@@ -1,6 +1,6 @@
 # ANTH418: Anthropological Statistics
 
-**University of British Columbia**<br>
+**University of British Columbia**  
 **2026–2027 · Term 1**
 
 This repository contains the student-facing course materials for **ANTH418: Anthropological Statistics** at the University of British Columbia.
@@ -255,8 +255,8 @@ For common errors and setup problems, consult the **Troubleshooting** page on th
 
 ## Course Instructor
 
-**Prof. Zhichun Jing**<br>
-Department of Anthropology<br>
+**Prof. Zhichun Jing**  
+Department of Anthropology  
 University of British Columbia
 
 For course communication, office hours, and contact information, see the current **ANTH418 syllabus** and **Canvas**.
