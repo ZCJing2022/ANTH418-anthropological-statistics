@@ -259,7 +259,6 @@ For common errors and setup problems, consult the **Troubleshooting** page on th
 Department of Anthropology<br>
 University of British Columbia
 
-
 For course communication, office hours, and contact information, see the current **ANTH418 syllabus** and **Canvas**.
 
 ---
