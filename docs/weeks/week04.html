@@ -1,0 +1,2954 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2026-09-28">
+
+<title>Week 4 — Measures of Central Tendency and Dispersion – ANTH418: Anthropological Statistics</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-7ff37d7dbb752a0b62676bb39137b3a2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">ANTH418: Anthropological Statistics</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../syllabus.html"> 
+<span class="menu-text">Syllabus</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../lecture-notes/index.html"> 
+<span class="menu-text">Lecture Notes</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-study-guides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Study Guides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-study-guides">    
+        <li>
+    <a class="dropdown-item" href="../weeks/week02.html">
+ <span class="dropdown-text">Week 2 — R, RStudio &amp; Quarto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../weeks/week03.html">
+ <span class="dropdown-text">Week 3 — Measurement &amp; Research Design</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../weeks/week04.html">
+ <span class="dropdown-text">Week 4 — Central Tendency &amp; Dispersion</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../assignments/index.html"> 
+<span class="menu-text">Assignments</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../readings/index.html"> 
+<span class="menu-text">Readings</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../resources/index.html"> 
+<span class="menu-text">Resources</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning objectives</a></li>
+  <li><a href="#this-weeks-two-class-sequence" id="toc-this-weeks-two-class-sequence" class="nav-link" data-scroll-target="#this-weeks-two-class-sequence">This week’s two-class sequence</a></li>
+  <li><a href="#why-descriptive-statistics-come-first" id="toc-why-descriptive-statistics-come-first" class="nav-link" data-scroll-target="#why-descriptive-statistics-come-first">Why descriptive statistics come first</a>
+  <ul class="collapse">
+  <li><a href="#raw-tables-do-not-explain-themselves" id="toc-raw-tables-do-not-explain-themselves" class="nav-link" data-scroll-target="#raw-tables-do-not-explain-themselves">Raw tables do not explain themselves</a></li>
+  <li><a href="#descriptive-versus-inferential-statistics" id="toc-descriptive-versus-inferential-statistics" class="nav-link" data-scroll-target="#descriptive-versus-inferential-statistics">Descriptive versus inferential statistics</a></li>
+  </ul></li>
+  <li><a href="#measurement-first-what-summaries-are-legitimate" id="toc-measurement-first-what-summaries-are-legitimate" class="nav-link" data-scroll-target="#measurement-first-what-summaries-are-legitimate">Measurement first: what summaries are legitimate?</a>
+  <ul class="collapse">
+  <li><a href="#a-mean-can-be-calculable-and-meaningless" id="toc-a-mean-can-be-calculable-and-meaningless" class="nav-link" data-scroll-target="#a-mean-can-be-calculable-and-meaningless">A mean can be calculable and meaningless</a></li>
+  <li><a href="#what-scale-are-δ13c-and-δ15n" id="toc-what-scale-are-δ13c-and-δ15n" class="nav-link" data-scroll-target="#what-scale-are-δ13c-and-δ15n">What scale are δ13C and δ15N?</a></li>
+  </ul></li>
+  <li><a href="#section-1-locating-the-center" id="toc-section-1-locating-the-center" class="nav-link" data-scroll-target="#section-1-locating-the-center">Section 1 — Locating the center</a>
+  <ul class="collapse">
+  <li><a href="#central-tendency-summarizes-typical" id="toc-central-tendency-summarizes-typical" class="nav-link" data-scroll-target="#central-tendency-summarizes-typical">Central tendency summarizes “typical”</a></li>
+  <li><a href="#the-mode-the-most-frequent-value" id="toc-the-mode-the-most-frequent-value" class="nav-link" data-scroll-target="#the-mode-the-most-frequent-value">The mode: the most frequent value</a>
+  <ul class="collapse">
+  <li><a href="#unimodal-bimodal-and-multimodal" id="toc-unimodal-bimodal-and-multimodal" class="nav-link" data-scroll-target="#unimodal-bimodal-and-multimodal">Unimodal, bimodal, and multimodal</a></li>
+  </ul></li>
+  <li><a href="#the-median-the-positional-center" id="toc-the-median-the-positional-center" class="nav-link" data-scroll-target="#the-median-the-positional-center">The median: the positional center</a></li>
+  <li><a href="#the-arithmetic-mean-the-balance-point" id="toc-the-arithmetic-mean-the-balance-point" class="nav-link" data-scroll-target="#the-arithmetic-mean-the-balance-point">The arithmetic mean: the balance point</a></li>
+  <li><a href="#the-trimmed-mean-a-robust-compromise" id="toc-the-trimmed-mean-a-robust-compromise" class="nav-link" data-scroll-target="#the-trimmed-mean-a-robust-compromise">The trimmed mean: a robust compromise</a></li>
+  </ul></li>
+  <li><a href="#section-2-quantifying-the-spread" id="toc-section-2-quantifying-the-spread" class="nav-link" data-scroll-target="#section-2-quantifying-the-spread">Section 2 — Quantifying the spread</a>
+  <ul class="collapse">
+  <li><a href="#why-dispersion-matters" id="toc-why-dispersion-matters" class="nav-link" data-scroll-target="#why-dispersion-matters">Why dispersion matters</a></li>
+  <li><a href="#the-range" id="toc-the-range" class="nav-link" data-scroll-target="#the-range">The range</a></li>
+  <li><a href="#percentiles-and-quartiles" id="toc-percentiles-and-quartiles" class="nav-link" data-scroll-target="#percentiles-and-quartiles">Percentiles and quartiles</a></li>
+  <li><a href="#interquartile-range-iqr" id="toc-interquartile-range-iqr" class="nav-link" data-scroll-target="#interquartile-range-iqr">Interquartile range (IQR)</a></li>
+  <li><a href="#boxplots-a-compact-display-of-center-and-spread" id="toc-boxplots-a-compact-display-of-center-and-spread" class="nav-link" data-scroll-target="#boxplots-a-compact-display-of-center-and-spread">Boxplots: a compact display of center and spread</a></li>
+  </ul></li>
+  <li><a href="#variance-and-standard-deviation" id="toc-variance-and-standard-deviation" class="nav-link" data-scroll-target="#variance-and-standard-deviation">Variance and standard deviation</a>
+  <ul class="collapse">
+  <li><a href="#why-simple-deviations-cannot-measure-total-spread" id="toc-why-simple-deviations-cannot-measure-total-spread" class="nav-link" data-scroll-target="#why-simple-deviations-cannot-measure-total-spread">Why simple deviations cannot measure total spread</a></li>
+  <li><a href="#sample-variance" id="toc-sample-variance" class="nav-link" data-scroll-target="#sample-variance">Sample variance</a></li>
+  <li><a href="#why-n-1" id="toc-why-n-1" class="nav-link" data-scroll-target="#why-n-1">Why (n-1)?</a></li>
+  <li><a href="#standard-deviation" id="toc-standard-deviation" class="nav-link" data-scroll-target="#standard-deviation">Standard deviation</a></li>
+  </ul></li>
+  <li><a href="#the-empirical-rule" id="toc-the-empirical-rule" class="nav-link" data-scroll-target="#the-empirical-rule">The empirical rule</a></li>
+  <li><a href="#robust-and-relative-measures-of-spread" id="toc-robust-and-relative-measures-of-spread" class="nav-link" data-scroll-target="#robust-and-relative-measures-of-spread">Robust and relative measures of spread</a>
+  <ul class="collapse">
+  <li><a href="#median-absolute-deviation-mad" id="toc-median-absolute-deviation-mad" class="nav-link" data-scroll-target="#median-absolute-deviation-mad">Median absolute deviation (MAD)</a></li>
+  <li><a href="#coefficient-of-variation-cv" id="toc-coefficient-of-variation-cv" class="nav-link" data-scroll-target="#coefficient-of-variation-cv">Coefficient of variation (CV)</a>
+  <ul class="collapse">
+  <li><a href="#bioanthropological-application" id="toc-bioanthropological-application" class="nav-link" data-scroll-target="#bioanthropological-application">Bioanthropological application</a></li>
+  <li><a href="#why-assignment-1-does-not-use-cv" id="toc-why-assignment-1-does-not-use-cv" class="nav-link" data-scroll-target="#why-assignment-1-does-not-use-cv">Why Assignment 1 does not use CV</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#distribution-shape-changes-the-meaning-of-the-center" id="toc-distribution-shape-changes-the-meaning-of-the-center" class="nav-link" data-scroll-target="#distribution-shape-changes-the-meaning-of-the-center">Distribution shape changes the meaning of the center</a>
+  <ul class="collapse">
+  <li><a href="#symmetric-distributions" id="toc-symmetric-distributions" class="nav-link" data-scroll-target="#symmetric-distributions">Symmetric distributions</a></li>
+  <li><a href="#positive-right-skew" id="toc-positive-right-skew" class="nav-link" data-scroll-target="#positive-right-skew">Positive / right skew</a></li>
+  <li><a href="#negative-left-skew" id="toc-negative-left-skew" class="nav-link" data-scroll-target="#negative-left-skew">Negative / left skew</a></li>
+  <li><a href="#skewness-is-a-clue-not-a-verdict" id="toc-skewness-is-a-clue-not-a-verdict" class="nav-link" data-scroll-target="#skewness-is-a-clue-not-a-verdict">Skewness is a clue, not a verdict</a></li>
+  </ul></li>
+  <li><a href="#histograms-the-shape-depends-partly-on-the-bins" id="toc-histograms-the-shape-depends-partly-on-the-bins" class="nav-link" data-scroll-target="#histograms-the-shape-depends-partly-on-the-bins">Histograms: the shape depends partly on the bins</a></li>
+  <li><a href="#anthropological-and-archaeological-applications" id="toc-anthropological-and-archaeological-applications" class="nav-link" data-scroll-target="#anthropological-and-archaeological-applications">Anthropological and archaeological applications</a>
+  <ul class="collapse">
+  <li><a href="#variation-can-itself-be-evidence" id="toc-variation-can-itself-be-evidence" class="nav-link" data-scroll-target="#variation-can-itself-be-evidence">Variation can itself be evidence</a></li>
+  <li><a href="#archaeological-standardization" id="toc-archaeological-standardization" class="nav-link" data-scroll-target="#archaeological-standardization">Archaeological standardization</a></li>
+  <li><a href="#means-can-also-be-misleading-because-of-measurement-decisions" id="toc-means-can-also-be-misleading-because-of-measurement-decisions" class="nav-link" data-scroll-target="#means-can-also-be-misleading-because-of-measurement-decisions">Means can also be misleading because of measurement decisions</a></li>
+  </ul></li>
+  <li><a href="#assignment-1-case-study-bronze-age-diet-and-farming" id="toc-assignment-1-case-study-bronze-age-diet-and-farming" class="nav-link" data-scroll-target="#assignment-1-case-study-bronze-age-diet-and-farming">Assignment 1 case study — Bronze Age diet and farming</a>
+  <ul class="collapse">
+  <li><a href="#el-argar-la-bastida-and-gatas" id="toc-el-argar-la-bastida-and-gatas" class="nav-link" data-scroll-target="#el-argar-la-bastida-and-gatas">El Argar, La Bastida, and Gatas</a></li>
+  <li><a href="#the-usable-human-sample" id="toc-the-usable-human-sample" class="nav-link" data-scroll-target="#the-usable-human-sample">The usable human sample</a></li>
+  <li><a href="#what-δ13c-and-δ15n-can-tell-us" id="toc-what-δ13c-and-δ15n-can-tell-us" class="nav-link" data-scroll-target="#what-δ13c-and-δ15n-can-tell-us">What δ13C and δ15N can tell us</a></li>
+  <li><a href="#the-crucial-archaeological-lesson" id="toc-the-crucial-archaeological-lesson" class="nav-link" data-scroll-target="#the-crucial-archaeological-lesson">The crucial archaeological lesson</a></li>
+  </ul></li>
+  <li><a href="#assignment-1-complete-r-workflow" id="toc-assignment-1-complete-r-workflow" class="nav-link" data-scroll-target="#assignment-1-complete-r-workflow">Assignment 1 — Complete R workflow</a>
+  <ul class="collapse">
+  <li><a href="#step-0-work-from-the-assignment-folder" id="toc-step-0-work-from-the-assignment-folder" class="nav-link" data-scroll-target="#step-0-work-from-the-assignment-folder">Step 0 — Work from the assignment folder</a></li>
+  <li><a href="#step-1-load-the-data" id="toc-step-1-load-the-data" class="nav-link" data-scroll-target="#step-1-load-the-data">Step 1 — Load the data</a></li>
+  <li><a href="#step-2-inspect-before-calculating" id="toc-step-2-inspect-before-calculating" class="nav-link" data-scroll-target="#step-2-inspect-before-calculating">Step 2 — Inspect before calculating</a></li>
+  <li><a href="#step-3-verify-the-site-counts" id="toc-step-3-verify-the-site-counts" class="nav-link" data-scroll-target="#step-3-verify-the-site-counts">Step 3 — Verify the site counts</a></li>
+  <li><a href="#step-4-check-missing-isotope-values" id="toc-step-4-check-missing-isotope-values" class="nav-link" data-scroll-target="#step-4-check-missing-isotope-values">Step 4 — Check missing isotope values</a></li>
+  <li><a href="#step-5-reshape-the-two-isotope-columns" id="toc-step-5-reshape-the-two-isotope-columns" class="nav-link" data-scroll-target="#step-5-reshape-the-two-isotope-columns">Step 5 — Reshape the two isotope columns</a></li>
+  <li><a href="#step-6-plot-before-summarizing" id="toc-step-6-plot-before-summarizing" class="nav-link" data-scroll-target="#step-6-plot-before-summarizing">Step 6 — Plot before summarizing</a>
+  <ul class="collapse">
+  <li><a href="#δ13c-histograms-by-site" id="toc-δ13c-histograms-by-site" class="nav-link" data-scroll-target="#δ13c-histograms-by-site">δ13C histograms by site</a></li>
+  <li><a href="#δ15n-histograms-by-site" id="toc-δ15n-histograms-by-site" class="nav-link" data-scroll-target="#δ15n-histograms-by-site">δ15N histograms by site</a></li>
+  </ul></li>
+  <li><a href="#step-7-construct-boxplots" id="toc-step-7-construct-boxplots" class="nav-link" data-scroll-target="#step-7-construct-boxplots">Step 7 — Construct boxplots</a></li>
+  <li><a href="#step-8-calculate-the-required-descriptive-statistics" id="toc-step-8-calculate-the-required-descriptive-statistics" class="nav-link" data-scroll-target="#step-8-calculate-the-required-descriptive-statistics">Step 8 — Calculate the required descriptive statistics</a></li>
+  <li><a href="#step-9-understand-every-column-in-the-summary" id="toc-step-9-understand-every-column-in-the-summary" class="nav-link" data-scroll-target="#step-9-understand-every-column-in-the-summary">Step 9 — Understand every column in the summary</a>
+  <ul class="collapse">
+  <li><a href="#n" id="toc-n" class="nav-link" data-scroll-target="#n"><code>n</code></a></li>
+  <li><a href="#mean" id="toc-mean" class="nav-link" data-scroll-target="#mean"><code>mean</code></a></li>
+  <li><a href="#median" id="toc-median" class="nav-link" data-scroll-target="#median"><code>median</code></a></li>
+  <li><a href="#sd" id="toc-sd" class="nav-link" data-scroll-target="#sd"><code>sd</code></a></li>
+  <li><a href="#iqr" id="toc-iqr" class="nav-link" data-scroll-target="#iqr"><code>iqr</code></a></li>
+  <li><a href="#min-max-and-range" id="toc-min-max-and-range" class="nav-link" data-scroll-target="#min-max-and-range"><code>min</code>, <code>max</code>, and <code>range</code></a></li>
+  </ul></li>
+  <li><a href="#step-10-compare-mean-with-median" id="toc-step-10-compare-mean-with-median" class="nav-link" data-scroll-target="#step-10-compare-mean-with-median">Step 10 — Compare mean with median</a></li>
+  <li><a href="#step-11-compare-sd-with-iqr" id="toc-step-11-compare-sd-with-iqr" class="nav-link" data-scroll-target="#step-11-compare-sd-with-iqr">Step 11 — Compare SD with IQR</a></li>
+  <li><a href="#step-12-inspect-potential-outliers-in-context" id="toc-step-12-inspect-potential-outliers-in-context" class="nav-link" data-scroll-target="#step-12-inspect-potential-outliers-in-context">Step 12 — Inspect potential outliers in context</a></li>
+  <li><a href="#step-13-describe-first-interpret-second" id="toc-step-13-describe-first-interpret-second" class="nav-link" data-scroll-target="#step-13-describe-first-interpret-second">Step 13 — Describe first, interpret second</a>
+  <ul class="collapse">
+  <li><a href="#stage-a-statistical-description" id="toc-stage-a-statistical-description" class="nav-link" data-scroll-target="#stage-a-statistical-description">Stage A — Statistical description</a></li>
+  <li><a href="#stage-b-archaeological-interpretation" id="toc-stage-b-archaeological-interpretation" class="nav-link" data-scroll-target="#stage-b-archaeological-interpretation">Stage B — Archaeological interpretation</a></li>
+  </ul></li>
+  <li><a href="#step-14-answer-the-assignments-four-interpretive-questions" id="toc-step-14-answer-the-assignments-four-interpretive-questions" class="nav-link" data-scroll-target="#step-14-answer-the-assignments-four-interpretive-questions">Step 14 — Answer the assignment’s four interpretive questions</a>
+  <ul class="collapse">
+  <li><a href="#what-is-the-unit-of-analysis" id="toc-what-is-the-unit-of-analysis" class="nav-link" data-scroll-target="#what-is-the-unit-of-analysis">1. What is the unit of analysis?</a></li>
+  <li><a href="#what-descriptive-statistical-result-matters-most" id="toc-what-descriptive-statistical-result-matters-most" class="nav-link" data-scroll-target="#what-descriptive-statistical-result-matters-most">2. What descriptive statistical result matters most?</a></li>
+  <li><a href="#what-archaeological-or-anthropological-interpretation-is-consistent-with-the-distributions" id="toc-what-archaeological-or-anthropological-interpretation-is-consistent-with-the-distributions" class="nav-link" data-scroll-target="#what-archaeological-or-anthropological-interpretation-is-consistent-with-the-distributions">3. What archaeological or anthropological interpretation is consistent with the distributions?</a></li>
+  <li><a href="#what-claim-do-these-descriptive-data-alone-not-support" id="toc-what-claim-do-these-descriptive-data-alone-not-support" class="nav-link" data-scroll-target="#what-claim-do-these-descriptive-data-alone-not-support">4. What claim do these descriptive data alone not support?</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#a-disciplined-assignment-1-workflow" id="toc-a-disciplined-assignment-1-workflow" class="nav-link" data-scroll-target="#a-disciplined-assignment-1-workflow">A disciplined Assignment 1 workflow</a></li>
+  <li><a href="#guided-practice" id="toc-guided-practice" class="nav-link" data-scroll-target="#guided-practice">Guided practice</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1-which-center" id="toc-exercise-1-which-center" class="nav-link" data-scroll-target="#exercise-1-which-center">Exercise 1 — Which center?</a></li>
+  <li><a href="#exercise-2-same-mean-different-spread" id="toc-exercise-2-same-mean-different-spread" class="nav-link" data-scroll-target="#exercise-2-same-mean-different-spread">Exercise 2 — Same mean, different spread</a></li>
+  <li><a href="#exercise-3-range-versus-iqr" id="toc-exercise-3-range-versus-iqr" class="nav-link" data-scroll-target="#exercise-3-range-versus-iqr">Exercise 3 — Range versus IQR</a></li>
+  <li><a href="#exercise-4-read-a-boxplot" id="toc-exercise-4-read-a-boxplot" class="nav-link" data-scroll-target="#exercise-4-read-a-boxplot">Exercise 4 — Read a boxplot</a></li>
+  <li><a href="#exercise-5-choose-the-summary-pair" id="toc-exercise-5-choose-the-summary-pair" class="nav-link" data-scroll-target="#exercise-5-choose-the-summary-pair">Exercise 5 — Choose the summary pair</a></li>
+  <li><a href="#exercise-6-is-cv-appropriate" id="toc-exercise-6-is-cv-appropriate" class="nav-link" data-scroll-target="#exercise-6-is-cv-appropriate">Exercise 6 — Is CV appropriate?</a></li>
+  <li><a href="#exercise-7-separate-description-from-explanation" id="toc-exercise-7-separate-description-from-explanation" class="nav-link" data-scroll-target="#exercise-7-separate-description-from-explanation">Exercise 7 — Separate description from explanation</a></li>
+  </ul></li>
+  <li><a href="#common-errors-in-week-4" id="toc-common-errors-in-week-4" class="nav-link" data-scroll-target="#common-errors-in-week-4">Common errors in Week 4</a>
+  <ul class="collapse">
+  <li><a href="#error-1-calculating-a-mean-because-the-column-is-numeric" id="toc-error-1-calculating-a-mean-because-the-column-is-numeric" class="nav-link" data-scroll-target="#error-1-calculating-a-mean-because-the-column-is-numeric">Error 1 — Calculating a mean because the column is numeric</a></li>
+  <li><a href="#error-2-reporting-only-the-mean" id="toc-error-2-reporting-only-the-mean" class="nav-link" data-scroll-target="#error-2-reporting-only-the-mean">Error 2 — Reporting only the mean</a></li>
+  <li><a href="#error-3-calling-every-extreme-observation-an-error" id="toc-error-3-calling-every-extreme-observation-an-error" class="nav-link" data-scroll-target="#error-3-calling-every-extreme-observation-an-error">Error 3 — Calling every extreme observation an error</a></li>
+  <li><a href="#error-4-removing-outliers-to-make-the-graph-look-normal" id="toc-error-4-removing-outliers-to-make-the-graph-look-normal" class="nav-link" data-scroll-target="#error-4-removing-outliers-to-make-the-graph-look-normal">Error 4 — Removing outliers to make the graph look normal</a></li>
+  <li><a href="#error-5-treating-sd-as-meaningful-without-the-distribution" id="toc-error-5-treating-sd-as-meaningful-without-the-distribution" class="nav-link" data-scroll-target="#error-5-treating-sd-as-meaningful-without-the-distribution">Error 5 — Treating SD as meaningful without the distribution</a></li>
+  <li><a href="#error-6-treating-2-sd-as-a-confidence-interval-for-the-mean" id="toc-error-6-treating-2-sd-as-a-confidence-interval-for-the-mean" class="nav-link" data-scroll-target="#error-6-treating-2-sd-as-a-confidence-interval-for-the-mean">Error 6 — Treating ±2 SD as a confidence interval for the mean</a></li>
+  <li><a href="#error-7-using-cv-on-interval-scale-data" id="toc-error-7-using-cv-on-interval-scale-data" class="nav-link" data-scroll-target="#error-7-using-cv-on-interval-scale-data">Error 7 — Using CV on interval-scale data</a></li>
+  <li><a href="#error-8-interpreting-a-site-difference-as-a-cause" id="toc-error-8-interpreting-a-site-difference-as-a-cause" class="nav-link" data-scroll-target="#error-8-interpreting-a-site-difference-as-a-cause">Error 8 — Interpreting a site difference as a cause</a></li>
+  <li><a href="#error-9-forgetting-unequal-sample-sizes" id="toc-error-9-forgetting-unequal-sample-sizes" class="nav-link" data-scroll-target="#error-9-forgetting-unequal-sample-sizes">Error 9 — Forgetting unequal sample sizes</a></li>
+  <li><a href="#error-10-rounding-too-early" id="toc-error-10-rounding-too-early" class="nav-link" data-scroll-target="#error-10-rounding-too-early">Error 10 — Rounding too early</a></li>
+  </ul></li>
+  <li><a href="#reading-guide" id="toc-reading-guide" class="nav-link" data-scroll-target="#reading-guide">Reading guide</a>
+  <ul class="collapse">
+  <li><a href="#core-perkins-statistical-concepts" id="toc-core-perkins-statistical-concepts" class="nav-link" data-scroll-target="#core-perkins-statistical-concepts">Core: Perkins — Statistical concepts</a></li>
+  <li><a href="#core-perkins-descriptive-statistics-in-r" id="toc-core-perkins-descriptive-statistics-in-r" class="nav-link" data-scroll-target="#core-perkins-descriptive-statistics-in-r">Core: Perkins — Descriptive statistics in R</a></li>
+  <li><a href="#carlson-looking-at-archaeological-data" id="toc-carlson-looking-at-archaeological-data" class="nav-link" data-scroll-target="#carlson-looking-at-archaeological-data">Carlson — Looking at archaeological data</a></li>
+  <li><a href="#banning-descriptive-statistics-in-archaeology" id="toc-banning-descriptive-statistics-in-archaeology" class="nav-link" data-scroll-target="#banning-descriptive-statistics-in-archaeology">Banning — Descriptive statistics in archaeology</a></li>
+  <li><a href="#dressler-thinking-statistically-about-center-and-spread" id="toc-dressler-thinking-statistically-about-center-and-spread" class="nav-link" data-scroll-target="#dressler-thinking-statistically-about-center-and-spread">Dressler — Thinking statistically about center and spread</a></li>
+  <li><a href="#gonick-and-smith-visual-intuition" id="toc-gonick-and-smith-visual-intuition" class="nav-link" data-scroll-target="#gonick-and-smith-visual-intuition">Gonick and Smith — Visual intuition</a></li>
+  <li><a href="#privitera-frequency-center-and-variability" id="toc-privitera-frequency-center-and-variability" class="nav-link" data-scroll-target="#privitera-frequency-center-and-variability">Privitera — Frequency, center, and variability</a></li>
+  <li><a href="#plavcan-why-relative-variation-matters" id="toc-plavcan-why-relative-variation-matters" class="nav-link" data-scroll-target="#plavcan-why-relative-variation-matters">Plavcan — Why relative variation matters</a></li>
+  <li><a href="#knipper-et-al.-assignment-1-archaeological-context" id="toc-knipper-et-al.-assignment-1-archaeological-context" class="nav-link" data-scroll-target="#knipper-et-al.-assignment-1-archaeological-context">Knipper et al.&nbsp;— Assignment 1 archaeological context</a></li>
+  </ul></li>
+  <li><a href="#week-4-checklist" id="toc-week-4-checklist" class="nav-link" data-scroll-target="#week-4-checklist">Week 4 checklist</a></li>
+  <li><a href="#takeaways" id="toc-takeaways" class="nav-link" data-scroll-target="#takeaways">Takeaways</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Week 4 — Measures of Central Tendency and Dispersion</h1>
+<p class="subtitle lead">Describe the center, measure the spread, then interpret the distribution</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 28, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="week-meta">
+<p><strong>Class meetings:</strong> 28 &amp; 30 September 2026<br> <strong>Focus:</strong> descriptive statistics · central tendency · dispersion · distribution shape · visualization<br> <strong>Practice dataset:</strong> Knipper et al.&nbsp;2020 human stable-isotope data<br> <strong>Assessment:</strong> Assignment 1 — Bronze Age Diet and Farming at La Bastida and Gatas</p>
+</div>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>Week 3 asked how concepts become variables and how research design limits inference. Week 4 asks what to do once a defensible numerical variable has been measured:</p>
+<blockquote class="blockquote">
+<p><strong>How can we describe a distribution without losing the pattern that matters?</strong></p>
+</blockquote>
+<p>Raw observations rarely explain themselves. A list of isotope values, ceramic dimensions, fossil measurements, or survey scores may contain important structure, but that structure is difficult to see until the observations are organized, visualized, and summarized. The Week 4 lecture therefore begins with a simple sequence:</p>
+<p><strong>raw observations → summary numbers → empirical pattern → interpretation</strong></p>
+<p>Descriptive statistics do not explain why a pattern exists. They make the empirical pattern visible enough that an explanation can later be evaluated.</p>
+<p>Two questions organize the entire week:</p>
+<ol type="1">
+<li><strong>Central tendency:</strong> Where is the distribution centered? What value is typical?</li>
+<li><strong>Dispersion / variability:</strong> How widely are observations spread around that center?</li>
+</ol>
+<p>A center without a measure of spread is incomplete. Two archaeological samples can have the same mean and radically different internal variation. Conversely, two samples can have different means but substantial overlap. This is why the Week 4 lecture treats central tendency and dispersion as a pair rather than as separate topics.</p>
+<p>Carlson makes the archaeological version of the same point: the first step in analyzing new data is to <strong>look at the data</strong>, using numerical summaries, tables, and graphs to identify structure and possible errors before more elaborate analysis begins <span class="citation" data-cites="carlson2017">(<a href="#ref-carlson2017" role="doc-biblioref">Carlson 2017</a>)</span>. Banning similarly treats descriptive statistics as a way to summarize both where typical values lie and how “clumped” or dispersed archaeological observations are <span class="citation" data-cites="banning2020">(<a href="#ref-banning2020" role="doc-biblioref">Banning 2020</a>)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="The Week 4 principle">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>The Week 4 principle
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Describe before explaining.</strong></p>
+<p>A defensible descriptive analysis tells the reader:</p>
+<ul>
+<li>what was measured;</li>
+<li>what one observation represents;</li>
+<li>where the distribution is centered;</li>
+<li>how much it varies;</li>
+<li>what its shape looks like; and</li>
+<li>which observations are unusual.</li>
+</ul>
+<p>Only then should we ask <strong>why</strong> the pattern may exist.</p>
+</div>
+</div>
+</section>
+<section id="questions" class="level2">
+<h2 class="anchored" data-anchor-id="questions">Questions</h2>
+<ul>
+<li>Why are raw data tables difficult to interpret?</li>
+<li>How do descriptive statistics differ from inferential statistics?</li>
+<li>Why must the measurement scale be identified before choosing a summary?</li>
+<li>When is a mean mathematically computable but substantively meaningless?</li>
+<li>How do the mode, median, mean, and trimmed mean define “center” differently?</li>
+<li>Why is the mean a balance point or center of gravity?</li>
+<li>Why is the median resistant to extreme observations?</li>
+<li>What can multimodality reveal?</li>
+<li>Why can two samples with the same mean still be very different?</li>
+<li>How do range, IQR, variance, standard deviation, MAD, and CV describe different aspects of variability?</li>
+<li>Why does sample variance divide by (n-1)?</li>
+<li>Why is standard deviation easier to interpret than variance?</li>
+<li>When does the 68–95 empirical rule apply?</li>
+<li>How do skewness and outliers affect the relationship between mean and median?</li>
+<li>What does a boxplot actually show?</li>
+<li>Why should an apparent outlier be investigated rather than automatically removed?</li>
+<li>When is coefficient of variation useful, and when is it inappropriate?</li>
+<li>How are central tendency and dispersion used in archaeology and biological anthropology?</li>
+<li>How should human (^{13}) and (^{15}) distributions at La Bastida and Gatas be described?</li>
+<li>What can Assignment 1 establish—and what can it <strong>not</strong> establish?</li>
+</ul>
+</section>
+<section id="learning-objectives" class="level2">
+<h2 class="anchored" data-anchor-id="learning-objectives">Learning objectives</h2>
+<p>By the end of Week 4, you should be able to:</p>
+<ol type="1">
+<li>explain the purpose of <strong>descriptive statistics</strong>;</li>
+<li>distinguish a <strong>population parameter</strong> from a <strong>sample statistic</strong>;</li>
+<li>identify the unit of analysis before calculating a statistic;</li>
+<li>connect nominal, ordinal, interval, and ratio measurement to defensible summaries;</li>
+<li>explain why numerical coding does not turn a nominal variable into a quantitative one;</li>
+<li>define and interpret the <strong>mode</strong>, <strong>median</strong>, <strong>arithmetic mean</strong>, and <strong>trimmed mean</strong>;</li>
+<li>explain why the mean is a balance point and why it is sensitive to extreme values;</li>
+<li>identify unimodal, bimodal/multimodal, symmetric, right-skewed, and left-skewed distributions;</li>
+<li>define and interpret the <strong>range</strong>, <strong>quartiles</strong>, <strong>IQR</strong>, <strong>variance</strong>, <strong>standard deviation</strong>, <strong>MAD</strong>, and <strong>coefficient of variation</strong>;</li>
+<li>explain why range is fragile and why IQR is resistant;</li>
+<li>distinguish population variance/SD from sample variance/SD;</li>
+<li>explain why sample variance and sample SD use (n-1);</li>
+<li>interpret standard deviation in the original measurement units;</li>
+<li>apply the 68–95 empirical rule only when an approximately normal distribution makes it appropriate;</li>
+<li>explain why median + IQR and mean + SD are complementary descriptive pairs;</li>
+<li>read a histogram and boxplot as representations of distribution shape and spread;</li>
+<li>treat boxplot “outliers” as observations requiring investigation rather than automatic deletion;</li>
+<li>explain why CV is a relative measure of variability suitable for ratio-scale measurements with a meaningful nonzero mean;</li>
+<li>explain why CV should <strong>not</strong> be used for Assignment 1’s delta isotope values;</li>
+<li>use R to inspect, reshape, summarize, and visualize the Assignment 1 data;</li>
+<li>calculate mean, median, SD, IQR, minimum, maximum, and range separately by site and isotope;</li>
+<li>compare mean with median and SD with IQR when evaluating a distribution;</li>
+<li>write a concise descriptive interpretation that separates observed patterns from causal explanation; and</li>
+<li>render and submit a reproducible Quarto analysis containing both code and interpretation.</li>
+</ol>
+</section>
+<section id="this-weeks-two-class-sequence" class="level2">
+<h2 class="anchored" data-anchor-id="this-weeks-two-class-sequence">This week’s two-class sequence</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Class</th>
+<th>Main focus</th>
+<th>Practical outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Monday, 28 September</strong></td>
+<td>Central tendency, dispersion, distribution shape, archaeological applications</td>
+<td>You can choose and interpret descriptive summaries appropriate to a variable and its distribution.</td>
+</tr>
+<tr class="even">
+<td><strong>Wednesday, 30 September</strong></td>
+<td>R workflow and Assignment 1 practice</td>
+<td>You can inspect, summarize, visualize, and interpret the La Bastida–Gatas isotope distributions in a reproducible Quarto document.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="why-descriptive-statistics-come-first" class="level1">
+<h1>Why descriptive statistics come first</h1>
+<section id="raw-tables-do-not-explain-themselves" class="level2">
+<h2 class="anchored" data-anchor-id="raw-tables-do-not-explain-themselves">Raw tables do not explain themselves</h2>
+<p>A dataset is a collection of observations, not an interpretation.</p>
+<p>Carlson emphasizes that archaeological datasets are commonly organized as rectangular tables in which each <strong>row</strong> represents an observation and each <strong>column</strong> represents a measurement or attribute of that observation <span class="citation" data-cites="carlson2017">(<a href="#ref-carlson2017" role="doc-biblioref">Carlson 2017</a>)</span>. The meaning of a row can change from dataset to dataset: one row might be a survey grid square, a site, a grave, a ceramic sherd, a stone flake, or a human individual.</p>
+<p>That means the first questions are not mathematical:</p>
+<blockquote class="blockquote">
+<p><strong>What does one row represent? What does each column represent? How was each variable measured?</strong></p>
+</blockquote>
+<p>Only after those questions are answered do numerical summaries become meaningful.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="A statistic summarizes observations; it does not replace them">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>A statistic summarizes observations; it does not replace them
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Reducing 69 isotope measurements to a mean is useful because it compresses information.</p>
+<p>But compression always loses detail.</p>
+<p>The goal is therefore not to find one “best number” and discard the distribution. The goal is to combine a small set of summaries with appropriate visualizations so that the center, spread, shape, and unusual observations remain visible.</p>
+</div>
+</div>
+</section>
+<section id="descriptive-versus-inferential-statistics" class="level2">
+<h2 class="anchored" data-anchor-id="descriptive-versus-inferential-statistics">Descriptive versus inferential statistics</h2>
+<p><strong>Descriptive statistics</strong> summarize the observations actually present in a dataset.</p>
+<p>Examples include:</p>
+<ul>
+<li>counts and proportions;</li>
+<li>mean and median;</li>
+<li>range and IQR;</li>
+<li>variance and standard deviation;</li>
+<li>histograms and boxplots.</li>
+</ul>
+<p><strong>Inferential statistics</strong> use sample information to make uncertainty-aware statements about a larger population or data-generating process.</p>
+<p>Assignment 1 is explicitly a <strong>descriptive</strong> assignment. No inferential statistical test is required <span class="citation" data-cites="knipper2020">(<a href="#ref-knipper2020" role="doc-biblioref">Knipper et al. 2020</a>)</span>.</p>
+<div class="callout callout-style-default callout-warning callout-titled" title="The Assignment 1 archaeological sample is not the whole El Argar population">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>The Assignment 1 archaeological sample is not the whole El Argar population
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The teaching file contains <strong>69 evaluable human observations</strong>: 48 from La Bastida and 21 from Gatas.</p>
+<p>Those people are an archaeological sample preserved, excavated, sampled, and successfully analyzed under particular conditions. Describing these observations does not by itself justify population-wide claims about every person who lived at either settlement—or about El Argar society as a whole.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="measurement-first-what-summaries-are-legitimate" class="level1">
+<h1>Measurement first: what summaries are legitimate?</h1>
+<p>Week 3 introduced the NOIR framework. Week 4 uses it to decide which summaries are substantively meaningful.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Scale</th>
+<th>Information preserved</th>
+<th>Appropriate center</th>
+<th>Useful spread summaries</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Nominal</strong></td>
+<td>category identity only</td>
+<td>mode</td>
+<td>counts, proportions</td>
+</tr>
+<tr class="even">
+<td><strong>Ordinal</strong></td>
+<td>category identity + rank</td>
+<td>median, mode</td>
+<td>IQR, range</td>
+</tr>
+<tr class="odd">
+<td><strong>Interval</strong></td>
+<td>ordered values + equal intervals</td>
+<td>mean, median</td>
+<td>SD, variance, IQR, range</td>
+</tr>
+<tr class="even">
+<td><strong>Ratio</strong></td>
+<td>interval properties + meaningful zero</td>
+<td>mean, median</td>
+<td>SD, variance, IQR, range, CV</td>
+</tr>
+</tbody>
+</table>
+<p>Perkins uses <strong>NOIR</strong> as a mnemonic for nominal, ordinal, interval, and ratio measurement and stresses that a variable’s mathematical treatment depends on what its values actually mean <span class="citation" data-cites="perkins2026">(<a href="#ref-perkins2026" role="doc-biblioref">Perkins 2026</a>)</span>.</p>
+<section id="a-mean-can-be-calculable-and-meaningless" class="level2">
+<h2 class="anchored" data-anchor-id="a-mean-can-be-calculable-and-meaningless">A mean can be calculable and meaningless</h2>
+<p>Suppose an artifact-material variable is coded:</p>
+<pre class="text"><code>Ceramic = 1
+Lithic  = 2
+Bone    = 3</code></pre>
+<p>R can calculate the arithmetic mean of those numbers.</p>
+<p>But a “mean artifact material” of 2.13 has no archaeological interpretation because the numbers are merely labels. The distance from ceramic to lithic is not a measured quantitative interval.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Numeric storage is not quantitative meaning">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Numeric storage is not quantitative meaning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A variable can be stored as numbers in R and still be nominal.</p>
+<p>Always distinguish:</p>
+<ul>
+<li><strong>how R stores the column</strong>, from</li>
+<li><strong>what the measurements mean</strong>.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="what-scale-are-δ13c-and-δ15n" class="level2">
+<h2 class="anchored" data-anchor-id="what-scale-are-δ13c-and-δ15n">What scale are δ13C and δ15N?</h2>
+<p>For Assignment 1, human bone-collagen (^{13}) and (^{15}) values are best treated as <strong>interval-like measurements</strong> for descriptive purposes.</p>
+<p>Differences between values are meaningful, but (0‰) is a reference point relative to an isotope standard—not a true absence of carbon or nitrogen isotope composition. Therefore:</p>
+<ul>
+<li>means and medians are meaningful;</li>
+<li>SD, variance, IQR, and range are meaningful;</li>
+<li>ratios such as “twice the δ15N value” are not meaningful; and</li>
+<li><strong>CV is not appropriate for the delta values in Assignment 1</strong>.</li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled" title="Why this matters">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Why this matters
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Week 4 introduces the coefficient of variation because it is important in anthropology.</p>
+<p>But <strong>learning a statistic does not mean using it everywhere</strong>.</p>
+<p>Assignment 1 requires SD, IQR, minimum, maximum, and range—not CV—because the measurement scale and research question do not justify CV for these delta isotope values.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="section-1-locating-the-center" class="level1">
+<h1>Section 1 — Locating the center</h1>
+<section id="central-tendency-summarizes-typical" class="level2">
+<h2 class="anchored" data-anchor-id="central-tendency-summarizes-typical">Central tendency summarizes “typical”</h2>
+<p>A measure of central tendency reduces a distribution to a value intended to represent its center.</p>
+<p>The three classical centers are:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Measure</th>
+<th>Definition</th>
+<th>Particularly useful when</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Mode</strong></td>
+<td>most frequently occurring value/category</td>
+<td>nominal data; discrete peaks; multimodality</td>
+</tr>
+<tr class="even">
+<td><strong>Median</strong></td>
+<td>50th percentile</td>
+<td>ordinal data; skewed data; outliers</td>
+</tr>
+<tr class="odd">
+<td><strong>Mean</strong></td>
+<td>arithmetic average</td>
+<td>approximately symmetric interval/ratio data</td>
+</tr>
+<tr class="even">
+<td><strong>Trimmed mean</strong></td>
+<td>mean after removing equal percentages from both tails</td>
+<td>continuous data with influential extremes</td>
+</tr>
+</tbody>
+</table>
+<p>Choosing a center is a <strong>methodological decision</strong>, not a mechanical habit.</p>
+</section>
+<section id="the-mode-the-most-frequent-value" class="level2">
+<h2 class="anchored" data-anchor-id="the-mode-the-most-frequent-value">The mode: the most frequent value</h2>
+<p>The <strong>mode</strong> is the value or category occurring most often.</p>
+<p>For categorical variables it may be the only meaningful measure of central tendency.</p>
+<p>For continuous archaeological measurements, an exact numerical mode is often less useful because repeated values may depend on measurement precision and rounding. However, modal <strong>peaks</strong> in a frequency distribution can be archaeologically informative.</p>
+<p>The lecture uses standardized stone weights from Mohenjo-Daro as an example: repeated peaks can reveal patterned size classes rather than one smooth continuous distribution.</p>
+<section id="unimodal-bimodal-and-multimodal" class="level3">
+<h3 class="anchored" data-anchor-id="unimodal-bimodal-and-multimodal">Unimodal, bimodal, and multimodal</h3>
+<p>A distribution can have:</p>
+<ul>
+<li>one dominant peak — <strong>unimodal</strong>;</li>
+<li>two dominant peaks — <strong>bimodal</strong>; or</li>
+<li>several peaks — <strong>multimodal</strong>.</li>
+</ul>
+<p>Multiple peaks may reflect real subgroups, different production conventions, different populations, or a mixture of processes. They may also arise from small samples or arbitrary histogram bins.</p>
+<div class="callout callout-style-default callout-warning callout-titled" title="A histogram peak is not automatically a statistical mode">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>A histogram peak is not automatically a statistical mode
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Changing histogram bin width can change the apparent number and location of peaks.</p>
+<p>When multimodality matters substantively, inspect the raw values and test whether the apparent structure is robust to reasonable choices of binning.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="the-median-the-positional-center" class="level2">
+<h2 class="anchored" data-anchor-id="the-median-the-positional-center">The median: the positional center</h2>
+<p>The <strong>median</strong> is the middle value after observations are ordered.</p>
+<ul>
+<li>50% of observations lie at or below it.</li>
+<li>50% lie at or above it.</li>
+</ul>
+<p>For an odd number of observations, the median is the middle observation.</p>
+<p>For an even number, it is conventionally the average of the two middle observations.</p>
+<p>The important property is <strong>resistance</strong>: the median depends on order, not on how far extreme observations lie from the middle.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">7</span>, <span class="dv">8</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>x_extreme <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">7</span>, <span class="dv">80</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">dataset =</span> <span class="fu">c</span>(<span class="st">"Original"</span>, <span class="st">"One extreme value"</span>),</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">mean =</span> <span class="fu">c</span>(<span class="fu">mean</span>(x), <span class="fu">mean</span>(x_extreme)),</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">median =</span> <span class="fu">c</span>(<span class="fu">median</span>(x), <span class="fu">median</span>(x_extreme))</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 3
+  dataset            mean median
+  &lt;chr&gt;             &lt;dbl&gt;  &lt;dbl&gt;
+1 Original            6        7
+2 One extreme value  20.4      7</code></pre>
+</div>
+</div>
+<p>The extreme value moves the mean much more than the median.</p>
+<p>Dressler uses this contrast to show why mean, median, and mode can converge in an approximately symmetric distribution but diverge when a distribution has a long tail <span class="citation" data-cites="dressler2015">(<a href="#ref-dressler2015" role="doc-biblioref">Dressler 2015</a>)</span>.</p>
+</section>
+<section id="the-arithmetic-mean-the-balance-point" class="level2">
+<h2 class="anchored" data-anchor-id="the-arithmetic-mean-the-balance-point">The arithmetic mean: the balance point</h2>
+<p>For a sample of (n) observations:</p>
+<p>[ {x} = ]</p>
+<p>The mean uses <strong>every observation</strong>.</p>
+<p>It can be understood as the distribution’s <strong>balance point</strong> or center of gravity. If each deviation from the mean is calculated,</p>
+<p>[ x_i - {x}, ]</p>
+<p>then the deviations sum to zero:</p>
+<p>[ _{i=1}^{n}(x_i-{x})=0. ]</p>
+<p>This balance property makes the mean fundamental to variance, standard deviation, regression, ANOVA, and many later statistical methods.</p>
+<p>Pivitera describes the mean as a balance point rather than necessarily the literal middle observation <span class="citation" data-cites="privitera2024">(<a href="#ref-privitera2024" role="doc-biblioref">Privitera 2024</a>)</span>. Dressler similarly presents the mean as a compact model or “best guess” for a value drawn from a roughly symmetric distribution <span class="citation" data-cites="dressler2015">(<a href="#ref-dressler2015" role="doc-biblioref">Dressler 2015</a>)</span>.</p>
+<div class="callout callout-style-default callout-warning callout-titled" title="The mean is efficient but not resistant">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>The mean is efficient but not resistant
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Because every observation contributes to the mean, an extreme observation can pull the balance point toward the tail.</p>
+<p>That sensitivity is not a defect to be hidden. It is information about the distribution that should be examined.</p>
+</div>
+</div>
+</section>
+<section id="the-trimmed-mean-a-robust-compromise" class="level2">
+<h2 class="anchored" data-anchor-id="the-trimmed-mean-a-robust-compromise">The trimmed mean: a robust compromise</h2>
+<p>A <strong>trimmed mean</strong> removes the same proportion of the lowest and highest observations before calculating the mean.</p>
+<p>Common trims include 5%, 10%, or 20%.</p>
+<p>In R:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x_extreme <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>, <span class="dv">80</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x_extreme)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 15.2</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x_extreme, <span class="at">trim =</span> <span class="fl">0.10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8.625</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(x_extreme)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8.5</code></pre>
+</div>
+</div>
+<p>Banning notes that trimmed means can be useful for skewed archaeological distributions or samples containing suspected extremes because they retain much of the data while reducing tail influence <span class="citation" data-cites="banning2020">(<a href="#ref-banning2020" role="doc-biblioref">Banning 2020</a>)</span>.</p>
+<p>A trimmed mean is not required for Assignment 1, but it helps clarify why “center” is not one universal concept.</p>
+</section>
+</section>
+<section id="section-2-quantifying-the-spread" class="level1">
+<h1>Section 2 — Quantifying the spread</h1>
+<section id="why-dispersion-matters" class="level2">
+<h2 class="anchored" data-anchor-id="why-dispersion-matters">Why dispersion matters</h2>
+<p>Suppose two assemblages both have mean artifact length = 50 mm.</p>
+<p>One contains measurements tightly concentrated between 48 and 52 mm.</p>
+<p>The other ranges from 20 to 80 mm.</p>
+<p>The means are identical, but the archaeological patterns are not.</p>
+<p>Pivitera emphasizes that variability widens the lens from the center to the structure of the entire distribution <span class="citation" data-cites="privitera2024">(<a href="#ref-privitera2024" role="doc-biblioref">Privitera 2024</a>)</span>. Dressler puts the same idea in practical terms: after using a mean as a guess, the next question is <strong>how wrong that guess is likely to be</strong> <span class="citation" data-cites="dressler2015">(<a href="#ref-dressler2015" role="doc-biblioref">Dressler 2015</a>)</span>.</p>
+</section>
+<section id="the-range" class="level2">
+<h2 class="anchored" data-anchor-id="the-range">The range</h2>
+<p>The <strong>range</strong> is:</p>
+<p>[ =-. ]</p>
+<p>It is easy to understand, but it depends on only two observations.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>, <span class="dv">13</span>, <span class="dv">14</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>x_outlier <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>, <span class="dv">13</span>, <span class="dv">100</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">range_original =</span> <span class="fu">max</span>(x) <span class="sc">-</span> <span class="fu">min</span>(x),</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">range_with_outlier =</span> <span class="fu">max</span>(x_outlier) <span class="sc">-</span> <span class="fu">min</span>(x_outlier)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    range_original range_with_outlier 
+                 4                 90 </code></pre>
+</div>
+</div>
+<p>The range is therefore <strong>fragile</strong>:</p>
+<ul>
+<li>it is highly sensitive to extreme observations;</li>
+<li>it tends to increase as sample size increases; and</li>
+<li>it says nothing about how observations are distributed between the minimum and maximum.</li>
+</ul>
+<p>Banning makes the archaeological implication explicit: because the range depends only on the two extremes, it is usually a poor stand-alone description of variability <span class="citation" data-cites="banning2020">(<a href="#ref-banning2020" role="doc-biblioref">Banning 2020</a>)</span>.</p>
+</section>
+<section id="percentiles-and-quartiles" class="level2">
+<h2 class="anchored" data-anchor-id="percentiles-and-quartiles">Percentiles and quartiles</h2>
+<p>A <strong>percentile</strong> is the value below which a specified percentage of observations lies.</p>
+<p>Quartiles divide an ordered distribution into four parts:</p>
+<ul>
+<li>(Q_1): 25th percentile;</li>
+<li>(Q_2): 50th percentile = median;</li>
+<li>(Q_3): 75th percentile.</li>
+</ul>
+<p>Each interval between successive quartile boundaries contains roughly one quarter of the observations.</p>
+</section>
+<section id="interquartile-range-iqr" class="level2">
+<h2 class="anchored" data-anchor-id="interquartile-range-iqr">Interquartile range (IQR)</h2>
+<p>The <strong>interquartile range</strong> is:</p>
+<p>[ IQR = Q_3 - Q_1. ]</p>
+<p>It describes the width of the <strong>middle 50%</strong> of a distribution.</p>
+<p>Because it ignores the most extreme quarter at each end, it is much less sensitive to outliers than the total range.</p>
+<p>Median + IQR therefore form a natural descriptive pair.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(x, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.50</span>, <span class="fl">0.75</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>25% 50% 75% 
+  7   8  10 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">IQR</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+</div>
+<p>Gonick and Smith’s illustrated treatment makes the same geometry visible: the box in a boxplot runs from (Q_1) to (Q_3), with the median drawn inside <span class="citation" data-cites="gonickSmith2019">(<a href="#ref-gonickSmith2019" role="doc-biblioref">Gonick and Smith 2019</a>)</span>.</p>
+</section>
+<section id="boxplots-a-compact-display-of-center-and-spread" class="level2">
+<h2 class="anchored" data-anchor-id="boxplots-a-compact-display-of-center-and-spread">Boxplots: a compact display of center and spread</h2>
+<p>A conventional Tukey boxplot shows:</p>
+<ul>
+<li>lower edge of box = (Q_1);</li>
+<li>line inside box = median;</li>
+<li>upper edge of box = (Q_3);</li>
+<li>box width in the measurement dimension = IQR;</li>
+<li>whiskers extending to observations within the conventional 1.5-IQR limits;</li>
+<li>observations beyond the whiskers plotted individually.</li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled" title="A boxplot 'outlier' is not automatically an error">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>A boxplot ‘outlier’ is not automatically an error
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The 1.5-IQR rule identifies observations that are unusual relative to the distribution.</p>
+<p>It does <strong>not</strong> tell you why they are unusual.</p>
+<p>An unusual archaeological value may represent:</p>
+<ul>
+<li>a recording error;</li>
+<li>a laboratory problem;</li>
+<li>a different age or biological condition;</li>
+<li>a real minority behavior;</li>
+<li>chronological mixing;</li>
+<li>a distinct social group; or</li>
+<li>an entirely legitimate extreme case.</li>
+</ul>
+<p>Inspect the observation and its context before deciding what it means.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="variance-and-standard-deviation" class="level1">
+<h1>Variance and standard deviation</h1>
+<section id="why-simple-deviations-cannot-measure-total-spread" class="level2">
+<h2 class="anchored" data-anchor-id="why-simple-deviations-cannot-measure-total-spread">Why simple deviations cannot measure total spread</h2>
+<p>The deviation of an observation from the sample mean is:</p>
+<p>[ d_i = x_i-{x}. ]</p>
+<p>But positive and negative deviations cancel:</p>
+<p>[ d_i = 0. ]</p>
+<p>So we square them.</p>
+</section>
+<section id="sample-variance" class="level2">
+<h2 class="anchored" data-anchor-id="sample-variance">Sample variance</h2>
+<p>For a sample:</p>
+<p>[ s^2 = . ]</p>
+<p>Variance is the average <strong>squared</strong> distance around the mean, with the sample correction (n-1).</p>
+<p>The numerator,</p>
+<p>[ (x_i-{x})^2, ]</p>
+<p>is called the <strong>sum of squares</strong>.</p>
+<p>Perkins walks through this logic by subtracting the mean from each value, squaring the deviations, summing them, dividing by (n-1), and then taking the square root to obtain SD <span class="citation" data-cites="perkins2026">(<a href="#ref-perkins2026" role="doc-biblioref">Perkins 2026</a>)</span>.</p>
+</section>
+<section id="why-n-1" class="level2">
+<h2 class="anchored" data-anchor-id="why-n-1">Why (n-1)?</h2>
+<p>If the data are treated as a sample used to estimate population variability, dividing by (n) tends to underestimate the population variance.</p>
+<p>Using (n-1) is the familiar <strong>Bessel correction</strong>.</p>
+<p>R’s:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(x)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>use the <strong>sample</strong> formulas with (n-1).</p>
+<p>For Assignment 1, that is exactly what students should use.</p>
+</section>
+<section id="standard-deviation" class="level2">
+<h2 class="anchored" data-anchor-id="standard-deviation">Standard deviation</h2>
+<p>The standard deviation is:</p>
+<p>[ s=. ]</p>
+<p>Variance has squared units:</p>
+<ul>
+<li>mm²;</li>
+<li>g²;</li>
+<li>‰².</li>
+</ul>
+<p>Taking the square root returns the result to the <strong>original measurement units</strong>.</p>
+<p>That is why SD is generally easier to interpret than variance.</p>
+<p>Dressler emphasizes this return to the original metric: the squaring needed to construct variance makes the units difficult to interpret, while the square root restores them <span class="citation" data-cites="dressler2015">(<a href="#ref-dressler2015" role="doc-biblioref">Dressler 2015</a>)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Interpret SD as spread, not as a guaranteed boundary">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Interpret SD as spread, not as a guaranteed boundary
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A larger SD means observations are, on average, more dispersed around the mean.</p>
+<p>It does <strong>not</strong> mean every observation falls within one SD of the mean.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="the-empirical-rule" class="level1">
+<h1>The empirical rule</h1>
+<p>For a distribution that is approximately normal:</p>
+<ul>
+<li>about <strong>68%</strong> of observations lie within ({x}1s);</li>
+<li>about <strong>95%</strong> lie within ({x}2s).</li>
+</ul>
+<p>The Week 4 lecture gives the more precise values of approximately 68.26% and 95.44%.</p>
+<div class="callout callout-style-default callout-warning callout-titled" title="The empirical rule is conditional">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>The empirical rule is conditional
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The 68–95 pattern is a property of an approximately normal, symmetric, mound-shaped distribution.</p>
+<p>Do not mechanically apply it to:</p>
+<ul>
+<li>strongly skewed data;</li>
+<li>heavily multimodal data;</li>
+<li>distributions with influential extremes; or</li>
+<li>variables bounded in ways that make the normal model implausible.</li>
+</ul>
+<p>Also, ({x}1s) and ({x}2s) describe the spread of <strong>observations</strong> under a normal model. They are <strong>not confidence intervals for the population mean</strong>.</p>
+</div>
+</div>
+</section>
+<section id="robust-and-relative-measures-of-spread" class="level1">
+<h1>Robust and relative measures of spread</h1>
+<section id="median-absolute-deviation-mad" class="level2">
+<h2 class="anchored" data-anchor-id="median-absolute-deviation-mad">Median absolute deviation (MAD)</h2>
+<p>A robust alternative to SD is the <strong>median absolute deviation</strong>:</p>
+<p>[ MAD = (|x_i-(x)|). ]</p>
+<p>Like the median and IQR, MAD is resistant to extreme observations.</p>
+<p>In R, note an important detail:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">80</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Raw median absolute deviation from the median:</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mad</span>(x, <span class="at">constant =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># R's default is scaled to estimate SD under normality:</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mad</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.9652</code></pre>
+</div>
+</div>
+<p>MAD is not required for Assignment 1, but it provides a useful comparison when distributions are strongly skewed or contain influential extremes.</p>
+</section>
+<section id="coefficient-of-variation-cv" class="level2">
+<h2 class="anchored" data-anchor-id="coefficient-of-variation-cv">Coefficient of variation (CV)</h2>
+<p>For an appropriate ratio-scale variable:</p>
+<p>[ CV=%. ]</p>
+<p>CV expresses variability relative to the magnitude of the mean.</p>
+<p>This matters when absolute SD naturally increases with body size or scale.</p>
+<section id="bioanthropological-application" class="level3">
+<h3 class="anchored" data-anchor-id="bioanthropological-application">Bioanthropological application</h3>
+<p>Plavcan shows why relative variability matters in studies of living primates and fossil hominins. An SD measured in grams or millimeters will naturally be larger for a large-bodied species than for a small-bodied species, even if their <strong>relative</strong> variability is similar <span class="citation" data-cites="plavcan2012">(<a href="#ref-plavcan2012" role="doc-biblioref">Plavcan 2012</a>)</span>.</p>
+<p>The CV places variation on a relative scale.</p>
+<p>Plavcan’s comparative data also show why simple universal cutoffs are dangerous: within-sex variation differs by trait. Many craniofacial dimensions in living primates have CVs below 10%, while body-mass CVs can be around 12–15%; fossil interpretation must also consider geography, time, sex, taxonomy, sample quality, and trait choice <span class="citation" data-cites="plavcan2012">(<a href="#ref-plavcan2012" role="doc-biblioref">Plavcan 2012</a>)</span>.</p>
+<div class="callout callout-style-default callout-warning callout-titled" title="CV is not a universal standardization detector">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>CV is not a universal standardization detector
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The lecture uses CV to illustrate technological standardization and biological size variation.</p>
+<p>A low CV can be consistent with standardized production, but it does not by itself prove specialist production.</p>
+<p>Sampling, raw material, function, measurement protocol, temporal mixing, and the scale of the mean can all affect observed variability.</p>
+</div>
+</div>
+</section>
+<section id="why-assignment-1-does-not-use-cv" class="level3">
+<h3 class="anchored" data-anchor-id="why-assignment-1-does-not-use-cv">Why Assignment 1 does not use CV</h3>
+<p>Assignment 1 compares (^{13}) and (^{15}) delta values.</p>
+<p>Because their zero points are reference points rather than true absence, a ratio such as (s/{x}) does not have the interpretation required for CV.</p>
+<p>Use the assignment’s requested measures:</p>
+<ul>
+<li>SD;</li>
+<li>IQR;</li>
+<li>minimum;</li>
+<li>maximum; and</li>
+<li>range.</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="distribution-shape-changes-the-meaning-of-the-center" class="level1">
+<h1>Distribution shape changes the meaning of the center</h1>
+<section id="symmetric-distributions" class="level2">
+<h2 class="anchored" data-anchor-id="symmetric-distributions">Symmetric distributions</h2>
+<p>In a reasonably symmetric unimodal distribution:</p>
+<p>[ . ]</p>
+<p>Mean + SD can often provide an effective compact description.</p>
+</section>
+<section id="positive-right-skew" class="level2">
+<h2 class="anchored" data-anchor-id="positive-right-skew">Positive / right skew</h2>
+<p>A right-skewed distribution has a long tail toward larger values.</p>
+<p>Extreme high values pull the mean upward:</p>
+<p>[ &gt; ]</p>
+<p>is a common pattern.</p>
+</section>
+<section id="negative-left-skew" class="level2">
+<h2 class="anchored" data-anchor-id="negative-left-skew">Negative / left skew</h2>
+<p>A left-skewed distribution has a long tail toward smaller values.</p>
+<p>Extreme low values pull the mean downward:</p>
+<p>[ &lt; . ]</p>
+</section>
+<section id="skewness-is-a-clue-not-a-verdict" class="level2">
+<h2 class="anchored" data-anchor-id="skewness-is-a-clue-not-a-verdict">Skewness is a clue, not a verdict</h2>
+<p>Mean–median differences can signal asymmetry, but they are not a complete diagnostic.</p>
+<p>Always inspect the distribution itself.</p>
+<p>Perkins’s R chapter demonstrates why: a histogram reveals tail structure and unusual observations that a table of descriptive statistics can summarize but cannot fully display <span class="citation" data-cites="perkins2026">(<a href="#ref-perkins2026" role="doc-biblioref">Perkins 2026</a>)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Pair the statistic with the picture">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Pair the statistic with the picture
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A useful Week 4 habit is:</p>
+<p><strong>histogram → boxplot → numerical summaries → interpretation</strong></p>
+<p>not:</p>
+<p><strong>mean → conclusion</strong>.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="histograms-the-shape-depends-partly-on-the-bins" class="level1">
+<h1>Histograms: the shape depends partly on the bins</h1>
+<p>A histogram groups a continuous variable into intervals.</p>
+<p>It helps reveal:</p>
+<ul>
+<li>symmetry;</li>
+<li>skewness;</li>
+<li>tails;</li>
+<li>gaps;</li>
+<li>possible multimodality; and</li>
+<li>unusual values.</li>
+</ul>
+<p>But the apparent shape can change when the number or width of bins changes.</p>
+<p>Pivitera emphasizes that grouped frequency displays are constructed representations of the underlying observations <span class="citation" data-cites="privitera2024">(<a href="#ref-privitera2024" role="doc-biblioref">Privitera 2024</a>)</span>. Gonick and Smith make the same point visually by building histograms from grouped frequency intervals <span class="citation" data-cites="gonickSmith2019">(<a href="#ref-gonickSmith2019" role="doc-biblioref">Gonick and Smith 2019</a>)</span>.</p>
+<div class="exercise">
+<p>When you make a histogram in R, try several reasonable values of <code>bins</code>, such as:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">8</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">10</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">12</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>If an apparent “peak” disappears immediately when the binning changes slightly, be cautious about interpreting it as real multimodality.</p>
+</div>
+</section>
+<section id="anthropological-and-archaeological-applications" class="level1">
+<h1>Anthropological and archaeological applications</h1>
+<section id="variation-can-itself-be-evidence" class="level2">
+<h2 class="anchored" data-anchor-id="variation-can-itself-be-evidence">Variation can itself be evidence</h2>
+<p>Dispersion is not merely a technical statistic added after the mean.</p>
+<p>Variation can be the phenomenon of interest.</p>
+<p>In biological anthropology, variation may bear on:</p>
+<ul>
+<li>sexual dimorphism;</li>
+<li>taxonomic heterogeneity;</li>
+<li>geographic variation;</li>
+<li>developmental plasticity; or</li>
+<li>environmental effects.</li>
+</ul>
+<p>Plavcan’s early-<em>Homo</em> analysis treats size variation as evidence that must be interpreted comparatively and cautiously rather than as noise to be removed <span class="citation" data-cites="plavcan2012">(<a href="#ref-plavcan2012" role="doc-biblioref">Plavcan 2012</a>)</span>.</p>
+</section>
+<section id="archaeological-standardization" class="level2">
+<h2 class="anchored" data-anchor-id="archaeological-standardization">Archaeological standardization</h2>
+<p>Archaeologists can compare dispersion in:</p>
+<ul>
+<li>ceramic dimensions;</li>
+<li>projectile-point measurements;</li>
+<li>brick sizes;</li>
+<li>weight systems; or</li>
+<li>other manufactured objects.</li>
+</ul>
+<p>A tightly clustered distribution may be consistent with stronger standardization; a broader distribution may indicate greater heterogeneity.</p>
+<p>But Banning’s larger methodological warning remains essential: apparent variation can also arise from measurement protocol, analyst decisions, sampling, classification, or the archaeological formation process <span class="citation" data-cites="banning2020">(<a href="#ref-banning2020" role="doc-biblioref">Banning 2020</a>)</span>.</p>
+<p>Thus:</p>
+<blockquote class="blockquote">
+<p><strong>variation becomes archaeological evidence only after we understand how the variation was produced.</strong></p>
+</blockquote>
+</section>
+<section id="means-can-also-be-misleading-because-of-measurement-decisions" class="level2">
+<h2 class="anchored" data-anchor-id="means-can-also-be-misleading-because-of-measurement-decisions">Means can also be misleading because of measurement decisions</h2>
+<p>Banning gives an especially important archaeological example: average artifact size depends on what counts as a measurable artifact. If one analyst includes fragments down to 1 cm and another includes only pieces above 2 cm, they can obtain different means from the same underlying material <span class="citation" data-cites="banning2020">(<a href="#ref-banning2020" role="doc-biblioref">Banning 2020</a>)</span>.</p>
+<p>The lesson connects Week 3 to Week 4:</p>
+<blockquote class="blockquote">
+<p><strong>descriptive statistics inherit every decision built into measurement and sampling.</strong></p>
+</blockquote>
+</section>
+</section>
+<section id="assignment-1-case-study-bronze-age-diet-and-farming" class="level1">
+<h1>Assignment 1 case study — Bronze Age diet and farming</h1>
+<section id="el-argar-la-bastida-and-gatas" class="level2">
+<h2 class="anchored" data-anchor-id="el-argar-la-bastida-and-gatas">El Argar, La Bastida, and Gatas</h2>
+<p>Assignment 1 is based on Knipper et al.’s study of the El Argar society of southeast Iberia, approximately 2200–1550 cal BCE <span class="citation" data-cites="knipper2020">(<a href="#ref-knipper2020" role="doc-biblioref">Knipper et al. 2020</a>)</span>.</p>
+<p>El Argar was a complex Bronze Age society characterized by:</p>
+<ul>
+<li>fortified settlements;</li>
+<li>cereal agriculture;</li>
+<li>metallurgy;</li>
+<li>hierarchical social organization; and</li>
+<li>marked funerary inequality.</li>
+</ul>
+<p>The study compares <strong>La Bastida</strong> and <strong>Gatas</strong>, two hilltop settlements with social, economic, and environmental differences.</p>
+<p>Knipper and colleagues analyzed several positions in the food web:</p>
+<blockquote class="blockquote">
+<p><strong>cereals → domestic animals → humans</strong></p>
+</blockquote>
+<p>They measured stable carbon and nitrogen isotope composition in charred cereal grains and in animal and human bone collagen <span class="citation" data-cites="knipper2020">(<a href="#ref-knipper2020" role="doc-biblioref">Knipper et al. 2020</a>)</span>.</p>
+<p>This broader design matters because the Assignment 1 teaching file contains only the <strong>human</strong> observations.</p>
+</section>
+<section id="the-usable-human-sample" class="level2">
+<h2 class="anchored" data-anchor-id="the-usable-human-sample">The usable human sample</h2>
+<p>The original study sampled 75 humans:</p>
+<ul>
+<li>52 from La Bastida;</li>
+<li>23 from Gatas.</li>
+</ul>
+<p>Six samples were excluded from interpretation because collagen preservation was insufficient.</p>
+<p>The evaluable human results are therefore:</p>
+<ul>
+<li><strong>La Bastida: 48</strong></li>
+<li><strong>Gatas: 21</strong></li>
+<li><strong>Total: 69</strong></li>
+</ul>
+<p>These 69 observations form the Assignment 1 teaching dataset <span class="citation" data-cites="knipper2020">(<a href="#ref-knipper2020" role="doc-biblioref">Knipper et al. 2020</a>)</span>.</p>
+</section>
+<section id="what-δ13c-and-δ15n-can-tell-us" class="level2">
+<h2 class="anchored" data-anchor-id="what-δ13c-and-δ15n-can-tell-us">What δ13C and δ15N can tell us</h2>
+<p>Stable carbon and nitrogen isotope values are useful for reconstructing aspects of food webs and diet.</p>
+<p>In broad terms:</p>
+<ul>
+<li>(^{13}) reflects carbon sources and ecological inputs into the food web;</li>
+<li>(^{15}) generally increases across trophic levels and is often related to dietary protein sources.</li>
+</ul>
+<p>But Knipper et al.&nbsp;stress that environmental and agricultural processes also influence isotope baselines <span class="citation" data-cites="knipper2020">(<a href="#ref-knipper2020" role="doc-biblioref">Knipper et al. 2020</a>)</span>.</p>
+<p>For example:</p>
+<ul>
+<li>plant water conditions can affect carbon-isotope values;</li>
+<li>manuring can raise crop (^{15});</li>
+<li>animal feeding practices affect faunal isotope baselines;</li>
+<li>breastfeeding and metabolic stress can affect values in subadults.</li>
+</ul>
+<p>Therefore, a human isotope difference is <strong>not automatically a direct dietary difference</strong>.</p>
+</section>
+<section id="the-crucial-archaeological-lesson" class="level2">
+<h2 class="anchored" data-anchor-id="the-crucial-archaeological-lesson">The crucial archaeological lesson</h2>
+<p>The human values at La Bastida are higher on average for both (^{13}) and (^{15}) than at Gatas in the original study <span class="citation" data-cites="knipper2020">(<a href="#ref-knipper2020" role="doc-biblioref">Knipper et al. 2020</a>)</span>.</p>
+<p>A tempting interpretation would be:</p>
+<blockquote class="blockquote">
+<p>Higher human (^{15}) at La Bastida = more meat or dairy.</p>
+</blockquote>
+<p>The full food-web evidence makes that inference unsafe.</p>
+<p>Knipper et al.&nbsp;found differences in cereal and animal baselines as well. Their results indicate extensive rain-fed cereal cultivation with <strong>little to moderate manuring</strong>, and especially at La Bastida they found strong integration between crop production and domestic-animal feeding. When plant and animal baselines are considered, higher human isotope values do <strong>not necessarily imply different average dietary composition</strong> <span class="citation" data-cites="knipper2020">(<a href="#ref-knipper2020" role="doc-biblioref">Knipper et al. 2020</a>)</span>.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Assignment 1 is intentionally narrower than the published paper">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Assignment 1 is intentionally narrower than the published paper
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Your task is <strong>not</strong> to reproduce Knipper et al.’s complete dietary reconstruction.</p>
+<p>Your task is to establish:</p>
+<blockquote class="blockquote">
+<p><strong>What do the observed human isotope distributions show?</strong></p>
+</blockquote>
+<p>Only after describing the distributions should you discuss archaeological interpretations that are <strong>consistent</strong> with the evidence.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="assignment-1-complete-r-workflow" class="level1">
+<h1>Assignment 1 — Complete R workflow</h1>
+<p>The assignment asks you to conduct a <strong>descriptive statistical comparison</strong> of human (^{13}) and (^{15}) at La Bastida and Gatas.</p>
+<p>You must calculate, for <strong>each isotope at each site</strong>:</p>
+<ul>
+<li>(n);</li>
+<li>mean;</li>
+<li>median;</li>
+<li>standard deviation;</li>
+<li>IQR;</li>
+<li>minimum;</li>
+<li>maximum; and</li>
+<li>range.</li>
+</ul>
+<p>You must also use:</p>
+<ul>
+<li>histograms; and</li>
+<li>boxplots</li>
+</ul>
+<p>to examine distribution shape, spread, possible outliers, and overlap between the sites.</p>
+<p>No inferential statistical test is required.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Assignment 1 workflow">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Assignment 1 workflow
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>inspect → verify → reshape → visualize → summarize → compare → interpret → render</strong></p>
+<p>Do not skip directly to the summary table.</p>
+</div>
+</div>
+<section id="step-0-work-from-the-assignment-folder" class="level2">
+<h2 class="anchored" data-anchor-id="step-0-work-from-the-assignment-folder">Step 0 — Work from the assignment folder</h2>
+<p>If you downloaded the Assignment 1 package, the intended structure is:</p>
+<pre class="text"><code>assignment01_knipper_descriptive/
+├── assignment01_knipper_descriptive.qmd
+├── README.md
+├── codebook.md
+├── provenance.md
+└── data/
+    └── knipper2020_humans.csv</code></pre>
+<p>Inside the assignment <code>.qmd</code>, the correct student-facing relative path is:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>data_file <span class="ot">&lt;-</span> <span class="st">"data/knipper2020_humans.csv"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Do <strong>not</strong> replace it with a machine-specific path beginning with <code>/Users/...</code>.</p>
+<p>The Week 4 Study Guide itself runs inside the full course repository, so its executable examples use the repository copy at <code>assignments/assignment01_knipper_descriptive/data/</code>.</p>
+</section>
+<section id="step-1-load-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-load-the-data">Step 1 — Load the data</h2>
+<p>First confirm that the Study Guide can find the validated teaching file:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">file.exists</span>(assignment_data_file)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>Then import it:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(assignment_data_file)) {</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste0</span>(</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Missing Assignment 1 data file: "</span>,</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>      assignment_data_file</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>a1 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>  assignment_data_file,</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">show_col_types =</span> <span class="cn">FALSE</span></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="step-2-inspect-before-calculating" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-inspect-before-calculating">Step 2 — Inspect before calculating</h2>
+<p>Run:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(a1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 69
+Columns: 10
+$ source_row_id   &lt;dbl&gt; 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 1…
+$ grave_no        &lt;chr&gt; "BA 01", "BA 02", "BAS 4", "BA 05", "BA 06/1", "BA 06/…
+$ sample          &lt;chr&gt; "Costa", "Costa", "Phalanx media manus", "Costa", "Cos…
+$ site            &lt;chr&gt; "La Bastida", "La Bastida", "La Bastida", "La Bastida"…
+$ d13c            &lt;dbl&gt; -19.20070, -18.25818, -19.04190, -18.36669, -19.09329,…
+$ d15n            &lt;dbl&gt; 10.393354, 13.892656, 10.870000, 12.522246, 10.848756,…
+$ sex             &lt;chr&gt; "nd", "nd", "Male ?", "nd", "Male", "nd", "nd", "Male"…
+$ age_category    &lt;chr&gt; "Infans I", "Infans I", "Adult", "Infans I", "Young ad…
+$ chronology      &lt;chr&gt; "?", "3", "3", "3", NA, "3", "3", "2", "2", "3", "3", …
+$ social_category &lt;chr&gt; "5", "5", "3 – 4", "5", "4", "4", "5", "3", "3", "3", …</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(a1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 69 10</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(a1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "source_row_id"   "grave_no"        "sample"          "site"           
+ [5] "d13c"            "d15n"            "sex"             "age_category"   
+ [9] "chronology"      "social_category"</code></pre>
+</div>
+</div>
+<p>Then ask:</p>
+<blockquote class="blockquote">
+<p><strong>What does one row represent?</strong></p>
+</blockquote>
+<p>For this teaching dataset, one row represents <strong>one sampled human individual</strong>.</p>
+<p>Carlson’s rule is worth repeating: looking at the data is an essential first step because it can reveal measurement, coding, or structural problems before analysis <span class="citation" data-cites="carlson2017">(<a href="#ref-carlson2017" role="doc-biblioref">Carlson 2017</a>)</span>.</p>
+</section>
+<section id="step-3-verify-the-site-counts" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-verify-the-site-counts">Step 3 — Verify the site counts</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>site_counts <span class="ot">&lt;-</span> a1 <span class="sc">|&gt;</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(site, <span class="at">name =</span> <span class="st">"n"</span>)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>site_counts <span class="sc">|&gt;</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="tbl-week04-site-counts" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-week04-site-counts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Number of evaluable human isotope observations in the Assignment 1 teaching dataset.
+</figcaption>
+<div aria-describedby="tbl-week04-site-counts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="cell caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">site</th>
+<th style="text-align: right;">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Gatas</td>
+<td style="text-align: right;">21</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">La Bastida</td>
+<td style="text-align: right;">48</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>Your counts should agree with the documented teaching sample:</p>
+<ul>
+<li>La Bastida: 48</li>
+<li>Gatas: 21</li>
+<li>total: 69</li>
+</ul>
+<p>If they do not, stop and determine why before continuing.</p>
+</section>
+<section id="step-4-check-missing-isotope-values" class="level2">
+<h2 class="anchored" data-anchor-id="step-4-check-missing-isotope-values">Step 4 — Check missing isotope values</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>a1 <span class="sc">|&gt;</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">missing_d13c =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(d13c)),</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">missing_d15n =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(d15n))</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 2
+  missing_d13c missing_d15n
+         &lt;int&gt;        &lt;int&gt;
+1            0            0</code></pre>
+</div>
+</div>
+<p>Do not silently treat missing values as zero.</p>
+<p>If missing values exist, document them and use <code>na.rm = TRUE</code> where appropriate.</p>
+</section>
+<section id="step-5-reshape-the-two-isotope-columns" class="level2">
+<h2 class="anchored" data-anchor-id="step-5-reshape-the-two-isotope-columns">Step 5 — Reshape the two isotope columns</h2>
+<p>For repeated summaries and plotting, a long-format table is convenient:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>a1_long <span class="ot">&lt;-</span> a1 <span class="sc">|&gt;</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(source_row_id, grave_no, sample, site, d13c, d15n) <span class="sc">|&gt;</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">c</span>(d13c, d15n),</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"isotope"</span>,</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"value"</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">isotope =</span> <span class="fu">recode</span>(</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>      isotope,</span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">d13c =</span> <span class="st">"δ13C"</span>,</span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">d15n =</span> <span class="st">"δ15N"</span></span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(a1_long)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 138
+Columns: 6
+$ source_row_id &lt;dbl&gt; 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11…
+$ grave_no      &lt;chr&gt; "BA 01", "BA 01", "BA 02", "BA 02", "BAS 4", "BAS 4", "B…
+$ sample        &lt;chr&gt; "Costa", "Costa", "Costa", "Costa", "Phalanx media manus…
+$ site          &lt;chr&gt; "La Bastida", "La Bastida", "La Bastida", "La Bastida", …
+$ isotope       &lt;chr&gt; "δ13C", "δ15N", "δ13C", "δ15N", "δ13C", "δ15N", "δ13C", …
+$ value         &lt;dbl&gt; -19.200698, 10.393354, -18.258179, 13.892656, -19.041901…</code></pre>
+</div>
+</div>
+<p>The original wide file has one row per individual.</p>
+<p>The long version has two rows per individual—one for each isotope measurement. The unit of biological observation has not changed; the table has simply been reshaped for analysis.</p>
+</section>
+<section id="step-6-plot-before-summarizing" class="level2">
+<h2 class="anchored" data-anchor-id="step-6-plot-before-summarizing">Step 6 — Plot before summarizing</h2>
+<p>The lecture’s disciplined workflow says <strong>plot first</strong>.</p>
+<section id="δ13c-histograms-by-site" class="level3">
+<h3 class="anchored" data-anchor-id="δ13c-histograms-by-site">δ13C histograms by site</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>a1_long <span class="sc">|&gt;</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(isotope <span class="sc">==</span> <span class="st">"δ13C"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> value)) <span class="sc">+</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">10</span>) <span class="sc">+</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> site, <span class="at">ncol =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">expression</span>(delta<span class="sc">^</span><span class="dv">13</span> <span class="sc">*</span> C<span class="sc">~</span>(<span class="st">"\u2030"</span>)),</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Count"</span></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div id="fig-week04-d13c-hist" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two histograms compare human carbon isotope values at La Bastida and Gatas.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-week04-d13c-hist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="week04_files/figure-html/fig-week04-d13c-hist-1.png" class="img-fluid figure-img" alt="Two histograms compare human carbon isotope values at La Bastida and Gatas." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-week04-d13c-hist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Distributions of human bone-collagen δ13C values by site.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="δ15n-histograms-by-site" class="level3">
+<h3 class="anchored" data-anchor-id="δ15n-histograms-by-site">δ15N histograms by site</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>a1_long <span class="sc">|&gt;</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(isotope <span class="sc">==</span> <span class="st">"δ15N"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> value)) <span class="sc">+</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">10</span>) <span class="sc">+</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> site, <span class="at">ncol =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">expression</span>(delta<span class="sc">^</span><span class="dv">15</span> <span class="sc">*</span> N<span class="sc">~</span>(<span class="st">"\u2030"</span>)),</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Count"</span></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div id="fig-week04-d15n-hist" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two histograms compare human nitrogen isotope values at La Bastida and Gatas.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-week04-d15n-hist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="week04_files/figure-html/fig-week04-d15n-hist-1.png" class="img-fluid figure-img" alt="Two histograms compare human nitrogen isotope values at La Bastida and Gatas." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-week04-d15n-hist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Distributions of human bone-collagen δ15N values by site.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>When examining each histogram, ask:</p>
+<ol type="1">
+<li>Where is the main concentration of values?</li>
+<li>Is the distribution approximately symmetric?</li>
+<li>Is there a long tail?</li>
+<li>Are there gaps?</li>
+<li>Are there multiple peaks?</li>
+<li>Are there isolated observations?</li>
+<li>How much do the two sites appear to overlap?</li>
+<li>Could the smaller Gatas sample make its histogram appear less smooth?</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Check whether the shape depends on binning">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Check whether the shape depends on binning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Try changing <code>bins = 10</code> to <code>bins = 8</code> and <code>bins = 12</code>.</p>
+<p>You are not searching for the bin number that makes the graph look most dramatic.</p>
+<p>You are asking whether your description of the distribution is robust to reasonable plotting choices.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="step-7-construct-boxplots" class="level2">
+<h2 class="anchored" data-anchor-id="step-7-construct-boxplots">Step 7 — Construct boxplots</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  a1_long,</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> site, <span class="at">y =</span> value)</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> isotope, <span class="at">scales =</span> <span class="st">"free_y"</span>) <span class="sc">+</span></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Isotope value (‰)"</span></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div id="fig-week04-isotope-boxplots" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Faceted boxplots compare carbon and nitrogen isotope distributions for La Bastida and Gatas.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-week04-isotope-boxplots-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="week04_files/figure-html/fig-week04-isotope-boxplots-1.png" class="img-fluid figure-img" alt="Faceted boxplots compare carbon and nitrogen isotope distributions for La Bastida and Gatas." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-week04-isotope-boxplots-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Human stable-isotope distributions by site. Boxes show the interquartile range and median; whiskers and individually plotted observations summarize the tails under the conventional boxplot rule.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Use the boxplots to compare:</p>
+<ul>
+<li>median positions;</li>
+<li>IQR widths;</li>
+<li>total spread;</li>
+<li>overlap; and</li>
+<li>observations beyond the whiskers.</li>
+</ul>
+<p>Do <strong>not</strong> remove a point merely because the boxplot draws it beyond a whisker.</p>
+</section>
+<section id="step-8-calculate-the-required-descriptive-statistics" class="level2">
+<h2 class="anchored" data-anchor-id="step-8-calculate-the-required-descriptive-statistics">Step 8 — Calculate the required descriptive statistics</h2>
+<p>The most transparent tidyverse workflow is:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>a1_summary <span class="ot">&lt;-</span> a1_long <span class="sc">|&gt;</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(site, isotope) <span class="sc">|&gt;</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(value)),</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(value, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">median =</span> <span class="fu">median</span>(value, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd =</span> <span class="fu">sd</span>(value, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">iqr =</span> <span class="fu">IQR</span>(value, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">min =</span> <span class="fu">min</span>(value, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">max =</span> <span class="fu">max</span>(value, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">range =</span> <span class="fu">max</span>(value, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">-</span> <span class="fu">min</span>(value, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(</span>
+<span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a>      <span class="fu">c</span>(mean, median, sd, iqr, min, max, range),</span>
+<span id="cb41-17"><a href="#cb41-17" aria-hidden="true" tabindex="-1"></a>      <span class="sc">~</span> <span class="fu">round</span>(.x, <span class="dv">2</span>)</span>
+<span id="cb41-18"><a href="#cb41-18" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb41-19"><a href="#cb41-19" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb41-20"><a href="#cb41-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-21"><a href="#cb41-21" aria-hidden="true" tabindex="-1"></a>a1_summary <span class="sc">|&gt;</span></span>
+<span id="cb41-22"><a href="#cb41-22" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="tbl-week04-assignment1-descriptives" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-week04-assignment1-descriptives-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: Descriptive statistics for human δ13C and δ15N values at La Bastida and Gatas.
+</figcaption>
+<div aria-describedby="tbl-week04-assignment1-descriptives-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="cell caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 12%">
+<col style="width: 4%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 9%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">site</th>
+<th style="text-align: left;">isotope</th>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">median</th>
+<th style="text-align: right;">sd</th>
+<th style="text-align: right;">iqr</th>
+<th style="text-align: right;">min</th>
+<th style="text-align: right;">max</th>
+<th style="text-align: right;">range</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Gatas</td>
+<td style="text-align: left;">δ13C</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">-19.21</td>
+<td style="text-align: right;">-19.21</td>
+<td style="text-align: right;">0.45</td>
+<td style="text-align: right;">0.45</td>
+<td style="text-align: right;">-19.95</td>
+<td style="text-align: right;">-18.34</td>
+<td style="text-align: right;">1.61</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gatas</td>
+<td style="text-align: left;">δ15N</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">10.59</td>
+<td style="text-align: right;">10.03</td>
+<td style="text-align: right;">1.67</td>
+<td style="text-align: right;">2.64</td>
+<td style="text-align: right;">8.23</td>
+<td style="text-align: right;">14.02</td>
+<td style="text-align: right;">5.79</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">La Bastida</td>
+<td style="text-align: left;">δ13C</td>
+<td style="text-align: right;">48</td>
+<td style="text-align: right;">-18.64</td>
+<td style="text-align: right;">-18.80</td>
+<td style="text-align: right;">0.55</td>
+<td style="text-align: right;">0.72</td>
+<td style="text-align: right;">-19.45</td>
+<td style="text-align: right;">-17.37</td>
+<td style="text-align: right;">2.08</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">La Bastida</td>
+<td style="text-align: left;">δ15N</td>
+<td style="text-align: right;">48</td>
+<td style="text-align: right;">11.52</td>
+<td style="text-align: right;">11.19</td>
+<td style="text-align: right;">1.25</td>
+<td style="text-align: right;">1.91</td>
+<td style="text-align: right;">9.51</td>
+<td style="text-align: right;">14.23</td>
+<td style="text-align: right;">4.72</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>Read this pipeline from top to bottom:</p>
+<ol type="1">
+<li>start with the long isotope table;</li>
+<li>group by site and isotope;</li>
+<li>calculate one summary row for each site × isotope combination;</li>
+<li>drop the grouping;</li>
+<li>round values for presentation; and</li>
+<li>print a readable table.</li>
+</ol>
+<div class="callout callout-style-default callout-important callout-titled" title="Round for display, not before calculation">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Round for display, not before calculation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Keep full numeric precision in the underlying data and calculations.</p>
+<p>Round only the final displayed summaries.</p>
+<p>Premature rounding can change later calculations.</p>
+</div>
+</div>
+</section>
+<section id="step-9-understand-every-column-in-the-summary" class="level2">
+<h2 class="anchored" data-anchor-id="step-9-understand-every-column-in-the-summary">Step 9 — Understand every column in the summary</h2>
+<section id="n" class="level3">
+<h3 class="anchored" data-anchor-id="n"><code>n</code></h3>
+<p>How many non-missing observations contributed to that site × isotope summary?</p>
+</section>
+<section id="mean" class="level3">
+<h3 class="anchored" data-anchor-id="mean"><code>mean</code></h3>
+<p>The arithmetic balance point.</p>
+<p>Ask whether extreme values appear to pull it away from the main body of the distribution.</p>
+</section>
+<section id="median" class="level3">
+<h3 class="anchored" data-anchor-id="median"><code>median</code></h3>
+<p>The 50th percentile.</p>
+<p>Ask whether it differs meaningfully from the mean.</p>
+</section>
+<section id="sd" class="level3">
+<h3 class="anchored" data-anchor-id="sd"><code>sd</code></h3>
+<p>The sample standard deviation.</p>
+<p>It is expressed in the same unit as the isotope measurement: ‰.</p>
+</section>
+<section id="iqr" class="level3">
+<h3 class="anchored" data-anchor-id="iqr"><code>iqr</code></h3>
+<p>The width of the middle 50%.</p>
+<p>It is resistant to the tails and pairs naturally with the median.</p>
+</section>
+<section id="min-max-and-range" class="level3">
+<h3 class="anchored" data-anchor-id="min-max-and-range"><code>min</code>, <code>max</code>, and <code>range</code></h3>
+<p>These describe the extremes and total observed span.</p>
+<p>Because range uses only minimum and maximum, interpret it together with the histogram, boxplot, SD, and IQR.</p>
+</section>
+</section>
+<section id="step-10-compare-mean-with-median" class="level2">
+<h2 class="anchored" data-anchor-id="step-10-compare-mean-with-median">Step 10 — Compare mean with median</h2>
+<p>Create a compact diagnostic table:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>a1_summary <span class="sc">|&gt;</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_minus_median =</span> <span class="fu">round</span>(mean <span class="sc">-</span> median, <span class="dv">2</span>)</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(site, isotope, mean, median, mean_minus_median) <span class="sc">|&gt;</span></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">site</th>
+<th style="text-align: left;">isotope</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">median</th>
+<th style="text-align: right;">mean_minus_median</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Gatas</td>
+<td style="text-align: left;">δ13C</td>
+<td style="text-align: right;">-19.21</td>
+<td style="text-align: right;">-19.21</td>
+<td style="text-align: right;">0.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gatas</td>
+<td style="text-align: left;">δ15N</td>
+<td style="text-align: right;">10.59</td>
+<td style="text-align: right;">10.03</td>
+<td style="text-align: right;">0.56</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">La Bastida</td>
+<td style="text-align: left;">δ13C</td>
+<td style="text-align: right;">-18.64</td>
+<td style="text-align: right;">-18.80</td>
+<td style="text-align: right;">0.16</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">La Bastida</td>
+<td style="text-align: left;">δ15N</td>
+<td style="text-align: right;">11.52</td>
+<td style="text-align: right;">11.19</td>
+<td style="text-align: right;">0.33</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Interpret the sign <strong>with the histogram</strong>:</p>
+<ul>
+<li>mean noticeably above median can be consistent with right skew;</li>
+<li>mean noticeably below median can be consistent with left skew;</li>
+<li>similar mean and median can be consistent with approximate symmetry.</li>
+</ul>
+<p>Do not use a rigid numerical cutoff. Shape is a property of the distribution, not merely of one difference score.</p>
+</section>
+<section id="step-11-compare-sd-with-iqr" class="level2">
+<h2 class="anchored" data-anchor-id="step-11-compare-sd-with-iqr">Step 11 — Compare SD with IQR</h2>
+<p>SD and IQR do not measure exactly the same thing, so do not compare their raw magnitudes as if they should be equal.</p>
+<p>Instead ask:</p>
+<ul>
+<li>Does the boxplot show a compact middle 50% but long tails?</li>
+<li>Does the range look large relative to the IQR?</li>
+<li>Are one or two observations influencing the SD?</li>
+<li>Are the data reasonably symmetric so that mean + SD give a useful compact description?</li>
+<li>Would median + IQR more faithfully represent the center and central spread?</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled" title="There is no rule that you must choose only one pair">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>There is no rule that you must choose only one pair
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A good descriptive report can present <strong>both</strong>:</p>
+<ul>
+<li>mean + SD; and</li>
+<li>median + IQR</li>
+</ul>
+<p>when they reveal different aspects of the distribution.</p>
+<p>Assignment 1 asks you to calculate both so that you can explain what each contributes.</p>
+</div>
+</div>
+</section>
+<section id="step-12-inspect-potential-outliers-in-context" class="level2">
+<h2 class="anchored" data-anchor-id="step-12-inspect-potential-outliers-in-context">Step 12 — Inspect potential outliers in context</h2>
+<p>If the boxplot identifies unusual cases, locate them:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>a1 <span class="sc">|&gt;</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(d15n)) <span class="sc">|&gt;</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>    source_row_id,</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>    grave_no,</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>    site,</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>    d13c,</span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>    d15n,</span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>    sex,</span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>    age_category,</span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>    chronology,</span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>    social_category</span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 9
+   source_row_id grave_no site        d13c  d15n sex   age_category chronology
+           &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;     
+ 1            18 BA 26    La Bastida -17.4  14.2 nd    Infans I     3         
+ 2            54 GA 21    Gatas      -18.3  14.0 nd    Infans I     3         
+ 3             4 BA 02    La Bastida -18.3  13.9 nd    Infans I     3         
+ 4            30 BA 50    La Bastida -18.4  13.8 nd    Infans I     &lt;NA&gt;      
+ 5            43 BA 76    La Bastida -18.1  13.7 nd    Infans I     2         
+ 6            25 BA 45    La Bastida -17.9  13.6 nd    Infans I     3         
+ 7            16 BA 23/2  La Bastida -17.4  13.3 nd    Infans I     3         
+ 8            40 BA 67    La Bastida -17.7  13.3 nd    Infans I     3         
+ 9            23 BA 41    La Bastida -18.8  13.2 nd    Neonate      3         
+10            72 GA 40    Gatas      -19.0  13.1 nd    Infans I     3         
+# ℹ 1 more variable: social_category &lt;chr&gt;</code></pre>
+</div>
+</div>
+<p>This does <strong>not</strong> mean the first ten rows should be excluded.</p>
+<p>It means they deserve contextual inspection.</p>
+<p>Knipper et al.&nbsp;note that breastfeeding and metabolic stress can influence isotope values among subadults, and their original analysis explicitly considers age-related patterns <span class="citation" data-cites="knipper2020">(<a href="#ref-knipper2020" role="doc-biblioref">Knipper et al. 2020</a>)</span>. An unusual human value can therefore contain biological or archaeological information.</p>
+</section>
+<section id="step-13-describe-first-interpret-second" class="level2">
+<h2 class="anchored" data-anchor-id="step-13-describe-first-interpret-second">Step 13 — Describe first, interpret second</h2>
+<p>A strong Assignment 1 paragraph has two stages.</p>
+<section id="stage-a-statistical-description" class="level3">
+<h3 class="anchored" data-anchor-id="stage-a-statistical-description">Stage A — Statistical description</h3>
+<p>Describe only what the human distributions show.</p>
+<p>A useful template is:</p>
+<blockquote class="blockquote">
+<p>For (^{15}), the La Bastida sample had a [higher/lower/similar] center than Gatas. The mean and median were [close/different], while the SD and IQR indicate [greater/lower/similar] variability. The histogram and boxplot show [symmetry/skew/tails/overlap/unusual observations].</p>
+</blockquote>
+<p>Use your actual output to replace the bracketed phrases.</p>
+</section>
+<section id="stage-b-archaeological-interpretation" class="level3">
+<h3 class="anchored" data-anchor-id="stage-b-archaeological-interpretation">Stage B — Archaeological interpretation</h3>
+<p>Then explain what is <strong>consistent with</strong> the pattern while respecting the limits of the assignment.</p>
+<p>A useful transition is:</p>
+<blockquote class="blockquote">
+<p>These descriptive differences demonstrate variation in the human isotope distributions, but they do not by themselves identify the dietary or agricultural mechanism that produced it.</p>
+</blockquote>
+<p>Then bring in Knipper et al.’s wider plant–animal–human evidence <span class="citation" data-cites="knipper2020">(<a href="#ref-knipper2020" role="doc-biblioref">Knipper et al. 2020</a>)</span>.</p>
+</section>
+</section>
+<section id="step-14-answer-the-assignments-four-interpretive-questions" class="level2">
+<h2 class="anchored" data-anchor-id="step-14-answer-the-assignments-four-interpretive-questions">Step 14 — Answer the assignment’s four interpretive questions</h2>
+<section id="what-is-the-unit-of-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-the-unit-of-analysis">1. What is the unit of analysis?</h3>
+<p>One sampled human individual.</p>
+</section>
+<section id="what-descriptive-statistical-result-matters-most" class="level3">
+<h3 class="anchored" data-anchor-id="what-descriptive-statistical-result-matters-most">2. What descriptive statistical result matters most?</h3>
+<p>There is no single answer supplied in advance.</p>
+<p>Choose the result that most clearly characterizes the important empirical pattern and justify the choice using the visualizations and summary statistics.</p>
+</section>
+<section id="what-archaeological-or-anthropological-interpretation-is-consistent-with-the-distributions" class="level3">
+<h3 class="anchored" data-anchor-id="what-archaeological-or-anthropological-interpretation-is-consistent-with-the-distributions">3. What archaeological or anthropological interpretation is consistent with the distributions?</h3>
+<p>Your interpretation should be cautious and contextual.</p>
+<p>The human distributions can be discussed in relation to the broader El Argar food-web study, but the Assignment 1 data alone do not reconstruct the entire food system.</p>
+</section>
+<section id="what-claim-do-these-descriptive-data-alone-not-support" class="level3">
+<h3 class="anchored" data-anchor-id="what-claim-do-these-descriptive-data-alone-not-support">4. What claim do these descriptive data alone not support?</h3>
+<p>Examples of claims that would require additional evidence include:</p>
+<ul>
+<li>exact proportions of meat, dairy, barley, or other foods;</li>
+<li>a causal claim that site status produced isotope differences;</li>
+<li>a claim that higher (^{15}) necessarily means more animal protein;</li>
+<li>a population-wide claim about all inhabitants of La Bastida or Gatas;</li>
+<li>a causal claim about manuring or irrigation from the human dataset alone.</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="a-disciplined-assignment-1-workflow" class="level1">
+<h1>A disciplined Assignment 1 workflow</h1>
+<p>The complete workflow is:</p>
+<pre class="text"><code>1. Open the correct RStudio Project / assignment folder
+2. Read README, codebook, provenance, and the assignment
+3. Confirm the data file exists
+4. Import the CSV
+5. Inspect rows, columns, variable types, and unit of analysis
+6. Verify site counts
+7. Check missing values
+8. Plot δ13C distributions by site
+9. Plot δ15N distributions by site
+10. Construct boxplots
+11. Calculate n, mean, median, SD, IQR, min, max, range
+12. Compare mean with median
+13. Compare SD/IQR/range with the plotted shape
+14. Inspect unusual observations in archaeological context
+15. Write the statistical description
+16. Add a cautious archaeological interpretation
+17. State what the data do not support
+18. Restart R
+19. Render the Quarto document from a clean session
+20. Submit both .qmd and .html</code></pre>
+<div class="callout callout-style-default callout-important callout-titled" title="No inferential test in Assignment 1">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>No inferential test in Assignment 1
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Do not add a t-test, ANOVA, permutation test, confidence interval, or p-value.</p>
+<p>Those are not required for this assignment.</p>
+<p>The intellectual task is to learn how to <strong>describe a distribution well before testing hypotheses about it</strong>.</p>
+</div>
+</div>
+</section>
+<section id="guided-practice" class="level1">
+<h1>Guided practice</h1>
+<section id="exercise-1-which-center" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-1-which-center">Exercise 1 — Which center?</h2>
+<div class="exercise">
+<p>Consider:</p>
+<pre class="text"><code>3, 5, 7, 7, 8, 9, 80</code></pre>
+<p>Without using R:</p>
+<ol type="1">
+<li>Which value will affect the mean most?</li>
+<li>Will the median change dramatically because of the value 80?</li>
+<li>Which center better describes a “typical” observation here?</li>
+<li>What additional plot would you want to see before making a final decision?</li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Check your reasoning">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Check your reasoning
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The value 80 strongly affects the mean but has much less influence on the median.</p>
+<p>The median is therefore more resistant for this strongly right-tailed toy dataset.</p>
+<p>A histogram, dot plot, or boxplot would help show whether 80 is isolated from the main body of observations.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-2-same-mean-different-spread" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-2-same-mean-different-spread">Exercise 2 — Same mean, different spread</h2>
+<div class="exercise">
+<p>Compare:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>)</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol type="1">
+<li>Calculate the mean of each.</li>
+<li>Calculate the SD of each.</li>
+<li>What would be lost if you reported only the means?</li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Check with R">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Check with R
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(a)</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(b)</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(a)</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(b)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The means are the same, but the second dataset is much more dispersed.</p>
+<p>This is why central tendency without dispersion is incomplete.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-3-range-versus-iqr" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-3-range-versus-iqr">Exercise 3 — Range versus IQR</h2>
+<div class="exercise">
+<p>Start with:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>, <span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">15</span>, <span class="dv">16</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Then replace <code>16</code> with <code>100</code>.</p>
+<p>Compare:</p>
+<ul>
+<li>range;</li>
+<li>IQR.</li>
+</ul>
+<p>Which statistic changes more, and why?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Check with R">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Check with R
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>, <span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">15</span>, <span class="dv">16</span>)</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>, <span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">15</span>, <span class="dv">100</span>)</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(x1) <span class="sc">-</span> <span class="fu">min</span>(x1)</span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(x2) <span class="sc">-</span> <span class="fu">min</span>(x2)</span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a><span class="fu">IQR</span>(x1)</span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a><span class="fu">IQR</span>(x2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The range depends directly on the extreme values, whereas the IQR focuses on the middle 50%.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-4-read-a-boxplot" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-4-read-a-boxplot">Exercise 4 — Read a boxplot</h2>
+<div class="exercise">
+<p>For <a href="#fig-week04-isotope-boxplots" class="quarto-xref">Figure&nbsp;3</a>, identify:</p>
+<ol type="1">
+<li>the median;</li>
+<li>the IQR;</li>
+<li>the direction of any asymmetry;</li>
+<li>any points beyond the whiskers;</li>
+<li>which site appears more variable for each isotope; and</li>
+<li>whether the site distributions overlap.</li>
+</ol>
+<p>Then compare those visual impressions with <a href="#tbl-week04-assignment1-descriptives" class="quarto-xref">Table&nbsp;2</a>.</p>
+</div>
+</section>
+<section id="exercise-5-choose-the-summary-pair" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-5-choose-the-summary-pair">Exercise 5 — Choose the summary pair</h2>
+<div class="exercise">
+<p>For each hypothetical distribution, choose the most informative primary pair:</p>
+<ul>
+<li><strong>mean + SD</strong>, or</li>
+<li><strong>median + IQR</strong>.</li>
+</ul>
+<section id="a" class="level3">
+<h3 class="anchored" data-anchor-id="a">A</h3>
+<p>Symmetric, unimodal, no influential extremes.</p>
+</section>
+<section id="b" class="level3">
+<h3 class="anchored" data-anchor-id="b">B</h3>
+<p>Strong right skew with several high values.</p>
+</section>
+<section id="c" class="level3">
+<h3 class="anchored" data-anchor-id="c">C</h3>
+<p>Ordinal preservation scores: poor / fair / good / excellent.</p>
+<p>Explain your choices.</p>
+</section>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Check your reasoning">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Check your reasoning
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>A:</strong> mean + SD is usually efficient and interpretable.</li>
+<li><strong>B:</strong> median + IQR is more resistant, though reporting both pairs can reveal the effect of the tail.</li>
+<li><strong>C:</strong> median + IQR is compatible with ordered categories; an arithmetic mean assumes quantitative intervals not supplied by the labels.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-6-is-cv-appropriate" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-6-is-cv-appropriate">Exercise 6 — Is CV appropriate?</h2>
+<div class="exercise">
+<p>Would CV be appropriate for:</p>
+<ol type="1">
+<li>femoral-head diameter in mm?</li>
+<li>body mass in kg?</li>
+<li>(^{15}) reported in ‰ relative to a standard?</li>
+<li>temperature in °C?</li>
+</ol>
+<p>Explain the measurement-scale reason for each answer.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Check your reasoning">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Check your reasoning
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-23" class="callout-23-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>CV requires a ratio scale with a meaningful nonzero mean.</p>
+<p>It is defensible for femoral-head diameter and body mass.</p>
+<p>It is not appropriate for delta isotope values or Celsius temperature because their zero points are reference points rather than true absence.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-7-separate-description-from-explanation" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-7-separate-description-from-explanation">Exercise 7 — Separate description from explanation</h2>
+<div class="exercise">
+<p>Rewrite this sentence so that statistical description and archaeological explanation are separated:</p>
+<blockquote class="blockquote">
+<p>“La Bastida people ate more meat because their mean δ15N is higher.”</p>
+</blockquote>
+<p>Your revision should contain:</p>
+<ol type="1">
+<li>one descriptive sentence; and</li>
+<li>one cautious interpretive sentence.</li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="One defensible structure">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>One defensible structure
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-24" class="callout-24-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>A stronger structure is:</p>
+<blockquote class="blockquote">
+<p>The La Bastida human sample has higher δ15N values on average than the Gatas sample.</p>
+</blockquote>
+<p>Then:</p>
+<blockquote class="blockquote">
+<p>This descriptive difference does not by itself demonstrate greater meat consumption, because isotope baselines also vary across crops and animals; the wider food-web evidence is needed to evaluate the mechanism.</p>
+</blockquote>
+<p>The exact wording should reflect your own Assignment 1 results and reading of Knipper et al. <span class="citation" data-cites="knipper2020">(<a href="#ref-knipper2020" role="doc-biblioref">Knipper et al. 2020</a>)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="common-errors-in-week-4" class="level1">
+<h1>Common errors in Week 4</h1>
+<section id="error-1-calculating-a-mean-because-the-column-is-numeric" class="level2">
+<h2 class="anchored" data-anchor-id="error-1-calculating-a-mean-because-the-column-is-numeric">Error 1 — Calculating a mean because the column is numeric</h2>
+<p>Ask what the numbers mean.</p>
+<p>Codes for categories are not quantitative distances.</p>
+</section>
+<section id="error-2-reporting-only-the-mean" class="level2">
+<h2 class="anchored" data-anchor-id="error-2-reporting-only-the-mean">Error 2 — Reporting only the mean</h2>
+<p>Always consider spread and shape.</p>
+</section>
+<section id="error-3-calling-every-extreme-observation-an-error" class="level2">
+<h2 class="anchored" data-anchor-id="error-3-calling-every-extreme-observation-an-error">Error 3 — Calling every extreme observation an error</h2>
+<p>Investigate it.</p>
+<p>An unusual value can be a mistake, but it can also be substantive evidence.</p>
+</section>
+<section id="error-4-removing-outliers-to-make-the-graph-look-normal" class="level2">
+<h2 class="anchored" data-anchor-id="error-4-removing-outliers-to-make-the-graph-look-normal">Error 4 — Removing outliers to make the graph look normal</h2>
+<p>Do not modify the data simply to obtain a preferred distribution.</p>
+<p>Any exclusion requires a documented substantive or data-quality reason.</p>
+</section>
+<section id="error-5-treating-sd-as-meaningful-without-the-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="error-5-treating-sd-as-meaningful-without-the-distribution">Error 5 — Treating SD as meaningful without the distribution</h2>
+<p>SD is most interpretable when considered with shape, sample size, and the mean.</p>
+</section>
+<section id="error-6-treating-2-sd-as-a-confidence-interval-for-the-mean" class="level2">
+<h2 class="anchored" data-anchor-id="error-6-treating-2-sd-as-a-confidence-interval-for-the-mean">Error 6 — Treating ±2 SD as a confidence interval for the mean</h2>
+<p>It is not.</p>
+<p>The empirical rule concerns the expected spread of observations under an approximately normal distribution.</p>
+</section>
+<section id="error-7-using-cv-on-interval-scale-data" class="level2">
+<h2 class="anchored" data-anchor-id="error-7-using-cv-on-interval-scale-data">Error 7 — Using CV on interval-scale data</h2>
+<p>CV requires a meaningful ratio zero.</p>
+<p>Do not calculate CV for Assignment 1’s delta isotope values.</p>
+</section>
+<section id="error-8-interpreting-a-site-difference-as-a-cause" class="level2">
+<h2 class="anchored" data-anchor-id="error-8-interpreting-a-site-difference-as-a-cause">Error 8 — Interpreting a site difference as a cause</h2>
+<p>A descriptive difference does not identify a mechanism.</p>
+</section>
+<section id="error-9-forgetting-unequal-sample-sizes" class="level2">
+<h2 class="anchored" data-anchor-id="error-9-forgetting-unequal-sample-sizes">Error 9 — Forgetting unequal sample sizes</h2>
+<p>La Bastida has 48 observations; Gatas has 21.</p>
+<p>A smaller sample often produces a rougher-looking histogram and less stable extremes.</p>
+<p>That does not make the smaller sample invalid, but it should temper visual interpretation.</p>
+</section>
+<section id="error-10-rounding-too-early" class="level2">
+<h2 class="anchored" data-anchor-id="error-10-rounding-too-early">Error 10 — Rounding too early</h2>
+<p>Round the displayed table, not the source data.</p>
+</section>
+</section>
+<section id="reading-guide" class="level1">
+<h1>Reading guide</h1>
+<section id="core-perkins-statistical-concepts" class="level2">
+<h2 class="anchored" data-anchor-id="core-perkins-statistical-concepts">Core: Perkins — Statistical concepts</h2>
+<p>Perkins’s Chapter 3 introduces the Week 4 vocabulary in a form designed for beginning social-science students <span class="citation" data-cites="perkins2026">(<a href="#ref-perkins2026" role="doc-biblioref">Perkins 2026</a>)</span>.</p>
+<p>Focus on:</p>
+<ul>
+<li>NOIR measurement scales;</li>
+<li>mean;</li>
+<li>median;</li>
+<li>mode;</li>
+<li>trimmed mean;</li>
+<li>MAD;</li>
+<li>minimum and maximum;</li>
+<li>range;</li>
+<li>variance;</li>
+<li>standard deviation;</li>
+<li>skewness; and</li>
+<li>kurtosis.</li>
+</ul>
+<p>Pay particular attention to the worked standard-deviation example: the value of SD comes from distances around the mean, while squaring and square-rooting solve the cancellation and unit problems.</p>
+</section>
+<section id="core-perkins-descriptive-statistics-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="core-perkins-descriptive-statistics-in-r">Core: Perkins — Descriptive statistics in R</h2>
+<p>Perkins’s Chapter 4 moves from concepts to computational practice <span class="citation" data-cites="perkins2026">(<a href="#ref-perkins2026" role="doc-biblioref">Perkins 2026</a>)</span>.</p>
+<p>Useful topics include:</p>
+<ul>
+<li>calculating descriptives overall and by category;</li>
+<li>comparing grouped distributions;</li>
+<li>histograms;</li>
+<li>faceting;</li>
+<li>skewness and kurtosis; and</li>
+<li>writing concise descriptive results.</li>
+</ul>
+<p>Perkins uses <code>psych::describe()</code> and <code>psych::describeBy()</code>. In ANTH418, Assignment 1 uses an explicit <code>dplyr::group_by()</code> + <code>summarise()</code> workflow because seeing each calculated statistic directly makes the analytical logic more transparent.</p>
+</section>
+<section id="carlson-looking-at-archaeological-data" class="level2">
+<h2 class="anchored" data-anchor-id="carlson-looking-at-archaeological-data">Carlson — Looking at archaeological data</h2>
+<p>Carlson’s archaeological R chapter begins with the structure of archaeological datasets and the unit of observation <span class="citation" data-cites="carlson2017">(<a href="#ref-carlson2017" role="doc-biblioref">Carlson 2017</a>)</span>.</p>
+<p>For Week 4, concentrate on:</p>
+<ul>
+<li>rows as observations;</li>
+<li>columns as measurements;</li>
+<li>missing values and <code>NA</code>;</li>
+<li>looking at data before analysis;</li>
+<li>numerical summaries;</li>
+<li>normal and non-normal distributions; and</li>
+<li>R’s handling and display of numerical values.</li>
+</ul>
+<p>Carlson’s advice that <strong>the first step is to look at the data</strong> is the practical foundation of Assignment 1.</p>
+</section>
+<section id="banning-descriptive-statistics-in-archaeology" class="level2">
+<h2 class="anchored" data-anchor-id="banning-descriptive-statistics-in-archaeology">Banning — Descriptive statistics in archaeology</h2>
+<p>Banning’s chapter on summarizing archaeological data is especially valuable because it connects the formulas to archaeological measurement problems <span class="citation" data-cites="banning2020">(<a href="#ref-banning2020" role="doc-biblioref">Banning 2020</a>)</span>.</p>
+<p>Focus on:</p>
+<ul>
+<li>mean as a center of gravity;</li>
+<li>mean sensitivity to extremes;</li>
+<li>trimmed means;</li>
+<li>median and mode;</li>
+<li>range;</li>
+<li>IQR;</li>
+<li>variance and SD;</li>
+<li>CV;</li>
+<li>skewness and kurtosis;</li>
+<li>when means become misleading; and</li>
+<li>categorical summaries.</li>
+</ul>
+<p>Banning’s discussion of minimum-size thresholds for artifacts is a reminder that measurement protocols can change the mean before any statistical calculation begins.</p>
+</section>
+<section id="dressler-thinking-statistically-about-center-and-spread" class="level2">
+<h2 class="anchored" data-anchor-id="dressler-thinking-statistically-about-center-and-spread">Dressler — Thinking statistically about center and spread</h2>
+<p>Dressler’s first two chapters make central tendency and dispersion intuitive using a health-locus-of-control distribution <span class="citation" data-cites="dressler2015">(<a href="#ref-dressler2015" role="doc-biblioref">Dressler 2015</a>)</span>.</p>
+<p>Useful ideas include:</p>
+<ul>
+<li>the mean as a model or educated guess;</li>
+<li>how mean, median, and mode relate to distribution shape;</li>
+<li>why skew separates the three centers;</li>
+<li>deviations from the mean;</li>
+<li>variance and SD;</li>
+<li>the empirical 68–95 pattern; and</li>
+<li>standardized scores.</li>
+</ul>
+<p>One terminology caution for ANTH418: intervals such as mean ±1 SD describe the spread of observations under a normal model; do not call them confidence intervals for the population mean.</p>
+</section>
+<section id="gonick-and-smith-visual-intuition" class="level2">
+<h2 class="anchored" data-anchor-id="gonick-and-smith-visual-intuition">Gonick and Smith — Visual intuition</h2>
+<p>The illustrated “Data Description” chapter gives a visual route from raw observations to frequency tables, histograms, mean, median, IQR, boxplots, variance, standard deviation, and the empirical rule <span class="citation" data-cites="gonickSmith2019">(<a href="#ref-gonickSmith2019" role="doc-biblioref">Gonick and Smith 2019</a>)</span>.</p>
+<p>Use it as a conceptual check:</p>
+<blockquote class="blockquote">
+<p>If you cannot explain what the statistic is doing in a picture, do not rely only on the formula.</p>
+</blockquote>
+</section>
+<section id="privitera-frequency-center-and-variability" class="level2">
+<h2 class="anchored" data-anchor-id="privitera-frequency-center-and-variability">Privitera — Frequency, center, and variability</h2>
+<p>Privitera’s chapters separate the same descriptive workflow into three layers <span class="citation" data-cites="privitera2024">(<a href="#ref-privitera2024" role="doc-biblioref">Privitera 2024</a>)</span>:</p>
+<ol type="1">
+<li>frequency distributions and graphs;</li>
+<li>central tendency; and</li>
+<li>variability.</li>
+</ol>
+<p>Particularly useful Week 4 ideas include:</p>
+<ul>
+<li>why summarization reveals patterns hidden in raw lists;</li>
+<li>the mean as a balance point;</li>
+<li>weighted means for unequal group sizes;</li>
+<li>quartiles and IQR;</li>
+<li>sample versus population variance;</li>
+<li>standard deviation; and</li>
+<li>the empirical rule.</li>
+</ul>
+<p>Weighted means are useful background but are <strong>not required for Assignment 1</strong>, because the assignment describes each site separately rather than collapsing the two site means into one overall mean.</p>
+</section>
+<section id="plavcan-why-relative-variation-matters" class="level2">
+<h2 class="anchored" data-anchor-id="plavcan-why-relative-variation-matters">Plavcan — Why relative variation matters</h2>
+<p>Plavcan’s analysis of size variation in early <em>Homo</em> demonstrates that variability itself can be the anthropological phenomenon <span class="citation" data-cites="plavcan2012">(<a href="#ref-plavcan2012" role="doc-biblioref">Plavcan 2012</a>)</span>.</p>
+<p>Focus on:</p>
+<ul>
+<li>multiple possible sources of biological size variation;</li>
+<li>the dependence of absolute SD on overall body size;</li>
+<li>CV as relative variability;</li>
+<li>trait-specific comparative baselines; and</li>
+<li>caution in using fossil variability to infer sex, taxonomy, or behavior.</li>
+</ul>
+<p>The important lesson is not a universal CV cutoff. It is that <strong>dispersion becomes interpretable only relative to a defensible comparative framework</strong>.</p>
+</section>
+<section id="knipper-et-al.-assignment-1-archaeological-context" class="level2">
+<h2 class="anchored" data-anchor-id="knipper-et-al.-assignment-1-archaeological-context">Knipper et al.&nbsp;— Assignment 1 archaeological context</h2>
+<p>Read Knipper et al.&nbsp;not simply to find the “answer” but to understand why the assignment separates description from explanation <span class="citation" data-cites="knipper2020">(<a href="#ref-knipper2020" role="doc-biblioref">Knipper et al. 2020</a>)</span>.</p>
+<p>Focus on:</p>
+<ul>
+<li>the El Argar archaeological setting;</li>
+<li>La Bastida and Gatas;</li>
+<li>human, animal, and cereal isotope sampling;</li>
+<li>trophic-chain logic;</li>
+<li>environmental influences on isotope values;</li>
+<li>manuring and animal-feeding effects;</li>
+<li>age-related isotope effects; and</li>
+<li>the conclusion that higher human values at La Bastida do not necessarily mean different average dietary composition.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled" title="About the uploaded Llull 2020 file">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>About the uploaded Llull 2020 file
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The file supplied under the name <strong>“Llull 2020 Protoapennine vs.&nbsp;Subapennine…”</strong> contains the Knipper et al.&nbsp;(2020) La Bastida–Gatas article rather than a distinct Llull ceramic study.</p>
+<p>For that reason, this Study Guide does not attribute any independent argument to that mislabeled attachment. If the intended Llull article is supplied later, its ceramic case study can be added to this section.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="week-4-checklist" class="level1">
+<h1>Week 4 checklist</h1>
+<p>Before moving on, you should be able to say <strong>yes</strong> to each statement:</p>
+<ul class="task-list">
+<li><label><input type="checkbox">I can explain why descriptive statistics come before causal interpretation.</label></li>
+<li><label><input type="checkbox">I can identify what one row in a dataset represents.</label></li>
+<li><label><input type="checkbox">I can distinguish descriptive from inferential statistics.</label></li>
+<li><label><input type="checkbox">I can choose a center appropriate to the measurement scale.</label></li>
+<li><label><input type="checkbox">I can explain why a numerical category code does not justify a mean.</label></li>
+<li><label><input type="checkbox">I can define mode, median, mean, and trimmed mean.</label></li>
+<li><label><input type="checkbox">I can explain why the mean is a balance point.</label></li>
+<li><label><input type="checkbox">I can explain why the median resists extreme values.</label></li>
+<li><label><input type="checkbox">I can identify unimodal, multimodal, symmetric, right-skewed, and left-skewed distributions.</label></li>
+<li><label><input type="checkbox">I can calculate and interpret range and IQR.</label></li>
+<li><label><input type="checkbox">I can explain why range is fragile.</label></li>
+<li><label><input type="checkbox">I can explain what quartiles represent.</label></li>
+<li><label><input type="checkbox">I can explain why simple deviations from the mean sum to zero.</label></li>
+<li><label><input type="checkbox">I can explain the logic of variance.</label></li>
+<li><label><input type="checkbox">I can explain why sample variance uses (n-1).</label></li>
+<li><label><input type="checkbox">I can explain why SD returns to the original measurement units.</label></li>
+<li><label><input type="checkbox">I can state the 68–95 empirical rule and its assumptions.</label></li>
+<li><label><input type="checkbox">I can explain what MAD measures.</label></li>
+<li><label><input type="checkbox">I can explain what CV measures and when it is appropriate.</label></li>
+<li><label><input type="checkbox">I can explain why CV is inappropriate for Assignment 1’s delta isotope values.</label></li>
+<li><label><input type="checkbox">I can read a histogram critically.</label></li>
+<li><label><input type="checkbox">I can read the median, IQR, whiskers, and potential outliers from a boxplot.</label></li>
+<li><label><input type="checkbox">I know that a boxplot outlier is not automatically an error.</label></li>
+<li><label><input type="checkbox">I can use R to calculate Assignment 1’s required descriptive statistics by site and isotope.</label></li>
+<li><label><input type="checkbox">I can compare mean with median without using a rigid cutoff.</label></li>
+<li><label><input type="checkbox">I can compare SD, IQR, and range in relation to the plotted distribution.</label></li>
+<li><label><input type="checkbox">I can describe a statistical pattern before proposing an archaeological explanation.</label></li>
+<li><label><input type="checkbox">I can explain why higher human δ15N does not automatically mean more meat or dairy.</label></li>
+<li><label><input type="checkbox">I can state what Assignment 1’s human data alone cannot establish.</label></li>
+<li><label><input type="checkbox">I can render the assignment from a clean R session and submit both <code>.qmd</code> and <code>.html</code>.</label></li>
+</ul>
+</section>
+<section id="takeaways" class="level1">
+<h1>Takeaways</h1>
+<ul>
+<li><strong>Raw data need organization.</strong> A table of measurements is evidence, but not yet a clear description.</li>
+<li><strong>Every distribution has a center and a spread.</strong> Report both.</li>
+<li><strong>Measurement scale comes first.</strong> A statistic is meaningful only when the variable supports the operation.</li>
+<li><strong>Mode finds peaks.</strong> It is essential for nominal categories and useful for recognizing multimodality.</li>
+<li><strong>Median is resistant.</strong> It is especially useful for ordinal, skewed, or outlier-prone data.</li>
+<li><strong>Mean is a balance point.</strong> It uses every observation and is therefore both powerful and sensitive.</li>
+<li><strong>Range is fragile.</strong> It depends only on the extremes.</li>
+<li><strong>IQR describes the middle 50%.</strong> It pairs naturally with the median.</li>
+<li><strong>Variance uses squared deviations.</strong> Sample variance uses (n-1).</li>
+<li><strong>SD restores the original units.</strong> It pairs naturally with the mean when distribution shape makes that useful.</li>
+<li><strong>MAD protects against extreme values.</strong> It is a robust spread measure.</li>
+<li><strong>CV measures relative spread.</strong> Use it only when a ratio scale and meaningful nonzero mean justify it.</li>
+<li><strong>Shape matters.</strong> Mean–median divergence, tails, gaps, and multimodality require visual inspection.</li>
+<li><strong>Outliers are questions, not garbage.</strong> Investigate them before deciding what they mean.</li>
+<li><strong>Archaeological variability can be substantive evidence.</strong> It can inform questions about standardization, dimorphism, taxonomy, heterogeneity, and social differentiation.</li>
+<li><strong>Assignment 1 is descriptive.</strong> It asks what the human isotope distributions show, not for an inferential test.</li>
+<li><strong>Context controls interpretation.</strong> Knipper et al.’s cereal and animal baselines show why a human isotope difference is not automatically a dietary mechanism.</li>
+<li><strong>Describe before explaining.</strong> This is the central Week 4 habit and the central logic of Assignment 1.</li>
+</ul>
+</section>
+<section id="references" class="level1 unnumbered">
+<h1 class="unnumbered">References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-banning2020" class="csl-entry" role="listitem">
+Banning, Edward B. 2020. <em>The Archaeologist’s Laboratory: The Analysis of Archaeological Evidence</em>. 2nd ed. Springer. <a href="https://doi.org/10.1007/978-3-030-47992-3">https://doi.org/10.1007/978-3-030-47992-3</a>.
+</div>
+<div id="ref-carlson2017" class="csl-entry" role="listitem">
+Carlson, David L. 2017. <em>Quantitative Methods in Archaeology Using r</em>. Cambridge University Press.
+</div>
+<div id="ref-dressler2015" class="csl-entry" role="listitem">
+Dressler, William W. 2015. <em>The 5 Things You Need to Know about Statistics: Quantification in Ethnographic Research</em>. Left Coast Press.
+</div>
+<div id="ref-gonickSmith2019" class="csl-entry" role="listitem">
+Gonick, Larry, and Woollcott Smith. 2019. <em>The Cartoon Guide to Statistics</em>. William Morrow Paperbacks.
+</div>
+<div id="ref-knipper2020" class="csl-entry" role="listitem">
+Knipper, Corina, Cristina Rihuete-Herrada, Jordi Voltas, et al. 2020. <span>“Reconstructing Bronze Age Diets and Farming Strategies at the Early Bronze Age Sites of La Bastida and Gatas (Southeast Iberia) Using Stable Isotope Analysis.”</span> <em>PLOS ONE</em> 15 (3): e0229398. <a href="https://doi.org/10.1371/journal.pone.0229398">https://doi.org/10.1371/journal.pone.0229398</a>.
+</div>
+<div id="ref-perkins2026" class="csl-entry" role="listitem">
+Perkins, Mark A. 2026. <em>Using r for Introductory Statistics in Social Sciences</em>. Springer. <a href="https://doi.org/10.1007/978-3-032-17145-0">https://doi.org/10.1007/978-3-032-17145-0</a>.
+</div>
+<div id="ref-plavcan2012" class="csl-entry" role="listitem">
+Plavcan, J. Michael. 2012. <span>“Body Size, Size Variation, and Sexual Size Dimorphism in Early Homo.”</span> <em>Current Anthropology</em> 53 (S6): S409–23. <a href="https://doi.org/10.1086/667605">https://doi.org/10.1086/667605</a>.
+</div>
+<div id="ref-privitera2024" class="csl-entry" role="listitem">
+Privitera, Gregory J. 2024. <em>Statistics for the Behavioral Sciences</em>. 4th ed. SAGE Publications.
+</div>
+</div>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

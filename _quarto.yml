@@ -9,6 +9,7 @@ project:
     - lecture-notes/index.qmd
     - weeks/week02.qmd
     - weeks/week03.qmd
+    - weeks/week04.qmd
     - assignments/index.qmd
     - readings/index.qmd
     - resources/*.qmd
@@ -39,6 +40,9 @@ website:
 
           - href: weeks/week03.qmd
             text: "Week 3 — Measurement & Research Design"
+
+          - href: weeks/week04.qmd
+            text: "Week 4 — Central Tendency & Dispersion"
 
       - href: assignments/index.qmd
         text: Assignments

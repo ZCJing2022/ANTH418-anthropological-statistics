@@ -1,0 +1,1798 @@
+---
+title: "Week 4 — Measures of Central Tendency and Dispersion"
+subtitle: "Describe the center, measure the spread, then interpret the distribution"
+date: "2026-09-28"
+---
+
+<div class="week-meta">
+**Class meetings:** 28 & 30 September 2026<br>
+**Focus:** descriptive statistics · central tendency · dispersion · distribution shape · visualization<br>
+**Practice dataset:** Knipper et al. 2020 human stable-isotope data<br>
+**Assessment:** Assignment 1 — Bronze Age Diet and Farming at La Bastida and Gatas
+</div>
+
+```{r}
+#| label: setup
+#| include: false
+
+project_root <- if (file.exists("R/setup.R")) "." else ".."
+
+source(file.path(project_root, "R", "setup.R"))
+library(tidyverse)
+
+assignment_data_file <- file.path(
+  project_root,
+  "assignments",
+  "assignment01_knipper_descriptive",
+  "data",
+  "knipper2020_humans.csv"
+)
+```
+
+## Overview
+
+Week 3 asked how concepts become variables and how research design limits inference. Week 4 asks what to do once a defensible numerical variable has been measured:
+
+> **How can we describe a distribution without losing the pattern that matters?**
+
+Raw observations rarely explain themselves. A list of isotope values, ceramic dimensions, fossil measurements, or survey scores may contain important structure, but that structure is difficult to see until the observations are organized, visualized, and summarized. The Week 4 lecture therefore begins with a simple sequence:
+
+**raw observations → summary numbers → empirical pattern → interpretation**
+
+Descriptive statistics do not explain why a pattern exists. They make the empirical pattern visible enough that an explanation can later be evaluated.
+
+Two questions organize the entire week:
+
+1. **Central tendency:** Where is the distribution centered? What value is typical?
+2. **Dispersion / variability:** How widely are observations spread around that center?
+
+A center without a measure of spread is incomplete. Two archaeological samples can have the same mean and radically different internal variation. Conversely, two samples can have different means but substantial overlap. This is why the Week 4 lecture treats central tendency and dispersion as a pair rather than as separate topics.
+
+Carlson makes the archaeological version of the same point: the first step in analyzing new data is to **look at the data**, using numerical summaries, tables, and graphs to identify structure and possible errors before more elaborate analysis begins [@carlson2017]. Banning similarly treats descriptive statistics as a way to summarize both where typical values lie and how "clumped" or dispersed archaeological observations are [@banning2020].
+
+::: {.callout-note title="The Week 4 principle"}
+**Describe before explaining.**
+
+A defensible descriptive analysis tells the reader:
+
+- what was measured;
+- what one observation represents;
+- where the distribution is centered;
+- how much it varies;
+- what its shape looks like; and
+- which observations are unusual.
+
+Only then should we ask **why** the pattern may exist.
+:::
+
+## Questions
+
+- Why are raw data tables difficult to interpret?
+- How do descriptive statistics differ from inferential statistics?
+- Why must the measurement scale be identified before choosing a summary?
+- When is a mean mathematically computable but substantively meaningless?
+- How do the mode, median, mean, and trimmed mean define "center" differently?
+- Why is the mean a balance point or center of gravity?
+- Why is the median resistant to extreme observations?
+- What can multimodality reveal?
+- Why can two samples with the same mean still be very different?
+- How do range, IQR, variance, standard deviation, MAD, and CV describe different aspects of variability?
+- Why does sample variance divide by \(n-1\)?
+- Why is standard deviation easier to interpret than variance?
+- When does the 68–95 empirical rule apply?
+- How do skewness and outliers affect the relationship between mean and median?
+- What does a boxplot actually show?
+- Why should an apparent outlier be investigated rather than automatically removed?
+- When is coefficient of variation useful, and when is it inappropriate?
+- How are central tendency and dispersion used in archaeology and biological anthropology?
+- How should human \(\delta^{13}\mathrm{C}\) and \(\delta^{15}\mathrm{N}\) distributions at La Bastida and Gatas be described?
+- What can Assignment 1 establish—and what can it **not** establish?
+
+## Learning objectives
+
+By the end of Week 4, you should be able to:
+
+1. explain the purpose of **descriptive statistics**;
+2. distinguish a **population parameter** from a **sample statistic**;
+3. identify the unit of analysis before calculating a statistic;
+4. connect nominal, ordinal, interval, and ratio measurement to defensible summaries;
+5. explain why numerical coding does not turn a nominal variable into a quantitative one;
+6. define and interpret the **mode**, **median**, **arithmetic mean**, and **trimmed mean**;
+7. explain why the mean is a balance point and why it is sensitive to extreme values;
+8. identify unimodal, bimodal/multimodal, symmetric, right-skewed, and left-skewed distributions;
+9. define and interpret the **range**, **quartiles**, **IQR**, **variance**, **standard deviation**, **MAD**, and **coefficient of variation**;
+10. explain why range is fragile and why IQR is resistant;
+11. distinguish population variance/SD from sample variance/SD;
+12. explain why sample variance and sample SD use \(n-1\);
+13. interpret standard deviation in the original measurement units;
+14. apply the 68–95 empirical rule only when an approximately normal distribution makes it appropriate;
+15. explain why median + IQR and mean + SD are complementary descriptive pairs;
+16. read a histogram and boxplot as representations of distribution shape and spread;
+17. treat boxplot "outliers" as observations requiring investigation rather than automatic deletion;
+18. explain why CV is a relative measure of variability suitable for ratio-scale measurements with a meaningful nonzero mean;
+19. explain why CV should **not** be used for Assignment 1's delta isotope values;
+20. use R to inspect, reshape, summarize, and visualize the Assignment 1 data;
+21. calculate mean, median, SD, IQR, minimum, maximum, and range separately by site and isotope;
+22. compare mean with median and SD with IQR when evaluating a distribution;
+23. write a concise descriptive interpretation that separates observed patterns from causal explanation; and
+24. render and submit a reproducible Quarto analysis containing both code and interpretation.
+
+## This week's two-class sequence
+
+| Class | Main focus | Practical outcome |
+|---|---|---|
+| **Monday, 28 September** | Central tendency, dispersion, distribution shape, archaeological applications | You can choose and interpret descriptive summaries appropriate to a variable and its distribution. |
+| **Wednesday, 30 September** | R workflow and Assignment 1 practice | You can inspect, summarize, visualize, and interpret the La Bastida–Gatas isotope distributions in a reproducible Quarto document. |
+
+# Why descriptive statistics come first
+
+## Raw tables do not explain themselves
+
+A dataset is a collection of observations, not an interpretation.
+
+Carlson emphasizes that archaeological datasets are commonly organized as rectangular tables in which each **row** represents an observation and each **column** represents a measurement or attribute of that observation [@carlson2017]. The meaning of a row can change from dataset to dataset: one row might be a survey grid square, a site, a grave, a ceramic sherd, a stone flake, or a human individual.
+
+That means the first questions are not mathematical:
+
+> **What does one row represent? What does each column represent? How was each variable measured?**
+
+Only after those questions are answered do numerical summaries become meaningful.
+
+::: {.callout-important title="A statistic summarizes observations; it does not replace them"}
+Reducing 69 isotope measurements to a mean is useful because it compresses information.
+
+But compression always loses detail.
+
+The goal is therefore not to find one "best number" and discard the distribution. The goal is to combine a small set of summaries with appropriate visualizations so that the center, spread, shape, and unusual observations remain visible.
+:::
+
+## Descriptive versus inferential statistics
+
+**Descriptive statistics** summarize the observations actually present in a dataset.
+
+Examples include:
+
+- counts and proportions;
+- mean and median;
+- range and IQR;
+- variance and standard deviation;
+- histograms and boxplots.
+
+**Inferential statistics** use sample information to make uncertainty-aware statements about a larger population or data-generating process.
+
+Assignment 1 is explicitly a **descriptive** assignment. No inferential statistical test is required [@knipper2020].
+
+::: {.callout-warning title="The Assignment 1 archaeological sample is not the whole El Argar population"}
+The teaching file contains **69 evaluable human observations**: 48 from La Bastida and 21 from Gatas.
+
+Those people are an archaeological sample preserved, excavated, sampled, and successfully analyzed under particular conditions. Describing these observations does not by itself justify population-wide claims about every person who lived at either settlement—or about El Argar society as a whole.
+:::
+
+# Measurement first: what summaries are legitimate?
+
+Week 3 introduced the NOIR framework. Week 4 uses it to decide which summaries are substantively meaningful.
+
+| Scale | Information preserved | Appropriate center | Useful spread summaries |
+|---|---|---|---|
+| **Nominal** | category identity only | mode | counts, proportions |
+| **Ordinal** | category identity + rank | median, mode | IQR, range |
+| **Interval** | ordered values + equal intervals | mean, median | SD, variance, IQR, range |
+| **Ratio** | interval properties + meaningful zero | mean, median | SD, variance, IQR, range, CV |
+
+Perkins uses **NOIR** as a mnemonic for nominal, ordinal, interval, and ratio measurement and stresses that a variable's mathematical treatment depends on what its values actually mean [@perkins2026].
+
+## A mean can be calculable and meaningless
+
+Suppose an artifact-material variable is coded:
+
+```text
+Ceramic = 1
+Lithic  = 2
+Bone    = 3
+```
+
+R can calculate the arithmetic mean of those numbers.
+
+But a "mean artifact material" of 2.13 has no archaeological interpretation because the numbers are merely labels. The distance from ceramic to lithic is not a measured quantitative interval.
+
+::: {.callout-note title="Numeric storage is not quantitative meaning"}
+A variable can be stored as numbers in R and still be nominal.
+
+Always distinguish:
+
+- **how R stores the column**, from
+- **what the measurements mean**.
+:::
+
+## What scale are δ13C and δ15N?
+
+For Assignment 1, human bone-collagen \(\delta^{13}\mathrm{C}\) and \(\delta^{15}\mathrm{N}\) values are best treated as **interval-like measurements** for descriptive purposes.
+
+Differences between values are meaningful, but \(0‰\) is a reference point relative to an isotope standard—not a true absence of carbon or nitrogen isotope composition. Therefore:
+
+- means and medians are meaningful;
+- SD, variance, IQR, and range are meaningful;
+- ratios such as "twice the δ15N value" are not meaningful; and
+- **CV is not appropriate for the delta values in Assignment 1**.
+
+::: {.callout-important title="Why this matters"}
+Week 4 introduces the coefficient of variation because it is important in anthropology.
+
+But **learning a statistic does not mean using it everywhere**.
+
+Assignment 1 requires SD, IQR, minimum, maximum, and range—not CV—because the measurement scale and research question do not justify CV for these delta isotope values.
+:::
+
+# Section 1 — Locating the center
+
+## Central tendency summarizes "typical"
+
+A measure of central tendency reduces a distribution to a value intended to represent its center.
+
+The three classical centers are:
+
+| Measure | Definition | Particularly useful when |
+|---|---|---|
+| **Mode** | most frequently occurring value/category | nominal data; discrete peaks; multimodality |
+| **Median** | 50th percentile | ordinal data; skewed data; outliers |
+| **Mean** | arithmetic average | approximately symmetric interval/ratio data |
+| **Trimmed mean** | mean after removing equal percentages from both tails | continuous data with influential extremes |
+
+Choosing a center is a **methodological decision**, not a mechanical habit.
+
+## The mode: the most frequent value
+
+The **mode** is the value or category occurring most often.
+
+For categorical variables it may be the only meaningful measure of central tendency.
+
+For continuous archaeological measurements, an exact numerical mode is often less useful because repeated values may depend on measurement precision and rounding. However, modal **peaks** in a frequency distribution can be archaeologically informative.
+
+The lecture uses standardized stone weights from Mohenjo-Daro as an example: repeated peaks can reveal patterned size classes rather than one smooth continuous distribution.
+
+### Unimodal, bimodal, and multimodal
+
+A distribution can have:
+
+- one dominant peak — **unimodal**;
+- two dominant peaks — **bimodal**; or
+- several peaks — **multimodal**.
+
+Multiple peaks may reflect real subgroups, different production conventions, different populations, or a mixture of processes. They may also arise from small samples or arbitrary histogram bins.
+
+::: {.callout-warning title="A histogram peak is not automatically a statistical mode"}
+Changing histogram bin width can change the apparent number and location of peaks.
+
+When multimodality matters substantively, inspect the raw values and test whether the apparent structure is robust to reasonable choices of binning.
+:::
+
+## The median: the positional center
+
+The **median** is the middle value after observations are ordered.
+
+- 50% of observations lie at or below it.
+- 50% lie at or above it.
+
+For an odd number of observations, the median is the middle observation.
+
+For an even number, it is conventionally the average of the two middle observations.
+
+The important property is **resistance**: the median depends on order, not on how far extreme observations lie from the middle.
+
+```{r}
+#| label: median-resistance-demo
+
+x <- c(3, 5, 7, 7, 8)
+x_extreme <- c(3, 5, 7, 7, 80)
+
+tibble(
+  dataset = c("Original", "One extreme value"),
+  mean = c(mean(x), mean(x_extreme)),
+  median = c(median(x), median(x_extreme))
+)
+```
+
+The extreme value moves the mean much more than the median.
+
+Dressler uses this contrast to show why mean, median, and mode can converge in an approximately symmetric distribution but diverge when a distribution has a long tail [@dressler2015].
+
+## The arithmetic mean: the balance point
+
+For a sample of \(n\) observations:
+
+\[
+\bar{x} = \frac{\sum_{i=1}^{n} x_i}{n}
+\]
+
+The mean uses **every observation**.
+
+It can be understood as the distribution's **balance point** or center of gravity. If each deviation from the mean is calculated,
+
+\[
+x_i - \bar{x},
+\]
+
+then the deviations sum to zero:
+
+\[
+\sum_{i=1}^{n}(x_i-\bar{x})=0.
+\]
+
+This balance property makes the mean fundamental to variance, standard deviation, regression, ANOVA, and many later statistical methods.
+
+Pivitera describes the mean as a balance point rather than necessarily the literal middle observation [@privitera2024]. Dressler similarly presents the mean as a compact model or "best guess" for a value drawn from a roughly symmetric distribution [@dressler2015].
+
+::: {.callout-warning title="The mean is efficient but not resistant"}
+Because every observation contributes to the mean, an extreme observation can pull the balance point toward the tail.
+
+That sensitivity is not a defect to be hidden. It is information about the distribution that should be examined.
+:::
+
+## The trimmed mean: a robust compromise
+
+A **trimmed mean** removes the same proportion of the lowest and highest observations before calculating the mean.
+
+Common trims include 5%, 10%, or 20%.
+
+In R:
+
+```{r}
+#| label: trimmed-mean-demo
+
+x_extreme <- c(3, 5, 7, 7, 8, 9, 10, 11, 12, 80)
+
+mean(x_extreme)
+mean(x_extreme, trim = 0.10)
+median(x_extreme)
+```
+
+Banning notes that trimmed means can be useful for skewed archaeological distributions or samples containing suspected extremes because they retain much of the data while reducing tail influence [@banning2020].
+
+A trimmed mean is not required for Assignment 1, but it helps clarify why "center" is not one universal concept.
+
+# Section 2 — Quantifying the spread
+
+## Why dispersion matters
+
+Suppose two assemblages both have mean artifact length = 50 mm.
+
+One contains measurements tightly concentrated between 48 and 52 mm.
+
+The other ranges from 20 to 80 mm.
+
+The means are identical, but the archaeological patterns are not.
+
+Pivitera emphasizes that variability widens the lens from the center to the structure of the entire distribution [@privitera2024]. Dressler puts the same idea in practical terms: after using a mean as a guess, the next question is **how wrong that guess is likely to be** [@dressler2015].
+
+## The range
+
+The **range** is:
+
+\[
+\text{Range}=\text{Maximum}-\text{Minimum}.
+\]
+
+It is easy to understand, but it depends on only two observations.
+
+```{r}
+#| label: range-demo
+
+x <- c(10, 11, 12, 13, 14)
+x_outlier <- c(10, 11, 12, 13, 100)
+
+c(
+  range_original = max(x) - min(x),
+  range_with_outlier = max(x_outlier) - min(x_outlier)
+)
+```
+
+The range is therefore **fragile**:
+
+- it is highly sensitive to extreme observations;
+- it tends to increase as sample size increases; and
+- it says nothing about how observations are distributed between the minimum and maximum.
+
+Banning makes the archaeological implication explicit: because the range depends only on the two extremes, it is usually a poor stand-alone description of variability [@banning2020].
+
+## Percentiles and quartiles
+
+A **percentile** is the value below which a specified percentage of observations lies.
+
+Quartiles divide an ordered distribution into four parts:
+
+- \(Q_1\): 25th percentile;
+- \(Q_2\): 50th percentile = median;
+- \(Q_3\): 75th percentile.
+
+Each interval between successive quartile boundaries contains roughly one quarter of the observations.
+
+## Interquartile range (IQR)
+
+The **interquartile range** is:
+
+\[
+IQR = Q_3 - Q_1.
+\]
+
+It describes the width of the **middle 50%** of a distribution.
+
+Because it ignores the most extreme quarter at each end, it is much less sensitive to outliers than the total range.
+
+Median + IQR therefore form a natural descriptive pair.
+
+```{r}
+#| label: iqr-demo
+
+x <- c(3, 5, 7, 7, 8, 9, 10, 11, 12)
+
+quantile(x, probs = c(0.25, 0.50, 0.75))
+IQR(x)
+```
+
+Gonick and Smith's illustrated treatment makes the same geometry visible: the box in a boxplot runs from \(Q_1\) to \(Q_3\), with the median drawn inside [@gonickSmith2019].
+
+## Boxplots: a compact display of center and spread
+
+A conventional Tukey boxplot shows:
+
+- lower edge of box = \(Q_1\);
+- line inside box = median;
+- upper edge of box = \(Q_3\);
+- box width in the measurement dimension = IQR;
+- whiskers extending to observations within the conventional 1.5-IQR limits;
+- observations beyond the whiskers plotted individually.
+
+::: {.callout-important title="A boxplot 'outlier' is not automatically an error"}
+The 1.5-IQR rule identifies observations that are unusual relative to the distribution.
+
+It does **not** tell you why they are unusual.
+
+An unusual archaeological value may represent:
+
+- a recording error;
+- a laboratory problem;
+- a different age or biological condition;
+- a real minority behavior;
+- chronological mixing;
+- a distinct social group; or
+- an entirely legitimate extreme case.
+
+Inspect the observation and its context before deciding what it means.
+:::
+
+# Variance and standard deviation
+
+## Why simple deviations cannot measure total spread
+
+The deviation of an observation from the sample mean is:
+
+\[
+d_i = x_i-\bar{x}.
+\]
+
+But positive and negative deviations cancel:
+
+\[
+\sum d_i = 0.
+\]
+
+So we square them.
+
+## Sample variance
+
+For a sample:
+
+\[
+s^2 =
+\frac{\sum_{i=1}^{n}(x_i-\bar{x})^2}{n-1}.
+\]
+
+Variance is the average **squared** distance around the mean, with the sample correction \(n-1\).
+
+The numerator,
+
+\[
+\sum(x_i-\bar{x})^2,
+\]
+
+is called the **sum of squares**.
+
+Perkins walks through this logic by subtracting the mean from each value, squaring the deviations, summing them, dividing by \(n-1\), and then taking the square root to obtain SD [@perkins2026].
+
+## Why \(n-1\)?
+
+If the data are treated as a sample used to estimate population variability, dividing by \(n\) tends to underestimate the population variance.
+
+Using \(n-1\) is the familiar **Bessel correction**.
+
+R's:
+
+```r
+var(x)
+sd(x)
+```
+
+use the **sample** formulas with \(n-1\).
+
+For Assignment 1, that is exactly what students should use.
+
+## Standard deviation
+
+The standard deviation is:
+
+\[
+s=\sqrt{s^2}.
+\]
+
+Variance has squared units:
+
+- mm²;
+- g²;
+- ‰².
+
+Taking the square root returns the result to the **original measurement units**.
+
+That is why SD is generally easier to interpret than variance.
+
+Dressler emphasizes this return to the original metric: the squaring needed to construct variance makes the units difficult to interpret, while the square root restores them [@dressler2015].
+
+::: {.callout-note title="Interpret SD as spread, not as a guaranteed boundary"}
+A larger SD means observations are, on average, more dispersed around the mean.
+
+It does **not** mean every observation falls within one SD of the mean.
+:::
+
+# The empirical rule
+
+For a distribution that is approximately normal:
+
+- about **68%** of observations lie within \(\bar{x}\pm1s\);
+- about **95%** lie within \(\bar{x}\pm2s\).
+
+The Week 4 lecture gives the more precise values of approximately 68.26% and 95.44%.
+
+::: {.callout-warning title="The empirical rule is conditional"}
+The 68–95 pattern is a property of an approximately normal, symmetric, mound-shaped distribution.
+
+Do not mechanically apply it to:
+
+- strongly skewed data;
+- heavily multimodal data;
+- distributions with influential extremes; or
+- variables bounded in ways that make the normal model implausible.
+
+Also, \(\bar{x}\pm1s\) and \(\bar{x}\pm2s\) describe the spread of **observations** under a normal model. They are **not confidence intervals for the population mean**.
+:::
+
+# Robust and relative measures of spread
+
+## Median absolute deviation (MAD)
+
+A robust alternative to SD is the **median absolute deviation**:
+
+\[
+MAD = \mathrm{median}\left(|x_i-\mathrm{median}(x)|\right).
+\]
+
+Like the median and IQR, MAD is resistant to extreme observations.
+
+In R, note an important detail:
+
+```{r}
+#| label: mad-demo
+
+x <- c(3, 5, 7, 7, 8, 9, 10, 11, 80)
+
+# Raw median absolute deviation from the median:
+mad(x, constant = 1)
+
+# R's default is scaled to estimate SD under normality:
+mad(x)
+```
+
+MAD is not required for Assignment 1, but it provides a useful comparison when distributions are strongly skewed or contain influential extremes.
+
+## Coefficient of variation (CV)
+
+For an appropriate ratio-scale variable:
+
+\[
+CV=\frac{s}{\bar{x}}\times100\%.
+\]
+
+CV expresses variability relative to the magnitude of the mean.
+
+This matters when absolute SD naturally increases with body size or scale.
+
+### Bioanthropological application
+
+Plavcan shows why relative variability matters in studies of living primates and fossil hominins. An SD measured in grams or millimeters will naturally be larger for a large-bodied species than for a small-bodied species, even if their **relative** variability is similar [@plavcan2012].
+
+The CV places variation on a relative scale.
+
+Plavcan's comparative data also show why simple universal cutoffs are dangerous: within-sex variation differs by trait. Many craniofacial dimensions in living primates have CVs below 10%, while body-mass CVs can be around 12–15%; fossil interpretation must also consider geography, time, sex, taxonomy, sample quality, and trait choice [@plavcan2012].
+
+::: {.callout-warning title="CV is not a universal standardization detector"}
+The lecture uses CV to illustrate technological standardization and biological size variation.
+
+A low CV can be consistent with standardized production, but it does not by itself prove specialist production.
+
+Sampling, raw material, function, measurement protocol, temporal mixing, and the scale of the mean can all affect observed variability.
+:::
+
+### Why Assignment 1 does not use CV
+
+Assignment 1 compares \(\delta^{13}\mathrm{C}\) and \(\delta^{15}\mathrm{N}\) delta values.
+
+Because their zero points are reference points rather than true absence, a ratio such as \(s/\bar{x}\) does not have the interpretation required for CV.
+
+Use the assignment's requested measures:
+
+- SD;
+- IQR;
+- minimum;
+- maximum; and
+- range.
+
+# Distribution shape changes the meaning of the center
+
+## Symmetric distributions
+
+In a reasonably symmetric unimodal distribution:
+
+\[
+\text{mean} \approx \text{median} \approx \text{mode}.
+\]
+
+Mean + SD can often provide an effective compact description.
+
+## Positive / right skew
+
+A right-skewed distribution has a long tail toward larger values.
+
+Extreme high values pull the mean upward:
+
+\[
+\text{mean} > \text{median}
+\]
+
+is a common pattern.
+
+## Negative / left skew
+
+A left-skewed distribution has a long tail toward smaller values.
+
+Extreme low values pull the mean downward:
+
+\[
+\text{mean} < \text{median}.
+\]
+
+## Skewness is a clue, not a verdict
+
+Mean–median differences can signal asymmetry, but they are not a complete diagnostic.
+
+Always inspect the distribution itself.
+
+Perkins's R chapter demonstrates why: a histogram reveals tail structure and unusual observations that a table of descriptive statistics can summarize but cannot fully display [@perkins2026].
+
+::: {.callout-note title="Pair the statistic with the picture"}
+A useful Week 4 habit is:
+
+**histogram → boxplot → numerical summaries → interpretation**
+
+not:
+
+**mean → conclusion**.
+:::
+
+# Histograms: the shape depends partly on the bins
+
+A histogram groups a continuous variable into intervals.
+
+It helps reveal:
+
+- symmetry;
+- skewness;
+- tails;
+- gaps;
+- possible multimodality; and
+- unusual values.
+
+But the apparent shape can change when the number or width of bins changes.
+
+Pivitera emphasizes that grouped frequency displays are constructed representations of the underlying observations [@privitera2024]. Gonick and Smith make the same point visually by building histograms from grouped frequency intervals [@gonickSmith2019].
+
+::: {.exercise}
+When you make a histogram in R, try several reasonable values of `bins`, such as:
+
+```r
+geom_histogram(bins = 8)
+geom_histogram(bins = 10)
+geom_histogram(bins = 12)
+```
+
+If an apparent "peak" disappears immediately when the binning changes slightly, be cautious about interpreting it as real multimodality.
+:::
+
+# Anthropological and archaeological applications
+
+## Variation can itself be evidence
+
+Dispersion is not merely a technical statistic added after the mean.
+
+Variation can be the phenomenon of interest.
+
+In biological anthropology, variation may bear on:
+
+- sexual dimorphism;
+- taxonomic heterogeneity;
+- geographic variation;
+- developmental plasticity; or
+- environmental effects.
+
+Plavcan's early-*Homo* analysis treats size variation as evidence that must be interpreted comparatively and cautiously rather than as noise to be removed [@plavcan2012].
+
+## Archaeological standardization
+
+Archaeologists can compare dispersion in:
+
+- ceramic dimensions;
+- projectile-point measurements;
+- brick sizes;
+- weight systems; or
+- other manufactured objects.
+
+A tightly clustered distribution may be consistent with stronger standardization; a broader distribution may indicate greater heterogeneity.
+
+But Banning's larger methodological warning remains essential: apparent variation can also arise from measurement protocol, analyst decisions, sampling, classification, or the archaeological formation process [@banning2020].
+
+Thus:
+
+> **variation becomes archaeological evidence only after we understand how the variation was produced.**
+
+## Means can also be misleading because of measurement decisions
+
+Banning gives an especially important archaeological example: average artifact size depends on what counts as a measurable artifact. If one analyst includes fragments down to 1 cm and another includes only pieces above 2 cm, they can obtain different means from the same underlying material [@banning2020].
+
+The lesson connects Week 3 to Week 4:
+
+> **descriptive statistics inherit every decision built into measurement and sampling.**
+
+# Assignment 1 case study — Bronze Age diet and farming
+
+## El Argar, La Bastida, and Gatas
+
+Assignment 1 is based on Knipper et al.'s study of the El Argar society of southeast Iberia, approximately 2200–1550 cal BCE [@knipper2020].
+
+El Argar was a complex Bronze Age society characterized by:
+
+- fortified settlements;
+- cereal agriculture;
+- metallurgy;
+- hierarchical social organization; and
+- marked funerary inequality.
+
+The study compares **La Bastida** and **Gatas**, two hilltop settlements with social, economic, and environmental differences.
+
+Knipper and colleagues analyzed several positions in the food web:
+
+> **cereals → domestic animals → humans**
+
+They measured stable carbon and nitrogen isotope composition in charred cereal grains and in animal and human bone collagen [@knipper2020].
+
+This broader design matters because the Assignment 1 teaching file contains only the **human** observations.
+
+## The usable human sample
+
+The original study sampled 75 humans:
+
+- 52 from La Bastida;
+- 23 from Gatas.
+
+Six samples were excluded from interpretation because collagen preservation was insufficient.
+
+The evaluable human results are therefore:
+
+- **La Bastida: 48**
+- **Gatas: 21**
+- **Total: 69**
+
+These 69 observations form the Assignment 1 teaching dataset [@knipper2020].
+
+## What δ13C and δ15N can tell us
+
+Stable carbon and nitrogen isotope values are useful for reconstructing aspects of food webs and diet.
+
+In broad terms:
+
+- \(\delta^{13}\mathrm{C}\) reflects carbon sources and ecological inputs into the food web;
+- \(\delta^{15}\mathrm{N}\) generally increases across trophic levels and is often related to dietary protein sources.
+
+But Knipper et al. stress that environmental and agricultural processes also influence isotope baselines [@knipper2020].
+
+For example:
+
+- plant water conditions can affect carbon-isotope values;
+- manuring can raise crop \(\delta^{15}\mathrm{N}\);
+- animal feeding practices affect faunal isotope baselines;
+- breastfeeding and metabolic stress can affect values in subadults.
+
+Therefore, a human isotope difference is **not automatically a direct dietary difference**.
+
+## The crucial archaeological lesson
+
+The human values at La Bastida are higher on average for both \(\delta^{13}\mathrm{C}\) and \(\delta^{15}\mathrm{N}\) than at Gatas in the original study [@knipper2020].
+
+A tempting interpretation would be:
+
+> Higher human \(\delta^{15}\mathrm{N}\) at La Bastida = more meat or dairy.
+
+The full food-web evidence makes that inference unsafe.
+
+Knipper et al. found differences in cereal and animal baselines as well. Their results indicate extensive rain-fed cereal cultivation with **little to moderate manuring**, and especially at La Bastida they found strong integration between crop production and domestic-animal feeding. When plant and animal baselines are considered, higher human isotope values do **not necessarily imply different average dietary composition** [@knipper2020].
+
+::: {.callout-important title="Assignment 1 is intentionally narrower than the published paper"}
+Your task is **not** to reproduce Knipper et al.'s complete dietary reconstruction.
+
+Your task is to establish:
+
+> **What do the observed human isotope distributions show?**
+
+Only after describing the distributions should you discuss archaeological interpretations that are **consistent** with the evidence.
+:::
+
+# Assignment 1 — Complete R workflow
+
+The assignment asks you to conduct a **descriptive statistical comparison** of human \(\delta^{13}\mathrm{C}\) and \(\delta^{15}\mathrm{N}\) at La Bastida and Gatas.
+
+You must calculate, for **each isotope at each site**:
+
+- \(n\);
+- mean;
+- median;
+- standard deviation;
+- IQR;
+- minimum;
+- maximum; and
+- range.
+
+You must also use:
+
+- histograms; and
+- boxplots
+
+to examine distribution shape, spread, possible outliers, and overlap between the sites.
+
+No inferential statistical test is required.
+
+::: {.callout-note title="Assignment 1 workflow"}
+**inspect → verify → reshape → visualize → summarize → compare → interpret → render**
+
+Do not skip directly to the summary table.
+:::
+
+## Step 0 — Work from the assignment folder
+
+If you downloaded the Assignment 1 package, the intended structure is:
+
+```text
+assignment01_knipper_descriptive/
+├── assignment01_knipper_descriptive.qmd
+├── README.md
+├── codebook.md
+├── provenance.md
+└── data/
+    └── knipper2020_humans.csv
+```
+
+Inside the assignment `.qmd`, the correct student-facing relative path is:
+
+```r
+data_file <- "data/knipper2020_humans.csv"
+```
+
+Do **not** replace it with a machine-specific path beginning with `/Users/...`.
+
+The Week 4 Study Guide itself runs inside the full course repository, so its executable examples use the repository copy at `assignments/assignment01_knipper_descriptive/data/`.
+
+## Step 1 — Load the data
+
+First confirm that the Study Guide can find the validated teaching file:
+
+```{r}
+#| label: check-assignment1-file
+
+file.exists(assignment_data_file)
+```
+
+Then import it:
+
+```{r}
+#| label: import-assignment1-data
+
+if (!file.exists(assignment_data_file)) {
+  stop(
+    paste0(
+      "Missing Assignment 1 data file: ",
+      assignment_data_file
+    )
+  )
+}
+
+a1 <- read_csv(
+  assignment_data_file,
+  show_col_types = FALSE
+)
+```
+
+## Step 2 — Inspect before calculating
+
+Run:
+
+```{r}
+#| label: inspect-assignment1-data
+
+glimpse(a1)
+dim(a1)
+names(a1)
+```
+
+Then ask:
+
+> **What does one row represent?**
+
+For this teaching dataset, one row represents **one sampled human individual**.
+
+Carlson's rule is worth repeating: looking at the data is an essential first step because it can reveal measurement, coding, or structural problems before analysis [@carlson2017].
+
+## Step 3 — Verify the site counts
+
+```{r}
+#| label: tbl-week04-site-counts
+#| tbl-cap: "Number of evaluable human isotope observations in the Assignment 1 teaching dataset."
+
+site_counts <- a1 |>
+  count(site, name = "n")
+
+site_counts |>
+  knitr::kable()
+```
+
+Your counts should agree with the documented teaching sample:
+
+- La Bastida: 48
+- Gatas: 21
+- total: 69
+
+If they do not, stop and determine why before continuing.
+
+## Step 4 — Check missing isotope values
+
+```{r}
+#| label: assignment1-missingness
+
+a1 |>
+  summarise(
+    missing_d13c = sum(is.na(d13c)),
+    missing_d15n = sum(is.na(d15n))
+  )
+```
+
+Do not silently treat missing values as zero.
+
+If missing values exist, document them and use `na.rm = TRUE` where appropriate.
+
+## Step 5 — Reshape the two isotope columns
+
+For repeated summaries and plotting, a long-format table is convenient:
+
+```{r}
+#| label: reshape-assignment1
+
+a1_long <- a1 |>
+  select(source_row_id, grave_no, sample, site, d13c, d15n) |>
+  pivot_longer(
+    cols = c(d13c, d15n),
+    names_to = "isotope",
+    values_to = "value"
+  ) |>
+  mutate(
+    isotope = recode(
+      isotope,
+      d13c = "δ13C",
+      d15n = "δ15N"
+    )
+  )
+
+glimpse(a1_long)
+```
+
+The original wide file has one row per individual.
+
+The long version has two rows per individual—one for each isotope measurement. The unit of biological observation has not changed; the table has simply been reshaped for analysis.
+
+## Step 6 — Plot before summarizing
+
+The lecture's disciplined workflow says **plot first**.
+
+### δ13C histograms by site
+
+```{r}
+#| label: fig-week04-d13c-hist
+#| fig-cap: "Distributions of human bone-collagen δ13C values by site."
+#| fig-alt: "Two histograms compare human carbon isotope values at La Bastida and Gatas."
+
+a1_long |>
+  filter(isotope == "δ13C") |>
+  ggplot(aes(x = value)) +
+  geom_histogram(bins = 10) +
+  facet_wrap(~ site, ncol = 1) +
+  labs(
+    x = expression(delta^13 * C~("\u2030")),
+    y = "Count"
+  ) +
+  theme_minimal()
+```
+
+### δ15N histograms by site
+
+```{r}
+#| label: fig-week04-d15n-hist
+#| fig-cap: "Distributions of human bone-collagen δ15N values by site."
+#| fig-alt: "Two histograms compare human nitrogen isotope values at La Bastida and Gatas."
+
+a1_long |>
+  filter(isotope == "δ15N") |>
+  ggplot(aes(x = value)) +
+  geom_histogram(bins = 10) +
+  facet_wrap(~ site, ncol = 1) +
+  labs(
+    x = expression(delta^15 * N~("\u2030")),
+    y = "Count"
+  ) +
+  theme_minimal()
+```
+
+When examining each histogram, ask:
+
+1. Where is the main concentration of values?
+2. Is the distribution approximately symmetric?
+3. Is there a long tail?
+4. Are there gaps?
+5. Are there multiple peaks?
+6. Are there isolated observations?
+7. How much do the two sites appear to overlap?
+8. Could the smaller Gatas sample make its histogram appear less smooth?
+
+::: {.callout-tip title="Check whether the shape depends on binning"}
+Try changing `bins = 10` to `bins = 8` and `bins = 12`.
+
+You are not searching for the bin number that makes the graph look most dramatic.
+
+You are asking whether your description of the distribution is robust to reasonable plotting choices.
+:::
+
+## Step 7 — Construct boxplots
+
+```{r}
+#| label: fig-week04-isotope-boxplots
+#| fig-cap: "Human stable-isotope distributions by site. Boxes show the interquartile range and median; whiskers and individually plotted observations summarize the tails under the conventional boxplot rule."
+#| fig-alt: "Faceted boxplots compare carbon and nitrogen isotope distributions for La Bastida and Gatas."
+
+ggplot(
+  a1_long,
+  aes(x = site, y = value)
+) +
+  geom_boxplot() +
+  facet_wrap(~ isotope, scales = "free_y") +
+  labs(
+    x = NULL,
+    y = "Isotope value (‰)"
+  ) +
+  theme_minimal()
+```
+
+Use the boxplots to compare:
+
+- median positions;
+- IQR widths;
+- total spread;
+- overlap; and
+- observations beyond the whiskers.
+
+Do **not** remove a point merely because the boxplot draws it beyond a whisker.
+
+## Step 8 — Calculate the required descriptive statistics
+
+The most transparent tidyverse workflow is:
+
+```{r}
+#| label: tbl-week04-assignment1-descriptives
+#| tbl-cap: "Descriptive statistics for human δ13C and δ15N values at La Bastida and Gatas."
+
+a1_summary <- a1_long |>
+  group_by(site, isotope) |>
+  summarise(
+    n = sum(!is.na(value)),
+    mean = mean(value, na.rm = TRUE),
+    median = median(value, na.rm = TRUE),
+    sd = sd(value, na.rm = TRUE),
+    iqr = IQR(value, na.rm = TRUE),
+    min = min(value, na.rm = TRUE),
+    max = max(value, na.rm = TRUE),
+    range = max(value, na.rm = TRUE) - min(value, na.rm = TRUE),
+    .groups = "drop"
+  ) |>
+  mutate(
+    across(
+      c(mean, median, sd, iqr, min, max, range),
+      ~ round(.x, 2)
+    )
+  )
+
+a1_summary |>
+  knitr::kable()
+```
+
+Read this pipeline from top to bottom:
+
+1. start with the long isotope table;
+2. group by site and isotope;
+3. calculate one summary row for each site × isotope combination;
+4. drop the grouping;
+5. round values for presentation; and
+6. print a readable table.
+
+::: {.callout-important title="Round for display, not before calculation"}
+Keep full numeric precision in the underlying data and calculations.
+
+Round only the final displayed summaries.
+
+Premature rounding can change later calculations.
+:::
+
+## Step 9 — Understand every column in the summary
+
+### `n`
+
+How many non-missing observations contributed to that site × isotope summary?
+
+### `mean`
+
+The arithmetic balance point.
+
+Ask whether extreme values appear to pull it away from the main body of the distribution.
+
+### `median`
+
+The 50th percentile.
+
+Ask whether it differs meaningfully from the mean.
+
+### `sd`
+
+The sample standard deviation.
+
+It is expressed in the same unit as the isotope measurement: ‰.
+
+### `iqr`
+
+The width of the middle 50%.
+
+It is resistant to the tails and pairs naturally with the median.
+
+### `min`, `max`, and `range`
+
+These describe the extremes and total observed span.
+
+Because range uses only minimum and maximum, interpret it together with the histogram, boxplot, SD, and IQR.
+
+## Step 10 — Compare mean with median
+
+Create a compact diagnostic table:
+
+```{r}
+#| label: assignment1-center-comparison
+
+a1_summary |>
+  mutate(
+    mean_minus_median = round(mean - median, 2)
+  ) |>
+  select(site, isotope, mean, median, mean_minus_median) |>
+  knitr::kable()
+```
+
+Interpret the sign **with the histogram**:
+
+- mean noticeably above median can be consistent with right skew;
+- mean noticeably below median can be consistent with left skew;
+- similar mean and median can be consistent with approximate symmetry.
+
+Do not use a rigid numerical cutoff. Shape is a property of the distribution, not merely of one difference score.
+
+## Step 11 — Compare SD with IQR
+
+SD and IQR do not measure exactly the same thing, so do not compare their raw magnitudes as if they should be equal.
+
+Instead ask:
+
+- Does the boxplot show a compact middle 50% but long tails?
+- Does the range look large relative to the IQR?
+- Are one or two observations influencing the SD?
+- Are the data reasonably symmetric so that mean + SD give a useful compact description?
+- Would median + IQR more faithfully represent the center and central spread?
+
+::: {.callout-note title="There is no rule that you must choose only one pair"}
+A good descriptive report can present **both**:
+
+- mean + SD; and
+- median + IQR
+
+when they reveal different aspects of the distribution.
+
+Assignment 1 asks you to calculate both so that you can explain what each contributes.
+:::
+
+## Step 12 — Inspect potential outliers in context
+
+If the boxplot identifies unusual cases, locate them:
+
+```{r}
+#| label: inspect-assignment1-extremes
+
+a1 |>
+  arrange(desc(d15n)) |>
+  select(
+    source_row_id,
+    grave_no,
+    site,
+    d13c,
+    d15n,
+    sex,
+    age_category,
+    chronology,
+    social_category
+  ) |>
+  slice_head(n = 10)
+```
+
+This does **not** mean the first ten rows should be excluded.
+
+It means they deserve contextual inspection.
+
+Knipper et al. note that breastfeeding and metabolic stress can influence isotope values among subadults, and their original analysis explicitly considers age-related patterns [@knipper2020]. An unusual human value can therefore contain biological or archaeological information.
+
+## Step 13 — Describe first, interpret second
+
+A strong Assignment 1 paragraph has two stages.
+
+### Stage A — Statistical description
+
+Describe only what the human distributions show.
+
+A useful template is:
+
+> For \(\delta^{15}\mathrm{N}\), the La Bastida sample had a [higher/lower/similar] center than Gatas. The mean and median were [close/different], while the SD and IQR indicate [greater/lower/similar] variability. The histogram and boxplot show [symmetry/skew/tails/overlap/unusual observations].
+
+Use your actual output to replace the bracketed phrases.
+
+### Stage B — Archaeological interpretation
+
+Then explain what is **consistent with** the pattern while respecting the limits of the assignment.
+
+A useful transition is:
+
+> These descriptive differences demonstrate variation in the human isotope distributions, but they do not by themselves identify the dietary or agricultural mechanism that produced it.
+
+Then bring in Knipper et al.'s wider plant–animal–human evidence [@knipper2020].
+
+## Step 14 — Answer the assignment's four interpretive questions
+
+### 1. What is the unit of analysis?
+
+One sampled human individual.
+
+### 2. What descriptive statistical result matters most?
+
+There is no single answer supplied in advance.
+
+Choose the result that most clearly characterizes the important empirical pattern and justify the choice using the visualizations and summary statistics.
+
+### 3. What archaeological or anthropological interpretation is consistent with the distributions?
+
+Your interpretation should be cautious and contextual.
+
+The human distributions can be discussed in relation to the broader El Argar food-web study, but the Assignment 1 data alone do not reconstruct the entire food system.
+
+### 4. What claim do these descriptive data alone not support?
+
+Examples of claims that would require additional evidence include:
+
+- exact proportions of meat, dairy, barley, or other foods;
+- a causal claim that site status produced isotope differences;
+- a claim that higher \(\delta^{15}\mathrm{N}\) necessarily means more animal protein;
+- a population-wide claim about all inhabitants of La Bastida or Gatas;
+- a causal claim about manuring or irrigation from the human dataset alone.
+
+# A disciplined Assignment 1 workflow
+
+The complete workflow is:
+
+```text
+1. Open the correct RStudio Project / assignment folder
+2. Read README, codebook, provenance, and the assignment
+3. Confirm the data file exists
+4. Import the CSV
+5. Inspect rows, columns, variable types, and unit of analysis
+6. Verify site counts
+7. Check missing values
+8. Plot δ13C distributions by site
+9. Plot δ15N distributions by site
+10. Construct boxplots
+11. Calculate n, mean, median, SD, IQR, min, max, range
+12. Compare mean with median
+13. Compare SD/IQR/range with the plotted shape
+14. Inspect unusual observations in archaeological context
+15. Write the statistical description
+16. Add a cautious archaeological interpretation
+17. State what the data do not support
+18. Restart R
+19. Render the Quarto document from a clean session
+20. Submit both .qmd and .html
+```
+
+::: {.callout-important title="No inferential test in Assignment 1"}
+Do not add a t-test, ANOVA, permutation test, confidence interval, or p-value.
+
+Those are not required for this assignment.
+
+The intellectual task is to learn how to **describe a distribution well before testing hypotheses about it**.
+:::
+
+# Guided practice
+
+## Exercise 1 — Which center?
+
+::: {.exercise}
+Consider:
+
+```text
+3, 5, 7, 7, 8, 9, 80
+```
+
+Without using R:
+
+1. Which value will affect the mean most?
+2. Will the median change dramatically because of the value 80?
+3. Which center better describes a "typical" observation here?
+4. What additional plot would you want to see before making a final decision?
+:::
+
+::: {.callout-tip collapse="true" title="Check your reasoning"}
+The value 80 strongly affects the mean but has much less influence on the median.
+
+The median is therefore more resistant for this strongly right-tailed toy dataset.
+
+A histogram, dot plot, or boxplot would help show whether 80 is isolated from the main body of observations.
+:::
+
+## Exercise 2 — Same mean, different spread
+
+::: {.exercise}
+Compare:
+
+```r
+a <- c(8, 9, 10, 11, 12)
+b <- c(0, 5, 10, 15, 20)
+```
+
+1. Calculate the mean of each.
+2. Calculate the SD of each.
+3. What would be lost if you reported only the means?
+:::
+
+::: {.callout-tip collapse="true" title="Check with R"}
+```r
+mean(a)
+mean(b)
+
+sd(a)
+sd(b)
+```
+
+The means are the same, but the second dataset is much more dispersed.
+
+This is why central tendency without dispersion is incomplete.
+:::
+
+## Exercise 3 — Range versus IQR
+
+::: {.exercise}
+Start with:
+
+```r
+x <- c(10, 11, 12, 13, 14, 15, 16)
+```
+
+Then replace `16` with `100`.
+
+Compare:
+
+- range;
+- IQR.
+
+Which statistic changes more, and why?
+:::
+
+::: {.callout-tip collapse="true" title="Check with R"}
+```r
+x1 <- c(10, 11, 12, 13, 14, 15, 16)
+x2 <- c(10, 11, 12, 13, 14, 15, 100)
+
+max(x1) - min(x1)
+max(x2) - min(x2)
+
+IQR(x1)
+IQR(x2)
+```
+
+The range depends directly on the extreme values, whereas the IQR focuses on the middle 50%.
+:::
+
+## Exercise 4 — Read a boxplot
+
+::: {.exercise}
+For @fig-week04-isotope-boxplots, identify:
+
+1. the median;
+2. the IQR;
+3. the direction of any asymmetry;
+4. any points beyond the whiskers;
+5. which site appears more variable for each isotope; and
+6. whether the site distributions overlap.
+
+Then compare those visual impressions with @tbl-week04-assignment1-descriptives.
+:::
+
+## Exercise 5 — Choose the summary pair
+
+::: {.exercise}
+For each hypothetical distribution, choose the most informative primary pair:
+
+- **mean + SD**, or
+- **median + IQR**.
+
+### A
+Symmetric, unimodal, no influential extremes.
+
+### B
+Strong right skew with several high values.
+
+### C
+Ordinal preservation scores: poor / fair / good / excellent.
+
+Explain your choices.
+:::
+
+::: {.callout-tip collapse="true" title="Check your reasoning"}
+- **A:** mean + SD is usually efficient and interpretable.
+- **B:** median + IQR is more resistant, though reporting both pairs can reveal the effect of the tail.
+- **C:** median + IQR is compatible with ordered categories; an arithmetic mean assumes quantitative intervals not supplied by the labels.
+:::
+
+## Exercise 6 — Is CV appropriate?
+
+::: {.exercise}
+Would CV be appropriate for:
+
+1. femoral-head diameter in mm?
+2. body mass in kg?
+3. \(\delta^{15}\mathrm{N}\) reported in ‰ relative to a standard?
+4. temperature in °C?
+
+Explain the measurement-scale reason for each answer.
+:::
+
+::: {.callout-tip collapse="true" title="Check your reasoning"}
+CV requires a ratio scale with a meaningful nonzero mean.
+
+It is defensible for femoral-head diameter and body mass.
+
+It is not appropriate for delta isotope values or Celsius temperature because their zero points are reference points rather than true absence.
+:::
+
+## Exercise 7 — Separate description from explanation
+
+::: {.exercise}
+Rewrite this sentence so that statistical description and archaeological explanation are separated:
+
+> "La Bastida people ate more meat because their mean δ15N is higher."
+
+Your revision should contain:
+
+1. one descriptive sentence; and
+2. one cautious interpretive sentence.
+:::
+
+::: {.callout-tip collapse="true" title="One defensible structure"}
+A stronger structure is:
+
+> The La Bastida human sample has higher δ15N values on average than the Gatas sample.
+
+Then:
+
+> This descriptive difference does not by itself demonstrate greater meat consumption, because isotope baselines also vary across crops and animals; the wider food-web evidence is needed to evaluate the mechanism.
+
+The exact wording should reflect your own Assignment 1 results and reading of Knipper et al. [@knipper2020].
+:::
+
+# Common errors in Week 4
+
+## Error 1 — Calculating a mean because the column is numeric
+
+Ask what the numbers mean.
+
+Codes for categories are not quantitative distances.
+
+## Error 2 — Reporting only the mean
+
+Always consider spread and shape.
+
+## Error 3 — Calling every extreme observation an error
+
+Investigate it.
+
+An unusual value can be a mistake, but it can also be substantive evidence.
+
+## Error 4 — Removing outliers to make the graph look normal
+
+Do not modify the data simply to obtain a preferred distribution.
+
+Any exclusion requires a documented substantive or data-quality reason.
+
+## Error 5 — Treating SD as meaningful without the distribution
+
+SD is most interpretable when considered with shape, sample size, and the mean.
+
+## Error 6 — Treating ±2 SD as a confidence interval for the mean
+
+It is not.
+
+The empirical rule concerns the expected spread of observations under an approximately normal distribution.
+
+## Error 7 — Using CV on interval-scale data
+
+CV requires a meaningful ratio zero.
+
+Do not calculate CV for Assignment 1's delta isotope values.
+
+## Error 8 — Interpreting a site difference as a cause
+
+A descriptive difference does not identify a mechanism.
+
+## Error 9 — Forgetting unequal sample sizes
+
+La Bastida has 48 observations; Gatas has 21.
+
+A smaller sample often produces a rougher-looking histogram and less stable extremes.
+
+That does not make the smaller sample invalid, but it should temper visual interpretation.
+
+## Error 10 — Rounding too early
+
+Round the displayed table, not the source data.
+
+# Reading guide
+
+## Core: Perkins — Statistical concepts
+
+Perkins's Chapter 3 introduces the Week 4 vocabulary in a form designed for beginning social-science students [@perkins2026].
+
+Focus on:
+
+- NOIR measurement scales;
+- mean;
+- median;
+- mode;
+- trimmed mean;
+- MAD;
+- minimum and maximum;
+- range;
+- variance;
+- standard deviation;
+- skewness; and
+- kurtosis.
+
+Pay particular attention to the worked standard-deviation example: the value of SD comes from distances around the mean, while squaring and square-rooting solve the cancellation and unit problems.
+
+## Core: Perkins — Descriptive statistics in R
+
+Perkins's Chapter 4 moves from concepts to computational practice [@perkins2026].
+
+Useful topics include:
+
+- calculating descriptives overall and by category;
+- comparing grouped distributions;
+- histograms;
+- faceting;
+- skewness and kurtosis; and
+- writing concise descriptive results.
+
+Perkins uses `psych::describe()` and `psych::describeBy()`. In ANTH418, Assignment 1 uses an explicit `dplyr::group_by()` + `summarise()` workflow because seeing each calculated statistic directly makes the analytical logic more transparent.
+
+## Carlson — Looking at archaeological data
+
+Carlson's archaeological R chapter begins with the structure of archaeological datasets and the unit of observation [@carlson2017].
+
+For Week 4, concentrate on:
+
+- rows as observations;
+- columns as measurements;
+- missing values and `NA`;
+- looking at data before analysis;
+- numerical summaries;
+- normal and non-normal distributions; and
+- R's handling and display of numerical values.
+
+Carlson's advice that **the first step is to look at the data** is the practical foundation of Assignment 1.
+
+## Banning — Descriptive statistics in archaeology
+
+Banning's chapter on summarizing archaeological data is especially valuable because it connects the formulas to archaeological measurement problems [@banning2020].
+
+Focus on:
+
+- mean as a center of gravity;
+- mean sensitivity to extremes;
+- trimmed means;
+- median and mode;
+- range;
+- IQR;
+- variance and SD;
+- CV;
+- skewness and kurtosis;
+- when means become misleading; and
+- categorical summaries.
+
+Banning's discussion of minimum-size thresholds for artifacts is a reminder that measurement protocols can change the mean before any statistical calculation begins.
+
+## Dressler — Thinking statistically about center and spread
+
+Dressler's first two chapters make central tendency and dispersion intuitive using a health-locus-of-control distribution [@dressler2015].
+
+Useful ideas include:
+
+- the mean as a model or educated guess;
+- how mean, median, and mode relate to distribution shape;
+- why skew separates the three centers;
+- deviations from the mean;
+- variance and SD;
+- the empirical 68–95 pattern; and
+- standardized scores.
+
+One terminology caution for ANTH418: intervals such as mean ±1 SD describe the spread of observations under a normal model; do not call them confidence intervals for the population mean.
+
+## Gonick and Smith — Visual intuition
+
+The illustrated "Data Description" chapter gives a visual route from raw observations to frequency tables, histograms, mean, median, IQR, boxplots, variance, standard deviation, and the empirical rule [@gonickSmith2019].
+
+Use it as a conceptual check:
+
+> If you cannot explain what the statistic is doing in a picture, do not rely only on the formula.
+
+## Privitera — Frequency, center, and variability
+
+Privitera's chapters separate the same descriptive workflow into three layers [@privitera2024]:
+
+1. frequency distributions and graphs;
+2. central tendency; and
+3. variability.
+
+Particularly useful Week 4 ideas include:
+
+- why summarization reveals patterns hidden in raw lists;
+- the mean as a balance point;
+- weighted means for unequal group sizes;
+- quartiles and IQR;
+- sample versus population variance;
+- standard deviation; and
+- the empirical rule.
+
+Weighted means are useful background but are **not required for Assignment 1**, because the assignment describes each site separately rather than collapsing the two site means into one overall mean.
+
+## Plavcan — Why relative variation matters
+
+Plavcan's analysis of size variation in early *Homo* demonstrates that variability itself can be the anthropological phenomenon [@plavcan2012].
+
+Focus on:
+
+- multiple possible sources of biological size variation;
+- the dependence of absolute SD on overall body size;
+- CV as relative variability;
+- trait-specific comparative baselines; and
+- caution in using fossil variability to infer sex, taxonomy, or behavior.
+
+The important lesson is not a universal CV cutoff. It is that **dispersion becomes interpretable only relative to a defensible comparative framework**.
+
+## Knipper et al. — Assignment 1 archaeological context
+
+Read Knipper et al. not simply to find the "answer" but to understand why the assignment separates description from explanation [@knipper2020].
+
+Focus on:
+
+- the El Argar archaeological setting;
+- La Bastida and Gatas;
+- human, animal, and cereal isotope sampling;
+- trophic-chain logic;
+- environmental influences on isotope values;
+- manuring and animal-feeding effects;
+- age-related isotope effects; and
+- the conclusion that higher human values at La Bastida do not necessarily mean different average dietary composition.
+
+::: {.callout-note title="About the uploaded Llull 2020 file"}
+The file supplied under the name **"Llull 2020 Protoapennine vs. Subapennine..."** contains the Knipper et al. (2020) La Bastida–Gatas article rather than a distinct Llull ceramic study.
+
+For that reason, this Study Guide does not attribute any independent argument to that mislabeled attachment. If the intended Llull article is supplied later, its ceramic case study can be added to this section.
+:::
+
+# Week 4 checklist
+
+Before moving on, you should be able to say **yes** to each statement:
+
+- [ ] I can explain why descriptive statistics come before causal interpretation.
+- [ ] I can identify what one row in a dataset represents.
+- [ ] I can distinguish descriptive from inferential statistics.
+- [ ] I can choose a center appropriate to the measurement scale.
+- [ ] I can explain why a numerical category code does not justify a mean.
+- [ ] I can define mode, median, mean, and trimmed mean.
+- [ ] I can explain why the mean is a balance point.
+- [ ] I can explain why the median resists extreme values.
+- [ ] I can identify unimodal, multimodal, symmetric, right-skewed, and left-skewed distributions.
+- [ ] I can calculate and interpret range and IQR.
+- [ ] I can explain why range is fragile.
+- [ ] I can explain what quartiles represent.
+- [ ] I can explain why simple deviations from the mean sum to zero.
+- [ ] I can explain the logic of variance.
+- [ ] I can explain why sample variance uses \(n-1\).
+- [ ] I can explain why SD returns to the original measurement units.
+- [ ] I can state the 68–95 empirical rule and its assumptions.
+- [ ] I can explain what MAD measures.
+- [ ] I can explain what CV measures and when it is appropriate.
+- [ ] I can explain why CV is inappropriate for Assignment 1's delta isotope values.
+- [ ] I can read a histogram critically.
+- [ ] I can read the median, IQR, whiskers, and potential outliers from a boxplot.
+- [ ] I know that a boxplot outlier is not automatically an error.
+- [ ] I can use R to calculate Assignment 1's required descriptive statistics by site and isotope.
+- [ ] I can compare mean with median without using a rigid cutoff.
+- [ ] I can compare SD, IQR, and range in relation to the plotted distribution.
+- [ ] I can describe a statistical pattern before proposing an archaeological explanation.
+- [ ] I can explain why higher human δ15N does not automatically mean more meat or dairy.
+- [ ] I can state what Assignment 1's human data alone cannot establish.
+- [ ] I can render the assignment from a clean R session and submit both `.qmd` and `.html`.
+
+# Takeaways
+
+- **Raw data need organization.** A table of measurements is evidence, but not yet a clear description.
+- **Every distribution has a center and a spread.** Report both.
+- **Measurement scale comes first.** A statistic is meaningful only when the variable supports the operation.
+- **Mode finds peaks.** It is essential for nominal categories and useful for recognizing multimodality.
+- **Median is resistant.** It is especially useful for ordinal, skewed, or outlier-prone data.
+- **Mean is a balance point.** It uses every observation and is therefore both powerful and sensitive.
+- **Range is fragile.** It depends only on the extremes.
+- **IQR describes the middle 50%.** It pairs naturally with the median.
+- **Variance uses squared deviations.** Sample variance uses \(n-1\).
+- **SD restores the original units.** It pairs naturally with the mean when distribution shape makes that useful.
+- **MAD protects against extreme values.** It is a robust spread measure.
+- **CV measures relative spread.** Use it only when a ratio scale and meaningful nonzero mean justify it.
+- **Shape matters.** Mean–median divergence, tails, gaps, and multimodality require visual inspection.
+- **Outliers are questions, not garbage.** Investigate them before deciding what they mean.
+- **Archaeological variability can be substantive evidence.** It can inform questions about standardization, dimorphism, taxonomy, heterogeneity, and social differentiation.
+- **Assignment 1 is descriptive.** It asks what the human isotope distributions show, not for an inferential test.
+- **Context controls interpretation.** Knipper et al.'s cereal and animal baselines show why a human isotope difference is not automatically a dietary mechanism.
+- **Describe before explaining.** This is the central Week 4 habit and the central logic of Assignment 1.
+
+# References {.unnumbered}
+
+::: {#refs}
+:::
