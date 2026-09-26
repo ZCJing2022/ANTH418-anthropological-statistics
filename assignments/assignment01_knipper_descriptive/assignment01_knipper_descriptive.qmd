@@ -1,6 +1,5 @@
 ---
 title: "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas"
-author: "Your Name"
 format:
   html:
     toc: true
