@@ -1,0 +1,1479 @@
+---
+title: "Week 3 — Measurement and Research Design"
+subtitle: "From concepts and variables to defensible inference"
+date: "2026-09-21"
+---
+
+<div class="week-meta">
+**Class meetings:** 21 & 23 September 2026<br>
+**Focus:** variables · measurement · validity · research design · mixed methods<br>
+**Practice:** translating anthropological questions into defensible measures and designs<br>
+**Assessment:** Ungraded preparation for upcoming ANTH418 assignments
+</div>
+
+```{r}
+#| label: setup
+#| include: false
+
+project_root <- if (file.exists("R/setup.R")) "." else ".."
+
+source(file.path(project_root, "R", "setup.R"))
+
+data_file <- file.path(
+  project_root,
+  "data",
+  "knipper2020_humans.csv"
+)
+```
+
+## Overview
+
+Week 2 introduced a reproducible computational workflow. Week 3 asks a prior question:
+
+> **What exactly are we measuring, and why should those measurements count as evidence for the question we care about?**
+
+Statistics begins long before a statistical test. It begins when researchers decide what counts as an observation, how an abstract idea becomes a variable, how that variable will be measured, which unit will be analyzed, and what research design can support the intended inference.
+
+The lecture for this week follows one continuous argument:
+
+**concepts → definitions → variables → measurements → research design → inference**
+
+A strong analysis depends on alignment across that entire chain. Bernard and Wutich place variables, measurement, reliability, validity, units of analysis, causal logic, and research design at the foundation of social research [@bernardWutich2027]. Banning makes the same point from archaeology: convincing archaeological arguments require observations and measurements whose errors, biases, and inferential limits are understood [@banning2020].
+
+::: {.callout-note title="The Week 3 principle"}
+**A statistical result cannot be better than the concepts, measurements, and research design that produced the data.**
+
+Sophisticated analysis cannot rescue a variable that was badly defined, a measure that does not represent the intended concept, or a design that cannot answer the research question.
+:::
+
+## Questions
+
+- How does an abstract anthropological concept become an empirical variable?
+- What is the difference between a conceptual definition and an operational definition?
+- When is a variable unidimensional, and when does it require several indicators?
+- What makes a variable independent or dependent?
+- What are nominal, ordinal, interval, and ratio levels of measurement?
+- Why should we preserve the highest useful level of information when collecting data?
+- How do reliability, precision, accuracy, and validity differ?
+- How can a measure be highly repeatable but still wrong?
+- What kinds of reliability and validity can researchers evaluate?
+- Why is real research iterative rather than perfectly linear?
+- What makes a research question feasible?
+- How do internal states, external states, reported behavior, observed behavior, and material traces differ as variables?
+- Why are qualitative and quantitative data not methodological opposites?
+- How can emic knowledge become measurable without losing its cultural grounding?
+- What makes a mixed-methods design coherent rather than merely "using several methods"?
+- What does research design contribute to causal inference?
+- Why does the unit of analysis matter?
+- What is the ecological fallacy?
+- How do observational/experimental, cross-sectional/longitudinal, and single-case/comparative decisions combine into eight basic designs?
+- How do participatory and action research change the relationship between researchers and participants?
+- What do reproducibility, metadata, provenance, and replicability add to research design in archaeology?
+
+## Learning objectives
+
+By the end of Week 3, you should be able to:
+
+1. distinguish an **abstract concept**, **conceptual definition**, **operational definition**, **variable**, **indicator**, and **empirical value**;
+2. distinguish **unidimensional** from **multidimensional** variables and explain why multidimensional constructs usually require multiple indicators;
+3. explain how theory assigns the roles of **independent** and **dependent** variables;
+4. classify variables as **nominal**, **ordinal**, **interval**, or **ratio**, and explain what information each level preserves;
+5. explain why collecting information at a higher defensible level of measurement preserves analytical options;
+6. distinguish **reliability**, **precision**, **accuracy**, and **validity**;
+7. describe interobserver/intercoder, test–retest, parallel-form, and internal-consistency approaches to reliability;
+8. distinguish face, content, construct, and criterion validity;
+9. explain why reliability is necessary but not sufficient for validity;
+10. evaluate whether a research question is feasible in relation to evidence, time, resources, access, and ethics;
+11. classify social-science variables as internal states, external states, reported behavior, observed behavior, or artifacts/environment;
+12. separate **data type** from **analysis method** when thinking about qualitative and quantitative research;
+13. describe theoretical drive, pacing, and point of interface in mixed-methods research;
+14. distinguish exploratory from confirmatory designs while recognizing that real research often moves between them;
+15. state the four conditions normally required for a causal argument: covariation, nonspuriousness, temporal precedence, and mechanism;
+16. identify the **unit of analysis** and explain the ecological fallacy;
+17. classify a study using the three design decisions: observational/experimental, cross-sectional/longitudinal, and single-case/comparative;
+18. explain the logic of `QUAL → QUAN` and `QUAN → QUAL` sequential designs;
+19. explain how participatory and action research redistribute decisions about questions, methods, and outcomes; and
+20. connect measurement and design to archaeological data provenance, reproducibility, metadata, uncertainty, and problem-driven methodological pluralism.
+
+## This week's two-class sequence
+
+| Class | Main focus | Practical outcome |
+|---|---|---|
+| **Monday, 21 September** | Variables, measurement, reliability, validity, research design | You can translate a research concept into explicit variables and evaluate the quality of the proposed measurements. |
+| **Wednesday, 23 September** | Design logic, units of analysis, mixed methods, causal inference, guided practice | You can match questions to a defensible design and explain what conclusions that design can and cannot support. |
+
+# From concepts to empirical values
+
+## Variables become evidence
+
+Social research does not observe abstract ideas directly. Concepts such as **social status**, **identity**, **wealth**, **mobility**, **political orientation**, **household organization**, or **cultural consonance** must first be translated into observable properties.
+
+A useful sequence is:
+
+> **abstract concept → conceptual definition → operational definition → empirical values**
+
+Bernard and Wutich distinguish conceptual definitions from operational definitions: the first states what researchers mean by a concept; the second specifies the operations used to measure it [@bernardWutich2027].
+
+A **variable** is not identical to the concept. A variable is an empirical property that can take different values or categories.
+
+For example:
+
+| Stage | Example |
+|---|---|
+| Abstract concept | household wealth |
+| Conceptual definition | material and economic resources available to a household |
+| Operational definition | record house area, storage capacity, durable goods, livestock holdings, and selected high-value objects using explicit coding rules |
+| Empirical values | measured house area, counts, presence/absence codes, index values |
+
+::: {.callout-important title="Operational definitions are recipes"}
+An operational definition should allow another researcher to understand **how the data were generated**.
+
+That does not guarantee that the measure is good. It makes the measurement explicit enough to evaluate, criticize, reproduce, and improve.
+:::
+
+This transparency is also central to computational reproducibility. Marwick argues that data and code provenance should expose the transformations that connect observations to published results [@marwick2017]. An operational definition does the same kind of work at the measurement stage.
+
+## Concepts, constructs, indicators, and values
+
+Some variables are straightforward. Others are **constructs**: complex concepts whose empirical meaning must be represented through several indicators.
+
+Bernard and Wutich emphasize that even familiar concepts can become difficult when researchers ask exactly what is being measured [@bernardWutich2027].
+
+Consider "social status" in archaeology. We cannot directly ask a past individual about status. Possible indicators might include:
+
+- grave treatment;
+- access to rare materials;
+- house size;
+- spatial location;
+- diet;
+- craft specialization;
+- labor investment; or
+- association with particular objects.
+
+None of these indicators is automatically equivalent to "status." Each requires a theoretical argument linking the observable trace to the concept.
+
+Banning describes this problem as **indirect measurement**: archaeologists often measure a surviving property as a proxy for something that cannot be observed directly, such as ancient population size, household wealth, social status, interaction, diet, or rainfall [@banning2020].
+
+::: {.callout-warning title="A proxy is an argument, not a fact"}
+If grave wealth is used as a proxy for social status, the archaeological measurement of grave goods may be precise while the inference about status remains uncertain.
+
+Measurement quality therefore has at least two levels:
+
+1. Did we measure the observable evidence well?
+2. Does that evidence validly represent the concept we claim it represents?
+:::
+
+## Variables can be simple or multidimensional
+
+A **unidimensional variable** is represented primarily along one axis.
+
+Examples include:
+
+- age;
+- height;
+- mass;
+- distance; and
+- counts.
+
+A **multidimensional variable** has several analytically distinct facets.
+
+Examples include:
+
+- wealth;
+- political orientation;
+- cultural consonance;
+- ethnic identity;
+- social status; and
+- household prosperity.
+
+Bernard and Wutich use examples such as socioeconomic status to show why a single indicator may fail to capture a complex construct [@bernardWutich2027].
+
+| Unidimensional | Multidimensional |
+|---|---|
+| often represented by one primary scale | contains several facets |
+| a single indicator may sometimes be adequate | usually requires multiple indicators |
+| easier to define operationally | requires explicit decisions about dimensions and weighting |
+| example: length | example: socioeconomic status |
+
+Dimensionality therefore affects the **measurement instrument**. If the concept is multidimensional, asking one question or recording one attribute may give an incomplete or distorted measure.
+
+::: {.exercise}
+Choose one concept from anthropology or archaeology—for example **mobility**, **inequality**, **community integration**, **ritual investment**, or **household wealth**.
+
+1. Is it plausibly unidimensional or multidimensional?
+2. What dimensions would you distinguish?
+3. What observable indicators might represent each dimension?
+4. What could be lost if you used only one indicator?
+:::
+
+## Independent and dependent variables
+
+Researchers often describe relationships using an independent variable \(X\) and dependent variable \(Y\).
+
+- **Independent variable (X):** presumed cause, explanatory variable, or predictor.
+- **Dependent variable (Y):** outcome, response, or effect.
+
+But these roles are **not intrinsic properties of variables**. Theory assigns the roles.
+
+For example, "education" might be treated as \(X\) when predicting income, but it might be treated as \(Y\) when studying how household resources influence educational attainment.
+
+In an experiment, the researcher deliberately manipulates an independent variable. In observational research, researchers measure naturally occurring variation in \(X\) and examine whether it is associated with \(Y\) [@bernardWutich2027].
+
+::: {.callout-note title="X and Y do not create causality by themselves"}
+Calling one variable "independent" and another "dependent" does not prove a causal relationship. The labels express a theoretical model that must be evaluated with evidence and research design.
+:::
+
+## Bad theory can reverse causality
+
+The lecture uses Bernard and Wutich's Chicano high-school example to show how poor operationalization and poor causal theory can reinforce one another [@bernardWutich2027].
+
+Survey results had been interpreted as showing low career aspirations among Chicano students and insufficient parental encouragement. Ethnographic work revealed a different mechanism: parents often had high aspirations but also understood structural constraints, including the costs of higher education and discriminatory counseling. What looked like a deficit in parental aspiration was partly an artifact of how aspiration had been operationalized and how causality had been theorized.
+
+The lesson is not simply "qualitative data are better." The lesson is:
+
+> **A measure can faithfully record answers to a badly framed question and still misrepresent the social mechanism.**
+
+Qualitative fieldwork improved the conceptual and operational definition. Those improved definitions could still be coded and analyzed quantitatively.
+
+This is a crucial Week 3 point: **measurement and theory cannot be separated.**
+
+# Levels of measurement
+
+## Four levels
+
+A variable's level of measurement describes what information its values legitimately contain.
+
+| Level | What the values mean | Examples | What is defensible |
+|---|---|---|---|
+| **Nominal** | different named categories | site, artifact class, religion, raw-material type | equality/inequality, counts, proportions |
+| **Ordinal** | ordered categories, but distances are not assumed equal | preservation rank, social-class rank, Likert responses | ordering plus nominal operations |
+| **Interval** | equal intervals, but zero is not a true absence | Celsius, Fahrenheit, many standardized scores | differences and most arithmetic except meaningful ratios |
+| **Ratio** | equal intervals and a meaningful zero | age, mass, counts, distance | full arithmetic, including ratios |
+
+Information content generally increases from nominal to ratio. The kinds of summaries and analyses that make sense depend partly on the level at which the variable was measured [@bernardWutich2027; @banning2020].
+
+::: {.callout-important title="R storage type is not measurement level"}
+R may store both a site code and a person's name as `character`, while storing a nominal category coded `1`, `2`, `3` as numeric.
+
+`glimpse()` tells you how R stores a column. It does **not** tell you the variable's statistical measurement level.
+
+Measurement level comes from the meaning of the values and the rules used to generate them.
+:::
+
+## Measure at the highest defensible level
+
+Higher-level information can often be collapsed downward.
+
+For example:
+
+```{r}
+#| label: age-information-loss
+
+age_demo <- tibble(
+  exact_age = c(18, 23, 29, 34, 47, 62)
+) |>
+  mutate(
+    age_band = cut(
+      exact_age,
+      breaks = c(0, 19, 29, 39, 49, 64, Inf),
+      right = TRUE
+    )
+  )
+
+age_demo
+```
+
+Exact ages can be converted into age brackets.
+
+But once only the bracket is retained, the exact ages cannot be reconstructed.
+
+::: {.callout-note title="Information loss is usually one-way"}
+**Exact age → age category** is possible.
+
+**Age category → exact age** is not.
+
+When practical and ethical, collect data at the highest defensible level of detail and aggregate later for analysis.
+:::
+
+This principle has an archaeological analogue. The BIAD Standards recommend preserving original, fine-grained chronological associations and raw observations even when researchers later aggregate phases for analysis [@reiter2024]. Once distinct phases are published only as one broad period, later researchers cannot reliably recover the original detail.
+
+# Measurement quality
+
+## Four different questions
+
+The lecture distinguishes four dimensions of measurement quality:
+
+| Dimension | Core question | Typical problem |
+|---|---|---|
+| **Reliability** | Does the measurement repeat consistently? | random or observer-dependent variation |
+| **Precision** | How fine is the resolution of the measurement? | coarse scale or instrument resolution |
+| **Accuracy** | How close is the measurement to the relevant target or standard? | systematic bias |
+| **Validity** | Does the measurement represent the intended concept? | wrong construct, proxy, or inference |
+
+These terms are related but not interchangeable [@bernardWutich2027; @banning2020].
+
+A digital caliper can be precise but miscalibrated. Two analysts can agree perfectly on a coding rule that operationalizes the wrong concept. A laboratory measurement can be accurate for the chemical property measured but invalid as a proxy for the social process a researcher claims it represents.
+
+::: {.callout-important title="Statistical sophistication cannot repair faulty measurement"}
+A model can estimate relationships among the numbers you give it. It cannot determine whether those numbers validly represent the concept you intended to study.
+:::
+
+## Reliability and accuracy are not the same
+
+The following reproducible illustration adapts the logic of the lecture's target diagram.
+
+```{r}
+#| label: fig-week03-measurement-quality
+#| fig-cap: "Reliability and validity/accuracy are different properties. Tight clustering indicates repeatability; location relative to the target indicates whether the measurements are centered appropriately."
+#| fig-alt: "Three faceted scatterplots. One shows scattered observations away from the target, one shows tightly clustered observations away from the target, and one shows tightly clustered observations close to the target."
+
+measurement_demo <- tribble(
+  ~condition, ~x, ~y,
+  "Unreliable + invalid",  1.1,  2.7,
+  "Unreliable + invalid",  3.1,  1.1,
+  "Unreliable + invalid",  1.8,  3.5,
+  "Unreliable + invalid",  3.4,  2.6,
+  "Unreliable + invalid",  2.2,  0.9,
+  "Reliable but invalid",  2.0,  2.1,
+  "Reliable but invalid",  2.2,  1.9,
+  "Reliable but invalid",  1.9,  2.2,
+  "Reliable but invalid",  2.1,  2.0,
+  "Reliable but invalid",  2.0,  1.8,
+  "Reliable + valid",      0.1,  0.1,
+  "Reliable + valid",     -0.1,  0.2,
+  "Reliable + valid",      0.2, -0.1,
+  "Reliable + valid",     -0.2,  0.0,
+  "Reliable + valid",      0.0, -0.2
+)
+
+ggplot(measurement_demo, aes(x = x, y = y)) +
+  geom_hline(yintercept = 0, linetype = 3) +
+  geom_vline(xintercept = 0, linetype = 3) +
+  geom_point(size = 2.6, alpha = 0.8) +
+  facet_wrap(~ condition) +
+  coord_equal(xlim = c(-1, 4), ylim = c(-1, 4)) +
+  labs(
+    x = "Horizontal deviation from target",
+    y = "Vertical deviation from target"
+  ) +
+  theme_minimal()
+```
+
+@fig-week03-measurement-quality illustrates three possibilities:
+
+1. **Unreliable + invalid:** readings vary widely and do not center on the target.
+2. **Reliable but invalid:** readings repeat closely but cluster around the wrong place.
+3. **Reliable + valid:** readings repeat closely and are centered appropriately.
+
+Tight clustering alone is therefore not enough.
+
+## Reliability asks whether measurement repeats
+
+Several forms of reliability answer different repeatability questions.
+
+| Reliability approach | Question |
+|---|---|
+| **Interobserver / intercoder** | Do different researchers measure or code the same case similarly? |
+| **Test–retest** | Does the same instrument produce stable results when repeated under comparable conditions? |
+| **Parallel-form** | Do equivalent versions of an instrument agree? |
+| **Internal consistency** | Do items intended to measure one construct cohere? |
+
+A simple classical model is:
+
+\[
+X = T + e
+\]
+
+where:
+
+- \(X\) is the observed score;
+- \(T\) is the underlying true component; and
+- \(e\) is random measurement error.
+
+The model is a way of thinking about observed values as a mixture of signal and error. It does not imply that every social or archaeological construct has a directly observable "true score."
+
+### Reliability in archaeology
+
+Interobserver reliability is especially important when analysts classify artifacts, skeletal traits, botanical remains, or images. Banning emphasizes that some observed variation can arise from differences among observers or instruments rather than from the archaeological objects themselves [@banning2020].
+
+Vaesen and Hussain add an important caution: **replicability or inter-analyst agreement is not identical to reliability or interpretive value** [@vaesenHussain2026]. Some archaeologically meaningful properties are genuinely ambiguous because of preservation, continuous variation, or differences in analytical traditions.
+
+::: {.callout-warning title="Do not optimize measurement quality by measuring only what is easy"}
+A variable can be easy to record consistently but weakly related to the archaeological question.
+
+A difficult-to-code variable may still contain important behavioral information.
+
+The goal is not maximum agreement at any cost. The goal is a defensible balance among reliability, validity, uncertainty, interpretive value, and feasibility.
+:::
+
+## Validity asks whether the intended concept is measured
+
+Four common forms of validity are:
+
+| Type | Main question |
+|---|---|
+| **Face validity** | Does the measure appear plausible on its face? |
+| **Content validity** | Does it cover the important dimensions of the concept? |
+| **Construct validity** | Does it behave as theory says the construct should behave? |
+| **Criterion validity** | Does it correspond to an appropriate external benchmark or criterion? |
+
+Reliability is usually necessary for validity, but it is not sufficient [@bernardWutich2027].
+
+A perfectly repeatable instrument can measure the wrong thing.
+
+### Archaeological example
+
+Suppose two analysts achieve near-perfect agreement when counting a particular grave-good type.
+
+That result supports **interobserver reliability** for the count.
+
+It does not by itself establish that:
+
+- the grave-good type measures social status;
+- the count captures the full domain of status;
+- the proposed social categories are culturally meaningful; or
+- status caused any observed difference in diet or mobility.
+
+Those are validity and design questions.
+
+# Research is designed under constraints
+
+## Strong design is alignment
+
+Research design is not just the choice of a statistical test.
+
+It is the architecture that connects:
+
+- the research question;
+- theoretical expectations;
+- units of analysis;
+- sampling;
+- variables and operational definitions;
+- data collection;
+- measurement quality;
+- analysis;
+- ethics;
+- feasibility; and
+- the conclusions the evidence can support.
+
+Bernard and Wutich define research design as knowing how to answer a research question and test a hypothesis by coordinating sampling, data collection, and analysis [@bernardWutich2027].
+
+Banning similarly emphasizes that archaeological research design should reduce the possibility that apparent patterns are products of sampling problems, investigator bias, or measurement error [@banning2020].
+
+## Actual research is iterative
+
+Textbooks often present a clean sequence:
+
+> topic → literature → hypothesis → design → data → analysis → publication
+
+Real research rarely behaves that way.
+
+Field obstacles, equipment failures, community dynamics, unexpected findings, new literature, and analytical surprises can force researchers to:
+
+- revise protocols;
+- redefine variables;
+- refine questions;
+- collect additional data; or
+- re-analyze existing data.
+
+Bernard and Wutich describe the real research process as messier than its final published account [@bernardWutich2027]. Booth and colleagues make the same point: experienced research often zigzags, doubles back, and changes direction as the problem and evidence become clearer [@booth2024].
+
+::: {.callout-note title="Iteration is not the same as improvisation without documentation"}
+Changing a protocol can be good research.
+
+Changing it silently is not.
+
+When the design evolves, record what changed, why it changed, and which observations were produced under which version of the procedure.
+:::
+
+This is one reason version control and scripted analysis matter. Marwick emphasizes that commit histories can preserve decision points and analytical changes rather than leaving a pile of ambiguously named files [@marwick2017].
+
+## A research question must be doable
+
+A compelling topic is not enough.
+
+Before beginning a study, ask whether the question is feasible.
+
+| Feasibility dimension | Question |
+|---|---|
+| **Sustained interest** | Can this question sustain serious work? |
+| **Testability** | Can observable evidence address it? |
+| **Time** | Can the work be completed within the available period? |
+| **Resources** | Are the required equipment, funding, skills, and personnel available? |
+| **Access** | Can the relevant population, archive, collection, or site be reached? |
+
+Bernard and Wutich treat feasibility as part of preparing research, not as an administrative issue added after the intellectual design [@bernardWutich2027].
+
+Ethics cuts across all five dimensions. A technically feasible study may still be inappropriate if it imposes unacceptable risk or violates obligations to participants, communities, collections, or cultural heritage.
+
+Booth and colleagues add another useful question:
+
+> **So what?**
+
+A research problem should matter to an audience beyond the fact that the researcher happens to be interested in it [@booth2024].
+
+# What kind of variable are you studying?
+
+## Five classes of social variables
+
+The lecture organizes social variables into five broad classes adapted from Bernard and Wutich [@bernardWutich2027].
+
+| Variable class | What it concerns | Examples |
+|---|---|---|
+| **Internal states** | thoughts, values, beliefs, perceptions, distress | political attitudes, identity, confidence |
+| **External states** | characteristics and conditions | age, economy, health, environment |
+| **Reported behavior** | what people say they do | reported diet, self-reported attendance |
+| **Observed behavior** | directly witnessed action | interaction, movement, task performance |
+| **Artifacts & environment** | material, biological, spatial, or ecological traces | artifacts, biomarkers, settlement patterns |
+
+The distinction matters because each class raises different validity problems.
+
+For example:
+
+- reported behavior can differ from observed behavior;
+- internal states require indicators rather than direct observation;
+- artifacts and biomarkers survive through formation processes and analytical transformations;
+- external states may appear straightforward but still depend on definitions and classification.
+
+Archaeology relies heavily on the fifth class, but archaeological inference often seeks conclusions about the other four. That is why proxy reasoning and construct validity are so important.
+
+## Studies can be classified by X and Y variable types
+
+A research question can also be inspected by asking what kind of independent variable \(X\) is being related to what kind of dependent variable \(Y\).
+
+The lecture uses a matrix to encourage systematic question generation.
+
+| Dependent variable (Y) | Internal-state X | External-state X | Behavior / artifact X |
+|---|---:|---:|---:|
+| Internal states | Cell 1 | Cell 2 | Cell 3 |
+| External states | Cell 4 | Cell 5 | Cell 6 |
+| Reported behavior | Cell 7 | Cell 8 | Cell 9 |
+| Observed behavior | Cell 10 | Cell 11 | Cell 12 |
+| Artifacts / environment | Cell 13 | Cell 14 | Cell 15 |
+
+The cell numbers are not statistical categories. They are prompts for thinking.
+
+For example:
+
+- external state → internal state: How does household insecurity relate to perceived well-being?
+- internal state → reported behavior: How do beliefs relate to reported practice?
+- environment → observed behavior: How does distance to water affect observed movement?
+- external state → artifact/environment: How does settlement location relate to material distributions?
+
+::: {.exercise}
+Take one research topic you care about.
+
+1. Identify a plausible \(X\).
+2. Identify a plausible \(Y\).
+3. Classify each variable.
+4. Explain why theory assigns those roles.
+5. State one rival causal direction.
+:::
+
+# Qualitative and quantitative are not opposites
+
+## Separate the nature of the data from the method of analysis
+
+A persistent mistake is to treat "qualitative" and "quantitative" as mutually exclusive research paradigms.
+
+The lecture instead separates two questions:
+
+1. What is the **form of the data**?
+2. What is the **method of analysis**?
+
+Bernard and Wutich emphasize that qualitative data can be analyzed quantitatively and numerical data can require qualitative interpretation [@bernardWutich2027]. Pelto documents a long history of ethnographic projects combining multiple forms of evidence rather than treating mixed methods as a recent invention [@pelto2017].
+
+A useful 2 × 2 matrix is:
+
+|  | **Qualitative data** | **Quantitative data** |
+|---|---|---|
+| **Qualitative analysis** | interpretive text, ethnography, discourse, narrative | interpreting meaning in modeled or clustered numerical results |
+| **Quantitative analysis** | coding words/images into counts, free-list or content analysis | regression, ANOVA, statistical modeling |
+
+The point is not that every project must occupy all four cells. The point is that **data form and analytical logic can cross**.
+
+::: {.callout-important title="Numbers do not automatically make a study scientific"}
+A poorly defined variable does not become valid because it is numeric.
+
+A careful qualitative observation does not become unscientific because it is expressed in words.
+
+The scientific issue is whether the evidence, measurement, and reasoning are appropriate to the question.
+:::
+
+## Integration can make emic knowledge measurable
+
+**Emic** concepts are defined in terms meaningful to members of the community being studied.
+
+Cultural-domain methods can begin with community-generated categories and then develop structured measurements.
+
+For example:
+
+1. **Free lists** identify items people themselves associate with a domain.
+2. **Pile sorts** reveal perceived similarities among items.
+3. **Consensus or similarity models** can quantify agreement or patterned variation.
+
+The result can remain culturally grounded while also becoming statistically analyzable.
+
+This is an important form of validity:
+
+> The measurement dimension should not be imposed simply because it is easy to quantify; it should correspond to categories or distinctions that are meaningful for the problem and population.
+
+Pelto's history of mixed methods shows many ethnographic traditions in which mapping, observation, interviews, linguistic work, classification, and quantitative measures were combined in practice [@pelto2017].
+
+# Mixed-methods design needs an architecture
+
+Simply using more than one method does not automatically create a coherent mixed-methods design.
+
+The lecture highlights three design decisions:
+
+| Design element | Question |
+|---|---|
+| **Theoretical drive** | Is the dominant logic primarily QUAL or QUAN? |
+| **Pacing** | Are components simultaneous (`+`) or sequential (`→`)? |
+| **Point of interface** | Where do the components actually inform one another? |
+
+Pelto discusses mixed-methods notation such as `QUAL + quan` and `QUAL → quan`, where capitalization marks the dominant component and `+` versus `→` distinguishes simultaneous from sequential organization [@pelto2017].
+
+Examples include:
+
+- `QUAL + quan`
+- `QUAL → quan`
+- `QUAN + qual`
+- `QUAN → qual`
+
+The secondary component may:
+
+- supplement;
+- explain;
+- test;
+- extend; or
+- contextualize
+
+the dominant component.
+
+::: {.callout-warning title="Two methods sitting beside each other are not necessarily integrated"}
+A project is not strongly mixed simply because it contains interviews and a survey.
+
+Ask:
+
+- Did one component shape the other?
+- Are the results compared or combined?
+- Does one resolve uncertainty produced by the other?
+- Where, exactly, is the point of interface?
+:::
+
+## Sequential mixed designs move in two directions
+
+### `QUAL → QUAN`
+
+A qualitative-first sequence is useful when researchers need to learn what categories, mechanisms, or dimensions matter before constructing a structured measure.
+
+A common logic is:
+
+> explore an unfamiliar domain → identify emic themes → build variables or survey items → test their distribution or generalizability
+
+### `QUAN → QUAL`
+
+A quantitative-first sequence begins with patterns and then investigates what generated them.
+
+A common logic is:
+
+> identify large-sample pattern → locate outliers, interactions, or unexpected groups → return to interviews/observation/context → explain mechanism
+
+The arrow matters because the first component creates a problem that the second component is designed to address.
+
+# Design connects questions to inference
+
+## Research design is the structural blueprint
+
+A design should make the following chain visible:
+
+> **question → objective/hypothesis → unit of analysis → sampling → measurement → data collection → analysis → conclusion**
+
+If a link is missing, the inference becomes difficult to defend.
+
+This is why selecting a statistical technique at the end is not enough. Analysis is only one component of design [@bernardWutich2027].
+
+## Exploratory and confirmatory designs form a continuum
+
+**Exploratory research** tends to be:
+
+- open-ended;
+- more inductive;
+- oriented toward discovery;
+- useful for identifying emic categories and mechanisms; and
+- important when relatively little is known.
+
+**Confirmatory research** tends to be:
+
+- structured;
+- more deductive;
+- guided by specific hypotheses; and
+- oriented toward evaluating expected relationships.
+
+Bernard and Wutich stress that the two are best understood as a continuum rather than a rigid division [@bernardWutich2027].
+
+Strong research often moves:
+
+> discovery → formulation → testing → unexpected result → renewed exploration
+
+rather than remaining permanently at one pole.
+
+This is consistent with Booth and colleagues' description of real research as iterative rather than linear [@booth2024].
+
+# Causal inference
+
+## Four conditions
+
+A correlation is not, by itself, a causal explanation.
+
+The lecture identifies four conditions normally required for a causal argument:
+
+1. **Covariation** — \(X\) and \(Y\) vary together.
+2. **Nonspuriousness** — the relationship is not produced by a third variable \(Z\).
+3. **Temporal precedence** — the presumed cause \(X\) occurs before \(Y\).
+4. **Mechanism** — a theory explains how \(X\) could produce \(Y\).
+
+Bernard and Wutich organize causal reasoning around the same four conditions [@bernardWutich2027].
+
+### Covariation
+
+If \(X\) does not vary with \(Y\), there is little basis for claiming that \(X\) explains variation in \(Y\).
+
+But the strength of association alone does not establish causality.
+
+### Nonspuriousness
+
+A third variable may generate the observed relationship.
+
+The classic logic is:
+
+\[
+X \leftarrow Z \rightarrow Y
+\]
+
+If \(Z\) causes both \(X\) and \(Y\), the observed \(X\)-\(Y\) association may be misleading.
+
+### Temporal precedence
+
+A cause must precede its effect.
+
+Cross-sectional data often make time order difficult to establish. Longitudinal or historical evidence may strengthen temporal reasoning.
+
+### Mechanism
+
+Even after establishing association, nonspuriousness, and temporal order, researchers need a plausible process explaining how the cause produces the effect.
+
+Theory is therefore part of causal inference, not decoration added after the statistics.
+
+# Units of analysis
+
+## What is actually being analyzed?
+
+The **unit of analysis** is the entity about which the study draws conclusions.
+
+Examples include:
+
+- individual;
+- household;
+- grave;
+- artifact;
+- assemblage;
+- neighborhood;
+- settlement;
+- region; or
+- nation.
+
+The unit of observation and unit of analysis are sometimes the same, but not always.
+
+For example, measurements may be taken on individual artifacts but summarized to make an inference about assemblages.
+
+## Collect at the lowest useful unit
+
+Bernard and Wutich recommend collecting data at the lowest possible unit of analysis because fine-grained observations can be aggregated upward, whereas aggregate data usually cannot be disaggregated back into their original components [@bernardWutich2027].
+
+This principle has a direct parallel in archaeological data publication. Reiter and colleagues recommend preserving primary, non-amalgamated data and original phase associations even when later analysis combines them into broader periods [@reiter2024].
+
+::: {.callout-note title="Preserve granularity; aggregate analytically"}
+If data are recorded by artifact, they can later be summarized by context, phase, site, or region.
+
+If only a site-level total survives, artifact-level variation cannot be reconstructed.
+
+There are exceptions involving privacy, heritage protection, sensitive locations, or ethical restrictions. Granularity should be preserved where it is scientifically useful and ethically appropriate.
+:::
+
+## The ecological fallacy
+
+The **ecological fallacy** occurs when a relationship observed among groups is incorrectly interpreted as a relationship among individuals.
+
+Suppose regions with higher average income also have higher average university attendance.
+
+That does not prove that the higher-income individuals within each region are the individuals attending university.
+
+The group-level association and individual-level association are different empirical questions.
+
+In archaeology, a similar mistake can occur when a pattern among sites, cemeteries, or assemblages is projected onto individual people or artifacts without evidence at that scale.
+
+::: {.exercise}
+For each statement, identify the unit of analysis.
+
+1. "Households with larger storage facilities have greater crop diversity."
+2. "Sites closer to obsidian sources contain higher proportions of obsidian."
+3. "Individuals with nonlocal isotope signatures receive different burial treatment."
+4. "Regions with denser settlement networks show greater ceramic standardization."
+
+Then ask: What lower-level data would have to exist before each claim could be tested?
+:::
+
+# Three design decisions yield eight basic designs
+
+The lecture uses three binary decisions:
+
+1. **Observational or experimental?**
+2. **Cross-sectional or longitudinal?**
+3. **Single case or comparative?**
+
+Together they produce \(2 \times 2 \times 2 = 8\) combinations.
+
+| # | Intervention | Time | Cases |
+|---:|---|---|---|
+| 1 | Observational | Cross-sectional | Single case |
+| 2 | Observational | Cross-sectional | Comparative |
+| 3 | Observational | Longitudinal | Single case |
+| 4 | Observational | Longitudinal | Comparative |
+| 5 | Experimental | Cross-sectional | Single case |
+| 6 | Experimental | Cross-sectional | Comparative |
+| 7 | Experimental | Longitudinal | Single case |
+| 8 | Experimental | Longitudinal | Comparative |
+
+Bernard and Wutich use this typology to clarify three different design dimensions: whether the researcher intervenes, whether change through time is observed, and whether inference is based on one or multiple cases [@bernardWutich2027].
+
+### Observational versus experimental
+
+- **Observational:** researchers measure or observe without assigning the exposure/treatment.
+- **Experimental:** researchers manipulate a condition to evaluate its consequences.
+
+### Cross-sectional versus longitudinal
+
+- **Cross-sectional:** data represent one time point or analytical snapshot.
+- **Longitudinal:** observations are made across multiple times.
+
+### Single-case versus comparative
+
+- **Single case:** emphasizes intensive understanding of one unit/case.
+- **Comparative:** compares multiple cases and can support broader generalization when sampling and design justify it.
+
+::: {.callout-warning title="Design labels do not determine data type"}
+None of these eight designs is inherently "qualitative" or "quantitative."
+
+Interviews, direct observation, measurements, images, experiments, surveys, and archival records can contribute qualitative or quantitative data depending on how they are collected and analyzed [@bernardWutich2027].
+:::
+
+# Research can be done with participants
+
+## Participatory research
+
+Participatory research shifts the relationship from studying people **as subjects** toward building inquiry **with participants**.
+
+Participants may help shape:
+
+- questions;
+- definitions;
+- recruitment;
+- data-collection tools;
+- interpretation; and
+- dissemination.
+
+Bernard and Wutich emphasize that participatory approaches can make methods more culturally, socially, and ethically appropriate [@bernardWutich2027].
+
+## Action research
+
+Action research goes further by linking inquiry to intervention.
+
+A simplified cycle is:
+
+> identify problem → act → evaluate → revise → act again
+
+The goal is not only to describe conditions but to work with partners to change them.
+
+Community-based participatory research (CBPR) and Photovoice sit toward the participant-driven, action-oriented end of this design space.
+
+::: {.callout-note title="Research design also distributes power"}
+Who defines the problem?
+
+Who decides what counts as evidence?
+
+Who owns the data?
+
+Who benefits from the conclusions?
+
+These are design questions as well as ethical questions.
+:::
+
+# Archaeological measurement, data, and reproducibility
+
+## Direct and indirect measurement
+
+Banning distinguishes relatively direct measurements—such as length or mass—from indirect measures and proxies used to estimate phenomena that cannot be observed directly [@banning2020].
+
+Archaeology is full of indirect measurement.
+
+Researchers may want to estimate:
+
+- ancient population;
+- household wealth;
+- interaction;
+- traffic in exchanged materials;
+- dietary contribution;
+- mobility;
+- social position; or
+- environmental conditions.
+
+The evidence used for those inferences may be measurable, but the link between evidence and target concept remains theoretical.
+
+That is why the Week 3 chain matters:
+
+> **measure an archaeological property well → justify the proxy relation → choose a design that supports the inference**
+
+## Data are produced, not simply found
+
+Reiter and colleagues emphasize that archaeological data contain choices made during collection, classification, storage, harmonization, and interpretation [@reiter2024].
+
+"Raw" data are therefore not neutral in the sense of being untouched by research practice.
+
+Good data publication should preserve:
+
+- provenance;
+- original context;
+- identifiers;
+- measurement units;
+- methods;
+- laboratory metadata;
+- chronological associations;
+- category definitions; and
+- enough granularity for later reuse.
+
+The BIAD Standards are motivated by a practical problem: data that lack metadata or are aggregated too early may become impossible to integrate or reinterpret later [@reiter2024].
+
+## Reproducibility extends operational definition into analysis
+
+Marwick's principles of computational reproducibility extend the Week 3 logic beyond data collection [@marwick2017].
+
+A transparent research pipeline should document:
+
+1. **data and code provenance**;
+2. **scripted analytical operations**;
+3. **version control**; and
+4. **the computational environment**.
+
+The common principle is explicitness.
+
+An operational definition documents how observations became data.
+
+A script documents how data became results.
+
+Version control documents how the analytical workflow changed.
+
+Metadata document what variables, units, categories, and files mean.
+
+::: {.callout-tip title="Think of reproducibility as an audit trail"}
+A defensible analysis should allow another researcher—or your future self—to trace:
+
+**concept → measure → raw observation → transformation → analysis → figure/table → interpretation**
+:::
+
+## Replicability is valuable, but it is not the only criterion
+
+Vaesen and Hussain caution against making replicability the universal gatekeeper of archaeological quality [@vaesenHussain2026].
+
+Their argument is especially relevant to Week 3:
+
+- high inter-analyst agreement does not automatically guarantee validity;
+- preservation can create genuine ambiguity;
+- training traditions can shape classification;
+- highly replicable variables may be easy to measure but weakly informative;
+- difficult observations may still be behaviorally meaningful; and
+- methods should be chosen in relation to the research problem.
+
+Their preferred alternative is **problem-driven methodological pluralism**.
+
+::: {.callout-important title="Let the question guide the method"}
+Do not choose a measure because it is easy to quantify.
+
+Do not reject a measure only because some ambiguity remains.
+
+Ask whether the method is appropriate to the question, whether uncertainty is documented, whether conclusions are proportionate to the evidence, and whether complementary evidence can strengthen the inference.
+:::
+
+# Case study: revisit the Week 2 isotope dataset
+
+Week 2 taught us how to import and inspect the Knipper teaching dataset. Week 3 asks different questions about the same table:
+
+> **What kind of variables are these, what do they measure, and what conclusions could they support?**
+
+```{r}
+#| label: import-knipper-week03
+
+if (!file.exists(data_file)) {
+  stop(
+    paste0(
+      "Missing ", data_file,
+      ". Copy the validated ANTH418 teaching file into the project's data/ directory."
+    )
+  )
+}
+
+knipper <- read_csv(
+  data_file,
+  show_col_types = FALSE
+)
+```
+
+Inspect the structure:
+
+```{r}
+#| label: inspect-knipper-week03
+
+glimpse(knipper)
+```
+
+## Storage type versus measurement meaning
+
+Consider several columns:
+
+| Variable | R storage | Measurement interpretation | Why |
+|---|---|---|---|
+| `grave_no` | character | identifier, not a quantitative measure | labels a case |
+| `site` | character | nominal | categories without inherent numerical distance |
+| `d13c` | numeric | interval-like scientific measurement | differences are meaningful; zero is not absence of carbon isotope ratio |
+| `d15n` | numeric | interval-like scientific measurement | differences are meaningful; zero is not a true absence |
+| `age_category` | character | ordinal **if** categories encode ordered age classes | order can exist without equal spacing |
+| `sex` | character | nominal as recorded in this teaching file | category labels |
+
+The important lesson is not to memorize this table. It is to ask:
+
+1. What does the column represent?
+2. How was it generated?
+3. What do its values mean?
+4. What transformations are legitimate?
+5. What inferential role does it play?
+
+::: {.callout-warning title="A column name is not an operational definition"}
+Knowing that a column is called `social_category` does not tell you:
+
+- how the category was defined;
+- who assigned it;
+- which archaeological indicators were used;
+- whether categories are ordered;
+- how ambiguous cases were treated; or
+- whether the category validly measures social differentiation.
+
+Those questions require the codebook, provenance information, publication, and theoretical argument.
+:::
+
+# Guided practice
+
+## Exercise 1 — From concept to variable
+
+::: {.exercise}
+Choose one concept:
+
+- social inequality;
+- mobility;
+- ritual investment;
+- household wealth;
+- political participation; or
+- cultural identity.
+
+Write:
+
+1. a one-sentence conceptual definition;
+2. one or more operational definitions;
+3. the empirical values that would be recorded;
+4. the likely level of measurement; and
+5. one threat to validity.
+:::
+
+::: {.callout-tip collapse="true" title="What a strong answer should contain"}
+A strong answer keeps the stages separate.
+
+For example, for **mobility** you might distinguish a broad conceptual definition from a specific operational measure such as isotope-based classification, residential histories, GPS traces, or documented changes of residence.
+
+Different operational definitions may produce different variables and answer different versions of the research question.
+:::
+
+## Exercise 2 — Classify levels of measurement
+
+::: {.exercise}
+Classify each variable as nominal, ordinal, interval, ratio, or "identifier/not a measurement":
+
+1. archaeological site name;
+2. preservation rank: poor / fair / good;
+3. calibrated temperature in °C;
+4. artifact mass in grams;
+5. number of grave goods;
+6. specimen ID;
+7. Likert response from strongly disagree to strongly agree;
+8. `d13c` value.
+:::
+
+::: {.callout-tip collapse="true" title="Check your reasoning"}
+A defensible classification is:
+
+1. site name — nominal;
+2. preservation rank — ordinal;
+3. Celsius — interval;
+4. mass — ratio;
+5. count — ratio;
+6. specimen ID — identifier, not a quantitative measurement;
+7. Likert item — ordinal unless a stronger scale assumption is justified;
+8. `d13c` — interval-like measurement.
+
+The important part is the explanation, not merely the label.
+:::
+
+## Exercise 3 — Diagnose measurement quality
+
+::: {.exercise}
+Imagine two analysts classify the same 100 lithic artifacts.
+
+They agree on 97 artifacts, but later discover that the shared classification rule systematically combines two technologically different categories.
+
+Answer:
+
+1. Is interobserver reliability high or low?
+2. Does high reliability establish validity?
+3. What kind of validity problem may exist?
+4. What additional evidence would you want?
+:::
+
+::: {.callout-tip collapse="true" title="Check your work"}
+Interobserver reliability can be high even when the shared rule is conceptually poor.
+
+The central problem is validity: the operational categories may not represent the technological distinction the research question requires.
+
+You would want theory, contextual evidence, alternative coding, experimental/technological observations, and perhaps comparison with other analysts or methods.
+:::
+
+## Exercise 4 — Identify the unit of analysis
+
+::: {.exercise}
+For each question, identify the most appropriate unit of analysis.
+
+1. Do individuals identified as nonlocal receive different burial treatment?
+2. Are households with larger storage facilities associated with greater crop diversity?
+3. Do settlements closer to raw-material sources contain more locally available stone?
+4. Do regions with denser settlement networks show greater standardization?
+
+Then identify what lower-level observations would need to be collected.
+:::
+
+## Exercise 5 — Classify the research design
+
+::: {.exercise}
+Classify each hypothetical study using the three design dimensions.
+
+### Study A
+Researchers record current household water use in one community during one field season without intervention.
+
+### Study B
+Researchers compare water use in six communities during one field season.
+
+### Study C
+Researchers observe the same six communities annually for ten years.
+
+### Study D
+Researchers randomly assign two versions of an educational intervention and follow participants for three years at several sites.
+
+For each study identify:
+
+- observational or experimental;
+- cross-sectional or longitudinal;
+- single case or comparative.
+:::
+
+::: {.callout-tip collapse="true" title="Check your work"}
+- **A:** observational · cross-sectional · single case
+- **B:** observational · cross-sectional · comparative
+- **C:** observational · longitudinal · comparative
+- **D:** experimental · longitudinal · comparative
+:::
+
+## Exercise 6 — Design a mixed-methods sequence
+
+::: {.exercise}
+Choose one anthropological question and design either:
+
+- `QUAL → QUAN`, or
+- `QUAN → QUAL`.
+
+Specify:
+
+1. the theoretical drive;
+2. the first component;
+3. the second component;
+4. the point of interface; and
+5. what the second component contributes that the first cannot.
+:::
+
+::: {.callout-tip collapse="true" title="What makes the design genuinely mixed?"}
+The two components should not simply coexist.
+
+The second component should be motivated by the first, or the two should meet at a clearly specified point where evidence is integrated, compared, explained, or transformed.
+:::
+
+## Exercise 7 — Audit an archaeological variable
+
+::: {.exercise}
+Select one variable used in archaeological research—for example:
+
+- "elite burial";
+- "household wealth";
+- "local/nonlocal";
+- "craft specialization";
+- "site size";
+- "ceramic standardization"; or
+- "mobility."
+
+Write a short measurement audit:
+
+1. conceptual definition;
+2. operational definition;
+3. unit of analysis;
+4. measurement level;
+5. likely reliability problem;
+6. likely validity problem;
+7. metadata required for reuse;
+8. whether the measure is direct or proxy-based; and
+9. what uncertainty should be reported.
+:::
+
+# A Week 3 research-design worksheet
+
+Before collecting or analyzing data, try to complete this table.
+
+| Design question | Your answer |
+|---|---|
+| What is the research problem? | |
+| Why does it matter? | |
+| What is the unit of analysis? | |
+| What is the key concept? | |
+| How is the concept defined conceptually? | |
+| How is it defined operationally? | |
+| What are the variables? | |
+| Which variable is \(X\)? Which is \(Y\)? | |
+| What are their levels of measurement? | |
+| What is the sampling strategy? | |
+| Observational or experimental? | |
+| Cross-sectional or longitudinal? | |
+| Single case or comparative? | |
+| Exploratory or confirmatory emphasis? | |
+| What are the main reliability threats? | |
+| What are the main validity threats? | |
+| What confounders or alternative explanations matter? | |
+| If causal inference is intended, is temporal order defensible? | |
+| What mechanism is proposed? | |
+| Are mixed methods needed? If so, where is the interface? | |
+| What ethical constraints apply? | |
+| Is the project feasible in time, resources, and access? | |
+| What metadata/provenance must be preserved? | |
+| What conclusions would the design **not** justify? | |
+
+::: {.callout-important title="The last question is essential"}
+A strong design does not merely state what the study can conclude.
+
+It also identifies what the evidence **cannot** establish.
+:::
+
+# Reading guide
+
+## Core: Bernard and Wutich — Chapters 1–3
+
+The first three chapters of *Social Research Methods* provide the conceptual spine for Week 3 [@bernardWutich2027].
+
+### Chapter 1 — Foundations of Social Research
+
+Concentrate on:
+
+- variables;
+- simple versus multidimensional variables;
+- independent and dependent variables;
+- concepts and indicators;
+- conceptual and operational definitions;
+- levels of measurement;
+- reliability;
+- precision;
+- accuracy; and
+- validity.
+
+Pay particular attention to the Chicano high-school example because it shows how a flawed operational definition can produce a misleading social explanation.
+
+### Chapter 2 — Preparing for Research
+
+Focus on:
+
+- the difference between the ideal and real research process;
+- feasibility;
+- testability;
+- time, money, personnel, and access;
+- ethics;
+- the generation of research questions; and
+- the five broad classes of social variables.
+
+The main lesson is that research questions, resources, ethics, and methods constrain one another from the beginning.
+
+### Chapter 3 — Research Design
+
+Focus on:
+
+- exploratory and confirmatory research;
+- qualitative and quantitative data/analysis;
+- causal inference;
+- units of analysis;
+- the ecological fallacy;
+- observational versus experimental design;
+- cross-sectional versus longitudinal design;
+- single-case versus comparative design;
+- mixed methods; and
+- participatory/action research.
+
+## Archaeological measurement: Banning
+
+Banning's *The Archaeologist's Laboratory* is particularly useful for translating social-science measurement language into archaeological practice [@banning2020].
+
+Focus on:
+
+- measurement scales;
+- precision;
+- reliability;
+- bias;
+- classification error;
+- validity;
+- quality assurance;
+- direct versus indirect measurement; and
+- research design and sampling.
+
+Banning's proxy examples are especially important: archaeology often measures surviving material properties in order to infer social or behavioral quantities that cannot be directly observed.
+
+## Mixed methods: Pelto
+
+Pelto's *Mixed Methods in Ethnographic Research* provides a historical and anthropological perspective on the combination of methods [@pelto2017].
+
+Use it to think beyond a simple qualitative-versus-quantitative divide.
+
+Particularly useful themes include:
+
+- the long history of methodological mixing in ethnography;
+- `QUAL + quan` and `QUAL → quan` notation;
+- theoretical drive;
+- simultaneous versus sequential designs;
+- triangulation; and
+- the use of multiple methods for descriptive expansion rather than merely confirmation.
+
+## Research as a craft: Booth and colleagues
+
+*The Craft of Research* is useful for thinking about research as an iterative intellectual process rather than a mechanical sequence [@booth2024].
+
+For Week 3, focus on:
+
+- moving from topic to question;
+- turning a question into a research problem;
+- asking "So what?";
+- recognizing that real research zigzags and doubles back; and
+- designing inquiry for an audience that will ask whether the evidence really supports the claim.
+
+## Archaeological data publication: Reiter and colleagues
+
+The BIAD Standards show why research design continues into data publication [@reiter2024].
+
+Key Week 3 connections include:
+
+- metadata;
+- explicit provenance;
+- traceable identifiers;
+- preserving original chronological associations;
+- publishing raw and grouped data where possible;
+- consistent vocabularies; and
+- designing data so that later researchers can reuse and integrate them.
+
+## Computational reproducibility: Marwick
+
+Marwick connects archaeological transparency to reproducible computational workflows [@marwick2017].
+
+Four principles are especially relevant:
+
+1. preserve and share data/code provenance where possible;
+2. use scripted analysis;
+3. use version control; and
+4. document the computational environment.
+
+These are not separate from research design. They preserve the path from measurement to result.
+
+## Replicability and methodological pluralism: Vaesen and Hussain
+
+Vaesen and Hussain provide a useful counterweight to simplistic calls for standardization [@vaesenHussain2026].
+
+Their central warning is that high replicability does not automatically guarantee:
+
+- reliability;
+- validity;
+- archaeological meaningfulness; or
+- cost effectiveness.
+
+Their problem-driven approach asks researchers to balance consistency with interpretive depth and to report genuine ambiguity rather than standardizing it away.
+
+# Week 3 checklist
+
+Before moving on, you should be able to say **yes** to each statement:
+
+- [ ] I can distinguish a concept from a variable.
+- [ ] I can write both a conceptual definition and an operational definition.
+- [ ] I can explain why multidimensional constructs usually need multiple indicators.
+- [ ] I can explain how theory assigns independent and dependent variable roles.
+- [ ] I can distinguish nominal, ordinal, interval, and ratio measurement.
+- [ ] I can explain why higher-level information can often be collapsed but not reconstructed after it is lost.
+- [ ] I can distinguish reliability, precision, accuracy, and validity.
+- [ ] I can name four approaches to reliability.
+- [ ] I can distinguish face, content, construct, and criterion validity.
+- [ ] I can explain why a reliable measure may still be invalid.
+- [ ] I can evaluate whether a research question is feasible.
+- [ ] I can identify internal states, external states, reported behavior, observed behavior, and artifacts/environment.
+- [ ] I can distinguish qualitative data from qualitative analysis.
+- [ ] I can explain how qualitative data can be analyzed quantitatively.
+- [ ] I can explain how emic knowledge can be operationalized without assuming outsider categories.
+- [ ] I can identify theoretical drive, pacing, and point of interface in mixed-methods research.
+- [ ] I can distinguish exploratory and confirmatory research.
+- [ ] I can state the four conditions for a causal argument.
+- [ ] I can identify the unit of analysis.
+- [ ] I can explain the ecological fallacy.
+- [ ] I can classify a design as observational/experimental, cross-sectional/longitudinal, and single-case/comparative.
+- [ ] I can explain `QUAL → QUAN` and `QUAN → QUAL`.
+- [ ] I can explain the difference between participatory and action research.
+- [ ] I can explain why archaeological proxy measures require validity arguments.
+- [ ] I can explain why metadata and provenance are parts of research design.
+- [ ] I can distinguish reproducibility from the broader question of replicability.
+- [ ] I can explain why replicability should not be the only criterion for archaeological measurement quality.
+
+# Takeaways
+
+- **Concepts become evidence through definitions.** A variable is not the abstract idea itself.
+- **Operationalization is an explicit recipe.** It exposes how data were generated and makes measurement open to criticism.
+- **Dimensionality matters.** Complex constructs usually require multiple indicators.
+- **Theory assigns variable roles.** Independent and dependent are explanatory roles, not permanent properties.
+- **Measurement level preserves information.** Collect the highest defensible level of detail when feasible.
+- **Reliability is not validity.** Repeatability, precision, accuracy, and validity answer different questions.
+- **Research is iterative.** Revision is normal; undocumented revision is not.
+- **Feasibility is part of design.** Time, resources, access, ethics, and evidence constrain good questions.
+- **Qualitative and quantitative are not opposites.** Data form and analytical method are separate dimensions.
+- **Mixed methods need architecture.** Drive, pacing, and interface should be explicit.
+- **Causal inference requires more than association.** Covariation, nonspuriousness, temporal order, and mechanism all matter.
+- **Units of analysis govern inference.** Aggregated patterns cannot automatically be projected onto individuals.
+- **Preserve granularity and provenance.** Fine-grained data can be aggregated later; lost detail cannot be recovered.
+- **Reproducibility extends research design.** Scripts, metadata, version control, and computational environments preserve the analytical path.
+- **Method should follow the problem.** In archaeology, consistency matters, but so do ambiguity, interpretive depth, and multiple lines of evidence.
+- **Rigorous research is an integrated craft.** Strong inference comes from transparent alignment among concepts, measurement, design, data, analysis, and interpretation.
+
+# References {.unnumbered}
+
+::: {#refs}
+:::

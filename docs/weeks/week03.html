@@ -1,0 +1,2901 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2026-09-21">
+
+<title>Week 3 — Measurement and Research Design – ANTH418: Anthropological Statistics</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-7ff37d7dbb752a0b62676bb39137b3a2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">ANTH418: Anthropological Statistics</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../syllabus.html"> 
+<span class="menu-text">Syllabus</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../lecture-notes/index.html"> 
+<span class="menu-text">Lecture Notes</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-study-guides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Study Guides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-study-guides">    
+        <li>
+    <a class="dropdown-item" href="../weeks/week02.html">
+ <span class="dropdown-text">Week 2 — R, RStudio &amp; Quarto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../weeks/week03.html">
+ <span class="dropdown-text">Week 3 — Measurement &amp; Research Design</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../assignments/index.html"> 
+<span class="menu-text">Assignments</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../readings/index.html"> 
+<span class="menu-text">Readings</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../resources/index.html"> 
+<span class="menu-text">Resources</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning objectives</a></li>
+  <li><a href="#this-weeks-two-class-sequence" id="toc-this-weeks-two-class-sequence" class="nav-link" data-scroll-target="#this-weeks-two-class-sequence">This week’s two-class sequence</a></li>
+  <li><a href="#from-concepts-to-empirical-values" id="toc-from-concepts-to-empirical-values" class="nav-link" data-scroll-target="#from-concepts-to-empirical-values">From concepts to empirical values</a>
+  <ul class="collapse">
+  <li><a href="#variables-become-evidence" id="toc-variables-become-evidence" class="nav-link" data-scroll-target="#variables-become-evidence">Variables become evidence</a></li>
+  <li><a href="#concepts-constructs-indicators-and-values" id="toc-concepts-constructs-indicators-and-values" class="nav-link" data-scroll-target="#concepts-constructs-indicators-and-values">Concepts, constructs, indicators, and values</a></li>
+  <li><a href="#variables-can-be-simple-or-multidimensional" id="toc-variables-can-be-simple-or-multidimensional" class="nav-link" data-scroll-target="#variables-can-be-simple-or-multidimensional">Variables can be simple or multidimensional</a></li>
+  <li><a href="#independent-and-dependent-variables" id="toc-independent-and-dependent-variables" class="nav-link" data-scroll-target="#independent-and-dependent-variables">Independent and dependent variables</a></li>
+  <li><a href="#bad-theory-can-reverse-causality" id="toc-bad-theory-can-reverse-causality" class="nav-link" data-scroll-target="#bad-theory-can-reverse-causality">Bad theory can reverse causality</a></li>
+  </ul></li>
+  <li><a href="#levels-of-measurement" id="toc-levels-of-measurement" class="nav-link" data-scroll-target="#levels-of-measurement">Levels of measurement</a>
+  <ul class="collapse">
+  <li><a href="#four-levels" id="toc-four-levels" class="nav-link" data-scroll-target="#four-levels">Four levels</a></li>
+  <li><a href="#measure-at-the-highest-defensible-level" id="toc-measure-at-the-highest-defensible-level" class="nav-link" data-scroll-target="#measure-at-the-highest-defensible-level">Measure at the highest defensible level</a></li>
+  </ul></li>
+  <li><a href="#measurement-quality" id="toc-measurement-quality" class="nav-link" data-scroll-target="#measurement-quality">Measurement quality</a>
+  <ul class="collapse">
+  <li><a href="#four-different-questions" id="toc-four-different-questions" class="nav-link" data-scroll-target="#four-different-questions">Four different questions</a></li>
+  <li><a href="#reliability-and-accuracy-are-not-the-same" id="toc-reliability-and-accuracy-are-not-the-same" class="nav-link" data-scroll-target="#reliability-and-accuracy-are-not-the-same">Reliability and accuracy are not the same</a></li>
+  <li><a href="#reliability-asks-whether-measurement-repeats" id="toc-reliability-asks-whether-measurement-repeats" class="nav-link" data-scroll-target="#reliability-asks-whether-measurement-repeats">Reliability asks whether measurement repeats</a>
+  <ul class="collapse">
+  <li><a href="#reliability-in-archaeology" id="toc-reliability-in-archaeology" class="nav-link" data-scroll-target="#reliability-in-archaeology">Reliability in archaeology</a></li>
+  </ul></li>
+  <li><a href="#validity-asks-whether-the-intended-concept-is-measured" id="toc-validity-asks-whether-the-intended-concept-is-measured" class="nav-link" data-scroll-target="#validity-asks-whether-the-intended-concept-is-measured">Validity asks whether the intended concept is measured</a>
+  <ul class="collapse">
+  <li><a href="#archaeological-example" id="toc-archaeological-example" class="nav-link" data-scroll-target="#archaeological-example">Archaeological example</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#research-is-designed-under-constraints" id="toc-research-is-designed-under-constraints" class="nav-link" data-scroll-target="#research-is-designed-under-constraints">Research is designed under constraints</a>
+  <ul class="collapse">
+  <li><a href="#strong-design-is-alignment" id="toc-strong-design-is-alignment" class="nav-link" data-scroll-target="#strong-design-is-alignment">Strong design is alignment</a></li>
+  <li><a href="#actual-research-is-iterative" id="toc-actual-research-is-iterative" class="nav-link" data-scroll-target="#actual-research-is-iterative">Actual research is iterative</a></li>
+  <li><a href="#a-research-question-must-be-doable" id="toc-a-research-question-must-be-doable" class="nav-link" data-scroll-target="#a-research-question-must-be-doable">A research question must be doable</a></li>
+  </ul></li>
+  <li><a href="#what-kind-of-variable-are-you-studying" id="toc-what-kind-of-variable-are-you-studying" class="nav-link" data-scroll-target="#what-kind-of-variable-are-you-studying">What kind of variable are you studying?</a>
+  <ul class="collapse">
+  <li><a href="#five-classes-of-social-variables" id="toc-five-classes-of-social-variables" class="nav-link" data-scroll-target="#five-classes-of-social-variables">Five classes of social variables</a></li>
+  <li><a href="#studies-can-be-classified-by-x-and-y-variable-types" id="toc-studies-can-be-classified-by-x-and-y-variable-types" class="nav-link" data-scroll-target="#studies-can-be-classified-by-x-and-y-variable-types">Studies can be classified by X and Y variable types</a></li>
+  </ul></li>
+  <li><a href="#qualitative-and-quantitative-are-not-opposites" id="toc-qualitative-and-quantitative-are-not-opposites" class="nav-link" data-scroll-target="#qualitative-and-quantitative-are-not-opposites">Qualitative and quantitative are not opposites</a>
+  <ul class="collapse">
+  <li><a href="#separate-the-nature-of-the-data-from-the-method-of-analysis" id="toc-separate-the-nature-of-the-data-from-the-method-of-analysis" class="nav-link" data-scroll-target="#separate-the-nature-of-the-data-from-the-method-of-analysis">Separate the nature of the data from the method of analysis</a></li>
+  <li><a href="#integration-can-make-emic-knowledge-measurable" id="toc-integration-can-make-emic-knowledge-measurable" class="nav-link" data-scroll-target="#integration-can-make-emic-knowledge-measurable">Integration can make emic knowledge measurable</a></li>
+  </ul></li>
+  <li><a href="#mixed-methods-design-needs-an-architecture" id="toc-mixed-methods-design-needs-an-architecture" class="nav-link" data-scroll-target="#mixed-methods-design-needs-an-architecture">Mixed-methods design needs an architecture</a>
+  <ul class="collapse">
+  <li><a href="#sequential-mixed-designs-move-in-two-directions" id="toc-sequential-mixed-designs-move-in-two-directions" class="nav-link" data-scroll-target="#sequential-mixed-designs-move-in-two-directions">Sequential mixed designs move in two directions</a>
+  <ul class="collapse">
+  <li><a href="#qual-quan" id="toc-qual-quan" class="nav-link" data-scroll-target="#qual-quan"><code>QUAL → QUAN</code></a></li>
+  <li><a href="#quan-qual" id="toc-quan-qual" class="nav-link" data-scroll-target="#quan-qual"><code>QUAN → QUAL</code></a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#design-connects-questions-to-inference" id="toc-design-connects-questions-to-inference" class="nav-link" data-scroll-target="#design-connects-questions-to-inference">Design connects questions to inference</a>
+  <ul class="collapse">
+  <li><a href="#research-design-is-the-structural-blueprint" id="toc-research-design-is-the-structural-blueprint" class="nav-link" data-scroll-target="#research-design-is-the-structural-blueprint">Research design is the structural blueprint</a></li>
+  <li><a href="#exploratory-and-confirmatory-designs-form-a-continuum" id="toc-exploratory-and-confirmatory-designs-form-a-continuum" class="nav-link" data-scroll-target="#exploratory-and-confirmatory-designs-form-a-continuum">Exploratory and confirmatory designs form a continuum</a></li>
+  </ul></li>
+  <li><a href="#causal-inference" id="toc-causal-inference" class="nav-link" data-scroll-target="#causal-inference">Causal inference</a>
+  <ul class="collapse">
+  <li><a href="#four-conditions" id="toc-four-conditions" class="nav-link" data-scroll-target="#four-conditions">Four conditions</a>
+  <ul class="collapse">
+  <li><a href="#covariation" id="toc-covariation" class="nav-link" data-scroll-target="#covariation">Covariation</a></li>
+  <li><a href="#nonspuriousness" id="toc-nonspuriousness" class="nav-link" data-scroll-target="#nonspuriousness">Nonspuriousness</a></li>
+  <li><a href="#temporal-precedence" id="toc-temporal-precedence" class="nav-link" data-scroll-target="#temporal-precedence">Temporal precedence</a></li>
+  <li><a href="#mechanism" id="toc-mechanism" class="nav-link" data-scroll-target="#mechanism">Mechanism</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#units-of-analysis" id="toc-units-of-analysis" class="nav-link" data-scroll-target="#units-of-analysis">Units of analysis</a>
+  <ul class="collapse">
+  <li><a href="#what-is-actually-being-analyzed" id="toc-what-is-actually-being-analyzed" class="nav-link" data-scroll-target="#what-is-actually-being-analyzed">What is actually being analyzed?</a></li>
+  <li><a href="#collect-at-the-lowest-useful-unit" id="toc-collect-at-the-lowest-useful-unit" class="nav-link" data-scroll-target="#collect-at-the-lowest-useful-unit">Collect at the lowest useful unit</a></li>
+  <li><a href="#the-ecological-fallacy" id="toc-the-ecological-fallacy" class="nav-link" data-scroll-target="#the-ecological-fallacy">The ecological fallacy</a></li>
+  </ul></li>
+  <li><a href="#three-design-decisions-yield-eight-basic-designs" id="toc-three-design-decisions-yield-eight-basic-designs" class="nav-link" data-scroll-target="#three-design-decisions-yield-eight-basic-designs">Three design decisions yield eight basic designs</a>
+  <ul class="collapse">
+  <li><a href="#observational-versus-experimental" id="toc-observational-versus-experimental" class="nav-link" data-scroll-target="#observational-versus-experimental">Observational versus experimental</a></li>
+  <li><a href="#cross-sectional-versus-longitudinal" id="toc-cross-sectional-versus-longitudinal" class="nav-link" data-scroll-target="#cross-sectional-versus-longitudinal">Cross-sectional versus longitudinal</a></li>
+  <li><a href="#single-case-versus-comparative" id="toc-single-case-versus-comparative" class="nav-link" data-scroll-target="#single-case-versus-comparative">Single-case versus comparative</a></li>
+  </ul></li>
+  <li><a href="#research-can-be-done-with-participants" id="toc-research-can-be-done-with-participants" class="nav-link" data-scroll-target="#research-can-be-done-with-participants">Research can be done with participants</a>
+  <ul class="collapse">
+  <li><a href="#participatory-research" id="toc-participatory-research" class="nav-link" data-scroll-target="#participatory-research">Participatory research</a></li>
+  <li><a href="#action-research" id="toc-action-research" class="nav-link" data-scroll-target="#action-research">Action research</a></li>
+  </ul></li>
+  <li><a href="#archaeological-measurement-data-and-reproducibility" id="toc-archaeological-measurement-data-and-reproducibility" class="nav-link" data-scroll-target="#archaeological-measurement-data-and-reproducibility">Archaeological measurement, data, and reproducibility</a>
+  <ul class="collapse">
+  <li><a href="#direct-and-indirect-measurement" id="toc-direct-and-indirect-measurement" class="nav-link" data-scroll-target="#direct-and-indirect-measurement">Direct and indirect measurement</a></li>
+  <li><a href="#data-are-produced-not-simply-found" id="toc-data-are-produced-not-simply-found" class="nav-link" data-scroll-target="#data-are-produced-not-simply-found">Data are produced, not simply found</a></li>
+  <li><a href="#reproducibility-extends-operational-definition-into-analysis" id="toc-reproducibility-extends-operational-definition-into-analysis" class="nav-link" data-scroll-target="#reproducibility-extends-operational-definition-into-analysis">Reproducibility extends operational definition into analysis</a></li>
+  <li><a href="#replicability-is-valuable-but-it-is-not-the-only-criterion" id="toc-replicability-is-valuable-but-it-is-not-the-only-criterion" class="nav-link" data-scroll-target="#replicability-is-valuable-but-it-is-not-the-only-criterion">Replicability is valuable, but it is not the only criterion</a></li>
+  </ul></li>
+  <li><a href="#case-study-revisit-the-week-2-isotope-dataset" id="toc-case-study-revisit-the-week-2-isotope-dataset" class="nav-link" data-scroll-target="#case-study-revisit-the-week-2-isotope-dataset">Case study: revisit the Week 2 isotope dataset</a>
+  <ul class="collapse">
+  <li><a href="#storage-type-versus-measurement-meaning" id="toc-storage-type-versus-measurement-meaning" class="nav-link" data-scroll-target="#storage-type-versus-measurement-meaning">Storage type versus measurement meaning</a></li>
+  </ul></li>
+  <li><a href="#guided-practice" id="toc-guided-practice" class="nav-link" data-scroll-target="#guided-practice">Guided practice</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1-from-concept-to-variable" id="toc-exercise-1-from-concept-to-variable" class="nav-link" data-scroll-target="#exercise-1-from-concept-to-variable">Exercise 1 — From concept to variable</a></li>
+  <li><a href="#exercise-2-classify-levels-of-measurement" id="toc-exercise-2-classify-levels-of-measurement" class="nav-link" data-scroll-target="#exercise-2-classify-levels-of-measurement">Exercise 2 — Classify levels of measurement</a></li>
+  <li><a href="#exercise-3-diagnose-measurement-quality" id="toc-exercise-3-diagnose-measurement-quality" class="nav-link" data-scroll-target="#exercise-3-diagnose-measurement-quality">Exercise 3 — Diagnose measurement quality</a></li>
+  <li><a href="#exercise-4-identify-the-unit-of-analysis" id="toc-exercise-4-identify-the-unit-of-analysis" class="nav-link" data-scroll-target="#exercise-4-identify-the-unit-of-analysis">Exercise 4 — Identify the unit of analysis</a></li>
+  <li><a href="#exercise-5-classify-the-research-design" id="toc-exercise-5-classify-the-research-design" class="nav-link" data-scroll-target="#exercise-5-classify-the-research-design">Exercise 5 — Classify the research design</a></li>
+  <li><a href="#exercise-6-design-a-mixed-methods-sequence" id="toc-exercise-6-design-a-mixed-methods-sequence" class="nav-link" data-scroll-target="#exercise-6-design-a-mixed-methods-sequence">Exercise 6 — Design a mixed-methods sequence</a></li>
+  <li><a href="#exercise-7-audit-an-archaeological-variable" id="toc-exercise-7-audit-an-archaeological-variable" class="nav-link" data-scroll-target="#exercise-7-audit-an-archaeological-variable">Exercise 7 — Audit an archaeological variable</a></li>
+  </ul></li>
+  <li><a href="#a-week-3-research-design-worksheet" id="toc-a-week-3-research-design-worksheet" class="nav-link" data-scroll-target="#a-week-3-research-design-worksheet">A Week 3 research-design worksheet</a></li>
+  <li><a href="#reading-guide" id="toc-reading-guide" class="nav-link" data-scroll-target="#reading-guide">Reading guide</a>
+  <ul class="collapse">
+  <li><a href="#core-bernard-and-wutich-chapters-13" id="toc-core-bernard-and-wutich-chapters-13" class="nav-link" data-scroll-target="#core-bernard-and-wutich-chapters-13">Core: Bernard and Wutich — Chapters 1–3</a>
+  <ul class="collapse">
+  <li><a href="#chapter-1-foundations-of-social-research" id="toc-chapter-1-foundations-of-social-research" class="nav-link" data-scroll-target="#chapter-1-foundations-of-social-research">Chapter 1 — Foundations of Social Research</a></li>
+  <li><a href="#chapter-2-preparing-for-research" id="toc-chapter-2-preparing-for-research" class="nav-link" data-scroll-target="#chapter-2-preparing-for-research">Chapter 2 — Preparing for Research</a></li>
+  <li><a href="#chapter-3-research-design" id="toc-chapter-3-research-design" class="nav-link" data-scroll-target="#chapter-3-research-design">Chapter 3 — Research Design</a></li>
+  </ul></li>
+  <li><a href="#archaeological-measurement-banning" id="toc-archaeological-measurement-banning" class="nav-link" data-scroll-target="#archaeological-measurement-banning">Archaeological measurement: Banning</a></li>
+  <li><a href="#mixed-methods-pelto" id="toc-mixed-methods-pelto" class="nav-link" data-scroll-target="#mixed-methods-pelto">Mixed methods: Pelto</a></li>
+  <li><a href="#research-as-a-craft-booth-and-colleagues" id="toc-research-as-a-craft-booth-and-colleagues" class="nav-link" data-scroll-target="#research-as-a-craft-booth-and-colleagues">Research as a craft: Booth and colleagues</a></li>
+  <li><a href="#archaeological-data-publication-reiter-and-colleagues" id="toc-archaeological-data-publication-reiter-and-colleagues" class="nav-link" data-scroll-target="#archaeological-data-publication-reiter-and-colleagues">Archaeological data publication: Reiter and colleagues</a></li>
+  <li><a href="#computational-reproducibility-marwick" id="toc-computational-reproducibility-marwick" class="nav-link" data-scroll-target="#computational-reproducibility-marwick">Computational reproducibility: Marwick</a></li>
+  <li><a href="#replicability-and-methodological-pluralism-vaesen-and-hussain" id="toc-replicability-and-methodological-pluralism-vaesen-and-hussain" class="nav-link" data-scroll-target="#replicability-and-methodological-pluralism-vaesen-and-hussain">Replicability and methodological pluralism: Vaesen and Hussain</a></li>
+  </ul></li>
+  <li><a href="#week-3-checklist" id="toc-week-3-checklist" class="nav-link" data-scroll-target="#week-3-checklist">Week 3 checklist</a></li>
+  <li><a href="#takeaways" id="toc-takeaways" class="nav-link" data-scroll-target="#takeaways">Takeaways</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Week 3 — Measurement and Research Design</h1>
+<p class="subtitle lead">From concepts and variables to defensible inference</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 21, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="week-meta">
+<p><strong>Class meetings:</strong> 21 &amp; 23 September 2026<br> <strong>Focus:</strong> variables · measurement · validity · research design · mixed methods<br> <strong>Practice:</strong> translating anthropological questions into defensible measures and designs<br> <strong>Assessment:</strong> Ungraded preparation for upcoming ANTH418 assignments</p>
+</div>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>Week 2 introduced a reproducible computational workflow. Week 3 asks a prior question:</p>
+<blockquote class="blockquote">
+<p><strong>What exactly are we measuring, and why should those measurements count as evidence for the question we care about?</strong></p>
+</blockquote>
+<p>Statistics begins long before a statistical test. It begins when researchers decide what counts as an observation, how an abstract idea becomes a variable, how that variable will be measured, which unit will be analyzed, and what research design can support the intended inference.</p>
+<p>The lecture for this week follows one continuous argument:</p>
+<p><strong>concepts → definitions → variables → measurements → research design → inference</strong></p>
+<p>A strong analysis depends on alignment across that entire chain. Bernard and Wutich place variables, measurement, reliability, validity, units of analysis, causal logic, and research design at the foundation of social research <span class="citation" data-cites="bernardWutich2027">(<a href="#ref-bernardWutich2027" role="doc-biblioref">Bernard and Wutich 2027</a>)</span>. Banning makes the same point from archaeology: convincing archaeological arguments require observations and measurements whose errors, biases, and inferential limits are understood <span class="citation" data-cites="banning2020">(<a href="#ref-banning2020" role="doc-biblioref">Banning 2020</a>)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="The Week 3 principle">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>The Week 3 principle
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>A statistical result cannot be better than the concepts, measurements, and research design that produced the data.</strong></p>
+<p>Sophisticated analysis cannot rescue a variable that was badly defined, a measure that does not represent the intended concept, or a design that cannot answer the research question.</p>
+</div>
+</div>
+</section>
+<section id="questions" class="level2">
+<h2 class="anchored" data-anchor-id="questions">Questions</h2>
+<ul>
+<li>How does an abstract anthropological concept become an empirical variable?</li>
+<li>What is the difference between a conceptual definition and an operational definition?</li>
+<li>When is a variable unidimensional, and when does it require several indicators?</li>
+<li>What makes a variable independent or dependent?</li>
+<li>What are nominal, ordinal, interval, and ratio levels of measurement?</li>
+<li>Why should we preserve the highest useful level of information when collecting data?</li>
+<li>How do reliability, precision, accuracy, and validity differ?</li>
+<li>How can a measure be highly repeatable but still wrong?</li>
+<li>What kinds of reliability and validity can researchers evaluate?</li>
+<li>Why is real research iterative rather than perfectly linear?</li>
+<li>What makes a research question feasible?</li>
+<li>How do internal states, external states, reported behavior, observed behavior, and material traces differ as variables?</li>
+<li>Why are qualitative and quantitative data not methodological opposites?</li>
+<li>How can emic knowledge become measurable without losing its cultural grounding?</li>
+<li>What makes a mixed-methods design coherent rather than merely “using several methods”?</li>
+<li>What does research design contribute to causal inference?</li>
+<li>Why does the unit of analysis matter?</li>
+<li>What is the ecological fallacy?</li>
+<li>How do observational/experimental, cross-sectional/longitudinal, and single-case/comparative decisions combine into eight basic designs?</li>
+<li>How do participatory and action research change the relationship between researchers and participants?</li>
+<li>What do reproducibility, metadata, provenance, and replicability add to research design in archaeology?</li>
+</ul>
+</section>
+<section id="learning-objectives" class="level2">
+<h2 class="anchored" data-anchor-id="learning-objectives">Learning objectives</h2>
+<p>By the end of Week 3, you should be able to:</p>
+<ol type="1">
+<li>distinguish an <strong>abstract concept</strong>, <strong>conceptual definition</strong>, <strong>operational definition</strong>, <strong>variable</strong>, <strong>indicator</strong>, and <strong>empirical value</strong>;</li>
+<li>distinguish <strong>unidimensional</strong> from <strong>multidimensional</strong> variables and explain why multidimensional constructs usually require multiple indicators;</li>
+<li>explain how theory assigns the roles of <strong>independent</strong> and <strong>dependent</strong> variables;</li>
+<li>classify variables as <strong>nominal</strong>, <strong>ordinal</strong>, <strong>interval</strong>, or <strong>ratio</strong>, and explain what information each level preserves;</li>
+<li>explain why collecting information at a higher defensible level of measurement preserves analytical options;</li>
+<li>distinguish <strong>reliability</strong>, <strong>precision</strong>, <strong>accuracy</strong>, and <strong>validity</strong>;</li>
+<li>describe interobserver/intercoder, test–retest, parallel-form, and internal-consistency approaches to reliability;</li>
+<li>distinguish face, content, construct, and criterion validity;</li>
+<li>explain why reliability is necessary but not sufficient for validity;</li>
+<li>evaluate whether a research question is feasible in relation to evidence, time, resources, access, and ethics;</li>
+<li>classify social-science variables as internal states, external states, reported behavior, observed behavior, or artifacts/environment;</li>
+<li>separate <strong>data type</strong> from <strong>analysis method</strong> when thinking about qualitative and quantitative research;</li>
+<li>describe theoretical drive, pacing, and point of interface in mixed-methods research;</li>
+<li>distinguish exploratory from confirmatory designs while recognizing that real research often moves between them;</li>
+<li>state the four conditions normally required for a causal argument: covariation, nonspuriousness, temporal precedence, and mechanism;</li>
+<li>identify the <strong>unit of analysis</strong> and explain the ecological fallacy;</li>
+<li>classify a study using the three design decisions: observational/experimental, cross-sectional/longitudinal, and single-case/comparative;</li>
+<li>explain the logic of <code>QUAL → QUAN</code> and <code>QUAN → QUAL</code> sequential designs;</li>
+<li>explain how participatory and action research redistribute decisions about questions, methods, and outcomes; and</li>
+<li>connect measurement and design to archaeological data provenance, reproducibility, metadata, uncertainty, and problem-driven methodological pluralism.</li>
+</ol>
+</section>
+<section id="this-weeks-two-class-sequence" class="level2">
+<h2 class="anchored" data-anchor-id="this-weeks-two-class-sequence">This week’s two-class sequence</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Class</th>
+<th>Main focus</th>
+<th>Practical outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Monday, 21 September</strong></td>
+<td>Variables, measurement, reliability, validity, research design</td>
+<td>You can translate a research concept into explicit variables and evaluate the quality of the proposed measurements.</td>
+</tr>
+<tr class="even">
+<td><strong>Wednesday, 23 September</strong></td>
+<td>Design logic, units of analysis, mixed methods, causal inference, guided practice</td>
+<td>You can match questions to a defensible design and explain what conclusions that design can and cannot support.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="from-concepts-to-empirical-values" class="level1">
+<h1>From concepts to empirical values</h1>
+<section id="variables-become-evidence" class="level2">
+<h2 class="anchored" data-anchor-id="variables-become-evidence">Variables become evidence</h2>
+<p>Social research does not observe abstract ideas directly. Concepts such as <strong>social status</strong>, <strong>identity</strong>, <strong>wealth</strong>, <strong>mobility</strong>, <strong>political orientation</strong>, <strong>household organization</strong>, or <strong>cultural consonance</strong> must first be translated into observable properties.</p>
+<p>A useful sequence is:</p>
+<blockquote class="blockquote">
+<p><strong>abstract concept → conceptual definition → operational definition → empirical values</strong></p>
+</blockquote>
+<p>Bernard and Wutich distinguish conceptual definitions from operational definitions: the first states what researchers mean by a concept; the second specifies the operations used to measure it <span class="citation" data-cites="bernardWutich2027">(<a href="#ref-bernardWutich2027" role="doc-biblioref">Bernard and Wutich 2027</a>)</span>.</p>
+<p>A <strong>variable</strong> is not identical to the concept. A variable is an empirical property that can take different values or categories.</p>
+<p>For example:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Stage</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Abstract concept</td>
+<td>household wealth</td>
+</tr>
+<tr class="even">
+<td>Conceptual definition</td>
+<td>material and economic resources available to a household</td>
+</tr>
+<tr class="odd">
+<td>Operational definition</td>
+<td>record house area, storage capacity, durable goods, livestock holdings, and selected high-value objects using explicit coding rules</td>
+</tr>
+<tr class="even">
+<td>Empirical values</td>
+<td>measured house area, counts, presence/absence codes, index values</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-important callout-titled" title="Operational definitions are recipes">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Operational definitions are recipes
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>An operational definition should allow another researcher to understand <strong>how the data were generated</strong>.</p>
+<p>That does not guarantee that the measure is good. It makes the measurement explicit enough to evaluate, criticize, reproduce, and improve.</p>
+</div>
+</div>
+<p>This transparency is also central to computational reproducibility. Marwick argues that data and code provenance should expose the transformations that connect observations to published results <span class="citation" data-cites="marwick2017">(<a href="#ref-marwick2017" role="doc-biblioref">Marwick 2017</a>)</span>. An operational definition does the same kind of work at the measurement stage.</p>
+</section>
+<section id="concepts-constructs-indicators-and-values" class="level2">
+<h2 class="anchored" data-anchor-id="concepts-constructs-indicators-and-values">Concepts, constructs, indicators, and values</h2>
+<p>Some variables are straightforward. Others are <strong>constructs</strong>: complex concepts whose empirical meaning must be represented through several indicators.</p>
+<p>Bernard and Wutich emphasize that even familiar concepts can become difficult when researchers ask exactly what is being measured <span class="citation" data-cites="bernardWutich2027">(<a href="#ref-bernardWutich2027" role="doc-biblioref">Bernard and Wutich 2027</a>)</span>.</p>
+<p>Consider “social status” in archaeology. We cannot directly ask a past individual about status. Possible indicators might include:</p>
+<ul>
+<li>grave treatment;</li>
+<li>access to rare materials;</li>
+<li>house size;</li>
+<li>spatial location;</li>
+<li>diet;</li>
+<li>craft specialization;</li>
+<li>labor investment; or</li>
+<li>association with particular objects.</li>
+</ul>
+<p>None of these indicators is automatically equivalent to “status.” Each requires a theoretical argument linking the observable trace to the concept.</p>
+<p>Banning describes this problem as <strong>indirect measurement</strong>: archaeologists often measure a surviving property as a proxy for something that cannot be observed directly, such as ancient population size, household wealth, social status, interaction, diet, or rainfall <span class="citation" data-cites="banning2020">(<a href="#ref-banning2020" role="doc-biblioref">Banning 2020</a>)</span>.</p>
+<div class="callout callout-style-default callout-warning callout-titled" title="A proxy is an argument, not a fact">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>A proxy is an argument, not a fact
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If grave wealth is used as a proxy for social status, the archaeological measurement of grave goods may be precise while the inference about status remains uncertain.</p>
+<p>Measurement quality therefore has at least two levels:</p>
+<ol type="1">
+<li>Did we measure the observable evidence well?</li>
+<li>Does that evidence validly represent the concept we claim it represents?</li>
+</ol>
+</div>
+</div>
+</section>
+<section id="variables-can-be-simple-or-multidimensional" class="level2">
+<h2 class="anchored" data-anchor-id="variables-can-be-simple-or-multidimensional">Variables can be simple or multidimensional</h2>
+<p>A <strong>unidimensional variable</strong> is represented primarily along one axis.</p>
+<p>Examples include:</p>
+<ul>
+<li>age;</li>
+<li>height;</li>
+<li>mass;</li>
+<li>distance; and</li>
+<li>counts.</li>
+</ul>
+<p>A <strong>multidimensional variable</strong> has several analytically distinct facets.</p>
+<p>Examples include:</p>
+<ul>
+<li>wealth;</li>
+<li>political orientation;</li>
+<li>cultural consonance;</li>
+<li>ethnic identity;</li>
+<li>social status; and</li>
+<li>household prosperity.</li>
+</ul>
+<p>Bernard and Wutich use examples such as socioeconomic status to show why a single indicator may fail to capture a complex construct <span class="citation" data-cites="bernardWutich2027">(<a href="#ref-bernardWutich2027" role="doc-biblioref">Bernard and Wutich 2027</a>)</span>.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Unidimensional</th>
+<th>Multidimensional</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>often represented by one primary scale</td>
+<td>contains several facets</td>
+</tr>
+<tr class="even">
+<td>a single indicator may sometimes be adequate</td>
+<td>usually requires multiple indicators</td>
+</tr>
+<tr class="odd">
+<td>easier to define operationally</td>
+<td>requires explicit decisions about dimensions and weighting</td>
+</tr>
+<tr class="even">
+<td>example: length</td>
+<td>example: socioeconomic status</td>
+</tr>
+</tbody>
+</table>
+<p>Dimensionality therefore affects the <strong>measurement instrument</strong>. If the concept is multidimensional, asking one question or recording one attribute may give an incomplete or distorted measure.</p>
+<div class="exercise">
+<p>Choose one concept from anthropology or archaeology—for example <strong>mobility</strong>, <strong>inequality</strong>, <strong>community integration</strong>, <strong>ritual investment</strong>, or <strong>household wealth</strong>.</p>
+<ol type="1">
+<li>Is it plausibly unidimensional or multidimensional?</li>
+<li>What dimensions would you distinguish?</li>
+<li>What observable indicators might represent each dimension?</li>
+<li>What could be lost if you used only one indicator?</li>
+</ol>
+</div>
+</section>
+<section id="independent-and-dependent-variables" class="level2">
+<h2 class="anchored" data-anchor-id="independent-and-dependent-variables">Independent and dependent variables</h2>
+<p>Researchers often describe relationships using an independent variable (X) and dependent variable (Y).</p>
+<ul>
+<li><strong>Independent variable (X):</strong> presumed cause, explanatory variable, or predictor.</li>
+<li><strong>Dependent variable (Y):</strong> outcome, response, or effect.</li>
+</ul>
+<p>But these roles are <strong>not intrinsic properties of variables</strong>. Theory assigns the roles.</p>
+<p>For example, “education” might be treated as (X) when predicting income, but it might be treated as (Y) when studying how household resources influence educational attainment.</p>
+<p>In an experiment, the researcher deliberately manipulates an independent variable. In observational research, researchers measure naturally occurring variation in (X) and examine whether it is associated with (Y) <span class="citation" data-cites="bernardWutich2027">(<a href="#ref-bernardWutich2027" role="doc-biblioref">Bernard and Wutich 2027</a>)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="X and Y do not create causality by themselves">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>X and Y do not create causality by themselves
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Calling one variable “independent” and another “dependent” does not prove a causal relationship. The labels express a theoretical model that must be evaluated with evidence and research design.</p>
+</div>
+</div>
+</section>
+<section id="bad-theory-can-reverse-causality" class="level2">
+<h2 class="anchored" data-anchor-id="bad-theory-can-reverse-causality">Bad theory can reverse causality</h2>
+<p>The lecture uses Bernard and Wutich’s Chicano high-school example to show how poor operationalization and poor causal theory can reinforce one another <span class="citation" data-cites="bernardWutich2027">(<a href="#ref-bernardWutich2027" role="doc-biblioref">Bernard and Wutich 2027</a>)</span>.</p>
+<p>Survey results had been interpreted as showing low career aspirations among Chicano students and insufficient parental encouragement. Ethnographic work revealed a different mechanism: parents often had high aspirations but also understood structural constraints, including the costs of higher education and discriminatory counseling. What looked like a deficit in parental aspiration was partly an artifact of how aspiration had been operationalized and how causality had been theorized.</p>
+<p>The lesson is not simply “qualitative data are better.” The lesson is:</p>
+<blockquote class="blockquote">
+<p><strong>A measure can faithfully record answers to a badly framed question and still misrepresent the social mechanism.</strong></p>
+</blockquote>
+<p>Qualitative fieldwork improved the conceptual and operational definition. Those improved definitions could still be coded and analyzed quantitatively.</p>
+<p>This is a crucial Week 3 point: <strong>measurement and theory cannot be separated.</strong></p>
+</section>
+</section>
+<section id="levels-of-measurement" class="level1">
+<h1>Levels of measurement</h1>
+<section id="four-levels" class="level2">
+<h2 class="anchored" data-anchor-id="four-levels">Four levels</h2>
+<p>A variable’s level of measurement describes what information its values legitimately contain.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Level</th>
+<th>What the values mean</th>
+<th>Examples</th>
+<th>What is defensible</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Nominal</strong></td>
+<td>different named categories</td>
+<td>site, artifact class, religion, raw-material type</td>
+<td>equality/inequality, counts, proportions</td>
+</tr>
+<tr class="even">
+<td><strong>Ordinal</strong></td>
+<td>ordered categories, but distances are not assumed equal</td>
+<td>preservation rank, social-class rank, Likert responses</td>
+<td>ordering plus nominal operations</td>
+</tr>
+<tr class="odd">
+<td><strong>Interval</strong></td>
+<td>equal intervals, but zero is not a true absence</td>
+<td>Celsius, Fahrenheit, many standardized scores</td>
+<td>differences and most arithmetic except meaningful ratios</td>
+</tr>
+<tr class="even">
+<td><strong>Ratio</strong></td>
+<td>equal intervals and a meaningful zero</td>
+<td>age, mass, counts, distance</td>
+<td>full arithmetic, including ratios</td>
+</tr>
+</tbody>
+</table>
+<p>Information content generally increases from nominal to ratio. The kinds of summaries and analyses that make sense depend partly on the level at which the variable was measured <span class="citation" data-cites="bernardWutich2027 banning2020">(<a href="#ref-bernardWutich2027" role="doc-biblioref">Bernard and Wutich 2027</a>; <a href="#ref-banning2020" role="doc-biblioref">Banning 2020</a>)</span>.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="R storage type is not measurement level">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>R storage type is not measurement level
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>R may store both a site code and a person’s name as <code>character</code>, while storing a nominal category coded <code>1</code>, <code>2</code>, <code>3</code> as numeric.</p>
+<p><code>glimpse()</code> tells you how R stores a column. It does <strong>not</strong> tell you the variable’s statistical measurement level.</p>
+<p>Measurement level comes from the meaning of the values and the rules used to generate them.</p>
+</div>
+</div>
+</section>
+<section id="measure-at-the-highest-defensible-level" class="level2">
+<h2 class="anchored" data-anchor-id="measure-at-the-highest-defensible-level">Measure at the highest defensible level</h2>
+<p>Higher-level information can often be collapsed downward.</p>
+<p>For example:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>age_demo <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">exact_age =</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">23</span>, <span class="dv">29</span>, <span class="dv">34</span>, <span class="dv">47</span>, <span class="dv">62</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">age_band =</span> <span class="fu">cut</span>(</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>      exact_age,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">19</span>, <span class="dv">29</span>, <span class="dv">39</span>, <span class="dv">49</span>, <span class="dv">64</span>, <span class="cn">Inf</span>),</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">right =</span> <span class="cn">TRUE</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>age_demo</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  exact_age age_band
+      &lt;dbl&gt; &lt;fct&gt;   
+1        18 (0,19]  
+2        23 (19,29] 
+3        29 (19,29] 
+4        34 (29,39] 
+5        47 (39,49] 
+6        62 (49,64] </code></pre>
+</div>
+</div>
+<p>Exact ages can be converted into age brackets.</p>
+<p>But once only the bracket is retained, the exact ages cannot be reconstructed.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Information loss is usually one-way">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Information loss is usually one-way
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Exact age → age category</strong> is possible.</p>
+<p><strong>Age category → exact age</strong> is not.</p>
+<p>When practical and ethical, collect data at the highest defensible level of detail and aggregate later for analysis.</p>
+</div>
+</div>
+<p>This principle has an archaeological analogue. The BIAD Standards recommend preserving original, fine-grained chronological associations and raw observations even when researchers later aggregate phases for analysis <span class="citation" data-cites="reiter2024">(<a href="#ref-reiter2024" role="doc-biblioref">Reiter et al. 2024</a>)</span>. Once distinct phases are published only as one broad period, later researchers cannot reliably recover the original detail.</p>
+</section>
+</section>
+<section id="measurement-quality" class="level1">
+<h1>Measurement quality</h1>
+<section id="four-different-questions" class="level2">
+<h2 class="anchored" data-anchor-id="four-different-questions">Four different questions</h2>
+<p>The lecture distinguishes four dimensions of measurement quality:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Dimension</th>
+<th>Core question</th>
+<th>Typical problem</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Reliability</strong></td>
+<td>Does the measurement repeat consistently?</td>
+<td>random or observer-dependent variation</td>
+</tr>
+<tr class="even">
+<td><strong>Precision</strong></td>
+<td>How fine is the resolution of the measurement?</td>
+<td>coarse scale or instrument resolution</td>
+</tr>
+<tr class="odd">
+<td><strong>Accuracy</strong></td>
+<td>How close is the measurement to the relevant target or standard?</td>
+<td>systematic bias</td>
+</tr>
+<tr class="even">
+<td><strong>Validity</strong></td>
+<td>Does the measurement represent the intended concept?</td>
+<td>wrong construct, proxy, or inference</td>
+</tr>
+</tbody>
+</table>
+<p>These terms are related but not interchangeable <span class="citation" data-cites="bernardWutich2027 banning2020">(<a href="#ref-bernardWutich2027" role="doc-biblioref">Bernard and Wutich 2027</a>; <a href="#ref-banning2020" role="doc-biblioref">Banning 2020</a>)</span>.</p>
+<p>A digital caliper can be precise but miscalibrated. Two analysts can agree perfectly on a coding rule that operationalizes the wrong concept. A laboratory measurement can be accurate for the chemical property measured but invalid as a proxy for the social process a researcher claims it represents.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Statistical sophistication cannot repair faulty measurement">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Statistical sophistication cannot repair faulty measurement
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A model can estimate relationships among the numbers you give it. It cannot determine whether those numbers validly represent the concept you intended to study.</p>
+</div>
+</div>
+</section>
+<section id="reliability-and-accuracy-are-not-the-same" class="level2">
+<h2 class="anchored" data-anchor-id="reliability-and-accuracy-are-not-the-same">Reliability and accuracy are not the same</h2>
+<p>The following reproducible illustration adapts the logic of the lecture’s target diagram.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>measurement_demo <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>condition, <span class="sc">~</span>x, <span class="sc">~</span>y,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Unreliable + invalid"</span>,  <span class="fl">1.1</span>,  <span class="fl">2.7</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Unreliable + invalid"</span>,  <span class="fl">3.1</span>,  <span class="fl">1.1</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Unreliable + invalid"</span>,  <span class="fl">1.8</span>,  <span class="fl">3.5</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Unreliable + invalid"</span>,  <span class="fl">3.4</span>,  <span class="fl">2.6</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Unreliable + invalid"</span>,  <span class="fl">2.2</span>,  <span class="fl">0.9</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Reliable but invalid"</span>,  <span class="fl">2.0</span>,  <span class="fl">2.1</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Reliable but invalid"</span>,  <span class="fl">2.2</span>,  <span class="fl">1.9</span>,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Reliable but invalid"</span>,  <span class="fl">1.9</span>,  <span class="fl">2.2</span>,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Reliable but invalid"</span>,  <span class="fl">2.1</span>,  <span class="fl">2.0</span>,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Reliable but invalid"</span>,  <span class="fl">2.0</span>,  <span class="fl">1.8</span>,</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Reliable + valid"</span>,      <span class="fl">0.1</span>,  <span class="fl">0.1</span>,</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Reliable + valid"</span>,     <span class="sc">-</span><span class="fl">0.1</span>,  <span class="fl">0.2</span>,</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Reliable + valid"</span>,      <span class="fl">0.2</span>, <span class="sc">-</span><span class="fl">0.1</span>,</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Reliable + valid"</span>,     <span class="sc">-</span><span class="fl">0.2</span>,  <span class="fl">0.0</span>,</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Reliable + valid"</span>,      <span class="fl">0.0</span>, <span class="sc">-</span><span class="fl">0.2</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(measurement_demo, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">2.6</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> condition) <span class="sc">+</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_equal</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">4</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">4</span>)) <span class="sc">+</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Horizontal deviation from target"</span>,</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Vertical deviation from target"</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div id="fig-week03-measurement-quality" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Three faceted scatterplots. One shows scattered observations away from the target, one shows tightly clustered observations away from the target, and one shows tightly clustered observations close to the target.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-week03-measurement-quality-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="week03_files/figure-html/fig-week03-measurement-quality-1.png" class="img-fluid figure-img" alt="Three faceted scatterplots. One shows scattered observations away from the target, one shows tightly clustered observations away from the target, and one shows tightly clustered observations close to the target." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-week03-measurement-quality-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Reliability and validity/accuracy are different properties. Tight clustering indicates repeatability; location relative to the target indicates whether the measurements are centered appropriately.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-week03-measurement-quality" class="quarto-xref">Figure&nbsp;1</a> illustrates three possibilities:</p>
+<ol type="1">
+<li><strong>Unreliable + invalid:</strong> readings vary widely and do not center on the target.</li>
+<li><strong>Reliable but invalid:</strong> readings repeat closely but cluster around the wrong place.</li>
+<li><strong>Reliable + valid:</strong> readings repeat closely and are centered appropriately.</li>
+</ol>
+<p>Tight clustering alone is therefore not enough.</p>
+</section>
+<section id="reliability-asks-whether-measurement-repeats" class="level2">
+<h2 class="anchored" data-anchor-id="reliability-asks-whether-measurement-repeats">Reliability asks whether measurement repeats</h2>
+<p>Several forms of reliability answer different repeatability questions.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Reliability approach</th>
+<th>Question</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Interobserver / intercoder</strong></td>
+<td>Do different researchers measure or code the same case similarly?</td>
+</tr>
+<tr class="even">
+<td><strong>Test–retest</strong></td>
+<td>Does the same instrument produce stable results when repeated under comparable conditions?</td>
+</tr>
+<tr class="odd">
+<td><strong>Parallel-form</strong></td>
+<td>Do equivalent versions of an instrument agree?</td>
+</tr>
+<tr class="even">
+<td><strong>Internal consistency</strong></td>
+<td>Do items intended to measure one construct cohere?</td>
+</tr>
+</tbody>
+</table>
+<p>A simple classical model is:</p>
+<p>[ X = T + e ]</p>
+<p>where:</p>
+<ul>
+<li>(X) is the observed score;</li>
+<li>(T) is the underlying true component; and</li>
+<li>(e) is random measurement error.</li>
+</ul>
+<p>The model is a way of thinking about observed values as a mixture of signal and error. It does not imply that every social or archaeological construct has a directly observable “true score.”</p>
+<section id="reliability-in-archaeology" class="level3">
+<h3 class="anchored" data-anchor-id="reliability-in-archaeology">Reliability in archaeology</h3>
+<p>Interobserver reliability is especially important when analysts classify artifacts, skeletal traits, botanical remains, or images. Banning emphasizes that some observed variation can arise from differences among observers or instruments rather than from the archaeological objects themselves <span class="citation" data-cites="banning2020">(<a href="#ref-banning2020" role="doc-biblioref">Banning 2020</a>)</span>.</p>
+<p>Vaesen and Hussain add an important caution: <strong>replicability or inter-analyst agreement is not identical to reliability or interpretive value</strong> <span class="citation" data-cites="vaesenHussain2026">(<a href="#ref-vaesenHussain2026" role="doc-biblioref">Vaesen and Hussain 2026</a>)</span>. Some archaeologically meaningful properties are genuinely ambiguous because of preservation, continuous variation, or differences in analytical traditions.</p>
+<div class="callout callout-style-default callout-warning callout-titled" title="Do not optimize measurement quality by measuring only what is easy">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Do not optimize measurement quality by measuring only what is easy
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A variable can be easy to record consistently but weakly related to the archaeological question.</p>
+<p>A difficult-to-code variable may still contain important behavioral information.</p>
+<p>The goal is not maximum agreement at any cost. The goal is a defensible balance among reliability, validity, uncertainty, interpretive value, and feasibility.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="validity-asks-whether-the-intended-concept-is-measured" class="level2">
+<h2 class="anchored" data-anchor-id="validity-asks-whether-the-intended-concept-is-measured">Validity asks whether the intended concept is measured</h2>
+<p>Four common forms of validity are:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Main question</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Face validity</strong></td>
+<td>Does the measure appear plausible on its face?</td>
+</tr>
+<tr class="even">
+<td><strong>Content validity</strong></td>
+<td>Does it cover the important dimensions of the concept?</td>
+</tr>
+<tr class="odd">
+<td><strong>Construct validity</strong></td>
+<td>Does it behave as theory says the construct should behave?</td>
+</tr>
+<tr class="even">
+<td><strong>Criterion validity</strong></td>
+<td>Does it correspond to an appropriate external benchmark or criterion?</td>
+</tr>
+</tbody>
+</table>
+<p>Reliability is usually necessary for validity, but it is not sufficient <span class="citation" data-cites="bernardWutich2027">(<a href="#ref-bernardWutich2027" role="doc-biblioref">Bernard and Wutich 2027</a>)</span>.</p>
+<p>A perfectly repeatable instrument can measure the wrong thing.</p>
+<section id="archaeological-example" class="level3">
+<h3 class="anchored" data-anchor-id="archaeological-example">Archaeological example</h3>
+<p>Suppose two analysts achieve near-perfect agreement when counting a particular grave-good type.</p>
+<p>That result supports <strong>interobserver reliability</strong> for the count.</p>
+<p>It does not by itself establish that:</p>
+<ul>
+<li>the grave-good type measures social status;</li>
+<li>the count captures the full domain of status;</li>
+<li>the proposed social categories are culturally meaningful; or</li>
+<li>status caused any observed difference in diet or mobility.</li>
+</ul>
+<p>Those are validity and design questions.</p>
+</section>
+</section>
+</section>
+<section id="research-is-designed-under-constraints" class="level1">
+<h1>Research is designed under constraints</h1>
+<section id="strong-design-is-alignment" class="level2">
+<h2 class="anchored" data-anchor-id="strong-design-is-alignment">Strong design is alignment</h2>
+<p>Research design is not just the choice of a statistical test.</p>
+<p>It is the architecture that connects:</p>
+<ul>
+<li>the research question;</li>
+<li>theoretical expectations;</li>
+<li>units of analysis;</li>
+<li>sampling;</li>
+<li>variables and operational definitions;</li>
+<li>data collection;</li>
+<li>measurement quality;</li>
+<li>analysis;</li>
+<li>ethics;</li>
+<li>feasibility; and</li>
+<li>the conclusions the evidence can support.</li>
+</ul>
+<p>Bernard and Wutich define research design as knowing how to answer a research question and test a hypothesis by coordinating sampling, data collection, and analysis <span class="citation" data-cites="bernardWutich2027">(<a href="#ref-bernardWutich2027" role="doc-biblioref">Bernard and Wutich 2027</a>)</span>.</p>
+<p>Banning similarly emphasizes that archaeological research design should reduce the possibility that apparent patterns are products of sampling problems, investigator bias, or measurement error <span class="citation" data-cites="banning2020">(<a href="#ref-banning2020" role="doc-biblioref">Banning 2020</a>)</span>.</p>
+</section>
+<section id="actual-research-is-iterative" class="level2">
+<h2 class="anchored" data-anchor-id="actual-research-is-iterative">Actual research is iterative</h2>
+<p>Textbooks often present a clean sequence:</p>
+<blockquote class="blockquote">
+<p>topic → literature → hypothesis → design → data → analysis → publication</p>
+</blockquote>
+<p>Real research rarely behaves that way.</p>
+<p>Field obstacles, equipment failures, community dynamics, unexpected findings, new literature, and analytical surprises can force researchers to:</p>
+<ul>
+<li>revise protocols;</li>
+<li>redefine variables;</li>
+<li>refine questions;</li>
+<li>collect additional data; or</li>
+<li>re-analyze existing data.</li>
+</ul>
+<p>Bernard and Wutich describe the real research process as messier than its final published account <span class="citation" data-cites="bernardWutich2027">(<a href="#ref-bernardWutich2027" role="doc-biblioref">Bernard and Wutich 2027</a>)</span>. Booth and colleagues make the same point: experienced research often zigzags, doubles back, and changes direction as the problem and evidence become clearer <span class="citation" data-cites="booth2024">(<a href="#ref-booth2024" role="doc-biblioref">Booth et al. 2024</a>)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Iteration is not the same as improvisation without documentation">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Iteration is not the same as improvisation without documentation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Changing a protocol can be good research.</p>
+<p>Changing it silently is not.</p>
+<p>When the design evolves, record what changed, why it changed, and which observations were produced under which version of the procedure.</p>
+</div>
+</div>
+<p>This is one reason version control and scripted analysis matter. Marwick emphasizes that commit histories can preserve decision points and analytical changes rather than leaving a pile of ambiguously named files <span class="citation" data-cites="marwick2017">(<a href="#ref-marwick2017" role="doc-biblioref">Marwick 2017</a>)</span>.</p>
+</section>
+<section id="a-research-question-must-be-doable" class="level2">
+<h2 class="anchored" data-anchor-id="a-research-question-must-be-doable">A research question must be doable</h2>
+<p>A compelling topic is not enough.</p>
+<p>Before beginning a study, ask whether the question is feasible.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Feasibility dimension</th>
+<th>Question</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Sustained interest</strong></td>
+<td>Can this question sustain serious work?</td>
+</tr>
+<tr class="even">
+<td><strong>Testability</strong></td>
+<td>Can observable evidence address it?</td>
+</tr>
+<tr class="odd">
+<td><strong>Time</strong></td>
+<td>Can the work be completed within the available period?</td>
+</tr>
+<tr class="even">
+<td><strong>Resources</strong></td>
+<td>Are the required equipment, funding, skills, and personnel available?</td>
+</tr>
+<tr class="odd">
+<td><strong>Access</strong></td>
+<td>Can the relevant population, archive, collection, or site be reached?</td>
+</tr>
+</tbody>
+</table>
+<p>Bernard and Wutich treat feasibility as part of preparing research, not as an administrative issue added after the intellectual design <span class="citation" data-cites="bernardWutich2027">(<a href="#ref-bernardWutich2027" role="doc-biblioref">Bernard and Wutich 2027</a>)</span>.</p>
+<p>Ethics cuts across all five dimensions. A technically feasible study may still be inappropriate if it imposes unacceptable risk or violates obligations to participants, communities, collections, or cultural heritage.</p>
+<p>Booth and colleagues add another useful question:</p>
+<blockquote class="blockquote">
+<p><strong>So what?</strong></p>
+</blockquote>
+<p>A research problem should matter to an audience beyond the fact that the researcher happens to be interested in it <span class="citation" data-cites="booth2024">(<a href="#ref-booth2024" role="doc-biblioref">Booth et al. 2024</a>)</span>.</p>
+</section>
+</section>
+<section id="what-kind-of-variable-are-you-studying" class="level1">
+<h1>What kind of variable are you studying?</h1>
+<section id="five-classes-of-social-variables" class="level2">
+<h2 class="anchored" data-anchor-id="five-classes-of-social-variables">Five classes of social variables</h2>
+<p>The lecture organizes social variables into five broad classes adapted from Bernard and Wutich <span class="citation" data-cites="bernardWutich2027">(<a href="#ref-bernardWutich2027" role="doc-biblioref">Bernard and Wutich 2027</a>)</span>.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable class</th>
+<th>What it concerns</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Internal states</strong></td>
+<td>thoughts, values, beliefs, perceptions, distress</td>
+<td>political attitudes, identity, confidence</td>
+</tr>
+<tr class="even">
+<td><strong>External states</strong></td>
+<td>characteristics and conditions</td>
+<td>age, economy, health, environment</td>
+</tr>
+<tr class="odd">
+<td><strong>Reported behavior</strong></td>
+<td>what people say they do</td>
+<td>reported diet, self-reported attendance</td>
+</tr>
+<tr class="even">
+<td><strong>Observed behavior</strong></td>
+<td>directly witnessed action</td>
+<td>interaction, movement, task performance</td>
+</tr>
+<tr class="odd">
+<td><strong>Artifacts &amp; environment</strong></td>
+<td>material, biological, spatial, or ecological traces</td>
+<td>artifacts, biomarkers, settlement patterns</td>
+</tr>
+</tbody>
+</table>
+<p>The distinction matters because each class raises different validity problems.</p>
+<p>For example:</p>
+<ul>
+<li>reported behavior can differ from observed behavior;</li>
+<li>internal states require indicators rather than direct observation;</li>
+<li>artifacts and biomarkers survive through formation processes and analytical transformations;</li>
+<li>external states may appear straightforward but still depend on definitions and classification.</li>
+</ul>
+<p>Archaeology relies heavily on the fifth class, but archaeological inference often seeks conclusions about the other four. That is why proxy reasoning and construct validity are so important.</p>
+</section>
+<section id="studies-can-be-classified-by-x-and-y-variable-types" class="level2">
+<h2 class="anchored" data-anchor-id="studies-can-be-classified-by-x-and-y-variable-types">Studies can be classified by X and Y variable types</h2>
+<p>A research question can also be inspected by asking what kind of independent variable (X) is being related to what kind of dependent variable (Y).</p>
+<p>The lecture uses a matrix to encourage systematic question generation.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 26%">
+<col style="width: 26%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Dependent variable (Y)</th>
+<th style="text-align: right;">Internal-state X</th>
+<th style="text-align: right;">External-state X</th>
+<th style="text-align: right;">Behavior / artifact X</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Internal states</td>
+<td style="text-align: right;">Cell 1</td>
+<td style="text-align: right;">Cell 2</td>
+<td style="text-align: right;">Cell 3</td>
+</tr>
+<tr class="even">
+<td>External states</td>
+<td style="text-align: right;">Cell 4</td>
+<td style="text-align: right;">Cell 5</td>
+<td style="text-align: right;">Cell 6</td>
+</tr>
+<tr class="odd">
+<td>Reported behavior</td>
+<td style="text-align: right;">Cell 7</td>
+<td style="text-align: right;">Cell 8</td>
+<td style="text-align: right;">Cell 9</td>
+</tr>
+<tr class="even">
+<td>Observed behavior</td>
+<td style="text-align: right;">Cell 10</td>
+<td style="text-align: right;">Cell 11</td>
+<td style="text-align: right;">Cell 12</td>
+</tr>
+<tr class="odd">
+<td>Artifacts / environment</td>
+<td style="text-align: right;">Cell 13</td>
+<td style="text-align: right;">Cell 14</td>
+<td style="text-align: right;">Cell 15</td>
+</tr>
+</tbody>
+</table>
+<p>The cell numbers are not statistical categories. They are prompts for thinking.</p>
+<p>For example:</p>
+<ul>
+<li>external state → internal state: How does household insecurity relate to perceived well-being?</li>
+<li>internal state → reported behavior: How do beliefs relate to reported practice?</li>
+<li>environment → observed behavior: How does distance to water affect observed movement?</li>
+<li>external state → artifact/environment: How does settlement location relate to material distributions?</li>
+</ul>
+<div class="exercise">
+<p>Take one research topic you care about.</p>
+<ol type="1">
+<li>Identify a plausible (X).</li>
+<li>Identify a plausible (Y).</li>
+<li>Classify each variable.</li>
+<li>Explain why theory assigns those roles.</li>
+<li>State one rival causal direction.</li>
+</ol>
+</div>
+</section>
+</section>
+<section id="qualitative-and-quantitative-are-not-opposites" class="level1">
+<h1>Qualitative and quantitative are not opposites</h1>
+<section id="separate-the-nature-of-the-data-from-the-method-of-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="separate-the-nature-of-the-data-from-the-method-of-analysis">Separate the nature of the data from the method of analysis</h2>
+<p>A persistent mistake is to treat “qualitative” and “quantitative” as mutually exclusive research paradigms.</p>
+<p>The lecture instead separates two questions:</p>
+<ol type="1">
+<li>What is the <strong>form of the data</strong>?</li>
+<li>What is the <strong>method of analysis</strong>?</li>
+</ol>
+<p>Bernard and Wutich emphasize that qualitative data can be analyzed quantitatively and numerical data can require qualitative interpretation <span class="citation" data-cites="bernardWutich2027">(<a href="#ref-bernardWutich2027" role="doc-biblioref">Bernard and Wutich 2027</a>)</span>. Pelto documents a long history of ethnographic projects combining multiple forms of evidence rather than treating mixed methods as a recent invention <span class="citation" data-cites="pelto2017">(<a href="#ref-pelto2017" role="doc-biblioref">Pelto 2017</a>)</span>.</p>
+<p>A useful 2 × 2 matrix is:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Qualitative data</strong></th>
+<th><strong>Quantitative data</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Qualitative analysis</strong></td>
+<td>interpretive text, ethnography, discourse, narrative</td>
+<td>interpreting meaning in modeled or clustered numerical results</td>
+</tr>
+<tr class="even">
+<td><strong>Quantitative analysis</strong></td>
+<td>coding words/images into counts, free-list or content analysis</td>
+<td>regression, ANOVA, statistical modeling</td>
+</tr>
+</tbody>
+</table>
+<p>The point is not that every project must occupy all four cells. The point is that <strong>data form and analytical logic can cross</strong>.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Numbers do not automatically make a study scientific">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Numbers do not automatically make a study scientific
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A poorly defined variable does not become valid because it is numeric.</p>
+<p>A careful qualitative observation does not become unscientific because it is expressed in words.</p>
+<p>The scientific issue is whether the evidence, measurement, and reasoning are appropriate to the question.</p>
+</div>
+</div>
+</section>
+<section id="integration-can-make-emic-knowledge-measurable" class="level2">
+<h2 class="anchored" data-anchor-id="integration-can-make-emic-knowledge-measurable">Integration can make emic knowledge measurable</h2>
+<p><strong>Emic</strong> concepts are defined in terms meaningful to members of the community being studied.</p>
+<p>Cultural-domain methods can begin with community-generated categories and then develop structured measurements.</p>
+<p>For example:</p>
+<ol type="1">
+<li><strong>Free lists</strong> identify items people themselves associate with a domain.</li>
+<li><strong>Pile sorts</strong> reveal perceived similarities among items.</li>
+<li><strong>Consensus or similarity models</strong> can quantify agreement or patterned variation.</li>
+</ol>
+<p>The result can remain culturally grounded while also becoming statistically analyzable.</p>
+<p>This is an important form of validity:</p>
+<blockquote class="blockquote">
+<p>The measurement dimension should not be imposed simply because it is easy to quantify; it should correspond to categories or distinctions that are meaningful for the problem and population.</p>
+</blockquote>
+<p>Pelto’s history of mixed methods shows many ethnographic traditions in which mapping, observation, interviews, linguistic work, classification, and quantitative measures were combined in practice <span class="citation" data-cites="pelto2017">(<a href="#ref-pelto2017" role="doc-biblioref">Pelto 2017</a>)</span>.</p>
+</section>
+</section>
+<section id="mixed-methods-design-needs-an-architecture" class="level1">
+<h1>Mixed-methods design needs an architecture</h1>
+<p>Simply using more than one method does not automatically create a coherent mixed-methods design.</p>
+<p>The lecture highlights three design decisions:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Design element</th>
+<th>Question</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Theoretical drive</strong></td>
+<td>Is the dominant logic primarily QUAL or QUAN?</td>
+</tr>
+<tr class="even">
+<td><strong>Pacing</strong></td>
+<td>Are components simultaneous (<code>+</code>) or sequential (<code>→</code>)?</td>
+</tr>
+<tr class="odd">
+<td><strong>Point of interface</strong></td>
+<td>Where do the components actually inform one another?</td>
+</tr>
+</tbody>
+</table>
+<p>Pelto discusses mixed-methods notation such as <code>QUAL + quan</code> and <code>QUAL → quan</code>, where capitalization marks the dominant component and <code>+</code> versus <code>→</code> distinguishes simultaneous from sequential organization <span class="citation" data-cites="pelto2017">(<a href="#ref-pelto2017" role="doc-biblioref">Pelto 2017</a>)</span>.</p>
+<p>Examples include:</p>
+<ul>
+<li><code>QUAL + quan</code></li>
+<li><code>QUAL → quan</code></li>
+<li><code>QUAN + qual</code></li>
+<li><code>QUAN → qual</code></li>
+</ul>
+<p>The secondary component may:</p>
+<ul>
+<li>supplement;</li>
+<li>explain;</li>
+<li>test;</li>
+<li>extend; or</li>
+<li>contextualize</li>
+</ul>
+<p>the dominant component.</p>
+<div class="callout callout-style-default callout-warning callout-titled" title="Two methods sitting beside each other are not necessarily integrated">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Two methods sitting beside each other are not necessarily integrated
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A project is not strongly mixed simply because it contains interviews and a survey.</p>
+<p>Ask:</p>
+<ul>
+<li>Did one component shape the other?</li>
+<li>Are the results compared or combined?</li>
+<li>Does one resolve uncertainty produced by the other?</li>
+<li>Where, exactly, is the point of interface?</li>
+</ul>
+</div>
+</div>
+<section id="sequential-mixed-designs-move-in-two-directions" class="level2">
+<h2 class="anchored" data-anchor-id="sequential-mixed-designs-move-in-two-directions">Sequential mixed designs move in two directions</h2>
+<section id="qual-quan" class="level3">
+<h3 class="anchored" data-anchor-id="qual-quan"><code>QUAL → QUAN</code></h3>
+<p>A qualitative-first sequence is useful when researchers need to learn what categories, mechanisms, or dimensions matter before constructing a structured measure.</p>
+<p>A common logic is:</p>
+<blockquote class="blockquote">
+<p>explore an unfamiliar domain → identify emic themes → build variables or survey items → test their distribution or generalizability</p>
+</blockquote>
+</section>
+<section id="quan-qual" class="level3">
+<h3 class="anchored" data-anchor-id="quan-qual"><code>QUAN → QUAL</code></h3>
+<p>A quantitative-first sequence begins with patterns and then investigates what generated them.</p>
+<p>A common logic is:</p>
+<blockquote class="blockquote">
+<p>identify large-sample pattern → locate outliers, interactions, or unexpected groups → return to interviews/observation/context → explain mechanism</p>
+</blockquote>
+<p>The arrow matters because the first component creates a problem that the second component is designed to address.</p>
+</section>
+</section>
+</section>
+<section id="design-connects-questions-to-inference" class="level1">
+<h1>Design connects questions to inference</h1>
+<section id="research-design-is-the-structural-blueprint" class="level2">
+<h2 class="anchored" data-anchor-id="research-design-is-the-structural-blueprint">Research design is the structural blueprint</h2>
+<p>A design should make the following chain visible:</p>
+<blockquote class="blockquote">
+<p><strong>question → objective/hypothesis → unit of analysis → sampling → measurement → data collection → analysis → conclusion</strong></p>
+</blockquote>
+<p>If a link is missing, the inference becomes difficult to defend.</p>
+<p>This is why selecting a statistical technique at the end is not enough. Analysis is only one component of design <span class="citation" data-cites="bernardWutich2027">(<a href="#ref-bernardWutich2027" role="doc-biblioref">Bernard and Wutich 2027</a>)</span>.</p>
+</section>
+<section id="exploratory-and-confirmatory-designs-form-a-continuum" class="level2">
+<h2 class="anchored" data-anchor-id="exploratory-and-confirmatory-designs-form-a-continuum">Exploratory and confirmatory designs form a continuum</h2>
+<p><strong>Exploratory research</strong> tends to be:</p>
+<ul>
+<li>open-ended;</li>
+<li>more inductive;</li>
+<li>oriented toward discovery;</li>
+<li>useful for identifying emic categories and mechanisms; and</li>
+<li>important when relatively little is known.</li>
+</ul>
+<p><strong>Confirmatory research</strong> tends to be:</p>
+<ul>
+<li>structured;</li>
+<li>more deductive;</li>
+<li>guided by specific hypotheses; and</li>
+<li>oriented toward evaluating expected relationships.</li>
+</ul>
+<p>Bernard and Wutich stress that the two are best understood as a continuum rather than a rigid division <span class="citation" data-cites="bernardWutich2027">(<a href="#ref-bernardWutich2027" role="doc-biblioref">Bernard and Wutich 2027</a>)</span>.</p>
+<p>Strong research often moves:</p>
+<blockquote class="blockquote">
+<p>discovery → formulation → testing → unexpected result → renewed exploration</p>
+</blockquote>
+<p>rather than remaining permanently at one pole.</p>
+<p>This is consistent with Booth and colleagues’ description of real research as iterative rather than linear <span class="citation" data-cites="booth2024">(<a href="#ref-booth2024" role="doc-biblioref">Booth et al. 2024</a>)</span>.</p>
+</section>
+</section>
+<section id="causal-inference" class="level1">
+<h1>Causal inference</h1>
+<section id="four-conditions" class="level2">
+<h2 class="anchored" data-anchor-id="four-conditions">Four conditions</h2>
+<p>A correlation is not, by itself, a causal explanation.</p>
+<p>The lecture identifies four conditions normally required for a causal argument:</p>
+<ol type="1">
+<li><strong>Covariation</strong> — (X) and (Y) vary together.</li>
+<li><strong>Nonspuriousness</strong> — the relationship is not produced by a third variable (Z).</li>
+<li><strong>Temporal precedence</strong> — the presumed cause (X) occurs before (Y).</li>
+<li><strong>Mechanism</strong> — a theory explains how (X) could produce (Y).</li>
+</ol>
+<p>Bernard and Wutich organize causal reasoning around the same four conditions <span class="citation" data-cites="bernardWutich2027">(<a href="#ref-bernardWutich2027" role="doc-biblioref">Bernard and Wutich 2027</a>)</span>.</p>
+<section id="covariation" class="level3">
+<h3 class="anchored" data-anchor-id="covariation">Covariation</h3>
+<p>If (X) does not vary with (Y), there is little basis for claiming that (X) explains variation in (Y).</p>
+<p>But the strength of association alone does not establish causality.</p>
+</section>
+<section id="nonspuriousness" class="level3">
+<h3 class="anchored" data-anchor-id="nonspuriousness">Nonspuriousness</h3>
+<p>A third variable may generate the observed relationship.</p>
+<p>The classic logic is:</p>
+<p>[ X Z Y ]</p>
+<p>If (Z) causes both (X) and (Y), the observed (X)-(Y) association may be misleading.</p>
+</section>
+<section id="temporal-precedence" class="level3">
+<h3 class="anchored" data-anchor-id="temporal-precedence">Temporal precedence</h3>
+<p>A cause must precede its effect.</p>
+<p>Cross-sectional data often make time order difficult to establish. Longitudinal or historical evidence may strengthen temporal reasoning.</p>
+</section>
+<section id="mechanism" class="level3">
+<h3 class="anchored" data-anchor-id="mechanism">Mechanism</h3>
+<p>Even after establishing association, nonspuriousness, and temporal order, researchers need a plausible process explaining how the cause produces the effect.</p>
+<p>Theory is therefore part of causal inference, not decoration added after the statistics.</p>
+</section>
+</section>
+</section>
+<section id="units-of-analysis" class="level1">
+<h1>Units of analysis</h1>
+<section id="what-is-actually-being-analyzed" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-actually-being-analyzed">What is actually being analyzed?</h2>
+<p>The <strong>unit of analysis</strong> is the entity about which the study draws conclusions.</p>
+<p>Examples include:</p>
+<ul>
+<li>individual;</li>
+<li>household;</li>
+<li>grave;</li>
+<li>artifact;</li>
+<li>assemblage;</li>
+<li>neighborhood;</li>
+<li>settlement;</li>
+<li>region; or</li>
+<li>nation.</li>
+</ul>
+<p>The unit of observation and unit of analysis are sometimes the same, but not always.</p>
+<p>For example, measurements may be taken on individual artifacts but summarized to make an inference about assemblages.</p>
+</section>
+<section id="collect-at-the-lowest-useful-unit" class="level2">
+<h2 class="anchored" data-anchor-id="collect-at-the-lowest-useful-unit">Collect at the lowest useful unit</h2>
+<p>Bernard and Wutich recommend collecting data at the lowest possible unit of analysis because fine-grained observations can be aggregated upward, whereas aggregate data usually cannot be disaggregated back into their original components <span class="citation" data-cites="bernardWutich2027">(<a href="#ref-bernardWutich2027" role="doc-biblioref">Bernard and Wutich 2027</a>)</span>.</p>
+<p>This principle has a direct parallel in archaeological data publication. Reiter and colleagues recommend preserving primary, non-amalgamated data and original phase associations even when later analysis combines them into broader periods <span class="citation" data-cites="reiter2024">(<a href="#ref-reiter2024" role="doc-biblioref">Reiter et al. 2024</a>)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Preserve granularity; aggregate analytically">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Preserve granularity; aggregate analytically
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If data are recorded by artifact, they can later be summarized by context, phase, site, or region.</p>
+<p>If only a site-level total survives, artifact-level variation cannot be reconstructed.</p>
+<p>There are exceptions involving privacy, heritage protection, sensitive locations, or ethical restrictions. Granularity should be preserved where it is scientifically useful and ethically appropriate.</p>
+</div>
+</div>
+</section>
+<section id="the-ecological-fallacy" class="level2">
+<h2 class="anchored" data-anchor-id="the-ecological-fallacy">The ecological fallacy</h2>
+<p>The <strong>ecological fallacy</strong> occurs when a relationship observed among groups is incorrectly interpreted as a relationship among individuals.</p>
+<p>Suppose regions with higher average income also have higher average university attendance.</p>
+<p>That does not prove that the higher-income individuals within each region are the individuals attending university.</p>
+<p>The group-level association and individual-level association are different empirical questions.</p>
+<p>In archaeology, a similar mistake can occur when a pattern among sites, cemeteries, or assemblages is projected onto individual people or artifacts without evidence at that scale.</p>
+<div class="exercise">
+<p>For each statement, identify the unit of analysis.</p>
+<ol type="1">
+<li>“Households with larger storage facilities have greater crop diversity.”</li>
+<li>“Sites closer to obsidian sources contain higher proportions of obsidian.”</li>
+<li>“Individuals with nonlocal isotope signatures receive different burial treatment.”</li>
+<li>“Regions with denser settlement networks show greater ceramic standardization.”</li>
+</ol>
+<p>Then ask: What lower-level data would have to exist before each claim could be tested?</p>
+</div>
+</section>
+</section>
+<section id="three-design-decisions-yield-eight-basic-designs" class="level1">
+<h1>Three design decisions yield eight basic designs</h1>
+<p>The lecture uses three binary decisions:</p>
+<ol type="1">
+<li><strong>Observational or experimental?</strong></li>
+<li><strong>Cross-sectional or longitudinal?</strong></li>
+<li><strong>Single case or comparative?</strong></li>
+</ol>
+<p>Together they produce (2 = 8) combinations.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">#</th>
+<th>Intervention</th>
+<th>Time</th>
+<th>Cases</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td>Observational</td>
+<td>Cross-sectional</td>
+<td>Single case</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td>Observational</td>
+<td>Cross-sectional</td>
+<td>Comparative</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td>Observational</td>
+<td>Longitudinal</td>
+<td>Single case</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td>Observational</td>
+<td>Longitudinal</td>
+<td>Comparative</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td>Experimental</td>
+<td>Cross-sectional</td>
+<td>Single case</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td>Experimental</td>
+<td>Cross-sectional</td>
+<td>Comparative</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td>Experimental</td>
+<td>Longitudinal</td>
+<td>Single case</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td>Experimental</td>
+<td>Longitudinal</td>
+<td>Comparative</td>
+</tr>
+</tbody>
+</table>
+<p>Bernard and Wutich use this typology to clarify three different design dimensions: whether the researcher intervenes, whether change through time is observed, and whether inference is based on one or multiple cases <span class="citation" data-cites="bernardWutich2027">(<a href="#ref-bernardWutich2027" role="doc-biblioref">Bernard and Wutich 2027</a>)</span>.</p>
+<section id="observational-versus-experimental" class="level3">
+<h3 class="anchored" data-anchor-id="observational-versus-experimental">Observational versus experimental</h3>
+<ul>
+<li><strong>Observational:</strong> researchers measure or observe without assigning the exposure/treatment.</li>
+<li><strong>Experimental:</strong> researchers manipulate a condition to evaluate its consequences.</li>
+</ul>
+</section>
+<section id="cross-sectional-versus-longitudinal" class="level3">
+<h3 class="anchored" data-anchor-id="cross-sectional-versus-longitudinal">Cross-sectional versus longitudinal</h3>
+<ul>
+<li><strong>Cross-sectional:</strong> data represent one time point or analytical snapshot.</li>
+<li><strong>Longitudinal:</strong> observations are made across multiple times.</li>
+</ul>
+</section>
+<section id="single-case-versus-comparative" class="level3">
+<h3 class="anchored" data-anchor-id="single-case-versus-comparative">Single-case versus comparative</h3>
+<ul>
+<li><strong>Single case:</strong> emphasizes intensive understanding of one unit/case.</li>
+<li><strong>Comparative:</strong> compares multiple cases and can support broader generalization when sampling and design justify it.</li>
+</ul>
+<div class="callout callout-style-default callout-warning callout-titled" title="Design labels do not determine data type">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Design labels do not determine data type
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>None of these eight designs is inherently “qualitative” or “quantitative.”</p>
+<p>Interviews, direct observation, measurements, images, experiments, surveys, and archival records can contribute qualitative or quantitative data depending on how they are collected and analyzed <span class="citation" data-cites="bernardWutich2027">(<a href="#ref-bernardWutich2027" role="doc-biblioref">Bernard and Wutich 2027</a>)</span>.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="research-can-be-done-with-participants" class="level1">
+<h1>Research can be done with participants</h1>
+<section id="participatory-research" class="level2">
+<h2 class="anchored" data-anchor-id="participatory-research">Participatory research</h2>
+<p>Participatory research shifts the relationship from studying people <strong>as subjects</strong> toward building inquiry <strong>with participants</strong>.</p>
+<p>Participants may help shape:</p>
+<ul>
+<li>questions;</li>
+<li>definitions;</li>
+<li>recruitment;</li>
+<li>data-collection tools;</li>
+<li>interpretation; and</li>
+<li>dissemination.</li>
+</ul>
+<p>Bernard and Wutich emphasize that participatory approaches can make methods more culturally, socially, and ethically appropriate <span class="citation" data-cites="bernardWutich2027">(<a href="#ref-bernardWutich2027" role="doc-biblioref">Bernard and Wutich 2027</a>)</span>.</p>
+</section>
+<section id="action-research" class="level2">
+<h2 class="anchored" data-anchor-id="action-research">Action research</h2>
+<p>Action research goes further by linking inquiry to intervention.</p>
+<p>A simplified cycle is:</p>
+<blockquote class="blockquote">
+<p>identify problem → act → evaluate → revise → act again</p>
+</blockquote>
+<p>The goal is not only to describe conditions but to work with partners to change them.</p>
+<p>Community-based participatory research (CBPR) and Photovoice sit toward the participant-driven, action-oriented end of this design space.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Research design also distributes power">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Research design also distributes power
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Who defines the problem?</p>
+<p>Who decides what counts as evidence?</p>
+<p>Who owns the data?</p>
+<p>Who benefits from the conclusions?</p>
+<p>These are design questions as well as ethical questions.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="archaeological-measurement-data-and-reproducibility" class="level1">
+<h1>Archaeological measurement, data, and reproducibility</h1>
+<section id="direct-and-indirect-measurement" class="level2">
+<h2 class="anchored" data-anchor-id="direct-and-indirect-measurement">Direct and indirect measurement</h2>
+<p>Banning distinguishes relatively direct measurements—such as length or mass—from indirect measures and proxies used to estimate phenomena that cannot be observed directly <span class="citation" data-cites="banning2020">(<a href="#ref-banning2020" role="doc-biblioref">Banning 2020</a>)</span>.</p>
+<p>Archaeology is full of indirect measurement.</p>
+<p>Researchers may want to estimate:</p>
+<ul>
+<li>ancient population;</li>
+<li>household wealth;</li>
+<li>interaction;</li>
+<li>traffic in exchanged materials;</li>
+<li>dietary contribution;</li>
+<li>mobility;</li>
+<li>social position; or</li>
+<li>environmental conditions.</li>
+</ul>
+<p>The evidence used for those inferences may be measurable, but the link between evidence and target concept remains theoretical.</p>
+<p>That is why the Week 3 chain matters:</p>
+<blockquote class="blockquote">
+<p><strong>measure an archaeological property well → justify the proxy relation → choose a design that supports the inference</strong></p>
+</blockquote>
+</section>
+<section id="data-are-produced-not-simply-found" class="level2">
+<h2 class="anchored" data-anchor-id="data-are-produced-not-simply-found">Data are produced, not simply found</h2>
+<p>Reiter and colleagues emphasize that archaeological data contain choices made during collection, classification, storage, harmonization, and interpretation <span class="citation" data-cites="reiter2024">(<a href="#ref-reiter2024" role="doc-biblioref">Reiter et al. 2024</a>)</span>.</p>
+<p>“Raw” data are therefore not neutral in the sense of being untouched by research practice.</p>
+<p>Good data publication should preserve:</p>
+<ul>
+<li>provenance;</li>
+<li>original context;</li>
+<li>identifiers;</li>
+<li>measurement units;</li>
+<li>methods;</li>
+<li>laboratory metadata;</li>
+<li>chronological associations;</li>
+<li>category definitions; and</li>
+<li>enough granularity for later reuse.</li>
+</ul>
+<p>The BIAD Standards are motivated by a practical problem: data that lack metadata or are aggregated too early may become impossible to integrate or reinterpret later <span class="citation" data-cites="reiter2024">(<a href="#ref-reiter2024" role="doc-biblioref">Reiter et al. 2024</a>)</span>.</p>
+</section>
+<section id="reproducibility-extends-operational-definition-into-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="reproducibility-extends-operational-definition-into-analysis">Reproducibility extends operational definition into analysis</h2>
+<p>Marwick’s principles of computational reproducibility extend the Week 3 logic beyond data collection <span class="citation" data-cites="marwick2017">(<a href="#ref-marwick2017" role="doc-biblioref">Marwick 2017</a>)</span>.</p>
+<p>A transparent research pipeline should document:</p>
+<ol type="1">
+<li><strong>data and code provenance</strong>;</li>
+<li><strong>scripted analytical operations</strong>;</li>
+<li><strong>version control</strong>; and</li>
+<li><strong>the computational environment</strong>.</li>
+</ol>
+<p>The common principle is explicitness.</p>
+<p>An operational definition documents how observations became data.</p>
+<p>A script documents how data became results.</p>
+<p>Version control documents how the analytical workflow changed.</p>
+<p>Metadata document what variables, units, categories, and files mean.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Think of reproducibility as an audit trail">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Think of reproducibility as an audit trail
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A defensible analysis should allow another researcher—or your future self—to trace:</p>
+<p><strong>concept → measure → raw observation → transformation → analysis → figure/table → interpretation</strong></p>
+</div>
+</div>
+</section>
+<section id="replicability-is-valuable-but-it-is-not-the-only-criterion" class="level2">
+<h2 class="anchored" data-anchor-id="replicability-is-valuable-but-it-is-not-the-only-criterion">Replicability is valuable, but it is not the only criterion</h2>
+<p>Vaesen and Hussain caution against making replicability the universal gatekeeper of archaeological quality <span class="citation" data-cites="vaesenHussain2026">(<a href="#ref-vaesenHussain2026" role="doc-biblioref">Vaesen and Hussain 2026</a>)</span>.</p>
+<p>Their argument is especially relevant to Week 3:</p>
+<ul>
+<li>high inter-analyst agreement does not automatically guarantee validity;</li>
+<li>preservation can create genuine ambiguity;</li>
+<li>training traditions can shape classification;</li>
+<li>highly replicable variables may be easy to measure but weakly informative;</li>
+<li>difficult observations may still be behaviorally meaningful; and</li>
+<li>methods should be chosen in relation to the research problem.</li>
+</ul>
+<p>Their preferred alternative is <strong>problem-driven methodological pluralism</strong>.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Let the question guide the method">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Let the question guide the method
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Do not choose a measure because it is easy to quantify.</p>
+<p>Do not reject a measure only because some ambiguity remains.</p>
+<p>Ask whether the method is appropriate to the question, whether uncertainty is documented, whether conclusions are proportionate to the evidence, and whether complementary evidence can strengthen the inference.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="case-study-revisit-the-week-2-isotope-dataset" class="level1">
+<h1>Case study: revisit the Week 2 isotope dataset</h1>
+<p>Week 2 taught us how to import and inspect the Knipper teaching dataset. Week 3 asks different questions about the same table:</p>
+<blockquote class="blockquote">
+<p><strong>What kind of variables are these, what do they measure, and what conclusions could they support?</strong></p>
+</blockquote>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(data_file)) {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste0</span>(</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Missing "</span>, data_file,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>      <span class="st">". Copy the validated ANTH418 teaching file into the project's data/ directory."</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>knipper <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  data_file,</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">show_col_types =</span> <span class="cn">FALSE</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Inspect the structure:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(knipper)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 69
+Columns: 10
+$ source_row_id   &lt;dbl&gt; 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 1…
+$ grave_no        &lt;chr&gt; "BA 01", "BA 02", "BAS 4", "BA 05", "BA 06/1", "BA 06/…
+$ sample          &lt;chr&gt; "Costa", "Costa", "Phalanx media manus", "Costa", "Cos…
+$ site            &lt;chr&gt; "La Bastida", "La Bastida", "La Bastida", "La Bastida"…
+$ d13c            &lt;dbl&gt; -19.20070, -18.25818, -19.04190, -18.36669, -19.09329,…
+$ d15n            &lt;dbl&gt; 10.393354, 13.892656, 10.870000, 12.522246, 10.848756,…
+$ sex             &lt;chr&gt; "nd", "nd", "Male ?", "nd", "Male", "nd", "nd", "Male"…
+$ age_category    &lt;chr&gt; "Infans I", "Infans I", "Adult", "Infans I", "Young ad…
+$ chronology      &lt;chr&gt; "?", "3", "3", "3", NA, "3", "3", "2", "2", "3", "3", …
+$ social_category &lt;chr&gt; "5", "5", "3 – 4", "5", "4", "4", "5", "3", "3", "3", …</code></pre>
+</div>
+</div>
+<section id="storage-type-versus-measurement-meaning" class="level2">
+<h2 class="anchored" data-anchor-id="storage-type-versus-measurement-meaning">Storage type versus measurement meaning</h2>
+<p>Consider several columns:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>R storage</th>
+<th>Measurement interpretation</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>grave_no</code></td>
+<td>character</td>
+<td>identifier, not a quantitative measure</td>
+<td>labels a case</td>
+</tr>
+<tr class="even">
+<td><code>site</code></td>
+<td>character</td>
+<td>nominal</td>
+<td>categories without inherent numerical distance</td>
+</tr>
+<tr class="odd">
+<td><code>d13c</code></td>
+<td>numeric</td>
+<td>interval-like scientific measurement</td>
+<td>differences are meaningful; zero is not absence of carbon isotope ratio</td>
+</tr>
+<tr class="even">
+<td><code>d15n</code></td>
+<td>numeric</td>
+<td>interval-like scientific measurement</td>
+<td>differences are meaningful; zero is not a true absence</td>
+</tr>
+<tr class="odd">
+<td><code>age_category</code></td>
+<td>character</td>
+<td>ordinal <strong>if</strong> categories encode ordered age classes</td>
+<td>order can exist without equal spacing</td>
+</tr>
+<tr class="even">
+<td><code>sex</code></td>
+<td>character</td>
+<td>nominal as recorded in this teaching file</td>
+<td>category labels</td>
+</tr>
+</tbody>
+</table>
+<p>The important lesson is not to memorize this table. It is to ask:</p>
+<ol type="1">
+<li>What does the column represent?</li>
+<li>How was it generated?</li>
+<li>What do its values mean?</li>
+<li>What transformations are legitimate?</li>
+<li>What inferential role does it play?</li>
+</ol>
+<div class="callout callout-style-default callout-warning callout-titled" title="A column name is not an operational definition">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>A column name is not an operational definition
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Knowing that a column is called <code>social_category</code> does not tell you:</p>
+<ul>
+<li>how the category was defined;</li>
+<li>who assigned it;</li>
+<li>which archaeological indicators were used;</li>
+<li>whether categories are ordered;</li>
+<li>how ambiguous cases were treated; or</li>
+<li>whether the category validly measures social differentiation.</li>
+</ul>
+<p>Those questions require the codebook, provenance information, publication, and theoretical argument.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="guided-practice" class="level1">
+<h1>Guided practice</h1>
+<section id="exercise-1-from-concept-to-variable" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-1-from-concept-to-variable">Exercise 1 — From concept to variable</h2>
+<div class="exercise">
+<p>Choose one concept:</p>
+<ul>
+<li>social inequality;</li>
+<li>mobility;</li>
+<li>ritual investment;</li>
+<li>household wealth;</li>
+<li>political participation; or</li>
+<li>cultural identity.</li>
+</ul>
+<p>Write:</p>
+<ol type="1">
+<li>a one-sentence conceptual definition;</li>
+<li>one or more operational definitions;</li>
+<li>the empirical values that would be recorded;</li>
+<li>the likely level of measurement; and</li>
+<li>one threat to validity.</li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="What a strong answer should contain">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>What a strong answer should contain
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>A strong answer keeps the stages separate.</p>
+<p>For example, for <strong>mobility</strong> you might distinguish a broad conceptual definition from a specific operational measure such as isotope-based classification, residential histories, GPS traces, or documented changes of residence.</p>
+<p>Different operational definitions may produce different variables and answer different versions of the research question.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-2-classify-levels-of-measurement" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-2-classify-levels-of-measurement">Exercise 2 — Classify levels of measurement</h2>
+<div class="exercise">
+<p>Classify each variable as nominal, ordinal, interval, ratio, or “identifier/not a measurement”:</p>
+<ol type="1">
+<li>archaeological site name;</li>
+<li>preservation rank: poor / fair / good;</li>
+<li>calibrated temperature in °C;</li>
+<li>artifact mass in grams;</li>
+<li>number of grave goods;</li>
+<li>specimen ID;</li>
+<li>Likert response from strongly disagree to strongly agree;</li>
+<li><code>d13c</code> value.</li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Check your reasoning">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Check your reasoning
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>A defensible classification is:</p>
+<ol type="1">
+<li>site name — nominal;</li>
+<li>preservation rank — ordinal;</li>
+<li>Celsius — interval;</li>
+<li>mass — ratio;</li>
+<li>count — ratio;</li>
+<li>specimen ID — identifier, not a quantitative measurement;</li>
+<li>Likert item — ordinal unless a stronger scale assumption is justified;</li>
+<li><code>d13c</code> — interval-like measurement.</li>
+</ol>
+<p>The important part is the explanation, not merely the label.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-3-diagnose-measurement-quality" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-3-diagnose-measurement-quality">Exercise 3 — Diagnose measurement quality</h2>
+<div class="exercise">
+<p>Imagine two analysts classify the same 100 lithic artifacts.</p>
+<p>They agree on 97 artifacts, but later discover that the shared classification rule systematically combines two technologically different categories.</p>
+<p>Answer:</p>
+<ol type="1">
+<li>Is interobserver reliability high or low?</li>
+<li>Does high reliability establish validity?</li>
+<li>What kind of validity problem may exist?</li>
+<li>What additional evidence would you want?</li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Check your work">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Check your work
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Interobserver reliability can be high even when the shared rule is conceptually poor.</p>
+<p>The central problem is validity: the operational categories may not represent the technological distinction the research question requires.</p>
+<p>You would want theory, contextual evidence, alternative coding, experimental/technological observations, and perhaps comparison with other analysts or methods.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-4-identify-the-unit-of-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-4-identify-the-unit-of-analysis">Exercise 4 — Identify the unit of analysis</h2>
+<div class="exercise">
+<p>For each question, identify the most appropriate unit of analysis.</p>
+<ol type="1">
+<li>Do individuals identified as nonlocal receive different burial treatment?</li>
+<li>Are households with larger storage facilities associated with greater crop diversity?</li>
+<li>Do settlements closer to raw-material sources contain more locally available stone?</li>
+<li>Do regions with denser settlement networks show greater standardization?</li>
+</ol>
+<p>Then identify what lower-level observations would need to be collected.</p>
+</div>
+</section>
+<section id="exercise-5-classify-the-research-design" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-5-classify-the-research-design">Exercise 5 — Classify the research design</h2>
+<div class="exercise">
+<p>Classify each hypothetical study using the three design dimensions.</p>
+<section id="study-a" class="level3">
+<h3 class="anchored" data-anchor-id="study-a">Study A</h3>
+<p>Researchers record current household water use in one community during one field season without intervention.</p>
+</section>
+<section id="study-b" class="level3">
+<h3 class="anchored" data-anchor-id="study-b">Study B</h3>
+<p>Researchers compare water use in six communities during one field season.</p>
+</section>
+<section id="study-c" class="level3">
+<h3 class="anchored" data-anchor-id="study-c">Study C</h3>
+<p>Researchers observe the same six communities annually for ten years.</p>
+</section>
+<section id="study-d" class="level3">
+<h3 class="anchored" data-anchor-id="study-d">Study D</h3>
+<p>Researchers randomly assign two versions of an educational intervention and follow participants for three years at several sites.</p>
+<p>For each study identify:</p>
+<ul>
+<li>observational or experimental;</li>
+<li>cross-sectional or longitudinal;</li>
+<li>single case or comparative.</li>
+</ul>
+</section>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Check your work">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Check your work
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>A:</strong> observational · cross-sectional · single case</li>
+<li><strong>B:</strong> observational · cross-sectional · comparative</li>
+<li><strong>C:</strong> observational · longitudinal · comparative</li>
+<li><strong>D:</strong> experimental · longitudinal · comparative</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-6-design-a-mixed-methods-sequence" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-6-design-a-mixed-methods-sequence">Exercise 6 — Design a mixed-methods sequence</h2>
+<div class="exercise">
+<p>Choose one anthropological question and design either:</p>
+<ul>
+<li><code>QUAL → QUAN</code>, or</li>
+<li><code>QUAN → QUAL</code>.</li>
+</ul>
+<p>Specify:</p>
+<ol type="1">
+<li>the theoretical drive;</li>
+<li>the first component;</li>
+<li>the second component;</li>
+<li>the point of interface; and</li>
+<li>what the second component contributes that the first cannot.</li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="What makes the design genuinely mixed?">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>What makes the design genuinely mixed?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The two components should not simply coexist.</p>
+<p>The second component should be motivated by the first, or the two should meet at a clearly specified point where evidence is integrated, compared, explained, or transformed.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-7-audit-an-archaeological-variable" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-7-audit-an-archaeological-variable">Exercise 7 — Audit an archaeological variable</h2>
+<div class="exercise">
+<p>Select one variable used in archaeological research—for example:</p>
+<ul>
+<li>“elite burial”;</li>
+<li>“household wealth”;</li>
+<li>“local/nonlocal”;</li>
+<li>“craft specialization”;</li>
+<li>“site size”;</li>
+<li>“ceramic standardization”; or</li>
+<li>“mobility.”</li>
+</ul>
+<p>Write a short measurement audit:</p>
+<ol type="1">
+<li>conceptual definition;</li>
+<li>operational definition;</li>
+<li>unit of analysis;</li>
+<li>measurement level;</li>
+<li>likely reliability problem;</li>
+<li>likely validity problem;</li>
+<li>metadata required for reuse;</li>
+<li>whether the measure is direct or proxy-based; and</li>
+<li>what uncertainty should be reported.</li>
+</ol>
+</div>
+</section>
+</section>
+<section id="a-week-3-research-design-worksheet" class="level1">
+<h1>A Week 3 research-design worksheet</h1>
+<p>Before collecting or analyzing data, try to complete this table.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Design question</th>
+<th>Your answer</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>What is the research problem?</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Why does it matter?</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>What is the unit of analysis?</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>What is the key concept?</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>How is the concept defined conceptually?</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>How is it defined operationally?</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>What are the variables?</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Which variable is (X)? Which is (Y)?</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>What are their levels of measurement?</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>What is the sampling strategy?</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Observational or experimental?</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Cross-sectional or longitudinal?</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Single case or comparative?</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Exploratory or confirmatory emphasis?</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>What are the main reliability threats?</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>What are the main validity threats?</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>What confounders or alternative explanations matter?</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>If causal inference is intended, is temporal order defensible?</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>What mechanism is proposed?</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Are mixed methods needed? If so, where is the interface?</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>What ethical constraints apply?</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Is the project feasible in time, resources, and access?</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>What metadata/provenance must be preserved?</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>What conclusions would the design <strong>not</strong> justify?</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-important callout-titled" title="The last question is essential">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>The last question is essential
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A strong design does not merely state what the study can conclude.</p>
+<p>It also identifies what the evidence <strong>cannot</strong> establish.</p>
+</div>
+</div>
+</section>
+<section id="reading-guide" class="level1">
+<h1>Reading guide</h1>
+<section id="core-bernard-and-wutich-chapters-13" class="level2">
+<h2 class="anchored" data-anchor-id="core-bernard-and-wutich-chapters-13">Core: Bernard and Wutich — Chapters 1–3</h2>
+<p>The first three chapters of <em>Social Research Methods</em> provide the conceptual spine for Week 3 <span class="citation" data-cites="bernardWutich2027">(<a href="#ref-bernardWutich2027" role="doc-biblioref">Bernard and Wutich 2027</a>)</span>.</p>
+<section id="chapter-1-foundations-of-social-research" class="level3">
+<h3 class="anchored" data-anchor-id="chapter-1-foundations-of-social-research">Chapter 1 — Foundations of Social Research</h3>
+<p>Concentrate on:</p>
+<ul>
+<li>variables;</li>
+<li>simple versus multidimensional variables;</li>
+<li>independent and dependent variables;</li>
+<li>concepts and indicators;</li>
+<li>conceptual and operational definitions;</li>
+<li>levels of measurement;</li>
+<li>reliability;</li>
+<li>precision;</li>
+<li>accuracy; and</li>
+<li>validity.</li>
+</ul>
+<p>Pay particular attention to the Chicano high-school example because it shows how a flawed operational definition can produce a misleading social explanation.</p>
+</section>
+<section id="chapter-2-preparing-for-research" class="level3">
+<h3 class="anchored" data-anchor-id="chapter-2-preparing-for-research">Chapter 2 — Preparing for Research</h3>
+<p>Focus on:</p>
+<ul>
+<li>the difference between the ideal and real research process;</li>
+<li>feasibility;</li>
+<li>testability;</li>
+<li>time, money, personnel, and access;</li>
+<li>ethics;</li>
+<li>the generation of research questions; and</li>
+<li>the five broad classes of social variables.</li>
+</ul>
+<p>The main lesson is that research questions, resources, ethics, and methods constrain one another from the beginning.</p>
+</section>
+<section id="chapter-3-research-design" class="level3">
+<h3 class="anchored" data-anchor-id="chapter-3-research-design">Chapter 3 — Research Design</h3>
+<p>Focus on:</p>
+<ul>
+<li>exploratory and confirmatory research;</li>
+<li>qualitative and quantitative data/analysis;</li>
+<li>causal inference;</li>
+<li>units of analysis;</li>
+<li>the ecological fallacy;</li>
+<li>observational versus experimental design;</li>
+<li>cross-sectional versus longitudinal design;</li>
+<li>single-case versus comparative design;</li>
+<li>mixed methods; and</li>
+<li>participatory/action research.</li>
+</ul>
+</section>
+</section>
+<section id="archaeological-measurement-banning" class="level2">
+<h2 class="anchored" data-anchor-id="archaeological-measurement-banning">Archaeological measurement: Banning</h2>
+<p>Banning’s <em>The Archaeologist’s Laboratory</em> is particularly useful for translating social-science measurement language into archaeological practice <span class="citation" data-cites="banning2020">(<a href="#ref-banning2020" role="doc-biblioref">Banning 2020</a>)</span>.</p>
+<p>Focus on:</p>
+<ul>
+<li>measurement scales;</li>
+<li>precision;</li>
+<li>reliability;</li>
+<li>bias;</li>
+<li>classification error;</li>
+<li>validity;</li>
+<li>quality assurance;</li>
+<li>direct versus indirect measurement; and</li>
+<li>research design and sampling.</li>
+</ul>
+<p>Banning’s proxy examples are especially important: archaeology often measures surviving material properties in order to infer social or behavioral quantities that cannot be directly observed.</p>
+</section>
+<section id="mixed-methods-pelto" class="level2">
+<h2 class="anchored" data-anchor-id="mixed-methods-pelto">Mixed methods: Pelto</h2>
+<p>Pelto’s <em>Mixed Methods in Ethnographic Research</em> provides a historical and anthropological perspective on the combination of methods <span class="citation" data-cites="pelto2017">(<a href="#ref-pelto2017" role="doc-biblioref">Pelto 2017</a>)</span>.</p>
+<p>Use it to think beyond a simple qualitative-versus-quantitative divide.</p>
+<p>Particularly useful themes include:</p>
+<ul>
+<li>the long history of methodological mixing in ethnography;</li>
+<li><code>QUAL + quan</code> and <code>QUAL → quan</code> notation;</li>
+<li>theoretical drive;</li>
+<li>simultaneous versus sequential designs;</li>
+<li>triangulation; and</li>
+<li>the use of multiple methods for descriptive expansion rather than merely confirmation.</li>
+</ul>
+</section>
+<section id="research-as-a-craft-booth-and-colleagues" class="level2">
+<h2 class="anchored" data-anchor-id="research-as-a-craft-booth-and-colleagues">Research as a craft: Booth and colleagues</h2>
+<p><em>The Craft of Research</em> is useful for thinking about research as an iterative intellectual process rather than a mechanical sequence <span class="citation" data-cites="booth2024">(<a href="#ref-booth2024" role="doc-biblioref">Booth et al. 2024</a>)</span>.</p>
+<p>For Week 3, focus on:</p>
+<ul>
+<li>moving from topic to question;</li>
+<li>turning a question into a research problem;</li>
+<li>asking “So what?”;</li>
+<li>recognizing that real research zigzags and doubles back; and</li>
+<li>designing inquiry for an audience that will ask whether the evidence really supports the claim.</li>
+</ul>
+</section>
+<section id="archaeological-data-publication-reiter-and-colleagues" class="level2">
+<h2 class="anchored" data-anchor-id="archaeological-data-publication-reiter-and-colleagues">Archaeological data publication: Reiter and colleagues</h2>
+<p>The BIAD Standards show why research design continues into data publication <span class="citation" data-cites="reiter2024">(<a href="#ref-reiter2024" role="doc-biblioref">Reiter et al. 2024</a>)</span>.</p>
+<p>Key Week 3 connections include:</p>
+<ul>
+<li>metadata;</li>
+<li>explicit provenance;</li>
+<li>traceable identifiers;</li>
+<li>preserving original chronological associations;</li>
+<li>publishing raw and grouped data where possible;</li>
+<li>consistent vocabularies; and</li>
+<li>designing data so that later researchers can reuse and integrate them.</li>
+</ul>
+</section>
+<section id="computational-reproducibility-marwick" class="level2">
+<h2 class="anchored" data-anchor-id="computational-reproducibility-marwick">Computational reproducibility: Marwick</h2>
+<p>Marwick connects archaeological transparency to reproducible computational workflows <span class="citation" data-cites="marwick2017">(<a href="#ref-marwick2017" role="doc-biblioref">Marwick 2017</a>)</span>.</p>
+<p>Four principles are especially relevant:</p>
+<ol type="1">
+<li>preserve and share data/code provenance where possible;</li>
+<li>use scripted analysis;</li>
+<li>use version control; and</li>
+<li>document the computational environment.</li>
+</ol>
+<p>These are not separate from research design. They preserve the path from measurement to result.</p>
+</section>
+<section id="replicability-and-methodological-pluralism-vaesen-and-hussain" class="level2">
+<h2 class="anchored" data-anchor-id="replicability-and-methodological-pluralism-vaesen-and-hussain">Replicability and methodological pluralism: Vaesen and Hussain</h2>
+<p>Vaesen and Hussain provide a useful counterweight to simplistic calls for standardization <span class="citation" data-cites="vaesenHussain2026">(<a href="#ref-vaesenHussain2026" role="doc-biblioref">Vaesen and Hussain 2026</a>)</span>.</p>
+<p>Their central warning is that high replicability does not automatically guarantee:</p>
+<ul>
+<li>reliability;</li>
+<li>validity;</li>
+<li>archaeological meaningfulness; or</li>
+<li>cost effectiveness.</li>
+</ul>
+<p>Their problem-driven approach asks researchers to balance consistency with interpretive depth and to report genuine ambiguity rather than standardizing it away.</p>
+</section>
+</section>
+<section id="week-3-checklist" class="level1">
+<h1>Week 3 checklist</h1>
+<p>Before moving on, you should be able to say <strong>yes</strong> to each statement:</p>
+<ul class="task-list">
+<li><label><input type="checkbox">I can distinguish a concept from a variable.</label></li>
+<li><label><input type="checkbox">I can write both a conceptual definition and an operational definition.</label></li>
+<li><label><input type="checkbox">I can explain why multidimensional constructs usually need multiple indicators.</label></li>
+<li><label><input type="checkbox">I can explain how theory assigns independent and dependent variable roles.</label></li>
+<li><label><input type="checkbox">I can distinguish nominal, ordinal, interval, and ratio measurement.</label></li>
+<li><label><input type="checkbox">I can explain why higher-level information can often be collapsed but not reconstructed after it is lost.</label></li>
+<li><label><input type="checkbox">I can distinguish reliability, precision, accuracy, and validity.</label></li>
+<li><label><input type="checkbox">I can name four approaches to reliability.</label></li>
+<li><label><input type="checkbox">I can distinguish face, content, construct, and criterion validity.</label></li>
+<li><label><input type="checkbox">I can explain why a reliable measure may still be invalid.</label></li>
+<li><label><input type="checkbox">I can evaluate whether a research question is feasible.</label></li>
+<li><label><input type="checkbox">I can identify internal states, external states, reported behavior, observed behavior, and artifacts/environment.</label></li>
+<li><label><input type="checkbox">I can distinguish qualitative data from qualitative analysis.</label></li>
+<li><label><input type="checkbox">I can explain how qualitative data can be analyzed quantitatively.</label></li>
+<li><label><input type="checkbox">I can explain how emic knowledge can be operationalized without assuming outsider categories.</label></li>
+<li><label><input type="checkbox">I can identify theoretical drive, pacing, and point of interface in mixed-methods research.</label></li>
+<li><label><input type="checkbox">I can distinguish exploratory and confirmatory research.</label></li>
+<li><label><input type="checkbox">I can state the four conditions for a causal argument.</label></li>
+<li><label><input type="checkbox">I can identify the unit of analysis.</label></li>
+<li><label><input type="checkbox">I can explain the ecological fallacy.</label></li>
+<li><label><input type="checkbox">I can classify a design as observational/experimental, cross-sectional/longitudinal, and single-case/comparative.</label></li>
+<li><label><input type="checkbox">I can explain <code>QUAL → QUAN</code> and <code>QUAN → QUAL</code>.</label></li>
+<li><label><input type="checkbox">I can explain the difference between participatory and action research.</label></li>
+<li><label><input type="checkbox">I can explain why archaeological proxy measures require validity arguments.</label></li>
+<li><label><input type="checkbox">I can explain why metadata and provenance are parts of research design.</label></li>
+<li><label><input type="checkbox">I can distinguish reproducibility from the broader question of replicability.</label></li>
+<li><label><input type="checkbox">I can explain why replicability should not be the only criterion for archaeological measurement quality.</label></li>
+</ul>
+</section>
+<section id="takeaways" class="level1">
+<h1>Takeaways</h1>
+<ul>
+<li><strong>Concepts become evidence through definitions.</strong> A variable is not the abstract idea itself.</li>
+<li><strong>Operationalization is an explicit recipe.</strong> It exposes how data were generated and makes measurement open to criticism.</li>
+<li><strong>Dimensionality matters.</strong> Complex constructs usually require multiple indicators.</li>
+<li><strong>Theory assigns variable roles.</strong> Independent and dependent are explanatory roles, not permanent properties.</li>
+<li><strong>Measurement level preserves information.</strong> Collect the highest defensible level of detail when feasible.</li>
+<li><strong>Reliability is not validity.</strong> Repeatability, precision, accuracy, and validity answer different questions.</li>
+<li><strong>Research is iterative.</strong> Revision is normal; undocumented revision is not.</li>
+<li><strong>Feasibility is part of design.</strong> Time, resources, access, ethics, and evidence constrain good questions.</li>
+<li><strong>Qualitative and quantitative are not opposites.</strong> Data form and analytical method are separate dimensions.</li>
+<li><strong>Mixed methods need architecture.</strong> Drive, pacing, and interface should be explicit.</li>
+<li><strong>Causal inference requires more than association.</strong> Covariation, nonspuriousness, temporal order, and mechanism all matter.</li>
+<li><strong>Units of analysis govern inference.</strong> Aggregated patterns cannot automatically be projected onto individuals.</li>
+<li><strong>Preserve granularity and provenance.</strong> Fine-grained data can be aggregated later; lost detail cannot be recovered.</li>
+<li><strong>Reproducibility extends research design.</strong> Scripts, metadata, version control, and computational environments preserve the analytical path.</li>
+<li><strong>Method should follow the problem.</strong> In archaeology, consistency matters, but so do ambiguity, interpretive depth, and multiple lines of evidence.</li>
+<li><strong>Rigorous research is an integrated craft.</strong> Strong inference comes from transparent alignment among concepts, measurement, design, data, analysis, and interpretation.</li>
+</ul>
+</section>
+<section id="references" class="level1 unnumbered">
+<h1 class="unnumbered">References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-banning2020" class="csl-entry" role="listitem">
+Banning, Edward B. 2020. <em>The Archaeologist’s Laboratory: The Analysis of Archaeological Evidence</em>. 2nd ed. Springer. <a href="https://doi.org/10.1007/978-3-030-47992-3">https://doi.org/10.1007/978-3-030-47992-3</a>.
+</div>
+<div id="ref-bernardWutich2027" class="csl-entry" role="listitem">
+Bernard, H. Russell, and Amber Wutich. 2027. <em>Social Research Methods: Qualitative and Quantitative Approaches</em>. 3rd ed. SAGE Publications.
+</div>
+<div id="ref-booth2024" class="csl-entry" role="listitem">
+Booth, Wayne C., Gregory G. Colomb, Joseph M. Williams, Joseph Bizup, and William T. FitzGerald. 2024. <em>The Craft of Research</em>. 5th ed. The University of Chicago Press. <a href="https://doi.org/10.7208/chicago/9780226826660.001.0001">https://doi.org/10.7208/chicago/9780226826660.001.0001</a>.
+</div>
+<div id="ref-marwick2017" class="csl-entry" role="listitem">
+Marwick, Ben. 2017. <span>“Computational Reproducibility in Archaeological Research: Basic Principles and a Case Study of Their Implementation.”</span> <em>Journal of Archaeological Method and Theory</em> 24 (2): 424–50. <a href="https://doi.org/10.1007/s10816-015-9272-9">https://doi.org/10.1007/s10816-015-9272-9</a>.
+</div>
+<div id="ref-pelto2017" class="csl-entry" role="listitem">
+Pelto, Pertti J. 2017. <em>Mixed Methods in Ethnographic Research: Historical Perspectives</em>. Routledge.
+</div>
+<div id="ref-reiter2024" class="csl-entry" role="listitem">
+Reiter, Samantha S., Robert Staniuk, Jan Kolář, et al. 2024. <span>“The <span>BIAD</span> Standards: Recommendations for Archaeological Data Publication and Insights from the Big Interdisciplinary Archaeological Database.”</span> <em>Open Archaeology</em> 10: 20240015. <a href="https://doi.org/10.1515/opar-2024-0015">https://doi.org/10.1515/opar-2024-0015</a>.
+</div>
+<div id="ref-vaesenHussain2026" class="csl-entry" role="listitem">
+Vaesen, Krist, and Shumon T. Hussain. 2026. <span>“The Perks and Perils of Replicability.”</span> <em>American Antiquity</em> 91 (2): 437–44. <a href="https://doi.org/10.1017/aaq.2025.10146">https://doi.org/10.1017/aaq.2025.10146</a>.
+</div>
+</div>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

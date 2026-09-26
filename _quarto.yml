@@ -8,6 +8,7 @@ project:
     - syllabus.qmd
     - lecture-notes/index.qmd
     - weeks/week02.qmd
+    - weeks/week03.qmd
     - assignments/index.qmd
     - readings/index.qmd
     - resources/*.qmd
@@ -35,6 +36,9 @@ website:
         menu:
           - href: weeks/week02.qmd
             text: "Week 2 — R, RStudio & Quarto"
+
+          - href: weeks/week03.qmd
+            text: "Week 3 — Measurement & Research Design"
 
       - href: assignments/index.qmd
         text: Assignments

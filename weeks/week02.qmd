@@ -12,12 +12,15 @@ date: "2026-09-14"
 </div>
 
 ```{r}
-#| label: setup
-#| include: false
+project_root <- if (file.exists("R/setup.R")) "." else ".."
 
-source("R/setup.R")
+source(file.path(project_root, "R", "setup.R"))
 
-data_file <- "data/knipper2020_humans.csv"
+data_file <- file.path(
+  project_root,
+  "data",
+  "knipper2020_humans.csv"
+)
 ```
 
 ## Overview
