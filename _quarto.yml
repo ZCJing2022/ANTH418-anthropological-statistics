@@ -11,6 +11,7 @@ project:
     - weeks/week03.qmd
     - weeks/week04.qmd
     - assignments/index.qmd
+    - assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.qmd
     - readings/index.qmd
     - resources/*.qmd
 

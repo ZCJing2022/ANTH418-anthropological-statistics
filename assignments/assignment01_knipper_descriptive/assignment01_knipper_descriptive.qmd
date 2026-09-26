@@ -10,6 +10,13 @@ execute:
   message: false
 ---
 
+::: {.callout-note title="Before you begin"}
+Read the [Week 4 Study Guide](../../weeks/week04.qmd) before starting this assignment.
+
+The Study Guide explains the required concepts, visualization strategy, and R workflow for mean, median, standard deviation, IQR, minimum, maximum, range, histograms, and boxplots.
+:::
+
+
 ## Research question
 
 How should selected human stable-isotope distributions at La Bastida and Gatas be described, and what do different measures of center and dispersion reveal?

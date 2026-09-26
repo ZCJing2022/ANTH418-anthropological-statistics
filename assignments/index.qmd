@@ -22,7 +22,7 @@ Students may browse the materials online or download the complete assignment pac
 
 **Case study:** Bronze Age diet and farming at La Bastida and Gatas
 
-[View Assignment 1 materials](assignment01_knipper_descriptive/)
+[Open Assignment 1](assignment01_knipper_descriptive/assignment01_knipper_descriptive.qmd)
 
 [Download complete Assignment 1 package](../downloads/assignments/ANTH418_assignment01_knipper_descriptive.zip)
 
