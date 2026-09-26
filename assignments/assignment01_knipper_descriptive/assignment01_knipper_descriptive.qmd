@@ -16,14 +16,25 @@ Read the [Week 4 Study Guide](../../weeks/week04.qmd) before starting this assig
 The Study Guide explains the required concepts, visualization strategy, and R workflow for mean, median, standard deviation, IQR, minimum, maximum, range, histograms, and boxplots.
 :::
 
-
 ## Research question
 
-How should selected human stable-isotope distributions at La Bastida and Gatas be described, and what do different measures of center and dispersion reveal?
+How should the human stable-isotope distributions at La Bastida and Gatas be described, and what do different measures of center and dispersion reveal?
 
-## Case study
+## Case Study
 
-Knipper, Corina, Cristina Rihuete-Herrada, Jordi Voltas, Petra Held, Vicente Lull, Rafael Micó, Roberto Risch, and Kurt W. Alt. 2020. Reconstructing Bronze Age Diets and Farming Strategies at the Early Bronze Age Sites of La Bastida and Gatas (Southeast Iberia) Using Stable Isotope Analysis. *PLOS ONE* 15(3): e0229398.
+La Bastida and Gatas were settlements of the **El Argar society (ca. 2200–1550 BCE)** in southeastern Spain. Knipper et al. (2020) analyzed stable carbon (δ¹³C) and nitrogen (δ¹⁵N) isotope values from human and animal bone collagen and charred cereal grains to investigate diet, crop cultivation, and animal husbandry. The usable human dataset includes **48 individuals from La Bastida and 21 from Gatas**.
+
+## Assignment
+
+Using the provided human isotope dataset, conduct a **descriptive statistical comparison of δ¹³C and δ¹⁵N values from La Bastida and Gatas**. The objective is to apply the measures of **central tendency and dispersion** introduced in Week 4 to a substantive archaeological problem. Use descriptive statistics to characterize both the typical values and the variability within each archaeological sample before interpreting differences between the two sites.
+
+For each isotope and site, calculate the **mean and median** as measures of central tendency and the **standard deviation, interquartile range (IQR), minimum, maximum, and range** as measures of dispersion. Use appropriate **histograms and boxplots** to examine the shape and spread of the distributions, possible outliers, and the degree of overlap between the two sites. Based on these results, briefly describe the principal similarities and differences between La Bastida and Gatas.
+
+Your interpretation should maintain a clear distinction between **statistical description and archaeological explanation**. In particular, differences in human isotope values should not be treated as direct evidence of differences in diet. Knipper et al. (2020) demonstrate that variation in cereal and animal isotope baselines and farming practices can contribute to differences in human isotope values; when these factors are considered, the two populations may have had broadly similar dietary compositions. Your task is therefore to establish **what the observed distributions show before considering why those patterns may exist**.
+
+## 1. Inspect the data
+
+Load the dataset and inspect its structure before calculating any statistics.
 
 ```{r}
 library(tidyverse)
@@ -33,34 +44,82 @@ dat <- read_csv("data/knipper2020_humans.csv", show_col_types = FALSE)
 glimpse(dat)
 ```
 
-## 1. Inspect and describe
-
-- How many observations are available at each site?
-- Calculate mean, median, SD, IQR, minimum, and maximum for `d13c` and `d15n` **separately for La Bastida and Gatas**.
+Then determine how many observations are available at each site.
 
 ```{r}
 # Your code
 ```
 
-## 2. Visualize
+## 2. Calculate descriptive statistics
 
-Create distribution and site-comparison plots for both `d13c` and `d15n`. You may use faceting rather than making four separate figures.
+For `d13c` and `d15n`, separately for La Bastida and Gatas, calculate:
+
+- mean;
+- median;
+- standard deviation (SD);
+- interquartile range (IQR);
+- minimum;
+- maximum; and
+- range.
+
+Present the results clearly so that the two sites can be compared.
 
 ```{r}
 # Your code
 ```
 
-## 3. Interpret
+## 3. Visualize the distributions
 
-For each isotope distribution, compare the mean with the median and the SD with the IQR.
+Create appropriate **histograms and boxplots** for both `d13c` and `d15n`.
 
-Which measures of center and dispersion best represent the observed distributions? Explain why, referring to distribution shape, spread, and any unusual observations.
+Use the plots to examine:
 
-## Final interpretation
+- distribution shape;
+- spread;
+- possible outliers; and
+- the degree of overlap between La Bastida and Gatas.
 
-Answer the following questions in complete sentences:
+You may use faceting where appropriate.
+
+```{r}
+# Your code
+```
+
+## 4. Describe and interpret the results
+
+For each isotope distribution:
+
+- compare the mean with the median;
+- compare the SD with the IQR;
+- describe the shape and spread of the distribution;
+- note any unusual observations or possible outliers;
+- describe the degree of overlap between the two sites; and
+- summarize the principal similarities and differences between La Bastida and Gatas.
+
+Then provide a concise archaeological interpretation that distinguishes clearly between **what the distributions show** and **why those patterns may exist**.
+
+### Final interpretation guidance
+
+Use the following questions to help structure your concise interpretation:
 
 1. What is the unit of analysis?
 2. What descriptive statistical result matters most?
 3. What archaeological or anthropological interpretation is consistent with the observed distributions?
 4. What claim do these descriptive data alone **not** support?
+
+::: {.callout-important title="Statistical scope"}
+This assignment is limited to **descriptive statistics**. No inferential statistical tests are required.
+:::
+
+## Submission
+
+Submit **both** of the following files:
+
+1. Completed Quarto source file (`.qmd`)
+2. Rendered HTML file (`.html`)
+
+The report should present the required descriptive statistics, visualizations, and a concise interpretation. Before submitting, restart R and render the complete document from a clean session to make sure that all code runs and all output is reproducible.
+
+## Reference
+
+Knipper, C., Rihuete-Herrada, C., Voltas, J., Held, P., Lull, V., Micó, R., Risch, R., & Alt, K. W. (2020). Reconstructing Bronze Age diets and farming strategies at the early Bronze Age sites of La Bastida and Gatas (southeast Iberia) using stable isotope analysis. *PLOS ONE, 15*(3), e0229398. https://doi.org/10.1371/journal.pone.0229398

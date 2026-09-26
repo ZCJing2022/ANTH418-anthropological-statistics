@@ -192,11 +192,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#research-question" id="toc-research-question" class="nav-link active" data-scroll-target="#research-question">Research question</a></li>
-  <li><a href="#case-study" id="toc-case-study" class="nav-link" data-scroll-target="#case-study">Case study</a></li>
-  <li><a href="#inspect-and-describe" id="toc-inspect-and-describe" class="nav-link" data-scroll-target="#inspect-and-describe">1. Inspect and describe</a></li>
-  <li><a href="#visualize" id="toc-visualize" class="nav-link" data-scroll-target="#visualize">2. Visualize</a></li>
-  <li><a href="#interpret" id="toc-interpret" class="nav-link" data-scroll-target="#interpret">3. Interpret</a></li>
-  <li><a href="#final-interpretation" id="toc-final-interpretation" class="nav-link" data-scroll-target="#final-interpretation">Final interpretation</a></li>
+  <li><a href="#case-study" id="toc-case-study" class="nav-link" data-scroll-target="#case-study">Case Study</a></li>
+  <li><a href="#assignment" id="toc-assignment" class="nav-link" data-scroll-target="#assignment">Assignment</a></li>
+  <li><a href="#inspect-the-data" id="toc-inspect-the-data" class="nav-link" data-scroll-target="#inspect-the-data">1. Inspect the data</a></li>
+  <li><a href="#calculate-descriptive-statistics" id="toc-calculate-descriptive-statistics" class="nav-link" data-scroll-target="#calculate-descriptive-statistics">2. Calculate descriptive statistics</a></li>
+  <li><a href="#visualize-the-distributions" id="toc-visualize-the-distributions" class="nav-link" data-scroll-target="#visualize-the-distributions">3. Visualize the distributions</a></li>
+  <li><a href="#describe-and-interpret-the-results" id="toc-describe-and-interpret-the-results" class="nav-link" data-scroll-target="#describe-and-interpret-the-results">4. Describe and interpret the results</a>
+  <ul class="collapse">
+  <li><a href="#final-interpretation-guidance" id="toc-final-interpretation-guidance" class="nav-link" data-scroll-target="#final-interpretation-guidance">Final interpretation guidance</a></li>
+  </ul></li>
+  <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
+  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference">Reference</a></li>
   </ul>
 </nav>
     </div>
@@ -244,11 +250,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="research-question" class="level2">
 <h2 class="anchored" data-anchor-id="research-question">Research question</h2>
-<p>How should selected human stable-isotope distributions at La Bastida and Gatas be described, and what do different measures of center and dispersion reveal?</p>
+<p>How should the human stable-isotope distributions at La Bastida and Gatas be described, and what do different measures of center and dispersion reveal?</p>
 </section>
 <section id="case-study" class="level2">
-<h2 class="anchored" data-anchor-id="case-study">Case study</h2>
-<p>Knipper, Corina, Cristina Rihuete-Herrada, Jordi Voltas, Petra Held, Vicente Lull, Rafael Micó, Roberto Risch, and Kurt W. Alt. 2020. Reconstructing Bronze Age Diets and Farming Strategies at the Early Bronze Age Sites of La Bastida and Gatas (Southeast Iberia) Using Stable Isotope Analysis. <em>PLOS ONE</em> 15(3): e0229398.</p>
+<h2 class="anchored" data-anchor-id="case-study">Case Study</h2>
+<p>La Bastida and Gatas were settlements of the <strong>El Argar society (ca. 2200–1550 BCE)</strong> in southeastern Spain. Knipper et al.&nbsp;(2020) analyzed stable carbon (δ¹³C) and nitrogen (δ¹⁵N) isotope values from human and animal bone collagen and charred cereal grains to investigate diet, crop cultivation, and animal husbandry. The usable human dataset includes <strong>48 individuals from La Bastida and 21 from Gatas</strong>.</p>
+</section>
+<section id="assignment" class="level2">
+<h2 class="anchored" data-anchor-id="assignment">Assignment</h2>
+<p>Using the provided human isotope dataset, conduct a <strong>descriptive statistical comparison of δ¹³C and δ¹⁵N values from La Bastida and Gatas</strong>. The objective is to apply the measures of <strong>central tendency and dispersion</strong> introduced in Week 4 to a substantive archaeological problem. Use descriptive statistics to characterize both the typical values and the variability within each archaeological sample before interpreting differences between the two sites.</p>
+<p>For each isotope and site, calculate the <strong>mean and median</strong> as measures of central tendency and the <strong>standard deviation, interquartile range (IQR), minimum, maximum, and range</strong> as measures of dispersion. Use appropriate <strong>histograms and boxplots</strong> to examine the shape and spread of the distributions, possible outliers, and the degree of overlap between the two sites. Based on these results, briefly describe the principal similarities and differences between La Bastida and Gatas.</p>
+<p>Your interpretation should maintain a clear distinction between <strong>statistical description and archaeological explanation</strong>. In particular, differences in human isotope values should not be treated as direct evidence of differences in diet. Knipper et al.&nbsp;(2020) demonstrate that variation in cereal and animal isotope baselines and farming practices can contribute to differences in human isotope values; when these factors are considered, the two populations may have had broadly similar dietary compositions. Your task is therefore to establish <strong>what the observed distributions show before considering why those patterns may exist</strong>.</p>
+</section>
+<section id="inspect-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="inspect-the-data">1. Inspect the data</h2>
+<p>Load the dataset and inspect its structure before calculating any statistics.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -270,38 +286,91 @@ $ chronology      &lt;chr&gt; "?", "3", "3", "3", NA, "3", "3", "2", "2", "3", "
 $ social_category &lt;chr&gt; "5", "5", "3 – 4", "5", "4", "4", "5", "3", "3", "3", …</code></pre>
 </div>
 </div>
-</section>
-<section id="inspect-and-describe" class="level2">
-<h2 class="anchored" data-anchor-id="inspect-and-describe">1. Inspect and describe</h2>
-<ul>
-<li>How many observations are available at each site?</li>
-<li>Calculate mean, median, SD, IQR, minimum, and maximum for <code>d13c</code> and <code>d15n</code> <strong>separately for La Bastida and Gatas</strong>.</li>
-</ul>
+<p>Then determine how many observations are available at each site.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="visualize" class="level2">
-<h2 class="anchored" data-anchor-id="visualize">2. Visualize</h2>
-<p>Create distribution and site-comparison plots for both <code>d13c</code> and <code>d15n</code>. You may use faceting rather than making four separate figures.</p>
+<section id="calculate-descriptive-statistics" class="level2">
+<h2 class="anchored" data-anchor-id="calculate-descriptive-statistics">2. Calculate descriptive statistics</h2>
+<p>For <code>d13c</code> and <code>d15n</code>, separately for La Bastida and Gatas, calculate:</p>
+<ul>
+<li>mean;</li>
+<li>median;</li>
+<li>standard deviation (SD);</li>
+<li>interquartile range (IQR);</li>
+<li>minimum;</li>
+<li>maximum; and</li>
+<li>range.</li>
+</ul>
+<p>Present the results clearly so that the two sites can be compared.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="interpret" class="level2">
-<h2 class="anchored" data-anchor-id="interpret">3. Interpret</h2>
-<p>For each isotope distribution, compare the mean with the median and the SD with the IQR.</p>
-<p>Which measures of center and dispersion best represent the observed distributions? Explain why, referring to distribution shape, spread, and any unusual observations.</p>
+<section id="visualize-the-distributions" class="level2">
+<h2 class="anchored" data-anchor-id="visualize-the-distributions">3. Visualize the distributions</h2>
+<p>Create appropriate <strong>histograms and boxplots</strong> for both <code>d13c</code> and <code>d15n</code>.</p>
+<p>Use the plots to examine:</p>
+<ul>
+<li>distribution shape;</li>
+<li>spread;</li>
+<li>possible outliers; and</li>
+<li>the degree of overlap between La Bastida and Gatas.</li>
+</ul>
+<p>You may use faceting where appropriate.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
-<section id="final-interpretation" class="level2">
-<h2 class="anchored" data-anchor-id="final-interpretation">Final interpretation</h2>
-<p>Answer the following questions in complete sentences:</p>
+<section id="describe-and-interpret-the-results" class="level2">
+<h2 class="anchored" data-anchor-id="describe-and-interpret-the-results">4. Describe and interpret the results</h2>
+<p>For each isotope distribution:</p>
+<ul>
+<li>compare the mean with the median;</li>
+<li>compare the SD with the IQR;</li>
+<li>describe the shape and spread of the distribution;</li>
+<li>note any unusual observations or possible outliers;</li>
+<li>describe the degree of overlap between the two sites; and</li>
+<li>summarize the principal similarities and differences between La Bastida and Gatas.</li>
+</ul>
+<p>Then provide a concise archaeological interpretation that distinguishes clearly between <strong>what the distributions show</strong> and <strong>why those patterns may exist</strong>.</p>
+<section id="final-interpretation-guidance" class="level3">
+<h3 class="anchored" data-anchor-id="final-interpretation-guidance">Final interpretation guidance</h3>
+<p>Use the following questions to help structure your concise interpretation:</p>
 <ol type="1">
 <li>What is the unit of analysis?</li>
 <li>What descriptive statistical result matters most?</li>
 <li>What archaeological or anthropological interpretation is consistent with the observed distributions?</li>
 <li>What claim do these descriptive data alone <strong>not</strong> support?</li>
 </ol>
+<div class="callout callout-style-default callout-important callout-titled" title="Statistical scope">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Statistical scope
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This assignment is limited to <strong>descriptive statistics</strong>. No inferential statistical tests are required.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="submission" class="level2">
+<h2 class="anchored" data-anchor-id="submission">Submission</h2>
+<p>Submit <strong>both</strong> of the following files:</p>
+<ol type="1">
+<li>Completed Quarto source file (<code>.qmd</code>)</li>
+<li>Rendered HTML file (<code>.html</code>)</li>
+</ol>
+<p>The report should present the required descriptive statistics, visualizations, and a concise interpretation. Before submitting, restart R and render the complete document from a clean session to make sure that all code runs and all output is reproducible.</p>
+</section>
+<section id="reference" class="level2">
+<h2 class="anchored" data-anchor-id="reference">Reference</h2>
+<p>Knipper, C., Rihuete-Herrada, C., Voltas, J., Held, P., Lull, V., Micó, R., Risch, R., &amp; Alt, K. W. (2020). Reconstructing Bronze Age diets and farming strategies at the early Bronze Age sites of La Bastida and Gatas (southeast Iberia) using stable isotope analysis. <em>PLOS ONE, 15</em>(3), e0229398. https://doi.org/10.1371/journal.pone.0229398</p>
 
 
 </section>
