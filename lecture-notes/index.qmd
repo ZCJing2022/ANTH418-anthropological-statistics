@@ -16,7 +16,7 @@ The Wednesday Study Guides and practice materials are available separately under
 
 [Open Week 1 Introduction](https://canvas.ubc.ca/courses/190813/files/48077965?module_item_id=9753622)
 
----
+------------------------------------------------------------------------
 
 ## Week 2 — Using R, RStudio, and Quarto
 
@@ -26,7 +26,7 @@ The Wednesday Study Guides and practice materials are available separately under
 
 [Open Week 2 Study Guide](../weeks/week02.qmd)
 
----
+------------------------------------------------------------------------
 
 ## Week 3 — Variables, Measurement, and Research Design
 
@@ -34,7 +34,9 @@ The Wednesday Study Guides and practice materials are available separately under
 
 [Open Week 3 Measurement and Research Design](https://canvas.ubc.ca/courses/190813/files/48283716?module_item_id=9777077)
 
----
+[Open Week 3 Study Guide](../weeks/week03.qmd)
+
+------------------------------------------------------------------------
 
 ## Week 4
 
@@ -42,61 +44,61 @@ The Wednesday Study Guides and practice materials are available separately under
 
 Lecture notes will be posted on Canvas.
 
----
+------------------------------------------------------------------------
 
 ## Week 5
 
 Lecture notes will be posted on Canvas.
 
----
+------------------------------------------------------------------------
 
 ## Week 6
 
 Lecture notes will be posted on Canvas.
 
----
+------------------------------------------------------------------------
 
 ## Week 7
 
 Lecture notes will be posted on Canvas.
 
----
+------------------------------------------------------------------------
 
 ## Week 8
 
 Lecture notes will be posted on Canvas.
 
----
+------------------------------------------------------------------------
 
 ## Week 9
 
 Lecture notes will be posted on Canvas.
 
----
+------------------------------------------------------------------------
 
 ## Week 10
 
 Lecture notes will be posted on Canvas.
 
----
+------------------------------------------------------------------------
 
 ## Week 11
 
 Lecture notes will be posted on Canvas.
 
----
+------------------------------------------------------------------------
 
 ## Week 12
 
 Lecture notes will be posted on Canvas.
 
----
+------------------------------------------------------------------------
 
 ## Week 13
 
 Lecture notes will be posted on Canvas.
 
----
+------------------------------------------------------------------------
 
 ## Week 14
 
