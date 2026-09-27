@@ -10,8 +10,10 @@ project:
     - weeks/week02.qmd
     - weeks/week03.qmd
     - weeks/week04.qmd
+    - weeks/week05.qmd
     - assignments/index.qmd
     - assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.qmd
+    - assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.qmd
     - readings/index.qmd
     - resources/*.qmd
 
@@ -44,6 +46,9 @@ website:
 
           - href: weeks/week04.qmd
             text: "Week 4 — Central Tendency & Dispersion"
+            
+          - href: weeks/week05.qmd
+            text: "Week 5 — EDA & Visualization"
 
       - href: assignments/index.qmd
         text: Assignments

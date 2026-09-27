@@ -1,0 +1,417 @@
+---
+title: "Week 5 — Exploratory Data Analysis and Visualization"
+subtitle: "Looking directly at data before formal inference"
+date: "2026-10-05"
+---
+
+<div class="week-meta">
+**Class meetings:** 5 & 7 October 2026<br>
+**Focus:** exploratory data analysis · visualization · distributions · comparison<br>
+**Case study:** Kinbank global kinship terminology data<br>
+**Assessment:** Assignment 2 — Visualizing Kinship Diversity with Kinbank
+</div>
+
+
+## Overview
+
+This week is about learning to **look at data before making formal claims about it**.
+
+Exploratory Data Analysis (EDA) uses summaries and especially graphics to expose empirical structure: common patterns, unusual observations, possible relationships, and questions worth pursuing. Visualization is therefore not decoration added after analysis. It is part of analysis.
+
+The anthropological case study is **Kinbank**, a global comparative database of kinship terminology. Its standardized genealogical framework makes cross-linguistic differences systematically comparable (Passmore et al. 2023). Kinbank also illustrates an important caution: languages may share historical relationships, so cross-cultural observations are not necessarily independent (Passmore and Jordan 2020).
+
+::: {.callout-note title="The Week 5 principle"}
+**Look first. Model second. Infer carefully.**
+
+Use graphics to expose empirical structure before trying to explain why that structure exists. **Description is not inference, but inference without description is blind.**
+:::
+
+## Questions
+
+- What is exploratory data analysis, and how does it differ from confirmatory analysis?
+- Why can numerical summaries alone fail to describe a dataset?
+- How do measurement scales guide the choice of graphic?
+- How do marks and visual channels turn variables into visible patterns?
+- What do bar charts, histograms, density plots, boxplots, scatterplots, and facets reveal?
+- How can ordering, bin width, colour, and faceting change what we see?
+- Why is comparison central to effective visualization?
+- How does Kinbank make culturally specific kin terminologies comparable?
+- Why does shared ancestry complicate cross-cultural comparison?
+- How do we separate exploratory description from inference?
+
+## Learning objectives
+
+By the end of Week 5, you should be able to:
+
+1. explain the purpose of **EDA** and distinguish exploration from confirmation;
+2. explain why visualization is an analytical tool;
+3. match graphical forms to variable measurement scales;
+4. describe the grammar of graphics in terms of data, aesthetics, geoms, stats, scales, facets, coordinates, and themes;
+5. explain why some visual channels support more accurate comparisons than others;
+6. use bar charts and dot plots for categorical variables;
+7. use histograms, density plots, jitter plots, and boxplots for numerical distributions;
+8. explain how histogram bin width changes apparent structure;
+9. use scatterplots to explore co-variation;
+10. compare distributions across groups and use faceting effectively;
+11. explain graphical integrity and unnecessary visual clutter;
+12. describe Kinbank's comparative data architecture; and
+13. distinguish descriptive patterns from explanations requiring additional evidence.
+
+## This week's two-class sequence
+
+### Class 1 — How visualization makes structure visible
+
+We begin with exploration versus confirmation, Anscombe's quartet, visual perception, graphical integrity, and the grammar of graphics. We then connect measurement scales to graphical forms and examine categorical and continuous distributions.
+
+### Class 2 — Comparison, Kinbank, and anthropological interpretation
+
+We move to relationships, grouped distributions, faceting, high-dimensional EDA, and three comparison strategies: **juxtaposition, superposition, and explicit encoding**. Kinbank then shows how comparative anthropological data are standardized, visualized, and interpreted.
+
+## 1. Exploratory and confirmatory analysis
+
+EDA asks **what might be going on?** It discovers patterns, generates hypotheses, and identifies unusual observations. Confirmatory analysis asks whether a specified formal claim is supported.
+
+Anscombe's quartet shows why looking matters: datasets can have the same means, correlation, and fitted regression line while displaying very different structures. A numerical summary can therefore be correct and still be an inadequate description.
+
+## 2. Visualization is part of analysis
+
+A graphic is a designed representation. The analyst decides which variables to show, which marks represent observations, how variables are encoded, how categories are ordered, whether observations are aggregated, how bins are defined, and whether groups are layered or separated.
+
+Effective graphics should make empirical structure easier to judge rather than harder.
+
+### Graphical integrity
+
+Two practical principles from the lecture are:
+
+- **Maximize data ink.**
+- **Minimize chartjunk.**
+
+The point is not to make every graphic visually bare. The point is to ensure that design serves the evidence rather than competing with it.
+
+## 3. Visual perception
+
+Some visual channels are easier to compare accurately than others.
+
+| Visual channel | Useful for |
+|---|---|
+| **Spatial position** | continuous and ordered values |
+| **Length / height** | quantitative comparison |
+| **Hue** | discrete groups |
+| **Luminance** | ordered magnitude |
+| **Shape** | a small number of groups |
+| **Area** | magnitude, but often judged less accurately |
+
+This helps explain why aligned bar lengths are usually easier to compare than pie-chart angles or areas.
+
+## 4. The grammar of graphics
+
+`ggplot2` builds plots from explicit components:
+
+1. **Data + aesthetics (`aes`)**
+2. **Geoms**
+3. **Stats**
+4. **Scales**
+5. **Facets**
+6. **Coordinates**
+7. **Theme**
+
+```r
+ggplot(data, aes(x = variable)) +
+  geom_histogram()
+```
+
+The key question is: **How is each variable being made visible?**
+
+## 5. Chart choice begins with measurement scale
+
+| Measurement scale | Useful summaries | Common exploratory graphics |
+|---|---|---|
+| **Nominal** | mode; frequency; proportion | bar chart; dot plot |
+| **Ordinal** | median; percentiles; IQR | ordered bar; percentile display |
+| **Interval / ratio** | mean/median; SD; variance; IQR; MAD | histogram; density; boxplot |
+
+Before plotting, ask:
+
+1. What does one row represent?
+2. What variable am I examining?
+3. What is its measurement scale?
+4. What comparison do I want to make?
+5. Which graphic makes that comparison easiest?
+
+## 6. Categorical variables
+
+For nominal variables, begin with frequencies or proportions.
+
+```r
+ggplot(data, aes(x = category)) +
+  geom_bar()
+```
+
+When categories have no natural order, sorting by frequency can reveal dominant and rare categories. Horizontal bars can help with long labels. Dot plots can reduce clutter when many categories must be compared.
+
+Pie charts are usually less effective for precise comparison because angles and areas are harder to compare than aligned lengths.
+
+## 7. Continuous variables
+
+When examining a numerical distribution, look for **location, spread, shape, clusters, gaps, and unusual observations**.
+
+### Strip or jitter plots
+
+These preserve raw observations and can reveal clusters and gaps.
+
+### Histograms
+
+Histograms divide a numerical variable into bins.
+
+```r
+ggplot(data, aes(x = value)) +
+  geom_histogram(binwidth = 5)
+```
+
+**Bin width changes the story.** Bins that are too wide can erase structure; bins that are too narrow can make random fluctuations look important. Trying several plausible bin widths is part of EDA.
+
+### Density plots
+
+Density plots provide a smoothed view of distribution shape.
+
+### Boxplots
+
+Boxplots emphasize the median and interquartile range. They are compact and useful for group comparison, but they can hide raw distribution shape, including bimodality.
+
+::: {.callout-important title="No single plot shows everything"}
+A jitter plot shows raw observations, a histogram emphasizes binned shape, a density plot emphasizes smoothed shape, and a boxplot emphasizes robust location and spread. Compare views rather than treating one representation as definitive.
+:::
+
+## 8. Relationships and group comparisons
+
+### Numerical × numerical
+
+Scatterplots make co-variation visible.
+
+```r
+ggplot(data, aes(x = x_variable, y = y_variable)) +
+  geom_point()
+```
+
+Ask whether the relationship is linear, curved, clustered, dominated by unusual observations, or obscured by overplotting. The lecture introduces LOESS/GAM smoothing and, for large datasets, alpha blending, hexagonal binning, two-dimensional binning, and contour density.
+
+### Categorical × continuous
+
+Do not compare only a single point estimate when distributions differ in shape.
+
+```r
+ggplot(data, aes(x = group, y = value)) +
+  geom_boxplot()
+```
+
+Boxplots compare medians and spreads; violin plots add density shape; ridgeline plots can help when many groups must be compared.
+
+## 9. Graphics gain power through comparison
+
+The lecture emphasizes three strategies.
+
+### Juxtaposition
+
+Place related graphics side by side, including small multiples and facets.
+
+```r
+ggplot(data, aes(x = value)) +
+  geom_histogram() +
+  facet_wrap(~ group)
+```
+
+### Superposition
+
+Layer groups in the same coordinate space.
+
+### Explicit encoding
+
+Show departure from a baseline or expectation:
+
+\[
+\text{residual} = \text{observed} - \text{expected}
+\]
+
+The exploratory sequence is:
+
+1. **Expose patterns** with raw graphics.
+2. **Model expectations** as a baseline.
+3. **Show deviations** from that expectation.
+
+## 10. High-dimensional EDA
+
+When variables multiply, pairwise inspection becomes difficult. The lecture introduces scatterplot matrices, cluster heatmaps, and **principal component analysis (PCA)**.
+
+PCA reduces many variables to a smaller number of components. Plotting PC1 and PC2 can reveal major dimensions of variation, while biplots can show observations together with loading vectors. Here the purpose is exploratory: reduce complexity enough to generate visual hypotheses.
+
+## 11. Kinbank: making kinship terminology analyzable
+
+Kinbank contains **210,903 kin terms from 1,229 spoken and signed languages** (Passmore et al. 2023). Its methodological importance lies in its data architecture.
+
+### Etic grids reveal emic categories
+
+English categories such as *aunt*, *uncle*, or *cousin* cannot simply be treated as universal. Kinbank instead uses an **etic genealogical grid** of standardized genealogical positions. Language-specific kin terms are mapped onto those positions.
+
+Researchers can then examine which positions a language **merges under one term** and which it **splits into different terms**.
+
+The etic grid is a comparative framework, not a claim that culturally meaningful **emic** categories are identical across languages.
+
+::: {.callout-note title="EDA begins with data architecture"}
+Before interpreting a plot, ask what has been counted, how observations were standardized, what one row represents, and what comparisons the database makes possible.
+:::
+
+## 12. Kinbank as visual evidence
+
+The lecture uses two examples from Passmore et al. (2023).
+
+### Parent-term phonology
+
+Density distributions make recurrent cross-linguistic sound patterns visible, including nasal consonants in mother terms and stop consonants in father terms.
+
+### Kinship typology and phylogeny
+
+The second example introduces **non-independence**. Languages can resemble one another because they share ancestry. Treating every society or language as an independent observation can therefore be misleading.
+
+Passmore and Jordan (2020) show that shared ancestry structures variation in kinship terminologies across language families. This is a version of **Galton's Problem**.
+
+For Assignment 2, the practical lesson is:
+
+**Describe the visible pattern, but do not leap from a visual association to a causal explanation.**
+
+## 13. A practical ANTH418 EDA workflow
+
+### Step 1 — Inspect and clean the data
+
+```r
+glimpse(data)
+names(data)
+dim(data)
+```
+
+Check variable meanings, missing values, category labels, and the unit of observation.
+
+### Step 2 — Plot univariate distributions
+
+Use bar charts for categories; histograms or density plots for numerical shape; jitter plots for raw observations; and boxplots for compact robust summaries.
+
+### Step 3 — Explore co-variation
+
+Use scatterplots for two numerical variables and grouped or faceted distributions when one variable is categorical.
+
+### Step 4 — Compare explicitly
+
+Use facets, layers, or departures from a baseline. Choose the comparison design before interpreting the pattern.
+
+### Step 5 — Separate description from inference
+
+First state what the visualization shows. Then ask what additional evidence would be needed to explain it.
+
+The workflow is iterative. A plot may reveal a coding problem, missingness, an unexpected subgroup, or a better question and send you back to an earlier step.
+
+## 14. Assignment 2 — Visualizing Kinship Diversity with Kinbank
+
+Assignment 2 asks you to use the provided Kinbank teaching dataset to conduct an **exploratory data analysis of variation in kinship terminology**.
+
+The assignment applies the central Week 5 skills:
+
+- inspect the dataset and identify its observations and variables;
+- use **bar charts, histograms, boxplots, and faceted plots** where appropriate;
+- treat visualizations as analytical tools rather than final decoration;
+- compare alternative views of the same data;
+- describe principal patterns, differences, and unusual observations;
+- explain what a graphic reveals and what it may conceal;
+- recognize possible historical non-independence among languages; and
+- **explore and describe before attempting to explain**.
+
+**No inferential statistical tests are required.**
+
+## Practice
+
+### Exercise 1 — Inspect before plotting
+
+For the Kinbank teaching dataset, identify the unit of observation, variable types, missing values, and variables useful for comparison.
+
+### Exercise 2 — Compare two representations
+
+Create two appropriate visualizations of the same variable. Write 2–3 sentences explaining what each representation makes easier to see and what it hides.
+
+### Exercise 3 — Facet a comparison
+
+Create a faceted plot for a meaningful grouping variable. Ask whether groups differ in location, spread, shape, or unusual observations. Describe only what is visible.
+
+### Exercise 4 — Description versus explanation
+
+For one pattern, write:
+
+1. one sentence of **description**;
+2. one possible **hypothesis** that could explain it; and
+3. one sentence explaining why the visualization alone does not test that hypothesis.
+
+## Readings
+
+### Required: Beecham
+
+**Chapter 3, Visualization Fundamentals (pp. 41–71)** and **Chapter 4, Exploratory Data Analysis (pp. 73–96)**.
+
+Focus on effective data graphics, grammar of graphics, marks and visual channels, chart choice, continuous and categorical distributions, comparison, and the role of models as exploratory baselines.
+
+### Required: Passmore et al.
+
+Read Kinbank as both an anthropological study and a lesson in **data architecture**. Focus on how the standardized etic genealogical framework makes cross-linguistic comparison possible, the database's scale, and the examples showing structured variation.
+
+### Required: Thulin
+
+Focus on EDA as **question asking**, visual exploration, identifying unusual observations, and generating hypotheses. Review distribution graphics, grouped comparisons, and multivariate visualization insofar as they reinforce the lecture.
+
+### Wickham, Çetinkaya-Rundel, and Grolemund
+
+Use the visualization material as the practical `ggplot2` companion: aesthetic mappings, geoms, layers, distributions, relationships, and facets.
+
+### Supplementary readings
+
+The supplementary readings deepen themes already present in the lecture. Tukey provides the foundational exploratory perspective; Tufte develops graphical integrity; Cumming emphasizes location, spread, shape, and the danger of relying on one picture; Peng and Downey reinforce iterative exploratory workflows; Castro provides broader visualization context; and Passmore and Jordan (2020) provides the key caution about phylogenetic non-independence.
+
+## Week 5 checklist
+
+- [ ] I can explain EDA in plain language.
+- [ ] I can distinguish exploratory from confirmatory analysis.
+- [ ] I can explain the lesson of Anscombe's quartet.
+- [ ] I can choose a chart from a variable's measurement scale and analytical purpose.
+- [ ] I can explain aesthetics, geoms, and facets.
+- [ ] I can construct and interpret a bar chart.
+- [ ] I can explain how bin width affects a histogram.
+- [ ] I can interpret the median and IQR in a boxplot.
+- [ ] I can explain what a scatterplot can reveal.
+- [ ] I can use facets for comparison.
+- [ ] I can explain juxtaposition, superposition, and explicit encoding.
+- [ ] I can describe the logic of Kinbank's etic genealogical grid.
+- [ ] I can explain why related languages are not independent observations.
+- [ ] I can distinguish a descriptive pattern from a causal explanation.
+- [ ] I know that Assignment 2 requires no inferential test.
+
+## Takeaways
+
+1. **EDA is analytical, not decorative.**
+2. **Numerical summaries can conceal structure; always look at the data.**
+3. **Chart choice follows measurement scale and analytical purpose.**
+4. **Different graphics reveal different properties of the same distribution.**
+5. **Comparison gives graphics analytical power.**
+6. **Good visualization makes evidence easier to judge.**
+7. **Kinbank demonstrates that data architecture determines what cross-cultural comparison becomes possible.**
+8. **Cross-cultural observations may be historically related rather than independent.**
+9. **Description comes before explanation.**
+10. **Look first. Model second. Infer carefully.**
+
+## References
+
+Beecham, Roger. 2026. *Visualization for Social Data Science*. CRC Press, Milton. Chapters 3–4.
+
+Passmore, Sam, et al. 2023. “Kinbank: A Global Database of Kinship Terminology.” *PLOS ONE* 18(5): e0283218.
+
+Passmore, Sam, and Fiona M. Jordan. 2020. “No Universals in the Cultural Evolution of Kinship Terminology.” *Evolutionary Human Sciences* 2: e42.
+
+Thulin, Måns. 2025. *Modern Statistics with R: From Wrangling and Exploring Data to Inference and Predictive Modelling*. Chapman and Hall/CRC, New York. Chapter 4.
+
+Tukey, John W. 1977. *Exploratory Data Analysis*. Addison-Wesley.
+
+Wickham, Hadley, Mine Çetinkaya-Rundel, and Garrett Grolemund. 2023. *R for Data Science: Import, Tidy, Transform, Visualize, and Model Data*. O’Reilly.

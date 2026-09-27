@@ -34,7 +34,7 @@ Students may browse the materials online or download the complete assignment pac
 
 **Case study:** Cross-linguistic variation in kinship terminology using Kinbank
 
-[View Assignment 2 materials](assignment02_kinbank_visualization/)
+[Open Assignment 2](assignment02_kinbank_visualization/assignment02_kinbank_visualization.qmd)
 
 [Download complete Assignment 2 package](../downloads/assignments/ANTH418_assignment02_kinbank_visualization.zip)
 

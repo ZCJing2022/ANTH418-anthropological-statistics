@@ -49,81 +49,242 @@
     "text": "website: title: “ANTH418: Anthropological Statistics”\nnavbar: background: light left: - href: index.qmd text: Home\n  - href: syllabus.qmd\n    text: Syllabus\n\n  - text: Study Guides\n    menu:\n      - href: weeks/week02.qmd\n        text: \"Week 2 — R, RStudio & Quarto\"\n\n  - href: assignments/index.qmd\n    text: Assignments\n\n  - href: resources/index.qmd\n    text: Resources\nsearch: true page-navigation: true back-to-top-navigation: true\n\n\n\n Back to top"
   },
   {
-    "objectID": "assignments/index.html",
-    "href": "assignments/index.html",
-    "title": "Assignments",
+    "objectID": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html",
+    "href": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html",
+    "title": "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas",
     "section": "",
-    "text": "The ten ANTH418 assignments use published archaeological and anthropological datasets.\nEach assignment package contains:\nStudents may browse the materials online or download the complete assignment package as a ZIP file."
+    "text": "NoteBefore you begin\n\n\n\nRead the Week 4 Study Guide before starting this assignment.\nThe Study Guide explains the required concepts, visualization strategy, and R workflow for mean, median, standard deviation, IQR, minimum, maximum, range, histograms, and boxplots."
   },
   {
-    "objectID": "assignments/index.html#assignment-1-describing-human-isotope-variation",
-    "href": "assignments/index.html#assignment-1-describing-human-isotope-variation",
-    "title": "Assignments",
-    "section": "Assignment 1 — Describing Human Isotope Variation",
-    "text": "Assignment 1 — Describing Human Isotope Variation\nStatistical method: Descriptive statistics\nCase study: Bronze Age diet and farming at La Bastida and Gatas\nOpen Assignment 1\nDownload complete Assignment 1 package"
+    "objectID": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#research-question",
+    "href": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#research-question",
+    "title": "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas",
+    "section": "Research question",
+    "text": "Research question\nHow should the human stable-isotope distributions at La Bastida and Gatas be described, and what do different measures of center and dispersion reveal?"
   },
   {
-    "objectID": "assignments/index.html#assignment-2-visualizing-kinship-diversity-with-kinbank",
-    "href": "assignments/index.html#assignment-2-visualizing-kinship-diversity-with-kinbank",
-    "title": "Assignments",
-    "section": "Assignment 2 — Visualizing Kinship Diversity with Kinbank",
-    "text": "Assignment 2 — Visualizing Kinship Diversity with Kinbank\nStatistical method: Exploratory data analysis and visualization\nCase study: Cross-linguistic variation in kinship terminology using Kinbank\nView Assignment 2 materials\nDownload complete Assignment 2 package"
+    "objectID": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#case-study",
+    "href": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#case-study",
+    "title": "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas",
+    "section": "Case Study",
+    "text": "Case Study\nLa Bastida and Gatas were settlements of the El Argar society (ca. 2200–1550 BCE) in southeastern Spain. Knipper et al. (2020) analyzed stable carbon (δ¹³C) and nitrogen (δ¹⁵N) isotope values from human and animal bone collagen and charred cereal grains to investigate diet, crop cultivation, and animal husbandry. The usable human dataset includes 48 individuals from La Bastida and 21 from Gatas."
   },
   {
-    "objectID": "assignments/index.html#assignment-3-missing-data-in-the-seshat-moralizing-gods-debate",
-    "href": "assignments/index.html#assignment-3-missing-data-in-the-seshat-moralizing-gods-debate",
-    "title": "Assignments",
-    "section": "Assignment 3 — Missing Data in the Seshat Moralizing Gods Debate",
-    "text": "Assignment 3 — Missing Data in the Seshat Moralizing Gods Debate\nStatistical method: Missing-data analysis and sensitivity analysis\nCase study: Treatment of missing observations in the Seshat moralizing-gods debate\nView Assignment 3 materials\nDownload complete Assignment 3 package"
+    "objectID": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#assignment",
+    "href": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#assignment",
+    "title": "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas",
+    "section": "Assignment",
+    "text": "Assignment\nUsing the provided human isotope dataset, conduct a descriptive statistical comparison of δ¹³C and δ¹⁵N values from La Bastida and Gatas. The objective is to apply the measures of central tendency and dispersion introduced in Week 4 to a substantive archaeological problem. Use descriptive statistics to characterize both the typical values and the variability within each archaeological sample before interpreting differences between the two sites.\nFor each isotope and site, calculate the mean and median as measures of central tendency and the standard deviation, interquartile range (IQR), minimum, maximum, and range as measures of dispersion. Use appropriate histograms and boxplots to examine the shape and spread of the distributions, possible outliers, and the degree of overlap between the two sites. Based on these results, briefly describe the principal similarities and differences between La Bastida and Gatas.\nYour interpretation should maintain a clear distinction between statistical description and archaeological explanation. In particular, differences in human isotope values should not be treated as direct evidence of differences in diet. Knipper et al. (2020) demonstrate that variation in cereal and animal isotope baselines and farming practices can contribute to differences in human isotope values; when these factors are considered, the two populations may have had broadly similar dietary compositions. Your task is therefore to establish what the observed distributions show before considering why those patterns may exist."
   },
   {
-    "objectID": "assignments/index.html#assignment-4-sampling-archaeological-radiocarbon-data",
-    "href": "assignments/index.html#assignment-4-sampling-archaeological-radiocarbon-data",
-    "title": "Assignments",
-    "section": "Assignment 4 — Sampling Archaeological Radiocarbon Data",
-    "text": "Assignment 4 — Sampling Archaeological Radiocarbon Data\nStatistical method: Sampling distributions, precision, and sampling bias\nCase study: Southern California archaeological radiocarbon determinations from p3k14c\nView Assignment 4 materials\nDownload complete Assignment 4 package"
+    "objectID": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#inspect-the-data",
+    "href": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#inspect-the-data",
+    "title": "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas",
+    "section": "1. Inspect the data",
+    "text": "1. Inspect the data\nLoad the dataset and inspect its structure before calculating any statistics.\n\nlibrary(tidyverse)\n\ndat &lt;- read_csv(\"data/knipper2020_humans.csv\", show_col_types = FALSE)\n\nglimpse(dat)\n\nRows: 69\nColumns: 10\n$ source_row_id   &lt;dbl&gt; 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 1…\n$ grave_no        &lt;chr&gt; \"BA 01\", \"BA 02\", \"BAS 4\", \"BA 05\", \"BA 06/1\", \"BA 06/…\n$ sample          &lt;chr&gt; \"Costa\", \"Costa\", \"Phalanx media manus\", \"Costa\", \"Cos…\n$ site            &lt;chr&gt; \"La Bastida\", \"La Bastida\", \"La Bastida\", \"La Bastida\"…\n$ d13c            &lt;dbl&gt; -19.20070, -18.25818, -19.04190, -18.36669, -19.09329,…\n$ d15n            &lt;dbl&gt; 10.393354, 13.892656, 10.870000, 12.522246, 10.848756,…\n$ sex             &lt;chr&gt; \"nd\", \"nd\", \"Male ?\", \"nd\", \"Male\", \"nd\", \"nd\", \"Male\"…\n$ age_category    &lt;chr&gt; \"Infans I\", \"Infans I\", \"Adult\", \"Infans I\", \"Young ad…\n$ chronology      &lt;chr&gt; \"?\", \"3\", \"3\", \"3\", NA, \"3\", \"3\", \"2\", \"2\", \"3\", \"3\", …\n$ social_category &lt;chr&gt; \"5\", \"5\", \"3 – 4\", \"5\", \"4\", \"4\", \"5\", \"3\", \"3\", \"3\", …\n\n\nThen determine how many observations are available at each site.\n\n# Your code"
   },
   {
-    "objectID": "assignments/index.html#assignment-5-statistical-inference-at-teotihuacan",
-    "href": "assignments/index.html#assignment-5-statistical-inference-at-teotihuacan",
-    "title": "Assignments",
-    "section": "Assignment 5 — Statistical Inference at Teotihuacan",
-    "text": "Assignment 5 — Statistical Inference at Teotihuacan\nStatistical method: Bootstrap confidence intervals and permutation tests\nCase study: Leporid stable-isotope variation at Teotihuacan\nView Assignment 5 materials\nDownload complete Assignment 5 package"
+    "objectID": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#calculate-descriptive-statistics",
+    "href": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#calculate-descriptive-statistics",
+    "title": "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas",
+    "section": "2. Calculate descriptive statistics",
+    "text": "2. Calculate descriptive statistics\nFor d13c and d15n, separately for La Bastida and Gatas, calculate:\n\nmean;\nmedian;\nstandard deviation (SD);\ninterquartile range (IQR);\nminimum;\nmaximum; and\nrange.\n\nPresent the results clearly so that the two sites can be compared.\n\n# Your code"
   },
   {
-    "objectID": "assignments/index.html#assignment-6-comparing-groups-at-tell-tweini",
-    "href": "assignments/index.html#assignment-6-comparing-groups-at-tell-tweini",
-    "title": "Assignments",
-    "section": "Assignment 6 — Comparing Groups at Tell Tweini",
-    "text": "Assignment 6 — Comparing Groups at Tell Tweini\nStatistical method: Independent-samples t-test and effect size\nCase study: Middle Bronze Age and Late Bronze Age plant-isotope comparison at Tell Tweini\nView Assignment 6 materials\nDownload complete Assignment 6 package"
+    "objectID": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#visualize-the-distributions",
+    "href": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#visualize-the-distributions",
+    "title": "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas",
+    "section": "3. Visualize the distributions",
+    "text": "3. Visualize the distributions\nCreate appropriate histograms and boxplots for both d13c and d15n.\nUse the plots to examine:\n\ndistribution shape;\nspread;\npossible outliers; and\nthe degree of overlap between La Bastida and Gatas.\n\nYou may use faceting where appropriate.\n\n# Your code"
   },
   {
-    "objectID": "assignments/index.html#assignment-7-raw-material-variation-in-highland-lesotho",
-    "href": "assignments/index.html#assignment-7-raw-material-variation-in-highland-lesotho",
-    "title": "Assignments",
-    "section": "Assignment 7 — Raw-Material Variation in Highland Lesotho",
-    "text": "Assignment 7 — Raw-Material Variation in Highland Lesotho\nStatistical method: Chi-square test of independence\nCase study: Lithic raw-material composition across archaeological layers in Highland Lesotho\nView Assignment 7 materials\nDownload complete Assignment 7 package"
+    "objectID": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#describe-and-interpret-the-results",
+    "href": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#describe-and-interpret-the-results",
+    "title": "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas",
+    "section": "4. Describe and interpret the results",
+    "text": "4. Describe and interpret the results\nFor each isotope distribution:\n\ncompare the mean with the median;\ncompare the SD with the IQR;\ndescribe the shape and spread of the distribution;\nnote any unusual observations or possible outliers;\ndescribe the degree of overlap between the two sites; and\nsummarize the principal similarities and differences between La Bastida and Gatas.\n\nThen provide a concise archaeological interpretation that distinguishes clearly between what the distributions show and why those patterns may exist.\n\nFinal interpretation guidance\nUse the following questions to help structure your concise interpretation:\n\nWhat is the unit of analysis?\nWhat descriptive statistical result matters most?\nWhat archaeological or anthropological interpretation is consistent with the observed distributions?\nWhat claim do these descriptive data alone not support?\n\n\n\n\n\n\n\nImportantStatistical scope\n\n\n\nThis assignment is limited to descriptive statistics. No inferential statistical tests are required."
   },
   {
-    "objectID": "assignments/index.html#assignment-8-comparing-iron-geochemistry-with-anova",
-    "href": "assignments/index.html#assignment-8-comparing-iron-geochemistry-with-anova",
-    "title": "Assignments",
-    "section": "Assignment 8 — Comparing Iron Geochemistry with ANOVA",
-    "text": "Assignment 8 — Comparing Iron Geochemistry with ANOVA\nStatistical method: One-way ANOVA, post-hoc comparison, and robustness checks\nCase study: Roman-period iron-smelting geochemistry\nView Assignment 8 materials\nDownload complete Assignment 8 package"
+    "objectID": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#submission",
+    "href": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#submission",
+    "title": "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas",
+    "section": "Submission",
+    "text": "Submission\nSubmit both of the following files:\n\nCompleted Quarto source file (.qmd)\nRendered HTML file (.html)\n\nThe report should present the required descriptive statistics, visualizations, and a concise interpretation. Before submitting, restart R and render the complete document from a clean session to make sure that all code runs and all output is reproducible."
   },
   {
-    "objectID": "assignments/index.html#assignment-9-hawaiian-kukui-isotopes",
-    "href": "assignments/index.html#assignment-9-hawaiian-kukui-isotopes",
-    "title": "Assignments",
-    "section": "Assignment 9 — Hawaiian Kukui Isotopes",
-    "text": "Assignment 9 — Hawaiian Kukui Isotopes\nStatistical method: Correlation and measures of association\nCase study: Kukui δ13C variation along elevation and rainfall gradients in Hawaiʻi\nView Assignment 9 materials\nDownload complete Assignment 9 package"
+    "objectID": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#reference",
+    "href": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#reference",
+    "title": "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas",
+    "section": "Reference",
+    "text": "Reference\nKnipper, C., Rihuete-Herrada, C., Voltas, J., Held, P., Lull, V., Micó, R., Risch, R., & Alt, K. W. (2020). Reconstructing Bronze Age diets and farming strategies at the early Bronze Age sites of La Bastida and Gatas (southeast Iberia) using stable isotope analysis. PLOS ONE, 15(3), e0229398. https://doi.org/10.1371/journal.pone.0229398"
   },
   {
-    "objectID": "assignments/index.html#assignment-10-predicting-flake-mass",
-    "href": "assignments/index.html#assignment-10-predicting-flake-mass",
-    "title": "Assignments",
-    "section": "Assignment 10 — Predicting Flake Mass",
-    "text": "Assignment 10 — Predicting Flake Mass\nStatistical method: Simple linear regression\nCase study: Predicting experimental flake mass from mean flake thickness\nView Assignment 10 materials\nDownload complete Assignment 10 package"
+    "objectID": "weeks/week05.html",
+    "href": "weeks/week05.html",
+    "title": "Week 5 — Exploratory Data Analysis and Visualization",
+    "section": "",
+    "text": "Class meetings: 5 & 7 October 2026 Focus: exploratory data analysis · visualization · distributions · comparison Case study: Kinbank global kinship terminology data Assessment: Assignment 2 — Visualizing Kinship Diversity with Kinbank"
+  },
+  {
+    "objectID": "weeks/week05.html#overview",
+    "href": "weeks/week05.html#overview",
+    "title": "Week 5 — Exploratory Data Analysis and Visualization",
+    "section": "Overview",
+    "text": "Overview\nThis week is about learning to look at data before making formal claims about it.\nExploratory Data Analysis (EDA) uses summaries and especially graphics to expose empirical structure: common patterns, unusual observations, possible relationships, and questions worth pursuing. Visualization is therefore not decoration added after analysis. It is part of analysis.\nThe anthropological case study is Kinbank, a global comparative database of kinship terminology. Its standardized genealogical framework makes cross-linguistic differences systematically comparable (Passmore et al. 2023). Kinbank also illustrates an important caution: languages may share historical relationships, so cross-cultural observations are not necessarily independent (Passmore and Jordan 2020).\n\n\n\n\n\n\nNoteThe Week 5 principle\n\n\n\nLook first. Model second. Infer carefully.\nUse graphics to expose empirical structure before trying to explain why that structure exists. Description is not inference, but inference without description is blind."
+  },
+  {
+    "objectID": "weeks/week05.html#questions",
+    "href": "weeks/week05.html#questions",
+    "title": "Week 5 — Exploratory Data Analysis and Visualization",
+    "section": "Questions",
+    "text": "Questions\n\nWhat is exploratory data analysis, and how does it differ from confirmatory analysis?\nWhy can numerical summaries alone fail to describe a dataset?\nHow do measurement scales guide the choice of graphic?\nHow do marks and visual channels turn variables into visible patterns?\nWhat do bar charts, histograms, density plots, boxplots, scatterplots, and facets reveal?\nHow can ordering, bin width, colour, and faceting change what we see?\nWhy is comparison central to effective visualization?\nHow does Kinbank make culturally specific kin terminologies comparable?\nWhy does shared ancestry complicate cross-cultural comparison?\nHow do we separate exploratory description from inference?"
+  },
+  {
+    "objectID": "weeks/week05.html#learning-objectives",
+    "href": "weeks/week05.html#learning-objectives",
+    "title": "Week 5 — Exploratory Data Analysis and Visualization",
+    "section": "Learning objectives",
+    "text": "Learning objectives\nBy the end of Week 5, you should be able to:\n\nexplain the purpose of EDA and distinguish exploration from confirmation;\nexplain why visualization is an analytical tool;\nmatch graphical forms to variable measurement scales;\ndescribe the grammar of graphics in terms of data, aesthetics, geoms, stats, scales, facets, coordinates, and themes;\nexplain why some visual channels support more accurate comparisons than others;\nuse bar charts and dot plots for categorical variables;\nuse histograms, density plots, jitter plots, and boxplots for numerical distributions;\nexplain how histogram bin width changes apparent structure;\nuse scatterplots to explore co-variation;\ncompare distributions across groups and use faceting effectively;\nexplain graphical integrity and unnecessary visual clutter;\ndescribe Kinbank’s comparative data architecture; and\ndistinguish descriptive patterns from explanations requiring additional evidence."
+  },
+  {
+    "objectID": "weeks/week05.html#this-weeks-two-class-sequence",
+    "href": "weeks/week05.html#this-weeks-two-class-sequence",
+    "title": "Week 5 — Exploratory Data Analysis and Visualization",
+    "section": "This week’s two-class sequence",
+    "text": "This week’s two-class sequence\n\nClass 1 — How visualization makes structure visible\nWe begin with exploration versus confirmation, Anscombe’s quartet, visual perception, graphical integrity, and the grammar of graphics. We then connect measurement scales to graphical forms and examine categorical and continuous distributions.\n\n\nClass 2 — Comparison, Kinbank, and anthropological interpretation\nWe move to relationships, grouped distributions, faceting, high-dimensional EDA, and three comparison strategies: juxtaposition, superposition, and explicit encoding. Kinbank then shows how comparative anthropological data are standardized, visualized, and interpreted."
+  },
+  {
+    "objectID": "weeks/week05.html#exploratory-and-confirmatory-analysis",
+    "href": "weeks/week05.html#exploratory-and-confirmatory-analysis",
+    "title": "Week 5 — Exploratory Data Analysis and Visualization",
+    "section": "1. Exploratory and confirmatory analysis",
+    "text": "1. Exploratory and confirmatory analysis\nEDA asks what might be going on? It discovers patterns, generates hypotheses, and identifies unusual observations. Confirmatory analysis asks whether a specified formal claim is supported.\nAnscombe’s quartet shows why looking matters: datasets can have the same means, correlation, and fitted regression line while displaying very different structures. A numerical summary can therefore be correct and still be an inadequate description."
+  },
+  {
+    "objectID": "weeks/week05.html#visualization-is-part-of-analysis",
+    "href": "weeks/week05.html#visualization-is-part-of-analysis",
+    "title": "Week 5 — Exploratory Data Analysis and Visualization",
+    "section": "2. Visualization is part of analysis",
+    "text": "2. Visualization is part of analysis\nA graphic is a designed representation. The analyst decides which variables to show, which marks represent observations, how variables are encoded, how categories are ordered, whether observations are aggregated, how bins are defined, and whether groups are layered or separated.\nEffective graphics should make empirical structure easier to judge rather than harder.\n\nGraphical integrity\nTwo practical principles from the lecture are:\n\nMaximize data ink.\nMinimize chartjunk.\n\nThe point is not to make every graphic visually bare. The point is to ensure that design serves the evidence rather than competing with it."
+  },
+  {
+    "objectID": "weeks/week05.html#visual-perception",
+    "href": "weeks/week05.html#visual-perception",
+    "title": "Week 5 — Exploratory Data Analysis and Visualization",
+    "section": "3. Visual perception",
+    "text": "3. Visual perception\nSome visual channels are easier to compare accurately than others.\n\n\n\nVisual channel\nUseful for\n\n\n\n\nSpatial position\ncontinuous and ordered values\n\n\nLength / height\nquantitative comparison\n\n\nHue\ndiscrete groups\n\n\nLuminance\nordered magnitude\n\n\nShape\na small number of groups\n\n\nArea\nmagnitude, but often judged less accurately\n\n\n\nThis helps explain why aligned bar lengths are usually easier to compare than pie-chart angles or areas."
+  },
+  {
+    "objectID": "weeks/week05.html#the-grammar-of-graphics",
+    "href": "weeks/week05.html#the-grammar-of-graphics",
+    "title": "Week 5 — Exploratory Data Analysis and Visualization",
+    "section": "4. The grammar of graphics",
+    "text": "4. The grammar of graphics\nggplot2 builds plots from explicit components:\n\nData + aesthetics (aes)\nGeoms\nStats\nScales\nFacets\nCoordinates\nTheme\n\nggplot(data, aes(x = variable)) +\n  geom_histogram()\nThe key question is: How is each variable being made visible?"
+  },
+  {
+    "objectID": "weeks/week05.html#chart-choice-begins-with-measurement-scale",
+    "href": "weeks/week05.html#chart-choice-begins-with-measurement-scale",
+    "title": "Week 5 — Exploratory Data Analysis and Visualization",
+    "section": "5. Chart choice begins with measurement scale",
+    "text": "5. Chart choice begins with measurement scale\n\n\n\n\n\n\n\n\nMeasurement scale\nUseful summaries\nCommon exploratory graphics\n\n\n\n\nNominal\nmode; frequency; proportion\nbar chart; dot plot\n\n\nOrdinal\nmedian; percentiles; IQR\nordered bar; percentile display\n\n\nInterval / ratio\nmean/median; SD; variance; IQR; MAD\nhistogram; density; boxplot\n\n\n\nBefore plotting, ask:\n\nWhat does one row represent?\nWhat variable am I examining?\nWhat is its measurement scale?\nWhat comparison do I want to make?\nWhich graphic makes that comparison easiest?"
+  },
+  {
+    "objectID": "weeks/week05.html#categorical-variables",
+    "href": "weeks/week05.html#categorical-variables",
+    "title": "Week 5 — Exploratory Data Analysis and Visualization",
+    "section": "6. Categorical variables",
+    "text": "6. Categorical variables\nFor nominal variables, begin with frequencies or proportions.\nggplot(data, aes(x = category)) +\n  geom_bar()\nWhen categories have no natural order, sorting by frequency can reveal dominant and rare categories. Horizontal bars can help with long labels. Dot plots can reduce clutter when many categories must be compared.\nPie charts are usually less effective for precise comparison because angles and areas are harder to compare than aligned lengths."
+  },
+  {
+    "objectID": "weeks/week05.html#continuous-variables",
+    "href": "weeks/week05.html#continuous-variables",
+    "title": "Week 5 — Exploratory Data Analysis and Visualization",
+    "section": "7. Continuous variables",
+    "text": "7. Continuous variables\nWhen examining a numerical distribution, look for location, spread, shape, clusters, gaps, and unusual observations.\n\nStrip or jitter plots\nThese preserve raw observations and can reveal clusters and gaps.\n\n\nHistograms\nHistograms divide a numerical variable into bins.\nggplot(data, aes(x = value)) +\n  geom_histogram(binwidth = 5)\nBin width changes the story. Bins that are too wide can erase structure; bins that are too narrow can make random fluctuations look important. Trying several plausible bin widths is part of EDA.\n\n\nDensity plots\nDensity plots provide a smoothed view of distribution shape.\n\n\nBoxplots\nBoxplots emphasize the median and interquartile range. They are compact and useful for group comparison, but they can hide raw distribution shape, including bimodality.\n\n\n\n\n\n\nImportantNo single plot shows everything\n\n\n\nA jitter plot shows raw observations, a histogram emphasizes binned shape, a density plot emphasizes smoothed shape, and a boxplot emphasizes robust location and spread. Compare views rather than treating one representation as definitive."
+  },
+  {
+    "objectID": "weeks/week05.html#relationships-and-group-comparisons",
+    "href": "weeks/week05.html#relationships-and-group-comparisons",
+    "title": "Week 5 — Exploratory Data Analysis and Visualization",
+    "section": "8. Relationships and group comparisons",
+    "text": "8. Relationships and group comparisons\n\nNumerical × numerical\nScatterplots make co-variation visible.\nggplot(data, aes(x = x_variable, y = y_variable)) +\n  geom_point()\nAsk whether the relationship is linear, curved, clustered, dominated by unusual observations, or obscured by overplotting. The lecture introduces LOESS/GAM smoothing and, for large datasets, alpha blending, hexagonal binning, two-dimensional binning, and contour density.\n\n\nCategorical × continuous\nDo not compare only a single point estimate when distributions differ in shape.\nggplot(data, aes(x = group, y = value)) +\n  geom_boxplot()\nBoxplots compare medians and spreads; violin plots add density shape; ridgeline plots can help when many groups must be compared."
+  },
+  {
+    "objectID": "weeks/week05.html#graphics-gain-power-through-comparison",
+    "href": "weeks/week05.html#graphics-gain-power-through-comparison",
+    "title": "Week 5 — Exploratory Data Analysis and Visualization",
+    "section": "9. Graphics gain power through comparison",
+    "text": "9. Graphics gain power through comparison\nThe lecture emphasizes three strategies.\n\nJuxtaposition\nPlace related graphics side by side, including small multiples and facets.\nggplot(data, aes(x = value)) +\n  geom_histogram() +\n  facet_wrap(~ group)\n\n\nSuperposition\nLayer groups in the same coordinate space.\n\n\nExplicit encoding\nShow departure from a baseline or expectation:\n[ = - ]\nThe exploratory sequence is:\n\nExpose patterns with raw graphics.\nModel expectations as a baseline.\nShow deviations from that expectation."
+  },
+  {
+    "objectID": "weeks/week05.html#high-dimensional-eda",
+    "href": "weeks/week05.html#high-dimensional-eda",
+    "title": "Week 5 — Exploratory Data Analysis and Visualization",
+    "section": "10. High-dimensional EDA",
+    "text": "10. High-dimensional EDA\nWhen variables multiply, pairwise inspection becomes difficult. The lecture introduces scatterplot matrices, cluster heatmaps, and principal component analysis (PCA).\nPCA reduces many variables to a smaller number of components. Plotting PC1 and PC2 can reveal major dimensions of variation, while biplots can show observations together with loading vectors. Here the purpose is exploratory: reduce complexity enough to generate visual hypotheses."
+  },
+  {
+    "objectID": "weeks/week05.html#kinbank-making-kinship-terminology-analyzable",
+    "href": "weeks/week05.html#kinbank-making-kinship-terminology-analyzable",
+    "title": "Week 5 — Exploratory Data Analysis and Visualization",
+    "section": "11. Kinbank: making kinship terminology analyzable",
+    "text": "11. Kinbank: making kinship terminology analyzable\nKinbank contains 210,903 kin terms from 1,229 spoken and signed languages (Passmore et al. 2023). Its methodological importance lies in its data architecture.\n\nEtic grids reveal emic categories\nEnglish categories such as aunt, uncle, or cousin cannot simply be treated as universal. Kinbank instead uses an etic genealogical grid of standardized genealogical positions. Language-specific kin terms are mapped onto those positions.\nResearchers can then examine which positions a language merges under one term and which it splits into different terms.\nThe etic grid is a comparative framework, not a claim that culturally meaningful emic categories are identical across languages.\n\n\n\n\n\n\nNoteEDA begins with data architecture\n\n\n\nBefore interpreting a plot, ask what has been counted, how observations were standardized, what one row represents, and what comparisons the database makes possible."
+  },
+  {
+    "objectID": "weeks/week05.html#kinbank-as-visual-evidence",
+    "href": "weeks/week05.html#kinbank-as-visual-evidence",
+    "title": "Week 5 — Exploratory Data Analysis and Visualization",
+    "section": "12. Kinbank as visual evidence",
+    "text": "12. Kinbank as visual evidence\nThe lecture uses two examples from Passmore et al. (2023).\n\nParent-term phonology\nDensity distributions make recurrent cross-linguistic sound patterns visible, including nasal consonants in mother terms and stop consonants in father terms.\n\n\nKinship typology and phylogeny\nThe second example introduces non-independence. Languages can resemble one another because they share ancestry. Treating every society or language as an independent observation can therefore be misleading.\nPassmore and Jordan (2020) show that shared ancestry structures variation in kinship terminologies across language families. This is a version of Galton’s Problem.\nFor Assignment 2, the practical lesson is:\nDescribe the visible pattern, but do not leap from a visual association to a causal explanation."
+  },
+  {
+    "objectID": "weeks/week05.html#a-practical-anth418-eda-workflow",
+    "href": "weeks/week05.html#a-practical-anth418-eda-workflow",
+    "title": "Week 5 — Exploratory Data Analysis and Visualization",
+    "section": "13. A practical ANTH418 EDA workflow",
+    "text": "13. A practical ANTH418 EDA workflow\n\nStep 1 — Inspect and clean the data\nglimpse(data)\nnames(data)\ndim(data)\nCheck variable meanings, missing values, category labels, and the unit of observation.\n\n\nStep 2 — Plot univariate distributions\nUse bar charts for categories; histograms or density plots for numerical shape; jitter plots for raw observations; and boxplots for compact robust summaries.\n\n\nStep 3 — Explore co-variation\nUse scatterplots for two numerical variables and grouped or faceted distributions when one variable is categorical.\n\n\nStep 4 — Compare explicitly\nUse facets, layers, or departures from a baseline. Choose the comparison design before interpreting the pattern.\n\n\nStep 5 — Separate description from inference\nFirst state what the visualization shows. Then ask what additional evidence would be needed to explain it.\nThe workflow is iterative. A plot may reveal a coding problem, missingness, an unexpected subgroup, or a better question and send you back to an earlier step."
+  },
+  {
+    "objectID": "weeks/week05.html#assignment-2-visualizing-kinship-diversity-with-kinbank",
+    "href": "weeks/week05.html#assignment-2-visualizing-kinship-diversity-with-kinbank",
+    "title": "Week 5 — Exploratory Data Analysis and Visualization",
+    "section": "14. Assignment 2 — Visualizing Kinship Diversity with Kinbank",
+    "text": "14. Assignment 2 — Visualizing Kinship Diversity with Kinbank\nAssignment 2 asks you to use the provided Kinbank teaching dataset to conduct an exploratory data analysis of variation in kinship terminology.\nThe assignment applies the central Week 5 skills:\n\ninspect the dataset and identify its observations and variables;\nuse bar charts, histograms, boxplots, and faceted plots where appropriate;\ntreat visualizations as analytical tools rather than final decoration;\ncompare alternative views of the same data;\ndescribe principal patterns, differences, and unusual observations;\nexplain what a graphic reveals and what it may conceal;\nrecognize possible historical non-independence among languages; and\nexplore and describe before attempting to explain.\n\nNo inferential statistical tests are required."
+  },
+  {
+    "objectID": "weeks/week05.html#practice",
+    "href": "weeks/week05.html#practice",
+    "title": "Week 5 — Exploratory Data Analysis and Visualization",
+    "section": "Practice",
+    "text": "Practice\n\nExercise 1 — Inspect before plotting\nFor the Kinbank teaching dataset, identify the unit of observation, variable types, missing values, and variables useful for comparison.\n\n\nExercise 2 — Compare two representations\nCreate two appropriate visualizations of the same variable. Write 2–3 sentences explaining what each representation makes easier to see and what it hides.\n\n\nExercise 3 — Facet a comparison\nCreate a faceted plot for a meaningful grouping variable. Ask whether groups differ in location, spread, shape, or unusual observations. Describe only what is visible.\n\n\nExercise 4 — Description versus explanation\nFor one pattern, write:\n\none sentence of description;\none possible hypothesis that could explain it; and\none sentence explaining why the visualization alone does not test that hypothesis."
+  },
+  {
+    "objectID": "weeks/week05.html#readings",
+    "href": "weeks/week05.html#readings",
+    "title": "Week 5 — Exploratory Data Analysis and Visualization",
+    "section": "Readings",
+    "text": "Readings\n\nRequired: Beecham\nChapter 3, Visualization Fundamentals (pp. 41–71) and Chapter 4, Exploratory Data Analysis (pp. 73–96).\nFocus on effective data graphics, grammar of graphics, marks and visual channels, chart choice, continuous and categorical distributions, comparison, and the role of models as exploratory baselines.\n\n\nRequired: Passmore et al.\nRead Kinbank as both an anthropological study and a lesson in data architecture. Focus on how the standardized etic genealogical framework makes cross-linguistic comparison possible, the database’s scale, and the examples showing structured variation.\n\n\nRequired: Thulin\nFocus on EDA as question asking, visual exploration, identifying unusual observations, and generating hypotheses. Review distribution graphics, grouped comparisons, and multivariate visualization insofar as they reinforce the lecture.\n\n\nWickham, Çetinkaya-Rundel, and Grolemund\nUse the visualization material as the practical ggplot2 companion: aesthetic mappings, geoms, layers, distributions, relationships, and facets.\n\n\nSupplementary readings\nThe supplementary readings deepen themes already present in the lecture. Tukey provides the foundational exploratory perspective; Tufte develops graphical integrity; Cumming emphasizes location, spread, shape, and the danger of relying on one picture; Peng and Downey reinforce iterative exploratory workflows; Castro provides broader visualization context; and Passmore and Jordan (2020) provides the key caution about phylogenetic non-independence."
+  },
+  {
+    "objectID": "weeks/week05.html#week-5-checklist",
+    "href": "weeks/week05.html#week-5-checklist",
+    "title": "Week 5 — Exploratory Data Analysis and Visualization",
+    "section": "Week 5 checklist",
+    "text": "Week 5 checklist\n\nI can explain EDA in plain language.\nI can distinguish exploratory from confirmatory analysis.\nI can explain the lesson of Anscombe’s quartet.\nI can choose a chart from a variable’s measurement scale and analytical purpose.\nI can explain aesthetics, geoms, and facets.\nI can construct and interpret a bar chart.\nI can explain how bin width affects a histogram.\nI can interpret the median and IQR in a boxplot.\nI can explain what a scatterplot can reveal.\nI can use facets for comparison.\nI can explain juxtaposition, superposition, and explicit encoding.\nI can describe the logic of Kinbank’s etic genealogical grid.\nI can explain why related languages are not independent observations.\nI can distinguish a descriptive pattern from a causal explanation.\nI know that Assignment 2 requires no inferential test."
+  },
+  {
+    "objectID": "weeks/week05.html#takeaways",
+    "href": "weeks/week05.html#takeaways",
+    "title": "Week 5 — Exploratory Data Analysis and Visualization",
+    "section": "Takeaways",
+    "text": "Takeaways\n\nEDA is analytical, not decorative.\nNumerical summaries can conceal structure; always look at the data.\nChart choice follows measurement scale and analytical purpose.\nDifferent graphics reveal different properties of the same distribution.\nComparison gives graphics analytical power.\nGood visualization makes evidence easier to judge.\nKinbank demonstrates that data architecture determines what cross-cultural comparison becomes possible.\nCross-cultural observations may be historically related rather than independent.\nDescription comes before explanation.\nLook first. Model second. Infer carefully."
+  },
+  {
+    "objectID": "weeks/week05.html#references",
+    "href": "weeks/week05.html#references",
+    "title": "Week 5 — Exploratory Data Analysis and Visualization",
+    "section": "References",
+    "text": "References\nBeecham, Roger. 2026. Visualization for Social Data Science. CRC Press, Milton. Chapters 3–4.\nPassmore, Sam, et al. 2023. “Kinbank: A Global Database of Kinship Terminology.” PLOS ONE 18(5): e0283218.\nPassmore, Sam, and Fiona M. Jordan. 2020. “No Universals in the Cultural Evolution of Kinship Terminology.” Evolutionary Human Sciences 2: e42.\nThulin, Måns. 2025. Modern Statistics with R: From Wrangling and Exploring Data to Inference and Predictive Modelling. Chapman and Hall/CRC, New York. Chapter 4.\nTukey, John W. 1977. Exploratory Data Analysis. Addison-Wesley.\nWickham, Hadley, Mine Çetinkaya-Rundel, and Garrett Grolemund. 2023. R for Data Science: Import, Tidy, Transform, Visualize, and Model Data. O’Reilly."
   },
   {
     "objectID": "weeks/week03.html",
@@ -1638,53 +1799,165 @@
     "text": "Knipper et al. — Assignment 1 archaeological context\nRead Knipper et al. not simply to find the “answer” but to understand why the assignment separates description from explanation (Knipper et al. 2020).\nFocus on:\n\nthe El Argar archaeological setting;\nLa Bastida and Gatas;\nhuman, animal, and cereal isotope sampling;\ntrophic-chain logic;\nenvironmental influences on isotope values;\nmanuring and animal-feeding effects;\nage-related isotope effects; and\nthe conclusion that higher human values at La Bastida do not necessarily mean different average dietary composition.\n\n\n\n\n\n\n\nNoteAbout the uploaded Llull 2020 file\n\n\n\nThe file supplied under the name “Llull 2020 Protoapennine vs. Subapennine…” contains the Knipper et al. (2020) La Bastida–Gatas article rather than a distinct Llull ceramic study.\nFor that reason, this Study Guide does not attribute any independent argument to that mislabeled attachment. If the intended Llull article is supplied later, its ceramic case study can be added to this section."
   },
   {
-    "objectID": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html",
-    "href": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html",
-    "title": "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas",
+    "objectID": "assignments/index.html",
+    "href": "assignments/index.html",
+    "title": "Assignments",
     "section": "",
-    "text": "NoteBefore you begin\n\n\n\nRead the Week 4 Study Guide before starting this assignment.\nThe Study Guide explains the required concepts, visualization strategy, and R workflow for mean, median, standard deviation, IQR, minimum, maximum, range, histograms, and boxplots."
+    "text": "The ten ANTH418 assignments use published archaeological and anthropological datasets.\nEach assignment package contains:\nStudents may browse the materials online or download the complete assignment package as a ZIP file."
   },
   {
-    "objectID": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#research-question",
-    "href": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#research-question",
-    "title": "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas",
+    "objectID": "assignments/index.html#assignment-1-describing-human-isotope-variation",
+    "href": "assignments/index.html#assignment-1-describing-human-isotope-variation",
+    "title": "Assignments",
+    "section": "Assignment 1 — Describing Human Isotope Variation",
+    "text": "Assignment 1 — Describing Human Isotope Variation\nStatistical method: Descriptive statistics\nCase study: Bronze Age diet and farming at La Bastida and Gatas\nOpen Assignment 1\nDownload complete Assignment 1 package"
+  },
+  {
+    "objectID": "assignments/index.html#assignment-2-visualizing-kinship-diversity-with-kinbank",
+    "href": "assignments/index.html#assignment-2-visualizing-kinship-diversity-with-kinbank",
+    "title": "Assignments",
+    "section": "Assignment 2 — Visualizing Kinship Diversity with Kinbank",
+    "text": "Assignment 2 — Visualizing Kinship Diversity with Kinbank\nStatistical method: Exploratory data analysis and visualization\nCase study: Cross-linguistic variation in kinship terminology using Kinbank\nOpen Assignment 2\nDownload complete Assignment 2 package"
+  },
+  {
+    "objectID": "assignments/index.html#assignment-3-missing-data-in-the-seshat-moralizing-gods-debate",
+    "href": "assignments/index.html#assignment-3-missing-data-in-the-seshat-moralizing-gods-debate",
+    "title": "Assignments",
+    "section": "Assignment 3 — Missing Data in the Seshat Moralizing Gods Debate",
+    "text": "Assignment 3 — Missing Data in the Seshat Moralizing Gods Debate\nStatistical method: Missing-data analysis and sensitivity analysis\nCase study: Treatment of missing observations in the Seshat moralizing-gods debate\nView Assignment 3 materials\nDownload complete Assignment 3 package"
+  },
+  {
+    "objectID": "assignments/index.html#assignment-4-sampling-archaeological-radiocarbon-data",
+    "href": "assignments/index.html#assignment-4-sampling-archaeological-radiocarbon-data",
+    "title": "Assignments",
+    "section": "Assignment 4 — Sampling Archaeological Radiocarbon Data",
+    "text": "Assignment 4 — Sampling Archaeological Radiocarbon Data\nStatistical method: Sampling distributions, precision, and sampling bias\nCase study: Southern California archaeological radiocarbon determinations from p3k14c\nView Assignment 4 materials\nDownload complete Assignment 4 package"
+  },
+  {
+    "objectID": "assignments/index.html#assignment-5-statistical-inference-at-teotihuacan",
+    "href": "assignments/index.html#assignment-5-statistical-inference-at-teotihuacan",
+    "title": "Assignments",
+    "section": "Assignment 5 — Statistical Inference at Teotihuacan",
+    "text": "Assignment 5 — Statistical Inference at Teotihuacan\nStatistical method: Bootstrap confidence intervals and permutation tests\nCase study: Leporid stable-isotope variation at Teotihuacan\nView Assignment 5 materials\nDownload complete Assignment 5 package"
+  },
+  {
+    "objectID": "assignments/index.html#assignment-6-comparing-groups-at-tell-tweini",
+    "href": "assignments/index.html#assignment-6-comparing-groups-at-tell-tweini",
+    "title": "Assignments",
+    "section": "Assignment 6 — Comparing Groups at Tell Tweini",
+    "text": "Assignment 6 — Comparing Groups at Tell Tweini\nStatistical method: Independent-samples t-test and effect size\nCase study: Middle Bronze Age and Late Bronze Age plant-isotope comparison at Tell Tweini\nView Assignment 6 materials\nDownload complete Assignment 6 package"
+  },
+  {
+    "objectID": "assignments/index.html#assignment-7-raw-material-variation-in-highland-lesotho",
+    "href": "assignments/index.html#assignment-7-raw-material-variation-in-highland-lesotho",
+    "title": "Assignments",
+    "section": "Assignment 7 — Raw-Material Variation in Highland Lesotho",
+    "text": "Assignment 7 — Raw-Material Variation in Highland Lesotho\nStatistical method: Chi-square test of independence\nCase study: Lithic raw-material composition across archaeological layers in Highland Lesotho\nView Assignment 7 materials\nDownload complete Assignment 7 package"
+  },
+  {
+    "objectID": "assignments/index.html#assignment-8-comparing-iron-geochemistry-with-anova",
+    "href": "assignments/index.html#assignment-8-comparing-iron-geochemistry-with-anova",
+    "title": "Assignments",
+    "section": "Assignment 8 — Comparing Iron Geochemistry with ANOVA",
+    "text": "Assignment 8 — Comparing Iron Geochemistry with ANOVA\nStatistical method: One-way ANOVA, post-hoc comparison, and robustness checks\nCase study: Roman-period iron-smelting geochemistry\nView Assignment 8 materials\nDownload complete Assignment 8 package"
+  },
+  {
+    "objectID": "assignments/index.html#assignment-9-hawaiian-kukui-isotopes",
+    "href": "assignments/index.html#assignment-9-hawaiian-kukui-isotopes",
+    "title": "Assignments",
+    "section": "Assignment 9 — Hawaiian Kukui Isotopes",
+    "text": "Assignment 9 — Hawaiian Kukui Isotopes\nStatistical method: Correlation and measures of association\nCase study: Kukui δ13C variation along elevation and rainfall gradients in Hawaiʻi\nView Assignment 9 materials\nDownload complete Assignment 9 package"
+  },
+  {
+    "objectID": "assignments/index.html#assignment-10-predicting-flake-mass",
+    "href": "assignments/index.html#assignment-10-predicting-flake-mass",
+    "title": "Assignments",
+    "section": "Assignment 10 — Predicting Flake Mass",
+    "text": "Assignment 10 — Predicting Flake Mass\nStatistical method: Simple linear regression\nCase study: Predicting experimental flake mass from mean flake thickness\nView Assignment 10 materials\nDownload complete Assignment 10 package"
+  },
+  {
+    "objectID": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html",
+    "href": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html",
+    "title": "ANTH418 Assignment 2: Visualizing Kinship Diversity with Kinbank",
+    "section": "",
+    "text": "NoteBefore you begin\n\n\n\nRead the Week 5 Study Guide before starting this assignment.\nThe Study Guide explains the required concepts, visualization strategy, and R workflow for exploratory data analysis (EDA), categorical and numerical variables, bar charts, histograms, boxplots, faceting, visual comparison, and the distinction between description and inference."
+  },
+  {
+    "objectID": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#research-question",
+    "href": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#research-question",
+    "title": "ANTH418 Assignment 2: Visualizing Kinship Diversity with Kinbank",
     "section": "Research question",
-    "text": "Research question\nHow should the human stable-isotope distributions at La Bastida and Gatas be described, and what do different measures of center and dispersion reveal?"
+    "text": "Research question\nHow does the number of Kinbank form records linked to languages vary across the teaching dataset, and what do different visualizations reveal about that variation across language families and macroareas?"
   },
   {
-    "objectID": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#case-study",
-    "href": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#case-study",
-    "title": "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas",
+    "objectID": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#case-study",
+    "href": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#case-study",
+    "title": "ANTH418 Assignment 2: Visualizing Kinship Diversity with Kinbank",
     "section": "Case Study",
-    "text": "Case Study\nLa Bastida and Gatas were settlements of the El Argar society (ca. 2200–1550 BCE) in southeastern Spain. Knipper et al. (2020) analyzed stable carbon (δ¹³C) and nitrogen (δ¹⁵N) isotope values from human and animal bone collagen and charred cereal grains to investigate diet, crop cultivation, and animal husbandry. The usable human dataset includes 48 individuals from La Bastida and 21 from Gatas."
+    "text": "Case Study\nKinship terminology—the words people use to classify and refer to relatives—varies considerably across human societies. Kinbank is a global comparative database designed to make this variation available for systematic cross-linguistic comparison (Passmore et al. 2023). Rather than treating English kin categories as universal, Kinbank uses a standardized etic genealogical framework onto which language-specific kin terms can be mapped.\nThe ANTH418 teaching file contains 1,287 languages represented by at least one Kinbank form record in the frozen snapshot used for this course. Each row represents one language. The variable kin_term_count records the number of Kinbank form records linked to that language. The file also contains language-family and macroarea metadata, together with latitude and longitude where available.\nkin_term_count requires careful interpretation. It is a count of form records in the database, not automatically the number of unique kin concepts and not a direct measure of the linguistic complexity of a kinship system. Missing family, macroarea, and coordinate values are retained as source metadata gaps."
   },
   {
-    "objectID": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#inspect-and-describe",
-    "href": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#inspect-and-describe",
-    "title": "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas",
-    "section": "1. Inspect and describe",
-    "text": "1. Inspect and describe\n\nHow many observations are available at each site?\nCalculate mean, median, SD, IQR, minimum, and maximum for d13c and d15n separately for La Bastida and Gatas.\n\n\n# Your code"
+    "objectID": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#assignment",
+    "href": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#assignment",
+    "title": "ANTH418 Assignment 2: Visualizing Kinship Diversity with Kinbank",
+    "section": "Assignment",
+    "text": "Assignment\nUsing the provided Kinbank teaching dataset, conduct an exploratory data analysis (EDA) of variation in kin_term_count. The objective is to use data visualization to discover, compare, and communicate patterns in a comparative anthropological dataset.\nBegin by inspecting the dataset and identifying its unit of analysis, variables, measurement scales, and missing values. Then use appropriate bar charts, histograms, boxplots, and faceted plots to examine how represented languages are distributed across broad categories and how kin_term_count varies within the dataset and across relevant groups.\nUse the visualizations as analytical tools rather than illustrations added after the analysis. Compare alternative views of the same data and consider what each visualization makes visible, what it may conceal, and how graphical choices affect interpretation.\nYour interpretation should maintain a clear distinction between description and explanation. A visible difference among language families or macroareas does not by itself explain why that difference exists. Languages may also share historical relationships and therefore should not automatically be treated as completely independent cultural observations (Passmore and Jordan 2020). Your task is to establish what the teaching data show before considering why those patterns may exist."
   },
   {
-    "objectID": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#visualize",
-    "href": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#visualize",
-    "title": "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas",
-    "section": "2. Visualize",
-    "text": "2. Visualize\nCreate distribution and site-comparison plots for both d13c and d15n. You may use faceting rather than making four separate figures.\n\n# Your code"
+    "objectID": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#inspect-the-data",
+    "href": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#inspect-the-data",
+    "title": "ANTH418 Assignment 2: Visualizing Kinship Diversity with Kinbank",
+    "section": "1. Inspect the data",
+    "text": "1. Inspect the data\nLoad the dataset and inspect its structure before creating any visualizations.\n```{r} library(tidyverse)\ndat &lt;- read_csv(“data/kinbank_teaching.csv”, show_col_types = FALSE)\nglimpse(dat)\nConfirm the number of observations and inspect the variable names.\n\n# Your code\nThen examine missing values in the variables you may use, including family, macroarea, latitude, and longitude.\n{r} # Your code\nBefore continuing, make sure you can answer:\n\nWhat does one row represent?\nWhich variables are categorical?\nWhich variables are numerical?\nWhat exactly does kin_term_count count?\nWhy should a missing family or macroarea value not automatically be treated as a substantive category?"
   },
   {
-    "objectID": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#interpret",
-    "href": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#interpret",
-    "title": "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas",
-    "section": "3. Interpret",
-    "text": "3. Interpret\nFor each isotope distribution, compare the mean with the median and the SD with the IQR.\nWhich measures of center and dispersion best represent the observed distributions? Explain why, referring to distribution shape, spread, and any unusual observations."
+    "objectID": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#explore-categorical-variation",
+    "href": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#explore-categorical-variation",
+    "title": "ANTH418 Assignment 2: Visualizing Kinship Diversity with Kinbank",
+    "section": "2. Explore categorical variation",
+    "text": "2. Explore categorical variation\nBegin with the categorical structure of the teaching dataset.\nCreate an appropriate bar chart showing the number of represented languages by macroarea. Arrange the categories in a way that makes comparison easy.\n{r} # Your code\nThen examine family. Because the dataset may contain many language families, do not attempt to place every family into an unreadable chart. Instead, identify a manageable set of the most frequently represented families and create a bar chart for those families.\n{r} # Your code\nUse these plots to describe:\n\nwhich macroareas contain more or fewer represented languages;\nwhich language families are especially well represented in the teaching dataset; and\nwhat these differences tell you about the composition of the dataset, rather than about the prevalence or importance of kinship systems in the world."
   },
   {
-    "objectID": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#final-interpretation",
-    "href": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#final-interpretation",
-    "title": "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas",
-    "section": "Final interpretation",
-    "text": "Final interpretation\nAnswer the following questions in complete sentences:\n\nWhat is the unit of analysis?\nWhat descriptive statistical result matters most?\nWhat archaeological or anthropological interpretation is consistent with the observed distributions?\nWhat claim do these descriptive data alone not support?"
+    "objectID": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#explore-the-distribution-of-kin_term_count",
+    "href": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#explore-the-distribution-of-kin_term_count",
+    "title": "ANTH418 Assignment 2: Visualizing Kinship Diversity with Kinbank",
+    "section": "3. Explore the distribution of kin_term_count",
+    "text": "3. Explore the distribution of kin_term_count\nCreate a histogram of kin_term_count.\n{r} # Your code\nExamine the distribution for:\n\nlocation;\nspread;\nshape;\nskewness;\ngaps or clusters; and\nunusually high or low observations.\n\nThen create at least one alternative histogram using a different, reasonable bin width.\n{r} # Your code\nCompare the two histograms. Explain briefly what features remain visible in both, what changes when the bin width changes, and which version communicates the main structure more effectively.\nThe purpose is not to find one uniquely “correct” bin width. The purpose is to recognize that graphical choices can change what is visually prominent."
+  },
+  {
+    "objectID": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#compare-alternative-views-of-the-same-distribution",
+    "href": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#compare-alternative-views-of-the-same-distribution",
+    "title": "ANTH418 Assignment 2: Visualizing Kinship Diversity with Kinbank",
+    "section": "4. Compare alternative views of the same distribution",
+    "text": "4. Compare alternative views of the same distribution\nCreate a boxplot of kin_term_count.\n{r} # Your code\nCompare the boxplot with your histogram(s). Discuss:\n\nwhat the boxplot makes especially easy to see;\nwhat information about distribution shape is clearer in the histogram;\nwhether the boxplot identifies observations that appear unusual relative to the middle of the distribution; and\nwhy neither visualization should be treated as a complete representation on its own."
+  },
+  {
+    "objectID": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#compare-kin_term_count-across-groups",
+    "href": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#compare-kin_term_count-across-groups",
+    "title": "ANTH418 Assignment 2: Visualizing Kinship Diversity with Kinbank",
+    "section": "5. Compare kin_term_count across groups",
+    "text": "5. Compare kin_term_count across groups\nChoose a meaningful grouping variable from the teaching dataset and use it to compare distributions of kin_term_count.\nOne appropriate approach is to compare macroareas with boxplots.\n{r} # Your code\nYou may also use faceting to compare distributions across macroareas or across a manageable set of well-represented language families.\n{r} # Your code\nYour comparison should remain readable. If a categorical variable contains too many groups, select a clearly justified subset rather than producing a crowded figure.\nUse your grouped visualization(s) to describe:\n\ndifferences in location;\ndifferences in spread;\ndifferences in distribution shape;\nunusual observations; and\nthe degree of overlap among groups.\n\nDo not interpret a visual difference as evidence that macroarea or language family causes variation in kin_term_count."
+  },
+  {
+    "objectID": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#describe-and-interpret-the-results",
+    "href": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#describe-and-interpret-the-results",
+    "title": "ANTH418 Assignment 2: Visualizing Kinship Diversity with Kinbank",
+    "section": "6. Describe and interpret the results",
+    "text": "6. Describe and interpret the results\nBring the visual evidence together into a concise interpretation.\nYour discussion should:\n\ndescribe the composition of the teaching dataset;\nsummarize the overall distribution of kin_term_count;\nexplain what you learned by comparing different histogram bin widths;\nexplain what the histogram and boxplot each revealed or concealed;\ndescribe the most important group differences visible in your faceted or grouped plots;\nidentify any unusual observations that deserve attention; and\ndistinguish clearly between patterns visible in the teaching data and explanations that would require additional evidence.\n\nRemember that kin_term_count is the number of Kinbank form records linked to a language in this frozen snapshot. A language with a larger value should not automatically be described as having a “more complex” kinship system.\nAlso remember that languages can share historical ancestry. Similarities among related languages may therefore reflect shared history rather than independent cultural responses. This problem of non-independence is important for cross-cultural research, but you are not required to conduct phylogenetic analysis in this assignment.\n\nFinal interpretation guidance\nUse the following questions to help structure your concise interpretation:\n\nWhat is the unit of analysis?\nWhat is the most important pattern revealed by your visualizations?\nWhich graphical comparison was most informative, and why?\nWhat does kin_term_count allow you to describe?\nWhat anthropological claim do these exploratory data alone not support?\nWhy should apparent differences among language families or macroareas be interpreted cautiously?\n\n\n\n\n\n\n\nImportantStatistical scope\n\n\n\nThis assignment is limited to exploratory data analysis and visualization. No inferential statistical tests, phylogenetic models, PCA, or causal analyses are required."
+  },
+  {
+    "objectID": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#submission",
+    "href": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#submission",
+    "title": "ANTH418 Assignment 2: Visualizing Kinship Diversity with Kinbank",
+    "section": "Submission",
+    "text": "Submission\nSubmit both of the following files:\n\nCompleted Quarto source file (.qmd)\nRendered HTML file (.html)\n\nThe report should contain the required visualizations and a concise interpretation of the patterns they reveal. Include only output that contributes directly to the analysis; avoid long unedited console output.\nBefore submitting, restart R and render the complete document from a clean session to make sure that all code runs, all figures appear correctly, and the analysis is reproducible."
+  },
+  {
+    "objectID": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#references",
+    "href": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#references",
+    "title": "ANTH418 Assignment 2: Visualizing Kinship Diversity with Kinbank",
+    "section": "References",
+    "text": "References\nPassmore, S., Barth, W., Greenhill, S. J., Quinn, K., Sheard, C., Argyriou, P., et al. (2023). Kinbank: A global database of kinship terminology. PLOS ONE, 18(5), e0283218. https://doi.org/10.1371/journal.pone.0283218\nPassmore, S., & Jordan, F. M. (2020). No universals in the cultural evolution of kinship terminology. Evolutionary Human Sciences, 2, e42. https://doi.org/10.1017/ehs.2020.41"
   },
   {
     "objectID": "resources/getting-started.html",
@@ -1727,54 +2000,5 @@
     "title": "ANTH418: Anthropological Statistics",
     "section": "",
     "text": "Back to top"
-  },
-  {
-    "objectID": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#assignment",
-    "href": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#assignment",
-    "title": "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas",
-    "section": "Assignment",
-    "text": "Assignment\nUsing the provided human isotope dataset, conduct a descriptive statistical comparison of δ¹³C and δ¹⁵N values from La Bastida and Gatas. The objective is to apply the measures of central tendency and dispersion introduced in Week 4 to a substantive archaeological problem. Use descriptive statistics to characterize both the typical values and the variability within each archaeological sample before interpreting differences between the two sites.\nFor each isotope and site, calculate the mean and median as measures of central tendency and the standard deviation, interquartile range (IQR), minimum, maximum, and range as measures of dispersion. Use appropriate histograms and boxplots to examine the shape and spread of the distributions, possible outliers, and the degree of overlap between the two sites. Based on these results, briefly describe the principal similarities and differences between La Bastida and Gatas.\nYour interpretation should maintain a clear distinction between statistical description and archaeological explanation. In particular, differences in human isotope values should not be treated as direct evidence of differences in diet. Knipper et al. (2020) demonstrate that variation in cereal and animal isotope baselines and farming practices can contribute to differences in human isotope values; when these factors are considered, the two populations may have had broadly similar dietary compositions. Your task is therefore to establish what the observed distributions show before considering why those patterns may exist."
-  },
-  {
-    "objectID": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#inspect-the-data",
-    "href": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#inspect-the-data",
-    "title": "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas",
-    "section": "1. Inspect the data",
-    "text": "1. Inspect the data\nLoad the dataset and inspect its structure before calculating any statistics.\n\nlibrary(tidyverse)\n\ndat &lt;- read_csv(\"data/knipper2020_humans.csv\", show_col_types = FALSE)\n\nglimpse(dat)\n\nRows: 69\nColumns: 10\n$ source_row_id   &lt;dbl&gt; 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 1…\n$ grave_no        &lt;chr&gt; \"BA 01\", \"BA 02\", \"BAS 4\", \"BA 05\", \"BA 06/1\", \"BA 06/…\n$ sample          &lt;chr&gt; \"Costa\", \"Costa\", \"Phalanx media manus\", \"Costa\", \"Cos…\n$ site            &lt;chr&gt; \"La Bastida\", \"La Bastida\", \"La Bastida\", \"La Bastida\"…\n$ d13c            &lt;dbl&gt; -19.20070, -18.25818, -19.04190, -18.36669, -19.09329,…\n$ d15n            &lt;dbl&gt; 10.393354, 13.892656, 10.870000, 12.522246, 10.848756,…\n$ sex             &lt;chr&gt; \"nd\", \"nd\", \"Male ?\", \"nd\", \"Male\", \"nd\", \"nd\", \"Male\"…\n$ age_category    &lt;chr&gt; \"Infans I\", \"Infans I\", \"Adult\", \"Infans I\", \"Young ad…\n$ chronology      &lt;chr&gt; \"?\", \"3\", \"3\", \"3\", NA, \"3\", \"3\", \"2\", \"2\", \"3\", \"3\", …\n$ social_category &lt;chr&gt; \"5\", \"5\", \"3 – 4\", \"5\", \"4\", \"4\", \"5\", \"3\", \"3\", \"3\", …\n\n\nThen determine how many observations are available at each site.\n\n# Your code"
-  },
-  {
-    "objectID": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#calculate-descriptive-statistics",
-    "href": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#calculate-descriptive-statistics",
-    "title": "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas",
-    "section": "2. Calculate descriptive statistics",
-    "text": "2. Calculate descriptive statistics\nFor d13c and d15n, separately for La Bastida and Gatas, calculate:\n\nmean;\nmedian;\nstandard deviation (SD);\ninterquartile range (IQR);\nminimum;\nmaximum; and\nrange.\n\nPresent the results clearly so that the two sites can be compared.\n\n# Your code"
-  },
-  {
-    "objectID": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#visualize-the-distributions",
-    "href": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#visualize-the-distributions",
-    "title": "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas",
-    "section": "3. Visualize the distributions",
-    "text": "3. Visualize the distributions\nCreate appropriate histograms and boxplots for both d13c and d15n.\nUse the plots to examine:\n\ndistribution shape;\nspread;\npossible outliers; and\nthe degree of overlap between La Bastida and Gatas.\n\nYou may use faceting where appropriate.\n\n# Your code"
-  },
-  {
-    "objectID": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#describe-and-interpret-the-results",
-    "href": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#describe-and-interpret-the-results",
-    "title": "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas",
-    "section": "4. Describe and interpret the results",
-    "text": "4. Describe and interpret the results\nFor each isotope distribution:\n\ncompare the mean with the median;\ncompare the SD with the IQR;\ndescribe the shape and spread of the distribution;\nnote any unusual observations or possible outliers;\ndescribe the degree of overlap between the two sites; and\nsummarize the principal similarities and differences between La Bastida and Gatas.\n\nThen provide a concise archaeological interpretation that distinguishes clearly between what the distributions show and why those patterns may exist.\n\nFinal interpretation guidance\nUse the following questions to help structure your concise interpretation:\n\nWhat is the unit of analysis?\nWhat descriptive statistical result matters most?\nWhat archaeological or anthropological interpretation is consistent with the observed distributions?\nWhat claim do these descriptive data alone not support?\n\n\n\n\n\n\n\nImportantStatistical scope\n\n\n\nThis assignment is limited to descriptive statistics. No inferential statistical tests are required."
-  },
-  {
-    "objectID": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#submission",
-    "href": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#submission",
-    "title": "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas",
-    "section": "Submission",
-    "text": "Submission\nSubmit both of the following files:\n\nCompleted Quarto source file (.qmd)\nRendered HTML file (.html)\n\nThe report should present the required descriptive statistics, visualizations, and a concise interpretation. Before submitting, restart R and render the complete document from a clean session to make sure that all code runs and all output is reproducible."
-  },
-  {
-    "objectID": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#reference",
-    "href": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#reference",
-    "title": "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas",
-    "section": "Reference",
-    "text": "Reference\nKnipper, C., Rihuete-Herrada, C., Voltas, J., Held, P., Lull, V., Micó, R., Risch, R., & Alt, K. W. (2020). Reconstructing Bronze Age diets and farming strategies at the early Bronze Age sites of La Bastida and Gatas (southeast Iberia) using stable isotope analysis. PLOS ONE, 15(3), e0229398. https://doi.org/10.1371/journal.pone.0229398"
   }
 ]
