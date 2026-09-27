@@ -49,74 +49,165 @@
     "text": "website: title: “ANTH418: Anthropological Statistics”\nnavbar: background: light left: - href: index.qmd text: Home\n  - href: syllabus.qmd\n    text: Syllabus\n\n  - text: Study Guides\n    menu:\n      - href: weeks/week02.qmd\n        text: \"Week 2 — R, RStudio & Quarto\"\n\n  - href: assignments/index.qmd\n    text: Assignments\n\n  - href: resources/index.qmd\n    text: Resources\nsearch: true page-navigation: true back-to-top-navigation: true\n\n\n\n Back to top"
   },
   {
-    "objectID": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html",
-    "href": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html",
-    "title": "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas",
+    "objectID": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html",
+    "href": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html",
+    "title": "ANTH418 Assignment 2: Visualizing Kinship Diversity with Kinbank",
     "section": "",
-    "text": "NoteBefore you begin\n\n\n\nRead the Week 4 Study Guide before starting this assignment.\nThe Study Guide explains the required concepts, visualization strategy, and R workflow for mean, median, standard deviation, IQR, minimum, maximum, range, histograms, and boxplots."
+    "text": "NoteBefore you begin\n\n\n\nRead the Week 5 Study Guide before starting this assignment.\nThe Study Guide explains the required concepts, visualization strategy, and R workflow for exploratory data analysis (EDA), categorical and numerical variables, bar charts, histograms, boxplots, faceting, visual comparison, and the distinction between description and inference."
   },
   {
-    "objectID": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#research-question",
-    "href": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#research-question",
-    "title": "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas",
+    "objectID": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#research-question",
+    "href": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#research-question",
+    "title": "ANTH418 Assignment 2: Visualizing Kinship Diversity with Kinbank",
     "section": "Research question",
-    "text": "Research question\nHow should the human stable-isotope distributions at La Bastida and Gatas be described, and what do different measures of center and dispersion reveal?"
+    "text": "Research question\nHow does the number of Kinbank form records linked to languages vary across the teaching dataset, and what do different visualizations reveal about that variation across language families and macroareas?"
   },
   {
-    "objectID": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#case-study",
-    "href": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#case-study",
-    "title": "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas",
+    "objectID": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#case-study",
+    "href": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#case-study",
+    "title": "ANTH418 Assignment 2: Visualizing Kinship Diversity with Kinbank",
     "section": "Case Study",
-    "text": "Case Study\nLa Bastida and Gatas were settlements of the El Argar society (ca. 2200–1550 BCE) in southeastern Spain. Knipper et al. (2020) analyzed stable carbon (δ¹³C) and nitrogen (δ¹⁵N) isotope values from human and animal bone collagen and charred cereal grains to investigate diet, crop cultivation, and animal husbandry. The usable human dataset includes 48 individuals from La Bastida and 21 from Gatas."
+    "text": "Case Study\nKinship terminology—the words people use to classify and refer to relatives—varies considerably across human societies. Kinbank is a global comparative database designed to make this variation available for systematic cross-linguistic comparison (Passmore et al. 2023). Rather than treating English kin categories as universal, Kinbank uses a standardized etic genealogical framework onto which language-specific kin terms can be mapped.\nThe ANTH418 teaching file contains 1,287 languages represented by at least one Kinbank form record in the frozen snapshot used for this course. Each row represents one language. The variable kin_term_count records the number of Kinbank form records linked to that language. The file also contains language-family and macroarea metadata, together with latitude and longitude where available.\nkin_term_count requires careful interpretation. It is a count of form records in the database, not automatically the number of unique kin concepts and not a direct measure of the linguistic complexity of a kinship system. Missing family, macroarea, and coordinate values are retained as source metadata gaps."
   },
   {
-    "objectID": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#assignment",
-    "href": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#assignment",
-    "title": "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas",
+    "objectID": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#assignment",
+    "href": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#assignment",
+    "title": "ANTH418 Assignment 2: Visualizing Kinship Diversity with Kinbank",
     "section": "Assignment",
-    "text": "Assignment\nUsing the provided human isotope dataset, conduct a descriptive statistical comparison of δ¹³C and δ¹⁵N values from La Bastida and Gatas. The objective is to apply the measures of central tendency and dispersion introduced in Week 4 to a substantive archaeological problem. Use descriptive statistics to characterize both the typical values and the variability within each archaeological sample before interpreting differences between the two sites.\nFor each isotope and site, calculate the mean and median as measures of central tendency and the standard deviation, interquartile range (IQR), minimum, maximum, and range as measures of dispersion. Use appropriate histograms and boxplots to examine the shape and spread of the distributions, possible outliers, and the degree of overlap between the two sites. Based on these results, briefly describe the principal similarities and differences between La Bastida and Gatas.\nYour interpretation should maintain a clear distinction between statistical description and archaeological explanation. In particular, differences in human isotope values should not be treated as direct evidence of differences in diet. Knipper et al. (2020) demonstrate that variation in cereal and animal isotope baselines and farming practices can contribute to differences in human isotope values; when these factors are considered, the two populations may have had broadly similar dietary compositions. Your task is therefore to establish what the observed distributions show before considering why those patterns may exist."
+    "text": "Assignment\nUsing the provided Kinbank teaching dataset, conduct an exploratory data analysis (EDA) of variation in kin_term_count. The objective is to use data visualization to discover, compare, and communicate patterns in a comparative anthropological dataset.\nBegin by inspecting the dataset and identifying its unit of analysis, variables, measurement scales, and missing values. Then use appropriate bar charts, histograms, boxplots, and faceted plots to examine how represented languages are distributed across broad categories and how kin_term_count varies within the dataset and across relevant groups.\nUse the visualizations as analytical tools rather than illustrations added after the analysis. Compare alternative views of the same data and consider what each visualization makes visible, what it may conceal, and how graphical choices affect interpretation.\nYour interpretation should maintain a clear distinction between description and explanation. A visible difference among language families or macroareas does not by itself explain why that difference exists. Languages may also share historical relationships and therefore should not automatically be treated as completely independent cultural observations (Passmore and Jordan 2020). Your task is to establish what the teaching data show before considering why those patterns may exist."
   },
   {
-    "objectID": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#inspect-the-data",
-    "href": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#inspect-the-data",
-    "title": "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas",
+    "objectID": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#inspect-the-data",
+    "href": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#inspect-the-data",
+    "title": "ANTH418 Assignment 2: Visualizing Kinship Diversity with Kinbank",
     "section": "1. Inspect the data",
-    "text": "1. Inspect the data\nLoad the dataset and inspect its structure before calculating any statistics.\n\nlibrary(tidyverse)\n\ndat &lt;- read_csv(\"data/knipper2020_humans.csv\", show_col_types = FALSE)\n\nglimpse(dat)\n\nRows: 69\nColumns: 10\n$ source_row_id   &lt;dbl&gt; 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 1…\n$ grave_no        &lt;chr&gt; \"BA 01\", \"BA 02\", \"BAS 4\", \"BA 05\", \"BA 06/1\", \"BA 06/…\n$ sample          &lt;chr&gt; \"Costa\", \"Costa\", \"Phalanx media manus\", \"Costa\", \"Cos…\n$ site            &lt;chr&gt; \"La Bastida\", \"La Bastida\", \"La Bastida\", \"La Bastida\"…\n$ d13c            &lt;dbl&gt; -19.20070, -18.25818, -19.04190, -18.36669, -19.09329,…\n$ d15n            &lt;dbl&gt; 10.393354, 13.892656, 10.870000, 12.522246, 10.848756,…\n$ sex             &lt;chr&gt; \"nd\", \"nd\", \"Male ?\", \"nd\", \"Male\", \"nd\", \"nd\", \"Male\"…\n$ age_category    &lt;chr&gt; \"Infans I\", \"Infans I\", \"Adult\", \"Infans I\", \"Young ad…\n$ chronology      &lt;chr&gt; \"?\", \"3\", \"3\", \"3\", NA, \"3\", \"3\", \"2\", \"2\", \"3\", \"3\", …\n$ social_category &lt;chr&gt; \"5\", \"5\", \"3 – 4\", \"5\", \"4\", \"4\", \"5\", \"3\", \"3\", \"3\", …\n\n\nThen determine how many observations are available at each site.\n\n# Your code"
+    "text": "1. Inspect the data\nLoad the dataset and inspect its structure before creating any visualizations.\n```{r} library(tidyverse)\ndat &lt;- read_csv(“data/kinbank_teaching.csv”, show_col_types = FALSE)\nglimpse(dat)\nConfirm the number of observations and inspect the variable names.\n\n# Your code\nThen examine missing values in the variables you may use, including family, macroarea, latitude, and longitude.\n{r} # Your code\nBefore continuing, make sure you can answer:\n\nWhat does one row represent?\nWhich variables are categorical?\nWhich variables are numerical?\nWhat exactly does kin_term_count count?\nWhy should a missing family or macroarea value not automatically be treated as a substantive category?"
   },
   {
-    "objectID": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#calculate-descriptive-statistics",
-    "href": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#calculate-descriptive-statistics",
-    "title": "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas",
-    "section": "2. Calculate descriptive statistics",
-    "text": "2. Calculate descriptive statistics\nFor d13c and d15n, separately for La Bastida and Gatas, calculate:\n\nmean;\nmedian;\nstandard deviation (SD);\ninterquartile range (IQR);\nminimum;\nmaximum; and\nrange.\n\nPresent the results clearly so that the two sites can be compared.\n\n# Your code"
+    "objectID": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#explore-categorical-variation",
+    "href": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#explore-categorical-variation",
+    "title": "ANTH418 Assignment 2: Visualizing Kinship Diversity with Kinbank",
+    "section": "2. Explore categorical variation",
+    "text": "2. Explore categorical variation\nBegin with the categorical structure of the teaching dataset.\nCreate an appropriate bar chart showing the number of represented languages by macroarea. Arrange the categories in a way that makes comparison easy.\n{r} # Your code\nThen examine family. Because the dataset may contain many language families, do not attempt to place every family into an unreadable chart. Instead, identify a manageable set of the most frequently represented families and create a bar chart for those families.\n{r} # Your code\nUse these plots to describe:\n\nwhich macroareas contain more or fewer represented languages;\nwhich language families are especially well represented in the teaching dataset; and\nwhat these differences tell you about the composition of the dataset, rather than about the prevalence or importance of kinship systems in the world."
   },
   {
-    "objectID": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#visualize-the-distributions",
-    "href": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#visualize-the-distributions",
-    "title": "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas",
-    "section": "3. Visualize the distributions",
-    "text": "3. Visualize the distributions\nCreate appropriate histograms and boxplots for both d13c and d15n.\nUse the plots to examine:\n\ndistribution shape;\nspread;\npossible outliers; and\nthe degree of overlap between La Bastida and Gatas.\n\nYou may use faceting where appropriate.\n\n# Your code"
+    "objectID": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#explore-the-distribution-of-kin_term_count",
+    "href": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#explore-the-distribution-of-kin_term_count",
+    "title": "ANTH418 Assignment 2: Visualizing Kinship Diversity with Kinbank",
+    "section": "3. Explore the distribution of kin_term_count",
+    "text": "3. Explore the distribution of kin_term_count\nCreate a histogram of kin_term_count.\n{r} # Your code\nExamine the distribution for:\n\nlocation;\nspread;\nshape;\nskewness;\ngaps or clusters; and\nunusually high or low observations.\n\nThen create at least one alternative histogram using a different, reasonable bin width.\n{r} # Your code\nCompare the two histograms. Explain briefly what features remain visible in both, what changes when the bin width changes, and which version communicates the main structure more effectively.\nThe purpose is not to find one uniquely “correct” bin width. The purpose is to recognize that graphical choices can change what is visually prominent."
   },
   {
-    "objectID": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#describe-and-interpret-the-results",
-    "href": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#describe-and-interpret-the-results",
-    "title": "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas",
-    "section": "4. Describe and interpret the results",
-    "text": "4. Describe and interpret the results\nFor each isotope distribution:\n\ncompare the mean with the median;\ncompare the SD with the IQR;\ndescribe the shape and spread of the distribution;\nnote any unusual observations or possible outliers;\ndescribe the degree of overlap between the two sites; and\nsummarize the principal similarities and differences between La Bastida and Gatas.\n\nThen provide a concise archaeological interpretation that distinguishes clearly between what the distributions show and why those patterns may exist.\n\nFinal interpretation guidance\nUse the following questions to help structure your concise interpretation:\n\nWhat is the unit of analysis?\nWhat descriptive statistical result matters most?\nWhat archaeological or anthropological interpretation is consistent with the observed distributions?\nWhat claim do these descriptive data alone not support?\n\n\n\n\n\n\n\nImportantStatistical scope\n\n\n\nThis assignment is limited to descriptive statistics. No inferential statistical tests are required."
+    "objectID": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#compare-alternative-views-of-the-same-distribution",
+    "href": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#compare-alternative-views-of-the-same-distribution",
+    "title": "ANTH418 Assignment 2: Visualizing Kinship Diversity with Kinbank",
+    "section": "4. Compare alternative views of the same distribution",
+    "text": "4. Compare alternative views of the same distribution\nCreate a boxplot of kin_term_count.\n{r} # Your code\nCompare the boxplot with your histogram(s). Discuss:\n\nwhat the boxplot makes especially easy to see;\nwhat information about distribution shape is clearer in the histogram;\nwhether the boxplot identifies observations that appear unusual relative to the middle of the distribution; and\nwhy neither visualization should be treated as a complete representation on its own."
   },
   {
-    "objectID": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#submission",
-    "href": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#submission",
-    "title": "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas",
+    "objectID": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#compare-kin_term_count-across-groups",
+    "href": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#compare-kin_term_count-across-groups",
+    "title": "ANTH418 Assignment 2: Visualizing Kinship Diversity with Kinbank",
+    "section": "5. Compare kin_term_count across groups",
+    "text": "5. Compare kin_term_count across groups\nChoose a meaningful grouping variable from the teaching dataset and use it to compare distributions of kin_term_count.\nOne appropriate approach is to compare macroareas with boxplots.\n{r} # Your code\nYou may also use faceting to compare distributions across macroareas or across a manageable set of well-represented language families.\n{r} # Your code\nYour comparison should remain readable. If a categorical variable contains too many groups, select a clearly justified subset rather than producing a crowded figure.\nUse your grouped visualization(s) to describe:\n\ndifferences in location;\ndifferences in spread;\ndifferences in distribution shape;\nunusual observations; and\nthe degree of overlap among groups.\n\nDo not interpret a visual difference as evidence that macroarea or language family causes variation in kin_term_count."
+  },
+  {
+    "objectID": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#describe-and-interpret-the-results",
+    "href": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#describe-and-interpret-the-results",
+    "title": "ANTH418 Assignment 2: Visualizing Kinship Diversity with Kinbank",
+    "section": "6. Describe and interpret the results",
+    "text": "6. Describe and interpret the results\nBring the visual evidence together into a concise interpretation.\nYour discussion should:\n\ndescribe the composition of the teaching dataset;\nsummarize the overall distribution of kin_term_count;\nexplain what you learned by comparing different histogram bin widths;\nexplain what the histogram and boxplot each revealed or concealed;\ndescribe the most important group differences visible in your faceted or grouped plots;\nidentify any unusual observations that deserve attention; and\ndistinguish clearly between patterns visible in the teaching data and explanations that would require additional evidence.\n\nRemember that kin_term_count is the number of Kinbank form records linked to a language in this frozen snapshot. A language with a larger value should not automatically be described as having a “more complex” kinship system.\nAlso remember that languages can share historical ancestry. Similarities among related languages may therefore reflect shared history rather than independent cultural responses. This problem of non-independence is important for cross-cultural research, but you are not required to conduct phylogenetic analysis in this assignment.\n\nFinal interpretation guidance\nUse the following questions to help structure your concise interpretation:\n\nWhat is the unit of analysis?\nWhat is the most important pattern revealed by your visualizations?\nWhich graphical comparison was most informative, and why?\nWhat does kin_term_count allow you to describe?\nWhat anthropological claim do these exploratory data alone not support?\nWhy should apparent differences among language families or macroareas be interpreted cautiously?\n\n\n\n\n\n\n\nImportantStatistical scope\n\n\n\nThis assignment is limited to exploratory data analysis and visualization. No inferential statistical tests, phylogenetic models, PCA, or causal analyses are required."
+  },
+  {
+    "objectID": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#submission",
+    "href": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#submission",
+    "title": "ANTH418 Assignment 2: Visualizing Kinship Diversity with Kinbank",
     "section": "Submission",
-    "text": "Submission\nSubmit both of the following files:\n\nCompleted Quarto source file (.qmd)\nRendered HTML file (.html)\n\nThe report should present the required descriptive statistics, visualizations, and a concise interpretation. Before submitting, restart R and render the complete document from a clean session to make sure that all code runs and all output is reproducible."
+    "text": "Submission\nSubmit both of the following files:\n\nCompleted Quarto source file (.qmd)\nRendered HTML file (.html)\n\nThe report should contain the required visualizations and a concise interpretation of the patterns they reveal. Include only output that contributes directly to the analysis; avoid long unedited console output.\nBefore submitting, restart R and render the complete document from a clean session to make sure that all code runs, all figures appear correctly, and the analysis is reproducible."
   },
   {
-    "objectID": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#reference",
-    "href": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#reference",
-    "title": "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas",
-    "section": "Reference",
-    "text": "Reference\nKnipper, C., Rihuete-Herrada, C., Voltas, J., Held, P., Lull, V., Micó, R., Risch, R., & Alt, K. W. (2020). Reconstructing Bronze Age diets and farming strategies at the early Bronze Age sites of La Bastida and Gatas (southeast Iberia) using stable isotope analysis. PLOS ONE, 15(3), e0229398. https://doi.org/10.1371/journal.pone.0229398"
+    "objectID": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#references",
+    "href": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#references",
+    "title": "ANTH418 Assignment 2: Visualizing Kinship Diversity with Kinbank",
+    "section": "References",
+    "text": "References\nPassmore, S., Barth, W., Greenhill, S. J., Quinn, K., Sheard, C., Argyriou, P., et al. (2023). Kinbank: A global database of kinship terminology. PLOS ONE, 18(5), e0283218. https://doi.org/10.1371/journal.pone.0283218\nPassmore, S., & Jordan, F. M. (2020). No universals in the cultural evolution of kinship terminology. Evolutionary Human Sciences, 2, e42. https://doi.org/10.1017/ehs.2020.41"
+  },
+  {
+    "objectID": "assignments/index.html",
+    "href": "assignments/index.html",
+    "title": "Assignments",
+    "section": "",
+    "text": "The ten ANTH418 assignments use published archaeological and anthropological datasets.\nEach assignment package contains:\nStudents may browse the materials online or download the complete assignment package as a ZIP file."
+  },
+  {
+    "objectID": "assignments/index.html#assignment-1-describing-human-isotope-variation",
+    "href": "assignments/index.html#assignment-1-describing-human-isotope-variation",
+    "title": "Assignments",
+    "section": "Assignment 1 — Describing Human Isotope Variation",
+    "text": "Assignment 1 — Describing Human Isotope Variation\nStatistical method: Descriptive statistics\nCase study: Bronze Age diet and farming at La Bastida and Gatas\nOpen Assignment 1\nDownload complete Assignment 1 package"
+  },
+  {
+    "objectID": "assignments/index.html#assignment-2-visualizing-kinship-diversity-with-kinbank",
+    "href": "assignments/index.html#assignment-2-visualizing-kinship-diversity-with-kinbank",
+    "title": "Assignments",
+    "section": "Assignment 2 — Visualizing Kinship Diversity with Kinbank",
+    "text": "Assignment 2 — Visualizing Kinship Diversity with Kinbank\nStatistical method: Exploratory data analysis and visualization\nCase study: Cross-linguistic variation in kinship terminology using Kinbank\nOpen Assignment 2\nDownload complete Assignment 2 package"
+  },
+  {
+    "objectID": "assignments/index.html#assignment-3-missing-data-in-the-seshat-moralizing-gods-debate",
+    "href": "assignments/index.html#assignment-3-missing-data-in-the-seshat-moralizing-gods-debate",
+    "title": "Assignments",
+    "section": "Assignment 3 — Missing Data in the Seshat Moralizing Gods Debate",
+    "text": "Assignment 3 — Missing Data in the Seshat Moralizing Gods Debate\nStatistical method: Missing-data analysis and sensitivity analysis\nCase study: Treatment of missing observations in the Seshat moralizing-gods debate\nOpen Assignment 3\nDownload complete Assignment 3 package"
+  },
+  {
+    "objectID": "assignments/index.html#assignment-4-sampling-archaeological-radiocarbon-data",
+    "href": "assignments/index.html#assignment-4-sampling-archaeological-radiocarbon-data",
+    "title": "Assignments",
+    "section": "Assignment 4 — Sampling Archaeological Radiocarbon Data",
+    "text": "Assignment 4 — Sampling Archaeological Radiocarbon Data\nStatistical method: Sampling distributions, precision, and sampling bias\nCase study: Southern California archaeological radiocarbon determinations from p3k14c\nView Assignment 4 materials\nDownload complete Assignment 4 package"
+  },
+  {
+    "objectID": "assignments/index.html#assignment-5-statistical-inference-at-teotihuacan",
+    "href": "assignments/index.html#assignment-5-statistical-inference-at-teotihuacan",
+    "title": "Assignments",
+    "section": "Assignment 5 — Statistical Inference at Teotihuacan",
+    "text": "Assignment 5 — Statistical Inference at Teotihuacan\nStatistical method: Bootstrap confidence intervals and permutation tests\nCase study: Leporid stable-isotope variation at Teotihuacan\nView Assignment 5 materials\nDownload complete Assignment 5 package"
+  },
+  {
+    "objectID": "assignments/index.html#assignment-6-comparing-groups-at-tell-tweini",
+    "href": "assignments/index.html#assignment-6-comparing-groups-at-tell-tweini",
+    "title": "Assignments",
+    "section": "Assignment 6 — Comparing Groups at Tell Tweini",
+    "text": "Assignment 6 — Comparing Groups at Tell Tweini\nStatistical method: Independent-samples t-test and effect size\nCase study: Middle Bronze Age and Late Bronze Age plant-isotope comparison at Tell Tweini\nView Assignment 6 materials\nDownload complete Assignment 6 package"
+  },
+  {
+    "objectID": "assignments/index.html#assignment-7-raw-material-variation-in-highland-lesotho",
+    "href": "assignments/index.html#assignment-7-raw-material-variation-in-highland-lesotho",
+    "title": "Assignments",
+    "section": "Assignment 7 — Raw-Material Variation in Highland Lesotho",
+    "text": "Assignment 7 — Raw-Material Variation in Highland Lesotho\nStatistical method: Chi-square test of independence\nCase study: Lithic raw-material composition across archaeological layers in Highland Lesotho\nView Assignment 7 materials\nDownload complete Assignment 7 package"
+  },
+  {
+    "objectID": "assignments/index.html#assignment-8-comparing-iron-geochemistry-with-anova",
+    "href": "assignments/index.html#assignment-8-comparing-iron-geochemistry-with-anova",
+    "title": "Assignments",
+    "section": "Assignment 8 — Comparing Iron Geochemistry with ANOVA",
+    "text": "Assignment 8 — Comparing Iron Geochemistry with ANOVA\nStatistical method: One-way ANOVA, post-hoc comparison, and robustness checks\nCase study: Roman-period iron-smelting geochemistry\nView Assignment 8 materials\nDownload complete Assignment 8 package"
+  },
+  {
+    "objectID": "assignments/index.html#assignment-9-hawaiian-kukui-isotopes",
+    "href": "assignments/index.html#assignment-9-hawaiian-kukui-isotopes",
+    "title": "Assignments",
+    "section": "Assignment 9 — Hawaiian Kukui Isotopes",
+    "text": "Assignment 9 — Hawaiian Kukui Isotopes\nStatistical method: Correlation and measures of association\nCase study: Kukui δ13C variation along elevation and rainfall gradients in Hawaiʻi\nView Assignment 9 materials\nDownload complete Assignment 9 package"
+  },
+  {
+    "objectID": "assignments/index.html#assignment-10-predicting-flake-mass",
+    "href": "assignments/index.html#assignment-10-predicting-flake-mass",
+    "title": "Assignments",
+    "section": "Assignment 10 — Predicting Flake Mass",
+    "text": "Assignment 10 — Predicting Flake Mass\nStatistical method: Simple linear regression\nCase study: Predicting experimental flake mass from mean flake thickness\nView Assignment 10 materials\nDownload complete Assignment 10 package"
   },
   {
     "objectID": "weeks/week05.html",
@@ -1799,165 +1890,326 @@
     "text": "Knipper et al. — Assignment 1 archaeological context\nRead Knipper et al. not simply to find the “answer” but to understand why the assignment separates description from explanation (Knipper et al. 2020).\nFocus on:\n\nthe El Argar archaeological setting;\nLa Bastida and Gatas;\nhuman, animal, and cereal isotope sampling;\ntrophic-chain logic;\nenvironmental influences on isotope values;\nmanuring and animal-feeding effects;\nage-related isotope effects; and\nthe conclusion that higher human values at La Bastida do not necessarily mean different average dietary composition.\n\n\n\n\n\n\n\nNoteAbout the uploaded Llull 2020 file\n\n\n\nThe file supplied under the name “Llull 2020 Protoapennine vs. Subapennine…” contains the Knipper et al. (2020) La Bastida–Gatas article rather than a distinct Llull ceramic study.\nFor that reason, this Study Guide does not attribute any independent argument to that mislabeled attachment. If the intended Llull article is supplied later, its ceramic case study can be added to this section."
   },
   {
-    "objectID": "assignments/index.html",
-    "href": "assignments/index.html",
-    "title": "Assignments",
+    "objectID": "weeks/week06.html",
+    "href": "weeks/week06.html",
+    "title": "Week 6 — Data Transformation and Missing Values",
     "section": "",
-    "text": "The ten ANTH418 assignments use published archaeological and anthropological datasets.\nEach assignment package contains:\nStudents may browse the materials online or download the complete assignment package as a ZIP file."
+    "text": "Class meeting: 14 October 2026 Focus: data transformation · missing values · recoding · sensitivity analysis Case study: Seshat moralizing-gods debate Assessment: Assignment 3 — Missing Data in the Seshat Moralizing Gods Debate"
   },
   {
-    "objectID": "assignments/index.html#assignment-1-describing-human-isotope-variation",
-    "href": "assignments/index.html#assignment-1-describing-human-isotope-variation",
-    "title": "Assignments",
-    "section": "Assignment 1 — Describing Human Isotope Variation",
-    "text": "Assignment 1 — Describing Human Isotope Variation\nStatistical method: Descriptive statistics\nCase study: Bronze Age diet and farming at La Bastida and Gatas\nOpen Assignment 1\nDownload complete Assignment 1 package"
+    "objectID": "weeks/week06.html#overview",
+    "href": "weeks/week06.html#overview",
+    "title": "Week 6 — Data Transformation and Missing Values",
+    "section": "Overview",
+    "text": "Overview\nWeek 6 asks what happens before formal inference:\n\nHow can decisions made while preparing data change the conclusions we eventually draw?\n\nReal anthropological and archaeological datasets may be skewed, measured on incompatible scales, or incomplete. Researchers therefore transform, recode, filter, and otherwise prepare data. These operations are necessary, but they are not neutral.\n\n\n\n\n\n\nNoteThe Week 6 principle\n\n\n\nPreparation is analysis. Every transformation or missing-data decision should have a substantive reason, remain visible in the code, and be checked for its effect on the empirical pattern.\n\n\nThe central case study is the Seshat moralizing-gods debate. Whitehouse et al. (2019) reported that moralizing gods tended to appear after large increases in social complexity. Beheim et al. (2021) showed that 61% of the moralizing-gods observations used in the analysis were missing and had been treated as known absences. Alternative treatments changed the reported pattern.\n\\[\\texttt{NA} \\neq 0\\]"
   },
   {
-    "objectID": "assignments/index.html#assignment-2-visualizing-kinship-diversity-with-kinbank",
-    "href": "assignments/index.html#assignment-2-visualizing-kinship-diversity-with-kinbank",
-    "title": "Assignments",
-    "section": "Assignment 2 — Visualizing Kinship Diversity with Kinbank",
-    "text": "Assignment 2 — Visualizing Kinship Diversity with Kinbank\nStatistical method: Exploratory data analysis and visualization\nCase study: Cross-linguistic variation in kinship terminology using Kinbank\nOpen Assignment 2\nDownload complete Assignment 2 package"
+    "objectID": "weeks/week06.html#questions",
+    "href": "weeks/week06.html#questions",
+    "title": "Week 6 — Data Transformation and Missing Values",
+    "section": "Questions",
+    "text": "Questions\n\nWhy do researchers transform variables?\nHow do log, root, reciprocal, and standardizing transformations differ?\nWhat does NA mean in R, and why is it different from 0?\nWhat are explicit and implicit missingness?\nWhat do MCAR, MAR, and MNAR mean?\nWhat are the costs of deletion and simple imputation?\nWhat is sensitivity analysis?\nHow can preparation decisions change anthropological conclusions?"
   },
   {
-    "objectID": "assignments/index.html#assignment-3-missing-data-in-the-seshat-moralizing-gods-debate",
-    "href": "assignments/index.html#assignment-3-missing-data-in-the-seshat-moralizing-gods-debate",
-    "title": "Assignments",
-    "section": "Assignment 3 — Missing Data in the Seshat Moralizing Gods Debate",
-    "text": "Assignment 3 — Missing Data in the Seshat Moralizing Gods Debate\nStatistical method: Missing-data analysis and sensitivity analysis\nCase study: Treatment of missing observations in the Seshat moralizing-gods debate\nView Assignment 3 materials\nDownload complete Assignment 3 package"
+    "objectID": "weeks/week06.html#learning-objectives",
+    "href": "weeks/week06.html#learning-objectives",
+    "title": "Week 6 — Data Transformation and Missing Values",
+    "section": "Learning objectives",
+    "text": "Learning objectives\nAfter this week, you should be able to diagnose reasons for transformation; create transformed variables without overwriting originals; identify and count missing values; distinguish unknown from documented absence; explain explicit/implicit missingness and MCAR/MAR/MNAR; recognize costs of deletion and single imputation; and compare alternative missing-data treatments with a simple sensitivity analysis."
   },
   {
-    "objectID": "assignments/index.html#assignment-4-sampling-archaeological-radiocarbon-data",
-    "href": "assignments/index.html#assignment-4-sampling-archaeological-radiocarbon-data",
-    "title": "Assignments",
-    "section": "Assignment 4 — Sampling Archaeological Radiocarbon Data",
-    "text": "Assignment 4 — Sampling Archaeological Radiocarbon Data\nStatistical method: Sampling distributions, precision, and sampling bias\nCase study: Southern California archaeological radiocarbon determinations from p3k14c\nView Assignment 4 materials\nDownload complete Assignment 4 package"
+    "objectID": "weeks/week06.html#what-is-a-transformation",
+    "href": "weeks/week06.html#what-is-a-transformation",
+    "title": "Week 6 — Data Transformation and Missing Values",
+    "section": "1. What is a transformation?",
+    "text": "1. What is a transformation?\nA transformation applies a mathematical function to a variable and creates a new numerical representation of the same observations.\n\nassemblage_size &lt;- c(5, 8, 12, 18, 35, 90, 250)\ntibble(assemblage_size) |&gt;\n  mutate(log_assemblage_size = log(assemblage_size))\n\n# A tibble: 7 × 2\n  assemblage_size log_assemblage_size\n            &lt;dbl&gt;               &lt;dbl&gt;\n1               5                1.61\n2               8                2.08\n3              12                2.48\n4              18                2.89\n5              35                3.56\n6              90                4.50\n7             250                5.52\n\n\nThe cases have not changed. The numerical scale has.\n\n\n\n\n\n\nImportantTransform the variable, not the evidence\n\n\n\nPreserve the original variable so the analytical decision remains transparent and reversible."
   },
   {
-    "objectID": "assignments/index.html#assignment-5-statistical-inference-at-teotihuacan",
-    "href": "assignments/index.html#assignment-5-statistical-inference-at-teotihuacan",
-    "title": "Assignments",
-    "section": "Assignment 5 — Statistical Inference at Teotihuacan",
-    "text": "Assignment 5 — Statistical Inference at Teotihuacan\nStatistical method: Bootstrap confidence intervals and permutation tests\nCase study: Leporid stable-isotope variation at Teotihuacan\nView Assignment 5 materials\nDownload complete Assignment 5 package"
+    "objectID": "weeks/week06.html#four-problems-transformations-can-address",
+    "href": "weeks/week06.html#four-problems-transformations-can-address",
+    "title": "Week 6 — Data Transformation and Missing Values",
+    "section": "2. Four problems transformations can address",
+    "text": "2. Four problems transformations can address\nSkewness: log or power transformations can compress a long right tail.\nOutlier influence: transformations can pull extreme values inward.\nVariance stabilization: transformations can reduce increasing or fan-shaped spread.\nLinearizing relationships: transformations can make some curved relationships closer to linear.\n\nskewed &lt;- tibble(x = c(1, 2, 2, 3, 4, 5, 8, 15, 40, 120))\nggplot(skewed, aes(x = x)) + geom_histogram(bins = 8)\n\n\n\n\n\n\n\nggplot(skewed, aes(x = log(x))) + geom_histogram(bins = 8)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipDo not transform automatically\n\n\n\nA skewed variable is not automatically wrong. Transform when a specific transformation addresses a specific analytical problem and the transformed scale remains meaningful."
   },
   {
-    "objectID": "assignments/index.html#assignment-6-comparing-groups-at-tell-tweini",
-    "href": "assignments/index.html#assignment-6-comparing-groups-at-tell-tweini",
-    "title": "Assignments",
-    "section": "Assignment 6 — Comparing Groups at Tell Tweini",
-    "text": "Assignment 6 — Comparing Groups at Tell Tweini\nStatistical method: Independent-samples t-test and effect size\nCase study: Middle Bronze Age and Late Bronze Age plant-isotope comparison at Tell Tweini\nView Assignment 6 materials\nDownload complete Assignment 6 package"
+    "objectID": "weeks/week06.html#common-transformations",
+    "href": "weeks/week06.html#common-transformations",
+    "title": "Week 6 — Data Transformation and Missing Values",
+    "section": "3. Common transformations",
+    "text": "3. Common transformations\n\nLogarithm\nFor positive values, \\(X'=\\log(X)\\). Logs strongly compress large values, but log(0) is undefined.\n\nx &lt;- c(1, 10, 100, 1000)\nlog(x)\n\n[1] 0.000000 2.302585 4.605170 6.907755\n\nlog(0)\n\n[1] -Inf\n\n\nAdding a constant in log(X + c) is itself an analytical decision and requires justification.\n\n\nSquare and cube roots\n\ncounts &lt;- c(0, 1, 4, 9, 16, 25)\nsqrt(counts)\n\n[1] 0 1 2 3 4 5\n\ncounts^(1/3)\n\n[1] 0.000000 1.000000 1.587401 2.080084 2.519842 2.924018\n\n\nRoots are gentler than logs and square roots naturally accommodate zero.\n\n\nReciprocal\n\nx &lt;- c(1, 2, 5, 10, 50)\n-1 / x\n\n[1] -1.00 -0.50 -0.20 -0.10 -0.02\n\n\nReciprocal transformations are much stronger and substantially change interpretation."
   },
   {
-    "objectID": "assignments/index.html#assignment-7-raw-material-variation-in-highland-lesotho",
-    "href": "assignments/index.html#assignment-7-raw-material-variation-in-highland-lesotho",
-    "title": "Assignments",
-    "section": "Assignment 7 — Raw-Material Variation in Highland Lesotho",
-    "text": "Assignment 7 — Raw-Material Variation in Highland Lesotho\nStatistical method: Chi-square test of independence\nCase study: Lithic raw-material composition across archaeological layers in Highland Lesotho\nView Assignment 7 materials\nDownload complete Assignment 7 package"
+    "objectID": "weeks/week06.html#transformation-families-and-standardization",
+    "href": "weeks/week06.html#transformation-families-and-standardization",
+    "title": "Week 6 — Data Transformation and Missing Values",
+    "section": "4. Transformation families and standardization",
+    "text": "4. Transformation families and standardization\nThe Box-Cox family considers a spectrum of power transformations for positive data. Familiar points include \\(\\lambda=1\\) (none), \\(0.5\\) (square root), \\(0\\) (log), and \\(-1\\) (inverse). Yeo-Johnson extends similar logic to zero and negative values.\nA z-score solves a different problem:\n\\[z=\\frac{X-\\bar X}{s}\\]\n\nmeasurements &lt;- c(10, 12, 14, 16, 18)\nas.numeric(scale(measurements))\n\n[1] -1.2649111 -0.6324555  0.0000000  0.6324555  1.2649111\n\n\nZ-scores place variables measured in different units on a common scale; they do not automatically make skewed data normal."
   },
   {
-    "objectID": "assignments/index.html#assignment-8-comparing-iron-geochemistry-with-anova",
-    "href": "assignments/index.html#assignment-8-comparing-iron-geochemistry-with-anova",
-    "title": "Assignments",
-    "section": "Assignment 8 — Comparing Iron Geochemistry with ANOVA",
-    "text": "Assignment 8 — Comparing Iron Geochemistry with ANOVA\nStatistical method: One-way ANOVA, post-hoc comparison, and robustness checks\nCase study: Roman-period iron-smelting geochemistry\nView Assignment 8 materials\nDownload complete Assignment 8 package"
+    "objectID": "weeks/week06.html#a-reproducible-transformation-workflow",
+    "href": "weeks/week06.html#a-reproducible-transformation-workflow",
+    "title": "Week 6 — Data Transformation and Missing Values",
+    "section": "5. A reproducible transformation workflow",
+    "text": "5. A reproducible transformation workflow\ninspect → diagnose → transform → compare → document\n\nPractice 1 — Compare transformations\nCreate a vector with a long right tail. Compare its raw, square-root, and log histograms. Which transformation compresses the upper tail most strongly? Why should transformation choice depend on more than visual symmetry?\n\n\nCheck your work\n\nThe log transformation normally compresses high values more strongly than the square root. Choice depends on analytical purpose, allowable values, and interpretation—not only appearance."
   },
   {
-    "objectID": "assignments/index.html#assignment-9-hawaiian-kukui-isotopes",
-    "href": "assignments/index.html#assignment-9-hawaiian-kukui-isotopes",
-    "title": "Assignments",
-    "section": "Assignment 9 — Hawaiian Kukui Isotopes",
-    "text": "Assignment 9 — Hawaiian Kukui Isotopes\nStatistical method: Correlation and measures of association\nCase study: Kukui δ13C variation along elevation and rainfall gradients in Hawaiʻi\nView Assignment 9 materials\nDownload complete Assignment 9 package"
+    "objectID": "weeks/week06.html#na-is-not-zero",
+    "href": "weeks/week06.html#na-is-not-zero",
+    "title": "Week 6 — Data Transformation and Missing Values",
+    "section": "6. NA is not zero",
+    "text": "6. NA is not zero\nR represents missing information with NA.\n\nx &lt;- c(4, 7, NA, 12)\nx\n\n[1]  4  7 NA 12\n\n\nNA means unavailable or unknown. It does not tell us what the unobserved value would have been. In archaeology, 0 animal bones can mean a context was examined and none were recorded; NA can mean the context was not examined or the record is unavailable."
   },
   {
-    "objectID": "assignments/index.html#assignment-10-predicting-flake-mass",
-    "href": "assignments/index.html#assignment-10-predicting-flake-mass",
-    "title": "Assignments",
-    "section": "Assignment 10 — Predicting Flake Mass",
-    "text": "Assignment 10 — Predicting Flake Mass\nStatistical method: Simple linear regression\nCase study: Predicting experimental flake mass from mean flake thickness\nView Assignment 10 materials\nDownload complete Assignment 10 package"
+    "objectID": "weeks/week06.html#missing-values-propagate",
+    "href": "weeks/week06.html#missing-values-propagate",
+    "title": "Week 6 — Data Transformation and Missing Values",
+    "section": "7. Missing values propagate",
+    "text": "7. Missing values propagate\n\nx &lt;- c(1, 2, NA, 4)\nsum(x)\n\n[1] NA\n\nmean(x)\n\n[1] NA\n\nsum(x, na.rm = TRUE)\n\n[1] 7\n\nmean(x, na.rm = TRUE)\n\n[1] 2.333333\n\n\n\n\n\n\n\n\nWarningna.rm = TRUE does not solve missing data\n\n\n\nIt calculates from observed values. It does not explain why values are missing or establish that observed cases represent missing cases."
   },
   {
-    "objectID": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html",
-    "href": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html",
-    "title": "ANTH418 Assignment 2: Visualizing Kinship Diversity with Kinbank",
+    "objectID": "weeks/week06.html#finding-missing-values",
+    "href": "weeks/week06.html#finding-missing-values",
+    "title": "Week 6 — Data Transformation and Missing Values",
+    "section": "8. Finding missing values",
+    "text": "8. Finding missing values\nUse is.na(), not == NA.\n\nis.na(x)\n\n[1] FALSE FALSE  TRUE FALSE\n\nsum(is.na(x))\n\n[1] 1\n\nmean(is.na(x))\n\n[1] 0.25\n\n\n\nmissing_demo &lt;- tibble(\n  site = c(\"A\", \"B\", \"C\", \"D\"),\n  count = c(12, NA, 0, 8),\n  date = c(1200, 1250, NA, 1300)\n)\ncomplete.cases(missing_demo)\n\n[1]  TRUE FALSE FALSE  TRUE"
+  },
+  {
+    "objectID": "weeks/week06.html#explicit-and-implicit-missingness",
+    "href": "weeks/week06.html#explicit-and-implicit-missingness",
+    "title": "Week 6 — Data Transformation and Missing Values",
+    "section": "9. Explicit and implicit missingness",
+    "text": "9. Explicit and implicit missingness\nExplicit missingness: the row exists and the cell contains NA.\nImplicit missingness: an expected row or combination is absent.\n\nimplicit_demo &lt;- tibble(site = \"A\", period = c(1, 3), value = c(12, 15))\nimplicit_demo |&gt; complete(site, period = 1:3)\n\n# A tibble: 3 × 3\n  site  period value\n  &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;\n1 A          1    12\n2 A          2    NA\n3 A          3    15\n\n\n\n\n\n\n\n\nNoteTwo forms of absence\n\n\n\nAn explicit missing value is the presence of an absence. An implicit missing value is the absence of an expected presence."
+  },
+  {
+    "objectID": "weeks/week06.html#why-is-information-missing",
+    "href": "weeks/week06.html#why-is-information-missing",
+    "title": "Week 6 — Data Transformation and Missing Values",
+    "section": "10. Why is information missing?",
+    "text": "10. Why is information missing?\nMCAR — Missing Completely at Random: missingness is unrelated to observed and unobserved values.\nMAR — Missing at Random: missingness depends on other observed variables but, conditional on them, not on the missing value itself.\nMNAR — Missing Not at Random: missingness depends on the unobserved value or an unmeasured process connected to it.\n\n\n\n\n\n\nImportantMissingness has a history\n\n\n\nIn anthropological data, missingness may reflect preservation, excavation, sampling, documentation, literacy, colonial observation, survey participation, or recording practice. Understanding how evidence was produced is part of missing-data analysis."
+  },
+  {
+    "objectID": "weeks/week06.html#deletion-and-imputation-have-costs",
+    "href": "weeks/week06.html#deletion-and-imputation-have-costs",
+    "title": "Week 6 — Data Transformation and Missing Values",
+    "section": "11. Deletion and imputation have costs",
+    "text": "11. Deletion and imputation have costs\nListwise deletion removes incomplete cases:\n\nmissing_demo |&gt; drop_na()\n\n# A tibble: 2 × 3\n  site  count  date\n  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;\n1 A        12  1200\n2 D         8  1300\n\n\nIt reduces sample size and can bias results when missingness is systematic. Pairwise deletion can make different calculations rely on different sample sizes.\nSingle mean or median imputation makes a dataset look complete but inserts an unobserved constant and tends to reduce variability.\nThe lecture also introduces multiple imputation conceptually:\nincomplete data → several plausible completed datasets → analyze each → pool results\n\n\n\n\n\n\nWarningNot required for Assignment 3\n\n\n\nAssignment 3 does not require multiple imputation, regression modeling, inferential tests, or other advanced missing-data analysis."
+  },
+  {
+    "objectID": "weeks/week06.html#present-absent-and-unknown",
+    "href": "weeks/week06.html#present-absent-and-unknown",
+    "title": "Week 6 — Data Transformation and Missing Values",
+    "section": "12. Present, absent, and unknown",
+    "text": "12. Present, absent, and unknown\nSeshat: Global History Databank standardizes historical and archaeological information for large-scale comparison. Whitehouse et al. (2019) used Seshat data to examine social complexity and moralizing gods. For Week 6, the issue is not which broad theory of religion is correct; it is how missing information was represented before analysis.\nBeheim et al. (2021) reported the following for the 801 observations used in the statistical tests:\n\n\n\nStatus\nCount\nApproximate proportion\n\n\n\n\ndocumented present\n299\n37%\n\n\ndocumented absent\n12\n2%\n\n\nunknown / missing\n490\n61%\n\n\n\npresent = evidence of presence\nabsent = evidence of absence\nNA = status unknown"
+  },
+  {
+    "objectID": "weeks/week06.html#what-happened-when-na-became-0",
+    "href": "weeks/week06.html#what-happened-when-na-became-0",
+    "title": "Week 6 — Data Transformation and Missing Values",
+    "section": "13. What happened when NA became 0?",
+    "text": "13. What happened when NA became 0?\nThe disputed analysis treated the 490 unknown observations as known absences:\nNA  NA  NA  NA  1\n ↓   ↓   ↓   ↓\n 0   0   0   0   1\nThis changes the historical claim. “We do not know” becomes “moralizing gods were absent.” Beheim et al. reported an almost perfect correlation, \\(r=0.97\\), between missingness and the recoded absence variable.\n\n\n\n\n\n\nImportantAbsence of evidence is not evidence of absence\n\n\n\nTurning an unknown historical state into a documented absence is not merely cleaning data. It adds information the original observation did not contain."
+  },
+  {
+    "objectID": "weeks/week06.html#forward-bias",
+    "href": "weeks/week06.html#forward-bias",
+    "title": "Week 6 — Data Transformation and Missing Values",
+    "section": "14. Forward bias",
+    "text": "14. Forward bias\nDocumentation of religious beliefs often depends on written records or literate observers. Earlier or non-literate societies can therefore have more unknown values.\nHistorical evidence:      NA  NA  NA  →  1\nAfter NA → 0 recoding:     0   0   0  →  1\nThe second sequence creates a stronger appearance of late emergence than the evidence alone supports. Beheim et al. call this forward bias."
+  },
+  {
+    "objectID": "weeks/week06.html#sensitivity-analysis",
+    "href": "weeks/week06.html#sensitivity-analysis",
+    "title": "Week 6 — Data Transformation and Missing Values",
+    "section": "15. Sensitivity analysis",
+    "text": "15. Sensitivity analysis\nA sensitivity analysis asks whether the substantive pattern changes when a consequential analytical choice changes.\n\nAnalysis A — Unknown remains unknown\nRetain NA and summarize documented presence and absence among cases whose status is known.\n\n\nAnalysis B — Unknown becomes absence\nCreate a new variable in which missing cases are recoded as absence. Do not overwrite the original variable.\nIf the descriptive conclusion changes substantially, it is sensitive to that decision. If it remains similar, it is more robust to that particular decision.\nSensitivity analysis does not automatically tell you which coding is correct. It tells you whether the conclusion depends on the choice."
+  },
+  {
+    "objectID": "weeks/week06.html#inspect-before-changing-anything",
+    "href": "weeks/week06.html#inspect-before-changing-anything",
+    "title": "Week 6 — Data Transformation and Missing Values",
+    "section": "16. Inspect before changing anything",
+    "text": "16. Inspect before changing anything\nUse the teaching dataset supplied in the Assignment 3 package. Follow the exact filename and variable names in that package’s codebook.\n\nseshat &lt;- read_csv(\"path/to/assignment03/data/teaching_file.csv\")\nglimpse(seshat)\nsummary(seshat)\n\nIdentify the unit of observation, relevant variables, coding of documented presence and absence, and all NA values."
+  },
+  {
+    "objectID": "weeks/week06.html#count-and-visualize-the-three-states",
+    "href": "weeks/week06.html#count-and-visualize-the-three-states",
+    "title": "Week 6 — Data Transformation and Missing Values",
+    "section": "17. Count and visualize the three states",
+    "text": "17. Count and visualize the three states\nYour first descriptive task is to distinguish present, absent, and unknown. Do not silently drop NA from this audit.\n\nseshat |&gt;\n  mutate(status = case_when(\n    is.na(moralizing_gods) ~ \"Unknown\",\n    moralizing_gods == 1 ~ \"Present\",\n    moralizing_gods == 0 ~ \"Absent\"\n  )) |&gt;\n  count(status) |&gt;\n  mutate(proportion = n / sum(n))\n\nUse clear labels in the visualization so unknown cases cannot be mistaken for absences."
+  },
+  {
+    "objectID": "weeks/week06.html#preserve-both-analytical-versions",
+    "href": "weeks/week06.html#preserve-both-analytical-versions",
+    "title": "Week 6 — Data Transformation and Missing Values",
+    "section": "18. Preserve both analytical versions",
+    "text": "18. Preserve both analytical versions\nNever overwrite the original variable.\n\nseshat_compare &lt;- seshat |&gt;\n  mutate(\n    mg_original = moralizing_gods,\n    mg_unknown_as_absent = if_else(\n      is.na(moralizing_gods), 0, moralizing_gods\n    )\n  )\n\nCompare Analysis A and Analysis B using summaries, a table, a visualization, or both. Ask how the number and proportion of apparent absences change and whether interpretation changes.\n\nPractice 2 — Why preserve the original?\nWhy is creating mg_unknown_as_absent safer than replacing moralizing_gods directly?\n\n\nCheck your work\n\nIt preserves the source information, makes the recoding visible, allows direct comparison, and prevents an analytical assumption from being mistaken for an original observation."
+  },
+  {
+    "objectID": "weeks/week06.html#interpret-without-overreaching",
+    "href": "weeks/week06.html#interpret-without-overreaching",
+    "title": "Week 6 — Data Transformation and Missing Values",
+    "section": "19. Interpret without overreaching",
+    "text": "19. Interpret without overreaching\nAssignment 3 asks you to explain why NA and 0 differ, what changes after recoding, whether the descriptive pattern is robust or sensitive, and why absence of evidence differs from evidence of absence.\nIt does not ask you to reproduce the published statistical models or decide which broader theory of moralizing gods and social complexity is correct."
+  },
+  {
+    "objectID": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html",
+    "href": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html",
+    "title": "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas",
     "section": "",
-    "text": "NoteBefore you begin\n\n\n\nRead the Week 5 Study Guide before starting this assignment.\nThe Study Guide explains the required concepts, visualization strategy, and R workflow for exploratory data analysis (EDA), categorical and numerical variables, bar charts, histograms, boxplots, faceting, visual comparison, and the distinction between description and inference."
+    "text": "NoteBefore you begin\n\n\n\nRead the Week 4 Study Guide before starting this assignment.\nThe Study Guide explains the required concepts, visualization strategy, and R workflow for mean, median, standard deviation, IQR, minimum, maximum, range, histograms, and boxplots."
   },
   {
-    "objectID": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#research-question",
-    "href": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#research-question",
-    "title": "ANTH418 Assignment 2: Visualizing Kinship Diversity with Kinbank",
+    "objectID": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#research-question",
+    "href": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#research-question",
+    "title": "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas",
     "section": "Research question",
-    "text": "Research question\nHow does the number of Kinbank form records linked to languages vary across the teaching dataset, and what do different visualizations reveal about that variation across language families and macroareas?"
+    "text": "Research question\nHow should the human stable-isotope distributions at La Bastida and Gatas be described, and what do different measures of center and dispersion reveal?"
   },
   {
-    "objectID": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#case-study",
-    "href": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#case-study",
-    "title": "ANTH418 Assignment 2: Visualizing Kinship Diversity with Kinbank",
+    "objectID": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#case-study",
+    "href": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#case-study",
+    "title": "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas",
     "section": "Case Study",
-    "text": "Case Study\nKinship terminology—the words people use to classify and refer to relatives—varies considerably across human societies. Kinbank is a global comparative database designed to make this variation available for systematic cross-linguistic comparison (Passmore et al. 2023). Rather than treating English kin categories as universal, Kinbank uses a standardized etic genealogical framework onto which language-specific kin terms can be mapped.\nThe ANTH418 teaching file contains 1,287 languages represented by at least one Kinbank form record in the frozen snapshot used for this course. Each row represents one language. The variable kin_term_count records the number of Kinbank form records linked to that language. The file also contains language-family and macroarea metadata, together with latitude and longitude where available.\nkin_term_count requires careful interpretation. It is a count of form records in the database, not automatically the number of unique kin concepts and not a direct measure of the linguistic complexity of a kinship system. Missing family, macroarea, and coordinate values are retained as source metadata gaps."
+    "text": "Case Study\nLa Bastida and Gatas were settlements of the El Argar society (ca. 2200–1550 BCE) in southeastern Spain. Knipper et al. (2020) analyzed stable carbon (δ¹³C) and nitrogen (δ¹⁵N) isotope values from human and animal bone collagen and charred cereal grains to investigate diet, crop cultivation, and animal husbandry. The usable human dataset includes 48 individuals from La Bastida and 21 from Gatas."
   },
   {
-    "objectID": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#assignment",
-    "href": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#assignment",
-    "title": "ANTH418 Assignment 2: Visualizing Kinship Diversity with Kinbank",
+    "objectID": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#assignment",
+    "href": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#assignment",
+    "title": "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas",
     "section": "Assignment",
-    "text": "Assignment\nUsing the provided Kinbank teaching dataset, conduct an exploratory data analysis (EDA) of variation in kin_term_count. The objective is to use data visualization to discover, compare, and communicate patterns in a comparative anthropological dataset.\nBegin by inspecting the dataset and identifying its unit of analysis, variables, measurement scales, and missing values. Then use appropriate bar charts, histograms, boxplots, and faceted plots to examine how represented languages are distributed across broad categories and how kin_term_count varies within the dataset and across relevant groups.\nUse the visualizations as analytical tools rather than illustrations added after the analysis. Compare alternative views of the same data and consider what each visualization makes visible, what it may conceal, and how graphical choices affect interpretation.\nYour interpretation should maintain a clear distinction between description and explanation. A visible difference among language families or macroareas does not by itself explain why that difference exists. Languages may also share historical relationships and therefore should not automatically be treated as completely independent cultural observations (Passmore and Jordan 2020). Your task is to establish what the teaching data show before considering why those patterns may exist."
+    "text": "Assignment\nUsing the provided human isotope dataset, conduct a descriptive statistical comparison of δ¹³C and δ¹⁵N values from La Bastida and Gatas. The objective is to apply the measures of central tendency and dispersion introduced in Week 4 to a substantive archaeological problem. Use descriptive statistics to characterize both the typical values and the variability within each archaeological sample before interpreting differences between the two sites.\nFor each isotope and site, calculate the mean and median as measures of central tendency and the standard deviation, interquartile range (IQR), minimum, maximum, and range as measures of dispersion. Use appropriate histograms and boxplots to examine the shape and spread of the distributions, possible outliers, and the degree of overlap between the two sites. Based on these results, briefly describe the principal similarities and differences between La Bastida and Gatas.\nYour interpretation should maintain a clear distinction between statistical description and archaeological explanation. In particular, differences in human isotope values should not be treated as direct evidence of differences in diet. Knipper et al. (2020) demonstrate that variation in cereal and animal isotope baselines and farming practices can contribute to differences in human isotope values; when these factors are considered, the two populations may have had broadly similar dietary compositions. Your task is therefore to establish what the observed distributions show before considering why those patterns may exist."
   },
   {
-    "objectID": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#inspect-the-data",
-    "href": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#inspect-the-data",
-    "title": "ANTH418 Assignment 2: Visualizing Kinship Diversity with Kinbank",
+    "objectID": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#inspect-the-data",
+    "href": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#inspect-the-data",
+    "title": "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas",
     "section": "1. Inspect the data",
-    "text": "1. Inspect the data\nLoad the dataset and inspect its structure before creating any visualizations.\n```{r} library(tidyverse)\ndat &lt;- read_csv(“data/kinbank_teaching.csv”, show_col_types = FALSE)\nglimpse(dat)\nConfirm the number of observations and inspect the variable names.\n\n# Your code\nThen examine missing values in the variables you may use, including family, macroarea, latitude, and longitude.\n{r} # Your code\nBefore continuing, make sure you can answer:\n\nWhat does one row represent?\nWhich variables are categorical?\nWhich variables are numerical?\nWhat exactly does kin_term_count count?\nWhy should a missing family or macroarea value not automatically be treated as a substantive category?"
+    "text": "1. Inspect the data\nLoad the dataset and inspect its structure before calculating any statistics.\n\nlibrary(tidyverse)\n\ndat &lt;- read_csv(\"data/knipper2020_humans.csv\", show_col_types = FALSE)\n\nglimpse(dat)\n\nRows: 69\nColumns: 10\n$ source_row_id   &lt;dbl&gt; 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 1…\n$ grave_no        &lt;chr&gt; \"BA 01\", \"BA 02\", \"BAS 4\", \"BA 05\", \"BA 06/1\", \"BA 06/…\n$ sample          &lt;chr&gt; \"Costa\", \"Costa\", \"Phalanx media manus\", \"Costa\", \"Cos…\n$ site            &lt;chr&gt; \"La Bastida\", \"La Bastida\", \"La Bastida\", \"La Bastida\"…\n$ d13c            &lt;dbl&gt; -19.20070, -18.25818, -19.04190, -18.36669, -19.09329,…\n$ d15n            &lt;dbl&gt; 10.393354, 13.892656, 10.870000, 12.522246, 10.848756,…\n$ sex             &lt;chr&gt; \"nd\", \"nd\", \"Male ?\", \"nd\", \"Male\", \"nd\", \"nd\", \"Male\"…\n$ age_category    &lt;chr&gt; \"Infans I\", \"Infans I\", \"Adult\", \"Infans I\", \"Young ad…\n$ chronology      &lt;chr&gt; \"?\", \"3\", \"3\", \"3\", NA, \"3\", \"3\", \"2\", \"2\", \"3\", \"3\", …\n$ social_category &lt;chr&gt; \"5\", \"5\", \"3 – 4\", \"5\", \"4\", \"4\", \"5\", \"3\", \"3\", \"3\", …\n\n\nThen determine how many observations are available at each site.\n\n# Your code"
   },
   {
-    "objectID": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#explore-categorical-variation",
-    "href": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#explore-categorical-variation",
-    "title": "ANTH418 Assignment 2: Visualizing Kinship Diversity with Kinbank",
-    "section": "2. Explore categorical variation",
-    "text": "2. Explore categorical variation\nBegin with the categorical structure of the teaching dataset.\nCreate an appropriate bar chart showing the number of represented languages by macroarea. Arrange the categories in a way that makes comparison easy.\n{r} # Your code\nThen examine family. Because the dataset may contain many language families, do not attempt to place every family into an unreadable chart. Instead, identify a manageable set of the most frequently represented families and create a bar chart for those families.\n{r} # Your code\nUse these plots to describe:\n\nwhich macroareas contain more or fewer represented languages;\nwhich language families are especially well represented in the teaching dataset; and\nwhat these differences tell you about the composition of the dataset, rather than about the prevalence or importance of kinship systems in the world."
+    "objectID": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#calculate-descriptive-statistics",
+    "href": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#calculate-descriptive-statistics",
+    "title": "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas",
+    "section": "2. Calculate descriptive statistics",
+    "text": "2. Calculate descriptive statistics\nFor d13c and d15n, separately for La Bastida and Gatas, calculate:\n\nmean;\nmedian;\nstandard deviation (SD);\ninterquartile range (IQR);\nminimum;\nmaximum; and\nrange.\n\nPresent the results clearly so that the two sites can be compared.\n\n# Your code"
   },
   {
-    "objectID": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#explore-the-distribution-of-kin_term_count",
-    "href": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#explore-the-distribution-of-kin_term_count",
-    "title": "ANTH418 Assignment 2: Visualizing Kinship Diversity with Kinbank",
-    "section": "3. Explore the distribution of kin_term_count",
-    "text": "3. Explore the distribution of kin_term_count\nCreate a histogram of kin_term_count.\n{r} # Your code\nExamine the distribution for:\n\nlocation;\nspread;\nshape;\nskewness;\ngaps or clusters; and\nunusually high or low observations.\n\nThen create at least one alternative histogram using a different, reasonable bin width.\n{r} # Your code\nCompare the two histograms. Explain briefly what features remain visible in both, what changes when the bin width changes, and which version communicates the main structure more effectively.\nThe purpose is not to find one uniquely “correct” bin width. The purpose is to recognize that graphical choices can change what is visually prominent."
+    "objectID": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#visualize-the-distributions",
+    "href": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#visualize-the-distributions",
+    "title": "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas",
+    "section": "3. Visualize the distributions",
+    "text": "3. Visualize the distributions\nCreate appropriate histograms and boxplots for both d13c and d15n.\nUse the plots to examine:\n\ndistribution shape;\nspread;\npossible outliers; and\nthe degree of overlap between La Bastida and Gatas.\n\nYou may use faceting where appropriate.\n\n# Your code"
   },
   {
-    "objectID": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#compare-alternative-views-of-the-same-distribution",
-    "href": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#compare-alternative-views-of-the-same-distribution",
-    "title": "ANTH418 Assignment 2: Visualizing Kinship Diversity with Kinbank",
-    "section": "4. Compare alternative views of the same distribution",
-    "text": "4. Compare alternative views of the same distribution\nCreate a boxplot of kin_term_count.\n{r} # Your code\nCompare the boxplot with your histogram(s). Discuss:\n\nwhat the boxplot makes especially easy to see;\nwhat information about distribution shape is clearer in the histogram;\nwhether the boxplot identifies observations that appear unusual relative to the middle of the distribution; and\nwhy neither visualization should be treated as a complete representation on its own."
+    "objectID": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#describe-and-interpret-the-results",
+    "href": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#describe-and-interpret-the-results",
+    "title": "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas",
+    "section": "4. Describe and interpret the results",
+    "text": "4. Describe and interpret the results\nFor each isotope distribution:\n\ncompare the mean with the median;\ncompare the SD with the IQR;\ndescribe the shape and spread of the distribution;\nnote any unusual observations or possible outliers;\ndescribe the degree of overlap between the two sites; and\nsummarize the principal similarities and differences between La Bastida and Gatas.\n\nThen provide a concise archaeological interpretation that distinguishes clearly between what the distributions show and why those patterns may exist.\n\nFinal interpretation guidance\nUse the following questions to help structure your concise interpretation:\n\nWhat is the unit of analysis?\nWhat descriptive statistical result matters most?\nWhat archaeological or anthropological interpretation is consistent with the observed distributions?\nWhat claim do these descriptive data alone not support?\n\n\n\n\n\n\n\nImportantStatistical scope\n\n\n\nThis assignment is limited to descriptive statistics. No inferential statistical tests are required."
   },
   {
-    "objectID": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#compare-kin_term_count-across-groups",
-    "href": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#compare-kin_term_count-across-groups",
-    "title": "ANTH418 Assignment 2: Visualizing Kinship Diversity with Kinbank",
-    "section": "5. Compare kin_term_count across groups",
-    "text": "5. Compare kin_term_count across groups\nChoose a meaningful grouping variable from the teaching dataset and use it to compare distributions of kin_term_count.\nOne appropriate approach is to compare macroareas with boxplots.\n{r} # Your code\nYou may also use faceting to compare distributions across macroareas or across a manageable set of well-represented language families.\n{r} # Your code\nYour comparison should remain readable. If a categorical variable contains too many groups, select a clearly justified subset rather than producing a crowded figure.\nUse your grouped visualization(s) to describe:\n\ndifferences in location;\ndifferences in spread;\ndifferences in distribution shape;\nunusual observations; and\nthe degree of overlap among groups.\n\nDo not interpret a visual difference as evidence that macroarea or language family causes variation in kin_term_count."
-  },
-  {
-    "objectID": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#describe-and-interpret-the-results",
-    "href": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#describe-and-interpret-the-results",
-    "title": "ANTH418 Assignment 2: Visualizing Kinship Diversity with Kinbank",
-    "section": "6. Describe and interpret the results",
-    "text": "6. Describe and interpret the results\nBring the visual evidence together into a concise interpretation.\nYour discussion should:\n\ndescribe the composition of the teaching dataset;\nsummarize the overall distribution of kin_term_count;\nexplain what you learned by comparing different histogram bin widths;\nexplain what the histogram and boxplot each revealed or concealed;\ndescribe the most important group differences visible in your faceted or grouped plots;\nidentify any unusual observations that deserve attention; and\ndistinguish clearly between patterns visible in the teaching data and explanations that would require additional evidence.\n\nRemember that kin_term_count is the number of Kinbank form records linked to a language in this frozen snapshot. A language with a larger value should not automatically be described as having a “more complex” kinship system.\nAlso remember that languages can share historical ancestry. Similarities among related languages may therefore reflect shared history rather than independent cultural responses. This problem of non-independence is important for cross-cultural research, but you are not required to conduct phylogenetic analysis in this assignment.\n\nFinal interpretation guidance\nUse the following questions to help structure your concise interpretation:\n\nWhat is the unit of analysis?\nWhat is the most important pattern revealed by your visualizations?\nWhich graphical comparison was most informative, and why?\nWhat does kin_term_count allow you to describe?\nWhat anthropological claim do these exploratory data alone not support?\nWhy should apparent differences among language families or macroareas be interpreted cautiously?\n\n\n\n\n\n\n\nImportantStatistical scope\n\n\n\nThis assignment is limited to exploratory data analysis and visualization. No inferential statistical tests, phylogenetic models, PCA, or causal analyses are required."
-  },
-  {
-    "objectID": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#submission",
-    "href": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#submission",
-    "title": "ANTH418 Assignment 2: Visualizing Kinship Diversity with Kinbank",
+    "objectID": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#submission",
+    "href": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#submission",
+    "title": "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas",
     "section": "Submission",
-    "text": "Submission\nSubmit both of the following files:\n\nCompleted Quarto source file (.qmd)\nRendered HTML file (.html)\n\nThe report should contain the required visualizations and a concise interpretation of the patterns they reveal. Include only output that contributes directly to the analysis; avoid long unedited console output.\nBefore submitting, restart R and render the complete document from a clean session to make sure that all code runs, all figures appear correctly, and the analysis is reproducible."
+    "text": "Submission\nSubmit both of the following files:\n\nCompleted Quarto source file (.qmd)\nRendered HTML file (.html)\n\nThe report should present the required descriptive statistics, visualizations, and a concise interpretation. Before submitting, restart R and render the complete document from a clean session to make sure that all code runs and all output is reproducible."
   },
   {
-    "objectID": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#references",
-    "href": "assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html#references",
-    "title": "ANTH418 Assignment 2: Visualizing Kinship Diversity with Kinbank",
+    "objectID": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#reference",
+    "href": "assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html#reference",
+    "title": "ANTH418 Assignment 1: Bronze Age Diet and Farming at La Bastida and Gatas",
+    "section": "Reference",
+    "text": "Reference\nKnipper, C., Rihuete-Herrada, C., Voltas, J., Held, P., Lull, V., Micó, R., Risch, R., & Alt, K. W. (2020). Reconstructing Bronze Age diets and farming strategies at the early Bronze Age sites of La Bastida and Gatas (southeast Iberia) using stable isotope analysis. PLOS ONE, 15(3), e0229398. https://doi.org/10.1371/journal.pone.0229398"
+  },
+  {
+    "objectID": "assignments/assignment03_seshat_missing/assignment03_seshat_missing.html",
+    "href": "assignments/assignment03_seshat_missing/assignment03_seshat_missing.html",
+    "title": "ANTH418 Assignment 3: Missing Data in the Seshat Moralizing Gods Debate",
+    "section": "",
+    "text": "NoteBefore you begin\n\n\n\nRead the Week 6 Study Guide before starting this assignment.\nThe Study Guide explains the required concepts and R workflow for data transformation, missing values, the distinction between NA and a recorded zero, deletion and imputation as analytical decisions, and sensitivity analysis.\nThis assignment uses a deliberately small aggregated teaching dataset. The CSV contains three rows summarizing the outcome status of the 801 observations in the documented Seshat regression frame. It does not contain 801 individual rows."
+  },
+  {
+    "objectID": "assignments/assignment03_seshat_missing/assignment03_seshat_missing.html#research-question",
+    "href": "assignments/assignment03_seshat_missing/assignment03_seshat_missing.html#research-question",
+    "title": "ANTH418 Assignment 3: Missing Data in the Seshat Moralizing Gods Debate",
+    "section": "Research question",
+    "text": "Research question\nHow does treating unknown observations as known absences change the descriptive pattern of moralizing-gods outcomes in the documented Seshat regression frame?"
+  },
+  {
+    "objectID": "assignments/assignment03_seshat_missing/assignment03_seshat_missing.html#case-study",
+    "href": "assignments/assignment03_seshat_missing/assignment03_seshat_missing.html#case-study",
+    "title": "ANTH418 Assignment 3: Missing Data in the Seshat Moralizing Gods Debate",
+    "section": "Case Study",
+    "text": "Case Study\nSeshat: Global History Databank was developed to organize historical and archaeological information about past societies in standardized form for large-scale comparative research (Turchin et al. 2015).\nWhitehouse et al. (2019) used Seshat data to investigate the relationship between social complexity and moralizing gods. Their published analysis argued that moralizing gods generally appeared after large increases in social complexity.\nBeheim et al. (2021) subsequently focused attention on the treatment of missing outcome data. In the documented 801-observation regression frame, they reported:\n\n299 observations in which moralizing gods were recorded as present;\n12 observations in which moralizing gods were recorded as absent; and\n490 observations in which the outcome was missing or unknown.\n\nThe critical issue is that the 490 unknown observations were treated in the disputed analysis as if they were known absences.\nThis creates a fundamental data distinction:\ndocumented absence is not the same thing as missing information.\nThe ANTH418 teaching file preserves these three states explicitly. Your task is not to reproduce the original regression models. Instead, you will use descriptive summaries and visualization to examine how the apparent empirical pattern changes when the 490 unknown observations are represented in two different ways."
+  },
+  {
+    "objectID": "assignments/assignment03_seshat_missing/assignment03_seshat_missing.html#assignment",
+    "href": "assignments/assignment03_seshat_missing/assignment03_seshat_missing.html#assignment",
+    "title": "ANTH418 Assignment 3: Missing Data in the Seshat Moralizing Gods Debate",
+    "section": "Assignment",
+    "text": "Assignment\nUsing data/seshat_missingness_counts.csv, conduct a descriptive sensitivity analysis of the missing-data decision at the center of the Seshat moralizing-gods debate.\nYou will:\n\ninspect the teaching dataset and confirm what one row represents;\ncalculate counts and proportions for the three documented outcome statuses;\nvisualize the data while preserving missing_unknown as its own category;\nconstruct an alternative summary in which missing_unknown is combined with known_absent;\ncompare the two representations numerically and visually; and\nexplain what the comparison shows about the consequences of treating unknown information as documented absence.\n\nThe assignment is about the effect of an analytical decision, not about deciding whether moralizing gods actually were present in the unknown cases."
+  },
+  {
+    "objectID": "assignments/assignment03_seshat_missing/assignment03_seshat_missing.html#inspect-the-teaching-data",
+    "href": "assignments/assignment03_seshat_missing/assignment03_seshat_missing.html#inspect-the-teaching-data",
+    "title": "ANTH418 Assignment 3: Missing Data in the Seshat Moralizing Gods Debate",
+    "section": "1. Inspect the teaching data",
+    "text": "1. Inspect the teaching data\nLoad the teaching file.\n\nlibrary(tidyverse)\n\ndata_file &lt;- if (file.exists(\"data/seshat_missingness_counts.csv\")) {\n  \"data/seshat_missingness_counts.csv\"\n} else {\n  file.path(\n    \"assignments\",\n    \"assignment03_seshat_missing\",\n    \"data\",\n    \"seshat_missingness_counts.csv\"\n  )\n}\n\ndat &lt;- read_csv(\n  data_file,\n  show_col_types = FALSE\n)\n\ndat\n\n# A tibble: 3 × 3\n  status          count meaning                            \n  &lt;chr&gt;           &lt;dbl&gt; &lt;chr&gt;                              \n1 known_present     299 Moralizing gods recorded as present\n2 known_absent       12 Moralizing gods recorded as absent \n3 missing_unknown   490 Outcome missing/unknown            \n\n\nInspect its structure.\n\nglimpse(dat)\n\nRows: 3\nColumns: 3\n$ status  &lt;chr&gt; \"known_present\", \"known_absent\", \"missing_unknown\"\n$ count   &lt;dbl&gt; 299, 12, 490\n$ meaning &lt;chr&gt; \"Moralizing gods recorded as present\", \"Moralizing gods record…\n\n\nConfirm the total number of underlying observations represented by the three aggregate rows.\n\ndat |&gt;\n  summarize(total_observations = sum(count))\n\n# A tibble: 1 × 1\n  total_observations\n               &lt;dbl&gt;\n1                801\n\n\nBefore continuing, make sure you can answer:\n\nHow many rows are in the teaching CSV?\nWhat does one row of the teaching CSV represent?\nWhat is the underlying unit of analysis summarized by the file?\nWhat does count measure?\nWhat is the difference between known_absent and missing_unknown?\nWhy would it be incorrect to describe the teaching CSV itself as containing 490 literal NA cells?\n\n\n\n\n\n\n\nImportantAggregate data\n\n\n\nThe teaching CSV contains three aggregate categories, not the original 801 case-level observations. missing_unknown is therefore a category summarizing missingness in the underlying regression frame. You should not use is.na() to try to discover 490 missing cells in this file."
+  },
+  {
+    "objectID": "assignments/assignment03_seshat_missing/assignment03_seshat_missing.html#quantify-the-documented-missingness",
+    "href": "assignments/assignment03_seshat_missing/assignment03_seshat_missing.html#quantify-the-documented-missingness",
+    "title": "ANTH418 Assignment 3: Missing Data in the Seshat Moralizing Gods Debate",
+    "section": "2. Quantify the documented missingness",
+    "text": "2. Quantify the documented missingness\nCalculate the proportion represented by each status.\n\nstatus_summary &lt;- dat |&gt;\n  mutate(\n    proportion = count / sum(count),\n    percent = 100 * proportion\n  )\n\nstatus_summary\n\n# A tibble: 3 × 5\n  status          count meaning                             proportion percent\n  &lt;chr&gt;           &lt;dbl&gt; &lt;chr&gt;                                    &lt;dbl&gt;   &lt;dbl&gt;\n1 known_present     299 Moralizing gods recorded as present     0.373    37.3 \n2 known_absent       12 Moralizing gods recorded as absent      0.0150    1.50\n3 missing_unknown   490 Outcome missing/unknown                 0.612    61.2 \n\n\nCheck that the proportions sum to 1 and the percentages sum to 100.\n\nstatus_summary |&gt;\n  summarize(\n    proportion_total = sum(proportion),\n    percent_total = sum(percent)\n  )\n\n# A tibble: 1 × 2\n  proportion_total percent_total\n             &lt;dbl&gt;         &lt;dbl&gt;\n1                1           100\n\n\nUse the output to report:\n\nthe percentage recorded as known_present;\nthe percentage recorded as known_absent; and\nthe percentage recorded as missing_unknown.\n\nThen answer in prose:\n\nWhat is the most important feature of the outcome-status distribution before any recoding takes place?\n\nDo not treat the unknown category as if it contained observed absences."
+  },
+  {
+    "objectID": "assignments/assignment03_seshat_missing/assignment03_seshat_missing.html#preserve-unknown-as-unknown",
+    "href": "assignments/assignment03_seshat_missing/assignment03_seshat_missing.html#preserve-unknown-as-unknown",
+    "title": "ANTH418 Assignment 3: Missing Data in the Seshat Moralizing Gods Debate",
+    "section": "3. Preserve unknown as unknown",
+    "text": "3. Preserve unknown as unknown\nYour first representation should preserve all three documented statuses.\nCreate a bar chart showing the counts for known_present, known_absent, and missing_unknown.\n\nggplot(status_summary, aes(x = status, y = count)) +\n  geom_col() +\n  labs(\n    x = \"Documented outcome status\",\n    y = \"Number of observations\",\n    title = \"Seshat moralizing-gods outcome status\"\n  )\n\n\n\n\n\n\n\n\nImprove the plot so that the category order is substantively meaningful and the labels are readable.\n\n# Your code\n\nThen describe the graph in plain language. Distinguish evidence of presence, evidence of absence, and cases for which the outcome is unknown.\n\n\n\n\n\n\nNoteRepresentation A\n\n\n\nIn this representation, uncertainty remains visible. The 490 unknown observations are not silently converted into evidence of absence."
+  },
+  {
+    "objectID": "assignments/assignment03_seshat_missing/assignment03_seshat_missing.html#construct-the-alternative-unknown-absent-representation",
+    "href": "assignments/assignment03_seshat_missing/assignment03_seshat_missing.html#construct-the-alternative-unknown-absent-representation",
+    "title": "ANTH418 Assignment 3: Missing Data in the Seshat Moralizing Gods Debate",
+    "section": "4. Construct the alternative unknown → absent representation",
+    "text": "4. Construct the alternative unknown → absent representation\nNow reproduce the logic of the disputed coding decision at the aggregate level.\nDo not overwrite dat. Create a new object.\n\nrecoded &lt;- dat |&gt;\n  mutate(\n    recoded_status = case_when(\n      status == \"known_present\" ~ \"present\",\n      status %in% c(\"known_absent\", \"missing_unknown\") ~ \"absent\"\n    )\n  ) |&gt;\n  group_by(recoded_status) |&gt;\n  summarize(\n    count = sum(count),\n    .groups = \"drop\"\n  ) |&gt;\n  mutate(\n    proportion = count / sum(count),\n    percent = 100 * proportion\n  )\n\nrecoded\n\n# A tibble: 2 × 4\n  recoded_status count proportion percent\n  &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt;   &lt;dbl&gt;\n1 absent           502      0.627    62.7\n2 present          299      0.373    37.3\n\n\nVerify that the total number of underlying observations remains 801.\n\nrecoded |&gt;\n  summarize(total_observations = sum(count))\n\n# A tibble: 1 × 1\n  total_observations\n               &lt;dbl&gt;\n1                801\n\n\nThen report:\n\nthe number and percentage classified as present;\nthe number and percentage classified as absent after recoding; and\nhow many observations changed interpretive status because of this decision.\n\nBe precise: the 490 underlying observations did not acquire new historical evidence. Their analytical label changed."
+  },
+  {
+    "objectID": "assignments/assignment03_seshat_missing/assignment03_seshat_missing.html#compare-the-two-representations",
+    "href": "assignments/assignment03_seshat_missing/assignment03_seshat_missing.html#compare-the-two-representations",
+    "title": "ANTH418 Assignment 3: Missing Data in the Seshat Moralizing Gods Debate",
+    "section": "5. Compare the two representations",
+    "text": "5. Compare the two representations\nCreate a compact comparison table.\n\ncomparison &lt;- tibble(\n  representation = c(\n    \"Unknown preserved\",\n    \"Unknown preserved\",\n    \"Unknown preserved\",\n    \"Unknown recoded as absent\",\n    \"Unknown recoded as absent\"\n  ),\n  status = c(\n    \"Present\",\n    \"Absent\",\n    \"Unknown\",\n    \"Present\",\n    \"Absent\"\n  ),\n  count = c(\n    299,\n    12,\n    490,\n    299,\n    12 + 490\n  )\n) |&gt;\n  group_by(representation) |&gt;\n  mutate(\n    percent = 100 * count / sum(count)\n  ) |&gt;\n  ungroup()\n\ncomparison\n\n# A tibble: 5 × 4\n  representation            status  count percent\n  &lt;chr&gt;                     &lt;chr&gt;   &lt;dbl&gt;   &lt;dbl&gt;\n1 Unknown preserved         Present   299   37.3 \n2 Unknown preserved         Absent     12    1.50\n3 Unknown preserved         Unknown   490   61.2 \n4 Unknown recoded as absent Present   299   37.3 \n5 Unknown recoded as absent Absent    502   62.7 \n\n\nUse the table to answer:\n\nDoes the number of documented presences change?\nDoes the amount of historical evidence change?\nWhat changes when unknown cases are combined with documented absences?\nHow does the apparent balance between “present” and “absent” change?\n\nThe key question is not merely whether the percentages differ. Explain why they differ."
+  },
+  {
+    "objectID": "assignments/assignment03_seshat_missing/assignment03_seshat_missing.html#visualize-the-sensitivity-analysis",
+    "href": "assignments/assignment03_seshat_missing/assignment03_seshat_missing.html#visualize-the-sensitivity-analysis",
+    "title": "ANTH418 Assignment 3: Missing Data in the Seshat Moralizing Gods Debate",
+    "section": "6. Visualize the sensitivity analysis",
+    "text": "6. Visualize the sensitivity analysis\nCreate a figure that allows the two representations to be compared directly.\n\nggplot(\n  comparison,\n  aes(x = status, y = percent)\n) +\n  geom_col() +\n  facet_wrap(~ representation) +\n  labs(\n    x = \"Outcome status\",\n    y = \"Percentage of observations\",\n    title = \"Effect of treating unknown outcomes as absences\"\n  )\n\n\n\n\n\n\n\n\nRefine the plot so that the comparison is easy to read.\n\n# Your code\n\nThen interpret the figure. Address what remains unchanged, what changes dramatically, whether the change comes from new observations or recoding existing uncertainty, and why the two representations can produce different impressions of the historical pattern.\n\n\n\n\n\n\nImportantSensitivity analysis\n\n\n\nA sensitivity analysis asks whether a substantive pattern changes when an important analytical choice changes.\nIf the interpretation changes substantially under an alternative reasonable treatment, the conclusion is sensitive to that decision. This does not by itself establish which treatment is historically correct."
+  },
+  {
+    "objectID": "assignments/assignment03_seshat_missing/assignment03_seshat_missing.html#interpret-the-analytical-consequences",
+    "href": "assignments/assignment03_seshat_missing/assignment03_seshat_missing.html#interpret-the-analytical-consequences",
+    "title": "ANTH418 Assignment 3: Missing Data in the Seshat Moralizing Gods Debate",
+    "section": "7. Interpret the analytical consequences",
+    "text": "7. Interpret the analytical consequences\nWrite a concise interpretation bringing together your numerical summaries and visualizations.\nYour discussion should explain:\n\nwhy missing_unknown and known_absent represent different evidential states;\nwhy the original three-category representation preserves information that the two-category recoding removes;\nhow the apparent proportion of absences changes under the recoding;\nwhy this is a data-analysis decision rather than a purely technical formatting choice;\nwhat the sensitivity comparison can establish; and\nwhat it cannot establish about the actual historical presence or absence of moralizing gods.\n\nConnect your interpretation to the broader Week 6 principle:\n\nPreparation is analysis.\n\nA recoding decision can change the empirical pattern presented to the reader even though the underlying documentary evidence has not changed.\n\nFinal interpretation guidance\nUse these questions to structure your concluding paragraph:\n\nWhat does the teaching file summarize?\nWhat proportion of the underlying 801 observations is unknown?\nWhat is the difference between a documented absence and an unknown outcome?\nWhat happens numerically when the unknown cases are recoded as absent?\nDoes that operation add historical evidence?\nIs the descriptive pattern sensitive to the coding decision?\nWhat conclusion about data preparation can you draw from this case?\nWhat historical conclusion would go beyond what this aggregated teaching dataset can establish?\n\n\n\n\n\n\n\nWarningStatistical scope\n\n\n\nThis assignment is limited to descriptive missing-data analysis, visualization, recoding, and simple sensitivity analysis.\nDo not perform t-tests, regression, Bayesian modeling, multiple imputation, MICE, or other inferential analyses. Do not attempt to reproduce the original Whitehouse et al. or Beheim et al. statistical models from this three-row teaching summary."
+  },
+  {
+    "objectID": "assignments/assignment03_seshat_missing/assignment03_seshat_missing.html#submission",
+    "href": "assignments/assignment03_seshat_missing/assignment03_seshat_missing.html#submission",
+    "title": "ANTH418 Assignment 3: Missing Data in the Seshat Moralizing Gods Debate",
+    "section": "Submission",
+    "text": "Submission\nSubmit both:\n\nyour completed Quarto source file (.qmd); and\nthe rendered HTML file (.html).\n\nYour report should include:\n\ninspection of the teaching data;\nthe three-category count/proportion summary;\na visualization preserving unknown outcomes;\nthe alternative unknown → absent summary;\na direct numerical comparison;\na visualization comparing the two representations; and\na concise final interpretation.\n\nKeep the analysis reproducible. Do not manually type calculated percentages into the report when R can calculate them from the teaching file.\nBefore submitting, restart R and render the complete document from a clean session. Confirm that all code executes and all figures and tables appear correctly."
+  },
+  {
+    "objectID": "assignments/assignment03_seshat_missing/assignment03_seshat_missing.html#references",
+    "href": "assignments/assignment03_seshat_missing/assignment03_seshat_missing.html#references",
+    "title": "ANTH418 Assignment 3: Missing Data in the Seshat Moralizing Gods Debate",
     "section": "References",
-    "text": "References\nPassmore, S., Barth, W., Greenhill, S. J., Quinn, K., Sheard, C., Argyriou, P., et al. (2023). Kinbank: A global database of kinship terminology. PLOS ONE, 18(5), e0283218. https://doi.org/10.1371/journal.pone.0283218\nPassmore, S., & Jordan, F. M. (2020). No universals in the cultural evolution of kinship terminology. Evolutionary Human Sciences, 2, e42. https://doi.org/10.1017/ehs.2020.41"
+    "text": "References\nBeheim, B., Atkinson, Q. D., Bulbulia, J., Gervais, W., Gray, R. D., Henrich, J., Lang, M., Monroe, M. W., Muthukrishna, M., Norenzayan, A., Purzycki, B. G., Shariff, A., Slingerland, E., Spicer, R., & Willard, A. K. (2021). Treatment of missing data determined conclusions regarding moralizing gods. Nature, 595, E29–E34. https://doi.org/10.1038/s41586-021-03655-4\nTurchin, P., Brennan, R., Currie, T. E., Feeney, K. C., François, P., Hoyer, D., Manning, J. G., Marciniak, A., Mullins, D. A., Palmisano, A., Peregrine, P., Turner, E. A. L., & Whitehouse, H. (2015). Seshat: The Global History Databank. Cliodynamics, 6(1), 77–107. https://doi.org/10.21237/C7clio6127917\nWhitehouse, H., François, P., Savage, P. E., Currie, T. E., Feeney, K. C., Cioni, E., Purcell, R., Ross, R. M., Larson, J., Baines, J., ter Haar, B., Covey, A., & Turchin, P. (2019). Complex societies precede moralizing gods throughout world history. Nature, 568, 226–229. https://doi.org/10.1038/s41586-019-1043-4"
   },
   {
     "objectID": "resources/getting-started.html",

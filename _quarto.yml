@@ -11,9 +11,11 @@ project:
     - weeks/week03.qmd
     - weeks/week04.qmd
     - weeks/week05.qmd
+    - weeks/week06.qmd
     - assignments/index.qmd
     - assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.qmd
     - assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.qmd
+    - assignments/assignment03_seshat_missing/assignment03_seshat_missing.qmd
     - readings/index.qmd
     - resources/*.qmd
 
@@ -49,6 +51,9 @@ website:
             
           - href: weeks/week05.qmd
             text: "Week 5 — EDA & Visualization"
+
+          - href: weeks/week06.qmd
+            text: "Week 6 — Transformation & Missing Data"
 
       - href: assignments/index.qmd
         text: Assignments

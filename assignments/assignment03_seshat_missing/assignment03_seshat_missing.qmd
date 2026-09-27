@@ -1,0 +1,361 @@
+---
+title: "ANTH418 Assignment 3: Missing Data in the Seshat Moralizing Gods Debate"
+format:
+  html:
+    toc: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+::: {.callout-note title="Before you begin"}
+Read the [Week 6 Study Guide](../../weeks/week06.qmd) before starting this assignment.
+
+The Study Guide explains the required concepts and R workflow for data transformation, missing values, the distinction between `NA` and a recorded zero, deletion and imputation as analytical decisions, and sensitivity analysis.
+
+This assignment uses a deliberately small **aggregated teaching dataset**. The CSV contains three rows summarizing the outcome status of the **801 observations** in the documented Seshat regression frame. It does **not** contain 801 individual rows.
+:::
+
+## Research question
+
+How does treating unknown observations as known absences change the descriptive pattern of moralizing-gods outcomes in the documented Seshat regression frame?
+
+## Case Study
+
+**Seshat: Global History Databank** was developed to organize historical and archaeological information about past societies in standardized form for large-scale comparative research (Turchin et al. 2015).
+
+Whitehouse et al. (2019) used Seshat data to investigate the relationship between social complexity and moralizing gods. Their published analysis argued that moralizing gods generally appeared after large increases in social complexity.
+
+Beheim et al. (2021) subsequently focused attention on the treatment of missing outcome data. In the documented 801-observation regression frame, they reported:
+
+- **299** observations in which moralizing gods were recorded as present;
+- **12** observations in which moralizing gods were recorded as absent; and
+- **490** observations in which the outcome was missing or unknown.
+
+The critical issue is that the 490 unknown observations were treated in the disputed analysis as if they were known absences.
+
+This creates a fundamental data distinction:
+
+**documented absence is not the same thing as missing information.**
+
+The ANTH418 teaching file preserves these three states explicitly. Your task is not to reproduce the original regression models. Instead, you will use descriptive summaries and visualization to examine how the apparent empirical pattern changes when the 490 unknown observations are represented in two different ways.
+
+## Assignment
+
+Using `data/seshat_missingness_counts.csv`, conduct a **descriptive sensitivity analysis** of the missing-data decision at the center of the Seshat moralizing-gods debate.
+
+You will:
+
+1. inspect the teaching dataset and confirm what one row represents;
+2. calculate counts and proportions for the three documented outcome statuses;
+3. visualize the data while preserving `missing_unknown` as its own category;
+4. construct an alternative summary in which `missing_unknown` is combined with `known_absent`;
+5. compare the two representations numerically and visually; and
+6. explain what the comparison shows about the consequences of treating unknown information as documented absence.
+
+The assignment is about the **effect of an analytical decision**, not about deciding whether moralizing gods actually were present in the unknown cases.
+
+## 1. Inspect the teaching data
+
+Load the teaching file.
+
+```{r}
+library(tidyverse)
+
+data_file <- if (file.exists("data/seshat_missingness_counts.csv")) {
+  "data/seshat_missingness_counts.csv"
+} else {
+  file.path(
+    "assignments",
+    "assignment03_seshat_missing",
+    "data",
+    "seshat_missingness_counts.csv"
+  )
+}
+
+dat <- read_csv(
+  data_file,
+  show_col_types = FALSE
+)
+
+dat
+
+```
+
+Inspect its structure.
+
+```{r}
+glimpse(dat)
+```
+
+Confirm the total number of underlying observations represented by the three aggregate rows.
+
+```{r}
+dat |>
+  summarize(total_observations = sum(count))
+```
+
+Before continuing, make sure you can answer:
+
+- How many rows are in the teaching CSV?
+- What does one row of the teaching CSV represent?
+- What is the underlying unit of analysis summarized by the file?
+- What does `count` measure?
+- What is the difference between `known_absent` and `missing_unknown`?
+- Why would it be incorrect to describe the teaching CSV itself as containing 490 literal `NA` cells?
+
+::: {.callout-important title="Aggregate data"}
+The teaching CSV contains **three aggregate categories**, not the original 801 case-level observations. `missing_unknown` is therefore a category summarizing missingness in the underlying regression frame. You should not use `is.na()` to try to discover 490 missing cells in this file.
+:::
+
+## 2. Quantify the documented missingness
+
+Calculate the proportion represented by each status.
+
+```{r}
+status_summary <- dat |>
+  mutate(
+    proportion = count / sum(count),
+    percent = 100 * proportion
+  )
+
+status_summary
+```
+
+Check that the proportions sum to 1 and the percentages sum to 100.
+
+```{r}
+status_summary |>
+  summarize(
+    proportion_total = sum(proportion),
+    percent_total = sum(percent)
+  )
+```
+
+Use the output to report:
+
+- the percentage recorded as `known_present`;
+- the percentage recorded as `known_absent`; and
+- the percentage recorded as `missing_unknown`.
+
+Then answer in prose:
+
+> What is the most important feature of the outcome-status distribution before any recoding takes place?
+
+Do not treat the unknown category as if it contained observed absences.
+
+## 3. Preserve unknown as unknown
+
+Your first representation should preserve all three documented statuses.
+
+Create a bar chart showing the counts for `known_present`, `known_absent`, and `missing_unknown`.
+
+```{r}
+ggplot(status_summary, aes(x = status, y = count)) +
+  geom_col() +
+  labs(
+    x = "Documented outcome status",
+    y = "Number of observations",
+    title = "Seshat moralizing-gods outcome status"
+  )
+```
+
+Improve the plot so that the category order is substantively meaningful and the labels are readable.
+
+```{r}
+# Your code
+```
+
+Then describe the graph in plain language. Distinguish evidence of presence, evidence of absence, and cases for which the outcome is unknown.
+
+::: {.callout-note title="Representation A"}
+In this representation, uncertainty remains visible. The 490 unknown observations are not silently converted into evidence of absence.
+:::
+
+## 4. Construct the alternative `unknown → absent` representation
+
+Now reproduce the **logic of the disputed coding decision** at the aggregate level.
+
+Do **not** overwrite `dat`. Create a new object.
+
+```{r}
+recoded <- dat |>
+  mutate(
+    recoded_status = case_when(
+      status == "known_present" ~ "present",
+      status %in% c("known_absent", "missing_unknown") ~ "absent"
+    )
+  ) |>
+  group_by(recoded_status) |>
+  summarize(
+    count = sum(count),
+    .groups = "drop"
+  ) |>
+  mutate(
+    proportion = count / sum(count),
+    percent = 100 * proportion
+  )
+
+recoded
+```
+
+Verify that the total number of underlying observations remains 801.
+
+```{r}
+recoded |>
+  summarize(total_observations = sum(count))
+```
+
+Then report:
+
+- the number and percentage classified as present;
+- the number and percentage classified as absent after recoding; and
+- how many observations changed **interpretive status** because of this decision.
+
+Be precise: the 490 underlying observations did not acquire new historical evidence. Their analytical label changed.
+
+## 5. Compare the two representations
+
+Create a compact comparison table.
+
+```{r}
+comparison <- tibble(
+  representation = c(
+    "Unknown preserved",
+    "Unknown preserved",
+    "Unknown preserved",
+    "Unknown recoded as absent",
+    "Unknown recoded as absent"
+  ),
+  status = c(
+    "Present",
+    "Absent",
+    "Unknown",
+    "Present",
+    "Absent"
+  ),
+  count = c(
+    299,
+    12,
+    490,
+    299,
+    12 + 490
+  )
+) |>
+  group_by(representation) |>
+  mutate(
+    percent = 100 * count / sum(count)
+  ) |>
+  ungroup()
+
+comparison
+```
+
+Use the table to answer:
+
+- Does the number of documented presences change?
+- Does the amount of historical evidence change?
+- What changes when unknown cases are combined with documented absences?
+- How does the apparent balance between "present" and "absent" change?
+
+The key question is not merely whether the percentages differ. Explain **why** they differ.
+
+## 6. Visualize the sensitivity analysis
+
+Create a figure that allows the two representations to be compared directly.
+
+```{r}
+ggplot(
+  comparison,
+  aes(x = status, y = percent)
+) +
+  geom_col() +
+  facet_wrap(~ representation) +
+  labs(
+    x = "Outcome status",
+    y = "Percentage of observations",
+    title = "Effect of treating unknown outcomes as absences"
+  )
+```
+
+Refine the plot so that the comparison is easy to read.
+
+```{r}
+# Your code
+```
+
+Then interpret the figure. Address what remains unchanged, what changes dramatically, whether the change comes from new observations or recoding existing uncertainty, and why the two representations can produce different impressions of the historical pattern.
+
+::: {.callout-important title="Sensitivity analysis"}
+A sensitivity analysis asks whether a substantive pattern changes when an important analytical choice changes.
+
+If the interpretation changes substantially under an alternative reasonable treatment, the conclusion is **sensitive** to that decision. This does not by itself establish which treatment is historically correct.
+:::
+
+## 7. Interpret the analytical consequences
+
+Write a concise interpretation bringing together your numerical summaries and visualizations.
+
+Your discussion should explain:
+
+- why `missing_unknown` and `known_absent` represent different evidential states;
+- why the original three-category representation preserves information that the two-category recoding removes;
+- how the apparent proportion of absences changes under the recoding;
+- why this is a data-analysis decision rather than a purely technical formatting choice;
+- what the sensitivity comparison can establish; and
+- what it cannot establish about the actual historical presence or absence of moralizing gods.
+
+Connect your interpretation to the broader Week 6 principle:
+
+> **Preparation is analysis.**
+
+A recoding decision can change the empirical pattern presented to the reader even though the underlying documentary evidence has not changed.
+
+### Final interpretation guidance
+
+Use these questions to structure your concluding paragraph:
+
+1. What does the teaching file summarize?
+2. What proportion of the underlying 801 observations is unknown?
+3. What is the difference between a documented absence and an unknown outcome?
+4. What happens numerically when the unknown cases are recoded as absent?
+5. Does that operation add historical evidence?
+6. Is the descriptive pattern sensitive to the coding decision?
+7. What conclusion about data preparation can you draw from this case?
+8. What historical conclusion would go beyond what this aggregated teaching dataset can establish?
+
+::: {.callout-warning title="Statistical scope"}
+This assignment is limited to **descriptive missing-data analysis, visualization, recoding, and simple sensitivity analysis**.
+
+Do **not** perform t-tests, regression, Bayesian modeling, multiple imputation, MICE, or other inferential analyses. Do not attempt to reproduce the original Whitehouse et al. or Beheim et al. statistical models from this three-row teaching summary.
+:::
+
+## Submission
+
+Submit **both**:
+
+1. your completed Quarto source file (`.qmd`); and
+2. the rendered HTML file (`.html`).
+
+Your report should include:
+
+- inspection of the teaching data;
+- the three-category count/proportion summary;
+- a visualization preserving unknown outcomes;
+- the alternative `unknown → absent` summary;
+- a direct numerical comparison;
+- a visualization comparing the two representations; and
+- a concise final interpretation.
+
+Keep the analysis reproducible. Do not manually type calculated percentages into the report when R can calculate them from the teaching file.
+
+Before submitting, restart R and render the complete document from a clean session. Confirm that all code executes and all figures and tables appear correctly.
+
+## References
+
+Beheim, B., Atkinson, Q. D., Bulbulia, J., Gervais, W., Gray, R. D., Henrich, J., Lang, M., Monroe, M. W., Muthukrishna, M., Norenzayan, A., Purzycki, B. G., Shariff, A., Slingerland, E., Spicer, R., & Willard, A. K. (2021). Treatment of missing data determined conclusions regarding moralizing gods. *Nature, 595*, E29–E34. https://doi.org/10.1038/s41586-021-03655-4
+
+Turchin, P., Brennan, R., Currie, T. E., Feeney, K. C., François, P., Hoyer, D., Manning, J. G., Marciniak, A., Mullins, D. A., Palmisano, A., Peregrine, P., Turner, E. A. L., & Whitehouse, H. (2015). Seshat: The Global History Databank. *Cliodynamics, 6*(1), 77–107. https://doi.org/10.21237/C7clio6127917
+
+Whitehouse, H., François, P., Savage, P. E., Currie, T. E., Feeney, K. C., Cioni, E., Purcell, R., Ross, R. M., Larson, J., Baines, J., ter Haar, B., Covey, A., & Turchin, P. (2019). Complex societies precede moralizing gods throughout world history. *Nature, 568*, 226–229. https://doi.org/10.1038/s41586-019-1043-4

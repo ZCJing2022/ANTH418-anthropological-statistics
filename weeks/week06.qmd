@@ -1,0 +1,419 @@
+---
+title: "Week 6 — Data Transformation and Missing Values"
+subtitle: "How data preparation choices shape statistical conclusions before inference begins"
+date: "2026-10-14"
+---
+
+<div class="week-meta">
+**Class meeting:** 14 October 2026<br>
+**Focus:** data transformation · missing values · recoding · sensitivity analysis<br>
+**Case study:** Seshat moralizing-gods debate<br>
+**Assessment:** Assignment 3 — Missing Data in the Seshat Moralizing Gods Debate
+</div>
+
+```{r}
+#| label: setup
+#| include: false
+project_root <- if (file.exists("R/setup.R")) "." else ".."
+source(file.path(project_root, "R", "setup.R"))
+library(tidyverse)
+```
+
+## Overview
+
+Week 6 asks what happens **before** formal inference:
+
+> **How can decisions made while preparing data change the conclusions we eventually draw?**
+
+Real anthropological and archaeological datasets may be skewed, measured on incompatible scales, or incomplete. Researchers therefore transform, recode, filter, and otherwise prepare data. These operations are necessary, but they are not neutral.
+
+::: {.callout-note title="The Week 6 principle"}
+**Preparation is analysis.** Every transformation or missing-data decision should have a substantive reason, remain visible in the code, and be checked for its effect on the empirical pattern.
+:::
+
+The central case study is the Seshat moralizing-gods debate. Whitehouse et al. (2019) reported that moralizing gods tended to appear after large increases in social complexity. Beheim et al. (2021) showed that 61% of the moralizing-gods observations used in the analysis were missing and had been treated as known absences. Alternative treatments changed the reported pattern.
+
+$$\texttt{NA} \neq 0$$
+
+## Questions
+
+- Why do researchers transform variables?
+- How do log, root, reciprocal, and standardizing transformations differ?
+- What does `NA` mean in R, and why is it different from `0`?
+- What are explicit and implicit missingness?
+- What do MCAR, MAR, and MNAR mean?
+- What are the costs of deletion and simple imputation?
+- What is sensitivity analysis?
+- How can preparation decisions change anthropological conclusions?
+
+## Learning objectives
+
+After this week, you should be able to diagnose reasons for transformation; create transformed variables without overwriting originals; identify and count missing values; distinguish unknown from documented absence; explain explicit/implicit missingness and MCAR/MAR/MNAR; recognize costs of deletion and single imputation; and compare alternative missing-data treatments with a simple sensitivity analysis.
+
+---
+
+# Part I — Data Transformation
+
+## 1. What is a transformation?
+
+A **transformation** applies a mathematical function to a variable and creates a new numerical representation of the same observations.
+
+```{r}
+assemblage_size <- c(5, 8, 12, 18, 35, 90, 250)
+tibble(assemblage_size) |>
+  mutate(log_assemblage_size = log(assemblage_size))
+```
+
+The cases have not changed. The numerical scale has.
+
+::: {.callout-important title="Transform the variable, not the evidence"}
+Preserve the original variable so the analytical decision remains transparent and reversible.
+:::
+
+## 2. Four problems transformations can address
+
+**Skewness:** log or power transformations can compress a long right tail.  
+**Outlier influence:** transformations can pull extreme values inward.  
+**Variance stabilization:** transformations can reduce increasing or fan-shaped spread.  
+**Linearizing relationships:** transformations can make some curved relationships closer to linear.
+
+```{r}
+skewed <- tibble(x = c(1, 2, 2, 3, 4, 5, 8, 15, 40, 120))
+ggplot(skewed, aes(x = x)) + geom_histogram(bins = 8)
+ggplot(skewed, aes(x = log(x))) + geom_histogram(bins = 8)
+```
+
+::: {.callout-tip title="Do not transform automatically"}
+A skewed variable is not automatically wrong. Transform when a specific transformation addresses a specific analytical problem and the transformed scale remains meaningful.
+:::
+
+## 3. Common transformations
+
+### Logarithm
+
+For positive values, $X'=\log(X)$. Logs strongly compress large values, but `log(0)` is undefined.
+
+```{r}
+x <- c(1, 10, 100, 1000)
+log(x)
+log(0)
+```
+
+Adding a constant in `log(X + c)` is itself an analytical decision and requires justification.
+
+### Square and cube roots
+
+```{r}
+counts <- c(0, 1, 4, 9, 16, 25)
+sqrt(counts)
+counts^(1/3)
+```
+
+Roots are gentler than logs and square roots naturally accommodate zero.
+
+### Reciprocal
+
+```{r}
+x <- c(1, 2, 5, 10, 50)
+-1 / x
+```
+
+Reciprocal transformations are much stronger and substantially change interpretation.
+
+## 4. Transformation families and standardization
+
+The **Box-Cox** family considers a spectrum of power transformations for positive data. Familiar points include $\lambda=1$ (none), $0.5$ (square root), $0$ (log), and $-1$ (inverse). **Yeo-Johnson** extends similar logic to zero and negative values.
+
+A z-score solves a different problem:
+
+$$z=\frac{X-\bar X}{s}$$
+
+```{r}
+measurements <- c(10, 12, 14, 16, 18)
+as.numeric(scale(measurements))
+```
+
+Z-scores place variables measured in different units on a common scale; they do **not** automatically make skewed data normal.
+
+## 5. A reproducible transformation workflow
+
+**inspect → diagnose → transform → compare → document**
+
+::: {.exercise}
+### Practice 1 — Compare transformations
+
+Create a vector with a long right tail. Compare its raw, square-root, and log histograms. Which transformation compresses the upper tail most strongly? Why should transformation choice depend on more than visual symmetry?
+
+<details><summary>Check your work</summary>
+The log transformation normally compresses high values more strongly than the square root. Choice depends on analytical purpose, allowable values, and interpretation—not only appearance.
+</details>
+:::
+
+---
+
+# Part II — Missing Values
+
+## 6. `NA` is not zero
+
+R represents missing information with `NA`.
+
+```{r}
+x <- c(4, 7, NA, 12)
+x
+```
+
+`NA` means unavailable or unknown. It does **not** tell us what the unobserved value would have been. In archaeology, `0` animal bones can mean a context was examined and none were recorded; `NA` can mean the context was not examined or the record is unavailable.
+
+## 7. Missing values propagate
+
+```{r}
+x <- c(1, 2, NA, 4)
+sum(x)
+mean(x)
+sum(x, na.rm = TRUE)
+mean(x, na.rm = TRUE)
+```
+
+::: {.callout-warning title="`na.rm = TRUE` does not solve missing data"}
+It calculates from observed values. It does not explain why values are missing or establish that observed cases represent missing cases.
+:::
+
+## 8. Finding missing values
+
+Use `is.na()`, not `== NA`.
+
+```{r}
+is.na(x)
+sum(is.na(x))
+mean(is.na(x))
+```
+
+```{r}
+missing_demo <- tibble(
+  site = c("A", "B", "C", "D"),
+  count = c(12, NA, 0, 8),
+  date = c(1200, 1250, NA, 1300)
+)
+complete.cases(missing_demo)
+```
+
+## 9. Explicit and implicit missingness
+
+**Explicit missingness:** the row exists and the cell contains `NA`.  
+**Implicit missingness:** an expected row or combination is absent.
+
+```{r}
+implicit_demo <- tibble(site = "A", period = c(1, 3), value = c(12, 15))
+implicit_demo |> complete(site, period = 1:3)
+```
+
+::: {.callout-note title="Two forms of absence"}
+An explicit missing value is the presence of an absence. An implicit missing value is the absence of an expected presence.
+:::
+
+## 10. Why is information missing?
+
+**MCAR — Missing Completely at Random:** missingness is unrelated to observed and unobserved values.  
+**MAR — Missing at Random:** missingness depends on other observed variables but, conditional on them, not on the missing value itself.  
+**MNAR — Missing Not at Random:** missingness depends on the unobserved value or an unmeasured process connected to it.
+
+::: {.callout-important title="Missingness has a history"}
+In anthropological data, missingness may reflect preservation, excavation, sampling, documentation, literacy, colonial observation, survey participation, or recording practice. Understanding how evidence was produced is part of missing-data analysis.
+:::
+
+## 11. Deletion and imputation have costs
+
+Listwise deletion removes incomplete cases:
+
+```{r}
+missing_demo |> drop_na()
+```
+
+It reduces sample size and can bias results when missingness is systematic. Pairwise deletion can make different calculations rely on different sample sizes.
+
+Single mean or median imputation makes a dataset look complete but inserts an unobserved constant and tends to reduce variability.
+
+The lecture also introduces multiple imputation conceptually:
+
+**incomplete data → several plausible completed datasets → analyze each → pool results**
+
+::: {.callout-warning title="Not required for Assignment 3"}
+Assignment 3 does **not** require multiple imputation, regression modeling, inferential tests, or other advanced missing-data analysis.
+:::
+
+---
+
+# Part III — The Seshat Case Study
+
+## 12. Present, absent, and unknown
+
+**Seshat: Global History Databank** standardizes historical and archaeological information for large-scale comparison. Whitehouse et al. (2019) used Seshat data to examine social complexity and moralizing gods. For Week 6, the issue is not which broad theory of religion is correct; it is **how missing information was represented before analysis**.
+
+Beheim et al. (2021) reported the following for the 801 observations used in the statistical tests:
+
+| Status | Count | Approximate proportion |
+|---|---:|---:|
+| documented present | 299 | 37% |
+| documented absent | 12 | 2% |
+| unknown / missing | 490 | 61% |
+
+**present = evidence of presence**  
+**absent = evidence of absence**  
+**`NA` = status unknown**
+
+## 13. What happened when `NA` became `0`?
+
+The disputed analysis treated the 490 unknown observations as known absences:
+
+```text
+NA  NA  NA  NA  1
+ ↓   ↓   ↓   ↓
+ 0   0   0   0   1
+```
+
+This changes the historical claim. "We do not know" becomes "moralizing gods were absent." Beheim et al. reported an almost perfect correlation, $r=0.97$, between missingness and the recoded absence variable.
+
+::: {.callout-important title="Absence of evidence is not evidence of absence"}
+Turning an unknown historical state into a documented absence is not merely cleaning data. It adds information the original observation did not contain.
+:::
+
+## 14. Forward bias
+
+Documentation of religious beliefs often depends on written records or literate observers. Earlier or non-literate societies can therefore have more unknown values.
+
+```text
+Historical evidence:      NA  NA  NA  →  1
+After NA → 0 recoding:     0   0   0  →  1
+```
+
+The second sequence creates a stronger appearance of late emergence than the evidence alone supports. Beheim et al. call this **forward bias**.
+
+## 15. Sensitivity analysis
+
+A **sensitivity analysis** asks whether the substantive pattern changes when a consequential analytical choice changes.
+
+### Analysis A — Unknown remains unknown
+
+Retain `NA` and summarize documented presence and absence among cases whose status is known.
+
+### Analysis B — Unknown becomes absence
+
+Create a **new** variable in which missing cases are recoded as absence. Do not overwrite the original variable.
+
+If the descriptive conclusion changes substantially, it is **sensitive** to that decision. If it remains similar, it is more **robust** to that particular decision.
+
+Sensitivity analysis does not automatically tell you which coding is correct. It tells you whether the conclusion depends on the choice.
+
+---
+
+# Part IV — Assignment 3 Workflow
+
+## 16. Inspect before changing anything
+
+Use the teaching dataset supplied in the Assignment 3 package. Follow the exact filename and variable names in that package's codebook.
+
+```{r}
+#| eval: false
+seshat <- read_csv("path/to/assignment03/data/teaching_file.csv")
+glimpse(seshat)
+summary(seshat)
+```
+
+Identify the unit of observation, relevant variables, coding of documented presence and absence, and all `NA` values.
+
+## 17. Count and visualize the three states
+
+Your first descriptive task is to distinguish **present, absent, and unknown**. Do not silently drop `NA` from this audit.
+
+```{r}
+#| eval: false
+seshat |>
+  mutate(status = case_when(
+    is.na(moralizing_gods) ~ "Unknown",
+    moralizing_gods == 1 ~ "Present",
+    moralizing_gods == 0 ~ "Absent"
+  )) |>
+  count(status) |>
+  mutate(proportion = n / sum(n))
+```
+
+Use clear labels in the visualization so unknown cases cannot be mistaken for absences.
+
+## 18. Preserve both analytical versions
+
+Never overwrite the original variable.
+
+```{r}
+#| eval: false
+seshat_compare <- seshat |>
+  mutate(
+    mg_original = moralizing_gods,
+    mg_unknown_as_absent = if_else(
+      is.na(moralizing_gods), 0, moralizing_gods
+    )
+  )
+```
+
+Compare Analysis A and Analysis B using summaries, a table, a visualization, or both. Ask how the number and proportion of apparent absences change and whether interpretation changes.
+
+::: {.exercise}
+### Practice 2 — Why preserve the original?
+
+Why is creating `mg_unknown_as_absent` safer than replacing `moralizing_gods` directly?
+
+<details><summary>Check your work</summary>
+It preserves the source information, makes the recoding visible, allows direct comparison, and prevents an analytical assumption from being mistaken for an original observation.
+</details>
+:::
+
+## 19. Interpret without overreaching
+
+Assignment 3 asks you to explain why `NA` and `0` differ, what changes after recoding, whether the descriptive pattern is robust or sensitive, and why absence of evidence differs from evidence of absence.
+
+It does **not** ask you to reproduce the published statistical models or decide which broader theory of moralizing gods and social complexity is correct.
+
+---
+
+# Practical Checklist
+
+Before moving from preparation to analysis, ask:
+
+- Have I inspected the original variables and distributions?
+- If I transformed a variable, can I explain why?
+- Did I preserve the original variable?
+- Have I counted missing values rather than silently ignoring them?
+- Do I know what `0`, `NA`, and other codes mean substantively?
+- Could missingness be related to preservation, observation, documentation, or sampling?
+- Have I checked how R handles missing values?
+- If I recoded or excluded cases, is that decision visible in the code?
+- Would another defensible treatment change the pattern?
+- Can another researcher reproduce the preparation pathway from my Quarto file?
+
+# Takeaways
+
+1. **Preparation is analysis.** Choices made before modeling can determine later conclusions.
+2. **Transformations solve specific problems.** Match the function to the variable and analytical purpose.
+3. **Preserve raw variables.** Transformation should be transparent and reversible.
+4. **`NA` is information about uncertainty, not a zero.** Unknown and absent are different empirical states.
+5. **Missingness has mechanisms.** MCAR, MAR, and MNAR describe different processes.
+6. **Simple fixes have costs.** Deletion and single imputation can change sample size, variance, and relationships.
+7. **Sensitivity analysis makes dependence on analytical choices visible.**
+8. **The Seshat case shows why data preparation can be substantively decisive.**
+
+# References
+
+Beheim, B., Atkinson, Q. D., Bulbulia, J., et al. (2021). Treatment of missing data determined conclusions regarding moralizing gods. *Nature, 595*, E29–E34.
+
+Carlson, D. L. (2017). *Quantitative Methods in Archaeology Using R*. Cambridge University Press. Chapters 6–7.
+
+Ismay, C., & Kim, A. Y. (2025). *Statistical Inference via Data Science*. Data-wrangling chapter supplied for Week 6.
+
+Kabacoff, R. I. (2022). *R in Action*. Manning. Chapters 3 and 18.
+
+Thulin, M. (2025). *Modern Statistics with R: From Wrangling and Exploring Data to Inference and Predictive Modelling*. Chapman & Hall/CRC. Chapter 5.
+
+Turchin, P., Brennan, R., Currie, T., et al. (2015). Seshat: The Global History Databank. *Cliodynamics, 6*(1), 77–107.
+
+Whitehouse, H., François, P., Savage, P. E., et al. (2019). Complex societies precede moralizing gods throughout world history. *Nature, 568*, 226–229. **Retracted.**
+
+Wickham, H., Çetinkaya-Rundel, M., & Grolemund, G. (2023). *R for Data Science* (2nd ed.). O'Reilly. Chapters 3 and 18.

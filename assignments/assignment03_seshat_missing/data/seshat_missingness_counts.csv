@@ -1,0 +1,4 @@
+status,count,meaning
+known_present,299,Moralizing gods recorded as present
+known_absent,12,Moralizing gods recorded as absent
+missing_unknown,490,Outcome missing/unknown

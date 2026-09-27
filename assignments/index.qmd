@@ -46,7 +46,7 @@ Students may browse the materials online or download the complete assignment pac
 
 **Case study:** Treatment of missing observations in the Seshat moralizing-gods debate
 
-[View Assignment 3 materials](assignment03_seshat_missing/)
+[Open Assignment 3](assignment03_seshat_missing/assignment03_seshat_missing.qmd)
 
 [Download complete Assignment 3 package](../downloads/assignments/ANTH418_assignment03_seshat_missing.zip)
 
