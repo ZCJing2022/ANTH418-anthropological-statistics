@@ -19,6 +19,9 @@ This course develops practical statistical thinking for archaeology and anthropo
   - [Week 2 — Using R, RStudio, and Quarto](weeks/week02.qmd)
   - [Week 3 — Measurement and Research Design](weeks/week03.qmd)
   - [Week 4 — Measures of Central Tendency and Dispersion](weeks/week04.qmd)
+  - [Week 5 — Exploratory Data Analysis and Visualization](weeks/week05.qmd)
+  - [Week 6 — Data Transformation and Missing Values](weeks/week06.qmd)
+
 - [Assignments](assignments/index.qmd)
 - [R, RStudio & Quarto Resources](resources/index.qmd)
 
