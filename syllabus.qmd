@@ -382,20 +382,17 @@ Research-design lab: What does one row represent? Compare archaeological observa
 **Required:** Perkins, Mark A.\
 2026. [*Using R for Introductory Statistics in Social Sciences*. Springer,](https://go.exlibris.link/W3PgDGBM) Switzerland. Chapter 3, Statistical Concepts, pp. 19–37; Chapter 4, Running Descriptive Statistics and Frequencies in R, pp. 39–51.
 
-**Required:** Lukesh, S. S., and S. Howe.\
-1978. [Protoapennine vs. Subapennine: Mathematical Distinction Between Two Ceramic Phases](https://go.exlibris.link/qWzrDTMt). *Journal of Field Archaeology* 5:339–347.
+**Required:** Knipper, C., Rihuete-Herrada, C., Voltas, J., Held, P., Lull, V., Micó, R., Risch, R., & Alt, K. W.\
+2020. [Reconstructing Bronze Age diets and farming strategies at the early Bronze Age sites of La Bastida and Gatas (southeast Iberia) using stable isotope analysis.](https://go.exlibris.link/6yymcZkz). *PLOS ONE* 15(3):e0229398.
 
 Carlson, David Lee.\
 2017. [*Quantitative Methods in Archaeology Using R*](https://go.exlibris.link/HTjrgFKw). Cambridge University Press, Cambridge. Chapter 3, Looking at Data – Numerical Summaries, pp. 36–64.
-
-Llull, Vicente, Jordi Voltas Velasco, Robert Risch, Kurt W. Alt, Rafael Micó Pérez, Cristina Rihuete Herrada, Corina Knipper, and Petra Held.\
-2020. [Reconstructing Bronze Age Diets and Farming Strategies at the Early Bronze Age Sites of La Bastida and Gatas](https://go.exlibris.link/6yymcZkz) (Southeast Iberia) Using Stable Isotope Analysis. *PLOS ONE* 15(3):e0229398.
 
 ## Week 5 — 5 & 7 October 2026
 
 ### Exploratory Data Analysis and Visualization
 
-**Assignment 2: Kinbank**
+**Assignment 2: Visualizing Kinship Diversity with Kinbank**
 
 **Topics**
 
@@ -412,11 +409,11 @@ Llull, Vicente, Jordi Voltas Velasco, Robert Risch, Kurt W. Alt, Rafael Micó P�
 **Required:** Beecham, Roger.\
 2026. [*Visualization for Social Data Science*.](https://go.exlibris.link/NqsBPTc3) CRC Press, Milton. Chapter 3, Visualization Fundamentals, pp. 41–71; Chapter 4, Exploratory Data Analysis, pp. 73–96.
 
-**Required:** Thulin, Måns.\
-2025. [*Modern Statistics with R: From Wrangling and Exploring Data to Inference and Predictive Modelling*](https://go.exlibris.link/MzlcbQGN). Chapman and Hall/CRC, New York. Chapter 4, Exploratory Data Analysis and Unsupervised Learning, pp. 98–157.
+**Required:** Passmore, S. et al.\
+2023. [Kinbank: A global database of kinship terminology](https://go.exlibris.link/P4xCWy36). *PLOS ONE* 18(5):e0283218.
 
-Peterson, Christian E., C. Adam Berrey, and Robert D. Drennan.\
-2026. [Comparative Archaeology Reveals Recurrent but Nondeterministic Pathways through Complexification](https://go.exlibris.link/RbjDfgjR). *Proceedings of the National Academy of Sciences* 123(31):e2610959123.
+Thulin, Måns.\
+2025. [*Modern Statistics with R: From Wrangling and Exploring Data to Inference and Predictive Modelling*](https://go.exlibris.link/MzlcbQGN). Chapman and Hall/CRC, New York. Chapter 4, Exploratory Data Analysis and Unsupervised Learning, pp. 98–157.
 
 Wickham, Hadley, Mine Çetinkaya-Rundel, and Garrett Grolemund.\
 2023. [*R for Data Science: Import, Tidy, Transform, Visualize, and Model Data*](https://go.exlibris.link/XfkqN7LH). Boston: O’Reilly. Visualize.
