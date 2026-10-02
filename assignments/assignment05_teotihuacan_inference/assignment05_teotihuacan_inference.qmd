@@ -22,6 +22,8 @@ This assignment follows the Week 8 workflow:
 
 Somerville, Andrew D., Nawa Sugiyama, Linda R. Manzanilla, and Margaret J. Schoeninger. 2016. Animal Management at the Ancient Metropolis of Teotihuacan, Mexico: Stable Isotope Analysis of Leporid (Cottontail and Jackrabbit) Bone Mineral. *PLOS ONE* 11(8): e0159982.
 
+This two-context comparison is a teaching exercise using published observations; it is not a reproduction of the full statistical analysis in Somerville et al. (2016).
+
 Before beginning, read `README.md`, `codebook.md`, and `provenance.md`.
 
 ```{r}
