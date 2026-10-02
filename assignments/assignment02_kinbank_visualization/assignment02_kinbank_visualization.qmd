@@ -1,282 +1,133 @@
 ---
+title: "ANTH418 Assignment 2: Visualizing Kinship Diversity with Kinbank"
+author: "Your Name"
+format:
+  html:
+    toc: true
 execute:
   echo: true
   message: false
   warning: false
-format:
-  html:
-    toc: true
-title: "ANTH418 Assignment 2: Visualizing Kinship Diversity with
-  Kinbank"
 ---
 
 ::: {.callout-note title="Before you begin"}
-Read the [Week 5 Study Guide](../../weeks/week05.qmd) before starting
-this assignment.
-
-The Study Guide explains the required concepts, visualization strategy,
-and R workflow for exploratory data analysis (EDA), categorical and
-numerical variables, bar charts, histograms, boxplots, faceting, visual
-comparison, and the distinction between description and inference.
+Read the **Week 5 Study Guide** and the Assignment 2 instructions before starting. This assignment is limited to **exploratory data analysis and visualization**. The goal is to learn what the data show, identify questions worth investigating, and recognize what the visualizations alone cannot establish.
 :::
-
-## Research question
-
-How does the number of Kinbank form records linked to languages vary
-across the teaching dataset, and what do different visualizations reveal
-about that variation across language families and macroareas?
 
 ## Case Study
 
-Kinship terminology---the words people use to classify and refer to
-relatives---varies considerably across human societies. **Kinbank** is a
-global comparative database designed to make this variation available
-for systematic cross-linguistic comparison (Passmore et al. 2023).
-Rather than treating English kin categories as universal, Kinbank uses a
-standardized **etic genealogical framework** onto which
-language-specific kin terms can be mapped.
+Kinbank is a global database of kinship terminology designed for systematic cross-cultural comparison (Passmore et al., 2023). The ANTH418 teaching dataset is a frozen later snapshot containing **1,287 languages represented by at least one Kinbank form record**. Each row represents one language.
 
-The ANTH418 teaching file contains **1,287 languages represented by at
-least one Kinbank form record** in the frozen snapshot used for this
-course. Each row represents one language. The variable `kin_term_count`
-records the number of Kinbank **form records** linked to that language.
-The file also contains language-family and macroarea metadata, together
-with latitude and longitude where available.
+The variable `kin_term_count` is the number of Kinbank **form records** linked to a language in this teaching snapshot. It is not automatically the number of unique kin concepts and should not be treated as a direct measure of kinship-system complexity.
 
-`kin_term_count` requires careful interpretation. It is a count of form
-records in the database, not automatically the number of unique kin
-concepts and not a direct measure of the linguistic complexity of a
-kinship system. Missing family, macroarea, and coordinate values are
-retained as source metadata gaps.
+## Research question
 
-## Assignment
-
-Using the provided Kinbank teaching dataset, conduct an **exploratory
-data analysis (EDA) of variation in `kin_term_count`**. The objective is
-to use **data visualization** to discover, compare, and communicate
-patterns in a comparative anthropological dataset.
-
-Begin by inspecting the dataset and identifying its unit of analysis,
-variables, measurement scales, and missing values. Then use appropriate
-**bar charts, histograms, boxplots, and faceted plots** to examine how
-represented languages are distributed across broad categories and how
-`kin_term_count` varies within the dataset and across relevant groups.
-
-Use the visualizations as analytical tools rather than illustrations
-added after the analysis. Compare alternative views of the same data and
-consider **what each visualization makes visible, what it may conceal,
-and how graphical choices affect interpretation**.
-
-Your interpretation should maintain a clear distinction between
-**description and explanation**. A visible difference among language
-families or macroareas does not by itself explain why that difference
-exists. Languages may also share historical relationships and therefore
-should not automatically be treated as completely independent cultural
-observations (Passmore and Jordan 2020). Your task is to establish
-**what the teaching data show before considering why those patterns may
-exist**.
+**What can exploratory visualization reveal about the structure of the Kinbank teaching sample and variation in `kin_term_count`, and what dependencies or limitations must be considered before moving from description to inference?**
 
 ## 1. Inspect the data
 
-Load the dataset and inspect its structure before creating any
-visualizations.
+Load the dataset and inspect its structure.
 
-\`\`\`{r} library(tidyverse)
+```{r}
+library(tidyverse)
 
-dat \<- read_csv("data/kinbank_teaching.csv", show_col_types = FALSE)
+dat <- read_csv("assignments/assignment02_kinbank_visualization/data/kinbank_teaching.csv", show_col_types = FALSE)
 
 glimpse(dat)
+```
 
+Confirm the number of observations and variables, identify categorical and numerical variables, and check missingness in the variables you will use.
 
-    Confirm the number of observations and inspect the variable names.
+```{r}
+# Your code
+```
 
-    ```{r}
-    # Your code
+**Write briefly:**
 
-Then examine missing values in the variables you may use, including
-`family`, `macroarea`, `latitude`, and `longitude`.
+- What does one row represent?
+- Which variables are categorical and which are numerical?
+- What exactly does `kin_term_count` count?
+- Which relevant variables contain missing values?
 
-`{r} # Your code`
+## 2. Visualize the structure of the evidence
 
-Before continuing, make sure you can answer:
+Before interpreting kinship diversity, examine **who is represented in the sample**.
 
--   What does one row represent?
--   Which variables are categorical?
--   Which variables are numerical?
--   What exactly does `kin_term_count` count?
--   Why should a missing family or macroarea value not automatically be
-    treated as a substantive category?
+Create one clear **bar chart** showing the number of languages by either `family` or `macroarea`. If you use `family`, choose a manageable, clearly justified set of well-represented families rather than producing an unreadable plot.
 
-## 2. Explore categorical variation
+```{r}
+# Your code
+```
 
-Begin with the categorical structure of the teaching dataset.
+**Interpret:** Which groups are most and least represented? Is representation balanced or uneven? Why does this matter for later comparisons?
 
-Create an appropriate **bar chart** showing the number of represented
-languages by `macroarea`. Arrange the categories in a way that makes
-comparison easy.
+## 3. Examine the distribution of `kin_term_count`
 
-`{r} # Your code`
+Create a histogram of `kin_term_count`.
 
-Then examine `family`. Because the dataset may contain many language
-families, do **not** attempt to place every family into an unreadable
-chart. Instead, identify a manageable set of the most frequently
-represented families and create a bar chart for those families.
+```{r}
+# Your code
+```
 
-`{r} # Your code`
+During exploration, try at least one alternative reasonable bin width before choosing the version you will emphasize.
 
-Use these plots to describe:
+```{r}
+# Your exploratory code
+```
 
--   which macroareas contain more or fewer represented languages;
--   which language families are especially well represented in the
-    teaching dataset; and
--   what these differences tell you about the **composition of the
-    dataset**, rather than about the prevalence or importance of kinship
-    systems in the world.
+**Interpret:** Describe relevant features of the distribution—center, spread, skewness, modes, gaps, and unusual observations. Explain briefly whether changing bin width altered what was visually prominent.
 
-## 3. Explore the distribution of `kin_term_count`
+## 4. Make one purposeful comparison across groups
 
-Create a **histogram** of `kin_term_count`.
+Choose **one** comparison of `kin_term_count` across either `macroarea` or a manageable set of `family` groups.
 
-`{r} # Your code`
+Use a graphic that matches your question. Suitable choices include a boxplot (with raw observations where useful) or faceted histograms.
 
-Examine the distribution for:
+```{r}
+# Your code
+```
 
--   location;
--   spread;
--   shape;
--   skewness;
--   gaps or clusters; and
--   unusually high or low observations.
+**Explain:**
 
-Then create at least one alternative histogram using a different,
-reasonable bin width.
+1. Why is this graphic appropriate for the variables and comparison?
+2. What similarities and differences are visible **in this sample**?
+3. Do unequal group sizes or graphical choices affect the comparison?
 
-`{r} # Your code`
+If you use facets, fixed scales are generally preferable when direct between-panel comparison is the goal.
 
-Compare the two histograms. Explain briefly what features remain visible
-in both, what changes when the bin width changes, and which version
-communicates the main structure more effectively.
+## 5. Consider non-independence
 
-The purpose is not to find one uniquely "correct" bin width. The purpose
-is to recognize that graphical choices can change what is visually
-prominent.
+In a short paragraph, explain how **phylogenetic autocorrelation**, **spatial autocorrelation**, or both could affect interpretation of the patterns you visualized.
 
-## 4. Compare alternative views of the same distribution
+Related languages may resemble one another because of shared ancestry and inherited terminology. Geographically close languages may resemble one another because of contact, borrowing, regional history, or shared environments.
 
-Create a **boxplot** of `kin_term_count`.
+You are **not** required to calculate autocorrelation, construct a phylogenetic tree, or fit a phylogenetic model. Visualization can make dependence visible; it does not correct for dependence.
 
-`{r} # Your code`
+## 6. Final EDA interpretation
 
-Compare the boxplot with your histogram(s). Discuss:
+Conclude by answering all three questions:
 
--   what the boxplot makes especially easy to see;
--   what information about distribution shape is clearer in the
-    histogram;
--   whether the boxplot identifies observations that appear unusual
-    relative to the middle of the distribution; and
--   why neither visualization should be treated as a complete
-    representation on its own.
+1. **What do your visualizations show about the observed Kinbank teaching sample?**
+2. **What is one question or apparent pattern worth investigating further?**
+3. **What is one conclusion these visualizations alone do not justify?**
 
-## 5. Compare `kin_term_count` across groups
-
-Choose a meaningful grouping variable from the teaching dataset and use
-it to compare distributions of `kin_term_count`.
-
-One appropriate approach is to compare **macroareas** with boxplots.
-
-`{r} # Your code`
-
-You may also use **faceting** to compare distributions across macroareas
-or across a manageable set of well-represented language families.
-
-`{r} # Your code`
-
-Your comparison should remain readable. If a categorical variable
-contains too many groups, select a clearly justified subset rather than
-producing a crowded figure.
-
-Use your grouped visualization(s) to describe:
-
--   differences in location;
--   differences in spread;
--   differences in distribution shape;
--   unusual observations; and
--   the degree of overlap among groups.
-
-Do not interpret a visual difference as evidence that macroarea or
-language family **causes** variation in `kin_term_count`.
-
-## 6. Describe and interpret the results
-
-Bring the visual evidence together into a concise interpretation.
-
-Your discussion should:
-
--   describe the composition of the teaching dataset;
--   summarize the overall distribution of `kin_term_count`;
--   explain what you learned by comparing different histogram bin
-    widths;
--   explain what the histogram and boxplot each revealed or concealed;
--   describe the most important group differences visible in your
-    faceted or grouped plots;
--   identify any unusual observations that deserve attention; and
--   distinguish clearly between **patterns visible in the teaching
-    data** and explanations that would require additional evidence.
-
-Remember that `kin_term_count` is the number of Kinbank form records
-linked to a language in this frozen snapshot. A language with a larger
-value should **not** automatically be described as having a "more
-complex" kinship system.
-
-Also remember that languages can share historical ancestry. Similarities
-among related languages may therefore reflect shared history rather than
-independent cultural responses. This problem of non-independence is
-important for cross-cultural research, but you are **not** required to
-conduct phylogenetic analysis in this assignment.
-
-### Final interpretation guidance
-
-Use the following questions to help structure your concise
-interpretation:
-
-1.  What is the unit of analysis?
-2.  What is the most important pattern revealed by your visualizations?
-3.  Which graphical comparison was most informative, and why?
-4.  What does `kin_term_count` allow you to describe?
-5.  What anthropological claim do these exploratory data alone **not**
-    support?
-6.  Why should apparent differences among language families or
-    macroareas be interpreted cautiously?
+Use descriptive language such as *in this sample*, *the distribution shows*, *the graph suggests*, and *worth investigating*. Do not claim that the graphs prove a universal cross-cultural pattern, causal relationship, or evolutionary process.
 
 ::: {.callout-important title="Statistical scope"}
-This assignment is limited to **exploratory data analysis and
-visualization**. No inferential statistical tests, phylogenetic models,
-PCA, or causal analyses are required.
+No hypothesis tests, p-values, confidence intervals, causal analyses, phylogenetic comparative models, or spatial autocorrelation tests are required.
 :::
 
 ## Submission
 
-Submit **both** of the following files:
+Submit both:
 
-1.  Completed Quarto source file (`.qmd`)
-2.  Rendered HTML file (`.html`)
+1. Completed Quarto source file (`.qmd`)
+2. Rendered HTML file (`.html`)
 
-The report should contain the required visualizations and a concise
-interpretation of the patterns they reveal. Include only output that
-contributes directly to the analysis; avoid long unedited console
-output.
-
-Before submitting, restart R and render the complete document from a
-clean session to make sure that all code runs, all figures appear
-correctly, and the analysis is reproducible.
+Before submitting, restart R and render the document from a clean session.
 
 ## References
 
-Passmore, S., Barth, W., Greenhill, S. J., Quinn, K., Sheard, C.,
-Argyriou, P., et al. (2023). Kinbank: A global database of kinship
-terminology. *PLOS ONE, 18*(5), e0283218.
-https://doi.org/10.1371/journal.pone.0283218
+Passmore, S., Barth, W., Greenhill, S. J., Quinn, K., Sheard, C., Argyriou, P., et al. (2023). Kinbank: A global database of kinship terminology. *PLOS ONE, 18*(5), e0283218. https://doi.org/10.1371/journal.pone.0283218
 
-Passmore, S., & Jordan, F. M. (2020). No universals in the cultural
-evolution of kinship terminology. *Evolutionary Human Sciences, 2*, e42.
-https://doi.org/10.1017/ehs.2020.41
+Passmore, S., & Jordan, F. M. (2020). No universals in the cultural evolution of kinship terminology. *Evolutionary Human Sciences, 2*, e42. https://doi.org/10.1017/ehs.2020.41

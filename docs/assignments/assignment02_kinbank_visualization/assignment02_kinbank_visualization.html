@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Your Name">
 
 <title>ANTH418 Assignment 2: Visualizing Kinship Diversity with Kinbank – ANTH418: Anthropological Statistics</title>
 <style>
@@ -25,6 +26,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -167,18 +203,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#research-question" id="toc-research-question" class="nav-link active" data-scroll-target="#research-question">Research question</a></li>
-  <li><a href="#case-study" id="toc-case-study" class="nav-link" data-scroll-target="#case-study">Case Study</a></li>
-  <li><a href="#assignment" id="toc-assignment" class="nav-link" data-scroll-target="#assignment">Assignment</a></li>
+  <li><a href="#case-study" id="toc-case-study" class="nav-link active" data-scroll-target="#case-study">Case Study</a></li>
+  <li><a href="#research-question" id="toc-research-question" class="nav-link" data-scroll-target="#research-question">Research question</a></li>
   <li><a href="#inspect-the-data" id="toc-inspect-the-data" class="nav-link" data-scroll-target="#inspect-the-data">1. Inspect the data</a></li>
-  <li><a href="#explore-categorical-variation" id="toc-explore-categorical-variation" class="nav-link" data-scroll-target="#explore-categorical-variation">2. Explore categorical variation</a></li>
-  <li><a href="#explore-the-distribution-of-kin_term_count" id="toc-explore-the-distribution-of-kin_term_count" class="nav-link" data-scroll-target="#explore-the-distribution-of-kin_term_count">3. Explore the distribution of <code>kin_term_count</code></a></li>
-  <li><a href="#compare-alternative-views-of-the-same-distribution" id="toc-compare-alternative-views-of-the-same-distribution" class="nav-link" data-scroll-target="#compare-alternative-views-of-the-same-distribution">4. Compare alternative views of the same distribution</a></li>
-  <li><a href="#compare-kin_term_count-across-groups" id="toc-compare-kin_term_count-across-groups" class="nav-link" data-scroll-target="#compare-kin_term_count-across-groups">5. Compare <code>kin_term_count</code> across groups</a></li>
-  <li><a href="#describe-and-interpret-the-results" id="toc-describe-and-interpret-the-results" class="nav-link" data-scroll-target="#describe-and-interpret-the-results">6. Describe and interpret the results</a>
-  <ul class="collapse">
-  <li><a href="#final-interpretation-guidance" id="toc-final-interpretation-guidance" class="nav-link" data-scroll-target="#final-interpretation-guidance">Final interpretation guidance</a></li>
-  </ul></li>
+  <li><a href="#visualize-the-structure-of-the-evidence" id="toc-visualize-the-structure-of-the-evidence" class="nav-link" data-scroll-target="#visualize-the-structure-of-the-evidence">2. Visualize the structure of the evidence</a></li>
+  <li><a href="#examine-the-distribution-of-kin_term_count" id="toc-examine-the-distribution-of-kin_term_count" class="nav-link" data-scroll-target="#examine-the-distribution-of-kin_term_count">3. Examine the distribution of <code>kin_term_count</code></a></li>
+  <li><a href="#make-one-purposeful-comparison-across-groups" id="toc-make-one-purposeful-comparison-across-groups" class="nav-link" data-scroll-target="#make-one-purposeful-comparison-across-groups">4. Make one purposeful comparison across groups</a></li>
+  <li><a href="#consider-non-independence" id="toc-consider-non-independence" class="nav-link" data-scroll-target="#consider-non-independence">5. Consider non-independence</a></li>
+  <li><a href="#final-eda-interpretation" id="toc-final-eda-interpretation" class="nav-link" data-scroll-target="#final-eda-interpretation">6. Final EDA interpretation</a></li>
   <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
@@ -196,6 +228,12 @@ ul.task-list li input[type="checkbox"] {
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Your Name </p>
+          </div>
+  </div>
     
   
     
@@ -216,135 +254,102 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Read the <a href="../../weeks/week05.html">Week 5 Study Guide</a> before starting this assignment.</p>
-<p>The Study Guide explains the required concepts, visualization strategy, and R workflow for exploratory data analysis (EDA), categorical and numerical variables, bar charts, histograms, boxplots, faceting, visual comparison, and the distinction between description and inference.</p>
+<p>Read the <strong>Week 5 Study Guide</strong> and the Assignment 2 instructions before starting. This assignment is limited to <strong>exploratory data analysis and visualization</strong>. The goal is to learn what the data show, identify questions worth investigating, and recognize what the visualizations alone cannot establish.</p>
 </div>
 </div>
-<section id="research-question" class="level2">
-<h2 class="anchored" data-anchor-id="research-question">Research question</h2>
-<p>How does the number of Kinbank form records linked to languages vary across the teaching dataset, and what do different visualizations reveal about that variation across language families and macroareas?</p>
-</section>
 <section id="case-study" class="level2">
 <h2 class="anchored" data-anchor-id="case-study">Case Study</h2>
-<p>Kinship terminology—the words people use to classify and refer to relatives—varies considerably across human societies. <strong>Kinbank</strong> is a global comparative database designed to make this variation available for systematic cross-linguistic comparison (Passmore et al.&nbsp;2023). Rather than treating English kin categories as universal, Kinbank uses a standardized <strong>etic genealogical framework</strong> onto which language-specific kin terms can be mapped.</p>
-<p>The ANTH418 teaching file contains <strong>1,287 languages represented by at least one Kinbank form record</strong> in the frozen snapshot used for this course. Each row represents one language. The variable <code>kin_term_count</code> records the number of Kinbank <strong>form records</strong> linked to that language. The file also contains language-family and macroarea metadata, together with latitude and longitude where available.</p>
-<p><code>kin_term_count</code> requires careful interpretation. It is a count of form records in the database, not automatically the number of unique kin concepts and not a direct measure of the linguistic complexity of a kinship system. Missing family, macroarea, and coordinate values are retained as source metadata gaps.</p>
+<p>Kinbank is a global database of kinship terminology designed for systematic cross-cultural comparison (Passmore et al., 2023). The ANTH418 teaching dataset is a frozen later snapshot containing <strong>1,287 languages represented by at least one Kinbank form record</strong>. Each row represents one language.</p>
+<p>The variable <code>kin_term_count</code> is the number of Kinbank <strong>form records</strong> linked to a language in this teaching snapshot. It is not automatically the number of unique kin concepts and should not be treated as a direct measure of kinship-system complexity.</p>
 </section>
-<section id="assignment" class="level2">
-<h2 class="anchored" data-anchor-id="assignment">Assignment</h2>
-<p>Using the provided Kinbank teaching dataset, conduct an <strong>exploratory data analysis (EDA) of variation in <code>kin_term_count</code></strong>. The objective is to use <strong>data visualization</strong> to discover, compare, and communicate patterns in a comparative anthropological dataset.</p>
-<p>Begin by inspecting the dataset and identifying its unit of analysis, variables, measurement scales, and missing values. Then use appropriate <strong>bar charts, histograms, boxplots, and faceted plots</strong> to examine how represented languages are distributed across broad categories and how <code>kin_term_count</code> varies within the dataset and across relevant groups.</p>
-<p>Use the visualizations as analytical tools rather than illustrations added after the analysis. Compare alternative views of the same data and consider <strong>what each visualization makes visible, what it may conceal, and how graphical choices affect interpretation</strong>.</p>
-<p>Your interpretation should maintain a clear distinction between <strong>description and explanation</strong>. A visible difference among language families or macroareas does not by itself explain why that difference exists. Languages may also share historical relationships and therefore should not automatically be treated as completely independent cultural observations (Passmore and Jordan 2020). Your task is to establish <strong>what the teaching data show before considering why those patterns may exist</strong>.</p>
+<section id="research-question" class="level2">
+<h2 class="anchored" data-anchor-id="research-question">Research question</h2>
+<p><strong>What can exploratory visualization reveal about the structure of the Kinbank teaching sample and variation in <code>kin_term_count</code>, and what dependencies or limitations must be considered before moving from description to inference?</strong></p>
 </section>
 <section id="inspect-the-data" class="level2">
 <h2 class="anchored" data-anchor-id="inspect-the-data">1. Inspect the data</h2>
-<p>Load the dataset and inspect its structure before creating any visualizations.</p>
-<p>```{r} library(tidyverse)</p>
-<p>dat &lt;- read_csv(“data/kinbank_teaching.csv”, show_col_types = FALSE)</p>
-<p>glimpse(dat)</p>
-<pre><code>Confirm the number of observations and inspect the variable names.
-
-# Your code</code></pre>
-<p>Then examine missing values in the variables you may use, including <code>family</code>, <code>macroarea</code>, <code>latitude</code>, and <code>longitude</code>.</p>
-<p><code>{r} # Your code</code></p>
-<p>Before continuing, make sure you can answer:</p>
+<p>Load the dataset and inspect its structure.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"assignments/assignment02_kinbank_visualization/data/kinbank_teaching.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dat)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 1,287
+Columns: 7
+$ language_id    &lt;chr&gt; "v_adnyamathanhaadny1235", "v_aghulaghu1253", "v_aguaru…
+$ language       &lt;chr&gt; "Adnyamathanha", "Aghul", "Aguaruna", "Akhvakh", "Akkad…
+$ family         &lt;chr&gt; "Pama-Nyungan", "Nakh-Daghestanian", NA, "Nakh-Daghesta…
+$ macroarea      &lt;chr&gt; "Australia", "Eurasia", "South America", "Eurasia", "Eu…
+$ latitude       &lt;dbl&gt; -30.14510, 41.92420, -5.30044, 42.40030, 33.10000, NA, …
+$ longitude      &lt;dbl&gt; 138.67100, 47.58430, -77.92180, 46.30370, 44.10000, NA,…
+$ kin_term_count &lt;dbl&gt; 304, 190, 235, 302, 152, 530, 180, 367, 176, 46, 294, 3…</code></pre>
+</div>
+</div>
+<p>Confirm the number of observations and variables, identify categorical and numerical variables, and check missingness in the variables you will use.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Write briefly:</strong></p>
 <ul>
 <li>What does one row represent?</li>
-<li>Which variables are categorical?</li>
-<li>Which variables are numerical?</li>
+<li>Which variables are categorical and which are numerical?</li>
 <li>What exactly does <code>kin_term_count</code> count?</li>
-<li>Why should a missing family or macroarea value not automatically be treated as a substantive category?</li>
+<li>Which relevant variables contain missing values?</li>
 </ul>
 </section>
-<section id="explore-categorical-variation" class="level2">
-<h2 class="anchored" data-anchor-id="explore-categorical-variation">2. Explore categorical variation</h2>
-<p>Begin with the categorical structure of the teaching dataset.</p>
-<p>Create an appropriate <strong>bar chart</strong> showing the number of represented languages by <code>macroarea</code>. Arrange the categories in a way that makes comparison easy.</p>
-<p><code>{r} # Your code</code></p>
-<p>Then examine <code>family</code>. Because the dataset may contain many language families, do <strong>not</strong> attempt to place every family into an unreadable chart. Instead, identify a manageable set of the most frequently represented families and create a bar chart for those families.</p>
-<p><code>{r} # Your code</code></p>
-<p>Use these plots to describe:</p>
-<ul>
-<li>which macroareas contain more or fewer represented languages;</li>
-<li>which language families are especially well represented in the teaching dataset; and</li>
-<li>what these differences tell you about the <strong>composition of the dataset</strong>, rather than about the prevalence or importance of kinship systems in the world.</li>
-</ul>
+<section id="visualize-the-structure-of-the-evidence" class="level2">
+<h2 class="anchored" data-anchor-id="visualize-the-structure-of-the-evidence">2. Visualize the structure of the evidence</h2>
+<p>Before interpreting kinship diversity, examine <strong>who is represented in the sample</strong>.</p>
+<p>Create one clear <strong>bar chart</strong> showing the number of languages by either <code>family</code> or <code>macroarea</code>. If you use <code>family</code>, choose a manageable, clearly justified set of well-represented families rather than producing an unreadable plot.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Interpret:</strong> Which groups are most and least represented? Is representation balanced or uneven? Why does this matter for later comparisons?</p>
 </section>
-<section id="explore-the-distribution-of-kin_term_count" class="level2">
-<h2 class="anchored" data-anchor-id="explore-the-distribution-of-kin_term_count">3. Explore the distribution of <code>kin_term_count</code></h2>
-<p>Create a <strong>histogram</strong> of <code>kin_term_count</code>.</p>
-<p><code>{r} # Your code</code></p>
-<p>Examine the distribution for:</p>
-<ul>
-<li>location;</li>
-<li>spread;</li>
-<li>shape;</li>
-<li>skewness;</li>
-<li>gaps or clusters; and</li>
-<li>unusually high or low observations.</li>
-</ul>
-<p>Then create at least one alternative histogram using a different, reasonable bin width.</p>
-<p><code>{r} # Your code</code></p>
-<p>Compare the two histograms. Explain briefly what features remain visible in both, what changes when the bin width changes, and which version communicates the main structure more effectively.</p>
-<p>The purpose is not to find one uniquely “correct” bin width. The purpose is to recognize that graphical choices can change what is visually prominent.</p>
+<section id="examine-the-distribution-of-kin_term_count" class="level2">
+<h2 class="anchored" data-anchor-id="examine-the-distribution-of-kin_term_count">3. Examine the distribution of <code>kin_term_count</code></h2>
+<p>Create a histogram of <code>kin_term_count</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>During exploration, try at least one alternative reasonable bin width before choosing the version you will emphasize.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your exploratory code</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Interpret:</strong> Describe relevant features of the distribution—center, spread, skewness, modes, gaps, and unusual observations. Explain briefly whether changing bin width altered what was visually prominent.</p>
 </section>
-<section id="compare-alternative-views-of-the-same-distribution" class="level2">
-<h2 class="anchored" data-anchor-id="compare-alternative-views-of-the-same-distribution">4. Compare alternative views of the same distribution</h2>
-<p>Create a <strong>boxplot</strong> of <code>kin_term_count</code>.</p>
-<p><code>{r} # Your code</code></p>
-<p>Compare the boxplot with your histogram(s). Discuss:</p>
-<ul>
-<li>what the boxplot makes especially easy to see;</li>
-<li>what information about distribution shape is clearer in the histogram;</li>
-<li>whether the boxplot identifies observations that appear unusual relative to the middle of the distribution; and</li>
-<li>why neither visualization should be treated as a complete representation on its own.</li>
-</ul>
-</section>
-<section id="compare-kin_term_count-across-groups" class="level2">
-<h2 class="anchored" data-anchor-id="compare-kin_term_count-across-groups">5. Compare <code>kin_term_count</code> across groups</h2>
-<p>Choose a meaningful grouping variable from the teaching dataset and use it to compare distributions of <code>kin_term_count</code>.</p>
-<p>One appropriate approach is to compare <strong>macroareas</strong> with boxplots.</p>
-<p><code>{r} # Your code</code></p>
-<p>You may also use <strong>faceting</strong> to compare distributions across macroareas or across a manageable set of well-represented language families.</p>
-<p><code>{r} # Your code</code></p>
-<p>Your comparison should remain readable. If a categorical variable contains too many groups, select a clearly justified subset rather than producing a crowded figure.</p>
-<p>Use your grouped visualization(s) to describe:</p>
-<ul>
-<li>differences in location;</li>
-<li>differences in spread;</li>
-<li>differences in distribution shape;</li>
-<li>unusual observations; and</li>
-<li>the degree of overlap among groups.</li>
-</ul>
-<p>Do not interpret a visual difference as evidence that macroarea or language family <strong>causes</strong> variation in <code>kin_term_count</code>.</p>
-</section>
-<section id="describe-and-interpret-the-results" class="level2">
-<h2 class="anchored" data-anchor-id="describe-and-interpret-the-results">6. Describe and interpret the results</h2>
-<p>Bring the visual evidence together into a concise interpretation.</p>
-<p>Your discussion should:</p>
-<ul>
-<li>describe the composition of the teaching dataset;</li>
-<li>summarize the overall distribution of <code>kin_term_count</code>;</li>
-<li>explain what you learned by comparing different histogram bin widths;</li>
-<li>explain what the histogram and boxplot each revealed or concealed;</li>
-<li>describe the most important group differences visible in your faceted or grouped plots;</li>
-<li>identify any unusual observations that deserve attention; and</li>
-<li>distinguish clearly between <strong>patterns visible in the teaching data</strong> and explanations that would require additional evidence.</li>
-</ul>
-<p>Remember that <code>kin_term_count</code> is the number of Kinbank form records linked to a language in this frozen snapshot. A language with a larger value should <strong>not</strong> automatically be described as having a “more complex” kinship system.</p>
-<p>Also remember that languages can share historical ancestry. Similarities among related languages may therefore reflect shared history rather than independent cultural responses. This problem of non-independence is important for cross-cultural research, but you are <strong>not</strong> required to conduct phylogenetic analysis in this assignment.</p>
-<section id="final-interpretation-guidance" class="level3">
-<h3 class="anchored" data-anchor-id="final-interpretation-guidance">Final interpretation guidance</h3>
-<p>Use the following questions to help structure your concise interpretation:</p>
+<section id="make-one-purposeful-comparison-across-groups" class="level2">
+<h2 class="anchored" data-anchor-id="make-one-purposeful-comparison-across-groups">4. Make one purposeful comparison across groups</h2>
+<p>Choose <strong>one</strong> comparison of <code>kin_term_count</code> across either <code>macroarea</code> or a manageable set of <code>family</code> groups.</p>
+<p>Use a graphic that matches your question. Suitable choices include a boxplot (with raw observations where useful) or faceted histograms.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Explain:</strong></p>
 <ol type="1">
-<li>What is the unit of analysis?</li>
-<li>What is the most important pattern revealed by your visualizations?</li>
-<li>Which graphical comparison was most informative, and why?</li>
-<li>What does <code>kin_term_count</code> allow you to describe?</li>
-<li>What anthropological claim do these exploratory data alone <strong>not</strong> support?</li>
-<li>Why should apparent differences among language families or macroareas be interpreted cautiously?</li>
+<li>Why is this graphic appropriate for the variables and comparison?</li>
+<li>What similarities and differences are visible <strong>in this sample</strong>?</li>
+<li>Do unequal group sizes or graphical choices affect the comparison?</li>
 </ol>
+<p>If you use facets, fixed scales are generally preferable when direct between-panel comparison is the goal.</p>
+</section>
+<section id="consider-non-independence" class="level2">
+<h2 class="anchored" data-anchor-id="consider-non-independence">5. Consider non-independence</h2>
+<p>In a short paragraph, explain how <strong>phylogenetic autocorrelation</strong>, <strong>spatial autocorrelation</strong>, or both could affect interpretation of the patterns you visualized.</p>
+<p>Related languages may resemble one another because of shared ancestry and inherited terminology. Geographically close languages may resemble one another because of contact, borrowing, regional history, or shared environments.</p>
+<p>You are <strong>not</strong> required to calculate autocorrelation, construct a phylogenetic tree, or fit a phylogenetic model. Visualization can make dependence visible; it does not correct for dependence.</p>
+</section>
+<section id="final-eda-interpretation" class="level2">
+<h2 class="anchored" data-anchor-id="final-eda-interpretation">6. Final EDA interpretation</h2>
+<p>Conclude by answering all three questions:</p>
+<ol type="1">
+<li><strong>What do your visualizations show about the observed Kinbank teaching sample?</strong></li>
+<li><strong>What is one question or apparent pattern worth investigating further?</strong></li>
+<li><strong>What is one conclusion these visualizations alone do not justify?</strong></li>
+</ol>
+<p>Use descriptive language such as <em>in this sample</em>, <em>the distribution shows</em>, <em>the graph suggests</em>, and <em>worth investigating</em>. Do not claim that the graphs prove a universal cross-cultural pattern, causal relationship, or evolutionary process.</p>
 <div class="callout callout-style-default callout-important callout-titled" title="Statistical scope">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -355,20 +360,18 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This assignment is limited to <strong>exploratory data analysis and visualization</strong>. No inferential statistical tests, phylogenetic models, PCA, or causal analyses are required.</p>
+<p>No hypothesis tests, p-values, confidence intervals, causal analyses, phylogenetic comparative models, or spatial autocorrelation tests are required.</p>
 </div>
 </div>
-</section>
 </section>
 <section id="submission" class="level2">
 <h2 class="anchored" data-anchor-id="submission">Submission</h2>
-<p>Submit <strong>both</strong> of the following files:</p>
+<p>Submit both:</p>
 <ol type="1">
 <li>Completed Quarto source file (<code>.qmd</code>)</li>
 <li>Rendered HTML file (<code>.html</code>)</li>
 </ol>
-<p>The report should contain the required visualizations and a concise interpretation of the patterns they reveal. Include only output that contributes directly to the analysis; avoid long unedited console output.</p>
-<p>Before submitting, restart R and render the complete document from a clean session to make sure that all code runs, all figures appear correctly, and the analysis is reproducible.</p>
+<p>Before submitting, restart R and render the document from a clean session.</p>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
