@@ -36,22 +36,20 @@ The three rows in the teaching CSV are aggregate categories, not three individua
 
 ## Teaching purpose
 
-Assignment 3 compares two descriptive scenarios:
+Assignment 3 compares two descriptive representations:
 
-1. prevalence among cases with known outcomes only;
-2. apparent prevalence if every missing/unknown outcome is recoded as absent.
+1. a three-category representation preserving `known_present`, `known_absent`, and `missing_unknown` as distinct evidential states;
+2. an alternative two-category representation in which every missing/unknown outcome is recoded as absent.
 
 The second scenario is deliberately presented as a **sensitivity analysis**. It does not assert that missing outcomes were truly absent.
 
 This exercise illustrates how treatment of missing data can change an apparent descriptive result. It does not reproduce the full statistical models or causal claims in the published debate.
 
-## Build script
+## Reproducible build
 
-The teaching summary was built reproducibly in the instructor repository using:
+The teaching summary was built reproducibly from the documented source frame described above.
 
-`scripts/build_teaching_data.R`
-
-The build script is not included in the student package and is not needed to complete this assignment.
+The build procedure is maintained outside the student package and is not needed to complete this assignment.
 
 ## Prohibited interpretations
 

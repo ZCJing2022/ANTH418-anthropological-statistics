@@ -35,7 +35,7 @@ The central teaching point is that **unknown outcomes are not the same as observ
 ## Recurring interpretation questions
 
 1. What is the underlying unit of analysis?
-2. What statistical result or contrast matters most?
+2. What descriptive contrast matters most?
 3. What does the exercise show about the consequences of missing-data treatment?
 4. What claim does the result not support?
 
