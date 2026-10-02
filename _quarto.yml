@@ -18,6 +18,7 @@ project:
     - assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.qmd
     - assignments/assignment03_seshat_missing/assignment03_seshat_missing.qmd
     - assignments/assignment04_p3k14c_sampling/assignment04_p3k14c_sampling.qmd
+    - assignments/assignment05_teotihuacan_inference/assignment05_teotihuacan_inference.qmd
     - readings/index.qmd
     - resources/*.qmd
 

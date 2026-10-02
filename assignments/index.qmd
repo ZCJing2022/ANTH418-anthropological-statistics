@@ -64,13 +64,13 @@ Students may browse the materials online or download the complete assignment pac
 
 ------------------------------------------------------------------------
 
-## Assignment 5 — Statistical Inference at Teotihuacan
+## Assignment 5 — Teotihuacan Leporid Management
 
 **Statistical method:** Bootstrap confidence intervals and permutation tests
 
 **Case study:** Leporid stable-isotope variation at Teotihuacan
 
-[View Assignment 5 materials](assignment05_teotihuacan_inference/)
+[Open Assignment 5](assignment05_teotihuacan_inference/assignment05_teotihuacan_inference.qmd)
 
 [Download complete Assignment 5 package](../downloads/assignments/ANTH418_assignment05_teotihuacan_inference.zip)
 

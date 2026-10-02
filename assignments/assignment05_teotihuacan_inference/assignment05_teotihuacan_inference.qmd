@@ -1,0 +1,267 @@
+---
+title: "ANTH418 Assignment 5: Teotihuacan Leporid Management"
+author: "Your Name"
+format:
+  html:
+    toc: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+## Research question
+
+How large is the δ13C difference between leporids from **Oztoyahualco** and the **Moon Pyramid**, how uncertain is it, and how unusual would that difference be under a no-difference null model?
+
+This assignment follows the Week 8 workflow:
+
+> **Estimate → quantify uncertainty → test against a null model → interpret archaeologically**
+
+## Case study
+
+Somerville, Andrew D., Nawa Sugiyama, Linda R. Manzanilla, and Margaret J. Schoeninger. 2016. Animal Management at the Ancient Metropolis of Teotihuacan, Mexico: Stable Isotope Analysis of Leporid (Cottontail and Jackrabbit) Bone Mineral. *PLOS ONE* 11(8): e0159982.
+
+Before beginning, read `README.md`, `codebook.md`, and `provenance.md`.
+
+```{r}
+library(tidyverse)
+library(infer)
+
+data_path <- if (file.exists("data/teotihuacan_leporids.csv")) {
+  "data/teotihuacan_leporids.csv"
+} else {
+  "assignments/assignment05_teotihuacan_inference/data/teotihuacan_leporids.csv"
+}
+
+dat <- read_csv(
+  data_path,
+  show_col_types = FALSE
+) |>
+  filter(valid)
+
+d <- dat |>
+  filter(
+    context %in% c(
+      "Oztoyahualco",
+      "Moon Pyramid"
+    )
+  )
+
+d |> count(context)
+
+glimpse(d)
+```
+
+For this assignment, `valid` refers specifically to the **δ13C exclusion rule** documented in the source supporting information.
+
+The effect is always defined as:
+
+**Oztoyahualco − Moon Pyramid**
+
+A positive difference therefore means that mean δ13C is higher (less negative) at Oztoyahualco.
+
+---
+
+## 1. Inspect and prepare
+
+Identify:
+
+- the observational unit;
+- the grouping variable;
+- the numerical response variable;
+- the sample size in each context.
+
+In one or two sentences, state what archaeological comparison these observations can reasonably inform.
+
+Remember that these archaeological specimens are not automatically a random probability sample of all Teotihuacan leporids.
+
+## 2. Describe and visualize the observed groups
+
+Calculate group `n`, mean, and SD for δ13C.
+
+Create one clear visualization comparing the two observed distributions. Show enough of the underlying observations to assess overlap and spread.
+
+```{r}
+# Your code
+```
+
+Briefly describe:
+
+- the direction of the observed difference;
+- overlap and spread;
+- any notable features of the distributions.
+
+Do not begin with statistical significance. Begin with the observed data.
+
+## 3. Estimate the observed difference
+
+Calculate the mean δ13C difference as:
+
+**Oztoyahualco − Moon Pyramid**
+
+```{r}
+# Your code
+```
+
+Report the estimate in ‰.
+
+Explain:
+
+1. what its sign means;
+2. how large the observed contrast is; and
+3. what this point estimate does **not** tell you about uncertainty.
+
+## 4. Bootstrap confidence interval
+
+Set the random seed:
+
+```{r}
+set.seed(418)
+```
+
+Using `infer`, generate **10,000 bootstrap resamples** and calculate the difference in means in the same direction:
+
+**Oztoyahualco − Moon Pyramid**
+
+Construct a **95% percentile bootstrap confidence interval**.
+
+```{r}
+# Your code using infer
+```
+
+Visualize the bootstrap distribution and mark the confidence interval.
+
+Report:
+
+- the observed mean difference;
+- lower confidence bound;
+- upper confidence bound.
+
+Interpret the interval in terms of **magnitude and uncertainty**.
+
+Do not say that there is a 95% probability that the fixed population difference lies inside this particular frequentist interval.
+
+Also explain why the bootstrap distribution is a distribution of **estimates**, not a distribution of individual leporid δ13C values.
+
+## 5. Specify the null model
+
+For this comparison, use:
+
+$$
+H_0:
+\mu_{\text{Oztoyahualco}}
+-
+\mu_{\text{Moon Pyramid}}
+=0
+$$
+
+and the two-sided alternative:
+
+$$
+H_A:
+\mu_{\text{Oztoyahualco}}
+-
+\mu_{\text{Moon Pyramid}}
+\neq0.
+$$
+
+In words, under the null model, context carries no systematic information about δ13C for this comparison.
+
+Explain why this statistical null is **not** equivalent to saying that no leporid management occurred at Teotihuacan.
+
+## 6. Permutation null distribution
+
+Reset the seed:
+
+```{r}
+set.seed(418)
+```
+
+Under the no-association null model, use `infer` to generate **10,000 permutations** of the context labels.
+
+Calculate the difference in means for every permutation.
+
+```{r}
+# Your code using infer
+```
+
+Visualize the **null distribution** and mark the observed difference.
+
+Calculate a **two-sided permutation p-value** using permuted statistics at least as extreme as the observed statistic.
+
+## 7. Interpret the p-value
+
+Report the p-value as a continuous value.
+
+Explain it as a **tail probability conditional on the null model**.
+
+Your interpretation must make clear that the p-value is **not**:
+
+- the probability that the null hypothesis is true;
+- the probability that leporid management occurred;
+- the probability that chance caused the result;
+- the magnitude of the isotope difference; or
+- a measure of archaeological importance.
+
+## 8. Integrate estimation and testing
+
+Interpret together:
+
+1. the observed difference in means;
+2. the 95% bootstrap confidence interval;
+3. the two-sided permutation p-value.
+
+Answer:
+
+- How large is the observed contrast?
+- How uncertain is the estimate?
+- What range of differences is compatible with the data under the bootstrap procedure?
+- How unusual is the observed difference under the permutation null model?
+- Do the estimate, interval, and null-model comparison tell a coherent story?
+
+The confidence interval and p-value answer **different questions**. Do not let the p-value replace the effect estimate or its uncertainty.
+
+## 9. Return to archaeology
+
+Relate the statistical evidence to Somerville et al. (2016).
+
+Discuss:
+
+- what higher δ13C may imply about C4/CAM consumption;
+- why access to cultivated foods may be consistent with human provisioning;
+- why provisioning is not automatically equivalent to management or breeding;
+- how archaeological context contributes to the interpretation; and
+- at least one relevant limitation or alternative explanation.
+
+Possible limitations include sampling and preservation, contextual or chronological structure, independence of observations, environmental or dietary baselines, and the possibility that hunting and management occurred together.
+
+Distinguish clearly between:
+
+> **what the statistical analysis establishes about the isotope contrast**
+
+and
+
+> **what the broader archaeological evidence suggests about human–leporid relationships.**
+
+## Final interpretation
+
+Answer the research question in complete sentences.
+
+Your conclusion should integrate:
+
+- effect magnitude;
+- uncertainty;
+- the null-model comparison;
+- archaeological significance;
+- limitations.
+
+Do not end with only "reject H0" or "statistically significant."
+
+> **Estimate first. Quantify uncertainty. Test a clearly defined null model when useful. Then return to archaeology.**
+
+## Scope
+
+You are **not** required to reproduce all statistical procedures used by Somerville et al. (2016), or to perform ANOVA, Mann–Whitney tests, t-tests, Bayesian analysis, or causal modeling.
+
+Use only the Week 8 methods required here.
