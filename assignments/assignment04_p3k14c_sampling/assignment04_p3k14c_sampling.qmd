@@ -27,8 +27,14 @@ Your interpretation should distinguish clearly between **sampling variability an
 ```{r}
 library(tidyverse)
 
+data_path <- if (file.exists("data/p3k14c_sampling.csv")) {
+  "data/p3k14c_sampling.csv"
+} else {
+  "assignments/assignment04_p3k14c_sampling/data/p3k14c_sampling.csv"
+}
+
 dat <- read_csv(
-  "assignments/assignment04_p3k14c_sampling/data/p3k14c_sampling.csv",
+  data_path,
   show_col_types = FALSE
 )
 
