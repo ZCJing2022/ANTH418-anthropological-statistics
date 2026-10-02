@@ -1,0 +1,130 @@
+---
+title: "ANTH418 Assignment 4: Sampling Archaeological Radiocarbon Data"
+author: "Your Name"
+format:
+  html:
+    toc: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+## Case Study
+
+The p3k14c project assembled a large global database of archaeological radiocarbon determinations for comparative research while also documenting important differences in data quality and sampling coverage (Bird et al., 2022). For this exercise, you will use a **frozen Southern California subset of 984 radiocarbon determinations** derived from p3k14c. For teaching purposes, this complete file will be treated as the **reference population** from which samples can be drawn.
+
+## Assignment
+
+Using the provided radiocarbon dataset, investigate how **random sampling, sample size, and sampling bias** affect estimates of the mean conventional radiocarbon age. The objective is to apply the Week 7 concepts of **population and sample, parameter and statistic, sampling variability, sampling distributions, standard error, and representativeness** to an archaeological dataset.
+
+First, use repeated random sampling to examine the **sampling distribution of the sample mean** at different sample sizes. Compare the center and spread of these distributions and explain how increasing sample size affects sampling variability and standard error. Then compare random sampling with a deliberately **restricted sampling frame**. Determine whether increasing the number of observations from this restricted frame removes the difference between its estimates and the reference population.
+
+Your interpretation should distinguish clearly between **sampling variability and sampling bias**. Larger random samples generally produce more precise estimates, but a large sample drawn from an unrepresentative frame can remain systematically biased. For this exercise, treat conventional radiocarbon age as a numerical variable for studying sampling behavior; **radiocarbon calibration, summed probability distributions, and paleodemographic inference are not required**.
+
+## Data
+
+```{r}
+library(tidyverse)
+
+dat <- read_csv(
+  "assignments/assignment04_p3k14c_sampling/data/p3k14c_sampling.csv",
+  show_col_types = FALSE
+)
+
+glimpse(dat)
+```
+
+## 1. Inspect the Teaching Population
+
+Treat all **984 radiocarbon determinations** in the file as the reference population.
+
+Identify the unit of analysis and report the population size. Summarize the mean and distribution of `age` and use an appropriate visualization to describe the reference population briefly.
+
+```{r}
+# Your code
+```
+
+> `age` is the **conventional uncalibrated radiocarbon age in years BP**. In this assignment it is used as a numerical variable for studying sampling behavior, not as a calibrated calendar date, occupation date, or direct estimate of regional population chronology.
+
+## 2. Draw Repeated Random Samples
+
+Using sampling **with replacement**, generate **1,000 sample means** at each of these sample sizes:
+
+- `n = 10`
+- `n = 25`
+- `n = 50`
+
+Use `set.seed(418)` before the simulation so that your results are reproducible.
+
+```{r}
+# Your code
+```
+
+The quantity of interest is the distribution of the **sample means across repeated samples**, not the distribution of individual radiocarbon ages in one sample.
+
+## 3. Examine the Sampling Distributions
+
+Visualize the three sampling distributions of mean `age`.
+
+Compare:
+
+- where they are centered relative to the reference-population mean;
+- how much the sample means vary; and
+- how their spread changes as sample size increases.
+
+Relate the spread of these distributions to **standard error**. Explain the relationship between sample size and the variability of sample means.
+
+```{r}
+# Your code
+```
+
+## 4. Examine a Restricted Sampling Frame
+
+Now define a deliberately restricted sampling frame:
+
+```r
+longitude > -118
+```
+
+Compare its mean `age` with the mean of the full 984-row reference population.
+
+Then, sampling **with replacement from the restricted frame only**, generate **1,000 sample means** for:
+
+- `n = 10`
+- `n = 50`
+- `n = 200`
+
+Visualize these sampling distributions and mark the mean of the full reference population for comparison.
+
+```{r}
+# Your code
+```
+
+Explain what happens to sampling variability as sample size increases and whether increasing `n` removes the systematic difference created by the restricted frame.
+
+## 5. Interpretation
+
+In concise prose, explain:
+
+1. What is the unit of analysis, and what are the population parameter and sample statistic examined here?
+2. What happens to sampling variability and standard error as sample size increases?
+3. How does the restricted sampling frame demonstrate the difference between **sampling variability** and **sampling bias**?
+4. Why can a large sample be **precise but unrepresentative**?
+5. How does this exercise relate to Bird et al. (2022) and the problem of sampling filters in archaeological radiocarbon databases?
+6. What archaeological claim does this exercise **not** support?
+
+Keep the scope of your conclusion appropriate. This exercise demonstrates properties of sampling using a Southern California teaching subset. It does **not** reconstruct prehistoric demography or evaluate dates-as-data methods generally.
+
+## Submission
+
+Submit **both** of the following files:
+
+1. Completed Quarto source file (`.qmd`)
+2. Rendered HTML file (`.html`)
+
+Your report should contain the required summaries, sampling distributions, restricted-frame comparison, visualizations, and concise interpretation. **Do not conduct confidence intervals, hypothesis tests, radiocarbon calibration, summed probability distributions, or paleodemographic modelling.**
+
+## Reference
+
+Bird, D., Miranda, L., Vander Linden, M., Robinson, E., Bocinsky, R. K., Nicholson, C., Capriles, J. M., et al. (2022). p3k14c, a synthetic global database of archaeological radiocarbon dates. *Scientific Data, 9*, 27. https://doi.org/10.1038/s41597-022-01118-7

@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Your Name">
 
-<title>Assignments – ANTH418: Anthropological Statistics</title>
+<title>ANTH418 Assignment 4: Sampling Archaeological Radiocarbon Data – ANTH418: Anthropological Statistics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,26 +27,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-7ff37d7dbb752a0b62676bb39137b3a2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-7ff37d7dbb752a0b62676bb39137b3a2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -76,7 +112,7 @@ ul.task-list li input[type="checkbox"] {
 <style>html{ scroll-behavior: smooth; }</style>
 
 
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -86,7 +122,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">ANTH418: Anthropological Statistics</span>
     </a>
   </div>
@@ -97,15 +133,15 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../syllabus.html"> 
+    <a class="nav-link" href="../../syllabus.html"> 
 <span class="menu-text">Syllabus</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../lecture-notes/index.html"> 
+    <a class="nav-link" href="../../lecture-notes/index.html"> 
 <span class="menu-text">Lecture Notes</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -114,37 +150,37 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-study-guides">    
         <li>
-    <a class="dropdown-item" href="../weeks/week02.html">
+    <a class="dropdown-item" href="../../weeks/week02.html">
  <span class="dropdown-text">Week 2 — R, RStudio &amp; Quarto</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../weeks/week03.html">
+    <a class="dropdown-item" href="../../weeks/week03.html">
  <span class="dropdown-text">Week 3 — Measurement &amp; Research Design</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../weeks/week04.html">
+    <a class="dropdown-item" href="../../weeks/week04.html">
  <span class="dropdown-text">Week 4 — Central Tendency &amp; Dispersion</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../weeks/week05.html">
+    <a class="dropdown-item" href="../../weeks/week05.html">
  <span class="dropdown-text">Week 5 — EDA &amp; Visualization</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../weeks/week06.html">
+    <a class="dropdown-item" href="../../weeks/week06.html">
  <span class="dropdown-text">Week 6 — Transformation &amp; Missing Data</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link active" href="../assignments/index.html" aria-current="page"> 
+    <a class="nav-link" href="../../assignments/index.html"> 
 <span class="menu-text">Assignments</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../readings/index.html"> 
+    <a class="nav-link" href="../../readings/index.html"> 
 <span class="menu-text">Readings</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../resources/index.html"> 
+    <a class="nav-link" href="../../resources/index.html"> 
 <span class="menu-text">Resources</span></a>
   </li>  
 </ul>
@@ -163,16 +199,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#assignment-1-describing-human-isotope-variation" id="toc-assignment-1-describing-human-isotope-variation" class="nav-link active" data-scroll-target="#assignment-1-describing-human-isotope-variation">Assignment 1 — Describing Human Isotope Variation</a></li>
-  <li><a href="#assignment-2-visualizing-kinship-diversity-with-kinbank" id="toc-assignment-2-visualizing-kinship-diversity-with-kinbank" class="nav-link" data-scroll-target="#assignment-2-visualizing-kinship-diversity-with-kinbank">Assignment 2 — Visualizing Kinship Diversity with Kinbank</a></li>
-  <li><a href="#assignment-3-missing-data-in-the-seshat-moralizing-gods-debate" id="toc-assignment-3-missing-data-in-the-seshat-moralizing-gods-debate" class="nav-link" data-scroll-target="#assignment-3-missing-data-in-the-seshat-moralizing-gods-debate">Assignment 3 — Missing Data in the Seshat Moralizing Gods Debate</a></li>
-  <li><a href="#assignment-4-sampling-archaeological-radiocarbon-data" id="toc-assignment-4-sampling-archaeological-radiocarbon-data" class="nav-link" data-scroll-target="#assignment-4-sampling-archaeological-radiocarbon-data">Assignment 4 — Sampling Archaeological Radiocarbon Data</a></li>
-  <li><a href="#assignment-5-statistical-inference-at-teotihuacan" id="toc-assignment-5-statistical-inference-at-teotihuacan" class="nav-link" data-scroll-target="#assignment-5-statistical-inference-at-teotihuacan">Assignment 5 — Statistical Inference at Teotihuacan</a></li>
-  <li><a href="#assignment-6-comparing-groups-at-tell-tweini" id="toc-assignment-6-comparing-groups-at-tell-tweini" class="nav-link" data-scroll-target="#assignment-6-comparing-groups-at-tell-tweini">Assignment 6 — Comparing Groups at Tell Tweini</a></li>
-  <li><a href="#assignment-7-raw-material-variation-in-highland-lesotho" id="toc-assignment-7-raw-material-variation-in-highland-lesotho" class="nav-link" data-scroll-target="#assignment-7-raw-material-variation-in-highland-lesotho">Assignment 7 — Raw-Material Variation in Highland Lesotho</a></li>
-  <li><a href="#assignment-8-comparing-iron-geochemistry-with-anova" id="toc-assignment-8-comparing-iron-geochemistry-with-anova" class="nav-link" data-scroll-target="#assignment-8-comparing-iron-geochemistry-with-anova">Assignment 8 — Comparing Iron Geochemistry with ANOVA</a></li>
-  <li><a href="#assignment-9-hawaiian-kukui-isotopes" id="toc-assignment-9-hawaiian-kukui-isotopes" class="nav-link" data-scroll-target="#assignment-9-hawaiian-kukui-isotopes">Assignment 9 — Hawaiian Kukui Isotopes</a></li>
-  <li><a href="#assignment-10-predicting-flake-mass" id="toc-assignment-10-predicting-flake-mass" class="nav-link" data-scroll-target="#assignment-10-predicting-flake-mass">Assignment 10 — Predicting Flake Mass</a></li>
+  <li><a href="#case-study" id="toc-case-study" class="nav-link active" data-scroll-target="#case-study">Case Study</a></li>
+  <li><a href="#assignment" id="toc-assignment" class="nav-link" data-scroll-target="#assignment">Assignment</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
+  <li><a href="#inspect-the-teaching-population" id="toc-inspect-the-teaching-population" class="nav-link" data-scroll-target="#inspect-the-teaching-population">1. Inspect the Teaching Population</a></li>
+  <li><a href="#draw-repeated-random-samples" id="toc-draw-repeated-random-samples" class="nav-link" data-scroll-target="#draw-repeated-random-samples">2. Draw Repeated Random Samples</a></li>
+  <li><a href="#examine-the-sampling-distributions" id="toc-examine-the-sampling-distributions" class="nav-link" data-scroll-target="#examine-the-sampling-distributions">3. Examine the Sampling Distributions</a></li>
+  <li><a href="#examine-a-restricted-sampling-frame" id="toc-examine-a-restricted-sampling-frame" class="nav-link" data-scroll-target="#examine-a-restricted-sampling-frame">4. Examine a Restricted Sampling Frame</a></li>
+  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation">5. Interpretation</a></li>
+  <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
+  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference">Reference</a></li>
   </ul>
 </nav>
     </div>
@@ -181,13 +217,19 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Assignments</h1>
+<h1 class="title">ANTH418 Assignment 4: Sampling Archaeological Radiocarbon Data</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Your Name </p>
+          </div>
+  </div>
     
   
     
@@ -198,95 +240,124 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>The ten ANTH418 assignments use published archaeological and anthropological datasets.</p>
-<p>Each assignment package contains:</p>
+<section id="case-study" class="level2">
+<h2 class="anchored" data-anchor-id="case-study">Case Study</h2>
+<p>The p3k14c project assembled a large global database of archaeological radiocarbon determinations for comparative research while also documenting important differences in data quality and sampling coverage (Bird et al., 2022). For this exercise, you will use a <strong>frozen Southern California subset of 984 radiocarbon determinations</strong> derived from p3k14c. For teaching purposes, this complete file will be treated as the <strong>reference population</strong> from which samples can be drawn.</p>
+</section>
+<section id="assignment" class="level2">
+<h2 class="anchored" data-anchor-id="assignment">Assignment</h2>
+<p>Using the provided radiocarbon dataset, investigate how <strong>random sampling, sample size, and sampling bias</strong> affect estimates of the mean conventional radiocarbon age. The objective is to apply the Week 7 concepts of <strong>population and sample, parameter and statistic, sampling variability, sampling distributions, standard error, and representativeness</strong> to an archaeological dataset.</p>
+<p>First, use repeated random sampling to examine the <strong>sampling distribution of the sample mean</strong> at different sample sizes. Compare the center and spread of these distributions and explain how increasing sample size affects sampling variability and standard error. Then compare random sampling with a deliberately <strong>restricted sampling frame</strong>. Determine whether increasing the number of observations from this restricted frame removes the difference between its estimates and the reference population.</p>
+<p>Your interpretation should distinguish clearly between <strong>sampling variability and sampling bias</strong>. Larger random samples generally produce more precise estimates, but a large sample drawn from an unrepresentative frame can remain systematically biased. For this exercise, treat conventional radiocarbon age as a numerical variable for studying sampling behavior; <strong>radiocarbon calibration, summed probability distributions, and paleodemographic inference are not required</strong>.</p>
+</section>
+<section id="data" class="level2">
+<h2 class="anchored" data-anchor-id="data">Data</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"assignments/assignment04_p3k14c_sampling/data/p3k14c_sampling.csv"</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">show_col_types =</span> <span class="cn">FALSE</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dat)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 984
+Columns: 10
+$ lab_id    &lt;chr&gt; "AA-2665", "AA-2666", "AA-2948", "AA-2949", "AA-2950", "AA-2…
+$ age       &lt;dbl&gt; 4830, 5380, 4900, 5060, 4870, 4750, 1150, 3975, 2145, 6865, …
+$ error     &lt;dbl&gt; 200, 390, 70, 80, 60, 100, 410, 75, 50, 60, 50, 50, 55, 60, …
+$ material  &lt;chr&gt; "BONE", "BONE", "BONE", "BONE", "BONE", "BONE", "BONE", "BON…
+$ method    &lt;chr&gt; "AMS", "AMS", "AMS", "AMS", "AMS", "AMS", "AMS", "AMS", "AMS…
+$ longitude &lt;dbl&gt; -116.7357, -116.7357, -116.7357, -116.7357, -116.7357, -116.…
+$ latitude  &lt;dbl&gt; 33.03555, 33.03555, 33.03555, 33.03555, 33.03555, 33.03555, …
+$ site_id   &lt;chr&gt; "CA-SDI-10940", "CA-SDI-10940", "CA-SDI-10940", "CA-SDI-1094…
+$ site_name &lt;chr&gt; "SDM-W-34; Del Mar Man Site", "SDM-W-34; Del Mar Man Site", …
+$ source    &lt;chr&gt; "UWyo2021", "UWyo2021", "UWyo2021", "UWyo2021", "UWyo2021", …</code></pre>
+</div>
+</div>
+</section>
+<section id="inspect-the-teaching-population" class="level2">
+<h2 class="anchored" data-anchor-id="inspect-the-teaching-population">1. Inspect the Teaching Population</h2>
+<p>Treat all <strong>984 radiocarbon determinations</strong> in the file as the reference population.</p>
+<p>Identify the unit of analysis and report the population size. Summarize the mean and distribution of <code>age</code> and use an appropriate visualization to describe the reference population briefly.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<blockquote class="blockquote">
+<p><code>age</code> is the <strong>conventional uncalibrated radiocarbon age in years BP</strong>. In this assignment it is used as a numerical variable for studying sampling behavior, not as a calibrated calendar date, occupation date, or direct estimate of regional population chronology.</p>
+</blockquote>
+</section>
+<section id="draw-repeated-random-samples" class="level2">
+<h2 class="anchored" data-anchor-id="draw-repeated-random-samples">2. Draw Repeated Random Samples</h2>
+<p>Using sampling <strong>with replacement</strong>, generate <strong>1,000 sample means</strong> at each of these sample sizes:</p>
 <ul>
-<li>assignment <code>.qmd</code>;</li>
-<li>README;</li>
-<li>codebook;</li>
-<li>provenance note; and</li>
-<li>teaching dataset.</li>
+<li><code>n = 10</code></li>
+<li><code>n = 25</code></li>
+<li><code>n = 50</code></li>
 </ul>
-<p>Students may browse the materials online or download the complete assignment package as a ZIP file.</p>
-<hr>
-<section id="assignment-1-describing-human-isotope-variation" class="level2">
-<h2 class="anchored" data-anchor-id="assignment-1-describing-human-isotope-variation">Assignment 1 — Describing Human Isotope Variation</h2>
-<p><strong>Statistical method:</strong> Descriptive statistics</p>
-<p><strong>Case study:</strong> Bronze Age diet and farming at La Bastida and Gatas</p>
-<p><a href="../assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html">Open Assignment 1</a></p>
-<p><a href="../downloads/assignments/ANTH418_assignment01_knipper_descriptive.zip">Download complete Assignment 1 package</a></p>
-<hr>
+<p>Use <code>set.seed(418)</code> before the simulation so that your results are reproducible.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The quantity of interest is the distribution of the <strong>sample means across repeated samples</strong>, not the distribution of individual radiocarbon ages in one sample.</p>
 </section>
-<section id="assignment-2-visualizing-kinship-diversity-with-kinbank" class="level2">
-<h2 class="anchored" data-anchor-id="assignment-2-visualizing-kinship-diversity-with-kinbank">Assignment 2 — Visualizing Kinship Diversity with Kinbank</h2>
-<p><strong>Statistical method:</strong> Exploratory data analysis and visualization</p>
-<p><strong>Case study:</strong> Cross-linguistic variation in kinship terminology using Kinbank</p>
-<p><a href="../assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html">Open Assignment 2</a></p>
-<p><a href="../downloads/assignments/ANTH418_assignment02_kinbank_visualization.zip">Download complete Assignment 2 package</a></p>
-<hr>
+<section id="examine-the-sampling-distributions" class="level2">
+<h2 class="anchored" data-anchor-id="examine-the-sampling-distributions">3. Examine the Sampling Distributions</h2>
+<p>Visualize the three sampling distributions of mean <code>age</code>.</p>
+<p>Compare:</p>
+<ul>
+<li>where they are centered relative to the reference-population mean;</li>
+<li>how much the sample means vary; and</li>
+<li>how their spread changes as sample size increases.</li>
+</ul>
+<p>Relate the spread of these distributions to <strong>standard error</strong>. Explain the relationship between sample size and the variability of sample means.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
-<section id="assignment-3-missing-data-in-the-seshat-moralizing-gods-debate" class="level2">
-<h2 class="anchored" data-anchor-id="assignment-3-missing-data-in-the-seshat-moralizing-gods-debate">Assignment 3 — Missing Data in the Seshat Moralizing Gods Debate</h2>
-<p><strong>Statistical method:</strong> Missing-data analysis and sensitivity analysis</p>
-<p><strong>Case study:</strong> Treatment of missing observations in the Seshat moralizing-gods debate</p>
-<p><a href="../assignments/assignment03_seshat_missing/assignment03_seshat_missing.html">Open Assignment 3</a></p>
-<p><a href="../downloads/assignments/ANTH418_assignment03_seshat_missing.zip">Download complete Assignment 3 package</a></p>
-<hr>
+<section id="examine-a-restricted-sampling-frame" class="level2">
+<h2 class="anchored" data-anchor-id="examine-a-restricted-sampling-frame">4. Examine a Restricted Sampling Frame</h2>
+<p>Now define a deliberately restricted sampling frame:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>longitude <span class="sc">&gt;</span> <span class="sc">-</span><span class="dv">118</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Compare its mean <code>age</code> with the mean of the full 984-row reference population.</p>
+<p>Then, sampling <strong>with replacement from the restricted frame only</strong>, generate <strong>1,000 sample means</strong> for:</p>
+<ul>
+<li><code>n = 10</code></li>
+<li><code>n = 50</code></li>
+<li><code>n = 200</code></li>
+</ul>
+<p>Visualize these sampling distributions and mark the mean of the full reference population for comparison.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Explain what happens to sampling variability as sample size increases and whether increasing <code>n</code> removes the systematic difference created by the restricted frame.</p>
 </section>
-<section id="assignment-4-sampling-archaeological-radiocarbon-data" class="level2">
-<h2 class="anchored" data-anchor-id="assignment-4-sampling-archaeological-radiocarbon-data">Assignment 4 — Sampling Archaeological Radiocarbon Data</h2>
-<p><strong>Statistical method:</strong> Sampling distributions, precision, and sampling bias</p>
-<p><strong>Case study:</strong> Southern California archaeological radiocarbon determinations from p3k14c</p>
-<p><a href="../assignments/assignment04_p3k14c_sampling/assignment04_p3k14c_sampling.html">Open Assignment 4</a></p>
-<p><a href="../downloads/assignments/ANTH418_assignment04_p3k14c_sampling.zip">Download complete Assignment 4 package</a></p>
-<hr>
+<section id="interpretation" class="level2">
+<h2 class="anchored" data-anchor-id="interpretation">5. Interpretation</h2>
+<p>In concise prose, explain:</p>
+<ol type="1">
+<li>What is the unit of analysis, and what are the population parameter and sample statistic examined here?</li>
+<li>What happens to sampling variability and standard error as sample size increases?</li>
+<li>How does the restricted sampling frame demonstrate the difference between <strong>sampling variability</strong> and <strong>sampling bias</strong>?</li>
+<li>Why can a large sample be <strong>precise but unrepresentative</strong>?</li>
+<li>How does this exercise relate to Bird et al.&nbsp;(2022) and the problem of sampling filters in archaeological radiocarbon databases?</li>
+<li>What archaeological claim does this exercise <strong>not</strong> support?</li>
+</ol>
+<p>Keep the scope of your conclusion appropriate. This exercise demonstrates properties of sampling using a Southern California teaching subset. It does <strong>not</strong> reconstruct prehistoric demography or evaluate dates-as-data methods generally.</p>
 </section>
-<section id="assignment-5-statistical-inference-at-teotihuacan" class="level2">
-<h2 class="anchored" data-anchor-id="assignment-5-statistical-inference-at-teotihuacan">Assignment 5 — Statistical Inference at Teotihuacan</h2>
-<p><strong>Statistical method:</strong> Bootstrap confidence intervals and permutation tests</p>
-<p><strong>Case study:</strong> Leporid stable-isotope variation at Teotihuacan</p>
-<p><a href="assignment05_teotihuacan_inference/">View Assignment 5 materials</a></p>
-<p><a href="../downloads/assignments/ANTH418_assignment05_teotihuacan_inference.zip">Download complete Assignment 5 package</a></p>
-<hr>
+<section id="submission" class="level2">
+<h2 class="anchored" data-anchor-id="submission">Submission</h2>
+<p>Submit <strong>both</strong> of the following files:</p>
+<ol type="1">
+<li>Completed Quarto source file (<code>.qmd</code>)</li>
+<li>Rendered HTML file (<code>.html</code>)</li>
+</ol>
+<p>Your report should contain the required summaries, sampling distributions, restricted-frame comparison, visualizations, and concise interpretation. <strong>Do not conduct confidence intervals, hypothesis tests, radiocarbon calibration, summed probability distributions, or paleodemographic modelling.</strong></p>
 </section>
-<section id="assignment-6-comparing-groups-at-tell-tweini" class="level2">
-<h2 class="anchored" data-anchor-id="assignment-6-comparing-groups-at-tell-tweini">Assignment 6 — Comparing Groups at Tell Tweini</h2>
-<p><strong>Statistical method:</strong> Independent-samples t-test and effect size</p>
-<p><strong>Case study:</strong> Middle Bronze Age and Late Bronze Age plant-isotope comparison at Tell Tweini</p>
-<p><a href="assignment06_tell_tweini_ttest/">View Assignment 6 materials</a></p>
-<p><a href="../downloads/assignments/ANTH418_assignment06_tell_tweini_ttest.zip">Download complete Assignment 6 package</a></p>
-<hr>
-</section>
-<section id="assignment-7-raw-material-variation-in-highland-lesotho" class="level2">
-<h2 class="anchored" data-anchor-id="assignment-7-raw-material-variation-in-highland-lesotho">Assignment 7 — Raw-Material Variation in Highland Lesotho</h2>
-<p><strong>Statistical method:</strong> Chi-square test of independence</p>
-<p><strong>Case study:</strong> Lithic raw-material composition across archaeological layers in Highland Lesotho</p>
-<p><a href="assignment07_lesotho_chisquare/">View Assignment 7 materials</a></p>
-<p><a href="../downloads/assignments/ANTH418_assignment07_lesotho_chisquare.zip">Download complete Assignment 7 package</a></p>
-<hr>
-</section>
-<section id="assignment-8-comparing-iron-geochemistry-with-anova" class="level2">
-<h2 class="anchored" data-anchor-id="assignment-8-comparing-iron-geochemistry-with-anova">Assignment 8 — Comparing Iron Geochemistry with ANOVA</h2>
-<p><strong>Statistical method:</strong> One-way ANOVA, post-hoc comparison, and robustness checks</p>
-<p><strong>Case study:</strong> Roman-period iron-smelting geochemistry</p>
-<p><a href="assignment08_iron_anova/">View Assignment 8 materials</a></p>
-<p><a href="../downloads/assignments/ANTH418_assignment08_iron_anova.zip">Download complete Assignment 8 package</a></p>
-<hr>
-</section>
-<section id="assignment-9-hawaiian-kukui-isotopes" class="level2">
-<h2 class="anchored" data-anchor-id="assignment-9-hawaiian-kukui-isotopes">Assignment 9 — Hawaiian Kukui Isotopes</h2>
-<p><strong>Statistical method:</strong> Correlation and measures of association</p>
-<p><strong>Case study:</strong> Kukui δ13C variation along elevation and rainfall gradients in Hawaiʻi</p>
-<p><a href="assignment09_kukui_correlation/">View Assignment 9 materials</a></p>
-<p><a href="../downloads/assignments/ANTH418_assignment09_kukui_correlation.zip">Download complete Assignment 9 package</a></p>
-<hr>
-</section>
-<section id="assignment-10-predicting-flake-mass" class="level2">
-<h2 class="anchored" data-anchor-id="assignment-10-predicting-flake-mass">Assignment 10 — Predicting Flake Mass</h2>
-<p><strong>Statistical method:</strong> Simple linear regression</p>
-<p><strong>Case study:</strong> Predicting experimental flake mass from mean flake thickness</p>
-<p><a href="assignment10_flake_regression/">View Assignment 10 materials</a></p>
-<p><a href="../downloads/assignments/ANTH418_assignment10_flake_regression.zip">Download complete Assignment 10 package</a></p>
+<section id="reference" class="level2">
+<h2 class="anchored" data-anchor-id="reference">Reference</h2>
+<p>Bird, D., Miranda, L., Vander Linden, M., Robinson, E., Bocinsky, R. K., Nicholson, C., Capriles, J. M., et al.&nbsp;(2022). p3k14c, a synthetic global database of archaeological radiocarbon dates. <em>Scientific Data, 9</em>, 27. https://doi.org/10.1038/s41597-022-01118-7</p>
 
 
 </section>
@@ -697,5 +768,5 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

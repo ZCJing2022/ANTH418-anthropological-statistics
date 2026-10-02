@@ -58,7 +58,7 @@ Students may browse the materials online or download the complete assignment pac
 
 **Case study:** Southern California archaeological radiocarbon determinations from p3k14c
 
-[View Assignment 4 materials](assignment04_p3k14c_sampling/)
+[Open Assignment 4](assignment04_p3k14c_sampling/assignment04_p3k14c_sampling.qmd)
 
 [Download complete Assignment 4 package](../downloads/assignments/ANTH418_assignment04_p3k14c_sampling.zip)
 
