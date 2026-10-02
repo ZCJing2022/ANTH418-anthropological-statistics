@@ -13,6 +13,7 @@ project:
     - weeks/week05.qmd
     - weeks/week06.qmd
     - weeks/week07.qmd
+    - weeks/week08.qmd
     - assignments/index.qmd
     - assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.qmd
     - assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.qmd
@@ -60,6 +61,9 @@ website:
 
           - href: weeks/week07.qmd
             text: "Week 7 — Probability & Sampling"
+
+          - href: weeks/week08.qmd
+            text: "Week 8 — Confidence Intervals & Hypothesis Testing"
 
       - href: assignments/index.qmd
         text: Assignments

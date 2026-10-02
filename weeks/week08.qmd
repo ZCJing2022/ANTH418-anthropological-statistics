@@ -1,0 +1,548 @@
+---
+format:
+  html:
+    toc: true
+    toc-depth: 3
+subtitle: Estimate → quantify uncertainty → test against a null model →
+  interpret archaeologically
+title: Week 8 --- Confidence Intervals and Hypothesis Testing
+---
+
+## Overview
+
+Statistical inference asks us to move from an observed sample to a
+larger population while remaining explicit about uncertainty. In
+archaeology, that move is especially difficult because specimens have
+already passed through preservation, deposition, excavation, recovery,
+curation, identification, and analytical selection.
+
+This week follows one connected sequence:
+
+> **Estimate → quantify uncertainty → test against a null model →
+> interpret archaeologically**
+
+It forms three conceptual movements: **(I) estimate and quantify
+uncertainty; (II) test against a null model; and (III) interpret
+archaeologically.** Statistical inference is one component of
+archaeological inference, not a substitute for it.
+
+## Learning Objectives
+
+By the end of this week, you should be able to:
+
+-   distinguish populations, samples, parameters, statistics, and
+    estimates;
+-   explain sampling variability and why estimates require measures of
+    uncertainty;
+-   distinguish point estimates from interval estimates;
+-   interpret a 95% confidence interval appropriately;
+-   explain bootstrap confidence intervals;
+-   distinguish bootstrap distributions from permutation null
+    distributions;
+-   state null and alternative hypotheses;
+-   explain a p-value as a tail probability under a specified null
+    model;
+-   distinguish statistical significance, effect magnitude, uncertainty,
+    and archaeological significance;
+-   identify limits created by sampling, non-independence,
+    exchangeability, measurement, chronology, and comparison design; and
+-   trace the inferential chain in the Teotihuacan leporid case.
+
+## Required Readings
+
+-   Cumming, G., & Calin-Jageman, R. (2024). *Introduction to the new
+    statistics: Estimation, open science, and beyond* (2nd ed.).
+    Routledge. Chapters 5--6.
+-   Somerville, A. D., Sugiyama, N., Manzanilla, L. R., &
+    Schoeninger, M. J. (2016). Animal management at the ancient
+    metropolis of Teotihuacan, Mexico: Stable isotope analysis of
+    leporid (cottontail and jackrabbit) bone mineral. *PLOS ONE, 11*(8),
+    e0159982.
+-   Thulin, M. (2024). *Modern statistics with R: From wrangling and
+    exploring data to inference and predictive modelling* (2nd ed.).
+    Chapman & Hall/CRC. Chapter 3 sections on hypothesis testing,
+    p-values, and confidence intervals.
+
+# Movement I --- Estimate → Quantify Uncertainty
+
+## 1. From Samples to Populations
+
+A **population** is the larger set of cases about which we want to
+learn. A **sample** is the set we observe. A **parameter** describes a
+population; a **statistic** is calculated from a sample.
+
+  Population quantity         Sample estimate
+  --------------------------- -----------------------------------
+  Mean, $\mu$                 Mean, $\bar{x}$
+  Variance, $\sigma^2$        Variance, $s^2$
+  Proportion, $P$             Proportion, $\hat{p}$
+  Difference, $\mu_1-\mu_2$   Difference, $\bar{x}_1-\bar{x}_2$
+
+A parameter is treated as fixed but usually unknown. Sample statistics
+vary from sample to sample. This **sampling variability** is why
+estimates need an account of uncertainty (Cumming & Calin-Jageman,
+2024).
+
+### Archaeological complication
+
+Archaeological samples are rarely simple random samples. Before
+inference, ask:
+
+1.  What is the target population?
+2.  What exactly is the observed sample?
+3.  How did preservation, excavation, recovery, curation, and analytical
+    selection produce it?
+4.  Which cases could not enter it?
+5.  What assumptions permit the sample to inform the population?
+
+> **Key idea:** More sophisticated statistics do not automatically make
+> an archaeological sample representative.
+
+## 2. Point Estimates versus Interval Estimates
+
+A **point estimate** is a single numerical estimate. It answers **"How
+much?"** An **interval estimate** adds information about precision.
+
+For a mean, a conventional confidence interval has the general form
+
+$$
+\bar{x} \pm t_{\mathrm{crit}}\times SE,
+\qquad
+SE=\frac{s}{\sqrt{n}}.
+$$
+
+The standard error describes how much an estimate such as the sample
+mean would vary across repeated samples. It is **not** the standard
+deviation of the individual observations.
+
+Larger samples generally produce narrower intervals; greater variability
+generally produces wider intervals. But **precision is not
+correctness**: a narrow interval around a biased estimate can be
+precisely wrong.
+
+## 3. What Does a 95% Confidence Interval Mean?
+
+In the standard frequentist interpretation, if the same
+sampling-and-interval procedure were repeated many times, about 95% of
+the resulting intervals would contain the fixed population parameter,
+assuming the method and assumptions are appropriate (Cumming &
+Calin-Jageman, 2024).
+
+Do **not** say that a particular frequentist interval gives a 95%
+probability that the fixed parameter lies inside it.
+
+Instead ask: Where is the estimate? How wide is the interval? Which
+effect magnitudes remain compatible with the data and assumptions? Are
+those magnitudes archaeologically meaningful?
+
+Do not turn a confidence interval into another binary significance
+detector by looking only at whether it crosses zero.
+
+## 4. Bootstrap Confidence Intervals
+
+The **bootstrap** approximates uncertainty by resampling:
+
+1.  start with the observed sample of size $n$;
+2.  draw $n$ observations **with replacement**;
+3.  calculate the statistic;
+4.  store the estimate;
+5.  repeat many times;
+6.  examine the bootstrap distribution; and
+7.  use that distribution to quantify uncertainty.
+
+A simple percentile 95% interval uses approximately the 2.5th and 97.5th
+percentiles of the bootstrap estimates.
+
+> **Bootstrap: How much might my estimate vary?**
+
+The bootstrap distribution is a distribution of **repeatedly calculated
+statistics**, not individual specimens.
+
+Bootstrapping cannot repair biased preservation, recovery, context
+selection, laboratory selection, a mismatch between sample and target
+population, or non-independence. Ten thousand resamples still contain
+only the information supplied by the original data.
+
+# Movement II --- Test Against a Null Model
+
+## 5. Estimation and Testing Ask Different Questions
+
+**Estimation asks:** How large is the effect, and how uncertain is the
+estimate?
+
+**Testing asks:** How unusual would the observed result be under a
+specified null model?
+
+A useful analysis often needs both. Estimate first; then ask whether the
+observed pattern is unusual under a clearly defined reference model.
+
+## 6. Null and Alternative Hypotheses
+
+For two population means:
+
+$$
+H_0:\mu_1-\mu_2=0
+$$
+
+$$
+H_A:\mu_1-\mu_2\neq0
+$$
+
+The **null hypothesis** is a statistical reference model. It is not
+necessarily an archaeological claim that "nothing happened."
+
+Likewise, "the population isotope means differ" is not equivalent to
+"people managed leporids." The first is statistical; the second proposes
+human behavior. Moving between them requires archaeological theory,
+context, chronology, ecology, and alternatives.
+
+## 7. Permutation Tests and Null Distributions
+
+A **permutation test** constructs a null distribution by rearranging
+data in a way that represents the null hypothesis:
+
+1.  calculate the observed statistic;
+2.  keep measured values fixed;
+3.  shuffle group labels as permitted by the null model;
+4.  preserve group sizes;
+5.  recalculate the statistic;
+6.  repeat many times; and
+7.  locate the observed statistic in the resulting null distribution.
+
+> **Permutation: What would differences look like if the null model
+> held?**
+
+Its validity depends on **exchangeability**: which observations can
+legitimately have their labels shuffled?
+
+  ---------------------------------------------------------------------
+  Bootstrap                          Permutation
+  ---------------------------------- ----------------------------------
+  Resample observations with         Usually shuffle labels
+  replacement                        
+
+  Quantifies uncertainty in an       Evaluates compatibility with a
+  estimate                           null model
+
+  Produces a bootstrap distribution  Produces a null distribution
+
+  Commonly supports confidence       Commonly supports p-values
+  intervals                          
+  ---------------------------------------------------------------------
+
+Both are resampling methods, but they answer different questions
+(Thulin, 2024).
+
+## 8. p-Values as Tail Probabilities
+
+A p-value is calculated **under a specified null model**:
+
+$$
+p=P(\text{result as extreme or more extreme}\mid H_0\text{ and assumptions}).
+$$
+
+A small p-value places the observed statistic relatively far into the
+tails of the null distribution. A large p-value means that the result is
+not unusual under that model; it does **not** prove the null is true.
+
+A p-value is **not** the probability that $H_0$ is true, the probability
+that $H_A$ is true, the probability that chance caused the result, the
+probability that this result is a false positive, the effect size, or
+the probability that an archaeological explanation is correct (Cumming &
+Calin-Jageman, 2024; Hubbard, 2011).
+
+## 9. Beyond the .05 Bright Line
+
+Students need to understand the conventional *p* \< .05 rule because it
+remains common. But it should not become a decision ritual. Wasserstein
+et al. (2019) argue against drawing conclusions solely from whether a
+p-value crosses an arbitrary threshold. Values such as *p* = .049 and
+*p* = .051 should not be treated as fundamentally different scientific
+outcomes.
+
+A fuller interpretation combines:
+
+> **Magnitude + uncertainty + context**
+
+# Movement III --- Interpret Archaeologically
+
+## 10. Statistical Significance versus Archaeological Significance
+
+**Statistical significance** concerns data relative to a statistical
+model and decision convention. **Archaeological significance** concerns
+what a pattern means for understanding past practices, institutions,
+environments, chronology, or other processes.
+
+The two can diverge. A tiny effect can become statistically detectable
+in a large sample; an archaeologically important effect can remain
+uncertain in a small sample; and a strong-looking pattern can reflect
+biased sampling, chronological mixing, or non-independent observations.
+
+The archaeological question is therefore not merely:
+
+> Is *p* \< .05?
+
+It is:
+
+> **How large is the pattern, how uncertain is it, what archaeological
+> process could generate it, and what other evidence makes that process
+> more or less plausible?**
+
+# Case Study --- Teotihuacan Leporid Management
+
+## 11. The Archaeological Problem
+
+Somerville et al. (2016) asked whether cottontails and jackrabbits at
+Teotihuacan were simply hunted or whether some were also provisioned,
+managed, or bred.
+
+The case contains the full inferential chain:
+
+> **archaeological question → measurement → comparison →
+> uncertainty/testing → archaeological interpretation**
+
+The authors analyzed stable carbon and oxygen isotopes from leporid bone
+mineral. Greater consumption of C4/CAM plants---including maize and
+other plants associated with human cultivation---can elevate leporid
+$\delta^{13}C$ values. But an isotope measurement is not a direct
+observation of someone feeding an animal.
+
+## 12. Why Oztoyahualco Matters
+
+Oztoyahualco 15B was archaeologically relevant before the isotope test.
+The compound contained an unusually large leporid assemblage and
+contextual evidence associated with animal processing and possible
+keeping (Somerville et al., 2016).
+
+This motivates a prediction:
+
+> **If leporids at Oztoyahualco were unusually integrated into human
+> provisioning, their carbon isotope values should differ in the
+> predicted direction from appropriate comparison contexts.**
+
+The statistical analysis therefore follows an archaeological question
+rather than searching for any contrast that happens to yield a small
+p-value.
+
+## 13. Begin with the Estimate
+
+Somerville et al. (2016) reported a mean $\delta^{13}C_{apatite}$ of
+approximately **−5.9‰** for Oztoyahualco leporids and approximately
+**−8.3‰** for the combined other archaeological contexts: an observed
+contrast of about **+2.4‰**. Their dietary interpretation associated the
+Oztoyahualco mean with approximately **74% C4/CAM plant consumption**.
+
+Before asking whether the difference is "significant," ask:
+
+-   What is its direction and magnitude?
+-   How variable are observations within groups?
+-   How uncertain is the estimated contrast?
+-   Is +2.4‰ meaningful in isotope-ecological terms?
+-   Are the groups archaeologically and chronologically appropriate
+    comparisons?
+
+## 14. Test Against the Null
+
+Somerville et al. (2016) reported that the Oztoyahualco
+$\delta^{13}C_{apatite}$ mean was higher than the combined mean of the
+other archaeological locations (*p* = .001).
+
+This does **not** mean there is a .1% probability that leporid
+management did not occur. The test addresses a statistical contrast
+relative to a null model; it does not assign a probability to the
+archaeological explanation.
+
+## 15. Build the Archaeological Interpretation
+
+The interpretive chain is approximately:
+
+$$
+\text{higher }\delta^{13}C
+\rightarrow
+\text{greater C4/CAM consumption}
+\rightarrow
+\text{access to cultivated resources}
+\rightarrow
+\text{possible provisioning}
+\rightarrow
+\text{possible management/breeding}.
+$$
+
+Every arrow requires evidence.
+
+Somerville et al. (2016) strengthen the interpretation by combining
+isotopic results with archaeological context. Alternatives remain
+possible, including crop raiding, garden hunting, movement of animals,
+and mixtures of managed and wild animals.
+
+The supplementary collagen study (Somerville et al., 2017) shows why
+binary significance is inadequate. Variation among animals, multiple
+leporid taxa, and isotope variance inconsistent with highly standardized
+production complicate a simple closed-system breeding model.
+
+# Limits of Inference
+
+## 16. Sampling
+
+A confidence interval can be numerically precise while representing the
+wrong population. Preservation, excavation strategy, recovery, curation,
+laboratory selection, and chronological aggregation affect what a sample
+can represent.
+
+> **Ask:** What population can these observations legitimately
+> represent?
+
+## 17. Independence and Exchangeability
+
+Archaeological observations are often clustered: several bones may
+derive from one animal, artifacts from one feature, features from one
+household, and households from one neighborhood. Treating correlated
+observations as independent inflates the apparent amount of information
+and may make uncertainty too small.
+
+For permutation tests:
+
+> **Ask:** What exactly may legitimately be shuffled?
+
+## 18. What a Statistical Test Cannot Establish
+
+A statistical test cannot by itself establish causation, mechanism,
+representativeness, correct chronology, correct measurement, or
+archaeological meaning. A small p-value cannot choose among competing
+archaeological explanations unless the research design and contextual
+evidence make those alternatives distinguishable.
+
+# R Workflow for Week 8
+
+``` r
+# 1. Inspect the data
+glimpse(dat)
+
+# 2. Estimate the observed group difference
+dat |>
+  group_by(group) |>
+  summarize(
+    n = n(),
+    mean = mean(value, na.rm = TRUE),
+    sd = sd(value, na.rm = TRUE)
+  )
+
+# 3. Bootstrap uncertainty
+# resample observations with replacement
+# calculate the difference each time
+# inspect the bootstrap distribution and interval
+
+# 4. Permutation null model
+# shuffle group labels as justified by the design
+# calculate the difference each time
+# build the null distribution
+
+# 5. Locate the observed statistic in the null distribution
+
+# 6. Interpret magnitude + uncertainty + archaeological context
+```
+
+Do not memorize code without understanding what is being resampled or
+shuffled. The computational operation must correspond to the inferential
+question.
+
+# Key Distinctions to Remember
+
+  -----------------------------------------------------------------------
+  Do not confuse                      Correct distinction
+  ----------------------------------- -----------------------------------
+  Sample statistic / population       Observed estimate / target quantity
+  parameter                           
+
+  SD / SE                             Variation among observations /
+                                      uncertainty of an estimate
+
+  Point estimate / CI                 Estimated magnitude / estimated
+                                      precision
+
+  Bootstrap / permutation             Estimate uncertainty / null-model
+                                      comparison
+
+  p-value / $\alpha$                  Data-dependent tail probability /
+                                      pre-specified threshold
+
+  p-value / effect size               Null-model compatibility /
+                                      magnitude
+
+  Statistical / archaeological        Statistical convention /
+  significance                        substantive interpretation
+
+  Statistical alternative /           Population pattern / explanation of
+  archaeological explanation          past behavior
+  -----------------------------------------------------------------------
+
+# Study Questions
+
+1.  Why is the distinction between a sample and a population especially
+    complicated in archaeology?
+2.  Why is a point estimate incomplete without an account of
+    uncertainty?
+3.  What does a 95% confidence interval mean in frequentist statistics?
+4.  Why should a confidence interval not be reduced to whether it
+    crosses zero?
+5.  What exactly is resampled in a bootstrap?
+6.  What is shuffled in a permutation test, and why does exchangeability
+    matter?
+7.  How do bootstrap and permutation distributions answer different
+    questions?
+8.  What does a p-value tell you? Name at least four things it does
+    **not** tell you.
+9.  Why should *p* = .049 and *p* = .051 not lead to radically different
+    scientific interpretations?
+10. Why does the Teotihuacan isotope contrast not by itself demonstrate
+    leporid management?
+11. What independent archaeological evidence makes the Oztoyahualco
+    interpretation more plausible?
+12. Which alternative explanations remain possible?
+13. How could non-independence make an apparently strong statistical
+    result misleading?
+14. Explain in your own words: **estimate → uncertainty → null model →
+    archaeological interpretation**.
+
+# Take-Home Message
+
+> **Start with the effect, not the threshold.**
+
+Estimate the pattern. Quantify how uncertain the estimate is. If a null
+comparison is useful, define the null model and understand what the test
+simulates. Then return to the archaeological question.
+
+A p-value can tell us how unusual an observed result is under a
+specified null model. It cannot tell us what happened in the past. That
+conclusion requires statistical evidence to be combined with
+archaeological context, measurement knowledge, chronology, theory, and
+competing explanations.
+
+# References
+
+Cumming, G., & Calin-Jageman, R. (2024). *Introduction to the new
+statistics: Estimation, open science, and beyond* (2nd ed.). Routledge.
+
+Hubbard, R. (2011). The widespread misinterpretation of p-values as
+error probabilities. *Journal of Applied Statistics, 38*(11),
+2617--2626. https://doi.org/10.1080/02664763.2011.567245
+
+Somerville, A. D., Sugiyama, N., Manzanilla, L. R., & Schoeninger, M. J.
+(2016). Animal management at the ancient metropolis of Teotihuacan,
+Mexico: Stable isotope analysis of leporid (cottontail and jackrabbit)
+bone mineral. *PLOS ONE, 11*(8), e0159982.
+https://doi.org/10.1371/journal.pone.0159982
+
+Somerville, A. D., Sugiyama, N., Manzanilla, L. R., & Schoeninger, M. J.
+(2017). Leporid management and specialized food production at
+Teotihuacan: Stable isotope data from cottontail and jackrabbit bone
+collagen. *Archaeological and Anthropological Sciences, 9*, 83--97.
+https://doi.org/10.1007/s12520-016-0420-2
+
+Thulin, M. (2024). *Modern statistics with R: From wrangling and
+exploring data to inference and predictive modelling* (2nd ed.). Chapman
+& Hall/CRC.
+
+Wasserstein, R. L., Schirm, A. L., & Lazar, N. A. (2019). Moving to a
+world beyond "p \< 0.05." *The American Statistician, 73*(sup1), 1--19.
+https://doi.org/10.1080/00031305.2019.1583913
