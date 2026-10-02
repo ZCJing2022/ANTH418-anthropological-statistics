@@ -1,9 +1,5 @@
 # Student teaching data
 
-The teaching dataset `kinbank_teaching.csv` is created by:
-
-```r
-source("scripts/03_build_teaching_data.R")
-```
+The teaching dataset `kinbank_teaching.csv` is a frozen teaching file built reproducibly from the pinned Kinbank snapshot documented in `../provenance.md`.
 
 Do not edit the generated CSV manually.

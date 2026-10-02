@@ -55,13 +55,11 @@ The teaching file retains source missingness:
 
 These are metadata gaps, not substantive categories.
 
-## Build script
+## Reproducible build
 
-The teaching dataset was built reproducibly in the instructor repository using:
+The teaching dataset was built reproducibly from the pinned Kinbank source snapshot.
 
-`scripts/build_teaching_data.R`
-
-The build script is not included in the student package and is not needed to complete this assignment.
+The build procedure is maintained outside the student package and is not needed to complete this assignment.
 
 ## Prohibited operations
 

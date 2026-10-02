@@ -31,7 +31,16 @@ Load the dataset and inspect its structure.
 ```{r}
 library(tidyverse)
 
-dat <- read_csv("assignments/assignment02_kinbank_visualization/data/kinbank_teaching.csv", show_col_types = FALSE)
+data_path <- if (file.exists("data/kinbank_teaching.csv")) {
+  "data/kinbank_teaching.csv"
+} else {
+  "assignments/assignment02_kinbank_visualization/data/kinbank_teaching.csv"
+}
+
+dat <- read_csv(
+  data_path,
+  show_col_types = FALSE
+)
 
 glimpse(dat)
 ```
