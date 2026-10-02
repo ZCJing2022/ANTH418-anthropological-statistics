@@ -1,0 +1,418 @@
+---
+title: "Week 7 — Probability, Sampling, and Sampling Distributions"
+---
+
+### Why This Week Matters
+
+Quantitative anthropologists almost never observe an entire population.
+Archaeologists cannot excavate every square meter, date every surviving
+sample, or recover everything that once existed. Week 7 asks how we can
+reason responsibly from **partial observations**.
+
+Sampling creates uncertainty in two different ways. Even a well-designed
+random sample varies by chance from one sample to another: **sampling
+variability**. A sampling frame or selection process can also
+systematically overrepresent some parts of a population and
+underrepresent others: **sampling bias**. A larger sample can reduce the
+first problem without necessarily correcting the second.
+
+Assignment 4 applies these ideas to archaeological radiocarbon
+determinations from the p3k14c project.
+
+## What You Should Understand
+
+By the end of Week 7, you should be able to:
+
+1.  explain probability as a long-run relative frequency;
+2.  distinguish **population/sample** and **parameter/statistic**;
+3.  explain a **sampling frame** and why it matters;
+4.  distinguish probability from nonprobability sampling;
+5.  explain **sampling with versus without replacement**;
+6.  explain **sampling variability** and a **sampling distribution**;
+7.  distinguish standard deviation from **standard error** and explain
+    the effect of sample size;
+8.  state the Central Limit Theorem at an introductory level and avoid
+    common misconceptions;
+9.  distinguish **sampling variability from sampling bias**;
+10. explain why a large sample can be precise but unrepresentative; and
+11. apply these ideas to radiocarbon databases and p3k14c.
+
+------------------------------------------------------------------------
+
+# 1. Probability as Long-Run Frequency
+
+Probability gives us a language for uncertainty. In the frequentist
+interpretation used here, probability is understood through repeated
+trials. A fair coin has probability 0.5 of landing heads, but ten flips
+need not contain exactly five heads. Short runs fluctuate.
+
+As the number of repeated trials becomes very large, the observed
+proportion tends to stabilize near the underlying probability.
+
+> **Random does not mean patternless. Short runs can fluctuate
+> substantially even when the long-run probability is stable.**
+
+This prepares us for sampling: a random sample can differ noticeably
+from its population simply by chance.
+
+# 2. Population, Sample, Parameter, and Statistic
+
+  -----------------------------------------------------------------------
+  Population world                    Sample world
+  ----------------------------------- -----------------------------------
+  **Population** --- complete target  **Sample** --- observed subset
+  universe                            
+
+  **Parameter** --- numerical         **Statistic** --- numerical
+  property of the population          property calculated from a sample
+
+  Population mean: (`\mu`{=tex})      Sample mean: (`\bar`{=tex}{x})
+
+  Population SD: (`\sigma`{=tex})     Sample SD: (s)
+
+  Population proportion: (P)          Sample proportion: (p)
+  -----------------------------------------------------------------------
+
+A statistic estimates a parameter, but it is not the parameter itself.
+Different random samples from the same population usually produce
+somewhat different statistics.
+
+# 3. The Sampling Frame
+
+The **target population** is what we want to make claims about. The
+**sampling frame** is the operational set of cases from which
+observations can actually be selected: a list, database, register, site
+inventory, survey grid, or other accessible collection.
+
+> **A sample directly represents the frame from which it was selected,
+> not automatically every population we would like it to represent.**
+
+If part of the target population is absent from the frame, random
+selection cannot recover what is missing.
+
+**Target population → Sampling frame → Sample → Statistic**
+
+# 4. Probability and Nonprobability Sampling
+
+## Probability sampling
+
+Units have known, non-zero probabilities of selection. Designs
+introduced in the lecture include simple random, systematic, stratified,
+and cluster/PPS sampling. Probability sampling matters because the
+selection process is explicitly modeled and, under appropriate
+conditions, sampling uncertainty can be quantified.
+
+## Nonprobability sampling
+
+Purposive, quota, theoretical, snowball/RDS, and convenience sampling
+can be appropriate for particular research goals, especially qualitative
+depth, pilot research, expert knowledge, and hard-to-reach populations.
+
+The limitation is inferential: if selection probabilities are unknown,
+ordinary probability-sampling logic cannot simply be used to estimate
+sampling error for population parameters.
+
+# 5. Sampling With and Without Replacement
+
+**Without replacement:** once selected, a case cannot be selected again
+in the same sample.
+
+**With replacement:** after selection, the case returns to the available
+pool and can be selected again.
+
+In R:
+
+``` r
+sample(x, size = 25, replace = TRUE)
+```
+
+Assignment 4 uses sampling with replacement to simulate repeated random
+sampling from a fixed teaching population. This does not mean
+archaeologists literally excavate the same object repeatedly. It creates
+a repeated-sampling model in which each draw comes from the same
+reference distribution.
+
+# 6. Sampling Variability
+
+Draw several independent random samples of the same size and calculate a
+mean for each:
+
+\[
+`\bar`{=tex}{x}\_1, `\bar`{=tex}{x}\_2, `\bar`{=tex}{x}\_3, `\bar`{=tex}{x}\_4, `\bar`{=tex}{x}\_5
+\]
+
+They will usually differ. This is **sampling variability**: a statistic
+changes from one random sample to another because different observations
+happen to be selected.
+
+Cumming calls this the **"dance of the means."** Sampling variability is
+not evidence that random sampling failed; it is an unavoidable
+consequence of observing only part of a variable population.
+
+# 7. Sampling Distributions
+
+Imagine repeating the sampling process many times. For each repetition:
+
+1.  draw a random sample of size (n);
+2.  calculate its mean;
+3.  save that mean; and
+4.  repeat.
+
+The collection of sample means forms the **sampling distribution of the
+sample mean**.
+
+> **A data distribution describes individual observations. A sampling
+> distribution describes a statistic across repeated samples.**
+
+In Assignment 4, individual conventional radiocarbon ages form the
+distribution of `age`; 1,000 means from 1,000 repeated samples form an
+empirical sampling distribution of the mean.
+
+# 8. Sample Size and Standard Error
+
+Larger random samples tend to produce more stable estimates:
+
+**small (n) → more variable sample means → wider sampling distribution**
+
+**large (n) → less variable sample means → narrower sampling
+distribution**
+
+The **standard error (SE)** describes the spread of a sampling
+distribution. For a sample mean:
+
+\[ SE\_{`\bar`{=tex}{x}}=`\frac{\sigma}{\sqrt{n}}`{=tex} \]
+
+When (`\sigma`{=tex}) is unknown, (s/`\sqrt{n}`{=tex}) is commonly used
+as an estimate.
+
+Because SE changes with the square root of (n), doubling sample size
+does not halve SE. Approximately **four times the sample size is
+required to halve the standard error**.
+
+## Standard deviation versus standard error
+
+**SD** describes variability among individual observations.
+
+**SE** describes variability of a statistic across repeated samples.
+
+# 9. The Central Limit Theorem
+
+At an introductory level, the Central Limit Theorem (CLT) tells us that,
+under appropriate conditions, the sampling distribution of a mean tends
+toward a normal distribution as sample size increases.
+
+The important object is the **sampling distribution**, not the raw
+observations.
+
+The CLT does **not** mean that raw data become normal when (n) is large,
+that every population must be normal, or that (n `\ge 30`{=tex})
+guarantees normality in every situation. The lecture emphasizes
+independence and finite variance, and convergence also depends on
+features such as skewness and tail behavior.
+
+For ANTH418, the main importance of the CLT is conceptual: it helps
+explain why sampling distributions can become predictable enough to
+support statistical inference.
+
+# 10. Sampling Variability Is Not Sampling Bias
+
+  -----------------------------------------------------------------------
+  Sampling variability                Sampling bias
+  ----------------------------------- -----------------------------------
+  Random fluctuation                  Systematic distortion
+
+  Occurs even with good random        Arises from the frame or selection
+  sampling                            process
+
+  Different samples give different    Some parts are systematically over-
+  statistics                          or underrepresented
+
+  Generally decreases as (n)          Does not necessarily disappear as
+  increases                           (n) increases
+
+  Reflected in SE                     Not repaired simply by obtaining a
+                                      smaller SE
+  -----------------------------------------------------------------------
+
+> **A very large biased sample can provide a highly precise estimate of
+> the wrong target quantity.**
+
+A small SE means repeated samples from the **same sampling process**
+would give similar estimates. It does not prove that the process
+represents the intended target population.
+
+# 11. Sample Size versus Sample Quality
+
+The Literary Digest example in the lecture demonstrates why a huge
+sample can perform badly when its sampling frame systematically
+underrepresents important groups.
+
+Increasing (n) helps with random sampling variability. It does not
+automatically correct coverage bias, selection bias, nonresponse bias,
+geographic imbalance, or research-history bias.
+
+Before asking "How large is the sample?", also ask:
+
+> **How did these observations become eligible to enter the sample?**
+
+# 12. Archaeological Application: Dates-as-Data
+
+Radiocarbon databases are large but strongly filtered collections:
+
+**Past human activity → datable material → preservation → archaeological
+discovery → sample selection → laboratory dating → database inclusion →
+observed radiocarbon distribution**
+
+Filters include preservation, decay and erosion as well as excavation
+history, research interests, funding, access, choices about what to
+date, and database compilation.
+
+> **A radiocarbon database is not a census of past human activity.**
+
+A raw distribution of dates can reflect both prehistoric processes and
+modern research behavior.
+
+# 13. Bird et al. (2022) and p3k14c
+
+Bird et al. assembled and standardized a very large global database of
+archaeological radiocarbon dates and evaluated dimensions of data
+quality and sampling coverage.
+
+For Week 7, the crucial lesson is not simply that p3k14c is large. It is
+that **large databases can remain unevenly sampled**.
+
+The lecture highlights geographic imbalance and Bird et al.'s comparison
+of radiocarbon-date density with archaeological-site density. Some
+regions have disproportionately many dates relative to sites; others
+have relatively few.
+
+This demonstrates the same statistical principle:
+
+> **Large (n) does not guarantee representativeness.**
+
+# 14. Reading Guide
+
+## Bernard --- Probability Sampling
+
+Focus on target populations, sampling frames, random selection,
+representativeness, sampling bias, and the scope of legitimate
+generalization. The key lesson is that **sampling design determines the
+scope of inference**.
+
+## Cumming --- The Normal Distribution and Sampling
+
+Focus on population parameters versus sample statistics, the "dance of
+the means," the "mean heap," sampling distributions, standard error, the
+relationship between (n) and SE, and the CLT.
+
+The visual intuition is especially important: repeated sample means
+"dance," but larger samples produce a narrower dance.
+
+## Bird et al. --- p3k14c
+
+Read the database as a **sampling problem**, not simply a source of
+dates. Ask where the dates came from, how they were assembled and
+standardized, whether geographic coverage is even, how sampling
+intensity is evaluated, and how research history may affect the observed
+distribution.
+
+## Thulin --- Recommended Computational Support
+
+Use Thulin for simulation in R: repeated simulation, random sampling,
+`sample()`, sampling with replacement, `set.seed()`, reproducibility,
+and the effect of changing sample size. Later inferential procedures in
+the chapter are not required for Assignment 4.
+
+# 15. Assignment 4 Connection
+
+The Southern California teaching file contains **984 radiocarbon
+determinations** and is treated as a known **reference population** for
+the exercise.
+
+### Experiment 1: Change sample size
+
+Repeated random samples at different (n) values demonstrate:
+
+**larger (n) → less sampling variability → smaller SE → greater
+precision**
+
+### Experiment 2: Change the sampling frame
+
+The exercise then restricts the frame geographically. Sampling remains
+random **within that restricted frame**, but increasing (n) makes
+estimates increasingly stable around the restricted-frame mean. It does
+not force them toward the mean of the full teaching population.
+
+Therefore:
+
+**larger (n) can reduce variability without eliminating bias**
+
+This is the central lesson of Assignment 4.
+
+# 16. Common Misunderstandings
+
+-   **"A random sample should look exactly like the population."**
+    No. Random samples fluctuate.
+-   **"A statistic is the true population value."** No. A statistic
+    estimates a parameter.
+-   **"A sampling distribution is the histogram of observations in my
+    sample."** No. It is a distribution of a statistic across repeated
+    samples.
+-   **"SD and SE are the same."** No. SD describes observations; SE
+    describes sampling variability of a statistic.
+-   **"Doubling (n) halves SE."** No. Roughly four times (n) is needed.
+-   **"The CLT says large datasets become normal."** No. It concerns
+    sampling distributions of statistics under appropriate conditions.
+-   **"(n=30) is always enough."** No. There is no universal guarantee.
+-   **"A huge sample must be representative."** No. Large biased samples
+    can be very precise.
+-   **"Random sampling fixes a bad frame."** No. Random selection only
+    operates on cases available in the frame.
+-   **"A large radiocarbon database directly represents prehistoric
+    population."** Not automatically; preservation and research
+    processes filter it.
+
+# 17. Questions You Should Be Able to Answer
+
+1.  What is the difference between a population and a sample?
+2.  What is the difference between a parameter and a statistic?
+3.  Why do random samples from the same population usually give
+    different means?
+4.  What is a sampling frame, and why can it limit inference?
+5.  What distinguishes probability from nonprobability sampling?
+6.  What is the difference between sampling with and without
+    replacement?
+7.  What exactly is a sampling distribution?
+8.  How is a sampling distribution different from the distribution of
+    raw observations?
+9.  What does standard error measure?
+10. Why does SE generally decrease as (n) increases?
+11. Why does quadrupling (n) approximately halve the SE?
+12. What does the CLT say, and what does it *not* say?
+13. What is the difference between sampling variability and sampling
+    bias?
+14. Why can a very large sample be precise but unrepresentative?
+15. Why can random sampling fail to represent a target population when
+    the sampling frame is incomplete?
+16. Why should p3k14c not be treated simply as a census of past human
+    activity?
+17. In Assignment 4, why does increasing sample size within the
+    restricted frame reduce variability without necessarily removing
+    bias?
+
+# 18. Core Takeaway
+
+Week 7 can be summarized as a chain:
+
+**Population → Sampling frame → Sample → Statistic → Repeated samples →
+Sampling distribution → Standard error → Inference**
+
+But statistical precision is only one part of defensible inference.
+
+> **Larger random samples generally reduce sampling variability and
+> increase precision, but increasing sample size does not correct a
+> systematically biased sampling frame.**
+
+In archaeology, this matters especially because every observed dataset
+has already been filtered by preservation, recovery, research history,
+selection, and recording practices.
