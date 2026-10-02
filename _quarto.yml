@@ -14,6 +14,7 @@ project:
     - weeks/week06.qmd
     - weeks/week07.qmd
     - weeks/week08.qmd
+    - weeks/week09.qmd
     - assignments/index.qmd
     - assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.qmd
     - assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.qmd
@@ -65,6 +66,9 @@ website:
 
           - href: weeks/week08.qmd
             text: "Week 8 — Confidence Intervals & Hypothesis Testing"
+
+          - href: weeks/week09.qmd
+            text: "Week 9 — Comparing Two Groups: t-tests"
 
       - href: assignments/index.qmd
         text: Assignments

@@ -1,0 +1,541 @@
+---
+format:
+  html:
+    toc: true
+    toc-depth: 3
+subtitle: Design → quantify the mean difference → scale by uncertainty →
+  estimate magnitude → interpret archaeologically
+title: "Week 9 --- Comparing Two Groups: t-tests"
+---
+
+## Overview
+
+This week extends Week 8 from inference about an estimate or null model
+to a direct comparison between **two groups**. Two sample means almost
+never match exactly. The important questions are: **How large is the
+observed difference? How uncertain is it? How compatible is it with a
+population difference of zero? And what does it mean archaeologically?**
+
+The lecture follows one connected sequence:
+
+> **independent vs. paired designs → standard error of a mean difference
+> → *t* statistic and *t* distribution → degrees of freedom → Welch's
+> *t*-test → assumptions and robustness → *t*-based CI → raw and
+> standardized effect magnitude → Student vs. Welch → parametric
+> vs. rank-based alternatives → Tell Tweini interpretation**
+
+The order matters. **Design determines what counts as independent
+information; design and variance assumptions determine the standard
+error; the standard error makes the *t* statistic interpretable;
+confidence intervals and effect estimates describe magnitude and
+uncertainty; interpretation then returns the statistical result to
+archaeology.**
+
+## Learning Objectives
+
+By the end of this week, you should be able to:
+
+-   distinguish independent-samples from paired-samples designs;
+-   explain why the observational unit and independence must be
+    established before choosing a test;
+-   calculate and interpret a difference between two means;
+-   explain the standard error of a mean difference;
+-   interpret the *t* statistic as a difference scaled by uncertainty;
+-   explain the role of the *t* distribution and degrees of freedom;
+-   distinguish Student's pooled and Welch's unpooled
+    independent-samples *t*-tests;
+-   explain why Welch's *t*-test is a useful default for independent
+    groups;
+-   evaluate assumptions using design knowledge, EDA, and diagnostics;
+-   interpret a 95% *t*-based confidence interval for a mean difference;
+-   distinguish raw from standardized effect magnitude;
+-   distinguish *t*-tests from Mann--Whitney U and Wilcoxon signed-rank
+    alternatives;
+-   use R to conduct and report a two-group comparison;
+-   interpret the Tell Tweini result as archaeological evidence rather
+    than as a *p* value alone.
+
+## Required Readings
+
+**Carlson, D. L. (2017).** *Quantitative methods in archaeology using
+R*. Cambridge University Press. Chapter 8.4, "Comparing Two Samples,"
+pp. 171--177.
+
+**Perkins, M. A. (2026).** *Using R for introductory statistics in
+social sciences*. Springer. Chapter 7, "Group Comparisons with Scale
+Dependent Variables," pp. 85--111.
+
+**Fuller, B. T., Riehl, S., Linseele, V., Marinova, E., De Cupere, B.,
+Bretschneider, J., Richards, M. P., & Van Neer, W. (2024).**
+Agropastoral and dietary practices of the northern Levant facing Late
+Holocene climate and environmental change: Isotopic analysis of plants,
+animals and humans from Bronze to Iron Age Tell Tweini. *PLOS ONE,
+19*(6), e0301775. https://doi.org/10.1371/journal.pone.0301775
+
+Fuller et al. provide the archaeological case. Their statistical
+protocol used Shapiro--Wilk tests first; datasets treated as normal were
+followed by Levene's test and independent-samples *t*-tests, while
+non-normal datasets were compared with Mann--Whitney U tests.
+
+------------------------------------------------------------------------
+
+## Movement I --- Design → Quantify the Mean Difference
+
+### 1. Independent vs. paired designs
+
+**Independent samples** contain distinct observations. An observation in
+Group 1 has no matched partner in Group 2. Sample sizes may differ.
+Examples include ceramic rim diameters from two contexts, house areas
+from two periods, and isotope measurements from specimens in two
+archaeological phases. The Tell Tweini Middle Bronze Age and Late Bronze
+Age wild ryegrass specimens are independent: no seed in one phase is the
+same specimen measured again in the other phase.
+
+**Paired samples** contain linked observations. Each value in one
+condition has a meaningful partner in the other. Examples include left
+versus right humeri from the same skeleton, two observers measuring the
+same bones, or the same unit measured before and after an intervention.
+
+For each pair:
+
+$$D_i=X_{1i}-X_{2i}$$
+
+The paired test analyzes these difference scores. Pairing can subtract
+background variation and increase precision.
+
+::: callout-important
+## Design comes first
+
+Independent versus paired is not chosen from a software menu. It is
+determined by the way observations were generated and by what
+constitutes an independent archaeological unit.
+:::
+
+### 2. The mean difference
+
+For independent groups:
+
+$$\widehat{\Delta}=\bar X_1-\bar X_2$$
+
+For paired data:
+
+$$\widehat{\Delta}=\bar D$$
+
+The sign depends on the order of subtraction. Assignment 6 defines the
+effect as **Middle Bronze Age − Late Bronze Age**, so always keep that
+direction visible when interpreting the result.
+
+### 3. Standard error of the mean difference
+
+The difference between sample means varies from sample to sample. Its
+uncertainty is summarized by the **standard error of the difference**.
+
+Student's equal-variance test pools the variances:
+
+$$s_p^2=\frac{(n_1-1)s_1^2+(n_2-1)s_2^2}{n_1+n_2-2}$$
+
+$$SE_{\text{Student}}=\sqrt{s_p^2\left(\frac1{n_1}+\frac1{n_2}\right)}$$
+
+Welch's test keeps the variances separate:
+
+$$SE_{\text{Welch}}=\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}$$
+
+For paired samples:
+
+$$SE_{\bar D}=\frac{s_D}{\sqrt N}$$
+
+**Key idea:** independent, paired, Student, and Welch procedures differ
+chiefly in how they represent uncertainty.
+
+------------------------------------------------------------------------
+
+## Movement II --- Difference → *t* Statistic → Degrees of Freedom
+
+### 4. The *t* statistic
+
+For the usual zero-difference null model:
+
+$$H_0:\mu_1-\mu_2=0$$
+
+and
+
+$$t=\frac{(\bar X_1-\bar X_2)-0}{SE_{\text{diff}}}$$
+
+The *t* statistic is a **difference-to-uncertainty ratio**. A large
+absolute value means that the observed difference is far from zero
+relative to its estimated sampling variability. It is not an effect
+size: it changes with both effect magnitude and precision.
+
+### 5. The *t* distribution
+
+The *t* distribution is symmetric and bell-shaped but has heavier tails
+than the normal distribution, especially with small samples. Population
+variability is unknown and must be estimated from sample data; the
+heavier tails represent that extra uncertainty. As degrees of freedom
+increase, the *t* distribution approaches the standard normal
+distribution.
+
+### 6. Degrees of freedom
+
+Student independent samples:
+
+$$df=n_1+n_2-2$$
+
+Paired samples:
+
+$$df=N_{\text{pairs}}-1$$
+
+Welch uses the Welch--Satterthwaite approximation:
+
+$$df=\frac{\left(s_1^2/n_1+s_2^2/n_2\right)^2}{\frac{(s_1^2/n_1)^2}{n_1-1}+\frac{(s_2^2/n_2)^2}{n_2-1}}$$
+
+Welch degrees of freedom can be fractional. Lower degrees of freedom
+imply heavier tails and greater uncertainty.
+
+### 7. Welch's *t*-test
+
+Welch's procedure uses separate group variances in the standard error
+and adjusts degrees of freedom. When sample sizes and variances are
+similar, Student and Welch are usually very close. When they differ,
+Welch avoids imposing an inappropriate common-variance model.
+
+In R, Welch is the default:
+
+``` r
+t.test(y ~ group, data = dat)
+```
+
+The pooled Student test is requested explicitly:
+
+``` r
+t.test(y ~ group, data = dat, var.equal = TRUE)
+```
+
+Assignment 6 therefore uses **Welch as the primary teaching analysis**
+and retains Student's pooled test as a secondary, publication-aligned
+comparison.
+
+### 8. Assumptions and robustness
+
+A valid comparison requires more than running `t.test()`.
+
+**Measurement.** The outcome should be quantitative and meaningfully
+summarized by a mean.
+
+**Independence.** Observations must represent independent information
+for an independent-samples test. This is an archaeological and sampling
+question, not something a normality test can diagnose. Multiple
+measurements from one specimen or strongly clustered observations can
+create pseudoreplication.
+
+**Normality.** Inspect raw-data plots, histograms/density plots,
+boxplots, and Q--Q plots. Shapiro--Wilk can supplement these checks but
+should not replace them. *t*-tests are often reasonably robust to modest
+departures from normality, especially without severe outliers.
+
+**Variance.** Equal population variance is an assumption of Student's
+pooled test. Welch relaxes it.
+
+Fuller et al. (2024) used Shapiro--Wilk, then Levene plus an
+independent-samples *t*-test for datasets treated as normal, and
+Mann--Whitney U for non-normal datasets. Assignment 6 reproduces the
+logic of diagnostics while **not requiring a preliminary variance test
+to choose Welch**.
+
+------------------------------------------------------------------------
+
+## Movement III --- Estimate Magnitude → Choose the Comparison → Interpret
+
+### 9. *t*-based confidence interval
+
+A confidence interval estimates the population mean difference:
+
+$$CI_{95\%}=\widehat{\Delta}\pm t_{\text{crit}}SE_{\text{diff}}$$
+
+Read it for both **precision** and **magnitude**. A narrow interval is
+more precise than a wide one. Its location shows which differences
+remain compatible with the data and model. Do not reduce a CI to
+"crosses zero / does not cross zero." For archaeology, the raw-unit
+interval is especially valuable because it remains on the substantive
+measurement scale.
+
+### 10. Raw and standardized effect magnitude
+
+The **raw mean difference** remains in the original archaeological
+units. At Tell Tweini, Δ¹³C is measured in per mil (‰). This is the most
+direct scale for connecting the comparison to crop water status.
+
+**Cohen's *d*** expresses the mean difference in pooled within-group
+standard-deviation units:
+
+$$d=\frac{\bar X_1-\bar X_2}{s_p}$$
+
+**Hedges' *g*** applies a small-sample correction and is less biased in
+small samples.
+
+  -----------------------------------------------------------------------
+  Measure                             Main question
+  ----------------------------------- -----------------------------------
+  Raw mean difference                 How much did the measured quantity
+                                      differ in its original units?
+
+  Cohen's *d* / Hedges' *g*           How large is the difference
+                                      relative to within-group
+                                      variability?
+  -----------------------------------------------------------------------
+
+Do not let conventional labels such as "small," "medium," or "large"
+replace archaeological interpretation.
+
+### 11. Student vs. Welch
+
+The two procedures test the same broad zero-difference null model but
+represent uncertainty differently.
+
+  -----------------------------------------------------------------------
+  Student                             Welch
+  ----------------------------------- -----------------------------------
+  Pools the two variances             Keeps variances separate
+
+  Assumes equal population variances  Does not require equal population
+                                      variances
+
+  $df=n_1+n_2-2$                      Welch--Satterthwaite $df$
+
+  Use when a common-variance model is Useful independent-samples default
+  justified                           
+  -----------------------------------------------------------------------
+
+The point is not to hunt for whichever test gives the preferred *p*
+value. The point is to make the variance model explicit.
+
+### 12. Parametric vs. rank-based alternatives
+
+**Mann--Whitney U** is a rank-based comparison for independent groups.
+**Wilcoxon signed-rank** is a rank-based procedure for paired
+differences. **Permutation tests** construct an empirical null
+distribution by rearranging labels or signs under an exchangeability
+assumption.
+
+These are not simply interchangeable "safer *t*-tests." They operate on
+ranks or resampled arrangements and may target different features of
+distributions. Test choice should follow the research question,
+measurement scale, design, distribution, and assumptions---not a ritual
+decision tree based on one diagnostic *p* value.
+
+------------------------------------------------------------------------
+
+## Case Study --- Tell Tweini
+
+### Archaeological setting
+
+Tell Tweini, ancient Gibala, lies on the Syrian Mediterranean coast near
+modern Jableh. Fuller et al. (2024) analyze a long sequence spanning the
+Early Bronze Age through the Iron Age and crossing the 4.2 ka BP and 3.2
+ka BP climatic perturbations. Their dataset combines stable isotope
+evidence from plants, animals, and humans to investigate water
+availability, manuring, animal management, and human diet.
+
+The published study reports a large isotopic dataset based on plants
+($n=410$), animals with acceptable collagen results ($n=210$), and
+humans with acceptable collagen results ($n=16$). Each evidence stream
+has a different observational unit, sample size, and inferential link.
+This is why comparison begins with design rather than with a test
+button.
+
+### Assignment 6 --- wild ryegrass Δ¹³C
+
+Assignment 6 focuses on source-derived Δ¹³C values for *Lolium
+cf. multiflorum*:
+
+-   Middle Bronze Age: $n=10$;
+-   Late Bronze Age: $n=10$.
+
+The effect is defined as:
+
+> **Middle Bronze Age − Late Bronze Age**
+
+The assignment's central question is:
+
+> **How large is the difference in wild ryegrass Δ¹³C between the Middle
+> Bronze Age and Late Bronze Age at Tell Tweini, how uncertain is that
+> difference, and what does a Welch two-sample *t*-test contribute to
+> its interpretation?**
+
+This is an **independent-groups design**. The primary ANTH418 analysis
+is Welch's *t*-test, accompanied by a 95% confidence interval and effect
+magnitude. The equal-variance Student test is retained for comparison
+with the publication-aligned approach.
+
+Fuller et al. (2024) report that wild ryegrass Δ¹³C decreases from the
+Early/Middle Bronze Age toward the Late Bronze/Iron Age and that the
+Middle-to-Late Bronze Age difference is statistically significant with
+an independent-samples *t*-test (*p* = .015). They interpret the change
+as consistent with ryegrass growing with a crop under reduced moisture
+availability. Because ryegrass is a weed that may occur with different
+crops, that interpretation must also consider crop associations,
+chronology, environmental context, and the broader archaeobotanical
+evidence.
+
+### What the comparison can establish
+
+It can quantify the direction and raw magnitude of the Δ¹³C difference,
+the uncertainty around it, and its compatibility with a zero-difference
+null model under the statistical assumptions.
+
+It cannot by itself establish that climate change caused the difference,
+identify the crop with which every ryegrass specimen grew, guarantee
+representativeness of all agriculture in each period, or turn
+statistical significance into archaeological importance.
+
+> **The statistical result supports interpretation; it is not the
+> interpretation.**
+
+------------------------------------------------------------------------
+
+## R Workflow for Week 9
+
+Follow this chain:
+
+> **Identify design → visualize and describe → estimate the raw
+> difference → consider assumptions → Welch *t*-test + 95% CI → effect
+> magnitude → compare with pooled Student *t* → interpret
+> archaeologically**
+
+A minimal workflow is:
+
+``` r
+library(tidyverse)
+
+dat <- read_csv("data/tell_tweini_ttest.csv",
+                show_col_types = FALSE)
+
+dat |>
+  group_by(period) |>
+  summarise(
+    n = n(),
+    mean = mean(isotope_value),
+    sd = sd(isotope_value),
+    median = median(isotope_value),
+    .groups = "drop"
+  )
+
+ggplot(dat, aes(x = period, y = isotope_value)) +
+  geom_boxplot() +
+  geom_jitter(width = 0.08, alpha = 0.7) +
+  theme_minimal()
+
+# Primary analysis: Welch
+t.test(isotope_value ~ period, data = dat)
+
+# Publication-aligned pooled comparison
+t.test(isotope_value ~ period, data = dat,
+       var.equal = TRUE)
+```
+
+For the assignment, also inspect group distributions and Shapiro--Wilk
+diagnostics. Report the group means and SDs, raw mean difference and
+direction, 95% CI, *t*, degrees of freedom, *p*, standardized effect
+magnitude, and archaeological interpretation.
+
+## Key Distinctions to Remember
+
+  -----------------------------------------------------------------------
+  Distinction                         Remember
+  ----------------------------------- -----------------------------------
+  Independent vs. paired              Distinct observations
+                                      vs. meaningful one-to-one pairing
+
+  Difference vs. *t*                  Raw effect vs. effect scaled by
+                                      standard error
+
+  SD vs. SE                           Variation among observations
+                                      vs. uncertainty of an estimate
+
+  Student vs. Welch                   Pooled equal variance vs. separate
+                                      variances and adjusted df
+
+  *p* value vs. effect magnitude      Compatibility with a null model
+                                      vs. how much difference
+
+  Raw vs. standardized effect         Archaeological units vs. SD units
+
+  Parametric vs. rank-based           Mean-based model vs. rank-based
+                                      comparison
+
+  Statistical vs. archaeological      Quantitative comparison
+  inference                           vs. substantive explanation
+  -----------------------------------------------------------------------
+
+## Study Questions
+
+1.  Why must you decide whether a design is independent or paired before
+    calculating a standard error?
+2.  Why do two sample means almost never match exactly?
+3.  What does $SE_{\text{diff}}$ represent?
+4.  What are the numerator and denominator of the usual two-sample *t*
+    statistic?
+5.  Why does the *t* distribution have heavier tails at low degrees of
+    freedom?
+6.  Why can Welch's degrees of freedom be fractional?
+7.  What assumption does Student's pooled test make that Welch's test
+    relaxes?
+8.  Why is independence especially difficult to justify in
+    archaeological datasets?
+9.  Why should a confidence interval be interpreted for magnitude and
+    precision rather than only by whether it contains zero?
+10. Why is a raw Δ¹³C difference more archaeologically legible than
+    Cohen's *d* alone?
+11. Why are Mann--Whitney U and a two-sample *t*-test not simply two
+    versions of the same test?
+12. In Assignment 6, why are Middle Bronze Age and Late Bronze Age
+    ryegrass values independent rather than paired?
+13. Why is Welch the primary ANTH418 analysis while the pooled Student
+    test is still useful as a comparison?
+14. What does the Tell Tweini statistical comparison contribute to the
+    archaeological interpretation, and what causal claims remain beyond
+    the test?
+
+## Take-Home Message
+
+A two-group comparison is not a single button labeled *t*-test. It is a
+chain of reasoning:
+
+> **design → observed difference → uncertainty → *t* and degrees of
+> freedom → confidence interval → effect magnitude → method comparison →
+> archaeological interpretation**
+
+For independent groups, Welch's *t*-test is a strong default because it
+does not require equal population variances. But no choice of *t*-test
+can repair a poorly defined observational unit, non-independent
+evidence, biased sampling, or weak archaeological interpretation. Report
+the **raw difference, uncertainty, test result, and effect magnitude
+together**, and then return to the archaeological question.
+
+## References
+
+Carlson, D. L. (2017). *Quantitative methods in archaeology using R*.
+Cambridge University Press.
+
+Cumming, G., & Calin-Jageman, R. (2024). *Introduction to the new
+statistics: Estimation, open science, and beyond* (2nd ed.). Routledge.
+
+Drennan, R. D. (2009). *Statistics for archaeologists: A common sense
+approach* (2nd ed.). Springer.
+
+Fuller, B. T., Riehl, S., Linseele, V., Marinova, E., De Cupere, B.,
+Bretschneider, J., Richards, M. P., & Van Neer, W. (2024). Agropastoral
+and dietary practices of the northern Levant facing Late Holocene
+climate and environmental change: Isotopic analysis of plants, animals
+and humans from Bronze to Iron Age Tell Tweini. *PLOS ONE, 19*(6),
+e0301775. https://doi.org/10.1371/journal.pone.0301775
+
+Perkins, M. A. (2026). *Using R for introductory statistics in social
+sciences*. Springer.
+
+Thulin, M. (2025). *Modern statistics with R: From wrangling and
+exploring data to inference and predictive modelling* (2nd ed.). Chapman
+& Hall/CRC.
+
+Williams, N. E., & Quave, K. E. (2019). *Quantitative anthropology: A
+workbook*. Academic Press.
