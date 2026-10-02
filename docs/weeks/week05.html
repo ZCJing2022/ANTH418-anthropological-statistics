@@ -203,77 +203,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a></li>
-  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning objectives</a></li>
-  <li><a href="#this-weeks-two-class-sequence" id="toc-this-weeks-two-class-sequence" class="nav-link" data-scroll-target="#this-weeks-two-class-sequence">This week’s two-class sequence</a>
+  <li><a href="#why-this-week-matters" id="toc-why-this-week-matters" class="nav-link active" data-scroll-target="#why-this-week-matters">Why This Week Matters</a></li>
+  <li><a href="#what-you-should-understand" id="toc-what-you-should-understand" class="nav-link" data-scroll-target="#what-you-should-understand">1. What You Should Understand</a></li>
+  <li><a href="#eda-description-before-inference" id="toc-eda-description-before-inference" class="nav-link" data-scroll-target="#eda-description-before-inference">2. EDA: Description Before Inference</a></li>
+  <li><a href="#match-graphics-to-variables" id="toc-match-graphics-to-variables" class="nav-link" data-scroll-target="#match-graphics-to-variables">3. Match Graphics to Variables</a></li>
+  <li><a href="#the-basic-ggplot2-pattern" id="toc-the-basic-ggplot2-pattern" class="nav-link" data-scroll-target="#the-basic-ggplot2-pattern">4. The Basic ggplot2 Pattern</a></li>
+  <li><a href="#mapping-versus-setting" id="toc-mapping-versus-setting" class="nav-link" data-scroll-target="#mapping-versus-setting">5. Mapping Versus Setting</a></li>
+  <li><a href="#practice-1-build-a-plot-layer-by-layer" id="toc-practice-1-build-a-plot-layer-by-layer" class="nav-link" data-scroll-target="#practice-1-build-a-plot-layer-by-layer">6. Practice 1 — Build a Plot Layer by Layer</a></li>
+  <li><a href="#practice-1a-read-the-anatomy-of-ggplot2-code" id="toc-practice-1a-read-the-anatomy-of-ggplot2-code" class="nav-link" data-scroll-target="#practice-1a-read-the-anatomy-of-ggplot2-code">6. Practice 1A — Read the Anatomy of ggplot2 Code</a>
   <ul class="collapse">
-  <li><a href="#class-1-how-visualization-makes-structure-visible" id="toc-class-1-how-visualization-makes-structure-visible" class="nav-link" data-scroll-target="#class-1-how-visualization-makes-structure-visible">Class 1 — How visualization makes structure visible</a></li>
-  <li><a href="#class-2-comparison-kinbank-and-anthropological-interpretation" id="toc-class-2-comparison-kinbank-and-anthropological-interpretation" class="nav-link" data-scroll-target="#class-2-comparison-kinbank-and-anthropological-interpretation">Class 2 — Comparison, Kinbank, and anthropological interpretation</a></li>
+  <li><a href="#try-it-yourself" id="toc-try-it-yourself" class="nav-link" data-scroll-target="#try-it-yourself">Try it yourself</a></li>
   </ul></li>
-  <li><a href="#exploratory-and-confirmatory-analysis" id="toc-exploratory-and-confirmatory-analysis" class="nav-link" data-scroll-target="#exploratory-and-confirmatory-analysis">1. Exploratory and confirmatory analysis</a></li>
-  <li><a href="#visualization-is-part-of-analysis" id="toc-visualization-is-part-of-analysis" class="nav-link" data-scroll-target="#visualization-is-part-of-analysis">2. Visualization is part of analysis</a>
+  <li><a href="#geoms-and-stats" id="toc-geoms-and-stats" class="nav-link" data-scroll-target="#geoms-and-stats">7. Geoms and Stats</a></li>
+  <li><a href="#practice-2-bar-charts-and-sample-structure" id="toc-practice-2-bar-charts-and-sample-structure" class="nav-link" data-scroll-target="#practice-2-bar-charts-and-sample-structure">8. Practice 2 — Bar Charts and Sample Structure</a></li>
+  <li><a href="#practice-3-histograms-and-bin-width" id="toc-practice-3-histograms-and-bin-width" class="nav-link" data-scroll-target="#practice-3-histograms-and-bin-width">9. Practice 3 — Histograms and Bin Width</a></li>
+  <li><a href="#practice-4-boxplot-plus-raw-observations" id="toc-practice-4-boxplot-plus-raw-observations" class="nav-link" data-scroll-target="#practice-4-boxplot-plus-raw-observations">10. Practice 4 — Boxplot Plus Raw Observations</a></li>
+  <li><a href="#faceting-and-small-multiples" id="toc-faceting-and-small-multiples" class="nav-link" data-scroll-target="#faceting-and-small-multiples">11. Faceting and Small Multiples</a></li>
+  <li><a href="#practice-5-aesthetic-or-facet" id="toc-practice-5-aesthetic-or-facet" class="nav-link" data-scroll-target="#practice-5-aesthetic-or-facet">12. Practice 5 — Aesthetic or Facet?</a></li>
+  <li><a href="#scales-guides-coordinates-and-themes" id="toc-scales-guides-coordinates-and-themes" class="nav-link" data-scroll-target="#scales-guides-coordinates-and-themes">13. Scales, Guides, Coordinates, and Themes</a></li>
+  <li><a href="#layers-and-local-mappings" id="toc-layers-and-local-mappings" class="nav-link" data-scroll-target="#layers-and-local-mappings">14. Layers and Local Mappings</a></li>
+  <li><a href="#visual-channels-should-match-the-task" id="toc-visual-channels-should-match-the-task" class="nav-link" data-scroll-target="#visual-channels-should-match-the-task">15. Visual Channels Should Match the Task</a></li>
+  <li><a href="#practice-6-debug-common-ggplot2-mistakes" id="toc-practice-6-debug-common-ggplot2-mistakes" class="nav-link" data-scroll-target="#practice-6-debug-common-ggplot2-mistakes">16. Practice 6 — Debug Common ggplot2 Mistakes</a></li>
+  <li><a href="#visualization-can-mislead" id="toc-visualization-can-mislead" class="nav-link" data-scroll-target="#visualization-can-mislead">17. Visualization Can Mislead</a></li>
+  <li><a href="#kinbank-visualize-the-evidence-first" id="toc-kinbank-visualize-the-evidence-first" class="nav-link" data-scroll-target="#kinbank-visualize-the-evidence-first">18. Kinbank: Visualize the Evidence First</a></li>
+  <li><a href="#kinship-diversity-depends-on-operationalization" id="toc-kinship-diversity-depends-on-operationalization" class="nav-link" data-scroll-target="#kinship-diversity-depends-on-operationalization">19. Kinship Diversity Depends on Operationalization</a></li>
+  <li><a href="#cross-cultural-non-independence" id="toc-cross-cultural-non-independence" class="nav-link" data-scroll-target="#cross-cultural-non-independence">20. Cross-Cultural Non-Independence</a></li>
+  <li><a href="#assignment-2-connection" id="toc-assignment-2-connection" class="nav-link" data-scroll-target="#assignment-2-connection">21. Assignment 2 Connection</a></li>
+  <li><a href="#practical-ggplot2-checklist" id="toc-practical-ggplot2-checklist" class="nav-link" data-scroll-target="#practical-ggplot2-checklist">22. Practical ggplot2 Checklist</a></li>
+  <li><a href="#practice-progression-what-you-should-be-able-to-do-without-copying" id="toc-practice-progression-what-you-should-be-able-to-do-without-copying" class="nav-link" data-scroll-target="#practice-progression-what-you-should-be-able-to-do-without-copying">23. Practice Progression: What You Should Be Able to Do Without Copying</a>
   <ul class="collapse">
-  <li><a href="#graphical-integrity" id="toc-graphical-integrity" class="nav-link" data-scroll-target="#graphical-integrity">Graphical integrity</a></li>
+  <li><a href="#level-1-read" id="toc-level-1-read" class="nav-link" data-scroll-target="#level-1-read">Level 1 — Read</a></li>
+  <li><a href="#level-2-modify" id="toc-level-2-modify" class="nav-link" data-scroll-target="#level-2-modify">Level 2 — Modify</a></li>
+  <li><a href="#level-3-construct" id="toc-level-3-construct" class="nav-link" data-scroll-target="#level-3-construct">Level 3 — Construct</a></li>
+  <li><a href="#level-4-interpret" id="toc-level-4-interpret" class="nav-link" data-scroll-target="#level-4-interpret">Level 4 — Interpret</a></li>
   </ul></li>
-  <li><a href="#visual-perception" id="toc-visual-perception" class="nav-link" data-scroll-target="#visual-perception">3. Visual perception</a></li>
-  <li><a href="#the-grammar-of-graphics" id="toc-the-grammar-of-graphics" class="nav-link" data-scroll-target="#the-grammar-of-graphics">4. The grammar of graphics</a></li>
-  <li><a href="#chart-choice-begins-with-measurement-scale" id="toc-chart-choice-begins-with-measurement-scale" class="nav-link" data-scroll-target="#chart-choice-begins-with-measurement-scale">5. Chart choice begins with measurement scale</a></li>
-  <li><a href="#categorical-variables" id="toc-categorical-variables" class="nav-link" data-scroll-target="#categorical-variables">6. Categorical variables</a></li>
-  <li><a href="#continuous-variables" id="toc-continuous-variables" class="nav-link" data-scroll-target="#continuous-variables">7. Continuous variables</a>
+  <li><a href="#practice-challenges" id="toc-practice-challenges" class="nav-link" data-scroll-target="#practice-challenges">24. Practice Challenges</a></li>
+  <li><a href="#reading-guide" id="toc-reading-guide" class="nav-link" data-scroll-target="#reading-guide">25. Reading Guide</a>
   <ul class="collapse">
-  <li><a href="#strip-or-jitter-plots" id="toc-strip-or-jitter-plots" class="nav-link" data-scroll-target="#strip-or-jitter-plots">Strip or jitter plots</a></li>
-  <li><a href="#histograms" id="toc-histograms" class="nav-link" data-scroll-target="#histograms">Histograms</a></li>
-  <li><a href="#density-plots" id="toc-density-plots" class="nav-link" data-scroll-target="#density-plots">Density plots</a></li>
-  <li><a href="#boxplots" id="toc-boxplots" class="nav-link" data-scroll-target="#boxplots">Boxplots</a></li>
+  <li><a href="#ggplot2-elegant-graphics-for-data-analysis-3e" id="toc-ggplot2-elegant-graphics-for-data-analysis-3e" class="nav-link" data-scroll-target="#ggplot2-elegant-graphics-for-data-analysis-3e">ggplot2: Elegant Graphics for Data Analysis, 3e</a></li>
+  <li><a href="#healy-data-visualization-a-practical-introduction" id="toc-healy-data-visualization-a-practical-introduction" class="nav-link" data-scroll-target="#healy-data-visualization-a-practical-introduction">Healy, Data Visualization: A Practical Introduction</a></li>
+  <li><a href="#r-for-data-science-2e" id="toc-r-for-data-science-2e" class="nav-link" data-scroll-target="#r-for-data-science-2e">R for Data Science, 2e</a></li>
   </ul></li>
-  <li><a href="#relationships-and-group-comparisons" id="toc-relationships-and-group-comparisons" class="nav-link" data-scroll-target="#relationships-and-group-comparisons">8. Relationships and group comparisons</a>
-  <ul class="collapse">
-  <li><a href="#numerical-numerical" id="toc-numerical-numerical" class="nav-link" data-scroll-target="#numerical-numerical">Numerical × numerical</a></li>
-  <li><a href="#categorical-continuous" id="toc-categorical-continuous" class="nav-link" data-scroll-target="#categorical-continuous">Categorical × continuous</a></li>
-  </ul></li>
-  <li><a href="#graphics-gain-power-through-comparison" id="toc-graphics-gain-power-through-comparison" class="nav-link" data-scroll-target="#graphics-gain-power-through-comparison">9. Graphics gain power through comparison</a>
-  <ul class="collapse">
-  <li><a href="#juxtaposition" id="toc-juxtaposition" class="nav-link" data-scroll-target="#juxtaposition">Juxtaposition</a></li>
-  <li><a href="#superposition" id="toc-superposition" class="nav-link" data-scroll-target="#superposition">Superposition</a></li>
-  <li><a href="#explicit-encoding" id="toc-explicit-encoding" class="nav-link" data-scroll-target="#explicit-encoding">Explicit encoding</a></li>
-  </ul></li>
-  <li><a href="#high-dimensional-eda" id="toc-high-dimensional-eda" class="nav-link" data-scroll-target="#high-dimensional-eda">10. High-dimensional EDA</a></li>
-  <li><a href="#kinbank-making-kinship-terminology-analyzable" id="toc-kinbank-making-kinship-terminology-analyzable" class="nav-link" data-scroll-target="#kinbank-making-kinship-terminology-analyzable">11. Kinbank: making kinship terminology analyzable</a>
-  <ul class="collapse">
-  <li><a href="#etic-grids-reveal-emic-categories" id="toc-etic-grids-reveal-emic-categories" class="nav-link" data-scroll-target="#etic-grids-reveal-emic-categories">Etic grids reveal emic categories</a></li>
-  </ul></li>
-  <li><a href="#kinbank-as-visual-evidence" id="toc-kinbank-as-visual-evidence" class="nav-link" data-scroll-target="#kinbank-as-visual-evidence">12. Kinbank as visual evidence</a>
-  <ul class="collapse">
-  <li><a href="#parent-term-phonology" id="toc-parent-term-phonology" class="nav-link" data-scroll-target="#parent-term-phonology">Parent-term phonology</a></li>
-  <li><a href="#kinship-typology-and-phylogeny" id="toc-kinship-typology-and-phylogeny" class="nav-link" data-scroll-target="#kinship-typology-and-phylogeny">Kinship typology and phylogeny</a></li>
-  </ul></li>
-  <li><a href="#a-practical-anth418-eda-workflow" id="toc-a-practical-anth418-eda-workflow" class="nav-link" data-scroll-target="#a-practical-anth418-eda-workflow">13. A practical ANTH418 EDA workflow</a>
-  <ul class="collapse">
-  <li><a href="#step-1-inspect-and-clean-the-data" id="toc-step-1-inspect-and-clean-the-data" class="nav-link" data-scroll-target="#step-1-inspect-and-clean-the-data">Step 1 — Inspect and clean the data</a></li>
-  <li><a href="#step-2-plot-univariate-distributions" id="toc-step-2-plot-univariate-distributions" class="nav-link" data-scroll-target="#step-2-plot-univariate-distributions">Step 2 — Plot univariate distributions</a></li>
-  <li><a href="#step-3-explore-co-variation" id="toc-step-3-explore-co-variation" class="nav-link" data-scroll-target="#step-3-explore-co-variation">Step 3 — Explore co-variation</a></li>
-  <li><a href="#step-4-compare-explicitly" id="toc-step-4-compare-explicitly" class="nav-link" data-scroll-target="#step-4-compare-explicitly">Step 4 — Compare explicitly</a></li>
-  <li><a href="#step-5-separate-description-from-inference" id="toc-step-5-separate-description-from-inference" class="nav-link" data-scroll-target="#step-5-separate-description-from-inference">Step 5 — Separate description from inference</a></li>
-  </ul></li>
-  <li><a href="#assignment-2-visualizing-kinship-diversity-with-kinbank" id="toc-assignment-2-visualizing-kinship-diversity-with-kinbank" class="nav-link" data-scroll-target="#assignment-2-visualizing-kinship-diversity-with-kinbank">14. Assignment 2 — Visualizing Kinship Diversity with Kinbank</a></li>
-  <li><a href="#practice" id="toc-practice" class="nav-link" data-scroll-target="#practice">Practice</a>
-  <ul class="collapse">
-  <li><a href="#exercise-1-inspect-before-plotting" id="toc-exercise-1-inspect-before-plotting" class="nav-link" data-scroll-target="#exercise-1-inspect-before-plotting">Exercise 1 — Inspect before plotting</a></li>
-  <li><a href="#exercise-2-compare-two-representations" id="toc-exercise-2-compare-two-representations" class="nav-link" data-scroll-target="#exercise-2-compare-two-representations">Exercise 2 — Compare two representations</a></li>
-  <li><a href="#exercise-3-facet-a-comparison" id="toc-exercise-3-facet-a-comparison" class="nav-link" data-scroll-target="#exercise-3-facet-a-comparison">Exercise 3 — Facet a comparison</a></li>
-  <li><a href="#exercise-4-description-versus-explanation" id="toc-exercise-4-description-versus-explanation" class="nav-link" data-scroll-target="#exercise-4-description-versus-explanation">Exercise 4 — Description versus explanation</a></li>
-  </ul></li>
-  <li><a href="#readings" id="toc-readings" class="nav-link" data-scroll-target="#readings">Readings</a>
-  <ul class="collapse">
-  <li><a href="#required-beecham" id="toc-required-beecham" class="nav-link" data-scroll-target="#required-beecham">Required: Beecham</a></li>
-  <li><a href="#required-passmore-et-al." id="toc-required-passmore-et-al." class="nav-link" data-scroll-target="#required-passmore-et-al.">Required: Passmore et al.</a></li>
-  <li><a href="#required-thulin" id="toc-required-thulin" class="nav-link" data-scroll-target="#required-thulin">Required: Thulin</a></li>
-  <li><a href="#wickham-çetinkaya-rundel-and-grolemund" id="toc-wickham-çetinkaya-rundel-and-grolemund" class="nav-link" data-scroll-target="#wickham-çetinkaya-rundel-and-grolemund">Wickham, Çetinkaya-Rundel, and Grolemund</a></li>
-  <li><a href="#supplementary-readings" id="toc-supplementary-readings" class="nav-link" data-scroll-target="#supplementary-readings">Supplementary readings</a></li>
-  </ul></li>
-  <li><a href="#week-5-checklist" id="toc-week-5-checklist" class="nav-link" data-scroll-target="#week-5-checklist">Week 5 checklist</a></li>
-  <li><a href="#takeaways" id="toc-takeaways" class="nav-link" data-scroll-target="#takeaways">Takeaways</a></li>
+  <li><a href="#core-takeaways" id="toc-core-takeaways" class="nav-link" data-scroll-target="#core-takeaways">26. Core Takeaways</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
@@ -308,13 +279,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <div class="week-meta">
-<p><strong>Class meetings:</strong> 5 &amp; 7 October 2026<br> <strong>Focus:</strong> exploratory data analysis · visualization · distributions · comparison<br> <strong>Case study:</strong> Kinbank global kinship terminology data<br> <strong>Assessment:</strong> Assignment 2 — Visualizing Kinship Diversity with Kinbank</p>
+<p><strong>Class meetings:</strong> 5 &amp; 7 October 2026<br> <strong>Focus:</strong> exploratory data analysis · visualization · ggplot2 · comparison · non-independence<br> <strong>Case study:</strong> Kinbank global kinship terminology data<br> <strong>Assessment:</strong> Assignment 2 — Visualizing Kinship Diversity with Kinbank</p>
 </div>
-<section id="overview" class="level2">
-<h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>This week is about learning to <strong>look at data before making formal claims about it</strong>.</p>
-<p>Exploratory Data Analysis (EDA) uses summaries and especially graphics to expose empirical structure: common patterns, unusual observations, possible relationships, and questions worth pursuing. Visualization is therefore not decoration added after analysis. It is part of analysis.</p>
-<p>The anthropological case study is <strong>Kinbank</strong>, a global comparative database of kinship terminology. Its standardized genealogical framework makes cross-linguistic differences systematically comparable (Passmore et al.&nbsp;2023). Kinbank also illustrates an important caution: languages may share historical relationships, so cross-cultural observations are not necessarily independent (Passmore and Jordan 2020).</p>
 <div class="callout callout-style-default callout-note callout-titled" title="The Week 5 principle">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -325,436 +291,533 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Look first. Model second. Infer carefully.</strong></p>
-<p>Use graphics to expose empirical structure before trying to explain why that structure exists. <strong>Description is not inference, but inference without description is blind.</strong></p>
+<p><strong>Look first. Visualize deliberately. Infer carefully.</strong></p>
+<p>Use graphics to expose empirical structure and the structure of the evidence before trying to explain why a pattern exists.</p>
+</div>
+</div>
+<section id="why-this-week-matters" class="level3">
+<h3 class="anchored" data-anchor-id="why-this-week-matters">Why This Week Matters</h3>
+<p>Exploratory data analysis (EDA) is how we learn what a dataset actually contains before formal inference. The goal is not simply to make attractive graphs. It is to inspect the evidence, choose displays that match variables and questions, compare patterns deliberately, identify problems, and generate better questions.</p>
+<p><strong>Week 5 workflow:</strong> inspect → describe → visualize → compare → question → revise → investigate</p>
+<p>The revised Assignment 2 applies this workflow to <strong>Kinbank</strong>: visualize sample structure, examine <code>kin_term_count</code>, make a purposeful group comparison, and consider how shared ancestry or geography complicate interpretation.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Practice dataset">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Practice dataset
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The examples in this Study Guide use the same frozen <strong>Kinbank teaching dataset</strong> as Assignment 2. Each row represents one language. You can run and modify the examples directly while working through the guide.</p>
 </div>
 </div>
 </section>
-<section id="questions" class="level2">
-<h2 class="anchored" data-anchor-id="questions">Questions</h2>
-<ul>
-<li>What is exploratory data analysis, and how does it differ from confirmatory analysis?</li>
-<li>Why can numerical summaries alone fail to describe a dataset?</li>
-<li>How do measurement scales guide the choice of graphic?</li>
-<li>How do marks and visual channels turn variables into visible patterns?</li>
-<li>What do bar charts, histograms, density plots, boxplots, scatterplots, and facets reveal?</li>
-<li>How can ordering, bin width, colour, and faceting change what we see?</li>
-<li>Why is comparison central to effective visualization?</li>
-<li>How does Kinbank make culturally specific kin terminologies comparable?</li>
-<li>Why does shared ancestry complicate cross-cultural comparison?</li>
-<li>How do we separate exploratory description from inference?</li>
-</ul>
-</section>
-<section id="learning-objectives" class="level2">
-<h2 class="anchored" data-anchor-id="learning-objectives">Learning objectives</h2>
+<section id="what-you-should-understand" class="level2">
+<h2 class="anchored" data-anchor-id="what-you-should-understand">1. What You Should Understand</h2>
 <p>By the end of Week 5, you should be able to:</p>
 <ol type="1">
-<li>explain the purpose of <strong>EDA</strong> and distinguish exploration from confirmation;</li>
-<li>explain why visualization is an analytical tool;</li>
-<li>match graphical forms to variable measurement scales;</li>
-<li>describe the grammar of graphics in terms of data, aesthetics, geoms, stats, scales, facets, coordinates, and themes;</li>
-<li>explain why some visual channels support more accurate comparisons than others;</li>
-<li>use bar charts and dot plots for categorical variables;</li>
-<li>use histograms, density plots, jitter plots, and boxplots for numerical distributions;</li>
-<li>explain how histogram bin width changes apparent structure;</li>
-<li>use scatterplots to explore co-variation;</li>
-<li>compare distributions across groups and use faceting effectively;</li>
-<li>explain graphical integrity and unnecessary visual clutter;</li>
-<li>describe Kinbank’s comparative data architecture; and</li>
-<li>distinguish descriptive patterns from explanations requiring additional evidence.</li>
+<li>explain EDA as an iterative mode of inquiry;</li>
+<li>distinguish <strong>description</strong> from <strong>inference</strong>;</li>
+<li>choose graphics from variable type and analytical purpose;</li>
+<li>create and interpret bar charts, histograms, boxplots, scatterplots, and facets;</li>
+<li>explain what a graphic preserves and hides;</li>
+<li>explain the <code>ggplot2</code> grammar: data, mappings, layers, geoms, stats, positions, scales, coordinates, facets, and themes;</li>
+<li>distinguish <strong>mapping</strong> inside <code>aes()</code> from <strong>setting</strong> outside <code>aes()</code>;</li>
+<li>combine raw observations and summaries with layers;</li>
+<li>recognize misleading graphical choices;</li>
+<li>visualize sample structure before substantive patterns; and</li>
+<li>recognize phylogenetic and spatial non-independence.</li>
 </ol>
 </section>
-<section id="this-weeks-two-class-sequence" class="level2">
-<h2 class="anchored" data-anchor-id="this-weeks-two-class-sequence">This week’s two-class sequence</h2>
-<section id="class-1-how-visualization-makes-structure-visible" class="level3">
-<h3 class="anchored" data-anchor-id="class-1-how-visualization-makes-structure-visible">Class 1 — How visualization makes structure visible</h3>
-<p>We begin with exploration versus confirmation, Anscombe’s quartet, visual perception, graphical integrity, and the grammar of graphics. We then connect measurement scales to graphical forms and examine categorical and continuous distributions.</p>
+<section id="eda-description-before-inference" class="level2">
+<h2 class="anchored" data-anchor-id="eda-description-before-inference">2. EDA: Description Before Inference</h2>
+<p>Ask: What is the observational unit? Which variables are categorical or numerical? What is missing? Are group sizes balanced? What does each distribution look like? Are there unusual observations? Does a pattern change across groups? Are observations independent?</p>
+<p>Descriptive: “In this sample, <code>kin_term_count</code> is right-skewed.”</p>
+<p>Inferential: “Languages in this region generally have more complex kinship systems.”</p>
+<p>The second requires additional evidence and an appropriate inferential design. During EDA use language such as <strong>“in this sample,” “the graph suggests,”</strong> and <strong>“worth investigating.”</strong></p>
 </section>
-<section id="class-2-comparison-kinbank-and-anthropological-interpretation" class="level3">
-<h3 class="anchored" data-anchor-id="class-2-comparison-kinbank-and-anthropological-interpretation">Class 2 — Comparison, Kinbank, and anthropological interpretation</h3>
-<p>We move to relationships, grouped distributions, faceting, high-dimensional EDA, and three comparison strategies: <strong>juxtaposition, superposition, and explicit encoding</strong>. Kinbank then shows how comparative anthropological data are standardized, visualized, and interpreted.</p>
-</section>
-</section>
-<section id="exploratory-and-confirmatory-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="exploratory-and-confirmatory-analysis">1. Exploratory and confirmatory analysis</h2>
-<p>EDA asks <strong>what might be going on?</strong> It discovers patterns, generates hypotheses, and identifies unusual observations. Confirmatory analysis asks whether a specified formal claim is supported.</p>
-<p>Anscombe’s quartet shows why looking matters: datasets can have the same means, correlation, and fitted regression line while displaying very different structures. A numerical summary can therefore be correct and still be an inadequate description.</p>
-</section>
-<section id="visualization-is-part-of-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="visualization-is-part-of-analysis">2. Visualization is part of analysis</h2>
-<p>A graphic is a designed representation. The analyst decides which variables to show, which marks represent observations, how variables are encoded, how categories are ordered, whether observations are aggregated, how bins are defined, and whether groups are layered or separated.</p>
-<p>Effective graphics should make empirical structure easier to judge rather than harder.</p>
-<section id="graphical-integrity" class="level3">
-<h3 class="anchored" data-anchor-id="graphical-integrity">Graphical integrity</h3>
-<p>Two practical principles from the lecture are:</p>
-<ul>
-<li><strong>Maximize data ink.</strong></li>
-<li><strong>Minimize chartjunk.</strong></li>
-</ul>
-<p>The point is not to make every graphic visually bare. The point is to ensure that design serves the evidence rather than competing with it.</p>
-</section>
-</section>
-<section id="visual-perception" class="level2">
-<h2 class="anchored" data-anchor-id="visual-perception">3. Visual perception</h2>
-<p>Some visual channels are easier to compare accurately than others.</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Visual channel</th>
-<th>Useful for</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Spatial position</strong></td>
-<td>continuous and ordered values</td>
-</tr>
-<tr class="even">
-<td><strong>Length / height</strong></td>
-<td>quantitative comparison</td>
-</tr>
-<tr class="odd">
-<td><strong>Hue</strong></td>
-<td>discrete groups</td>
-</tr>
-<tr class="even">
-<td><strong>Luminance</strong></td>
-<td>ordered magnitude</td>
-</tr>
-<tr class="odd">
-<td><strong>Shape</strong></td>
-<td>a small number of groups</td>
-</tr>
-<tr class="even">
-<td><strong>Area</strong></td>
-<td>magnitude, but often judged less accurately</td>
-</tr>
-</tbody>
-</table>
-<p>This helps explain why aligned bar lengths are usually easier to compare than pie-chart angles or areas.</p>
-</section>
-<section id="the-grammar-of-graphics" class="level2">
-<h2 class="anchored" data-anchor-id="the-grammar-of-graphics">4. The grammar of graphics</h2>
-<p><code>ggplot2</code> builds plots from explicit components:</p>
-<ol type="1">
-<li><strong>Data + aesthetics (<code>aes</code>)</strong></li>
-<li><strong>Geoms</strong></li>
-<li><strong>Stats</strong></li>
-<li><strong>Scales</strong></li>
-<li><strong>Facets</strong></li>
-<li><strong>Coordinates</strong></li>
-<li><strong>Theme</strong></li>
-</ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> variable)) <span class="sc">+</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The key question is: <strong>How is each variable being made visible?</strong></p>
-</section>
-<section id="chart-choice-begins-with-measurement-scale" class="level2">
-<h2 class="anchored" data-anchor-id="chart-choice-begins-with-measurement-scale">5. Chart choice begins with measurement scale</h2>
+<section id="match-graphics-to-variables" class="level2">
+<h2 class="anchored" data-anchor-id="match-graphics-to-variables">3. Match Graphics to Variables</h2>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
+<col style="width: 32%">
+<col style="width: 32%">
+<col style="width: 32%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Measurement scale</th>
-<th>Useful summaries</th>
-<th>Common exploratory graphics</th>
+<th style="text-align: left;">Question</th>
+<th style="text-align: left;">Variables</th>
+<th style="text-align: left;">Useful first display</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>Nominal</strong></td>
-<td>mode; frequency; proportion</td>
-<td>bar chart; dot plot</td>
+<td style="text-align: left;">How common is each category?</td>
+<td style="text-align: left;">categorical</td>
+<td style="text-align: left;">bar chart</td>
 </tr>
 <tr class="even">
-<td><strong>Ordinal</strong></td>
-<td>median; percentiles; IQR</td>
-<td>ordered bar; percentile display</td>
+<td style="text-align: left;">What is the distribution?</td>
+<td style="text-align: left;">numerical</td>
+<td style="text-align: left;">histogram</td>
 </tr>
 <tr class="odd">
-<td><strong>Interval / ratio</strong></td>
-<td>mean/median; SD; variance; IQR; MAD</td>
-<td>histogram; density; boxplot</td>
+<td style="text-align: left;">What are center, spread, and unusual values?</td>
+<td style="text-align: left;">numerical</td>
+<td style="text-align: left;">boxplot</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">How do distributions differ among groups?</td>
+<td style="text-align: left;">numerical + categorical</td>
+<td style="text-align: left;">boxplot + points; facets</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Are two numerical variables associated?</td>
+<td style="text-align: left;">numerical + numerical</td>
+<td style="text-align: left;">scatterplot</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Does a pattern vary by group?</td>
+<td style="text-align: left;">variables + group</td>
+<td style="text-align: left;">aesthetics or facets</td>
 </tr>
 </tbody>
 </table>
-<p>Before plotting, ask:</p>
+<p><strong>Choose the graphic from the variable combination and analytical task, not from habit.</strong></p>
+</section>
+<section id="the-basic-ggplot2-pattern" class="level2">
+<h2 class="anchored" data-anchor-id="the-basic-ggplot2-pattern">4. The Basic ggplot2 Pattern</h2>
+<p>Every basic <code>ggplot2</code> graphic needs <strong>data</strong>, <strong>aesthetic mappings</strong>, and at least one <strong>layer</strong>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> dat,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> kin_term_count)) <span class="sc">+</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Read this as: use <code>dat</code>; map <code>kin_term_count</code> to x; represent the distribution with a histogram layer.</p>
+</section>
+<section id="mapping-versus-setting" class="level2">
+<h2 class="anchored" data-anchor-id="mapping-versus-setting">5. Mapping Versus Setting</h2>
+<p>Map a variable:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> macroarea))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Set a constant:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>(<span class="at">colour =</span> <span class="st">"steelblue"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>A common mistake:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> <span class="st">"steelblue"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Variable inside <code>aes()</code>; fixed appearance outside <code>aes()</code>.</strong></p>
+</blockquote>
+</section>
+<section id="practice-1-build-a-plot-layer-by-layer" class="level2">
+<h2 class="anchored" data-anchor-id="practice-1-build-a-plot-layer-by-layer">6. Practice 1 — Build a Plot Layer by Layer</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat, <span class="fu">aes</span>(<span class="at">x =</span> kin_term_count))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat, <span class="fu">aes</span>(<span class="at">x =</span> kin_term_count)) <span class="sc">+</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">25</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat, <span class="fu">aes</span>(<span class="at">x =</span> kin_term_count)) <span class="sc">+</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">25</span>) <span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Kinbank form records linked to language"</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Number of languages"</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Distribution of kin_term_count"</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The data and mapping remain stable while graphical components are added with <code>+</code>.</p>
+</section>
+<section id="practice-1a-read-the-anatomy-of-ggplot2-code" class="level2">
+<h2 class="anchored" data-anchor-id="practice-1a-read-the-anatomy-of-ggplot2-code">6. Practice 1A — Read the Anatomy of ggplot2 Code</h2>
+<p>Before writing more plots, practice <strong>reading</strong> a ggplot specification. Consider:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> dat,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> macroarea, <span class="at">y =</span> kin_term_count)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">colour =</span> macroarea),</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">width =</span> <span class="fl">0.15</span>,</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.25</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Macroarea"</span>,</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Kinbank form records linked to language"</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Identify each component before running the code:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 46%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Component</th>
+<th style="text-align: left;">Where is it?</th>
+<th style="text-align: left;">What does it do?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Data</strong></td>
+<td style="text-align: left;"><code>data = dat</code></td>
+<td style="text-align: left;">supplies the observations and variables</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Global mapping</strong></td>
+<td style="text-align: left;"><code>aes(x = macroarea, y = kin_term_count)</code></td>
+<td style="text-align: left;">maps variables to x and y for layers that inherit it</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>First geom</strong></td>
+<td style="text-align: left;"><code>geom_boxplot()</code></td>
+<td style="text-align: left;">adds a distribution summary</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Fixed setting</strong></td>
+<td style="text-align: left;"><code>fill = "white"</code></td>
+<td style="text-align: left;">gives every box the same fill</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Second geom</strong></td>
+<td style="text-align: left;"><code>geom_jitter()</code></td>
+<td style="text-align: left;">adds individual observations</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Local mapping</strong></td>
+<td style="text-align: left;"><code>aes(colour = macroarea)</code></td>
+<td style="text-align: left;">maps colour only in the jitter layer</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Fixed settings</strong></td>
+<td style="text-align: left;"><code>width = 0.15</code>, <code>alpha = 0.25</code></td>
+<td style="text-align: left;">control jitter and transparency without encoding variables</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Labels</strong></td>
+<td style="text-align: left;"><code>labs()</code></td>
+<td style="text-align: left;">supplies human-readable labels</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Theme</strong></td>
+<td style="text-align: left;"><code>theme_minimal()</code></td>
+<td style="text-align: left;">changes non-data appearance</td>
+</tr>
+</tbody>
+</table>
+<section id="try-it-yourself" class="level3">
+<h3 class="anchored" data-anchor-id="try-it-yourself">Try it yourself</h3>
+<p>For each line below, decide whether it is <strong>data</strong>, <strong>mapping</strong>, <strong>geom</strong>, <strong>fixed setting</strong>, <strong>label</strong>, or <strong>theme</strong>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aes</span>(<span class="at">x =</span> kin_term_count)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">25</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>fill <span class="ot">=</span> <span class="st">"steelblue"</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">aes</span>(<span class="at">colour =</span> family)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Kin-term count"</span>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Then answer:</p>
 <ol type="1">
-<li>What does one row represent?</li>
-<li>What variable am I examining?</li>
-<li>What is its measurement scale?</li>
-<li>What comparison do I want to make?</li>
-<li>Which graphic makes that comparison easiest?</li>
+<li>Why is <code>binwidth = 25</code> outside <code>aes()</code>?</li>
+<li>Why is <code>colour = family</code> inside <code>aes()</code> when colour should represent language family?</li>
+<li>Which parts change the <strong>meaning of the data encoding</strong>, and which parts mainly change presentation?</li>
 </ol>
-</section>
-<section id="categorical-variables" class="level2">
-<h2 class="anchored" data-anchor-id="categorical-variables">6. Categorical variables</h2>
-<p>For nominal variables, begin with frequencies or proportions.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> category)) <span class="sc">+</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>When categories have no natural order, sorting by frequency can reveal dominant and rare categories. Horizontal bars can help with long labels. Dot plots can reduce clutter when many categories must be compared.</p>
-<p>Pie charts are usually less effective for precise comparison because angles and areas are harder to compare than aligned lengths.</p>
-</section>
-<section id="continuous-variables" class="level2">
-<h2 class="anchored" data-anchor-id="continuous-variables">7. Continuous variables</h2>
-<p>When examining a numerical distribution, look for <strong>location, spread, shape, clusters, gaps, and unusual observations</strong>.</p>
-<section id="strip-or-jitter-plots" class="level3">
-<h3 class="anchored" data-anchor-id="strip-or-jitter-plots">Strip or jitter plots</h3>
-<p>These preserve raw observations and can reveal clusters and gaps.</p>
-</section>
-<section id="histograms" class="level3">
-<h3 class="anchored" data-anchor-id="histograms">Histograms</h3>
-<p>Histograms divide a numerical variable into bins.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> value)) <span class="sc">+</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>Bin width changes the story.</strong> Bins that are too wide can erase structure; bins that are too narrow can make random fluctuations look important. Trying several plausible bin widths is part of EDA.</p>
-</section>
-<section id="density-plots" class="level3">
-<h3 class="anchored" data-anchor-id="density-plots">Density plots</h3>
-<p>Density plots provide a smoothed view of distribution shape.</p>
-</section>
-<section id="boxplots" class="level3">
-<h3 class="anchored" data-anchor-id="boxplots">Boxplots</h3>
-<p>Boxplots emphasize the median and interquartile range. They are compact and useful for group comparison, but they can hide raw distribution shape, including bimodality.</p>
-<div class="callout callout-style-default callout-important callout-titled" title="No single plot shows everything">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>No single plot shows everything
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>A jitter plot shows raw observations, a histogram emphasizes binned shape, a density plot emphasizes smoothed shape, and a boxplot emphasizes robust location and spread. Compare views rather than treating one representation as definitive.</p>
-</div>
-</div>
+<p>The goal is to read ggplot2 code as a <strong>graphical specification</strong>, not as a string of commands to memorize.</p>
 </section>
 </section>
-<section id="relationships-and-group-comparisons" class="level2">
-<h2 class="anchored" data-anchor-id="relationships-and-group-comparisons">8. Relationships and group comparisons</h2>
-<section id="numerical-numerical" class="level3">
-<h3 class="anchored" data-anchor-id="numerical-numerical">Numerical × numerical</h3>
-<p>Scatterplots make co-variation visible.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> x_variable, <span class="at">y =</span> y_variable)) <span class="sc">+</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Ask whether the relationship is linear, curved, clustered, dominated by unusual observations, or obscured by overplotting. The lecture introduces LOESS/GAM smoothing and, for large datasets, alpha blending, hexagonal binning, two-dimensional binning, and contour density.</p>
+<section id="geoms-and-stats" class="level2">
+<h2 class="anchored" data-anchor-id="geoms-and-stats">7. Geoms and Stats</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Geom</th>
+<th style="text-align: left;">Typical stat</th>
+<th style="text-align: left;">Operation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>geom_point()</code></td>
+<td style="text-align: left;">identity</td>
+<td style="text-align: left;">raw observations</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>geom_bar()</code></td>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">count categories</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>geom_histogram()</code></td>
+<td style="text-align: left;">bin</td>
+<td style="text-align: left;">bin values, then count</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>geom_boxplot()</code></td>
+<td style="text-align: left;">boxplot</td>
+<td style="text-align: left;">quartiles and IQR summaries</td>
+</tr>
+</tbody>
+</table>
+<p>A histogram performs <strong>raw values → bins → counts → bars</strong>. A geom is one component of a graphic, not the whole graphic.</p>
 </section>
-<section id="categorical-continuous" class="level3">
-<h3 class="anchored" data-anchor-id="categorical-continuous">Categorical × continuous</h3>
-<p>Do not compare only a single point estimate when distributions differ in shape.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> group, <span class="at">y =</span> value)) <span class="sc">+</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Boxplots compare medians and spreads; violin plots add density shape; ridgeline plots can help when many groups must be compared.</p>
+<section id="practice-2-bar-charts-and-sample-structure" class="level2">
+<h2 class="anchored" data-anchor-id="practice-2-bar-charts-and-sample-structure">8. Practice 2 — Bar Charts and Sample Structure</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>macro_counts <span class="ot">&lt;-</span> dat <span class="sc">|&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(macroarea)) <span class="sc">|&gt;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(macroarea, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Plot precomputed counts:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(macro_counts,</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(macroarea, n), <span class="at">y =</span> n)) <span class="sc">+</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"Number of languages"</span>) <span class="sc">+</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Or count raw rows automatically:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(macroarea)),</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> macroarea)) <span class="sc">+</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>geom_bar()</code> counts observations; <code>geom_col()</code> uses supplied heights. Ask what unequal representation tells you about the <strong>structure of the evidence</strong>.</p>
 </section>
+<section id="practice-3-histograms-and-bin-width" class="level2">
+<h2 class="anchored" data-anchor-id="practice-3-histograms-and-bin-width">9. Practice 3 — Histograms and Bin Width</h2>
+<p>Compare:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat, <span class="fu">aes</span>(<span class="at">x =</span> kin_term_count)) <span class="sc">+</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat, <span class="fu">aes</span>(<span class="at">x =</span> kin_term_count)) <span class="sc">+</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">25</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat, <span class="fu">aes</span>(<span class="at">x =</span> kin_term_count)) <span class="sc">+</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">50</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Which features persist? Which change? Too few bins can hide structure; too many can make noise look important.</p>
 </section>
-<section id="graphics-gain-power-through-comparison" class="level2">
-<h2 class="anchored" data-anchor-id="graphics-gain-power-through-comparison">9. Graphics gain power through comparison</h2>
-<p>The lecture emphasizes three strategies.</p>
-<section id="juxtaposition" class="level3">
-<h3 class="anchored" data-anchor-id="juxtaposition">Juxtaposition</h3>
-<p>Place related graphics side by side, including small multiples and facets.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> value)) <span class="sc">+</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> group)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="practice-4-boxplot-plus-raw-observations" class="level2">
+<h2 class="anchored" data-anchor-id="practice-4-boxplot-plus-raw-observations">10. Practice 4 — Boxplot Plus Raw Observations</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(macroarea)),</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> macroarea, <span class="at">y =</span> kin_term_count)) <span class="sc">+</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">outlier.shape =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.15</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>For readability:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(macroarea)),</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(macroarea, kin_term_count, <span class="at">FUN =</span> median),</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> kin_term_count)) <span class="sc">+</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">outlier.shape =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.15</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The boxplot summarizes; points reveal observations, overlap, extreme values, and unequal group sizes.</p>
 </section>
-<section id="superposition" class="level3">
-<h3 class="anchored" data-anchor-id="superposition">Superposition</h3>
-<p>Layer groups in the same coordinate space.</p>
+<section id="faceting-and-small-multiples" class="level2">
+<h2 class="anchored" data-anchor-id="faceting-and-small-multiples">11. Faceting and Small Multiples</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(macroarea)),</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> kin_term_count)) <span class="sc">+</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">25</span>) <span class="sc">+</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> macroarea)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Fixed scales support between-panel comparison:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">facet_wrap</span>(<span class="sc">~</span> macroarea, <span class="at">scales =</span> <span class="st">"fixed"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Free scales reveal within-panel detail but weaken direct magnitude comparison:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">facet_wrap</span>(<span class="sc">~</span> macroarea, <span class="at">scales =</span> <span class="st">"free"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>For Assignment 2, fixed scales are usually the better starting point when direct comparison is the goal.</p>
 </section>
-<section id="explicit-encoding" class="level3">
-<h3 class="anchored" data-anchor-id="explicit-encoding">Explicit encoding</h3>
-<p>Show departure from a baseline or expectation:</p>
-<p>[ = - ]</p>
-<p>The exploratory sequence is:</p>
+<section id="practice-5-aesthetic-or-facet" class="level2">
+<h2 class="anchored" data-anchor-id="practice-5-aesthetic-or-facet">12. Practice 5 — Aesthetic or Facet?</h2>
+<p>Colour by group:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(macroarea)),</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> longitude, <span class="at">y =</span> latitude, <span class="at">colour =</span> macroarea)) <span class="sc">+</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Or facet:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(macroarea)),</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> longitude, <span class="at">y =</span> latitude)) <span class="sc">+</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> macroarea)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Ask which design better supports the intended comparison. The grammar supplies alternatives; statistical reasoning determines which is useful.</p>
+</section>
+<section id="scales-guides-coordinates-and-themes" class="level2">
+<h2 class="anchored" data-anchor-id="scales-guides-coordinates-and-themes">13. Scales, Guides, Coordinates, and Themes</h2>
+<p>A <strong>scale</strong> maps data values to visual values. Mapping <code>macroarea</code> to colour creates a discrete colour scale; mapping <code>kin_term_count</code> to x creates a numerical position scale.</p>
+<p>Scales also generate <strong>guides</strong>: position scales generate axes; colour, shape, and size scales generally generate legends. Both help readers translate visual properties back into data values.</p>
+<p>A <strong>coordinate system</strong> determines how positions are placed. <code>coord_flip()</code> can make categorical labels easier to read.</p>
+<p>A <strong>theme</strong> controls non-data appearance. <code>theme_minimal()</code> changes styling, not the meaning of variables.</p>
+</section>
+<section id="layers-and-local-mappings" class="level2">
+<h2 class="anchored" data-anchor-id="layers-and-local-mappings">14. Layers and Local Mappings</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat, <span class="fu">aes</span>(<span class="at">x =</span> macroarea, <span class="at">y =</span> kin_term_count)) <span class="sc">+</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">outlier.shape =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.15</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Both layers inherit global mappings.</p>
+<p>A local mapping applies only to one layer:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat, <span class="fu">aes</span>(<span class="at">x =</span> longitude, <span class="at">y =</span> latitude)) <span class="sc">+</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> macroarea), <span class="at">alpha =</span> <span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="visual-channels-should-match-the-task" class="level2">
+<h2 class="anchored" data-anchor-id="visual-channels-should-match-the-task">15. Visual Channels Should Match the Task</h2>
+<p>For quantitative magnitude, position on a common scale is especially effective; length can also work well. For categorical identity, useful channels include colour hue, shape for a few groups, spatial separation, and facets.</p>
+<p>Do not use unrelated hues as though they represented numerical order. Use colour to carry information rather than decoration. Consider redundant encoding such as colour plus shape when accessibility matters.</p>
+</section>
+<section id="practice-6-debug-common-ggplot2-mistakes" class="level2">
+<h2 class="anchored" data-anchor-id="practice-6-debug-common-ggplot2-mistakes">16. Practice 6 — Debug Common ggplot2 Mistakes</h2>
+<p>Fixed colour accidentally mapped:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Wrong</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> <span class="st">"blue"</span>))</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Correct</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>(<span class="at">colour =</span> <span class="st">"blue"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Missing mapping:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat) <span class="sc">+</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>What variable should be on x?</p>
+<p>If a table already contains <code>n</code>, use <code>geom_col(aes(y = n))</code> rather than asking <code>geom_bar()</code> to count rows again.</p>
+<p>Avoid unnecessary combinations of colour + shape + size + alpha. Valid code is not necessarily useful EDA: state the comparison your graph is designed to support.</p>
+</section>
+<section id="visualization-can-mislead" class="level2">
+<h2 class="anchored" data-anchor-id="visualization-can-mislead">17. Visualization Can Mislead</h2>
+<p>Watch for truncated axes, overplotting, unequal group sizes, proportions without denominators, excessive colour, free facet scales used carelessly, smoothers treated as truth, and outliers automatically treated as errors.</p>
+<p>Ask:</p>
+<blockquote class="blockquote">
+<p><strong>What is being counted? How many cases support the comparison? What has the display hidden?</strong></p>
+</blockquote>
+</section>
+<section id="kinbank-visualize-the-evidence-first" class="level2">
+<h2 class="anchored" data-anchor-id="kinbank-visualize-the-evidence-first">18. Kinbank: Visualize the Evidence First</h2>
+<p>The teaching dataset contains <strong>1,287 languages represented by at least one Kinbank form record</strong>. <code>kin_term_count</code> counts form records linked to a language in the frozen teaching snapshot. It is not automatically the number of unique kin concepts and is not a direct measure of kinship-system complexity.</p>
+<p>Before interpreting group differences, examine family representation, macroarea representation, missing metadata, geographical coverage, and unequal group sizes.</p>
+<p><strong>Sample composition is part of the evidence.</strong></p>
+</section>
+<section id="kinship-diversity-depends-on-operationalization" class="level2">
+<h2 class="anchored" data-anchor-id="kinship-diversity-depends-on-operationalization">19. Kinship Diversity Depends on Operationalization</h2>
+<p>Kinbank maps culturally specific terminology onto an etic genealogical framework. A single variable such as <code>kin_term_count</code> compresses a relational system. Two languages can have similar counts while organizing kin relations differently.</p>
+<blockquote class="blockquote">
+<p><strong>A visualization is only as interpretable as the variable it represents.</strong></p>
+</blockquote>
+</section>
+<section id="cross-cultural-non-independence" class="level2">
+<h2 class="anchored" data-anchor-id="cross-cultural-non-independence">20. Cross-Cultural Non-Independence</h2>
+<p>Languages are not automatically independent observations.</p>
+<p><strong>Phylogenetic autocorrelation:</strong> shared ancestry, common descent, inherited terminology.</p>
+<p><strong>Spatial autocorrelation:</strong> borrowing/contact, regional history, shared environments.</p>
+<p>This is related to <strong>Galton’s Problem</strong>: apparent similarity may reflect shared history rather than independent evolution.</p>
+<p>Colouring or faceting by family can reveal dependence; it does not correct it. Formal evolutionary claims require structure-aware models beyond Assignment 2.</p>
+</section>
+<section id="assignment-2-connection" class="level2">
+<h2 class="anchored" data-anchor-id="assignment-2-connection">21. Assignment 2 Connection</h2>
+<p>The revised assignment follows this sequence:</p>
 <ol type="1">
-<li><strong>Expose patterns</strong> with raw graphics.</li>
-<li><strong>Model expectations</strong> as a baseline.</li>
-<li><strong>Show deviations</strong> from that expectation.</li>
+<li><strong>Inspect</strong> — unit, variables, missingness.</li>
+<li><strong>Visualize the evidence</strong> — family or macroarea representation.</li>
+<li><strong>Visualize diversity</strong> — <code>kin_term_count</code> histogram and bin-width sensitivity.</li>
+<li><strong>Compare</strong> — one purposeful grouped or faceted display.</li>
+<li><strong>Consider dependence</strong> — phylogenetic and/or spatial autocorrelation.</li>
+<li><strong>Interpret responsibly</strong> — what the graphs show, one question worth investigating, and one conclusion they do not justify.</li>
 </ol>
+<p>No hypothesis tests, p-values, confidence intervals, phylogenetic models, or spatial autocorrelation tests are required.</p>
 </section>
-</section>
-<section id="high-dimensional-eda" class="level2">
-<h2 class="anchored" data-anchor-id="high-dimensional-eda">10. High-dimensional EDA</h2>
-<p>When variables multiply, pairwise inspection becomes difficult. The lecture introduces scatterplot matrices, cluster heatmaps, and <strong>principal component analysis (PCA)</strong>.</p>
-<p>PCA reduces many variables to a smaller number of components. Plotting PC1 and PC2 can reveal major dimensions of variation, while biplots can show observations together with loading vectors. Here the purpose is exploratory: reduce complexity enough to generate visual hypotheses.</p>
-</section>
-<section id="kinbank-making-kinship-terminology-analyzable" class="level2">
-<h2 class="anchored" data-anchor-id="kinbank-making-kinship-terminology-analyzable">11. Kinbank: making kinship terminology analyzable</h2>
-<p>Kinbank contains <strong>210,903 kin terms from 1,229 spoken and signed languages</strong> (Passmore et al.&nbsp;2023). Its methodological importance lies in its data architecture.</p>
-<section id="etic-grids-reveal-emic-categories" class="level3">
-<h3 class="anchored" data-anchor-id="etic-grids-reveal-emic-categories">Etic grids reveal emic categories</h3>
-<p>English categories such as <em>aunt</em>, <em>uncle</em>, or <em>cousin</em> cannot simply be treated as universal. Kinbank instead uses an <strong>etic genealogical grid</strong> of standardized genealogical positions. Language-specific kin terms are mapped onto those positions.</p>
-<p>Researchers can then examine which positions a language <strong>merges under one term</strong> and which it <strong>splits into different terms</strong>.</p>
-<p>The etic grid is a comparative framework, not a claim that culturally meaningful <strong>emic</strong> categories are identical across languages.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="EDA begins with data architecture">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>EDA begins with data architecture
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Before interpreting a plot, ask what has been counted, how observations were standardized, what one row represents, and what comparisons the database makes possible.</p>
-</div>
-</div>
-</section>
-</section>
-<section id="kinbank-as-visual-evidence" class="level2">
-<h2 class="anchored" data-anchor-id="kinbank-as-visual-evidence">12. Kinbank as visual evidence</h2>
-<p>The lecture uses two examples from Passmore et al.&nbsp;(2023).</p>
-<section id="parent-term-phonology" class="level3">
-<h3 class="anchored" data-anchor-id="parent-term-phonology">Parent-term phonology</h3>
-<p>Density distributions make recurrent cross-linguistic sound patterns visible, including nasal consonants in mother terms and stop consonants in father terms.</p>
-</section>
-<section id="kinship-typology-and-phylogeny" class="level3">
-<h3 class="anchored" data-anchor-id="kinship-typology-and-phylogeny">Kinship typology and phylogeny</h3>
-<p>The second example introduces <strong>non-independence</strong>. Languages can resemble one another because they share ancestry. Treating every society or language as an independent observation can therefore be misleading.</p>
-<p>Passmore and Jordan (2020) show that shared ancestry structures variation in kinship terminologies across language families. This is a version of <strong>Galton’s Problem</strong>.</p>
-<p>For Assignment 2, the practical lesson is:</p>
-<p><strong>Describe the visible pattern, but do not leap from a visual association to a causal explanation.</strong></p>
-</section>
-</section>
-<section id="a-practical-anth418-eda-workflow" class="level2">
-<h2 class="anchored" data-anchor-id="a-practical-anth418-eda-workflow">13. A practical ANTH418 EDA workflow</h2>
-<section id="step-1-inspect-and-clean-the-data" class="level3">
-<h3 class="anchored" data-anchor-id="step-1-inspect-and-clean-the-data">Step 1 — Inspect and clean the data</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(data)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(data)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Check variable meanings, missing values, category labels, and the unit of observation.</p>
-</section>
-<section id="step-2-plot-univariate-distributions" class="level3">
-<h3 class="anchored" data-anchor-id="step-2-plot-univariate-distributions">Step 2 — Plot univariate distributions</h3>
-<p>Use bar charts for categories; histograms or density plots for numerical shape; jitter plots for raw observations; and boxplots for compact robust summaries.</p>
-</section>
-<section id="step-3-explore-co-variation" class="level3">
-<h3 class="anchored" data-anchor-id="step-3-explore-co-variation">Step 3 — Explore co-variation</h3>
-<p>Use scatterplots for two numerical variables and grouped or faceted distributions when one variable is categorical.</p>
-</section>
-<section id="step-4-compare-explicitly" class="level3">
-<h3 class="anchored" data-anchor-id="step-4-compare-explicitly">Step 4 — Compare explicitly</h3>
-<p>Use facets, layers, or departures from a baseline. Choose the comparison design before interpreting the pattern.</p>
-</section>
-<section id="step-5-separate-description-from-inference" class="level3">
-<h3 class="anchored" data-anchor-id="step-5-separate-description-from-inference">Step 5 — Separate description from inference</h3>
-<p>First state what the visualization shows. Then ask what additional evidence would be needed to explain it.</p>
-<p>The workflow is iterative. A plot may reveal a coding problem, missingness, an unexpected subgroup, or a better question and send you back to an earlier step.</p>
-</section>
-</section>
-<section id="assignment-2-visualizing-kinship-diversity-with-kinbank" class="level2">
-<h2 class="anchored" data-anchor-id="assignment-2-visualizing-kinship-diversity-with-kinbank">14. Assignment 2 — Visualizing Kinship Diversity with Kinbank</h2>
-<p>Assignment 2 asks you to use the provided Kinbank teaching dataset to conduct an <strong>exploratory data analysis of variation in kinship terminology</strong>.</p>
-<p>The assignment applies the central Week 5 skills:</p>
+<section id="practical-ggplot2-checklist" class="level2">
+<h2 class="anchored" data-anchor-id="practical-ggplot2-checklist">22. Practical ggplot2 Checklist</h2>
+<p>Before accepting a graph, ask:</p>
 <ul>
-<li>inspect the dataset and identify its observations and variables;</li>
-<li>use <strong>bar charts, histograms, boxplots, and faceted plots</strong> where appropriate;</li>
-<li>treat visualizations as analytical tools rather than final decoration;</li>
-<li>compare alternative views of the same data;</li>
-<li>describe principal patterns, differences, and unusual observations;</li>
-<li>explain what a graphic reveals and what it may conceal;</li>
-<li>recognize possible historical non-independence among languages; and</li>
-<li><strong>explore and describe before attempting to explain</strong>.</li>
-</ul>
-<p><strong>No inferential statistical tests are required.</strong></p>
-</section>
-<section id="practice" class="level2">
-<h2 class="anchored" data-anchor-id="practice">Practice</h2>
-<section id="exercise-1-inspect-before-plotting" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-1-inspect-before-plotting">Exercise 1 — Inspect before plotting</h3>
-<p>For the Kinbank teaching dataset, identify the unit of observation, variable types, missing values, and variables useful for comparison.</p>
-</section>
-<section id="exercise-2-compare-two-representations" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-2-compare-two-representations">Exercise 2 — Compare two representations</h3>
-<p>Create two appropriate visualizations of the same variable. Write 2–3 sentences explaining what each representation makes easier to see and what it hides.</p>
-</section>
-<section id="exercise-3-facet-a-comparison" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-3-facet-a-comparison">Exercise 3 — Facet a comparison</h3>
-<p>Create a faceted plot for a meaningful grouping variable. Ask whether groups differ in location, spread, shape, or unusual observations. Describe only what is visible.</p>
-</section>
-<section id="exercise-4-description-versus-explanation" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-4-description-versus-explanation">Exercise 4 — Description versus explanation</h3>
-<p>For one pattern, write:</p>
-<ol type="1">
-<li>one sentence of <strong>description</strong>;</li>
-<li>one possible <strong>hypothesis</strong> that could explain it; and</li>
-<li>one sentence explaining why the visualization alone does not test that hypothesis.</li>
-</ol>
-</section>
-</section>
-<section id="readings" class="level2">
-<h2 class="anchored" data-anchor-id="readings">Readings</h2>
-<section id="required-beecham" class="level3">
-<h3 class="anchored" data-anchor-id="required-beecham">Required: Beecham</h3>
-<p><strong>Chapter 3, Visualization Fundamentals (pp.&nbsp;41–71)</strong> and <strong>Chapter 4, Exploratory Data Analysis (pp.&nbsp;73–96)</strong>.</p>
-<p>Focus on effective data graphics, grammar of graphics, marks and visual channels, chart choice, continuous and categorical distributions, comparison, and the role of models as exploratory baselines.</p>
-</section>
-<section id="required-passmore-et-al." class="level3">
-<h3 class="anchored" data-anchor-id="required-passmore-et-al.">Required: Passmore et al.</h3>
-<p>Read Kinbank as both an anthropological study and a lesson in <strong>data architecture</strong>. Focus on how the standardized etic genealogical framework makes cross-linguistic comparison possible, the database’s scale, and the examples showing structured variation.</p>
-</section>
-<section id="required-thulin" class="level3">
-<h3 class="anchored" data-anchor-id="required-thulin">Required: Thulin</h3>
-<p>Focus on EDA as <strong>question asking</strong>, visual exploration, identifying unusual observations, and generating hypotheses. Review distribution graphics, grouped comparisons, and multivariate visualization insofar as they reinforce the lecture.</p>
-</section>
-<section id="wickham-çetinkaya-rundel-and-grolemund" class="level3">
-<h3 class="anchored" data-anchor-id="wickham-çetinkaya-rundel-and-grolemund">Wickham, Çetinkaya-Rundel, and Grolemund</h3>
-<p>Use the visualization material as the practical <code>ggplot2</code> companion: aesthetic mappings, geoms, layers, distributions, relationships, and facets.</p>
-</section>
-<section id="supplementary-readings" class="level3">
-<h3 class="anchored" data-anchor-id="supplementary-readings">Supplementary readings</h3>
-<p>The supplementary readings deepen themes already present in the lecture. Tukey provides the foundational exploratory perspective; Tufte develops graphical integrity; Cumming emphasizes location, spread, shape, and the danger of relying on one picture; Peng and Downey reinforce iterative exploratory workflows; Castro provides broader visualization context; and Passmore and Jordan (2020) provides the key caution about phylogenetic non-independence.</p>
-</section>
-</section>
-<section id="week-5-checklist" class="level2">
-<h2 class="anchored" data-anchor-id="week-5-checklist">Week 5 checklist</h2>
-<ul class="task-list">
-<li><label><input type="checkbox">I can explain EDA in plain language.</label></li>
-<li><label><input type="checkbox">I can distinguish exploratory from confirmatory analysis.</label></li>
-<li><label><input type="checkbox">I can explain the lesson of Anscombe’s quartet.</label></li>
-<li><label><input type="checkbox">I can choose a chart from a variable’s measurement scale and analytical purpose.</label></li>
-<li><label><input type="checkbox">I can explain aesthetics, geoms, and facets.</label></li>
-<li><label><input type="checkbox">I can construct and interpret a bar chart.</label></li>
-<li><label><input type="checkbox">I can explain how bin width affects a histogram.</label></li>
-<li><label><input type="checkbox">I can interpret the median and IQR in a boxplot.</label></li>
-<li><label><input type="checkbox">I can explain what a scatterplot can reveal.</label></li>
-<li><label><input type="checkbox">I can use facets for comparison.</label></li>
-<li><label><input type="checkbox">I can explain juxtaposition, superposition, and explicit encoding.</label></li>
-<li><label><input type="checkbox">I can describe the logic of Kinbank’s etic genealogical grid.</label></li>
-<li><label><input type="checkbox">I can explain why related languages are not independent observations.</label></li>
-<li><label><input type="checkbox">I can distinguish a descriptive pattern from a causal explanation.</label></li>
-<li><label><input type="checkbox">I know that Assignment 2 requires no inferential test.</label></li>
+<li><strong>Data:</strong> What is one row? What dataset is plotted? Is missingness relevant?</li>
+<li><strong>Mapping:</strong> Which variables are mapped to x, y, colour, shape, or size?</li>
+<li><strong>Geom/stat:</strong> What marks are drawn? Does the geom compute first?</li>
+<li><strong>Comparison:</strong> What comparison should the reader make? Would ordering, facets, or raw points help?</li>
+<li><strong>Scale/design:</strong> Does the visual channel match the measurement scale? Are axes and legends readable?</li>
+<li><strong>Interpretation:</strong> What does the graph show in this sample? What does it hide? What does it not justify?</li>
 </ul>
 </section>
-<section id="takeaways" class="level2">
-<h2 class="anchored" data-anchor-id="takeaways">Takeaways</h2>
-<ol type="1">
-<li><strong>EDA is analytical, not decorative.</strong></li>
-<li><strong>Numerical summaries can conceal structure; always look at the data.</strong></li>
-<li><strong>Chart choice follows measurement scale and analytical purpose.</strong></li>
-<li><strong>Different graphics reveal different properties of the same distribution.</strong></li>
-<li><strong>Comparison gives graphics analytical power.</strong></li>
-<li><strong>Good visualization makes evidence easier to judge.</strong></li>
-<li><strong>Kinbank demonstrates that data architecture determines what cross-cultural comparison becomes possible.</strong></li>
-<li><strong>Cross-cultural observations may be historically related rather than independent.</strong></li>
-<li><strong>Description comes before explanation.</strong></li>
-<li><strong>Look first. Model second. Infer carefully.</strong></li>
-</ol>
+<section id="practice-progression-what-you-should-be-able-to-do-without-copying" class="level2">
+<h2 class="anchored" data-anchor-id="practice-progression-what-you-should-be-able-to-do-without-copying">23. Practice Progression: What You Should Be Able to Do Without Copying</h2>
+<p>Use this as a self-check before beginning Assignment 2.</p>
+<section id="level-1-read" class="level3">
+<h3 class="anchored" data-anchor-id="level-1-read">Level 1 — Read</h3>
+<p>Given a ggplot2 command, identify:</p>
+<ul>
+<li>the dataset;</li>
+<li>the variables mapped inside <code>aes()</code>;</li>
+<li>the geom;</li>
+<li>fixed aesthetic settings;</li>
+<li>labels and theme.</li>
+</ul>
 </section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<p>Beecham, Roger. 2026. <em>Visualization for Social Data Science</em>. CRC Press, Milton. Chapters 3–4.</p>
-<p>Passmore, Sam, et al.&nbsp;2023. “Kinbank: A Global Database of Kinship Terminology.” <em>PLOS ONE</em> 18(5): e0283218.</p>
-<p>Passmore, Sam, and Fiona M. Jordan. 2020. “No Universals in the Cultural Evolution of Kinship Terminology.” <em>Evolutionary Human Sciences</em> 2: e42.</p>
-<p>Thulin, Måns. 2025. <em>Modern Statistics with R: From Wrangling and Exploring Data to Inference and Predictive Modelling</em>. Chapman and Hall/CRC, New York. Chapter 4.</p>
-<p>Tukey, John W. 1977. <em>Exploratory Data Analysis</em>. Addison-Wesley.</p>
-<p>Wickham, Hadley, Mine Çetinkaya-Rundel, and Garrett Grolemund. 2023. <em>R for Data Science: Import, Tidy, Transform, Visualize, and Model Data</em>. O’Reilly.</p>
+<section id="level-2-modify" class="level3">
+<h3 class="anchored" data-anchor-id="level-2-modify">Level 2 — Modify</h3>
+<p>Given a working graph, change one purposeful element:</p>
+<ul>
+<li>reorder categories;</li>
+<li>change histogram bin width;</li>
+<li>add raw observations to a boxplot;</li>
+<li>change from one-panel grouping to facets;</li>
+<li>improve labels.</li>
+</ul>
+</section>
+<section id="level-3-construct" class="level3">
+<h3 class="anchored" data-anchor-id="level-3-construct">Level 3 — Construct</h3>
+<p>Given a question and variables, choose and construct an appropriate graph without being told the geom.</p>
+<p>Example:</p>
+<blockquote class="blockquote">
+<p>“Are languages evenly represented across macroareas?”</p>
+</blockquote>
+<p>You should recognize this as a <strong>categorical frequency</strong> question and choose a bar chart.</p>
+</section>
+<section id="level-4-interpret" class="level3">
+<h3 class="anchored" data-anchor-id="level-4-interpret">Level 4 — Interpret</h3>
+<p>Explain:</p>
+<ul>
+<li>what the graph shows in the observed sample;</li>
+<li>what graphical choices influence the display;</li>
+<li>what the graph may hide;</li>
+<li>what question it suggests next; and</li>
+<li>what inferential conclusion it does not establish.</li>
+</ul>
+<p>Assignment 2 mainly assesses Levels 3 and 4. The earlier practices are designed to get you there.</p>
+</section>
+</section>
+<section id="practice-challenges" class="level2">
+<h2 class="anchored" data-anchor-id="practice-challenges">24. Practice Challenges</h2>
+<p><strong>A. Mapping or setting?</strong> Predict the result before running:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> macroarea))</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>(<span class="at">colour =</span> <span class="st">"steelblue"</span>)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> <span class="st">"steelblue"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>B. Count or column?</strong> Explain why <code>geom_bar()</code> and <code>geom_col()</code> require different data structures.</p>
+<p><strong>C. Bin-width sensitivity.</strong> Make three histograms of the same variable. Identify one stable feature and one bin-sensitive feature.</p>
+<p><strong>D. Summary versus observations.</strong> Compare a boxplot alone with boxplot + jitter. What becomes visible?</p>
+<p><strong>E. Fixed versus free facets.</strong> Which better supports between-group comparison?</p>
+<p><strong>F. Description versus inference.</strong> Rewrite “Macroarea causes differences in kinship complexity” as a defensible descriptive statement.</p>
+<p><strong>G. Evidence structure.</strong> Explain why a bar chart of sample composition is analytically relevant even though it does not visualize the substantive outcome.</p>
+</section>
+<section id="reading-guide" class="level2">
+<h2 class="anchored" data-anchor-id="reading-guide">25. Reading Guide</h2>
+<section id="ggplot2-elegant-graphics-for-data-analysis-3e" class="level3">
+<h3 class="anchored" data-anchor-id="ggplot2-elegant-graphics-for-data-analysis-3e">ggplot2: Elegant Graphics for Data Analysis, 3e</h3>
+<p>Use the current online third edition as the <strong>deep reference for ggplot2’s grammar and mechanics</strong>. Prioritize the introduction/grammar, first steps, layers, scales and guides, coordinate systems, and faceting. It is especially useful for understanding <strong>why</strong> ggplot2 behaves as it does rather than merely copying recipes.</p>
+</section>
+<section id="healy-data-visualization-a-practical-introduction" class="level3">
+<h3 class="anchored" data-anchor-id="healy-data-visualization-a-practical-introduction">Healy, Data Visualization: A Practical Introduction</h3>
+<p>Use Healy as the <strong>social-science visualization companion</strong>. Focus on clear graphical construction, substantive comparison, perception, and communication. It is especially useful for moving from code that produces a plot to a graph that helps a reader see the intended evidence.</p>
+</section>
+<section id="r-for-data-science-2e" class="level3">
+<h3 class="anchored" data-anchor-id="r-for-data-science-2e">R for Data Science, 2e</h3>
+<p>Use R4DS for the <strong>practical EDA workflow and beginner-friendly ggplot2 practice</strong>, especially Data visualization, Layers, Exploratory data analysis, and Communication. Its EDA framework emphasizes generating questions, seeking answers through visualization/transformation/modeling, and refining the questions.</p>
+</section>
+</section>
+<section id="core-takeaways" class="level2">
+<h2 class="anchored" data-anchor-id="core-takeaways">26. Core Takeaways</h2>
+<ul>
+<li>EDA is a <strong>mode of inquiry</strong>, not a chart checklist.</li>
+<li>Visualization is statistical reasoning, not decoration.</li>
+<li>Choose graphics from <strong>variable structure and analytical purpose</strong>.</li>
+<li>A ggplot is built from data, mappings, layers, scales, coordinates, facets, and themes.</li>
+<li><strong>Variable inside <code>aes()</code>; fixed appearance outside <code>aes()</code>.</strong></li>
+<li>Geoms may compute statistical transformations before drawing.</li>
+<li>Comparison must be designed.</li>
+<li>Faceting asks whether patterns hold under different conditions.</li>
+<li>Visualize the <strong>structure of the evidence</strong> before substantive interpretation.</li>
+<li>Description is not inference.</li>
+<li>Cross-cultural observations may be spatially and phylogenetically dependent.</li>
+<li>EDA can reveal dependence; it does not automatically correct it.</li>
+<li>A good EDA ends with a better next question.</li>
+</ul>
+</section>
+<section id="references" class="level1">
+<h1>References</h1>
+<p>Healy, K. (2019). <em>Data visualization: A practical introduction</em>. Princeton University Press. https://socviz.co/</p>
+<p>Passmore, S., Barth, W., Greenhill, S. J., Quinn, K., Sheard, C., Argyriou, P., et al.&nbsp;(2023). Kinbank: A global database of kinship terminology. <em>PLOS ONE, 18</em>(5), e0283218. https://doi.org/10.1371/journal.pone.0283218</p>
+<p>Passmore, S., &amp; Jordan, F. M. (2020). No universals in the cultural evolution of kinship terminology. <em>Evolutionary Human Sciences, 2</em>, e42. https://doi.org/10.1017/ehs.2020.41</p>
+<p>Tukey, J. W. (1977). <em>Exploratory data analysis</em>. Addison-Wesley.</p>
+<p>Wickham, H., Navarro, D., &amp; Pedersen, T. L. (n.d.). <em>ggplot2: Elegant graphics for data analysis</em> (3rd ed., work in progress). https://ggplot2-book.org/</p>
+<p>Wickham, H., Çetinkaya-Rundel, M., &amp; Grolemund, G. (2023). <em>R for data science</em> (2nd ed.). O’Reilly Media. https://r4ds.hadley.nz/</p>
 
 
 </section>

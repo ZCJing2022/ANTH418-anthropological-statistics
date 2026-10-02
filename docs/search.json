@@ -277,168 +277,196 @@
     "href": "weeks/week05.html",
     "title": "Week 5 — Exploratory Data Analysis and Visualization",
     "section": "",
-    "text": "Class meetings: 5 & 7 October 2026 Focus: exploratory data analysis · visualization · distributions · comparison Case study: Kinbank global kinship terminology data Assessment: Assignment 2 — Visualizing Kinship Diversity with Kinbank"
+    "text": "Class meetings: 5 & 7 October 2026 Focus: exploratory data analysis · visualization · ggplot2 · comparison · non-independence Case study: Kinbank global kinship terminology data Assessment: Assignment 2 — Visualizing Kinship Diversity with Kinbank"
   },
   {
-    "objectID": "weeks/week05.html#overview",
-    "href": "weeks/week05.html#overview",
+    "objectID": "weeks/week05.html#what-you-should-understand",
+    "href": "weeks/week05.html#what-you-should-understand",
     "title": "Week 5 — Exploratory Data Analysis and Visualization",
-    "section": "Overview",
-    "text": "Overview\nThis week is about learning to look at data before making formal claims about it.\nExploratory Data Analysis (EDA) uses summaries and especially graphics to expose empirical structure: common patterns, unusual observations, possible relationships, and questions worth pursuing. Visualization is therefore not decoration added after analysis. It is part of analysis.\nThe anthropological case study is Kinbank, a global comparative database of kinship terminology. Its standardized genealogical framework makes cross-linguistic differences systematically comparable (Passmore et al. 2023). Kinbank also illustrates an important caution: languages may share historical relationships, so cross-cultural observations are not necessarily independent (Passmore and Jordan 2020).\n\n\n\n\n\n\nNoteThe Week 5 principle\n\n\n\nLook first. Model second. Infer carefully.\nUse graphics to expose empirical structure before trying to explain why that structure exists. Description is not inference, but inference without description is blind."
+    "section": "1. What You Should Understand",
+    "text": "1. What You Should Understand\nBy the end of Week 5, you should be able to:\n\nexplain EDA as an iterative mode of inquiry;\ndistinguish description from inference;\nchoose graphics from variable type and analytical purpose;\ncreate and interpret bar charts, histograms, boxplots, scatterplots, and facets;\nexplain what a graphic preserves and hides;\nexplain the ggplot2 grammar: data, mappings, layers, geoms, stats, positions, scales, coordinates, facets, and themes;\ndistinguish mapping inside aes() from setting outside aes();\ncombine raw observations and summaries with layers;\nrecognize misleading graphical choices;\nvisualize sample structure before substantive patterns; and\nrecognize phylogenetic and spatial non-independence."
   },
   {
-    "objectID": "weeks/week05.html#questions",
-    "href": "weeks/week05.html#questions",
+    "objectID": "weeks/week05.html#eda-description-before-inference",
+    "href": "weeks/week05.html#eda-description-before-inference",
     "title": "Week 5 — Exploratory Data Analysis and Visualization",
-    "section": "Questions",
-    "text": "Questions\n\nWhat is exploratory data analysis, and how does it differ from confirmatory analysis?\nWhy can numerical summaries alone fail to describe a dataset?\nHow do measurement scales guide the choice of graphic?\nHow do marks and visual channels turn variables into visible patterns?\nWhat do bar charts, histograms, density plots, boxplots, scatterplots, and facets reveal?\nHow can ordering, bin width, colour, and faceting change what we see?\nWhy is comparison central to effective visualization?\nHow does Kinbank make culturally specific kin terminologies comparable?\nWhy does shared ancestry complicate cross-cultural comparison?\nHow do we separate exploratory description from inference?"
+    "section": "2. EDA: Description Before Inference",
+    "text": "2. EDA: Description Before Inference\nAsk: What is the observational unit? Which variables are categorical or numerical? What is missing? Are group sizes balanced? What does each distribution look like? Are there unusual observations? Does a pattern change across groups? Are observations independent?\nDescriptive: “In this sample, kin_term_count is right-skewed.”\nInferential: “Languages in this region generally have more complex kinship systems.”\nThe second requires additional evidence and an appropriate inferential design. During EDA use language such as “in this sample,” “the graph suggests,” and “worth investigating.”"
   },
   {
-    "objectID": "weeks/week05.html#learning-objectives",
-    "href": "weeks/week05.html#learning-objectives",
+    "objectID": "weeks/week05.html#match-graphics-to-variables",
+    "href": "weeks/week05.html#match-graphics-to-variables",
     "title": "Week 5 — Exploratory Data Analysis and Visualization",
-    "section": "Learning objectives",
-    "text": "Learning objectives\nBy the end of Week 5, you should be able to:\n\nexplain the purpose of EDA and distinguish exploration from confirmation;\nexplain why visualization is an analytical tool;\nmatch graphical forms to variable measurement scales;\ndescribe the grammar of graphics in terms of data, aesthetics, geoms, stats, scales, facets, coordinates, and themes;\nexplain why some visual channels support more accurate comparisons than others;\nuse bar charts and dot plots for categorical variables;\nuse histograms, density plots, jitter plots, and boxplots for numerical distributions;\nexplain how histogram bin width changes apparent structure;\nuse scatterplots to explore co-variation;\ncompare distributions across groups and use faceting effectively;\nexplain graphical integrity and unnecessary visual clutter;\ndescribe Kinbank’s comparative data architecture; and\ndistinguish descriptive patterns from explanations requiring additional evidence."
+    "section": "3. Match Graphics to Variables",
+    "text": "3. Match Graphics to Variables\n\n\n\n\n\n\n\n\nQuestion\nVariables\nUseful first display\n\n\n\n\nHow common is each category?\ncategorical\nbar chart\n\n\nWhat is the distribution?\nnumerical\nhistogram\n\n\nWhat are center, spread, and unusual values?\nnumerical\nboxplot\n\n\nHow do distributions differ among groups?\nnumerical + categorical\nboxplot + points; facets\n\n\nAre two numerical variables associated?\nnumerical + numerical\nscatterplot\n\n\nDoes a pattern vary by group?\nvariables + group\naesthetics or facets\n\n\n\nChoose the graphic from the variable combination and analytical task, not from habit."
   },
   {
-    "objectID": "weeks/week05.html#this-weeks-two-class-sequence",
-    "href": "weeks/week05.html#this-weeks-two-class-sequence",
+    "objectID": "weeks/week05.html#the-basic-ggplot2-pattern",
+    "href": "weeks/week05.html#the-basic-ggplot2-pattern",
     "title": "Week 5 — Exploratory Data Analysis and Visualization",
-    "section": "This week’s two-class sequence",
-    "text": "This week’s two-class sequence\n\nClass 1 — How visualization makes structure visible\nWe begin with exploration versus confirmation, Anscombe’s quartet, visual perception, graphical integrity, and the grammar of graphics. We then connect measurement scales to graphical forms and examine categorical and continuous distributions.\n\n\nClass 2 — Comparison, Kinbank, and anthropological interpretation\nWe move to relationships, grouped distributions, faceting, high-dimensional EDA, and three comparison strategies: juxtaposition, superposition, and explicit encoding. Kinbank then shows how comparative anthropological data are standardized, visualized, and interpreted."
+    "section": "4. The Basic ggplot2 Pattern",
+    "text": "4. The Basic ggplot2 Pattern\nEvery basic ggplot2 graphic needs data, aesthetic mappings, and at least one layer:\nggplot(data = dat,\n       mapping = aes(x = kin_term_count)) +\n  geom_histogram()\nRead this as: use dat; map kin_term_count to x; represent the distribution with a histogram layer."
   },
   {
-    "objectID": "weeks/week05.html#exploratory-and-confirmatory-analysis",
-    "href": "weeks/week05.html#exploratory-and-confirmatory-analysis",
+    "objectID": "weeks/week05.html#mapping-versus-setting",
+    "href": "weeks/week05.html#mapping-versus-setting",
     "title": "Week 5 — Exploratory Data Analysis and Visualization",
-    "section": "1. Exploratory and confirmatory analysis",
-    "text": "1. Exploratory and confirmatory analysis\nEDA asks what might be going on? It discovers patterns, generates hypotheses, and identifies unusual observations. Confirmatory analysis asks whether a specified formal claim is supported.\nAnscombe’s quartet shows why looking matters: datasets can have the same means, correlation, and fitted regression line while displaying very different structures. A numerical summary can therefore be correct and still be an inadequate description."
+    "section": "5. Mapping Versus Setting",
+    "text": "5. Mapping Versus Setting\nMap a variable:\ngeom_point(aes(colour = macroarea))\nSet a constant:\ngeom_point(colour = \"steelblue\")\nA common mistake:\ngeom_point(aes(colour = \"steelblue\"))\n\nVariable inside aes(); fixed appearance outside aes()."
   },
   {
-    "objectID": "weeks/week05.html#visualization-is-part-of-analysis",
-    "href": "weeks/week05.html#visualization-is-part-of-analysis",
+    "objectID": "weeks/week05.html#practice-1-build-a-plot-layer-by-layer",
+    "href": "weeks/week05.html#practice-1-build-a-plot-layer-by-layer",
     "title": "Week 5 — Exploratory Data Analysis and Visualization",
-    "section": "2. Visualization is part of analysis",
-    "text": "2. Visualization is part of analysis\nA graphic is a designed representation. The analyst decides which variables to show, which marks represent observations, how variables are encoded, how categories are ordered, whether observations are aggregated, how bins are defined, and whether groups are layered or separated.\nEffective graphics should make empirical structure easier to judge rather than harder.\n\nGraphical integrity\nTwo practical principles from the lecture are:\n\nMaximize data ink.\nMinimize chartjunk.\n\nThe point is not to make every graphic visually bare. The point is to ensure that design serves the evidence rather than competing with it."
+    "section": "6. Practice 1 — Build a Plot Layer by Layer",
+    "text": "6. Practice 1 — Build a Plot Layer by Layer\nggplot(dat)\nggplot(dat, aes(x = kin_term_count))\nggplot(dat, aes(x = kin_term_count)) +\n  geom_histogram(binwidth = 25)\nggplot(dat, aes(x = kin_term_count)) +\n  geom_histogram(binwidth = 25) +\n  labs(\n    x = \"Kinbank form records linked to language\",\n    y = \"Number of languages\",\n    title = \"Distribution of kin_term_count\"\n  ) +\n  theme_minimal()\nThe data and mapping remain stable while graphical components are added with +."
   },
   {
-    "objectID": "weeks/week05.html#visual-perception",
-    "href": "weeks/week05.html#visual-perception",
+    "objectID": "weeks/week05.html#practice-1a-read-the-anatomy-of-ggplot2-code",
+    "href": "weeks/week05.html#practice-1a-read-the-anatomy-of-ggplot2-code",
     "title": "Week 5 — Exploratory Data Analysis and Visualization",
-    "section": "3. Visual perception",
-    "text": "3. Visual perception\nSome visual channels are easier to compare accurately than others.\n\n\n\nVisual channel\nUseful for\n\n\n\n\nSpatial position\ncontinuous and ordered values\n\n\nLength / height\nquantitative comparison\n\n\nHue\ndiscrete groups\n\n\nLuminance\nordered magnitude\n\n\nShape\na small number of groups\n\n\nArea\nmagnitude, but often judged less accurately\n\n\n\nThis helps explain why aligned bar lengths are usually easier to compare than pie-chart angles or areas."
+    "section": "6. Practice 1A — Read the Anatomy of ggplot2 Code",
+    "text": "6. Practice 1A — Read the Anatomy of ggplot2 Code\nBefore writing more plots, practice reading a ggplot specification. Consider:\nggplot(\n  data = dat,\n  mapping = aes(x = macroarea, y = kin_term_count)\n) +\n  geom_boxplot(fill = \"white\") +\n  geom_jitter(\n    aes(colour = macroarea),\n    width = 0.15,\n    alpha = 0.25\n  ) +\n  labs(\n    x = \"Macroarea\",\n    y = \"Kinbank form records linked to language\"\n  ) +\n  theme_minimal()\nIdentify each component before running the code:\n\n\n\n\n\n\n\n\nComponent\nWhere is it?\nWhat does it do?\n\n\n\n\nData\ndata = dat\nsupplies the observations and variables\n\n\nGlobal mapping\naes(x = macroarea, y = kin_term_count)\nmaps variables to x and y for layers that inherit it\n\n\nFirst geom\ngeom_boxplot()\nadds a distribution summary\n\n\nFixed setting\nfill = \"white\"\ngives every box the same fill\n\n\nSecond geom\ngeom_jitter()\nadds individual observations\n\n\nLocal mapping\naes(colour = macroarea)\nmaps colour only in the jitter layer\n\n\nFixed settings\nwidth = 0.15, alpha = 0.25\ncontrol jitter and transparency without encoding variables\n\n\nLabels\nlabs()\nsupplies human-readable labels\n\n\nTheme\ntheme_minimal()\nchanges non-data appearance\n\n\n\n\nTry it yourself\nFor each line below, decide whether it is data, mapping, geom, fixed setting, label, or theme:\naes(x = kin_term_count)\ngeom_histogram(binwidth = 25)\nfill = \"steelblue\"\naes(colour = family)\nlabs(x = \"Kin-term count\")\ntheme_minimal()\nThen answer:\n\nWhy is binwidth = 25 outside aes()?\nWhy is colour = family inside aes() when colour should represent language family?\nWhich parts change the meaning of the data encoding, and which parts mainly change presentation?\n\nThe goal is to read ggplot2 code as a graphical specification, not as a string of commands to memorize."
   },
   {
-    "objectID": "weeks/week05.html#the-grammar-of-graphics",
-    "href": "weeks/week05.html#the-grammar-of-graphics",
+    "objectID": "weeks/week05.html#geoms-and-stats",
+    "href": "weeks/week05.html#geoms-and-stats",
     "title": "Week 5 — Exploratory Data Analysis and Visualization",
-    "section": "4. The grammar of graphics",
-    "text": "4. The grammar of graphics\nggplot2 builds plots from explicit components:\n\nData + aesthetics (aes)\nGeoms\nStats\nScales\nFacets\nCoordinates\nTheme\n\nggplot(data, aes(x = variable)) +\n  geom_histogram()\nThe key question is: How is each variable being made visible?"
+    "section": "7. Geoms and Stats",
+    "text": "7. Geoms and Stats\n\n\n\nGeom\nTypical stat\nOperation\n\n\n\n\ngeom_point()\nidentity\nraw observations\n\n\ngeom_bar()\ncount\ncount categories\n\n\ngeom_histogram()\nbin\nbin values, then count\n\n\ngeom_boxplot()\nboxplot\nquartiles and IQR summaries\n\n\n\nA histogram performs raw values → bins → counts → bars. A geom is one component of a graphic, not the whole graphic."
   },
   {
-    "objectID": "weeks/week05.html#chart-choice-begins-with-measurement-scale",
-    "href": "weeks/week05.html#chart-choice-begins-with-measurement-scale",
+    "objectID": "weeks/week05.html#practice-2-bar-charts-and-sample-structure",
+    "href": "weeks/week05.html#practice-2-bar-charts-and-sample-structure",
     "title": "Week 5 — Exploratory Data Analysis and Visualization",
-    "section": "5. Chart choice begins with measurement scale",
-    "text": "5. Chart choice begins with measurement scale\n\n\n\n\n\n\n\n\nMeasurement scale\nUseful summaries\nCommon exploratory graphics\n\n\n\n\nNominal\nmode; frequency; proportion\nbar chart; dot plot\n\n\nOrdinal\nmedian; percentiles; IQR\nordered bar; percentile display\n\n\nInterval / ratio\nmean/median; SD; variance; IQR; MAD\nhistogram; density; boxplot\n\n\n\nBefore plotting, ask:\n\nWhat does one row represent?\nWhat variable am I examining?\nWhat is its measurement scale?\nWhat comparison do I want to make?\nWhich graphic makes that comparison easiest?"
+    "section": "8. Practice 2 — Bar Charts and Sample Structure",
+    "text": "8. Practice 2 — Bar Charts and Sample Structure\nmacro_counts &lt;- dat |&gt;\n  filter(!is.na(macroarea)) |&gt;\n  count(macroarea, sort = TRUE)\nPlot precomputed counts:\nggplot(macro_counts,\n       aes(x = reorder(macroarea, n), y = n)) +\n  geom_col() +\n  coord_flip() +\n  labs(x = NULL, y = \"Number of languages\") +\n  theme_minimal()\nOr count raw rows automatically:\nggplot(dat |&gt; filter(!is.na(macroarea)),\n       aes(x = macroarea)) +\n  geom_bar()\ngeom_bar() counts observations; geom_col() uses supplied heights. Ask what unequal representation tells you about the structure of the evidence."
   },
   {
-    "objectID": "weeks/week05.html#categorical-variables",
-    "href": "weeks/week05.html#categorical-variables",
+    "objectID": "weeks/week05.html#practice-3-histograms-and-bin-width",
+    "href": "weeks/week05.html#practice-3-histograms-and-bin-width",
     "title": "Week 5 — Exploratory Data Analysis and Visualization",
-    "section": "6. Categorical variables",
-    "text": "6. Categorical variables\nFor nominal variables, begin with frequencies or proportions.\nggplot(data, aes(x = category)) +\n  geom_bar()\nWhen categories have no natural order, sorting by frequency can reveal dominant and rare categories. Horizontal bars can help with long labels. Dot plots can reduce clutter when many categories must be compared.\nPie charts are usually less effective for precise comparison because angles and areas are harder to compare than aligned lengths."
+    "section": "9. Practice 3 — Histograms and Bin Width",
+    "text": "9. Practice 3 — Histograms and Bin Width\nCompare:\nggplot(dat, aes(x = kin_term_count)) +\n  geom_histogram(binwidth = 10)\nggplot(dat, aes(x = kin_term_count)) +\n  geom_histogram(binwidth = 25)\nggplot(dat, aes(x = kin_term_count)) +\n  geom_histogram(binwidth = 50)\nWhich features persist? Which change? Too few bins can hide structure; too many can make noise look important."
   },
   {
-    "objectID": "weeks/week05.html#continuous-variables",
-    "href": "weeks/week05.html#continuous-variables",
+    "objectID": "weeks/week05.html#practice-4-boxplot-plus-raw-observations",
+    "href": "weeks/week05.html#practice-4-boxplot-plus-raw-observations",
     "title": "Week 5 — Exploratory Data Analysis and Visualization",
-    "section": "7. Continuous variables",
-    "text": "7. Continuous variables\nWhen examining a numerical distribution, look for location, spread, shape, clusters, gaps, and unusual observations.\n\nStrip or jitter plots\nThese preserve raw observations and can reveal clusters and gaps.\n\n\nHistograms\nHistograms divide a numerical variable into bins.\nggplot(data, aes(x = value)) +\n  geom_histogram(binwidth = 5)\nBin width changes the story. Bins that are too wide can erase structure; bins that are too narrow can make random fluctuations look important. Trying several plausible bin widths is part of EDA.\n\n\nDensity plots\nDensity plots provide a smoothed view of distribution shape.\n\n\nBoxplots\nBoxplots emphasize the median and interquartile range. They are compact and useful for group comparison, but they can hide raw distribution shape, including bimodality.\n\n\n\n\n\n\nImportantNo single plot shows everything\n\n\n\nA jitter plot shows raw observations, a histogram emphasizes binned shape, a density plot emphasizes smoothed shape, and a boxplot emphasizes robust location and spread. Compare views rather than treating one representation as definitive."
+    "section": "10. Practice 4 — Boxplot Plus Raw Observations",
+    "text": "10. Practice 4 — Boxplot Plus Raw Observations\nggplot(dat |&gt; filter(!is.na(macroarea)),\n       aes(x = macroarea, y = kin_term_count)) +\n  geom_boxplot(outlier.shape = NA) +\n  geom_jitter(width = 0.15, alpha = 0.2)\nFor readability:\nggplot(dat |&gt; filter(!is.na(macroarea)),\n       aes(x = reorder(macroarea, kin_term_count, FUN = median),\n           y = kin_term_count)) +\n  geom_boxplot(outlier.shape = NA) +\n  geom_jitter(width = 0.15, alpha = 0.2) +\n  coord_flip()\nThe boxplot summarizes; points reveal observations, overlap, extreme values, and unequal group sizes."
   },
   {
-    "objectID": "weeks/week05.html#relationships-and-group-comparisons",
-    "href": "weeks/week05.html#relationships-and-group-comparisons",
+    "objectID": "weeks/week05.html#faceting-and-small-multiples",
+    "href": "weeks/week05.html#faceting-and-small-multiples",
     "title": "Week 5 — Exploratory Data Analysis and Visualization",
-    "section": "8. Relationships and group comparisons",
-    "text": "8. Relationships and group comparisons\n\nNumerical × numerical\nScatterplots make co-variation visible.\nggplot(data, aes(x = x_variable, y = y_variable)) +\n  geom_point()\nAsk whether the relationship is linear, curved, clustered, dominated by unusual observations, or obscured by overplotting. The lecture introduces LOESS/GAM smoothing and, for large datasets, alpha blending, hexagonal binning, two-dimensional binning, and contour density.\n\n\nCategorical × continuous\nDo not compare only a single point estimate when distributions differ in shape.\nggplot(data, aes(x = group, y = value)) +\n  geom_boxplot()\nBoxplots compare medians and spreads; violin plots add density shape; ridgeline plots can help when many groups must be compared."
+    "section": "11. Faceting and Small Multiples",
+    "text": "11. Faceting and Small Multiples\nggplot(dat |&gt; filter(!is.na(macroarea)),\n       aes(x = kin_term_count)) +\n  geom_histogram(binwidth = 25) +\n  facet_wrap(~ macroarea)\nFixed scales support between-panel comparison:\nfacet_wrap(~ macroarea, scales = \"fixed\")\nFree scales reveal within-panel detail but weaken direct magnitude comparison:\nfacet_wrap(~ macroarea, scales = \"free\")\nFor Assignment 2, fixed scales are usually the better starting point when direct comparison is the goal."
   },
   {
-    "objectID": "weeks/week05.html#graphics-gain-power-through-comparison",
-    "href": "weeks/week05.html#graphics-gain-power-through-comparison",
+    "objectID": "weeks/week05.html#practice-5-aesthetic-or-facet",
+    "href": "weeks/week05.html#practice-5-aesthetic-or-facet",
     "title": "Week 5 — Exploratory Data Analysis and Visualization",
-    "section": "9. Graphics gain power through comparison",
-    "text": "9. Graphics gain power through comparison\nThe lecture emphasizes three strategies.\n\nJuxtaposition\nPlace related graphics side by side, including small multiples and facets.\nggplot(data, aes(x = value)) +\n  geom_histogram() +\n  facet_wrap(~ group)\n\n\nSuperposition\nLayer groups in the same coordinate space.\n\n\nExplicit encoding\nShow departure from a baseline or expectation:\n[ = - ]\nThe exploratory sequence is:\n\nExpose patterns with raw graphics.\nModel expectations as a baseline.\nShow deviations from that expectation."
+    "section": "12. Practice 5 — Aesthetic or Facet?",
+    "text": "12. Practice 5 — Aesthetic or Facet?\nColour by group:\nggplot(dat |&gt; filter(!is.na(macroarea)),\n       aes(x = longitude, y = latitude, colour = macroarea)) +\n  geom_point(alpha = 0.6)\nOr facet:\nggplot(dat |&gt; filter(!is.na(macroarea)),\n       aes(x = longitude, y = latitude)) +\n  geom_point(alpha = 0.6) +\n  facet_wrap(~ macroarea)\nAsk which design better supports the intended comparison. The grammar supplies alternatives; statistical reasoning determines which is useful."
   },
   {
-    "objectID": "weeks/week05.html#high-dimensional-eda",
-    "href": "weeks/week05.html#high-dimensional-eda",
+    "objectID": "weeks/week05.html#scales-guides-coordinates-and-themes",
+    "href": "weeks/week05.html#scales-guides-coordinates-and-themes",
     "title": "Week 5 — Exploratory Data Analysis and Visualization",
-    "section": "10. High-dimensional EDA",
-    "text": "10. High-dimensional EDA\nWhen variables multiply, pairwise inspection becomes difficult. The lecture introduces scatterplot matrices, cluster heatmaps, and principal component analysis (PCA).\nPCA reduces many variables to a smaller number of components. Plotting PC1 and PC2 can reveal major dimensions of variation, while biplots can show observations together with loading vectors. Here the purpose is exploratory: reduce complexity enough to generate visual hypotheses."
+    "section": "13. Scales, Guides, Coordinates, and Themes",
+    "text": "13. Scales, Guides, Coordinates, and Themes\nA scale maps data values to visual values. Mapping macroarea to colour creates a discrete colour scale; mapping kin_term_count to x creates a numerical position scale.\nScales also generate guides: position scales generate axes; colour, shape, and size scales generally generate legends. Both help readers translate visual properties back into data values.\nA coordinate system determines how positions are placed. coord_flip() can make categorical labels easier to read.\nA theme controls non-data appearance. theme_minimal() changes styling, not the meaning of variables."
   },
   {
-    "objectID": "weeks/week05.html#kinbank-making-kinship-terminology-analyzable",
-    "href": "weeks/week05.html#kinbank-making-kinship-terminology-analyzable",
+    "objectID": "weeks/week05.html#layers-and-local-mappings",
+    "href": "weeks/week05.html#layers-and-local-mappings",
     "title": "Week 5 — Exploratory Data Analysis and Visualization",
-    "section": "11. Kinbank: making kinship terminology analyzable",
-    "text": "11. Kinbank: making kinship terminology analyzable\nKinbank contains 210,903 kin terms from 1,229 spoken and signed languages (Passmore et al. 2023). Its methodological importance lies in its data architecture.\n\nEtic grids reveal emic categories\nEnglish categories such as aunt, uncle, or cousin cannot simply be treated as universal. Kinbank instead uses an etic genealogical grid of standardized genealogical positions. Language-specific kin terms are mapped onto those positions.\nResearchers can then examine which positions a language merges under one term and which it splits into different terms.\nThe etic grid is a comparative framework, not a claim that culturally meaningful emic categories are identical across languages.\n\n\n\n\n\n\nNoteEDA begins with data architecture\n\n\n\nBefore interpreting a plot, ask what has been counted, how observations were standardized, what one row represents, and what comparisons the database makes possible."
+    "section": "14. Layers and Local Mappings",
+    "text": "14. Layers and Local Mappings\nggplot(dat, aes(x = macroarea, y = kin_term_count)) +\n  geom_boxplot(outlier.shape = NA) +\n  geom_jitter(width = 0.15, alpha = 0.2)\nBoth layers inherit global mappings.\nA local mapping applies only to one layer:\nggplot(dat, aes(x = longitude, y = latitude)) +\n  geom_point(aes(colour = macroarea), alpha = 0.5)"
   },
   {
-    "objectID": "weeks/week05.html#kinbank-as-visual-evidence",
-    "href": "weeks/week05.html#kinbank-as-visual-evidence",
+    "objectID": "weeks/week05.html#visual-channels-should-match-the-task",
+    "href": "weeks/week05.html#visual-channels-should-match-the-task",
     "title": "Week 5 — Exploratory Data Analysis and Visualization",
-    "section": "12. Kinbank as visual evidence",
-    "text": "12. Kinbank as visual evidence\nThe lecture uses two examples from Passmore et al. (2023).\n\nParent-term phonology\nDensity distributions make recurrent cross-linguistic sound patterns visible, including nasal consonants in mother terms and stop consonants in father terms.\n\n\nKinship typology and phylogeny\nThe second example introduces non-independence. Languages can resemble one another because they share ancestry. Treating every society or language as an independent observation can therefore be misleading.\nPassmore and Jordan (2020) show that shared ancestry structures variation in kinship terminologies across language families. This is a version of Galton’s Problem.\nFor Assignment 2, the practical lesson is:\nDescribe the visible pattern, but do not leap from a visual association to a causal explanation."
+    "section": "15. Visual Channels Should Match the Task",
+    "text": "15. Visual Channels Should Match the Task\nFor quantitative magnitude, position on a common scale is especially effective; length can also work well. For categorical identity, useful channels include colour hue, shape for a few groups, spatial separation, and facets.\nDo not use unrelated hues as though they represented numerical order. Use colour to carry information rather than decoration. Consider redundant encoding such as colour plus shape when accessibility matters."
   },
   {
-    "objectID": "weeks/week05.html#a-practical-anth418-eda-workflow",
-    "href": "weeks/week05.html#a-practical-anth418-eda-workflow",
+    "objectID": "weeks/week05.html#practice-6-debug-common-ggplot2-mistakes",
+    "href": "weeks/week05.html#practice-6-debug-common-ggplot2-mistakes",
     "title": "Week 5 — Exploratory Data Analysis and Visualization",
-    "section": "13. A practical ANTH418 EDA workflow",
-    "text": "13. A practical ANTH418 EDA workflow\n\nStep 1 — Inspect and clean the data\nglimpse(data)\nnames(data)\ndim(data)\nCheck variable meanings, missing values, category labels, and the unit of observation.\n\n\nStep 2 — Plot univariate distributions\nUse bar charts for categories; histograms or density plots for numerical shape; jitter plots for raw observations; and boxplots for compact robust summaries.\n\n\nStep 3 — Explore co-variation\nUse scatterplots for two numerical variables and grouped or faceted distributions when one variable is categorical.\n\n\nStep 4 — Compare explicitly\nUse facets, layers, or departures from a baseline. Choose the comparison design before interpreting the pattern.\n\n\nStep 5 — Separate description from inference\nFirst state what the visualization shows. Then ask what additional evidence would be needed to explain it.\nThe workflow is iterative. A plot may reveal a coding problem, missingness, an unexpected subgroup, or a better question and send you back to an earlier step."
+    "section": "16. Practice 6 — Debug Common ggplot2 Mistakes",
+    "text": "16. Practice 6 — Debug Common ggplot2 Mistakes\nFixed colour accidentally mapped:\n# Wrong\ngeom_point(aes(colour = \"blue\"))\n\n# Correct\ngeom_point(colour = \"blue\")\nMissing mapping:\nggplot(dat) +\n  geom_histogram()\nWhat variable should be on x?\nIf a table already contains n, use geom_col(aes(y = n)) rather than asking geom_bar() to count rows again.\nAvoid unnecessary combinations of colour + shape + size + alpha. Valid code is not necessarily useful EDA: state the comparison your graph is designed to support."
   },
   {
-    "objectID": "weeks/week05.html#assignment-2-visualizing-kinship-diversity-with-kinbank",
-    "href": "weeks/week05.html#assignment-2-visualizing-kinship-diversity-with-kinbank",
+    "objectID": "weeks/week05.html#visualization-can-mislead",
+    "href": "weeks/week05.html#visualization-can-mislead",
     "title": "Week 5 — Exploratory Data Analysis and Visualization",
-    "section": "14. Assignment 2 — Visualizing Kinship Diversity with Kinbank",
-    "text": "14. Assignment 2 — Visualizing Kinship Diversity with Kinbank\nAssignment 2 asks you to use the provided Kinbank teaching dataset to conduct an exploratory data analysis of variation in kinship terminology.\nThe assignment applies the central Week 5 skills:\n\ninspect the dataset and identify its observations and variables;\nuse bar charts, histograms, boxplots, and faceted plots where appropriate;\ntreat visualizations as analytical tools rather than final decoration;\ncompare alternative views of the same data;\ndescribe principal patterns, differences, and unusual observations;\nexplain what a graphic reveals and what it may conceal;\nrecognize possible historical non-independence among languages; and\nexplore and describe before attempting to explain.\n\nNo inferential statistical tests are required."
+    "section": "17. Visualization Can Mislead",
+    "text": "17. Visualization Can Mislead\nWatch for truncated axes, overplotting, unequal group sizes, proportions without denominators, excessive colour, free facet scales used carelessly, smoothers treated as truth, and outliers automatically treated as errors.\nAsk:\n\nWhat is being counted? How many cases support the comparison? What has the display hidden?"
   },
   {
-    "objectID": "weeks/week05.html#practice",
-    "href": "weeks/week05.html#practice",
+    "objectID": "weeks/week05.html#kinbank-visualize-the-evidence-first",
+    "href": "weeks/week05.html#kinbank-visualize-the-evidence-first",
     "title": "Week 5 — Exploratory Data Analysis and Visualization",
-    "section": "Practice",
-    "text": "Practice\n\nExercise 1 — Inspect before plotting\nFor the Kinbank teaching dataset, identify the unit of observation, variable types, missing values, and variables useful for comparison.\n\n\nExercise 2 — Compare two representations\nCreate two appropriate visualizations of the same variable. Write 2–3 sentences explaining what each representation makes easier to see and what it hides.\n\n\nExercise 3 — Facet a comparison\nCreate a faceted plot for a meaningful grouping variable. Ask whether groups differ in location, spread, shape, or unusual observations. Describe only what is visible.\n\n\nExercise 4 — Description versus explanation\nFor one pattern, write:\n\none sentence of description;\none possible hypothesis that could explain it; and\none sentence explaining why the visualization alone does not test that hypothesis."
+    "section": "18. Kinbank: Visualize the Evidence First",
+    "text": "18. Kinbank: Visualize the Evidence First\nThe teaching dataset contains 1,287 languages represented by at least one Kinbank form record. kin_term_count counts form records linked to a language in the frozen teaching snapshot. It is not automatically the number of unique kin concepts and is not a direct measure of kinship-system complexity.\nBefore interpreting group differences, examine family representation, macroarea representation, missing metadata, geographical coverage, and unequal group sizes.\nSample composition is part of the evidence."
   },
   {
-    "objectID": "weeks/week05.html#readings",
-    "href": "weeks/week05.html#readings",
+    "objectID": "weeks/week05.html#kinship-diversity-depends-on-operationalization",
+    "href": "weeks/week05.html#kinship-diversity-depends-on-operationalization",
     "title": "Week 5 — Exploratory Data Analysis and Visualization",
-    "section": "Readings",
-    "text": "Readings\n\nRequired: Beecham\nChapter 3, Visualization Fundamentals (pp. 41–71) and Chapter 4, Exploratory Data Analysis (pp. 73–96).\nFocus on effective data graphics, grammar of graphics, marks and visual channels, chart choice, continuous and categorical distributions, comparison, and the role of models as exploratory baselines.\n\n\nRequired: Passmore et al.\nRead Kinbank as both an anthropological study and a lesson in data architecture. Focus on how the standardized etic genealogical framework makes cross-linguistic comparison possible, the database’s scale, and the examples showing structured variation.\n\n\nRequired: Thulin\nFocus on EDA as question asking, visual exploration, identifying unusual observations, and generating hypotheses. Review distribution graphics, grouped comparisons, and multivariate visualization insofar as they reinforce the lecture.\n\n\nWickham, Çetinkaya-Rundel, and Grolemund\nUse the visualization material as the practical ggplot2 companion: aesthetic mappings, geoms, layers, distributions, relationships, and facets.\n\n\nSupplementary readings\nThe supplementary readings deepen themes already present in the lecture. Tukey provides the foundational exploratory perspective; Tufte develops graphical integrity; Cumming emphasizes location, spread, shape, and the danger of relying on one picture; Peng and Downey reinforce iterative exploratory workflows; Castro provides broader visualization context; and Passmore and Jordan (2020) provides the key caution about phylogenetic non-independence."
+    "section": "19. Kinship Diversity Depends on Operationalization",
+    "text": "19. Kinship Diversity Depends on Operationalization\nKinbank maps culturally specific terminology onto an etic genealogical framework. A single variable such as kin_term_count compresses a relational system. Two languages can have similar counts while organizing kin relations differently.\n\nA visualization is only as interpretable as the variable it represents."
   },
   {
-    "objectID": "weeks/week05.html#week-5-checklist",
-    "href": "weeks/week05.html#week-5-checklist",
+    "objectID": "weeks/week05.html#cross-cultural-non-independence",
+    "href": "weeks/week05.html#cross-cultural-non-independence",
     "title": "Week 5 — Exploratory Data Analysis and Visualization",
-    "section": "Week 5 checklist",
-    "text": "Week 5 checklist\n\nI can explain EDA in plain language.\nI can distinguish exploratory from confirmatory analysis.\nI can explain the lesson of Anscombe’s quartet.\nI can choose a chart from a variable’s measurement scale and analytical purpose.\nI can explain aesthetics, geoms, and facets.\nI can construct and interpret a bar chart.\nI can explain how bin width affects a histogram.\nI can interpret the median and IQR in a boxplot.\nI can explain what a scatterplot can reveal.\nI can use facets for comparison.\nI can explain juxtaposition, superposition, and explicit encoding.\nI can describe the logic of Kinbank’s etic genealogical grid.\nI can explain why related languages are not independent observations.\nI can distinguish a descriptive pattern from a causal explanation.\nI know that Assignment 2 requires no inferential test."
+    "section": "20. Cross-Cultural Non-Independence",
+    "text": "20. Cross-Cultural Non-Independence\nLanguages are not automatically independent observations.\nPhylogenetic autocorrelation: shared ancestry, common descent, inherited terminology.\nSpatial autocorrelation: borrowing/contact, regional history, shared environments.\nThis is related to Galton’s Problem: apparent similarity may reflect shared history rather than independent evolution.\nColouring or faceting by family can reveal dependence; it does not correct it. Formal evolutionary claims require structure-aware models beyond Assignment 2."
   },
   {
-    "objectID": "weeks/week05.html#takeaways",
-    "href": "weeks/week05.html#takeaways",
+    "objectID": "weeks/week05.html#assignment-2-connection",
+    "href": "weeks/week05.html#assignment-2-connection",
     "title": "Week 5 — Exploratory Data Analysis and Visualization",
-    "section": "Takeaways",
-    "text": "Takeaways\n\nEDA is analytical, not decorative.\nNumerical summaries can conceal structure; always look at the data.\nChart choice follows measurement scale and analytical purpose.\nDifferent graphics reveal different properties of the same distribution.\nComparison gives graphics analytical power.\nGood visualization makes evidence easier to judge.\nKinbank demonstrates that data architecture determines what cross-cultural comparison becomes possible.\nCross-cultural observations may be historically related rather than independent.\nDescription comes before explanation.\nLook first. Model second. Infer carefully."
+    "section": "21. Assignment 2 Connection",
+    "text": "21. Assignment 2 Connection\nThe revised assignment follows this sequence:\n\nInspect — unit, variables, missingness.\nVisualize the evidence — family or macroarea representation.\nVisualize diversity — kin_term_count histogram and bin-width sensitivity.\nCompare — one purposeful grouped or faceted display.\nConsider dependence — phylogenetic and/or spatial autocorrelation.\nInterpret responsibly — what the graphs show, one question worth investigating, and one conclusion they do not justify.\n\nNo hypothesis tests, p-values, confidence intervals, phylogenetic models, or spatial autocorrelation tests are required."
   },
   {
-    "objectID": "weeks/week05.html#references",
-    "href": "weeks/week05.html#references",
+    "objectID": "weeks/week05.html#practical-ggplot2-checklist",
+    "href": "weeks/week05.html#practical-ggplot2-checklist",
     "title": "Week 5 — Exploratory Data Analysis and Visualization",
-    "section": "References",
-    "text": "References\nBeecham, Roger. 2026. Visualization for Social Data Science. CRC Press, Milton. Chapters 3–4.\nPassmore, Sam, et al. 2023. “Kinbank: A Global Database of Kinship Terminology.” PLOS ONE 18(5): e0283218.\nPassmore, Sam, and Fiona M. Jordan. 2020. “No Universals in the Cultural Evolution of Kinship Terminology.” Evolutionary Human Sciences 2: e42.\nThulin, Måns. 2025. Modern Statistics with R: From Wrangling and Exploring Data to Inference and Predictive Modelling. Chapman and Hall/CRC, New York. Chapter 4.\nTukey, John W. 1977. Exploratory Data Analysis. Addison-Wesley.\nWickham, Hadley, Mine Çetinkaya-Rundel, and Garrett Grolemund. 2023. R for Data Science: Import, Tidy, Transform, Visualize, and Model Data. O’Reilly."
+    "section": "22. Practical ggplot2 Checklist",
+    "text": "22. Practical ggplot2 Checklist\nBefore accepting a graph, ask:\n\nData: What is one row? What dataset is plotted? Is missingness relevant?\nMapping: Which variables are mapped to x, y, colour, shape, or size?\nGeom/stat: What marks are drawn? Does the geom compute first?\nComparison: What comparison should the reader make? Would ordering, facets, or raw points help?\nScale/design: Does the visual channel match the measurement scale? Are axes and legends readable?\nInterpretation: What does the graph show in this sample? What does it hide? What does it not justify?"
+  },
+  {
+    "objectID": "weeks/week05.html#practice-progression-what-you-should-be-able-to-do-without-copying",
+    "href": "weeks/week05.html#practice-progression-what-you-should-be-able-to-do-without-copying",
+    "title": "Week 5 — Exploratory Data Analysis and Visualization",
+    "section": "23. Practice Progression: What You Should Be Able to Do Without Copying",
+    "text": "23. Practice Progression: What You Should Be Able to Do Without Copying\nUse this as a self-check before beginning Assignment 2.\n\nLevel 1 — Read\nGiven a ggplot2 command, identify:\n\nthe dataset;\nthe variables mapped inside aes();\nthe geom;\nfixed aesthetic settings;\nlabels and theme.\n\n\n\nLevel 2 — Modify\nGiven a working graph, change one purposeful element:\n\nreorder categories;\nchange histogram bin width;\nadd raw observations to a boxplot;\nchange from one-panel grouping to facets;\nimprove labels.\n\n\n\nLevel 3 — Construct\nGiven a question and variables, choose and construct an appropriate graph without being told the geom.\nExample:\n\n“Are languages evenly represented across macroareas?”\n\nYou should recognize this as a categorical frequency question and choose a bar chart.\n\n\nLevel 4 — Interpret\nExplain:\n\nwhat the graph shows in the observed sample;\nwhat graphical choices influence the display;\nwhat the graph may hide;\nwhat question it suggests next; and\nwhat inferential conclusion it does not establish.\n\nAssignment 2 mainly assesses Levels 3 and 4. The earlier practices are designed to get you there."
+  },
+  {
+    "objectID": "weeks/week05.html#practice-challenges",
+    "href": "weeks/week05.html#practice-challenges",
+    "title": "Week 5 — Exploratory Data Analysis and Visualization",
+    "section": "24. Practice Challenges",
+    "text": "24. Practice Challenges\nA. Mapping or setting? Predict the result before running:\ngeom_point(aes(colour = macroarea))\ngeom_point(colour = \"steelblue\")\ngeom_point(aes(colour = \"steelblue\"))\nB. Count or column? Explain why geom_bar() and geom_col() require different data structures.\nC. Bin-width sensitivity. Make three histograms of the same variable. Identify one stable feature and one bin-sensitive feature.\nD. Summary versus observations. Compare a boxplot alone with boxplot + jitter. What becomes visible?\nE. Fixed versus free facets. Which better supports between-group comparison?\nF. Description versus inference. Rewrite “Macroarea causes differences in kinship complexity” as a defensible descriptive statement.\nG. Evidence structure. Explain why a bar chart of sample composition is analytically relevant even though it does not visualize the substantive outcome."
+  },
+  {
+    "objectID": "weeks/week05.html#reading-guide",
+    "href": "weeks/week05.html#reading-guide",
+    "title": "Week 5 — Exploratory Data Analysis and Visualization",
+    "section": "25. Reading Guide",
+    "text": "25. Reading Guide\n\nggplot2: Elegant Graphics for Data Analysis, 3e\nUse the current online third edition as the deep reference for ggplot2’s grammar and mechanics. Prioritize the introduction/grammar, first steps, layers, scales and guides, coordinate systems, and faceting. It is especially useful for understanding why ggplot2 behaves as it does rather than merely copying recipes.\n\n\nHealy, Data Visualization: A Practical Introduction\nUse Healy as the social-science visualization companion. Focus on clear graphical construction, substantive comparison, perception, and communication. It is especially useful for moving from code that produces a plot to a graph that helps a reader see the intended evidence.\n\n\nR for Data Science, 2e\nUse R4DS for the practical EDA workflow and beginner-friendly ggplot2 practice, especially Data visualization, Layers, Exploratory data analysis, and Communication. Its EDA framework emphasizes generating questions, seeking answers through visualization/transformation/modeling, and refining the questions."
+  },
+  {
+    "objectID": "weeks/week05.html#core-takeaways",
+    "href": "weeks/week05.html#core-takeaways",
+    "title": "Week 5 — Exploratory Data Analysis and Visualization",
+    "section": "26. Core Takeaways",
+    "text": "26. Core Takeaways\n\nEDA is a mode of inquiry, not a chart checklist.\nVisualization is statistical reasoning, not decoration.\nChoose graphics from variable structure and analytical purpose.\nA ggplot is built from data, mappings, layers, scales, coordinates, facets, and themes.\nVariable inside aes(); fixed appearance outside aes().\nGeoms may compute statistical transformations before drawing.\nComparison must be designed.\nFaceting asks whether patterns hold under different conditions.\nVisualize the structure of the evidence before substantive interpretation.\nDescription is not inference.\nCross-cultural observations may be spatially and phylogenetically dependent.\nEDA can reveal dependence; it does not automatically correct it.\nA good EDA ends with a better next question."
   },
   {
     "objectID": "weeks/week03.html",
