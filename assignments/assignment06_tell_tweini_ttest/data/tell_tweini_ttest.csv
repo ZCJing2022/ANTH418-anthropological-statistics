@@ -1,0 +1,411 @@
+source_row_id,period,taxon,measure,isotope_value
+1,Early Bronze Age,Triticum dicoccum,delta13c,15.459215231197353
+2,Early Bronze Age,Triticum dicoccum,delta13c,17.22651492293563
+3,Early Bronze Age,Triticum dicoccum,delta13c,16.49805881551146
+4,Early Bronze Age,Triticum dicoccum,delta13c,15.044272095510522
+5,Early Bronze Age,Triticum dicoccum,delta13c,17.53903010944741
+6,Middle Bronze Age,Triticum dicoccum,delta13c,17.710105106372495
+7,Middle Bronze Age,Triticum dicoccum,delta13c,17.18915889218809
+8,Middle Bronze Age,Triticum dicoccum,delta13c,17.814358387506946
+9,Middle Bronze Age,Triticum dicoccum,delta13c,16.460729536159338
+10,Middle Bronze Age,Triticum dicoccum,delta13c,17.141727714430377
+11,Middle Bronze Age,Triticum dicoccum,delta13c,16.32296251929845
+12,Middle Bronze Age,Triticum dicoccum,delta13c,16.780503834051437
+13,Middle Bronze Age,Triticum dicoccum,delta13c,17.343818955793008
+14,Middle Bronze Age,Triticum dicoccum,delta13c,18.322031690894523
+15,Middle Bronze Age,Triticum dicoccum,delta13c,16.680228686219348
+16,Middle Bronze Age,Triticum dicoccum,delta13c,17.304795475284187
+17,Middle Bronze Age,Triticum dicoccum,delta13c,17.40896455293963
+18,Middle Bronze Age,Triticum dicoccum,delta13c,17.82585428323923
+19,Middle Bronze Age,Triticum cf. dicoccum,delta13c,17.39542963862133
+20,Middle Bronze Age,Triticum cf. dicoccum,delta13c,17.6119253510264
+21,Middle Bronze Age,Triticum cf. dicoccum,delta13c,16.676052090162656
+22,Middle Bronze Age,Triticum dicoccum,delta13c,16.446678749662457
+23,Middle Bronze Age,Triticum dicoccum,delta13c,16.65469206786886
+24,Middle Bronze Age,Triticum dicoccum,delta13c,16.550674767500748
+25,Middle Bronze Age,Triticum dicoccum,delta13c,16.342704007822864
+26,Middle Bronze Age,Triticum dicoccum,delta13c,15.615475994855878
+27,Middle Bronze Age,Triticum dicoccum,delta13c,16.758730657300582
+28,Middle Bronze Age,Triticum dicoccum,delta13c,17.800288889465733
+29,Middle Bronze Age,Triticum dicoccum,delta13c,17.5918065639832
+30,Middle Bronze Age,Triticum dicoccum,delta13c,17.17509803643317
+31,Middle Bronze Age,Triticum dicoccum,delta13c,16.342704007822864
+32,Middle Bronze Age,Triticum dicoccum,delta13c,16.13481832602866
+33,Middle Bronze Age,Triticum dicoccum,delta13c,15.511671226205864
+34,Middle Bronze Age,Triticum dicoccum,delta13c,15.719301987351695
+35,Middle Bronze Age,Triticum dicoccum,delta13c,15.823149210203109
+36,Middle Bronze Age,Triticum dicoccum,delta13c,17.070974225355524
+37,Middle Bronze Age,Triticum dicoccum,delta13c,17.404788141099676
+38,Middle Bronze Age,Triticum dicoccum,delta13c,16.69082118173085
+39,Middle Bronze Age,Triticum dicoccum,delta13c,17.63757294328796
+40,Middle Bronze Age,Triticum dicoccum,delta13c,17.921825525222534
+41,Middle Bronze Age,Triticum dicoccum,delta13c,15.659790928633223
+42,Middle Bronze Age,Triticum dicoccum,delta13c,16.86759228935978
+43,Middle Bronze Age,Triticum dicoccum,delta13c,16.19160373234136
+44,Middle Bronze Age,Triticum dicoccum,delta13c,17.813345021254133
+45,Late Bronze Age,Triticum dicoccum,delta13c,16.836959572007537
+46,Late Bronze Age,Triticum dicoccum,delta13c,18.191644542588918
+47,Late Bronze Age,Triticum dicoccum,delta13c,17.670184912487933
+48,Late Bronze Age,Triticum dicoccum,delta13c,16.732902330368546
+49,Late Bronze Age,Triticum dicoccum,delta13c,17.878704656550976
+50,Late Bronze Age,Triticum dicoccum,delta13c,17.357565435047306
+51,Late Bronze Age,Triticum dicoccum,delta13c,16.420858349663774
+52,Late Bronze Age,Triticum dicoccum,delta13c,17.253401619974447
+53,Late Bronze Age,Triticum dicoccum,delta13c,17.357565435047306
+54,Late Bronze Age,Triticum dicoccum,delta13c,17.670184912487933
+55,Late Bronze Age,Triticum dicoccum,delta13c,17.878704656550976
+56,Late Bronze Age,Triticum dicoccum,delta13c,17.253401619974447
+57,Late Bronze Age,Triticum dicoccum,delta13c,15.589676709577779
+58,Late Bronze Age,Triticum dicoccum,delta13c,16.21293541737447
+59,Late Bronze Age,Triticum dicoccum,delta13c,17.670184912487933
+60,Late Bronze Age,Triticum dicoccum,delta13c,15.901210470672337
+61,Late Bronze Age,Triticum dicoccum,delta13c,16.10900584809913
+62,Late Bronze Age,Triticum dicoccum,delta13c,15.382093662901863
+63,Late Bronze Age,Triticum dicoccum,delta13c,16.00509753470517
+64,Late Bronze Age,Triticum dicoccum,delta13c,13.207584034318977
+65,Late Bronze Age,Triticum dicoccum,delta13c,14.584445046274043
+66,Late Bronze Age,Triticum dicoccum,delta13c,16.443447136957484
+67,Late Bronze Age,Triticum dicoccum,delta13c,15.681615312055937
+68,Late Bronze Age,Triticum dicoccum,delta13c,16.38652267169842
+69,Late Bronze Age,Triticum dicoccum,delta13c,17.461715895773523
+70,Late Bronze Age,Triticum dicoccum,delta13c,16.452974262869745
+71,Late Bronze Age,Triticum dicoccum,delta13c,15.603463034871616
+72,Late Bronze Age,Triticum dicoccum,delta13c,15.438931949412025
+73,Late Bronze Age,Triticum dicoccum,delta13c,16.21311112625726
+74,Late Bronze Age,Triticum dicoccum,delta13c,15.920688009248254
+75,Iron Age,Triticum dicoccum,delta13c,15.36882943367702
+76,Iron Age,Triticum dicoccum,delta13c,15.161333938794334
+77,Iron Age,Triticum dicoccum,delta13c,15.265071084477288
+78,Iron Age,Triticum dicoccum,delta13c,14.228652714460772
+79,Iron Age,Triticum dicoccum,delta13c,15.887939460074872
+80,Iron Age,Triticum dicoccum,delta13c,17.761138623176457
+81,Iron Age,Triticum dicoccum,delta13c,18.387074398629167
+82,Iron Age,Triticum dicoccum,delta13c,17.552664317085004
+83,Iron Age,Triticum dicoccum,delta13c,17.865407813376454
+84,Iron Age,Triticum dicoccum,delta13c,16.1035049554498
+85,Iron Age,Triticum dicoccum,delta13c,16.072485798083022
+86,Iron Age,Triticum dicoccum,delta13c,16.20993648818589
+87,Iron Age,Triticum dicoccum,delta13c,16.709665351804247
+88,Iron Age,Triticum dicoccum,delta13c,17.080852359384807
+89,Iron Age,Triticum dicoccum,delta13c,15.987025939225164
+90,Iron Age,Triticum dicoccum,delta13c,16.7148177894871
+91,Iron Age,Triticum dicoccum,delta13c,15.987025939225164
+92,Iron Age,Triticum dicoccum,delta13c,15.77927674928575
+93,Iron Age,Triticum dicoccum,delta13c,16.09093240441086
+94,Iron Age,Triticum dicoccum,delta13c,15.883140723022622
+95,Iron Age,Triticum dicoccum,delta13c,17.027047872031538
+96,Iron Age,Triticum dicoccum,delta13c,18.277888259292297
+97,Iron Age,Triticum dicoccum,delta13c,17.027047872031538
+98,Iron Age,Triticum dicoccum,delta13c,16.298809107815032
+99,Iron Age,Triticum dicoccum,delta13c,16.402779359081823
+100,Iron Age,Triticum dicoccum,delta13c,17.348594827529173
+101,Iron Age,Triticum dicoccum,delta13c,17.348594827529173
+102,Iron Age,Triticum dicoccum,delta13c,18.600215526729528
+103,Iron Age,Triticum dicoccum,delta13c,16.411896001613027
+104,Iron Age,Triticum dicoccum,delta13c,16.411896001613027
+105,Iron Age,Triticum dicoccum,delta13c,17.878299208405487
+106,Iron Age,Triticum dicoccum,delta13c,16.004692832867192
+107,Iron Age,Triticum dicoccum,delta13c,17.148853975094454
+108,Iron Age,Triticum dicoccum,delta13c,17.878299208405487
+109,Iron Age,Triticum dicoccum,delta13c,17.148853975094454
+112,Middle Bronze Age,Triticum aest./durrum,delta13c,16.600543235326818
+113,Middle Bronze Age,Triticum aest./durrum,delta13c,16.72984010181965
+114,Middle Bronze Age,Triticum aest./durrum,delta13c,14.060629329762051
+115,Middle Bronze Age,Triticum aest./durrum,delta13c,15.096664259961342
+116,Middle Bronze Age,Triticum aest./durrum,delta13c,15.096664259961342
+117,Middle Bronze Age,Triticum aest./durrum,delta13c,16.54198878852497
+118,Middle Bronze Age,Triticum aest./durrum,delta13c,14.830500214755308
+119,Middle Bronze Age,Triticum aest./durrum,delta13c,17.80615797795651
+120,Middle Bronze Age,Triticum aest./durrum,delta13c,16.546745695350047
+121,Middle Bronze Age,Triticum aest./durrum,delta13c,17.27081925667252
+122,Late Bronze Age,Triticum aest./durrum,delta13c,16.10900584809913
+123,Late Bronze Age,Triticum aest./durrum,delta13c,16.420858349663774
+124,Late Bronze Age,Triticum aest./durrum,delta13c,15.693500064622254
+125,Late Bronze Age,Triticum aest./durrum,delta13c,16.52485172573164
+126,Late Bronze Age,Triticum aest./durrum,delta13c,16.732902330368546
+127,Late Bronze Age,Triticum aest./durrum,delta13c,17.670184912487933
+128,Late Bronze Age,Triticum aest./durrum,delta13c,16.941038115244623
+129,Late Bronze Age,Triticum aest./durrum,delta13c,17.04513796662146
+130,Late Bronze Age,Triticum aest./durrum,delta13c,17.357565435047306
+131,Late Bronze Age,Triticum aest./durrum,delta13c,15.278333958259172
+132,Late Bronze Age,Triticum aest./durrum,delta13c,16.836959572007537
+133,Late Bronze Age,Triticum aest./durrum,delta13c,15.382093662901863
+134,Late Bronze Age,Triticum aest./durrum,delta13c,16.21293541737447
+135,Late Bronze Age,Triticum aest./durrum,delta13c,16.732902330368546
+136,Late Bronze Age,Triticum aest./durrum,delta13c,16.52485172573164
+137,Late Bronze Age,Triticum aest./durrum,delta13c,17.878704656550976
+138,Late Bronze Age,Triticum aest./durrum,delta13c,16.21293541737447
+139,Late Bronze Age,Triticum aest./durrum,delta13c,16.836959572007537
+140,Late Bronze Age,Triticum aest./durrum,delta13c,16.00509753470517
+141,Late Bronze Age,Triticum aest./durrum,delta13c,17.149259132682406
+142,Late Bronze Age,Triticum aest./durrum,delta13c,17.982996576002662
+143,Late Bronze Age,Triticum aest./durrum,delta13c,16.941038115244623
+144,Late Bronze Age,Triticum aest./durrum,delta13c,15.278333958259172
+145,Iron Age,Triticum aest./durrum,delta13c,16.615585867612104
+146,Iron Age,Triticum aest./durrum,delta13c,17.135971818465205
+147,Iron Age,Triticum aest./durrum,delta13c,15.680231767405745
+148,Iron Age,Triticum aest./durrum,delta13c,15.887939460074872
+149,Iron Age,Triticum aest./durrum,delta13c,18.92279402692567
+150,Iron Age,Triticum aest./durrum,delta13c,16.524485638112186
+151,Iron Age,Triticum aest./durrum,delta13c,15.260275289660527
+152,Iron Age,Triticum aest./durrum,delta13c,16.610783693385685
+153,Iron Age,Triticum aest./durrum,delta13c,17.339469783336813
+154,Iron Age,Triticum aest./durrum,delta13c,16.298809107815032
+155,Iron Age,Triticum aest./durrum,delta13c,16.298809107815032
+156,Iron Age,Triticum aest./durrum,delta13c,16.194860125099886
+157,Iron Age,Triticum aest./durrum,delta13c,15.883140723022622
+158,Iron Age,Triticum aest./durrum,delta13c,17.339469783336813
+159,Iron Age,Triticum aest./durrum,delta13c,16.610783693385685
+160,Iron Age,Triticum aest./durrum,delta13c,16.298809107815032
+161,Iron Age,Triticum aest./durrum,delta13c,16.203974902695865
+162,Iron Age,Triticum aest./durrum,delta13c,16.82799355496087
+163,Iron Age,Triticum aest./durrum,delta13c,15.68454413009407
+164,Iron Age,Triticum aest./durrum,delta13c,18.078332827077553
+167,Early Bronze Age,Vitis vinifera,delta13c,20.465124948982012
+168,Early Bronze Age,Vitis vinifera,delta13c,22.88132213794078
+169,Early Bronze Age,Vitis vinifera,delta13c,18.373343491861448
+170,Early Bronze Age,Vitis vinifera,delta13c,21.82939716736525
+171,Middle Bronze Age,Vitis vinifera,delta13c,21.068370544096958
+172,Middle Bronze Age,Vitis vinifera,delta13c,22.118755148962865
+173,Middle Bronze Age,Vitis vinifera,delta13c,19.70609375378987
+174,Middle Bronze Age,Vitis vinifera,delta13c,21.068370544096958
+175,Middle Bronze Age,Vitis vinifera,delta13c,21.252622609963666
+176,Middle Bronze Age,Vitis vinifera,delta13c,19.78513995936277
+177,Middle Bronze Age,Vitis vinifera,delta13c,21.147662371666257
+178,Middle Bronze Age,Vitis vinifera,delta13c,21.35760442747927
+179,Middle Bronze Age,Vitis vinifera,delta13c,20.832911065568904
+180,Middle Bronze Age,Vitis vinifera,delta13c,20.203990194998983
+181,Middle Bronze Age,Vitis vinifera,delta13c,22.40861092520766
+182,Middle Bronze Age,Vitis vinifera,delta13c,21.777747622875136
+183,Middle Bronze Age,Vitis vinifera,delta13c,20.30875651938052
+184,Middle Bronze Age,Vitis vinifera,delta13c,18.63507316151238
+185,Middle Bronze Age,Vitis vinifera,delta13c,23.567219205933462
+186,Middle Bronze Age,Vitis vinifera,delta13c,21.987948869056005
+187,Middle Bronze Age,Vitis vinifera,delta13c,22.513830553991042
+188,Middle Bronze Age,Vitis vinifera,delta13c,21.67267942190414
+189,Middle Bronze Age,Vitis vinifera,delta13c,20.5183537330987
+190,Middle Bronze Age,Vitis vinifera,delta13c,19.276150262415907
+191,Middle Bronze Age,Vitis vinifera,delta13c,17.18915889218809
+192,Middle Bronze Age,Vitis vinifera,delta13c,19.06706583072688
+193,Middle Bronze Age,Vitis vinifera,delta13c,18.5447298427461
+194,Late Bronze Age,Vitis vinifera,delta13c,22.391668981981706
+195,Late Bronze Age,Vitis vinifera,delta13c,20.815995232664473
+196,Late Bronze Age,Vitis vinifera,delta13c,20.396635479464717
+197,Late Bronze Age,Vitis vinifera,delta13c,21.445681563499157
+198,Late Bronze Age,Vitis vinifera,delta13c,19.454334643285893
+199,Late Bronze Age,Vitis vinifera,delta13c,19.97762013776961
+200,Late Bronze Age,Vitis vinifera,delta13c,20.50144311260387
+201,Late Bronze Age,Vitis vinifera,delta13c,19.872920066927392
+202,Late Bronze Age,Vitis vinifera,delta13c,22.496886867210733
+203,Late Bronze Age,Vitis vinifera,delta13c,20.50144311260387
+204,Late Bronze Age,Vitis vinifera,delta13c,20.58572763972921
+205,Late Bronze Age,Vitis vinifera,delta13c,21.005251312828207
+206,Late Bronze Age,Vitis vinifera,delta13c,21.215142513542123
+207,Late Bronze Age,Vitis vinifera,delta13c,20.376095061056397
+208,Late Bronze Age,Vitis vinifera,delta13c,20.16654858351559
+209,Late Bronze Age,Vitis vinifera,delta13c,19.968611553565722
+210,Late Bronze Age,Vitis vinifera,delta13c,20.597258141545208
+211,Late Bronze Age,Vitis vinifera,delta13c,19.654578585795054
+212,Late Bronze Age,Vitis vinifera,delta13c,20.91187211974316
+213,Late Bronze Age,Vitis vinifera,delta13c,20.597258141545208
+214,Late Bronze Age,Vitis vinifera,delta13c,21.541682341184714
+215,Late Bronze Age,Vitis vinifera,delta13c,20.492429901922613
+216,Late Bronze Age,Vitis vinifera,delta13c,23.224981542768557
+217,Late Bronze Age,Vitis vinifera,delta13c,20.597258141545208
+218,Late Bronze Age,Vitis vinifera,delta13c,20.282838012521015
+219,Iron Age,Vitis vinifera,delta13c,19.327422988394897
+220,Iron Age,Vitis vinifera,delta13c,19.536625221971107
+221,Iron Age,Vitis vinifera,delta13c,19.327422988394897
+222,Iron Age,Vitis vinifera,delta13c,19.43201337235004
+223,Iron Age,Vitis vinifera,delta13c,19.536625221971107
+224,Iron Age,Vitis vinifera,delta13c,18.90927597714942
+225,Iron Age,Vitis vinifera,delta13c,17.969698370432713
+226,Iron Age,Vitis vinifera,delta13c,18.59589078477186
+227,Iron Age,Vitis vinifera,delta13c,18.17834361139039
+228,Iron Age,Vitis vinifera,delta13c,19.536625221971107
+229,Iron Age,Vitis vinifera,delta13c,20.898535653427
+230,Iron Age,Vitis vinifera,delta13c,20.898535653427
+231,Iron Age,Vitis vinifera,delta13c,21.213339547696684
+234,Early Bronze Age,Olea europaea,delta13c,17.33066532018788
+235,Early Bronze Age,Olea europaea,delta13c,17.01827809043521
+236,Early Bronze Age,Olea europaea,delta13c,16.810126496970188
+237,Early Bronze Age,Olea europaea,delta13c,16.706082648522234
+238,Early Bronze Age,Olea europaea,delta13c,15.978371467575633
+239,Early Bronze Age,Olea europaea,delta13c,16.810126496970188
+240,Middle Bronze Age,Olea europaea,delta13c,16.680228686219348
+241,Middle Bronze Age,Olea europaea,delta13c,16.680228686219348
+242,Middle Bronze Age,Olea europaea,delta13c,15.329628028853055
+243,Middle Bronze Age,Olea europaea,delta13c,17.200647726487077
+244,Middle Bronze Age,Olea europaea,delta13c,16.368232789569557
+245,Middle Bronze Age,Olea europaea,delta13c,15.407887674894537
+246,Middle Bronze Age,Olea europaea,delta13c,14.88928795085502
+247,Middle Bronze Age,Olea europaea,delta13c,18.113172602452696
+248,Middle Bronze Age,Olea europaea,delta13c,15.096664259961342
+249,Middle Bronze Age,Olea europaea,delta13c,16.550674767500748
+250,Middle Bronze Age,Olea europaea,delta13c,17.070974225355524
+251,Middle Bronze Age,Olea europaea,delta13c,14.992965512986707
+252,Middle Bronze Age,Olea europaea,delta13c,15.92701766992255
+253,Middle Bronze Age,Olea europaea,delta13c,18.948470408893083
+254,Middle Bronze Age,Olea europaea,delta13c,17.17509803643317
+255,Middle Bronze Age,Olea europaea,delta13c,16.96687172950343
+256,Middle Bronze Age,Olea europaea,delta13c,15.615475994855878
+257,Middle Bronze Age,Olea europaea,delta13c,17.696037049450023
+258,Middle Bronze Age,Olea europaea,delta13c,19.680481132819054
+259,Middle Bronze Age,Olea europaea,delta13c,15.200384198272749
+260,Middle Bronze Age,Olea europaea,delta13c,15.92701766992255
+261,Middle Bronze Age,Olea europaea,delta13c,16.446678749662457
+262,Middle Bronze Age,Olea europaea,delta13c,16.758730657300582
+263,Middle Bronze Age,Olea europaea,delta13c,18.217509926323853
+264,Middle Bronze Age,Olea europaea,delta13c,17.5918065639832
+265,Middle Bronze Age,Olea europaea,delta13c,14.88928795085502
+266,Middle Bronze Age,Olea europaea,delta13c,18.008856659399743
+267,Middle Bronze Age,Olea europaea,delta13c,18.113172602452696
+268,Middle Bronze Age,Olea europaea,delta13c,18.008856659399743
+269,Late Bronze Age,Olea europaea,delta13c,15.993618914192803
+270,Late Bronze Age,Olea europaea,delta13c,16.721415487264505
+271,Late Bronze Age,Olea europaea,delta13c,16.721415487264505
+272,Late Bronze Age,Olea europaea,delta13c,16.825471553285777
+273,Late Bronze Age,Olea europaea,delta13c,15.682024964475204
+274,Late Bronze Age,Olea europaea,delta13c,18.284496100195756
+275,Late Bronze Age,Olea europaea,delta13c,16.0140711122928
+276,Late Bronze Age,Olea europaea,delta13c,16.5338298939011
+277,Late Bronze Age,Olea europaea,delta13c,13.836875886488636
+278,Late Bronze Age,Olea europaea,delta13c,14.561570117125674
+279,Late Bronze Age,Olea europaea,delta13c,14.457978946078683
+280,Late Bronze Age,Olea europaea,delta13c,16.941038115244623
+281,Late Bronze Age,Olea europaea,delta13c,16.62886638378869
+282,Late Bronze Age,Olea europaea,delta13c,15.901210470672337
+283,Late Bronze Age,Olea europaea,delta13c,15.693500064622254
+284,Late Bronze Age,Olea europaea,delta13c,18.191644542588918
+285,Late Bronze Age,Olea europaea,delta13c,19.02709240937121
+286,Late Bronze Age,Olea europaea,delta13c,17.982996576002662
+287,Late Bronze Age,Olea europaea,delta13c,18.609197170580835
+288,Late Bronze Age,Olea europaea,delta13c,14.656220782700846
+289,Late Bronze Age,Olea europaea,delta13c,16.31688624905415
+290,Late Bronze Age,Olea europaea,delta13c,16.52485172573164
+291,Late Bronze Age,Olea europaea,delta13c,17.77443410423467
+292,Late Bronze Age,Olea europaea,delta13c,16.941038115244623
+293,Late Bronze Age,Olea europaea,delta13c,16.52485172573164
+294,Late Bronze Age,Olea europaea,delta13c,19.654578585795054
+295,Late Bronze Age,Olea europaea,delta13c,18.087309869158243
+296,Late Bronze Age,Olea europaea,delta13c,16.31688624905415
+297,Iron Age,Olea europaea,delta13c,18.804792822484465
+298,Iron Age,Olea europaea,delta13c,17.448459188070153
+299,Iron Age,Olea europaea,delta13c,16.303609808364065
+300,Iron Age,Olea europaea,delta13c,18.491471888546908
+301,Iron Age,Olea europaea,delta13c,17.344275399664784
+302,Iron Age,Olea europaea,delta13c,15.472608992895092
+303,Iron Age,Olea europaea,delta13c,15.784074995714738
+304,Iron Age,Olea europaea,delta13c,15.472608992895092
+305,Iron Age,Olea europaea,delta13c,16.407580550756144
+306,Iron Age,Olea europaea,delta13c,15.784074995714738
+307,Iron Age,Olea europaea,delta13c,16.71962045514038
+308,Iron Age,Olea europaea,delta13c,17.135971818465205
+309,Iron Age,Olea europaea,delta13c,16.09573212301069
+310,Iron Age,Olea europaea,delta13c,17.344275399664784
+311,Iron Age,Olea europaea,delta13c,16.511572568328532
+312,Iron Age,Olea europaea,delta13c,15.680231767405745
+313,Iron Age,Olea europaea,delta13c,17.240112945313886
+314,Iron Age,Olea europaea,delta13c,17.344275399664784
+315,Iron Age,Olea europaea,delta13c,15.784074995714738
+316,Iron Age,Olea europaea,delta13c,15.765420360089562
+317,Iron Age,Olea europaea,delta13c,17.117292355572843
+318,Iron Age,Olea europaea,delta13c,17.221431569894232
+319,Iron Age,Olea europaea,delta13c,17.117292355572843
+320,Iron Age,Olea europaea,delta13c,17.117292355572843
+323,Middle Bronze Age,Vicia ervilia,delta13c,16.784269888921603
+324,Middle Bronze Age,Vicia ervilia,delta13c,16.160341886044353
+325,Middle Bronze Age,Vicia ervilia,delta13c,16.160341886044353
+326,Middle Bronze Age,Vicia ervilia,delta13c,16.784269888921603
+327,Middle Bronze Age,Vicia ervilia,delta13c,16.368232789569557
+328,Middle Bronze Age,Vicia ervilia,delta13c,20.124868523039574
+329,Middle Bronze Age,Vicia ervilia,delta13c,16.47221014307594
+330,Middle Bronze Age,Vicia ervilia,delta13c,18.426248742819787
+331,Middle Bronze Age,Vicia ervilia,delta13c,18.948470408893083
+332,Middle Bronze Age,Vicia ervilia,delta13c,18.113172602452696
+333,Middle Bronze Age,Vicia ervilia,delta13c,16.86279054233238
+334,Middle Bronze Age,Vicia ervilia,delta13c,19.471227912258033
+335,Middle Bronze Age,Vicia ervilia,delta13c,17.696037049450023
+336,Middle Bronze Age,Vicia ervilia,delta13c,17.48759742650468
+337,Middle Bronze Age,Vicia ervilia,delta13c,19.157509063594414
+338,Middle Bronze Age,Vicia ervilia,delta13c,18.113172602452696
+339,Middle Bronze Age,Vicia ervilia,delta13c,18.63507316151238
+340,Middle Bronze Age,Vicia ervilia,delta13c,16.238750535453526
+341,Late Bronze Age,Vicia ervilia,delta13c,15.485874577839969
+342,Late Bronze Age,Vicia ervilia,delta13c,17.253401619974447
+343,Late Bronze Age,Vicia ervilia,delta13c,15.174595457410256
+344,Late Bronze Age,Vicia ervilia,delta13c,16.62886638378869
+345,Late Bronze Age,Vicia ervilia,delta13c,17.253401619974447
+346,Late Bronze Age,Vicia ervilia,delta13c,16.52485172573164
+347,Late Bronze Age,Vicia ervilia,delta13c,19.236168639617606
+348,Late Bronze Age,Vicia ervilia,delta13c,17.77443410423467
+349,Late Bronze Age,Vicia ervilia,delta13c,17.04513796662146
+350,Late Bronze Age,Vicia ervilia,delta13c,19.131619801426666
+351,Late Bronze Age,Vicia ervilia,delta13c,19.549943897025972
+352,Iron Age,Vicia ervilia,delta13c,17.552664317085004
+353,Iron Age,Vicia ervilia,delta13c,18.387074398629167
+354,Iron Age,Vicia ervilia,delta13c,19.850589630933
+355,Iron Age,Vicia ervilia,delta13c,17.761138623176457
+358,Early Bronze Age,Lolium cf. multiflorum,delta13c,18.582135656515486
+359,Early Bronze Age,Lolium cf. multiflorum,delta13c,17.122385848533913
+360,Early Bronze Age,Lolium cf. multiflorum,delta13c,17.956015850561208
+361,Early Bronze Age,Lolium cf. multiflorum,delta13c,18.999976937076884
+362,Early Bronze Age,Lolium cf. multiflorum,delta13c,18.373343491861448
+363,Middle Bronze Age,Lolium cf. multiflorum,delta13c,17.09652129999827
+364,Middle Bronze Age,Lolium cf. multiflorum,delta13c,17.200647726487077
+365,Middle Bronze Age,Lolium cf. multiflorum,delta13c,18.55623398779619
+366,Middle Bronze Age,Lolium cf. multiflorum,delta13c,18.869574844651098
+367,Middle Bronze Age,Lolium cf. multiflorum,delta13c,16.992416189270422
+368,Middle Bronze Age,Lolium cf. multiflorum,delta13c,18.217509926323853
+369,Middle Bronze Age,Lolium cf. multiflorum,delta13c,17.904562090593647
+370,Middle Bronze Age,Lolium cf. multiflorum,delta13c,18.321868637587304
+371,Middle Bronze Age,Lolium cf. multiflorum,delta13c,17.48759742650468
+372,Middle Bronze Age,Lolium cf. multiflorum,delta13c,18.008856659399743
+373,Late Bronze Age,Lolium cf. multiflorum,delta13c,17.357565435047306
+374,Late Bronze Age,Lolium cf. multiflorum,delta13c,15.797344649483017
+375,Late Bronze Age,Lolium cf. multiflorum,delta13c,16.21293541737447
+376,Late Bronze Age,Lolium cf. multiflorum,delta13c,16.420858349663774
+377,Late Bronze Age,Lolium cf. multiflorum,delta13c,17.878704656550976
+378,Late Bronze Age,Lolium cf. multiflorum,delta13c,17.565957074747633
+379,Late Bronze Age,Lolium cf. multiflorum,delta13c,17.461750584453334
+380,Late Bronze Age,Lolium cf. multiflorum,delta13c,14.4490191121135
+381,Late Bronze Age,Lolium cf. multiflorum,delta13c,18.191644542588918
+382,Late Bronze Age,Lolium cf. multiflorum,delta13c,16.420858349663774
+383,Iron Age,Lolium cf. multiflorum,delta13c,17.969698370432713
+384,Iron Age,Lolium cf. multiflorum,delta13c,15.991825167001018
+385,Iron Age,Lolium cf. multiflorum,delta13c,17.0318520125691
+386,Iron Age,Lolium cf. multiflorum,delta13c,15.991825167001018
+387,Iron Age,Lolium cf. multiflorum,delta13c,17.761138623176457
+390,Early Bronze Age,Hordeum vulgare,delta13c,18.052999090587786
+391,Early Bronze Age,Hordeum vulgare,delta13c,15.992008235123876
+392,Early Bronze Age,Hordeum vulgare,delta13c,16.661167985601175
+393,Early Bronze Age,Hordeum vulgare,delta13c,17.43484048485984
+394,Middle Bronze Age,Hordeum vulgare,delta13c,17.099860192191024
+395,Middle Bronze Age,Hordeum vulgare,delta13c,17.08386999466535
+396,Middle Bronze Age,Hordeum vulgare,delta13c,17.226928227555568
+397,Middle Bronze Age,Hordeum vulgare,delta13c,16.790585522637652
+398,Middle Bronze Age,Hordeum vulgare,delta13c,16.906713677256796
+399,Middle Bronze Age,Hordeum vulgare,delta13c,17.455181581267176
+400,Middle Bronze Age,Hordeum vulgare,delta13c,15.615499662722357
+401,Middle Bronze Age,Hordeum vulgare,delta13c,18.199602501775598
+402,Middle Bronze Age,Hordeum vulgare,delta13c,16.26163696604423
+403,Middle Bronze Age,Hordeum vulgare,delta13c,17.60171016036278
+404,Middle Bronze Age,Hordeum vulgare,delta13c,16.876816920809787
+405,Middle Bronze Age,Hordeum vulgare,delta13c,16.869594334427987
+406,Middle Bronze Age,Hordeum vulgare,delta13c,18.15908892209595
+407,Middle Bronze Age,Hordeum vulgare,delta13c,16.297518280304395
+408,Middle Bronze Age,Hordeum vulgare,delta13c,17.521763715510065
+409,Late Bronze Age,Hordeum vulgare,delta13c,17.17045162457929
+410,Late Bronze Age,Hordeum vulgare,delta13c,17.181088460196385
+411,Late Bronze Age,Hordeum vulgare,delta13c,16.714838498012444
+412,Late Bronze Age,Hordeum vulgare,delta13c,16.234083738329527
+413,Late Bronze Age,Hordeum vulgare,delta13c,17.88006813552227
+414,Late Bronze Age,Hordeum vulgare,delta13c,16.602215904287977
+415,Late Bronze Age,Hordeum vulgare,delta13c,17.44495355800984
+416,Late Bronze Age,Hordeum vulgare,delta13c,18.42855758298255
+417,Iron Age,Hordeum vulgare,delta13c,19.49562758140575
+418,Iron Age,Hordeum vulgare,delta13c,16.745462803012455
+419,Iron Age,Hordeum vulgare,delta13c,16.808384888516883
+420,Iron Age,Hordeum vulgare,delta13c,16.258587476804294
+421,Iron Age,Hordeum vulgare,delta13c,18.059307110250618
+422,Iron Age,Hordeum vulgare,delta13c,17.802978316453842

@@ -1,0 +1,223 @@
+---
+title: "ANTH418 Assignment 6: Tell Tweini: Comparing Two Groups with t-tests"
+author: "Your Name"
+format:
+  html:
+    toc: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+## Research question
+
+How large is the difference in wild ryegrass (*Lolium cf. multiflorum*) Δ13C between the Middle Bronze Age and Late Bronze Age at Tell Tweini, how uncertain is that difference, and what does a Welch two-sample t-test contribute to its interpretation?
+
+## Case study
+
+Fuller, Benjamin T., Simone Riehl, Veerle Linseele, Elena Marinova, Bea De Cupere, Joachim Bretschneider, Michael P. Richards, and Wim Van Neer. 2024. Agropastoral and Dietary Practices of the Northern Levant Facing Late Holocene Climate and Environmental Change: Isotopic Analysis of Plants, Animals and Humans from Bronze to Iron Age Tell Tweini. *PLOS ONE* 19(6): e0301775.
+
+This assignment uses a focused two-period comparison from the published plant dataset. It is a teaching analysis, not a reproduction of the full statistical analysis in Fuller et al. (2024).
+
+```{r}
+library(tidyverse)
+
+data_path <- if (file.exists("data/tell_tweini_ttest.csv")) {
+  "data/tell_tweini_ttest.csv"
+} else {
+  "assignments/assignment06_tell_tweini_ttest/data/tell_tweini_ttest.csv"
+}
+
+dat <- read_csv(
+  data_path,
+  show_col_types = FALSE
+)
+
+d <- dat |>
+  filter(
+    taxon == "Lolium cf. multiflorum",
+    period %in% c("Middle Bronze Age", "Late Bronze Age")
+  )
+
+d |> count(period)
+glimpse(d)
+```
+
+The teaching outcome is **Δ13C** (`measure == "delta13c"`), stored in `isotope_value`. It is not raw measured plant δ13C.
+
+Throughout the assignment, define the effect as:
+
+**Middle Bronze Age − Late Bronze Age**
+
+A positive difference therefore means that mean Δ13C is higher in the Middle Bronze Age.
+
+## 1. Identify the comparison
+
+Before running a test, state:
+
+1. the observational unit;
+2. the numerical outcome variable;
+3. the categorical grouping variable;
+4. why these are **independent groups**, rather than paired observations;
+5. the direction in which the mean difference is defined.
+
+Do not calculate a test statistic yet.
+
+## 2. Visualize and describe the groups
+
+Create a graphic that shows the individual observations and makes the two period distributions directly comparable.
+
+Report for each period:
+
+- `n`;
+- mean Δ13C;
+- SD;
+- median.
+
+Then calculate the observed raw mean difference:
+
+**Middle Bronze Age − Late Bronze Age**
+
+```{r}
+# Your code
+```
+
+In a few sentences, describe the distributions and the observed difference. Do not make an inferential claim from the plot alone.
+
+## 3. Consider assumptions and robustness
+
+A two-sample t-test depends on the research design as well as the numerical distributions.
+
+Use the data and visualization to consider:
+
+- whether the observations can reasonably be treated as independent for this teaching comparison;
+- distribution shape and possible unusual observations within each period;
+- whether strong skew or extreme observations make a mean-based comparison questionable;
+- whether the group spreads appear similar or different.
+
+For comparison with the analytical workflow reported by Fuller et al. (2024), also calculate **Shapiro–Wilk diagnostics within each period**. Fuller et al. also assessed homogeneity of variance, but you do not need to use a preliminary variance test to choose between Student's and Welch's t-tests.
+
+```{r}
+# Your code
+```
+
+Do **not** use diagnostic p-values as a mechanical pass/fail gate. With `n = 10` per group, formal normality diagnostics have limited power, and a normality test cannot establish independence.
+
+Based on the design and diagnostics, briefly explain why a t-based comparison is or is not reasonable.
+
+## 4. Welch two-sample t-test
+
+Use **Welch's independent-samples t-test as the primary analysis**.
+
+In R, `t.test()` uses Welch's test by default for two independent groups.
+
+Run the test so that your interpretation is consistent with the defined effect:
+
+**Middle Bronze Age − Late Bronze Age**
+
+```{r}
+# Your code
+```
+
+Report and interpret:
+
+- the two group means;
+- the estimated raw mean difference;
+- the 95% confidence interval for the difference;
+- the t statistic;
+- the Welch–Satterthwaite degrees of freedom;
+- the two-sided p-value.
+
+Explain what the t statistic represents conceptually: the observed mean difference relative to its estimated standard error.
+
+Do not reduce the result to “significant” or “not significant.”
+
+## 5. Effect magnitude
+
+Calculate **Cohen's d** using the pooled within-group standard deviation as a standardized descriptive effect size.
+
+```{r}
+# Your code
+```
+
+Report:
+
+1. the raw mean difference in Δ13C units;
+2. Cohen's `d`.
+
+Interpret `d` as the observed difference expressed in pooled within-group standard-deviation units. Do not rely only on conventional labels such as “small,” “medium,” or “large.” Explain why the raw Δ13C difference remains important for archaeological interpretation.
+
+## 6. Compare Welch with the publication-aligned pooled t-test
+
+Fuller et al. (2024) used an independent-samples t-test after assessing distributional and variance assumptions. For comparison, run the equal-variance Student two-sample t-test:
+
+```{r}
+# Your code
+```
+
+Compare it with the Welch result:
+
+- Does the estimated mean difference change?
+- How do the confidence interval, degrees of freedom, and p-value compare?
+- Does the substantive conclusion change?
+- Why is Welch still a useful default when population variances cannot safely be assumed equal?
+
+The purpose is to understand the relationship between the two procedures, not to choose a test by first asking whether a variance test is statistically significant.
+
+## 7. Parametric and rank-based alternatives
+
+Suppose the distributions instead showed severe skew, influential extreme observations, or other features that made a mean-based t-test difficult to justify.
+
+In a short paragraph:
+
+1. name a commonly used rank-based alternative for two independent groups;
+2. explain why it should **not** simply be described as “the t-test for non-normal data”;
+3. explain how changing the statistical procedure can also change the quantity or feature of the distributions being compared.
+
+You do **not** need to run the alternative test for this assignment.
+
+## 8. Archaeological interpretation
+
+Return to Fuller et al. (2024).
+
+Integrate:
+
+- the observed Middle Bronze Age − Late Bronze Age Δ13C difference;
+- the uncertainty expressed by the 95% confidence interval;
+- the Welch t-test evidence;
+- the standardized effect size;
+- the archaeological meaning of Δ13C as used in the case study.
+
+Distinguish carefully between:
+
+1. **what was measured** — a period difference in wild ryegrass Δ13C;
+2. **what the isotope pattern may indicate** — differences related to plant water status and growing conditions;
+3. **possible archaeological explanations** — including crop-field association, agricultural water availability, environmental change, or other processes;
+4. **what this comparison cannot establish** — a unique climatic or agricultural cause.
+
+The t-test evaluates a statistical contrast between the two period samples. It does not identify the mechanism that produced that contrast.
+
+## Final interpretation
+
+Answer in complete sentences:
+
+1. What is the observational unit, and why is this an independent-groups comparison?
+2. What is the estimated Middle Bronze Age − Late Bronze Age mean Δ13C difference, and what does its sign mean?
+3. What range of mean differences is represented by the 95% Welch confidence interval?
+4. What do the Welch t statistic, degrees of freedom, and p-value add to the description of the observed difference?
+5. What does Cohen's `d` add, and why should the raw Δ13C difference still be reported?
+6. Does the publication-aligned equal-variance t-test materially change the conclusion?
+7. What climatic or agricultural claim does this analysis **not** establish by itself?
+
+## Scope
+
+For Assignment 6, you are **not** required to:
+
+- repeat the bootstrap or permutation analyses from Assignment 5;
+- conduct a paired-samples t-test;
+- run a Mann–Whitney/Wilcoxon rank-sum test;
+- conduct ANOVA or regression;
+- identify a unique causal mechanism for the isotope difference.
+
+The statistical focus is the logic and interpretation of an **independent-groups Welch t-test**, its confidence interval and effect magnitude, and its relationship to the publication-aligned pooled two-sample t-test.

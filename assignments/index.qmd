@@ -78,11 +78,11 @@ Students may browse the materials online or download the complete assignment pac
 
 ## Assignment 6 — Comparing Groups at Tell Tweini
 
-**Statistical method:** Independent-samples t-test and effect size
+**Statistical method:** Welch two-sample t-test, confidence interval, and effect size
 
 **Case study:** Middle Bronze Age and Late Bronze Age plant-isotope comparison at Tell Tweini
 
-[View Assignment 6 materials](assignment06_tell_tweini_ttest/)
+[Open Assignment 6](assignment06_tell_tweini_ttest/assignment06_tell_tweini_ttest.qmd)
 
 [Download complete Assignment 6 package](../downloads/assignments/ANTH418_assignment06_tell_tweini_ttest.zip)
 
