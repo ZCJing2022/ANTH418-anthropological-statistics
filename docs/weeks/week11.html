@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Week 11 — Chi-Square and Tests of Proportions – ANTH418: Anthropological Statistics</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-7ff37d7dbb752a0b62676bb39137b3a2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">ANTH418: Anthropological Statistics</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../syllabus.html"> 
+<span class="menu-text">Syllabus</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../lecture-notes/index.html"> 
+<span class="menu-text">Lecture Notes</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-study-guides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Study Guides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-study-guides">    
+        <li>
+    <a class="dropdown-item" href="../weeks/week02.html">
+ <span class="dropdown-text">Week 2 — R, RStudio &amp; Quarto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../weeks/week03.html">
+ <span class="dropdown-text">Week 3 — Measurement &amp; Research Design</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../weeks/week04.html">
+ <span class="dropdown-text">Week 4 — Central Tendency &amp; Dispersion</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../weeks/week05.html">
+ <span class="dropdown-text">Week 5 — EDA &amp; Visualization</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../weeks/week06.html">
+ <span class="dropdown-text">Week 6 — Transformation &amp; Missing Data</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../weeks/week07.html">
+ <span class="dropdown-text">Week 7 — Probability &amp; Sampling</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../weeks/week08.html">
+ <span class="dropdown-text">Week 8 — Confidence Intervals &amp; Hypothesis Testing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../weeks/week09.html">
+ <span class="dropdown-text">Week 9 — Comparing Two Groups: t-tests</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../weeks/week11.html">
+ <span class="dropdown-text">Week 11 — Chi-Square &amp; Tests of Proportions</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../assignments/index.html"> 
+<span class="menu-text">Assignments</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../readings/index.html"> 
+<span class="menu-text">Readings</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../resources/index.html"> 
+<span class="menu-text">Resources</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#required-readings" id="toc-required-readings" class="nav-link" data-scroll-target="#required-readings">Required Readings</a></li>
+  <li><a href="#optional-readings" id="toc-optional-readings" class="nav-link" data-scroll-target="#optional-readings">Optional Readings</a></li>
+  <li><a href="#movement-i-categorical-evidence-counts-proportions-uncertainty" id="toc-movement-i-categorical-evidence-counts-proportions-uncertainty" class="nav-link" data-scroll-target="#movement-i-categorical-evidence-counts-proportions-uncertainty">Movement I — Categorical Evidence → Counts → Proportions → Uncertainty</a>
+  <ul class="collapse">
+  <li><a href="#categorical-archaeological-evidence" id="toc-categorical-archaeological-evidence" class="nav-link" data-scroll-target="#categorical-archaeological-evidence">1. Categorical archaeological evidence</a>
+  <ul class="collapse">
+  <li><a href="#unit-of-analysis" id="toc-unit-of-analysis" class="nav-link" data-scroll-target="#unit-of-analysis">Unit of analysis</a></li>
+  </ul></li>
+  <li><a href="#counts-and-proportions" id="toc-counts-and-proportions" class="nav-link" data-scroll-target="#counts-and-proportions">2. Counts and proportions</a>
+  <ul class="collapse">
+  <li><a href="#the-denominator-is-part-of-the-claim" id="toc-the-denominator-is-part-of-the-claim" class="nav-link" data-scroll-target="#the-denominator-is-part-of-the-claim">The denominator is part of the claim</a></li>
+  </ul></li>
+  <li><a href="#sampling-variability-and-uncertainty-in-proportions" id="toc-sampling-variability-and-uncertainty-in-proportions" class="nav-link" data-scroll-target="#sampling-variability-and-uncertainty-in-proportions">3. Sampling variability and uncertainty in proportions</a></li>
+  <li><a href="#comparing-proportions" id="toc-comparing-proportions" class="nav-link" data-scroll-target="#comparing-proportions">4. Comparing proportions</a></li>
+  </ul></li>
+  <li><a href="#movement-ii-contingency-tables-expected-frequencies-chi-square" id="toc-movement-ii-contingency-tables-expected-frequencies-chi-square" class="nav-link" data-scroll-target="#movement-ii-contingency-tables-expected-frequencies-chi-square">Movement II — Contingency Tables → Expected Frequencies → Chi-Square</a>
+  <ul class="collapse">
+  <li><a href="#contingency-tables" id="toc-contingency-tables" class="nav-link" data-scroll-target="#contingency-tables">5. Contingency tables</a></li>
+  <li><a href="#observed-and-expected-frequencies" id="toc-observed-and-expected-frequencies" class="nav-link" data-scroll-target="#observed-and-expected-frequencies">6. Observed and expected frequencies</a>
+  <ul class="collapse">
+  <li><a href="#goodness-of-fit-expectations" id="toc-goodness-of-fit-expectations" class="nav-link" data-scroll-target="#goodness-of-fit-expectations">Goodness-of-fit expectations</a></li>
+  <li><a href="#expected-counts-under-independence" id="toc-expected-counts-under-independence" class="nav-link" data-scroll-target="#expected-counts-under-independence">Expected counts under independence</a></li>
+  </ul></li>
+  <li><a href="#chi-square-logic" id="toc-chi-square-logic" class="nav-link" data-scroll-target="#chi-square-logic">7. Chi-square logic</a>
+  <ul class="collapse">
+  <li><a href="#degrees-of-freedom" id="toc-degrees-of-freedom" class="nav-link" data-scroll-target="#degrees-of-freedom">Degrees of freedom</a></li>
+  <li><a href="#chi-square-distribution-and-p-value" id="toc-chi-square-distribution-and-p-value" class="nav-link" data-scroll-target="#chi-square-distribution-and-p-value">Chi-square distribution and p-value</a></li>
+  </ul></li>
+  <li><a href="#goodness-of-fit-versus-independence" id="toc-goodness-of-fit-versus-independence" class="nav-link" data-scroll-target="#goodness-of-fit-versus-independence">8. Goodness-of-fit versus independence</a></li>
+  </ul></li>
+  <li><a href="#movement-iii-assumptions-residuals-effect-size-alternatives-visualization" id="toc-movement-iii-assumptions-residuals-effect-size-alternatives-visualization" class="nav-link" data-scroll-target="#movement-iii-assumptions-residuals-effect-size-alternatives-visualization">Movement III — Assumptions → Residuals → Effect Size → Alternatives → Visualization</a>
+  <ul class="collapse">
+  <li><a href="#assumptions-and-robustness" id="toc-assumptions-and-robustness" class="nav-link" data-scroll-target="#assumptions-and-robustness">9. Assumptions and robustness</a>
+  <ul class="collapse">
+  <li><a href="#independence" id="toc-independence" class="nav-link" data-scroll-target="#independence">Independence</a></li>
+  <li><a href="#adequate-expected-counts-and-sparse-cells" id="toc-adequate-expected-counts-and-sparse-cells" class="nav-link" data-scroll-target="#adequate-expected-counts-and-sparse-cells">Adequate expected counts and sparse cells</a></li>
+  <li><a href="#sampling-and-formation-processes" id="toc-sampling-and-formation-processes" class="nav-link" data-scroll-target="#sampling-and-formation-processes">Sampling and formation processes</a></li>
+  </ul></li>
+  <li><a href="#residuals-locating-the-pattern" id="toc-residuals-locating-the-pattern" class="nav-link" data-scroll-target="#residuals-locating-the-pattern">10. Residuals: locating the pattern</a></li>
+  <li><a href="#effect-size-phi-and-cramérs-v" id="toc-effect-size-phi-and-cramérs-v" class="nav-link" data-scroll-target="#effect-size-phi-and-cramérs-v">11. Effect size: Phi and Cramér’s V</a></li>
+  <li><a href="#alternatives-for-sparse-tables" id="toc-alternatives-for-sparse-tables" class="nav-link" data-scroll-target="#alternatives-for-sparse-tables">12. Alternatives for sparse tables</a>
+  <ul class="collapse">
+  <li><a href="#fishers-exact-test" id="toc-fishers-exact-test" class="nav-link" data-scroll-target="#fishers-exact-test">Fisher’s exact test</a></li>
+  <li><a href="#likelihood-ratio-or-g-test" id="toc-likelihood-ratio-or-g-test" class="nav-link" data-scroll-target="#likelihood-ratio-or-g-test">Likelihood-ratio or G-test</a></li>
+  </ul></li>
+  <li><a href="#visualization-of-categorical-relationships" id="toc-visualization-of-categorical-relationships" class="nav-link" data-scroll-target="#visualization-of-categorical-relationships">13. Visualization of categorical relationships</a></li>
+  </ul></li>
+  <li><a href="#movement-iv-archaeological-interpretation-lithic-raw-materials-in-highland-lesotho" id="toc-movement-iv-archaeological-interpretation-lithic-raw-materials-in-highland-lesotho" class="nav-link" data-scroll-target="#movement-iv-archaeological-interpretation-lithic-raw-materials-in-highland-lesotho">Movement IV — Archaeological Interpretation: Lithic Raw Materials in Highland Lesotho</a>
+  <ul class="collapse">
+  <li><a href="#association-is-not-causation" id="toc-association-is-not-causation" class="nav-link" data-scroll-target="#association-is-not-causation">14. Association is not causation</a></li>
+  </ul></li>
+  <li><a href="#case-study-lithic-raw-materials-in-highland-lesotho" id="toc-case-study-lithic-raw-materials-in-highland-lesotho" class="nav-link" data-scroll-target="#case-study-lithic-raw-materials-in-highland-lesotho">Case Study — Lithic Raw Materials in Highland Lesotho</a>
+  <ul class="collapse">
+  <li><a href="#why-sehonghong-is-an-ideal-week-11-case" id="toc-why-sehonghong-is-an-ideal-week-11-case" class="nav-link" data-scroll-target="#why-sehonghong-is-an-ideal-week-11-case">15. Why Sehonghong is an ideal Week 11 case</a></li>
+  <li><a href="#archaeological-and-landscape-samples" id="toc-archaeological-and-landscape-samples" class="nav-link" data-scroll-target="#archaeological-and-landscape-samples">16. Archaeological and landscape samples</a></li>
+  <li><a href="#raw-material-as-categorical-evidence" id="toc-raw-material-as-categorical-evidence" class="nav-link" data-scroll-target="#raw-material-as-categorical-evidence">17. Raw material as categorical evidence</a></li>
+  <li><a href="#from-availability-to-an-expected-pattern" id="toc-from-availability-to-an-expected-pattern" class="nav-link" data-scroll-target="#from-availability-to-an-expected-pattern">18. From availability to an expected pattern</a></li>
+  <li><a href="#formal-comparison-chi-square-and-fishers-exact-test" id="toc-formal-comparison-chi-square-and-fishers-exact-test" class="nav-link" data-scroll-target="#formal-comparison-chi-square-and-fishers-exact-test">19. Formal comparison: chi-square and Fisher’s exact test</a></li>
+  <li><a href="#cortex-as-an-independent-categorical-line-of-evidence" id="toc-cortex-as-an-independent-categorical-line-of-evidence" class="nav-link" data-scroll-target="#cortex-as-an-independent-categorical-line-of-evidence">20. Cortex as an independent categorical line of evidence</a></li>
+  <li><a href="#technological-ratios-ask-a-different-question" id="toc-technological-ratios-ask-a-different-question" class="nav-link" data-scroll-target="#technological-ratios-ask-a-different-question">21. Technological ratios ask a different question</a></li>
+  <li><a href="#climate-mobility-and-the-limits-of-inference" id="toc-climate-mobility-and-the-limits-of-inference" class="nav-link" data-scroll-target="#climate-mobility-and-the-limits-of-inference">22. Climate, mobility, and the limits of inference</a></li>
+  <li><a href="#assignment-7-connection" id="toc-assignment-7-connection" class="nav-link" data-scroll-target="#assignment-7-connection">23. Assignment 7 connection</a></li>
+  </ul></li>
+  <li><a href="#r-workflow-for-week-11" id="toc-r-workflow-for-week-11" class="nav-link" data-scroll-target="#r-workflow-for-week-11">R Workflow for Week 11</a></li>
+  <li><a href="#key-distinctions-to-remember" id="toc-key-distinctions-to-remember" class="nav-link" data-scroll-target="#key-distinctions-to-remember">Key Distinctions to Remember</a></li>
+  <li><a href="#common-mistakes" id="toc-common-mistakes" class="nav-link" data-scroll-target="#common-mistakes">Common Mistakes</a></li>
+  <li><a href="#study-questions" id="toc-study-questions" class="nav-link" data-scroll-target="#study-questions">Study Questions</a></li>
+  <li><a href="#take-home-message" id="toc-take-home-message" class="nav-link" data-scroll-target="#take-home-message">Take-Home Message</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Week 11 — Chi-Square and Tests of Proportions</h1>
+<p class="subtitle lead">Categorical evidence → counts → proportions → uncertainty → observed vs.&nbsp;expected → archaeological interpretation</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>Archaeologists routinely count categorical evidence: ceramic types, lithic raw materials, faunal taxa, burial treatments, architectural forms, artifact classes, and presence or absence of traits. Week 11 develops these data through one connected sequence:</p>
+<blockquote class="blockquote">
+<p><strong>categorical evidence → counts → proportions → uncertainty → comparisons → contingency tables → observed vs.&nbsp;expected → chi-square → assumptions → residuals → effect size → alternatives → visualization → archaeological interpretation</strong></p>
+</blockquote>
+<p>The sequence matters. First decide <strong>what is being classified and counted</strong>. Then describe counts as proportions and quantify uncertainty. Only after understanding the empirical composition do we build a null expectation and compare observed with expected frequencies. If the table departs from expectation, residuals locate the pattern, effect sizes describe its strength, and archaeological reasoning asks what it could mean.</p>
+<blockquote class="blockquote">
+<p><strong>A chi-square result is not an archaeological explanation.</strong></p>
+</blockquote>
+<p>The Week 11 case study, <strong>Lithic Raw Materials in Highland Lesotho</strong>, makes this explicit. Gregory, Mitchell, and Pargeter (2023) compare knappable stone around Sehonghong with later Pleistocene archaeological lithics to investigate procurement, transport, mobility, and landscape use.</p>
+</section>
+<section id="learning-objectives" class="level2">
+<h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
+<p>By the end of this week, you should be able to:</p>
+<ul>
+<li>distinguish categorical from numerical variables and identify the correct unit of analysis;</li>
+<li>calculate and interpret counts, proportions, percentages, row proportions, and column proportions;</li>
+<li>explain sampling variability in a proportion and the purpose of a confidence interval;</li>
+<li>compare two proportions by direction, magnitude, and uncertainty;</li>
+<li>read a contingency table, including cells and marginal totals;</li>
+<li>calculate expected frequencies under goodness-of-fit and independence models;</li>
+<li>explain Pearson’s chi-square statistic and degrees of freedom;</li>
+<li>distinguish goodness-of-fit from tests of independence;</li>
+<li>diagnose assumptions involving independence, expected counts, sparse cells, and sampling;</li>
+<li>use residuals to locate cells driving an association;</li>
+<li>distinguish statistical significance from association strength using Phi and Cramér’s V;</li>
+<li>explain Fisher’s exact test and the likelihood-ratio/G-test;</li>
+<li>choose categorical visualizations that match the question; and</li>
+<li>interpret the Highland Lesotho case without confusing association with causation.</li>
+</ul>
+</section>
+<section id="required-readings" class="level2">
+<h2 class="anchored" data-anchor-id="required-readings">Required Readings</h2>
+<ul>
+<li>Perkins, M. A. (2026). <em>Using R for introductory statistics in social sciences</em>. Springer. Chapter 6, “The Chi-Square Family of Tests,” pp.&nbsp;73–84.</li>
+<li>Williams, L. L., &amp; Quave, K. (2019). <em>Quantitative anthropology: A workbook</em>. Academic Press. Chapter 10, “Tests of Proportions: Chi-Square, Likelihood Ratio, Fisher’s Exact Test,” pp.&nbsp;123–141.</li>
+<li>Gregory, A., Mitchell, P., &amp; Pargeter, J. (2023). Raw material surveys and their behavioral implications in Highland Lesotho. <em>Journal of Paleolithic Archaeology, 6</em>, Article 18.</li>
+</ul>
+</section>
+<section id="optional-readings" class="level2">
+<h2 class="anchored" data-anchor-id="optional-readings">Optional Readings</h2>
+<ul>
+<li>Carlson, D. L. (2017). <em>Quantitative methods in archaeology using R</em>. Cambridge University Press. Section 9.1, “Categorical Data,” pp.&nbsp;190–197.</li>
+<li>Cumming, G., &amp; Calin-Jageman, R. (2024). <em>Introduction to the new statistics: Estimation, open science, and beyond</em> (2nd ed.). Routledge. Chapter 13, “Frequencies, Proportions, and Risk,” pp.&nbsp;387–414.</li>
+</ul>
+</section>
+<section id="movement-i-categorical-evidence-counts-proportions-uncertainty" class="level1">
+<h1>Movement I — Categorical Evidence → Counts → Proportions → Uncertainty</h1>
+<section id="categorical-archaeological-evidence" class="level2">
+<h2 class="anchored" data-anchor-id="categorical-archaeological-evidence">1. Categorical archaeological evidence</h2>
+<p>A <strong>categorical variable</strong> assigns observations to groups. <strong>Nominal categories</strong> have no intrinsic numerical order; <strong>ordinal categories</strong> have an order but not necessarily equal spacing.</p>
+<p>Numerical codes remain labels. If <code>1 = chert</code>, <code>2 = quartz</code>, and <code>3 = quartzite</code>, their mean has no archaeological meaning. Appropriate summaries include counts, proportions, percentages, and the mode (Cumming &amp; Calin-Jageman, 2024; Williams &amp; Quave, 2019).</p>
+<section id="unit-of-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="unit-of-analysis">Unit of analysis</h3>
+<p>Before counting, ask: <strong>What exactly counts as one observation?</strong> It might be one artifact, complete flake, core, burial, individual, site, survey unit, or stratigraphic context.</p>
+<p>Carlson (2017) emphasizes that fragments from the same original object are not automatically independent. Gregory et al.&nbsp;(2023) likewise distinguish flakes, cores, and landscape survey units; for some technological ratios they restrict analysis to complete flakes.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Categories are analytical constructions">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Categories are analytical constructions
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A statistical test cannot rescue a poor classification system. Categories, observational units, and classification rules must first make archaeological sense.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="counts-and-proportions" class="level2">
+<h2 class="anchored" data-anchor-id="counts-and-proportions">2. Counts and proportions</h2>
+<p>A <strong>frequency</strong> is a count. A <strong>proportion</strong> expresses a count relative to a denominator:</p>
+<p><span class="math display">\[
+\hat p=\frac{x}{n}.
+\]</span></p>
+<p>If 120 of 300 flakes are chert, <span class="math inline">\(\hat p=.40\)</span>, or 40%.</p>
+<p>Counts preserve sample-size information; proportions facilitate comparison across assemblages of different sizes. We generally need both.</p>
+<section id="the-denominator-is-part-of-the-claim" class="level3">
+<h3 class="anchored" data-anchor-id="the-denominator-is-part-of-the-claim">The denominator is part of the claim</h3>
+<p>Every percentage answers <strong>percentage of what?</strong> If rows are layers and columns are raw materials, row proportions describe raw-material composition within layers; column proportions describe how a particular raw material is distributed among layers. These are different questions.</p>
+</section>
+</section>
+<section id="sampling-variability-and-uncertainty-in-proportions" class="level2">
+<h2 class="anchored" data-anchor-id="sampling-variability-and-uncertainty-in-proportions">3. Sampling variability and uncertainty in proportions</h2>
+<p>A sample proportion <span class="math inline">\(\hat p\)</span> estimates a population proportion <span class="math inline">\(p\)</span>. Repeated samples will not produce exactly the same proportion.</p>
+<p>For a simple independent binomial setting:</p>
+<p><span class="math display">\[
+SE(\hat p)=\sqrt{\frac{\hat p(1-\hat p)}{n}}.
+\]</span></p>
+<p>The main intuition is that the same proportion is more uncertain when based on fewer observations.</p>
+<p>A confidence interval expresses the precision of the estimate. Cumming and Calin-Jageman (2024) emphasize reporting uncertainty rather than treating the point estimate as complete information.</p>
+<ul>
+<li><strong>Point estimate:</strong> What proportion did we observe?</li>
+<li><strong>Interval estimate:</strong> How precisely did we estimate it?</li>
+</ul>
+</section>
+<section id="comparing-proportions" class="level2">
+<h2 class="anchored" data-anchor-id="comparing-proportions">4. Comparing proportions</h2>
+<p>If chert represents 40% of one assemblage and 25% of another, the difference is <span class="math inline">\(.40-.25=.15\)</span>, or <strong>15 percentage points</strong>. Percentage points are not percentage change.</p>
+<p>The difference <span class="math inline">\(\hat p_1-\hat p_2\)</span> is itself an effect estimate: its sign gives direction and its absolute size gives magnitude. A confidence interval expresses uncertainty about the population difference.</p>
+<p>Before formal testing, ask: What are the proportions? How large is their difference? In which direction? How uncertain is it? Is the magnitude archaeologically meaningful?</p>
+</section>
+</section>
+<section id="movement-ii-contingency-tables-expected-frequencies-chi-square" class="level1">
+<h1>Movement II — Contingency Tables → Expected Frequencies → Chi-Square</h1>
+<section id="contingency-tables" class="level2">
+<h2 class="anchored" data-anchor-id="contingency-tables">5. Contingency tables</h2>
+<p>A <strong>contingency table</strong> cross-classifies two categorical variables. Interior entries are <strong>cells</strong>; row and column totals are <strong>marginal totals</strong>.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: right;">Raw material A</th>
+<th style="text-align: right;">Raw material B</th>
+<th style="text-align: right;">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Layer 1</td>
+<td style="text-align: right;"><span class="math inline">\(O_{11}\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(O_{12}\)</span></td>
+<td style="text-align: right;">Row total</td>
+</tr>
+<tr class="even">
+<td>Layer 2</td>
+<td style="text-align: right;"><span class="math inline">\(O_{21}\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(O_{22}\)</span></td>
+<td style="text-align: right;">Row total</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td style="text-align: right;">Column total</td>
+<td style="text-align: right;">Column total</td>
+<td style="text-align: right;">Grand total</td>
+</tr>
+</tbody>
+</table>
+<p>Before testing, inspect counts, conditional proportions, sample sizes, sparse cells, and visible compositional differences. A chi-square statistic compresses a table into one number, so description must come first.</p>
+</section>
+<section id="observed-and-expected-frequencies" class="level2">
+<h2 class="anchored" data-anchor-id="observed-and-expected-frequencies">6. Observed and expected frequencies</h2>
+<p>The central question is:</p>
+<blockquote class="blockquote">
+<p><strong>How different are the counts we observed from the counts expected under a null model?</strong></p>
+</blockquote>
+<p>The observed count is <span class="math inline">\(O\)</span>; the expected count is <span class="math inline">\(E\)</span>.</p>
+<section id="goodness-of-fit-expectations" class="level3">
+<h3 class="anchored" data-anchor-id="goodness-of-fit-expectations">Goodness-of-fit expectations</h3>
+<p>For goodness-of-fit, expected proportions come from a theory, model, benchmark, or known distribution. Expected frequencies do <strong>not</strong> have to be equal; they should represent the substantive null model.</p>
+</section>
+<section id="expected-counts-under-independence" class="level3">
+<h3 class="anchored" data-anchor-id="expected-counts-under-independence">Expected counts under independence</h3>
+<p>For an <span class="math inline">\(r\times c\)</span> contingency table:</p>
+<p><span class="math display">\[
+E_{ij}=\frac{(\text{row total}_i)(\text{column total}_j)}{\text{grand total}}.
+\]</span></p>
+<p>The observed table describes the empirical pattern. The expected table describes the pattern implied by independence.</p>
+</section>
+</section>
+<section id="chi-square-logic" class="level2">
+<h2 class="anchored" data-anchor-id="chi-square-logic">7. Chi-square logic</h2>
+<p>Pearson’s chi-square statistic is</p>
+<p><span class="math display">\[
+\chi^2=\sum\frac{(O-E)^2}{E}.
+\]</span></p>
+<p>For every cell: subtract expected from observed, square the difference, divide by expected, and sum the contributions.</p>
+<p>Squaring prevents positive and negative deviations from cancelling. Dividing by expected scales the discrepancy relative to expectation. Each term <span class="math inline">\((O-E)^2/E\)</span> is a <strong>cell contribution</strong> to the total statistic.</p>
+<section id="degrees-of-freedom" class="level3">
+<h3 class="anchored" data-anchor-id="degrees-of-freedom">Degrees of freedom</h3>
+<p>For goodness-of-fit with <span class="math inline">\(k\)</span> categories:</p>
+<p><span class="math display">\[
+df=k-1.
+\]</span></p>
+<p>For an <span class="math inline">\(r\times c\)</span> table:</p>
+<p><span class="math display">\[
+df=(r-1)(c-1).
+\]</span></p>
+<p>Degrees of freedom describe how many values remain free to vary after constraints such as totals are fixed.</p>
+</section>
+<section id="chi-square-distribution-and-p-value" class="level3">
+<h3 class="anchored" data-anchor-id="chi-square-distribution-and-p-value">Chi-square distribution and p-value</h3>
+<p>The chi-square statistic is nonnegative and its null distribution is right-skewed, especially at low degrees of freedom.</p>
+<p>The p-value asks: <strong>Assuming the null model, how often would a chi-square statistic at least this large occur?</strong></p>
+<p>It is not the probability that the null is true, a measure of association strength, or a measure of archaeological importance.</p>
+</section>
+</section>
+<section id="goodness-of-fit-versus-independence" class="level2">
+<h2 class="anchored" data-anchor-id="goodness-of-fit-versus-independence">8. Goodness-of-fit versus independence</h2>
+<p><strong>Goodness-of-fit</strong> compares one categorical variable with a specified distribution: <em>Does the observed distribution fit the proposed model?</em></p>
+<p><strong>Independence</strong> cross-classifies two categorical variables: <em>Are the variables statistically independent?</em></p>
+<p>Examples of independence problems include raw material × archaeological layer, burial treatment × age category, and ceramic type × context. Perkins (2026) and Williams and Quave (2019) present goodness-of-fit and independence as central applications of the chi-square family.</p>
+</section>
+</section>
+<section id="movement-iii-assumptions-residuals-effect-size-alternatives-visualization" class="level1">
+<h1>Movement III — Assumptions → Residuals → Effect Size → Alternatives → Visualization</h1>
+<section id="assumptions-and-robustness" class="level2">
+<h2 class="anchored" data-anchor-id="assumptions-and-robustness">9. Assumptions and robustness</h2>
+<section id="independence" class="level3">
+<h3 class="anchored" data-anchor-id="independence">Independence</h3>
+<p>Observed frequencies should represent independent observations. This is fundamentally a research-design and archaeological-context question. Potential problems include sherds from one vessel, refitted flakes, repeated observations of one specimen, or strong spatial/depositional clustering.</p>
+</section>
+<section id="adequate-expected-counts-and-sparse-cells" class="level3">
+<h3 class="anchored" data-anchor-id="adequate-expected-counts-and-sparse-cells">Adequate expected counts and sparse cells</h3>
+<p>Pearson’s chi-square uses a large-sample approximation. Very small expected counts can make it unreliable. The familiar “expected counts should be at least 5” rule is best treated as a diagnostic guideline, not a magical threshold. Inspect the full expected-count table.</p>
+<p>Combining rare categories can improve expected counts, but categories should be collapsed only with <strong>substantive justification</strong>. Recoding merely to make a test work can change the archaeological question or hide meaningful heterogeneity.</p>
+</section>
+<section id="sampling-and-formation-processes" class="level3">
+<h3 class="anchored" data-anchor-id="sampling-and-formation-processes">Sampling and formation processes</h3>
+<p>Chi-square cannot repair biased recovery, preservation, sampling, classification, or pseudo-replication. Large assemblages create another issue: small compositional differences can become statistically detectable when <span class="math inline">\(N\)</span> is very large.</p>
+<blockquote class="blockquote">
+<p><strong>Statistical detectability is not archaeological importance.</strong></p>
+</blockquote>
+</section>
+</section>
+<section id="residuals-locating-the-pattern" class="level2">
+<h2 class="anchored" data-anchor-id="residuals-locating-the-pattern">10. Residuals: locating the pattern</h2>
+<p>A significant overall chi-square tells us that the table departs from the null model, but not <strong>where</strong>.</p>
+<p>A Pearson residual is</p>
+<p><span class="math display">\[
+r_{ij}=\frac{O_{ij}-E_{ij}}{\sqrt{E_{ij}}}.
+\]</span></p>
+<p>Positive residuals mean <strong>more observations than expected</strong>; negative residuals mean <strong>fewer than expected</strong>. Larger absolute residuals indicate stronger departures.</p>
+<p>Williams and Quave (2019) also discuss <strong>adjusted standardized residuals</strong>, which behave approximately like z-scores under suitable conditions. Large absolute values identify cells contributing strongly to the association.</p>
+<blockquote class="blockquote">
+<p><strong>Overall chi-square:</strong> Is there evidence of association?<br>
+<strong>Residuals:</strong> Which category combinations create the association, and in what direction?</p>
+</blockquote>
+<p>If many cells are examined formally, remember the multiple-comparison issue.</p>
+</section>
+<section id="effect-size-phi-and-cramérs-v" class="level2">
+<h2 class="anchored" data-anchor-id="effect-size-phi-and-cramérs-v">11. Effect size: Phi and Cramér’s V</h2>
+<p>A p-value does not tell us how strong an association is.</p>
+<p>For a 2 × 2 table:</p>
+<p><span class="math display">\[
+\phi=\sqrt{\frac{\chi^2}{N}}.
+\]</span></p>
+<p>For larger tables:</p>
+<p><span class="math display">\[
+V=\sqrt{\frac{\chi^2}{N\min(r-1,c-1)}}.
+\]</span></p>
+<p>A strong analysis asks three distinct questions:</p>
+<ol type="1">
+<li><strong>Is there evidence of association?</strong></li>
+<li><strong>How strong is it?</strong></li>
+<li><strong>Which cells produce the pattern?</strong></li>
+</ol>
+<p>Generic labels such as small, medium, or large are teaching heuristics. Archaeological context determines substantive importance.</p>
+</section>
+<section id="alternatives-for-sparse-tables" class="level2">
+<h2 class="anchored" data-anchor-id="alternatives-for-sparse-tables">12. Alternatives for sparse tables</h2>
+<section id="fishers-exact-test" class="level3">
+<h3 class="anchored" data-anchor-id="fishers-exact-test">Fisher’s exact test</h3>
+<p>Fisher’s exact test is especially useful for genuinely small 2 × 2 tables with sparse expected counts. It does not rely on the same asymptotic chi-square approximation.</p>
+</section>
+<section id="likelihood-ratio-or-g-test" class="level3">
+<h3 class="anchored" data-anchor-id="likelihood-ratio-or-g-test">Likelihood-ratio or G-test</h3>
+<p>The G-test also compares observed and expected frequencies:</p>
+<p><span class="math display">\[
+G=2\sum O\ln\left(\frac{O}{E}\right).
+\]</span></p>
+<p>Williams and Quave (2019) discuss chi-square, likelihood-ratio, and Fisher procedures together as tests of proportions.</p>
+<p>The broader lesson is not that one test is always superior. Ask about independence, table size, sparse expected counts, and whether exact, simulated, or asymptotic inference is appropriate.</p>
+</section>
+</section>
+<section id="visualization-of-categorical-relationships" class="level2">
+<h2 class="anchored" data-anchor-id="visualization-of-categorical-relationships">13. Visualization of categorical relationships</h2>
+<p>Graphics should come <strong>before and after</strong> formal testing.</p>
+<ul>
+<li><strong>Count bar charts:</strong> absolute abundance and sample-size information.</li>
+<li><strong>Proportion bar charts:</strong> composition across groups, but they can conceal small denominators.</li>
+<li><strong>Mosaic plots:</strong> joint categorical structure while retaining information about frequency and proportional composition.</li>
+<li><strong>Residual plots/heat maps:</strong> over- and underrepresentation relative to the null expectation.</li>
+<li><strong>Interval plots:</strong> uncertainty in proportions or differences.</li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Question</th>
+<th>Useful display</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>How many?</td>
+<td>Count bar chart</td>
+</tr>
+<tr class="even">
+<td>What proportion?</td>
+<td>Proportion bar chart</td>
+</tr>
+<tr class="odd">
+<td>How do two categorical variables combine?</td>
+<td>Mosaic plot</td>
+</tr>
+<tr class="even">
+<td>Where does the table depart from expectation?</td>
+<td>Residual plot / heat map</td>
+</tr>
+<tr class="odd">
+<td>How uncertain is a proportion or difference?</td>
+<td>Estimate + confidence interval</td>
+</tr>
+</tbody>
+</table>
+<p>Good categorical graphics should reveal both <strong>relative composition and evidential weight</strong>.</p>
+</section>
+</section>
+<section id="movement-iv-archaeological-interpretation-lithic-raw-materials-in-highland-lesotho" class="level1">
+<h1>Movement IV — Archaeological Interpretation: Lithic Raw Materials in Highland Lesotho</h1>
+<section id="association-is-not-causation" class="level2">
+<h2 class="anchored" data-anchor-id="association-is-not-causation">14. Association is not causation</h2>
+<p>If raw material and archaeological layer are associated, chi-square does not tell us why.</p>
+<p>Possible mechanisms include mobility, procurement preference, source accessibility, technological requirements, exchange, occupation intensity, formation processes, sampling, and classification.</p>
+<p>Counts are products of behavioral and post-depositional histories. A lithic assemblage reflects procurement, transport, reduction, use, discard, breakage, deposition, preservation, excavation, recovery, and classification.</p>
+<p>A complete interpretation should therefore discuss:</p>
+<blockquote class="blockquote">
+<p><strong>pattern + magnitude + uncertainty + assumptions + archaeological mechanism</strong></p>
+</blockquote>
+</section>
+</section>
+<section id="case-study-lithic-raw-materials-in-highland-lesotho" class="level1">
+<h1>Case Study — Lithic Raw Materials in Highland Lesotho</h1>
+<section id="why-sehonghong-is-an-ideal-week-11-case" class="level2">
+<h2 class="anchored" data-anchor-id="why-sehonghong-is-an-ideal-week-11-case">15. Why Sehonghong is an ideal Week 11 case</h2>
+<p>Gregory et al.&nbsp;(2023) investigate raw-material procurement and mobility around <strong>Sehonghong</strong>, a rockshelter in the eastern Lesotho highlands. Their study does not treat chi-square as an isolated calculation. It begins with a behavioral model, constructs categorical frequency distributions from landscape survey and excavated lithics, compares compositions statistically, and then combines those results with cortex and technological evidence.</p>
+<p>Earlier research proposed that colder conditions might constrain highland foragers toward river corridors, while warmer conditions might permit broader use of high-elevation landscapes. Gregory et al.&nbsp;ask whether lithic procurement supports such a simple climate-driven model.</p>
+</section>
+<section id="archaeological-and-landscape-samples" class="level2">
+<h2 class="anchored" data-anchor-id="archaeological-and-landscape-samples">16. Archaeological and landscape samples</h2>
+<p>The archaeological material comes from excavation squares K12/K13 and four later Pleistocene layers:</p>
+<ul>
+<li><strong>BAS</strong></li>
+<li><strong>RBL-CLBRF</strong></li>
+<li><strong>RF</strong></li>
+<li><strong>BARF</strong></li>
+</ul>
+<p>The authors sampled at least 300 flakes per layer when available, recorded all cores, excluded small flake fragments without platforms, and recorded raw material, cortex, and artifact dimensions (Gregory et al., 2023).</p>
+<p>The landscape survey was designed probabilistically around Sehonghong to characterize available knappable stone. This creates a crucial teaching point:</p>
+<blockquote class="blockquote">
+<p><strong>The denominator and sampling unit must be understood before frequencies are interpreted.</strong></p>
+</blockquote>
+</section>
+<section id="raw-material-as-categorical-evidence" class="level2">
+<h2 class="anchored" data-anchor-id="raw-material-as-categorical-evidence">17. Raw material as categorical evidence</h2>
+<p>Gregory et al.&nbsp;distinguish fine-grained chert, coarse-grained chert, dolerite, agate, crystalline quartz, quartzite, and sandstone.</p>
+<p>Fine-grained chert constitutes approximately:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Layer</th>
+<th style="text-align: right;">Fine-grained chert flakes</th>
+<th style="text-align: right;">Proportion</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>BARF</td>
+<td style="text-align: right;">201</td>
+<td style="text-align: right;">.66</td>
+</tr>
+<tr class="even">
+<td>RF</td>
+<td style="text-align: right;">140</td>
+<td style="text-align: right;">.56</td>
+</tr>
+<tr class="odd">
+<td>RBL-CLBRF</td>
+<td style="text-align: right;">194</td>
+<td style="text-align: right;">.72</td>
+</tr>
+<tr class="even">
+<td>BAS</td>
+<td style="text-align: right;">138</td>
+<td style="text-align: right;">.59</td>
+</tr>
+</tbody>
+</table>
+<p>Dolerite is another major component, while other materials occur at lower frequencies. Core composition changes more sharply, and some core assemblages are small—an excellent illustration of why <strong>counts must accompany proportions</strong>.</p>
+</section>
+<section id="from-availability-to-an-expected-pattern" class="level2">
+<h2 class="anchored" data-anchor-id="from-availability-to-an-expected-pattern">18. From availability to an expected pattern</h2>
+<p>The landscape survey provides an empirical comparison for stone availability around Sehonghong.</p>
+<p>The archaeological question can be stated as an observed-versus-expected problem:</p>
+<blockquote class="blockquote">
+<p><strong>If toolmakers used raw materials roughly in relation to their local availability, how closely should the archaeological distribution resemble the surveyed landscape distribution?</strong></p>
+</blockquote>
+<p>The modern survey is not a timeless photograph of the Pleistocene landscape. It is an empirically grounded availability baseline, not a perfect causal null model. Discrepancies therefore require archaeological interpretation rather than automatic attribution to “preference.”</p>
+<p>The survey contains abundant sandstone, dolerite, and fine-grained chert, while archaeological assemblages disproportionately emphasize fine-grained chert. Fine-grained chert is also less common in riverine than terrestrial survey contexts. The descriptive pattern already suggests that archaeological use did not simply mirror surveyed availability.</p>
+</section>
+<section id="formal-comparison-chi-square-and-fishers-exact-test" class="level2">
+<h2 class="anchored" data-anchor-id="formal-comparison-chi-square-and-fishers-exact-test">19. Formal comparison: chi-square and Fisher’s exact test</h2>
+<p>Gregory et al.&nbsp;(2023) report a comparison between survey distributions and archaeological flake/core proportions:</p>
+<p><span class="math display">\[
+\chi^2=1074.4,\qquad df=30,\qquad p&lt;.01,
+\]</span></p>
+<p>with Fisher’s exact test also yielding <span class="math inline">\(p&lt;.01\)</span>.</p>
+<p>The statistical conclusion is that archaeological and survey compositions are difficult to reconcile with a model of the same categorical distribution. The authors interpret the broader pattern as evidence for <strong>directed procurement</strong>.</p>
+<p>But the test does <strong>not</strong> establish why the discrepancy exists. The behavioral interpretation relies on raw-material composition, landscape context, cortex evidence, and technological organization.</p>
+<blockquote class="blockquote">
+<p><strong>Week 11 should not end with the p-value.</strong></p>
+</blockquote>
+</section>
+<section id="cortex-as-an-independent-categorical-line-of-evidence" class="level2">
+<h2 class="anchored" data-anchor-id="cortex-as-an-independent-categorical-line-of-evidence">20. Cortex as an independent categorical line of evidence</h2>
+<p>Gregory et al.&nbsp;also classify cortex shape. Archaeological cores and flakes are overwhelmingly angular: about <strong>89.1% of cores and 89.2% of flakes</strong>. Rounded cortex is rare: about <strong>0.9% of cores and 3.3% of flakes</strong>. Surveyed nodules, by contrast, are approximately <strong>42.5% angular, 46.5% subangular, and 10.7% rounded</strong>.</p>
+<p>Within the authors’ survey framework, rounded smooth cortex is more compatible with fluvial transport, whereas angular cortex characterizes terrestrial, nonfluvial settings. This second categorical line of evidence supports the inference that prehistoric procurement was not restricted to river corridors.</p>
+<p>The methodological lesson is important:</p>
+<blockquote class="blockquote">
+<p><strong>Archaeological explanations become stronger when independent lines of evidence converge.</strong></p>
+</blockquote>
+</section>
+<section id="technological-ratios-ask-a-different-question" class="level2">
+<h2 class="anchored" data-anchor-id="technological-ratios-ask-a-different-question">21. Technological ratios ask a different question</h2>
+<p>Gregory et al.&nbsp;also calculate <strong>flake-to-core</strong> and <strong>noncortical-to-cortical flake ratios</strong>, focusing on fine-grained chert.</p>
+<p>These are <strong>not chi-square statistics</strong>. They address different questions concerning transport, reduction, and the movement of stone into and out of Sehonghong.</p>
+<p>The flake-to-core ratio remains relatively low through BAS, RBL-CLBRF, and RF and rises strongly in BARF. The noncortical-to-cortical ratio also increases in BARF. Gregory et al.&nbsp;interpret the combined change as evidence for reduced core deposition at Sehonghong and greater cortex removal elsewhere before stone reached the site.</p>
+<blockquote class="blockquote">
+<p><strong>Chi-square addresses categorical composition. Technological ratios address reduction and transport.</strong></p>
+</blockquote>
+<p>Different statistics answer different archaeological questions.</p>
+</section>
+<section id="climate-mobility-and-the-limits-of-inference" class="level2">
+<h2 class="anchored" data-anchor-id="climate-mobility-and-the-limits-of-inference">22. Climate, mobility, and the limits of inference</h2>
+<p>Gregory et al.&nbsp;argue that their raw-material and cortex evidence does not support a simple model in which cold periods confined people exclusively to riverine resources. Their technological ratios suggest a later reorganization of stone transport and mobility.</p>
+<p>The wording matters. The statistics do not “prove” a social network, nor do they demonstrate that climate had no effect. Rather, the evidence makes a simple climate-only explanation insufficient and supports a more complex interpretation involving targeted procurement, changing mobility, and potentially broader interaction.</p>
+</section>
+<section id="assignment-7-connection" class="level2">
+<h2 class="anchored" data-anchor-id="assignment-7-connection">23. Assignment 7 connection</h2>
+<p>Assignment 7 asks:</p>
+<blockquote class="blockquote">
+<p><strong>Does lithic raw-material composition differ among the four published Sehonghong archaeological layers, and which layer/material combinations contribute most strongly to the association?</strong></p>
+</blockquote>
+<p>The teaching dataset retains the four source-defined layers—BAS, RBL-CLBRF, RF, and BARF—and uses a transparent four-category raw-material grouping:</p>
+<ul>
+<li><code>CrystallineQuartz</code></li>
+<li><code>Dolerite</code></li>
+<li><code>FineChert</code></li>
+<li><code>Other</code></li>
+</ul>
+<p><code>Other</code> combines Agate, CoarseChert, Quartzite, and Sandstone to avoid sparse expected cells while retaining every teaching observation. It is a <strong>teaching recode</strong>, not an original source category.</p>
+<p>The assignment workflow is:</p>
+<ol type="1">
+<li>create the teaching raw-material grouping;</li>
+<li>build the contingency table;</li>
+<li>inspect counts and proportions;</li>
+<li>visualize composition;</li>
+<li>run Pearson’s chi-square test of independence;</li>
+<li>inspect expected counts;</li>
+<li>examine standardized residuals;</li>
+<li>calculate Cramér’s V;</li>
+<li>interpret the association and sparse-table logic archaeologically.</li>
+</ol>
+<p>This differs deliberately from Gregory et al.’s broader survey-versus-archaeology comparison. Assignment 7 focuses on <strong>raw material × archaeological layer</strong> so that students can see the complete logic of a test of independence.</p>
+</section>
+</section>
+<section id="r-workflow-for-week-11" class="level1">
+<h1>R Workflow for Week 11</h1>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"data/lesotho_raw_material.csv"</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">show_col_types =</span> <span class="cn">FALSE</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Inspect units and categories</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dat)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(dat, level)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Build a contingency table</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(dat<span class="sc">$</span>level, dat<span class="sc">$</span>raw_material_group)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>tab</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Row proportions</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(tab, <span class="at">margin =</span> <span class="dv">1</span>)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Pearson chi-square test</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>chi <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(tab)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>chi</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Expected counts</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>chi<span class="sc">$</span>expected</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. Residuals</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>chi<span class="sc">$</span>residuals</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>chi<span class="sc">$</span>stdres</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="co"># 7. Visualize observed composition</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>For Cramér’s V:</p>
+<p><span class="math display">\[
+V=\sqrt{\frac{\chi^2}{N\min(r-1,c-1)}}.
+\]</span></p>
+<p>The computational sequence should mirror the conceptual sequence:</p>
+<blockquote class="blockquote">
+<p><strong>inspect → count → proportion → visualize → expected counts → chi-square → residuals → effect size → interpret</strong></p>
+</blockquote>
+<p>Do not begin with <code>chisq.test()</code>.</p>
+</section>
+<section id="key-distinctions-to-remember" class="level1">
+<h1>Key Distinctions to Remember</h1>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Do not confuse</th>
+<th>Correct distinction</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Category code / numerical measurement</td>
+<td>Label / quantity</td>
+</tr>
+<tr class="even">
+<td>Count / proportion</td>
+<td>Absolute frequency / relative composition</td>
+</tr>
+<tr class="odd">
+<td>Row / column proportion</td>
+<td>Conditional on row / conditional on column</td>
+</tr>
+<tr class="even">
+<td>Sample proportion / population proportion</td>
+<td>Estimate / target quantity</td>
+</tr>
+<tr class="odd">
+<td>Observed / expected</td>
+<td>Empirical count / null-model count</td>
+</tr>
+<tr class="even">
+<td>Goodness-of-fit / independence</td>
+<td>One categorical variable vs.&nbsp;model / two categorical variables</td>
+</tr>
+<tr class="odd">
+<td>Chi-square / residual</td>
+<td>Overall discrepancy / cell-level departure</td>
+</tr>
+<tr class="even">
+<td>p-value / Cramér’s V</td>
+<td>Null-model compatibility / strength of association</td>
+</tr>
+<tr class="odd">
+<td>Association / causation</td>
+<td>Covariation / explanatory mechanism</td>
+</tr>
+<tr class="even">
+<td>Statistical significance / archaeological significance</td>
+<td>Detectability / substantive importance</td>
+</tr>
+<tr class="odd">
+<td>Raw-material composition / technological ratio</td>
+<td>Categorical composition / reduction and transport</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="common-mistakes" class="level1">
+<h1>Common Mistakes</h1>
+<ol type="1">
+<li><strong>Running chi-square on percentages rather than counts.</strong></li>
+<li><strong>Ignoring the denominator behind a percentage.</strong></li>
+<li><strong>Treating fragments as automatically independent observations.</strong></li>
+<li><strong>Using a goodness-of-fit test when the question is actually independence, or vice versa.</strong></li>
+<li><strong>Assuming expected frequencies must be equal.</strong></li>
+<li><strong>Treating expected-count 5 as an absolute law rather than a diagnostic guideline.</strong></li>
+<li><strong>Collapsing categories only to obtain significance or satisfy a test mechanically.</strong></li>
+<li><strong>Stopping at the overall p-value without examining residuals.</strong></li>
+<li><strong>Calling a statistically significant association strong without reporting an effect size.</strong></li>
+<li><strong>Treating association as proof of an archaeological mechanism.</strong></li>
+<li><strong>Interpreting the modern Lesotho survey as a perfect reconstruction of Pleistocene availability.</strong></li>
+<li><strong>Confusing the Gregory et al.&nbsp;chi-square comparison with their separate technological-ratio analyses.</strong></li>
+</ol>
+</section>
+<section id="study-questions" class="level1">
+<h1>Study Questions</h1>
+<ol type="1">
+<li>Why is the unit of analysis especially important for archaeological frequency data?</li>
+<li>Why should counts normally accompany proportions?</li>
+<li>What does a denominator contribute to the meaning of a percentage?</li>
+<li>Why is a proportion based on 20 observations more uncertain than the same proportion based on 2,000?</li>
+<li>What is the difference between a 15-percentage-point increase and a 15% increase?</li>
+<li>What information is contained in a contingency table’s cells and margins?</li>
+<li>How are expected counts calculated under independence?</li>
+<li>Why are expected frequencies not necessarily equal in a goodness-of-fit test?</li>
+<li>What does each term <span class="math inline">\((O-E)^2/E\)</span> contribute to chi-square?</li>
+<li>Why can chi-square never be negative?</li>
+<li>How do goodness-of-fit and independence tests differ conceptually?</li>
+<li>Why is independence an archaeological-design issue rather than merely a statistical diagnostic?</li>
+<li>What problems arise from sparse expected counts?</li>
+<li>What does a positive standardized residual mean? A negative one?</li>
+<li>Why do residuals add information beyond the overall chi-square test?</li>
+<li>What does Cramér’s V tell you that a p-value does not?</li>
+<li>When might Fisher’s exact test be preferable?</li>
+<li>Why can a very large archaeological sample produce a small p-value for a substantively minor difference?</li>
+<li>Why does the Gregory et al.&nbsp;comparison not by itself prove directed procurement?</li>
+<li>How does cortex provide an independent line of evidence in the Lesotho argument?</li>
+<li>Why should the flake-to-core and noncortical-to-cortical ratios not be described as additional chi-square evidence?</li>
+<li>How does Assignment 7 simplify the source categories, and why must that recoding be disclosed?</li>
+<li>Explain the entire Week 11 sequence in your own words: <strong>categorical evidence → counts → proportions → uncertainty → expected counts → chi-square → residuals → effect size → archaeological interpretation</strong>.</li>
+</ol>
+</section>
+<section id="take-home-message" class="level1">
+<h1>Take-Home Message</h1>
+<blockquote class="blockquote">
+<p><strong>Count carefully. Compare composition. Make the null expectation explicit. Locate the departures. Measure their strength. Then return to archaeology.</strong></p>
+</blockquote>
+<p>Chi-square tells us whether observed categorical structure is difficult to reconcile with a specified null model. Residuals tell us where the discrepancy occurs. Phi or Cramér’s V tells us about association strength. None of these, by itself, explains past behavior.</p>
+<p>The Highland Lesotho case demonstrates the full logic. Raw-material counts and proportions establish the pattern; survey data provide an availability comparison; chi-square evaluates compositional discrepancy; cortex and technological ratios contribute independent evidence; and archaeological reasoning connects those results to procurement and mobility.</p>
+<p>That is the difference between <strong>performing a categorical test</strong> and <strong>building an archaeological argument with categorical evidence</strong>.</p>
+</section>
+<section id="references" class="level1">
+<h1>References</h1>
+<p>Beecham, R. (2025). <em>Visualization for social data science</em>. CRC Press.</p>
+<p>Carlson, D. L. (2017). <em>Quantitative methods in archaeology using R</em>. Cambridge University Press.</p>
+<p>Cumming, G., &amp; Calin-Jageman, R. (2024). <em>Introduction to the new statistics: Estimation, open science, and beyond</em> (2nd ed.). Routledge.</p>
+<p>Dressler, W. W. (2015). The logic of statistical significance testing: Chi-square. In <em>The 5 things you need to know about statistics: Quantification in ethnographic research</em> (pp.&nbsp;47–61). Left Coast Press.</p>
+<p>Gregory, A., Mitchell, P., &amp; Pargeter, J. (2023). Raw material surveys and their behavioral implications in Highland Lesotho. <em>Journal of Paleolithic Archaeology, 6</em>, Article 18.</p>
+<p>Madrigal, L. (2012). <em>Statistics for anthropology</em> (2nd ed.). Cambridge University Press.</p>
+<p>Perkins, M. A. (2026). <em>Using R for introductory statistics in social sciences</em>. Springer.</p>
+<p>Privitera, G. J. (2024). <em>Statistics for the behavioral sciences</em>. SAGE.</p>
+<p>Shennan, S. (2022). <em>Quantifying archaeology</em> (2nd ed.). Edinburgh University Press.</p>
+<p>Williams, L. L., &amp; Quave, K. (2019). <em>Quantitative anthropology: A workbook</em>. Academic Press.</p>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

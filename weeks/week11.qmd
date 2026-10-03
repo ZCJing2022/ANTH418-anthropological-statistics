@@ -1,0 +1,569 @@
+---
+title: "Week 11 — Chi-Square and Tests of Proportions"
+subtitle: "Categorical evidence → counts → proportions → uncertainty → observed vs. expected → archaeological interpretation"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+## Overview
+
+Archaeologists routinely count categorical evidence: ceramic types, lithic raw materials, faunal taxa, burial treatments, architectural forms, artifact classes, and presence or absence of traits. Week 11 develops these data through one connected sequence:
+
+> **categorical evidence → counts → proportions → uncertainty → comparisons → contingency tables → observed vs. expected → chi-square → assumptions → residuals → effect size → alternatives → visualization → archaeological interpretation**
+
+The sequence matters. First decide **what is being classified and counted**. Then describe counts as proportions and quantify uncertainty. Only after understanding the empirical composition do we build a null expectation and compare observed with expected frequencies. If the table departs from expectation, residuals locate the pattern, effect sizes describe its strength, and archaeological reasoning asks what it could mean.
+
+> **A chi-square result is not an archaeological explanation.**
+
+The Week 11 case study, **Lithic Raw Materials in Highland Lesotho**, makes this explicit. Gregory, Mitchell, and Pargeter (2023) compare knappable stone around Sehonghong with later Pleistocene archaeological lithics to investigate procurement, transport, mobility, and landscape use.
+
+## Learning Objectives
+
+By the end of this week, you should be able to:
+
+- distinguish categorical from numerical variables and identify the correct unit of analysis;
+- calculate and interpret counts, proportions, percentages, row proportions, and column proportions;
+- explain sampling variability in a proportion and the purpose of a confidence interval;
+- compare two proportions by direction, magnitude, and uncertainty;
+- read a contingency table, including cells and marginal totals;
+- calculate expected frequencies under goodness-of-fit and independence models;
+- explain Pearson's chi-square statistic and degrees of freedom;
+- distinguish goodness-of-fit from tests of independence;
+- diagnose assumptions involving independence, expected counts, sparse cells, and sampling;
+- use residuals to locate cells driving an association;
+- distinguish statistical significance from association strength using Phi and Cramér's V;
+- explain Fisher's exact test and the likelihood-ratio/G-test;
+- choose categorical visualizations that match the question; and
+- interpret the Highland Lesotho case without confusing association with causation.
+
+## Required Readings
+
+- Perkins, M. A. (2026). *Using R for introductory statistics in social sciences*. Springer. Chapter 6, “The Chi-Square Family of Tests,” pp. 73–84.
+- Williams, L. L., & Quave, K. (2019). *Quantitative anthropology: A workbook*. Academic Press. Chapter 10, “Tests of Proportions: Chi-Square, Likelihood Ratio, Fisher’s Exact Test,” pp. 123–141.
+- Gregory, A., Mitchell, P., & Pargeter, J. (2023). Raw material surveys and their behavioral implications in Highland Lesotho. *Journal of Paleolithic Archaeology, 6*, Article 18.
+
+## Optional Readings
+
+- Carlson, D. L. (2017). *Quantitative methods in archaeology using R*. Cambridge University Press. Section 9.1, “Categorical Data,” pp. 190–197.
+- Cumming, G., & Calin-Jageman, R. (2024). *Introduction to the new statistics: Estimation, open science, and beyond* (2nd ed.). Routledge. Chapter 13, “Frequencies, Proportions, and Risk,” pp. 387–414.
+
+# Movement I — Categorical Evidence → Counts → Proportions → Uncertainty
+
+## 1. Categorical archaeological evidence
+
+A **categorical variable** assigns observations to groups. **Nominal categories** have no intrinsic numerical order; **ordinal categories** have an order but not necessarily equal spacing.
+
+Numerical codes remain labels. If `1 = chert`, `2 = quartz`, and `3 = quartzite`, their mean has no archaeological meaning. Appropriate summaries include counts, proportions, percentages, and the mode (Cumming & Calin-Jageman, 2024; Williams & Quave, 2019).
+
+### Unit of analysis
+
+Before counting, ask: **What exactly counts as one observation?** It might be one artifact, complete flake, core, burial, individual, site, survey unit, or stratigraphic context.
+
+Carlson (2017) emphasizes that fragments from the same original object are not automatically independent. Gregory et al. (2023) likewise distinguish flakes, cores, and landscape survey units; for some technological ratios they restrict analysis to complete flakes.
+
+::: {.callout-important title="Categories are analytical constructions"}
+A statistical test cannot rescue a poor classification system. Categories, observational units, and classification rules must first make archaeological sense.
+:::
+
+## 2. Counts and proportions
+
+A **frequency** is a count. A **proportion** expresses a count relative to a denominator:
+
+$$
+\hat p=\frac{x}{n}.
+$$
+
+If 120 of 300 flakes are chert, $\hat p=.40$, or 40%.
+
+Counts preserve sample-size information; proportions facilitate comparison across assemblages of different sizes. We generally need both.
+
+### The denominator is part of the claim
+
+Every percentage answers **percentage of what?** If rows are layers and columns are raw materials, row proportions describe raw-material composition within layers; column proportions describe how a particular raw material is distributed among layers. These are different questions.
+
+## 3. Sampling variability and uncertainty in proportions
+
+A sample proportion $\hat p$ estimates a population proportion $p$. Repeated samples will not produce exactly the same proportion.
+
+For a simple independent binomial setting:
+
+$$
+SE(\hat p)=\sqrt{\frac{\hat p(1-\hat p)}{n}}.
+$$
+
+The main intuition is that the same proportion is more uncertain when based on fewer observations.
+
+A confidence interval expresses the precision of the estimate. Cumming and Calin-Jageman (2024) emphasize reporting uncertainty rather than treating the point estimate as complete information.
+
+- **Point estimate:** What proportion did we observe?
+- **Interval estimate:** How precisely did we estimate it?
+
+## 4. Comparing proportions
+
+If chert represents 40% of one assemblage and 25% of another, the difference is $.40-.25=.15$, or **15 percentage points**. Percentage points are not percentage change.
+
+The difference $\hat p_1-\hat p_2$ is itself an effect estimate: its sign gives direction and its absolute size gives magnitude. A confidence interval expresses uncertainty about the population difference.
+
+Before formal testing, ask: What are the proportions? How large is their difference? In which direction? How uncertain is it? Is the magnitude archaeologically meaningful?
+
+
+# Movement II — Contingency Tables → Expected Frequencies → Chi-Square
+
+## 5. Contingency tables
+
+A **contingency table** cross-classifies two categorical variables. Interior entries are **cells**; row and column totals are **marginal totals**.
+
+|  | Raw material A | Raw material B | Total |
+|---|---:|---:|---:|
+| Layer 1 | $O_{11}$ | $O_{12}$ | Row total |
+| Layer 2 | $O_{21}$ | $O_{22}$ | Row total |
+| **Total** | Column total | Column total | Grand total |
+
+Before testing, inspect counts, conditional proportions, sample sizes, sparse cells, and visible compositional differences. A chi-square statistic compresses a table into one number, so description must come first.
+
+## 6. Observed and expected frequencies
+
+The central question is:
+
+> **How different are the counts we observed from the counts expected under a null model?**
+
+The observed count is $O$; the expected count is $E$.
+
+### Goodness-of-fit expectations
+
+For goodness-of-fit, expected proportions come from a theory, model, benchmark, or known distribution. Expected frequencies do **not** have to be equal; they should represent the substantive null model.
+
+### Expected counts under independence
+
+For an $r\times c$ contingency table:
+
+$$
+E_{ij}=\frac{(\text{row total}_i)(\text{column total}_j)}{\text{grand total}}.
+$$
+
+The observed table describes the empirical pattern. The expected table describes the pattern implied by independence.
+
+## 7. Chi-square logic
+
+Pearson's chi-square statistic is
+
+$$
+\chi^2=\sum\frac{(O-E)^2}{E}.
+$$
+
+For every cell: subtract expected from observed, square the difference, divide by expected, and sum the contributions.
+
+Squaring prevents positive and negative deviations from cancelling. Dividing by expected scales the discrepancy relative to expectation. Each term $(O-E)^2/E$ is a **cell contribution** to the total statistic.
+
+### Degrees of freedom
+
+For goodness-of-fit with $k$ categories:
+
+$$
+df=k-1.
+$$
+
+For an $r\times c$ table:
+
+$$
+df=(r-1)(c-1).
+$$
+
+Degrees of freedom describe how many values remain free to vary after constraints such as totals are fixed.
+
+### Chi-square distribution and p-value
+
+The chi-square statistic is nonnegative and its null distribution is right-skewed, especially at low degrees of freedom.
+
+The p-value asks: **Assuming the null model, how often would a chi-square statistic at least this large occur?**
+
+It is not the probability that the null is true, a measure of association strength, or a measure of archaeological importance.
+
+## 8. Goodness-of-fit versus independence
+
+**Goodness-of-fit** compares one categorical variable with a specified distribution: *Does the observed distribution fit the proposed model?*
+
+**Independence** cross-classifies two categorical variables: *Are the variables statistically independent?*
+
+Examples of independence problems include raw material × archaeological layer, burial treatment × age category, and ceramic type × context. Perkins (2026) and Williams and Quave (2019) present goodness-of-fit and independence as central applications of the chi-square family.
+
+# Movement III — Assumptions → Residuals → Effect Size → Alternatives → Visualization
+
+## 9. Assumptions and robustness
+
+### Independence
+
+Observed frequencies should represent independent observations. This is fundamentally a research-design and archaeological-context question. Potential problems include sherds from one vessel, refitted flakes, repeated observations of one specimen, or strong spatial/depositional clustering.
+
+### Adequate expected counts and sparse cells
+
+Pearson's chi-square uses a large-sample approximation. Very small expected counts can make it unreliable. The familiar “expected counts should be at least 5” rule is best treated as a diagnostic guideline, not a magical threshold. Inspect the full expected-count table.
+
+Combining rare categories can improve expected counts, but categories should be collapsed only with **substantive justification**. Recoding merely to make a test work can change the archaeological question or hide meaningful heterogeneity.
+
+### Sampling and formation processes
+
+Chi-square cannot repair biased recovery, preservation, sampling, classification, or pseudo-replication. Large assemblages create another issue: small compositional differences can become statistically detectable when $N$ is very large.
+
+> **Statistical detectability is not archaeological importance.**
+
+## 10. Residuals: locating the pattern
+
+A significant overall chi-square tells us that the table departs from the null model, but not **where**.
+
+A Pearson residual is
+
+$$
+r_{ij}=\frac{O_{ij}-E_{ij}}{\sqrt{E_{ij}}}.
+$$
+
+Positive residuals mean **more observations than expected**; negative residuals mean **fewer than expected**. Larger absolute residuals indicate stronger departures.
+
+Williams and Quave (2019) also discuss **adjusted standardized residuals**, which behave approximately like z-scores under suitable conditions. Large absolute values identify cells contributing strongly to the association.
+
+> **Overall chi-square:** Is there evidence of association?  
+> **Residuals:** Which category combinations create the association, and in what direction?
+
+If many cells are examined formally, remember the multiple-comparison issue.
+
+## 11. Effect size: Phi and Cramér's V
+
+A p-value does not tell us how strong an association is.
+
+For a 2 × 2 table:
+
+$$
+\phi=\sqrt{\frac{\chi^2}{N}}.
+$$
+
+For larger tables:
+
+$$
+V=\sqrt{\frac{\chi^2}{N\min(r-1,c-1)}}.
+$$
+
+A strong analysis asks three distinct questions:
+
+1. **Is there evidence of association?**
+2. **How strong is it?**
+3. **Which cells produce the pattern?**
+
+Generic labels such as small, medium, or large are teaching heuristics. Archaeological context determines substantive importance.
+
+## 12. Alternatives for sparse tables
+
+### Fisher's exact test
+
+Fisher's exact test is especially useful for genuinely small 2 × 2 tables with sparse expected counts. It does not rely on the same asymptotic chi-square approximation.
+
+### Likelihood-ratio or G-test
+
+The G-test also compares observed and expected frequencies:
+
+$$
+G=2\sum O\ln\left(\frac{O}{E}\right).
+$$
+
+Williams and Quave (2019) discuss chi-square, likelihood-ratio, and Fisher procedures together as tests of proportions.
+
+The broader lesson is not that one test is always superior. Ask about independence, table size, sparse expected counts, and whether exact, simulated, or asymptotic inference is appropriate.
+
+## 13. Visualization of categorical relationships
+
+Graphics should come **before and after** formal testing.
+
+- **Count bar charts:** absolute abundance and sample-size information.
+- **Proportion bar charts:** composition across groups, but they can conceal small denominators.
+- **Mosaic plots:** joint categorical structure while retaining information about frequency and proportional composition.
+- **Residual plots/heat maps:** over- and underrepresentation relative to the null expectation.
+- **Interval plots:** uncertainty in proportions or differences.
+
+| Question | Useful display |
+|---|---|
+| How many? | Count bar chart |
+| What proportion? | Proportion bar chart |
+| How do two categorical variables combine? | Mosaic plot |
+| Where does the table depart from expectation? | Residual plot / heat map |
+| How uncertain is a proportion or difference? | Estimate + confidence interval |
+
+Good categorical graphics should reveal both **relative composition and evidential weight**.
+
+
+# Movement IV — Archaeological Interpretation: Lithic Raw Materials in Highland Lesotho
+
+## 14. Association is not causation
+
+If raw material and archaeological layer are associated, chi-square does not tell us why.
+
+Possible mechanisms include mobility, procurement preference, source accessibility, technological requirements, exchange, occupation intensity, formation processes, sampling, and classification.
+
+Counts are products of behavioral and post-depositional histories. A lithic assemblage reflects procurement, transport, reduction, use, discard, breakage, deposition, preservation, excavation, recovery, and classification.
+
+A complete interpretation should therefore discuss:
+
+> **pattern + magnitude + uncertainty + assumptions + archaeological mechanism**
+
+# Case Study — Lithic Raw Materials in Highland Lesotho
+
+## 15. Why Sehonghong is an ideal Week 11 case
+
+Gregory et al. (2023) investigate raw-material procurement and mobility around **Sehonghong**, a rockshelter in the eastern Lesotho highlands. Their study does not treat chi-square as an isolated calculation. It begins with a behavioral model, constructs categorical frequency distributions from landscape survey and excavated lithics, compares compositions statistically, and then combines those results with cortex and technological evidence.
+
+Earlier research proposed that colder conditions might constrain highland foragers toward river corridors, while warmer conditions might permit broader use of high-elevation landscapes. Gregory et al. ask whether lithic procurement supports such a simple climate-driven model.
+
+## 16. Archaeological and landscape samples
+
+The archaeological material comes from excavation squares K12/K13 and four later Pleistocene layers:
+
+- **BAS**
+- **RBL-CLBRF**
+- **RF**
+- **BARF**
+
+The authors sampled at least 300 flakes per layer when available, recorded all cores, excluded small flake fragments without platforms, and recorded raw material, cortex, and artifact dimensions (Gregory et al., 2023).
+
+The landscape survey was designed probabilistically around Sehonghong to characterize available knappable stone. This creates a crucial teaching point:
+
+> **The denominator and sampling unit must be understood before frequencies are interpreted.**
+
+## 17. Raw material as categorical evidence
+
+Gregory et al. distinguish fine-grained chert, coarse-grained chert, dolerite, agate, crystalline quartz, quartzite, and sandstone.
+
+Fine-grained chert constitutes approximately:
+
+| Layer | Fine-grained chert flakes | Proportion |
+|---|---:|---:|
+| BARF | 201 | .66 |
+| RF | 140 | .56 |
+| RBL-CLBRF | 194 | .72 |
+| BAS | 138 | .59 |
+
+Dolerite is another major component, while other materials occur at lower frequencies. Core composition changes more sharply, and some core assemblages are small—an excellent illustration of why **counts must accompany proportions**.
+
+## 18. From availability to an expected pattern
+
+The landscape survey provides an empirical comparison for stone availability around Sehonghong.
+
+The archaeological question can be stated as an observed-versus-expected problem:
+
+> **If toolmakers used raw materials roughly in relation to their local availability, how closely should the archaeological distribution resemble the surveyed landscape distribution?**
+
+The modern survey is not a timeless photograph of the Pleistocene landscape. It is an empirically grounded availability baseline, not a perfect causal null model. Discrepancies therefore require archaeological interpretation rather than automatic attribution to “preference.”
+
+The survey contains abundant sandstone, dolerite, and fine-grained chert, while archaeological assemblages disproportionately emphasize fine-grained chert. Fine-grained chert is also less common in riverine than terrestrial survey contexts. The descriptive pattern already suggests that archaeological use did not simply mirror surveyed availability.
+
+## 19. Formal comparison: chi-square and Fisher's exact test
+
+Gregory et al. (2023) report a comparison between survey distributions and archaeological flake/core proportions:
+
+$$
+\chi^2=1074.4,\qquad df=30,\qquad p<.01,
+$$
+
+with Fisher's exact test also yielding $p<.01$.
+
+The statistical conclusion is that archaeological and survey compositions are difficult to reconcile with a model of the same categorical distribution. The authors interpret the broader pattern as evidence for **directed procurement**.
+
+But the test does **not** establish why the discrepancy exists. The behavioral interpretation relies on raw-material composition, landscape context, cortex evidence, and technological organization.
+
+> **Week 11 should not end with the p-value.**
+
+## 20. Cortex as an independent categorical line of evidence
+
+Gregory et al. also classify cortex shape. Archaeological cores and flakes are overwhelmingly angular: about **89.1% of cores and 89.2% of flakes**. Rounded cortex is rare: about **0.9% of cores and 3.3% of flakes**. Surveyed nodules, by contrast, are approximately **42.5% angular, 46.5% subangular, and 10.7% rounded**.
+
+Within the authors' survey framework, rounded smooth cortex is more compatible with fluvial transport, whereas angular cortex characterizes terrestrial, nonfluvial settings. This second categorical line of evidence supports the inference that prehistoric procurement was not restricted to river corridors.
+
+The methodological lesson is important:
+
+> **Archaeological explanations become stronger when independent lines of evidence converge.**
+
+## 21. Technological ratios ask a different question
+
+Gregory et al. also calculate **flake-to-core** and **noncortical-to-cortical flake ratios**, focusing on fine-grained chert.
+
+These are **not chi-square statistics**. They address different questions concerning transport, reduction, and the movement of stone into and out of Sehonghong.
+
+The flake-to-core ratio remains relatively low through BAS, RBL-CLBRF, and RF and rises strongly in BARF. The noncortical-to-cortical ratio also increases in BARF. Gregory et al. interpret the combined change as evidence for reduced core deposition at Sehonghong and greater cortex removal elsewhere before stone reached the site.
+
+> **Chi-square addresses categorical composition. Technological ratios address reduction and transport.**
+
+Different statistics answer different archaeological questions.
+
+## 22. Climate, mobility, and the limits of inference
+
+Gregory et al. argue that their raw-material and cortex evidence does not support a simple model in which cold periods confined people exclusively to riverine resources. Their technological ratios suggest a later reorganization of stone transport and mobility.
+
+The wording matters. The statistics do not “prove” a social network, nor do they demonstrate that climate had no effect. Rather, the evidence makes a simple climate-only explanation insufficient and supports a more complex interpretation involving targeted procurement, changing mobility, and potentially broader interaction.
+
+## 23. Assignment 7 connection
+
+Assignment 7 asks:
+
+> **Does lithic raw-material composition differ among the four published Sehonghong archaeological layers, and which layer/material combinations contribute most strongly to the association?**
+
+The teaching dataset retains the four source-defined layers—BAS, RBL-CLBRF, RF, and BARF—and uses a transparent four-category raw-material grouping:
+
+- `CrystallineQuartz`
+- `Dolerite`
+- `FineChert`
+- `Other`
+
+`Other` combines Agate, CoarseChert, Quartzite, and Sandstone to avoid sparse expected cells while retaining every teaching observation. It is a **teaching recode**, not an original source category.
+
+The assignment workflow is:
+
+1. create the teaching raw-material grouping;
+2. build the contingency table;
+3. inspect counts and proportions;
+4. visualize composition;
+5. run Pearson's chi-square test of independence;
+6. inspect expected counts;
+7. examine standardized residuals;
+8. calculate Cramér's V;
+9. interpret the association and sparse-table logic archaeologically.
+
+This differs deliberately from Gregory et al.'s broader survey-versus-archaeology comparison. Assignment 7 focuses on **raw material × archaeological layer** so that students can see the complete logic of a test of independence.
+
+# R Workflow for Week 11
+
+```r
+library(tidyverse)
+
+dat <- read_csv(
+  "data/lesotho_raw_material.csv",
+  show_col_types = FALSE
+)
+
+# 1. Inspect units and categories
+glimpse(dat)
+count(dat, level)
+
+# 2. Build a contingency table
+tab <- table(dat$level, dat$raw_material_group)
+tab
+
+# 3. Row proportions
+prop.table(tab, margin = 1)
+
+# 4. Pearson chi-square test
+chi <- chisq.test(tab)
+chi
+
+# 5. Expected counts
+chi$expected
+
+# 6. Residuals
+chi$residuals
+chi$stdres
+
+# 7. Visualize observed composition
+```
+
+For Cramér's V:
+
+$$
+V=\sqrt{\frac{\chi^2}{N\min(r-1,c-1)}}.
+$$
+
+The computational sequence should mirror the conceptual sequence:
+
+> **inspect → count → proportion → visualize → expected counts → chi-square → residuals → effect size → interpret**
+
+Do not begin with `chisq.test()`.
+
+# Key Distinctions to Remember
+
+| Do not confuse | Correct distinction |
+|---|---|
+| Category code / numerical measurement | Label / quantity |
+| Count / proportion | Absolute frequency / relative composition |
+| Row / column proportion | Conditional on row / conditional on column |
+| Sample proportion / population proportion | Estimate / target quantity |
+| Observed / expected | Empirical count / null-model count |
+| Goodness-of-fit / independence | One categorical variable vs. model / two categorical variables |
+| Chi-square / residual | Overall discrepancy / cell-level departure |
+| p-value / Cramér's V | Null-model compatibility / strength of association |
+| Association / causation | Covariation / explanatory mechanism |
+| Statistical significance / archaeological significance | Detectability / substantive importance |
+| Raw-material composition / technological ratio | Categorical composition / reduction and transport |
+
+# Common Mistakes
+
+1. **Running chi-square on percentages rather than counts.**
+2. **Ignoring the denominator behind a percentage.**
+3. **Treating fragments as automatically independent observations.**
+4. **Using a goodness-of-fit test when the question is actually independence, or vice versa.**
+5. **Assuming expected frequencies must be equal.**
+6. **Treating expected-count 5 as an absolute law rather than a diagnostic guideline.**
+7. **Collapsing categories only to obtain significance or satisfy a test mechanically.**
+8. **Stopping at the overall p-value without examining residuals.**
+9. **Calling a statistically significant association strong without reporting an effect size.**
+10. **Treating association as proof of an archaeological mechanism.**
+11. **Interpreting the modern Lesotho survey as a perfect reconstruction of Pleistocene availability.**
+12. **Confusing the Gregory et al. chi-square comparison with their separate technological-ratio analyses.**
+
+# Study Questions
+
+1. Why is the unit of analysis especially important for archaeological frequency data?
+2. Why should counts normally accompany proportions?
+3. What does a denominator contribute to the meaning of a percentage?
+4. Why is a proportion based on 20 observations more uncertain than the same proportion based on 2,000?
+5. What is the difference between a 15-percentage-point increase and a 15% increase?
+6. What information is contained in a contingency table's cells and margins?
+7. How are expected counts calculated under independence?
+8. Why are expected frequencies not necessarily equal in a goodness-of-fit test?
+9. What does each term $(O-E)^2/E$ contribute to chi-square?
+10. Why can chi-square never be negative?
+11. How do goodness-of-fit and independence tests differ conceptually?
+12. Why is independence an archaeological-design issue rather than merely a statistical diagnostic?
+13. What problems arise from sparse expected counts?
+14. What does a positive standardized residual mean? A negative one?
+15. Why do residuals add information beyond the overall chi-square test?
+16. What does Cramér's V tell you that a p-value does not?
+17. When might Fisher's exact test be preferable?
+18. Why can a very large archaeological sample produce a small p-value for a substantively minor difference?
+19. Why does the Gregory et al. comparison not by itself prove directed procurement?
+20. How does cortex provide an independent line of evidence in the Lesotho argument?
+21. Why should the flake-to-core and noncortical-to-cortical ratios not be described as additional chi-square evidence?
+22. How does Assignment 7 simplify the source categories, and why must that recoding be disclosed?
+23. Explain the entire Week 11 sequence in your own words: **categorical evidence → counts → proportions → uncertainty → expected counts → chi-square → residuals → effect size → archaeological interpretation**.
+
+# Take-Home Message
+
+> **Count carefully. Compare composition. Make the null expectation explicit. Locate the departures. Measure their strength. Then return to archaeology.**
+
+Chi-square tells us whether observed categorical structure is difficult to reconcile with a specified null model. Residuals tell us where the discrepancy occurs. Phi or Cramér's V tells us about association strength. None of these, by itself, explains past behavior.
+
+The Highland Lesotho case demonstrates the full logic. Raw-material counts and proportions establish the pattern; survey data provide an availability comparison; chi-square evaluates compositional discrepancy; cortex and technological ratios contribute independent evidence; and archaeological reasoning connects those results to procurement and mobility.
+
+That is the difference between **performing a categorical test** and **building an archaeological argument with categorical evidence**.
+
+# References
+
+Beecham, R. (2025). *Visualization for social data science*. CRC Press.
+
+Carlson, D. L. (2017). *Quantitative methods in archaeology using R*. Cambridge University Press.
+
+Cumming, G., & Calin-Jageman, R. (2024). *Introduction to the new statistics: Estimation, open science, and beyond* (2nd ed.). Routledge.
+
+Dressler, W. W. (2015). The logic of statistical significance testing: Chi-square. In *The 5 things you need to know about statistics: Quantification in ethnographic research* (pp. 47–61). Left Coast Press.
+
+Gregory, A., Mitchell, P., & Pargeter, J. (2023). Raw material surveys and their behavioral implications in Highland Lesotho. *Journal of Paleolithic Archaeology, 6*, Article 18.
+
+Madrigal, L. (2012). *Statistics for anthropology* (2nd ed.). Cambridge University Press.
+
+Perkins, M. A. (2026). *Using R for introductory statistics in social sciences*. Springer.
+
+Privitera, G. J. (2024). *Statistics for the behavioral sciences*. SAGE.
+
+Shennan, S. (2022). *Quantifying archaeology* (2nd ed.). Edinburgh University Press.
+
+Williams, L. L., & Quave, K. (2019). *Quantitative anthropology: A workbook*. Academic Press.
