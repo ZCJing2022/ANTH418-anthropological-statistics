@@ -94,7 +94,7 @@ Students may browse the materials online or download the complete assignment pac
 
 **Case study:** Lithic raw-material composition across archaeological layers in Highland Lesotho
 
-[View Assignment 7 materials](assignment07_lesotho_chisquare/)
+[Open Assignment 7](assignment07_lesotho_chisquare/assignment07_lesotho_chisquare.qmd)
 
 [Download complete Assignment 7 package](../downloads/assignments/ANTH418_assignment07_lesotho_chisquare.zip)
 

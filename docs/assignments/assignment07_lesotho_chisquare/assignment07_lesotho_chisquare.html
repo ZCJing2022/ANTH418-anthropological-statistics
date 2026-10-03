@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Your Name">
 
-<title>Assignments – ANTH418: Anthropological Statistics</title>
+<title>ANTH418 Assignment 7: Lithic Raw Materials in Highland Lesotho – ANTH418: Anthropological Statistics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,26 +27,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-7ff37d7dbb752a0b62676bb39137b3a2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-7ff37d7dbb752a0b62676bb39137b3a2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -76,7 +112,7 @@ ul.task-list li input[type="checkbox"] {
 <style>html{ scroll-behavior: smooth; }</style>
 
 
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -86,7 +122,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">ANTH418: Anthropological Statistics</span>
     </a>
   </div>
@@ -97,15 +133,15 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../syllabus.html"> 
+    <a class="nav-link" href="../../syllabus.html"> 
 <span class="menu-text">Syllabus</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../lecture-notes/index.html"> 
+    <a class="nav-link" href="../../lecture-notes/index.html"> 
 <span class="menu-text">Lecture Notes</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -114,49 +150,49 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-study-guides">    
         <li>
-    <a class="dropdown-item" href="../weeks/week02.html">
+    <a class="dropdown-item" href="../../weeks/week02.html">
  <span class="dropdown-text">Week 2 — R, RStudio &amp; Quarto</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../weeks/week03.html">
+    <a class="dropdown-item" href="../../weeks/week03.html">
  <span class="dropdown-text">Week 3 — Measurement &amp; Research Design</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../weeks/week04.html">
+    <a class="dropdown-item" href="../../weeks/week04.html">
  <span class="dropdown-text">Week 4 — Central Tendency &amp; Dispersion</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../weeks/week05.html">
+    <a class="dropdown-item" href="../../weeks/week05.html">
  <span class="dropdown-text">Week 5 — EDA &amp; Visualization</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../weeks/week06.html">
+    <a class="dropdown-item" href="../../weeks/week06.html">
  <span class="dropdown-text">Week 6 — Transformation &amp; Missing Data</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../weeks/week07.html">
+    <a class="dropdown-item" href="../../weeks/week07.html">
  <span class="dropdown-text">Week 7 — Probability &amp; Sampling</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../weeks/week08.html">
+    <a class="dropdown-item" href="../../weeks/week08.html">
  <span class="dropdown-text">Week 8 — Confidence Intervals &amp; Hypothesis Testing</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../weeks/week09.html">
+    <a class="dropdown-item" href="../../weeks/week09.html">
  <span class="dropdown-text">Week 9 — Comparing Two Groups: t-tests</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link active" href="../assignments/index.html" aria-current="page"> 
+    <a class="nav-link" href="../../assignments/index.html"> 
 <span class="menu-text">Assignments</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../readings/index.html"> 
+    <a class="nav-link" href="../../readings/index.html"> 
 <span class="menu-text">Readings</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../resources/index.html"> 
+    <a class="nav-link" href="../../resources/index.html"> 
 <span class="menu-text">Resources</span></a>
   </li>  
 </ul>
@@ -175,16 +211,15 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#assignment-1-describing-human-isotope-variation" id="toc-assignment-1-describing-human-isotope-variation" class="nav-link active" data-scroll-target="#assignment-1-describing-human-isotope-variation">Assignment 1 — Describing Human Isotope Variation</a></li>
-  <li><a href="#assignment-2-visualizing-kinship-diversity-with-kinbank" id="toc-assignment-2-visualizing-kinship-diversity-with-kinbank" class="nav-link" data-scroll-target="#assignment-2-visualizing-kinship-diversity-with-kinbank">Assignment 2 — Visualizing Kinship Diversity with Kinbank</a></li>
-  <li><a href="#assignment-3-missing-data-in-the-seshat-moralizing-gods-debate" id="toc-assignment-3-missing-data-in-the-seshat-moralizing-gods-debate" class="nav-link" data-scroll-target="#assignment-3-missing-data-in-the-seshat-moralizing-gods-debate">Assignment 3 — Missing Data in the Seshat Moralizing Gods Debate</a></li>
-  <li><a href="#assignment-4-sampling-archaeological-radiocarbon-data" id="toc-assignment-4-sampling-archaeological-radiocarbon-data" class="nav-link" data-scroll-target="#assignment-4-sampling-archaeological-radiocarbon-data">Assignment 4 — Sampling Archaeological Radiocarbon Data</a></li>
-  <li><a href="#assignment-5-teotihuacan-leporid-management" id="toc-assignment-5-teotihuacan-leporid-management" class="nav-link" data-scroll-target="#assignment-5-teotihuacan-leporid-management">Assignment 5 — Teotihuacan Leporid Management</a></li>
-  <li><a href="#assignment-6-comparing-groups-at-tell-tweini" id="toc-assignment-6-comparing-groups-at-tell-tweini" class="nav-link" data-scroll-target="#assignment-6-comparing-groups-at-tell-tweini">Assignment 6 — Comparing Groups at Tell Tweini</a></li>
-  <li><a href="#assignment-7-raw-material-variation-in-highland-lesotho" id="toc-assignment-7-raw-material-variation-in-highland-lesotho" class="nav-link" data-scroll-target="#assignment-7-raw-material-variation-in-highland-lesotho">Assignment 7 — Raw-Material Variation in Highland Lesotho</a></li>
-  <li><a href="#assignment-8-comparing-iron-geochemistry-with-anova" id="toc-assignment-8-comparing-iron-geochemistry-with-anova" class="nav-link" data-scroll-target="#assignment-8-comparing-iron-geochemistry-with-anova">Assignment 8 — Comparing Iron Geochemistry with ANOVA</a></li>
-  <li><a href="#assignment-9-hawaiian-kukui-isotopes" id="toc-assignment-9-hawaiian-kukui-isotopes" class="nav-link" data-scroll-target="#assignment-9-hawaiian-kukui-isotopes">Assignment 9 — Hawaiian Kukui Isotopes</a></li>
-  <li><a href="#assignment-10-predicting-flake-mass" id="toc-assignment-10-predicting-flake-mass" class="nav-link" data-scroll-target="#assignment-10-predicting-flake-mass">Assignment 10 — Predicting Flake Mass</a></li>
+  <li><a href="#research-question" id="toc-research-question" class="nav-link active" data-scroll-target="#research-question">Research question</a></li>
+  <li><a href="#case-study" id="toc-case-study" class="nav-link" data-scroll-target="#case-study">Case study</a></li>
+  <li><a href="#create-the-teaching-raw-material-grouping" id="toc-create-the-teaching-raw-material-grouping" class="nav-link" data-scroll-target="#create-the-teaching-raw-material-grouping">1. Create the teaching raw-material grouping</a></li>
+  <li><a href="#contingency-table-proportions-and-visualization" id="toc-contingency-table-proportions-and-visualization" class="nav-link" data-scroll-target="#contingency-table-proportions-and-visualization">2. Contingency table, proportions, and visualization</a></li>
+  <li><a href="#pearson-chi-square-test" id="toc-pearson-chi-square-test" class="nav-link" data-scroll-target="#pearson-chi-square-test">3. Pearson chi-square test</a></li>
+  <li><a href="#standardized-residuals" id="toc-standardized-residuals" class="nav-link" data-scroll-target="#standardized-residuals">4. Standardized residuals</a></li>
+  <li><a href="#effect-size" id="toc-effect-size" class="nav-link" data-scroll-target="#effect-size">5. Effect size</a></li>
+  <li><a href="#interpretation-and-sparse-table-reasoning" id="toc-interpretation-and-sparse-table-reasoning" class="nav-link" data-scroll-target="#interpretation-and-sparse-table-reasoning">6. Interpretation and sparse-table reasoning</a></li>
+  <li><a href="#final-interpretation" id="toc-final-interpretation" class="nav-link" data-scroll-target="#final-interpretation">Final interpretation</a></li>
   </ul>
 </nav>
     </div>
@@ -193,13 +228,19 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Assignments</h1>
+<h1 class="title">ANTH418 Assignment 7: Lithic Raw Materials in Highland Lesotho</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Your Name </p>
+          </div>
+  </div>
     
   
     
@@ -210,95 +251,155 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>The ten ANTH418 assignments use published archaeological and anthropological datasets.</p>
-<p>Each assignment package contains:</p>
+<section id="research-question" class="level2">
+<h2 class="anchored" data-anchor-id="research-question">Research question</h2>
+<p>Does lithic raw-material composition differ among the four published Sehonghong archaeological layers, which layer/material combinations contribute most strongly to the association, and how strong is the association?</p>
+</section>
+<section id="case-study" class="level2">
+<h2 class="anchored" data-anchor-id="case-study">Case study</h2>
+<p>Gregory, Alex, Peter Mitchell, and Justin Pargeter. 2023. Raw Material Surveys and Their Behavioral Implications in Highland Lesotho. <em>Journal of Paleolithic Archaeology</em> 6:18.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>data_path <span class="ot">&lt;-</span> <span class="cf">if</span> (<span class="fu">file.exists</span>(<span class="st">"data/lesotho_raw_material.csv"</span>)) {</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"data/lesotho_raw_material.csv"</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"assignments/assignment07_lesotho_chisquare/data/lesotho_raw_material.csv"</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  data_path,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">show_col_types =</span> <span class="cn">FALSE</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(dat, level)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 2
+  level         n
+  &lt;chr&gt;     &lt;int&gt;
+1 BARF        305
+2 BAS         234
+3 RBL-CLBRF   270
+4 RF          251</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dat)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 1,060
+Columns: 5
+$ artifact_id    &lt;dbl&gt; 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19…
+$ level          &lt;chr&gt; "BARF", "BARF", "BARF", "BARF", "BARF", "BARF", "BARF",…
+$ raw_material   &lt;chr&gt; "CrystallineQuartz", "CrystallineQuartz", "CrystallineQ…
+$ artifact_class &lt;chr&gt; "CompFlake", "CompFlake", "CompFlake", "FlakeFrag", "Fl…
+$ completeness   &lt;chr&gt; "Complete", "Complete", "Complete", "Fragment", "Fragme…</code></pre>
+</div>
+</div>
+<p>The teaching file contains four source-defined archaeological layers:</p>
 <ul>
-<li>assignment <code>.qmd</code>;</li>
-<li>README;</li>
-<li>codebook;</li>
-<li>provenance note; and</li>
-<li>teaching dataset.</li>
+<li>BAS</li>
+<li>RBL-CLBRF</li>
+<li>RF</li>
+<li>BARF</li>
 </ul>
-<p>Students may browse the materials online or download the complete assignment package as a ZIP file.</p>
-<hr>
-<section id="assignment-1-describing-human-isotope-variation" class="level2">
-<h2 class="anchored" data-anchor-id="assignment-1-describing-human-isotope-variation">Assignment 1 — Describing Human Isotope Variation</h2>
-<p><strong>Statistical method:</strong> Descriptive statistics</p>
-<p><strong>Case study:</strong> Bronze Age diet and farming at La Bastida and Gatas</p>
-<p><a href="../assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.html">Open Assignment 1</a></p>
-<p><a href="../downloads/assignments/ANTH418_assignment01_knipper_descriptive.zip">Download complete Assignment 1 package</a></p>
-<hr>
+<p>The <strong>unit of analysis</strong> is one lithic observation/artifact record represented in the source flake dataset and retained in this four-layer analytical frame.</p>
+<p>Do not interpret 1,060 artifact records as 1,060 independent behavioral events. Artifact frequencies can be affected by reduction, fragmentation, deposition, recovery, and classification.</p>
+<p>Do <strong>not</strong> select layers automatically.</p>
 </section>
-<section id="assignment-2-visualizing-kinship-diversity-with-kinbank" class="level2">
-<h2 class="anchored" data-anchor-id="assignment-2-visualizing-kinship-diversity-with-kinbank">Assignment 2 — Visualizing Kinship Diversity with Kinbank</h2>
-<p><strong>Statistical method:</strong> Exploratory data analysis and visualization</p>
-<p><strong>Case study:</strong> Cross-linguistic variation in kinship terminology using Kinbank</p>
-<p><a href="../assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.html">Open Assignment 2</a></p>
-<p><a href="../downloads/assignments/ANTH418_assignment02_kinbank_visualization.zip">Download complete Assignment 2 package</a></p>
-<hr>
+<section id="create-the-teaching-raw-material-grouping" class="level2">
+<h2 class="anchored" data-anchor-id="create-the-teaching-raw-material-grouping">1. Create the teaching raw-material grouping</h2>
+<p>Retain these three source categories separately:</p>
+<ul>
+<li><code>CrystallineQuartz</code></li>
+<li><code>Dolerite</code></li>
+<li><code>FineChert</code></li>
+</ul>
+<p>Combine:</p>
+<ul>
+<li><code>Agate</code></li>
+<li><code>CoarseChert</code></li>
+<li><code>Quartzite</code></li>
+<li><code>Sandstone</code></li>
+</ul>
+<p>as:</p>
+<p><code>Other</code></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><code>Other</code> is an <strong>analysis-time teaching grouping</strong>, not an original source category.</p>
+<p>Verify that all 1,060 observations remain and that no <code>material_group</code> value is missing.</p>
+<p>Explain why this transparent collapse is preferable to running Pearson’s chi-square test with sparse expected cells.</p>
 </section>
-<section id="assignment-3-missing-data-in-the-seshat-moralizing-gods-debate" class="level2">
-<h2 class="anchored" data-anchor-id="assignment-3-missing-data-in-the-seshat-moralizing-gods-debate">Assignment 3 — Missing Data in the Seshat Moralizing Gods Debate</h2>
-<p><strong>Statistical method:</strong> Missing-data analysis and sensitivity analysis</p>
-<p><strong>Case study:</strong> Treatment of missing observations in the Seshat moralizing-gods debate</p>
-<p><a href="../assignments/assignment03_seshat_missing/assignment03_seshat_missing.html">Open Assignment 3</a></p>
-<p><a href="../downloads/assignments/ANTH418_assignment03_seshat_missing.zip">Download complete Assignment 3 package</a></p>
-<hr>
+<section id="contingency-table-proportions-and-visualization" class="level2">
+<h2 class="anchored" data-anchor-id="contingency-table-proportions-and-visualization">2. Contingency table, proportions, and visualization</h2>
+<p>Create the <strong>4 × 4 contingency table</strong> of archaeological layer by <code>material_group</code>.</p>
+<p>Calculate <strong>row proportions</strong>. A row proportion answers:</p>
+<blockquote class="blockquote">
+<p><strong>Within this archaeological layer, what proportion of lithic observations belongs to each raw-material group?</strong></p>
+</blockquote>
+<p>Then create a proportional stacked bar chart, or another appropriate visualization, showing raw-material composition by layer.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Describe the most visible differences before running the formal test. Make the denominator of your proportions explicit.</p>
 </section>
-<section id="assignment-4-sampling-archaeological-radiocarbon-data" class="level2">
-<h2 class="anchored" data-anchor-id="assignment-4-sampling-archaeological-radiocarbon-data">Assignment 4 — Sampling Archaeological Radiocarbon Data</h2>
-<p><strong>Statistical method:</strong> Sampling distributions, precision, and sampling bias</p>
-<p><strong>Case study:</strong> Southern California archaeological radiocarbon determinations from p3k14c</p>
-<p><a href="../assignments/assignment04_p3k14c_sampling/assignment04_p3k14c_sampling.html">Open Assignment 4</a></p>
-<p><a href="../downloads/assignments/ANTH418_assignment04_p3k14c_sampling.zip">Download complete Assignment 4 package</a></p>
-<hr>
+<section id="pearson-chi-square-test" class="level2">
+<h2 class="anchored" data-anchor-id="pearson-chi-square-test">3. Pearson chi-square test</h2>
+<p>State the null and alternative hypotheses in words.</p>
+<p>Run Pearson’s chi-square test of independence between:</p>
+<ul>
+<li>archaeological layer; and</li>
+<li>raw-material group.</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Before interpreting the p-value, inspect the expected counts.</p>
+<p>Report:</p>
+<ul>
+<li>the minimum expected count;</li>
+<li>the number of cells with expected count below 5.</li>
+</ul>
+<p>Explain whether the usual chi-square approximation is reasonable for this table.</p>
 </section>
-<section id="assignment-5-teotihuacan-leporid-management" class="level2">
-<h2 class="anchored" data-anchor-id="assignment-5-teotihuacan-leporid-management">Assignment 5 — Teotihuacan Leporid Management</h2>
-<p><strong>Statistical method:</strong> Bootstrap confidence intervals and permutation tests</p>
-<p><strong>Case study:</strong> Leporid stable-isotope variation at Teotihuacan</p>
-<p><a href="../assignments/assignment05_teotihuacan_inference/assignment05_teotihuacan_inference.html">Open Assignment 5</a></p>
-<p><a href="../downloads/assignments/ANTH418_assignment05_teotihuacan_inference.zip">Download complete Assignment 5 package</a></p>
-<hr>
+<section id="standardized-residuals" class="level2">
+<h2 class="anchored" data-anchor-id="standardized-residuals">4. Standardized residuals</h2>
+<p>Inspect the standardized residuals from the chi-square test.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Identify the layer/material combinations that contribute most strongly to the overall association.</p>
+<p>As an interpretive guideline, pay particular attention to standardized residuals with absolute magnitude around <strong>2 or greater</strong>.</p>
+<p>A positive residual means that a cell occurs more often than expected under independence; a negative residual means that it occurs less often than expected.</p>
+<p>Connect the strongest residuals back to the observed row proportions.</p>
 </section>
-<section id="assignment-6-comparing-groups-at-tell-tweini" class="level2">
-<h2 class="anchored" data-anchor-id="assignment-6-comparing-groups-at-tell-tweini">Assignment 6 — Comparing Groups at Tell Tweini</h2>
-<p><strong>Statistical method:</strong> Welch two-sample t-test, confidence interval, and effect size</p>
-<p><strong>Case study:</strong> Middle Bronze Age and Late Bronze Age plant-isotope comparison at Tell Tweini</p>
-<p><a href="../assignments/assignment06_tell_tweini_ttest/assignment06_tell_tweini_ttest.html">Open Assignment 6</a></p>
-<p><a href="../downloads/assignments/ANTH418_assignment06_tell_tweini_ttest.zip">Download complete Assignment 6 package</a></p>
-<hr>
+<section id="effect-size" class="level2">
+<h2 class="anchored" data-anchor-id="effect-size">5. Effect size</h2>
+<p>Calculate <strong>Cramér’s V</strong>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Use Cramér’s V to describe the magnitude of the layer–raw-material association.</p>
+<p>Do <strong>not</strong> interpret the chi-square p-value itself as a measure of effect size.</p>
 </section>
-<section id="assignment-7-raw-material-variation-in-highland-lesotho" class="level2">
-<h2 class="anchored" data-anchor-id="assignment-7-raw-material-variation-in-highland-lesotho">Assignment 7 — Raw-Material Variation in Highland Lesotho</h2>
-<p><strong>Statistical method:</strong> Chi-square test of independence</p>
-<p><strong>Case study:</strong> Lithic raw-material composition across archaeological layers in Highland Lesotho</p>
-<p><a href="../assignments/assignment07_lesotho_chisquare/assignment07_lesotho_chisquare.html">Open Assignment 7</a></p>
-<p><a href="../downloads/assignments/ANTH418_assignment07_lesotho_chisquare.zip">Download complete Assignment 7 package</a></p>
-<hr>
+<section id="interpretation-and-sparse-table-reasoning" class="level2">
+<h2 class="anchored" data-anchor-id="interpretation-and-sparse-table-reasoning">6. Interpretation and sparse-table reasoning</h2>
+<p>Explain the association archaeologically.</p>
+<p>When would Fisher’s exact test or another sparse-table strategy be more appropriate?</p>
+<p>Why is Fisher’s exact test <strong>not necessary here</strong>, given the expected counts in this teaching table?</p>
+<p>Compare your statistical result with Gregory et al.’s archaeological interpretation. Explain what the layer–raw-material association supports descriptively and statistically, and what additional evidence would be needed to argue for procurement strategy, mobility, climatic causation, or social interaction.</p>
 </section>
-<section id="assignment-8-comparing-iron-geochemistry-with-anova" class="level2">
-<h2 class="anchored" data-anchor-id="assignment-8-comparing-iron-geochemistry-with-anova">Assignment 8 — Comparing Iron Geochemistry with ANOVA</h2>
-<p><strong>Statistical method:</strong> One-way ANOVA, post-hoc comparison, and robustness checks</p>
-<p><strong>Case study:</strong> Roman-period iron-smelting geochemistry</p>
-<p><a href="assignment08_iron_anova/">View Assignment 8 materials</a></p>
-<p><a href="../downloads/assignments/ANTH418_assignment08_iron_anova.zip">Download complete Assignment 8 package</a></p>
-<hr>
-</section>
-<section id="assignment-9-hawaiian-kukui-isotopes" class="level2">
-<h2 class="anchored" data-anchor-id="assignment-9-hawaiian-kukui-isotopes">Assignment 9 — Hawaiian Kukui Isotopes</h2>
-<p><strong>Statistical method:</strong> Correlation and measures of association</p>
-<p><strong>Case study:</strong> Kukui δ13C variation along elevation and rainfall gradients in Hawaiʻi</p>
-<p><a href="assignment09_kukui_correlation/">View Assignment 9 materials</a></p>
-<p><a href="../downloads/assignments/ANTH418_assignment09_kukui_correlation.zip">Download complete Assignment 9 package</a></p>
-<hr>
-</section>
-<section id="assignment-10-predicting-flake-mass" class="level2">
-<h2 class="anchored" data-anchor-id="assignment-10-predicting-flake-mass">Assignment 10 — Predicting Flake Mass</h2>
-<p><strong>Statistical method:</strong> Simple linear regression</p>
-<p><strong>Case study:</strong> Predicting experimental flake mass from mean flake thickness</p>
-<p><a href="assignment10_flake_regression/">View Assignment 10 materials</a></p>
-<p><a href="../downloads/assignments/ANTH418_assignment10_flake_regression.zip">Download complete Assignment 10 package</a></p>
+<section id="final-interpretation" class="level2">
+<h2 class="anchored" data-anchor-id="final-interpretation">Final interpretation</h2>
+<p>Answer the following questions in complete sentences:</p>
+<ol type="1">
+<li>What is the unit of analysis?</li>
+<li>How does raw-material composition vary among BAS, RBL-CLBRF, RF, and BARF?</li>
+<li>What does the chi-square test tell you about association between archaeological layer and raw-material composition?</li>
+<li>Are the expected counts adequate for the ordinary chi-square approximation?</li>
+<li>Which layer/material combinations contribute most strongly, and in what direction?</li>
+<li>What does Cramér’s V add beyond the p-value?</li>
+<li>Why is Fisher’s exact test not required for this validated teaching table, and when would it become useful?</li>
+<li>What behavioral, procurement, mobility, climatic, or social claim does this association <strong>not</strong> establish by itself?</li>
+</ol>
 
 
 </section>
@@ -709,5 +810,5 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

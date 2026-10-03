@@ -1,0 +1,168 @@
+---
+title: "ANTH418 Assignment 7: Lithic Raw Materials in Highland Lesotho"
+author: "Your Name"
+format:
+  html:
+    toc: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+## Research question
+
+Does lithic raw-material composition differ among the four published Sehonghong archaeological layers, which layer/material combinations contribute most strongly to the association, and how strong is the association?
+
+## Case study
+
+Gregory, Alex, Peter Mitchell, and Justin Pargeter. 2023. Raw Material Surveys and Their Behavioral Implications in Highland Lesotho. *Journal of Paleolithic Archaeology* 6:18.
+
+```{r}
+library(tidyverse)
+
+data_path <- if (file.exists("data/lesotho_raw_material.csv")) {
+  "data/lesotho_raw_material.csv"
+} else {
+  "assignments/assignment07_lesotho_chisquare/data/lesotho_raw_material.csv"
+}
+
+dat <- read_csv(
+  data_path,
+  show_col_types = FALSE
+)
+
+count(dat, level)
+glimpse(dat)
+```
+
+The teaching file contains four source-defined archaeological layers:
+
+- BAS
+- RBL-CLBRF
+- RF
+- BARF
+
+The **unit of analysis** is one lithic observation/artifact record represented in the source flake dataset and retained in this four-layer analytical frame.
+
+Do not interpret 1,060 artifact records as 1,060 independent behavioral events. Artifact frequencies can be affected by reduction, fragmentation, deposition, recovery, and classification.
+
+Do **not** select layers automatically.
+
+## 1. Create the teaching raw-material grouping
+
+Retain these three source categories separately:
+
+- `CrystallineQuartz`
+- `Dolerite`
+- `FineChert`
+
+Combine:
+
+- `Agate`
+- `CoarseChert`
+- `Quartzite`
+- `Sandstone`
+
+as:
+
+`Other`
+
+```{r}
+# Your code
+```
+
+`Other` is an **analysis-time teaching grouping**, not an original source category.
+
+Verify that all 1,060 observations remain and that no `material_group` value is missing.
+
+Explain why this transparent collapse is preferable to running Pearson's chi-square test with sparse expected cells.
+
+## 2. Contingency table, proportions, and visualization
+
+Create the **4 × 4 contingency table** of archaeological layer by `material_group`.
+
+Calculate **row proportions**. A row proportion answers:
+
+> **Within this archaeological layer, what proportion of lithic observations belongs to each raw-material group?**
+
+Then create a proportional stacked bar chart, or another appropriate visualization, showing raw-material composition by layer.
+
+```{r}
+# Your code
+```
+
+Describe the most visible differences before running the formal test. Make the denominator of your proportions explicit.
+
+## 3. Pearson chi-square test
+
+State the null and alternative hypotheses in words.
+
+Run Pearson's chi-square test of independence between:
+
+- archaeological layer; and
+- raw-material group.
+
+```{r}
+# Your code
+```
+
+Before interpreting the p-value, inspect the expected counts.
+
+Report:
+
+- the minimum expected count;
+- the number of cells with expected count below 5.
+
+Explain whether the usual chi-square approximation is reasonable for this table.
+
+## 4. Standardized residuals
+
+Inspect the standardized residuals from the chi-square test.
+
+```{r}
+# Your code
+```
+
+Identify the layer/material combinations that contribute most strongly to the overall association.
+
+As an interpretive guideline, pay particular attention to standardized residuals with absolute magnitude around **2 or greater**.
+
+A positive residual means that a cell occurs more often than expected under independence; a negative residual means that it occurs less often than expected.
+
+Connect the strongest residuals back to the observed row proportions.
+
+## 5. Effect size
+
+Calculate **Cramér's V**.
+
+```{r}
+# Your code
+```
+
+Use Cramér's V to describe the magnitude of the layer–raw-material association.
+
+Do **not** interpret the chi-square p-value itself as a measure of effect size.
+
+## 6. Interpretation and sparse-table reasoning
+
+Explain the association archaeologically.
+
+When would Fisher's exact test or another sparse-table strategy be more appropriate?
+
+Why is Fisher's exact test **not necessary here**, given the expected counts in this teaching table?
+
+Compare your statistical result with Gregory et al.'s archaeological interpretation. Explain what the layer–raw-material association supports descriptively and statistically, and what additional evidence would be needed to argue for procurement strategy, mobility, climatic causation, or social interaction.
+
+## Final interpretation
+
+Answer the following questions in complete sentences:
+
+1. What is the unit of analysis?
+2. How does raw-material composition vary among BAS, RBL-CLBRF, RF, and BARF?
+3. What does the chi-square test tell you about association between archaeological layer and raw-material composition?
+4. Are the expected counts adequate for the ordinary chi-square approximation?
+5. Which layer/material combinations contribute most strongly, and in what direction?
+6. What does Cramér's V add beyond the p-value?
+7. Why is Fisher's exact test not required for this validated teaching table, and when would it become useful?
+8. What behavioral, procurement, mobility, climatic, or social claim does this association **not** establish by itself?
