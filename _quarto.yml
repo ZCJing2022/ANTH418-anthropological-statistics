@@ -22,6 +22,7 @@ project:
     - practice-workbooks/week05.qmd
     - practice-workbooks/week06.qmd
     - practice-workbooks/week07.qmd
+    - practice-workbooks/week08.qmd
     - assignments/index.qmd
     - assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.qmd
     - assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.qmd
@@ -41,6 +42,7 @@ project:
     - downloads/practice-workbooks/ANTH418_Week05_Practice.zip
     - downloads/practice-workbooks/ANTH418_Week06_Practice.zip
     - downloads/practice-workbooks/ANTH418_Week07_Practice.zip
+    - downloads/practice-workbooks/ANTH418_Week08_Practice.zip
 
 website:
   title: "ANTH418: Anthropological Statistics"
@@ -105,6 +107,9 @@ website:
 
           - href: practice-workbooks/week07.qmd
             text: "Week 7 — Probability & Sampling"
+
+          - href: practice-workbooks/week08.qmd
+            text: "Week 8 — Confidence Intervals & Hypothesis Testing"
 
       - href: assignments/index.qmd
         text: Assignments

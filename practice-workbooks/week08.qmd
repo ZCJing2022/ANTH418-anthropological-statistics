@@ -1,0 +1,586 @@
+---
+title: "ANTH418 Week 8 Practice Workbook"
+subtitle: "Confidence Intervals and Hypothesis Testing"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    code-copy: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+::: {.callout-tip title="Start here — download the editable workbook"}
+This webpage is the rendered version of an **editable Quarto workbook**.
+
+1. Download the **Week 8 Practice Package**.
+2. Unzip it.
+3. Open `week08-practice.qmd` in RStudio.
+4. Keep the `data` folder beside the QMD.
+5. Work from top to bottom.
+6. For each exercise: **predict → run → inspect → explain**.
+7. Edit code and write explanations directly in the QMD.
+8. Render frequently.
+9. Finish with the **Clean Render Test**.
+
+**Do not copy this webpage into RStudio.** The downloadable QMD is the editable source.
+
+[**Download Week 8 Practice Package (.zip)**](../downloads/practice-workbooks/ANTH418_Week08_Practice.zip)
+:::
+
+## How to use this workbook
+
+Week 7 showed why statistics vary from sample to sample. Week 8 uses that variability for inference:
+
+> **estimate → quantify uncertainty → specify a null model → construct a null distribution → calculate a p-value → return to effect magnitude and archaeology**
+
+> **Bootstrap:** How much might my estimate vary?
+
+> **Permutation:** What differences would we expect if the null model held?
+
+A bootstrap distribution is a distribution of **estimates**. A permutation distribution is a **null distribution**.
+
+## Learning objectives
+
+By the end, you should be able to distinguish point and interval estimates; construct and interpret bootstrap confidence intervals; distinguish bootstrap from permutation; state null and alternative hypotheses; construct a permutation null distribution; interpret a p-value as a tail probability conditional on a null model; explain what a p-value does not measure; distinguish statistical significance from effect magnitude and archaeological significance; and apply the complete workflow to Teotihuacan leporid δ13C data.
+
+# Part I — Sampling variability creates uncertainty
+
+## 1. From Week 7 to Week 8
+
+```{r}
+library(tidyverse)
+
+set.seed(418)
+population <- tibble(value = rgamma(10000, shape = 8, scale = 2))
+sample_dat <- population |> slice_sample(n = 40)
+mean(sample_dat$value)
+```
+
+### Practice 1
+
+Why is the sample mean useful but incomplete? What information about uncertainty is missing?
+
+# Part II — Point estimate versus interval estimate
+
+## 2. One number versus a range
+
+```{r}
+point_estimate <- mean(sample_dat$value)
+point_estimate
+```
+
+A point estimate asks **what is the observed estimate?** An interval estimate adds **how uncertain is it under the procedure being used?**
+
+### Practice 2
+
+Why should archaeological interpretation begin with direction and magnitude rather than a significance label?
+
+# Part III — Bootstrap logic
+
+## 3. Resample observations with replacement
+
+```{r}
+set.seed(419)
+
+boot_means <- tibble(rep = 1:5000) |>
+  mutate(
+    boot_mean = map_dbl(
+      rep,
+      ~ mean(sample(sample_dat$value, nrow(sample_dat), replace = TRUE))
+    )
+  )
+
+ggplot(boot_means, aes(x = boot_mean)) +
+  geom_histogram(bins = 40) +
+  geom_vline(xintercept = point_estimate, linetype = 2) +
+  theme_minimal()
+```
+
+### Practice 3
+
+What does one bootstrap mean represent? Why is this not a distribution of individual observations?
+
+# Part IV — Bootstrap confidence intervals
+
+## 4. Percentile interval
+
+```{r}
+boot_ci <- quantile(boot_means$boot_mean, probs = c(0.025, 0.975))
+boot_ci
+```
+
+```{r}
+ggplot(boot_means, aes(x = boot_mean)) +
+  geom_histogram(bins = 40) +
+  geom_vline(xintercept = boot_ci, linetype = "dashed") +
+  geom_vline(xintercept = point_estimate) +
+  theme_minimal()
+```
+
+### Practice 4
+
+Interpret the interval in terms of magnitude and uncertainty. Do **not** say there is a 95% probability that the fixed population parameter lies inside this particular frequentist interval.
+
+# Part V — Confidence level is a property of a procedure
+
+## 5. Repeated-interval thinking
+
+The confidence level refers to long-run performance of the interval-producing procedure under its assumptions.
+
+### Practice 5
+
+Explain why this is preferable to saying “there is a 95% probability that the parameter is inside this particular interval.”
+
+# Part VI — Hypotheses are statistical models
+
+## 6. Null and alternative
+
+For a difference between means:
+
+$$
+H_0:\mu_1-\mu_2=0
+$$
+
+$$
+H_A:\mu_1-\mu_2\neq0
+$$
+
+The null is a **statistical reference model**, not necessarily a claim that “nothing happened.”
+
+### Practice 6
+
+Why is “the isotope means differ” not equivalent to “people managed leporids”?
+
+# Part VII — Permutation logic
+
+## 7. Shuffle what the null permits
+
+```{r}
+set.seed(420)
+
+perm_demo <- tibble(
+  group = rep(c("A", "B"), each = 25),
+  value = c(rnorm(25, 10, 2), rnorm(25, 12, 2))
+)
+
+obs_diff_demo <- mean(perm_demo$value[perm_demo$group == "B"]) -
+  mean(perm_demo$value[perm_demo$group == "A"])
+
+obs_diff_demo
+```
+
+```{r}
+set.seed(421)
+
+perm_null_demo <- tibble(rep = 1:5000) |>
+  mutate(
+    stat = map_dbl(
+      rep,
+      ~ {
+        shuffled <- sample(perm_demo$group, replace = FALSE)
+        mean(perm_demo$value[shuffled == "B"]) -
+          mean(perm_demo$value[shuffled == "A"])
+      }
+    )
+  )
+
+ggplot(perm_null_demo, aes(x = stat)) +
+  geom_histogram(bins = 40) +
+  geom_vline(xintercept = c(-abs(obs_diff_demo), abs(obs_diff_demo))) +
+  theme_minimal()
+```
+
+### Practice 7
+
+Why is the permutation scheme part of the model rather than merely a computational trick?
+
+# Part VIII — The p-value
+
+## 8. Tail probability under the null
+
+```{r}
+p_demo <- mean(abs(perm_null_demo$stat) >= abs(obs_diff_demo))
+p_demo
+```
+
+The p-value asks how unusual a statistic at least this extreme would be **if the null model were an adequate description of the data-generating process**.
+
+### Practice 8
+
+Explain why a p-value is not the probability that H0 is true, the probability that chance caused the result, the effect size, the probability an archaeological explanation is true, or a measure of archaeological importance.
+
+# Part IX — Bootstrap and permutation answer different questions
+
+## 9. Two resampling tools
+
+| Procedure | What is resampled? | Distribution | Week 8 question |
+|---|---|---|---|
+| Bootstrap | observations with replacement | estimates | How much might my estimate vary? |
+| Permutation | labels allowed by H0 | null statistics | What differences would occur if H0 held? |
+
+### Practice 9
+
+Why is only the permutation distribution a null distribution here?
+
+# Part X — Statistical significance is not effect magnitude
+
+## 10. Three separate questions
+
+1. **How large is the observed effect?**
+2. **How uncertain is the estimate?**
+3. **How unusual is the result under a defined null model?**
+
+A p-value answers only the third.
+
+### Practice 10
+
+Why can a small effect be statistically detectable while an archaeologically important effect can remain uncertain?
+
+# Part XI — Load the Teotihuacan teaching data
+
+## 11. Portable data path
+
+```{r}
+if (file.exists("data/teotihuacan_leporids.csv")) {
+  data_path <- "data/teotihuacan_leporids.csv"
+} else {
+  project_root <- if (file.exists("_quarto.yml")) "." else ".."
+  data_path <- file.path(
+    project_root,
+    "assignments",
+    "assignment05_teotihuacan_inference",
+    "data",
+    "teotihuacan_leporids.csv"
+  )
+}
+
+file.exists(data_path)
+```
+
+```{r}
+dat <- read_csv(data_path, show_col_types = FALSE) |>
+  filter(valid)
+
+glimpse(dat)
+names(dat)
+```
+
+::: {.callout-important title="Know the archaeological comparison"}
+One row is one source observation for a leporid specimen in the teaching file. `context` is the grouping variable and `d13c` is the numerical response in ‰ VPDB. `valid` refers to the δ13C exclusion rule documented for the teaching data.
+
+These specimens are **not automatically a random probability sample of all leporids that lived at Teotihuacan**.
+:::
+
+# Part XII — Define the comparison before calculating
+
+## 12. Oztoyahualco versus Moon Pyramid
+
+```{r}
+d <- dat |>
+  filter(context %in% c("Oztoyahualco", "Moon Pyramid"))
+
+d |> count(context)
+```
+
+Throughout, define the effect as:
+
+> **Oztoyahualco − Moon Pyramid**
+
+A positive difference means mean δ13C is higher (less negative) at Oztoyahualco.
+
+### Practice 11
+
+Why must contrast direction be defined before calculation and interpretation?
+
+# Part XIII — Describe before testing
+
+## 13. Group summaries and distributions
+
+```{r}
+group_summary <- d |>
+  group_by(context) |>
+  summarise(
+    n = n(),
+    mean_d13c = mean(d13c),
+    sd_d13c = sd(d13c),
+    .groups = "drop"
+  )
+
+group_summary
+```
+
+```{r}
+ggplot(d, aes(x = context, y = d13c)) +
+  geom_boxplot(outlier.shape = NA) +
+  geom_jitter(width = 0.08, alpha = 0.65) +
+  labs(x = NULL, y = "δ13C (‰ VPDB)") +
+  theme_minimal()
+```
+
+### Practice 12
+
+Describe direction, overlap, spread, and sample size **before** asking about statistical significance.
+
+# Part XIV — Estimate the observed contrast
+
+## 14. Difference in means
+
+```{r}
+mean_ozto <- mean(d$d13c[d$context == "Oztoyahualco"])
+mean_moon <- mean(d$d13c[d$context == "Moon Pyramid"])
+
+obs_diff <- mean_ozto - mean_moon
+
+mean_ozto
+mean_moon
+obs_diff
+```
+
+### Practice 13
+
+Interpret the sign and magnitude in ‰. What does the point estimate not tell you about uncertainty?
+
+# Part XV — Bootstrap the Teotihuacan effect
+
+## 15. Resample within contexts
+
+```{r}
+set.seed(418)
+
+ozto <- d$d13c[d$context == "Oztoyahualco"]
+moon <- d$d13c[d$context == "Moon Pyramid"]
+
+boot_diff <- tibble(rep = 1:10000) |>
+  mutate(
+    stat = map_dbl(
+      rep,
+      ~ mean(sample(ozto, length(ozto), replace = TRUE)) -
+        mean(sample(moon, length(moon), replace = TRUE))
+    )
+  )
+
+ci <- quantile(boot_diff$stat, probs = c(0.025, 0.975))
+
+ci
+```
+
+```{r}
+ggplot(boot_diff, aes(x = stat)) +
+  geom_histogram(bins = 40) +
+  geom_vline(xintercept = ci, linetype = "dashed") +
+  geom_vline(xintercept = obs_diff) +
+  labs(
+    x = "Bootstrap difference in means (‰)",
+    y = "Count",
+    title = "Bootstrap distribution: Oztoyahualco − Moon Pyramid"
+  ) +
+  theme_minimal()
+```
+
+### Practice 14
+
+Report the observed difference and interval. Interpret the interval for **magnitude and uncertainty**, not merely whether it includes zero.
+
+# Part XVI — Specify the Teotihuacan null model
+
+## 16. No systematic contextual difference
+
+$$
+H_0:\mu_{\text{Oztoyahualco}}-\mu_{\text{Moon Pyramid}}=0
+$$
+
+$$
+H_A:\mu_{\text{Oztoyahualco}}-\mu_{\text{Moon Pyramid}}\neq0
+$$
+
+Under H0, context carries no systematic information about δ13C for this comparison.
+
+### Practice 15
+
+Why is this not equivalent to saying that no provisioning or management occurred?
+
+# Part XVII — Permutation null distribution
+
+## 17. Shuffle context labels
+
+The observed δ13C values stay fixed; the labels are shuffled while group sizes are preserved.
+
+```{r}
+set.seed(418)
+
+n_ozto <- sum(d$context == "Oztoyahualco")
+
+perm_null <- tibble(rep = 1:10000) |>
+  mutate(
+    stat = map_dbl(
+      rep,
+      ~ {
+        shuffled <- sample(d$d13c, replace = FALSE)
+        mean(shuffled[seq_len(n_ozto)]) -
+          mean(shuffled[(n_ozto + 1):length(shuffled)])
+      }
+    )
+  )
+
+perm_null
+```
+
+```{r}
+ggplot(perm_null, aes(x = stat)) +
+  geom_histogram(bins = 40) +
+  geom_vline(xintercept = c(-abs(obs_diff), abs(obs_diff))) +
+  labs(
+    x = "Difference in means under H0 (‰)",
+    y = "Count",
+    title = "Permutation null distribution"
+  ) +
+  theme_minimal()
+```
+
+# Part XVIII — Permutation p-value
+
+## 18. Two-sided tail probability
+
+```{r}
+p_value <- mean(abs(perm_null$stat) >= abs(obs_diff))
+p_value
+```
+
+### Practice 16
+
+Write one correct sentence interpreting the p-value as a tail probability conditional on H0, and one sentence explaining what it does **not** tell you.
+
+# Part XIX — Integrate estimate, interval, and test
+
+## 19. Three outputs, three roles
+
+```{r}
+tibble(
+  observed_difference = obs_diff,
+  ci_lower = unname(ci[1]),
+  ci_upper = unname(ci[2]),
+  permutation_p = p_value
+)
+```
+
+### Practice 17
+
+Answer:
+
+1. How large is the observed contrast?
+2. How uncertain is it?
+3. What range of differences is represented by the bootstrap interval?
+4. How unusual is the observed contrast under H0?
+5. Do estimate, interval, and null-model comparison tell a coherent statistical story?
+
+Do not let the p-value replace the effect estimate or uncertainty.
+
+# Part XX — Return to Teotihuacan archaeology
+
+## 20. Statistical contrast is not archaeological explanation
+
+The Week 8 lecture emphasizes that Oztoyahualco leporids have higher mean carbon-isotope values than other sampled contexts. Higher δ13C is consistent with greater C4/CAM consumption. Access to cultivated foods can be consistent with human provisioning.
+
+But:
+
+> **A statistical alternative such as “isotope means differ” is not equivalent to “people managed leporids.”**
+
+Archaeological interpretation requires context, chronology, ecology, alternative explanations, and other evidence.
+
+### Practice 18
+
+Discuss:
+
+- what higher δ13C may imply about diet;
+- why cultivated-food access may be consistent with provisioning;
+- why provisioning is not automatically management or breeding;
+- how archaeological context contributes to interpretation; and
+- at least one limitation or alternative explanation.
+
+# Part XXI — Statistical versus archaeological significance
+
+## 21. Return to substantive meaning
+
+Statistical inference evaluates compatibility with a model and uncertainty around estimates. Archaeological significance asks whether the magnitude and pattern matter for understanding past behavior.
+
+### Practice 19
+
+Complete:
+
+> The statistical analysis establishes __________________________.
+
+> The broader archaeological evidence suggests __________________.
+
+Why should these statements not be collapsed into one?
+
+# Part XXII — Conceptual debugging
+
+## 22. Diagnose the mistake
+
+1. “A 95% CI means there is a 95% probability that the parameter is inside this interval.”
+2. “The bootstrap distribution is the distribution of specimens.”
+3. “Bootstrap and permutation are interchangeable.”
+4. “The null hypothesis means nothing happened.”
+5. “A p-value is the probability that H0 is true.”
+6. “p = .01 means there is a 1% probability that chance caused the result.”
+7. “A small p-value means a large effect.”
+8. “Statistical significance establishes archaeological importance.”
+9. “A significant isotope contrast proves leporid management.”
+10. “Once I have a p-value, I no longer need the estimate or confidence interval.”
+
+# Part XXIII — Integrated Week 8 challenge
+
+## 23. Build the full inferential chain
+
+Using the Teotihuacan teaching data:
+
+1. Identify the observational unit.
+2. Define the grouping and response variables.
+3. State the direction of the contrast.
+4. Describe both groups.
+5. Calculate the observed difference.
+6. Bootstrap the difference.
+7. Construct a 95% percentile interval.
+8. State H0 and HA.
+9. Build the permutation null distribution.
+10. Calculate the two-sided p-value.
+11. Integrate effect magnitude, uncertainty, and null-model compatibility.
+12. Return to archaeological interpretation.
+13. State at least one alternative explanation or limitation.
+14. Distinguish the statistical result from the archaeological claim.
+
+# Part XXIV — Mastery checklist
+
+- [ ] I distinguish point and interval estimates.
+- [ ] I understand what a bootstrap distribution contains.
+- [ ] I can construct a percentile bootstrap CI.
+- [ ] I can state H0 and HA.
+- [ ] I understand permutation as a null-model procedure.
+- [ ] I distinguish bootstrap from permutation.
+- [ ] I interpret a p-value as a conditional tail probability.
+- [ ] I know what a p-value does not measure.
+- [ ] I report effect magnitude before significance.
+- [ ] I distinguish statistical from archaeological significance.
+- [ ] I can integrate estimate, CI, and p-value.
+- [ ] I can interpret the Teotihuacan isotope contrast cautiously.
+
+# Final challenge — explain the workflow without code
+
+Explain:
+
+> **estimate → quantify uncertainty → specify H0 → construct a null distribution → calculate a p-value → integrate the evidence → return to archaeology**
+
+Why should **estimation come before significance testing**?
+
+# Clean Render Test
+
+1. Save the QMD.
+2. Choose **Session → Restart R**.
+3. Do not recreate objects manually in the Console.
+4. Render the complete document.
+5. If it fails, identify what the document assumed but never created.
+
+A successful clean render shows that the inferential workflow is computationally self-contained.

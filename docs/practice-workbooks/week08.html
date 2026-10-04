@@ -1,0 +1,1631 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>ANTH418 Week 8 Practice Workbook – ANTH418: Anthropological Statistics</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-7ff37d7dbb752a0b62676bb39137b3a2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">ANTH418: Anthropological Statistics</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../syllabus.html"> 
+<span class="menu-text">Syllabus</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../lecture-notes/index.html"> 
+<span class="menu-text">Lecture Notes</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-study-guides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Study Guides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-study-guides">    
+        <li>
+    <a class="dropdown-item" href="../weeks/week02.html">
+ <span class="dropdown-text">Week 2 — R, RStudio &amp; Quarto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../weeks/week03.html">
+ <span class="dropdown-text">Week 3 — Measurement &amp; Research Design</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../weeks/week04.html">
+ <span class="dropdown-text">Week 4 — Central Tendency &amp; Dispersion</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../weeks/week05.html">
+ <span class="dropdown-text">Week 5 — EDA &amp; Visualization</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../weeks/week06.html">
+ <span class="dropdown-text">Week 6 — Transformation &amp; Missing Data</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../weeks/week07.html">
+ <span class="dropdown-text">Week 7 — Probability &amp; Sampling</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../weeks/week08.html">
+ <span class="dropdown-text">Week 8 — Confidence Intervals &amp; Hypothesis Testing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../weeks/week09.html">
+ <span class="dropdown-text">Week 9 — Comparing Two Groups: t-tests</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../weeks/week11.html">
+ <span class="dropdown-text">Week 11 — Chi-Square &amp; Tests of Proportions</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-practice-workbooks" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Practice Workbooks</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-practice-workbooks">    
+        <li>
+    <a class="dropdown-item" href="../practice-workbooks/week02.html">
+ <span class="dropdown-text">Week 2 — R, RStudio &amp; Quarto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../practice-workbooks/week03.html">
+ <span class="dropdown-text">Week 3 — Measurement &amp; Research Design</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../practice-workbooks/week04.html">
+ <span class="dropdown-text">Week 4 — Central Tendency &amp; Dispersion</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../practice-workbooks/week05.html">
+ <span class="dropdown-text">Week 5 — EDA &amp; Visualization</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../practice-workbooks/week06.html">
+ <span class="dropdown-text">Week 6 — Transformation &amp; Missing Data</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../practice-workbooks/week07.html">
+ <span class="dropdown-text">Week 7 — Probability &amp; Sampling</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../practice-workbooks/week08.html">
+ <span class="dropdown-text">Week 8 — Confidence Intervals &amp; Hypothesis Testing</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../assignments/index.html"> 
+<span class="menu-text">Assignments</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../readings/index.html"> 
+<span class="menu-text">Readings</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../resources/index.html"> 
+<span class="menu-text">Resources</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#how-to-use-this-workbook" id="toc-how-to-use-this-workbook" class="nav-link active" data-scroll-target="#how-to-use-this-workbook">How to use this workbook</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning objectives</a></li>
+  <li><a href="#part-i-sampling-variability-creates-uncertainty" id="toc-part-i-sampling-variability-creates-uncertainty" class="nav-link" data-scroll-target="#part-i-sampling-variability-creates-uncertainty">Part I — Sampling variability creates uncertainty</a>
+  <ul class="collapse">
+  <li><a href="#from-week-7-to-week-8" id="toc-from-week-7-to-week-8" class="nav-link" data-scroll-target="#from-week-7-to-week-8">1. From Week 7 to Week 8</a>
+  <ul class="collapse">
+  <li><a href="#practice-1" id="toc-practice-1" class="nav-link" data-scroll-target="#practice-1">Practice 1</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-ii-point-estimate-versus-interval-estimate" id="toc-part-ii-point-estimate-versus-interval-estimate" class="nav-link" data-scroll-target="#part-ii-point-estimate-versus-interval-estimate">Part II — Point estimate versus interval estimate</a>
+  <ul class="collapse">
+  <li><a href="#one-number-versus-a-range" id="toc-one-number-versus-a-range" class="nav-link" data-scroll-target="#one-number-versus-a-range">2. One number versus a range</a>
+  <ul class="collapse">
+  <li><a href="#practice-2" id="toc-practice-2" class="nav-link" data-scroll-target="#practice-2">Practice 2</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-iii-bootstrap-logic" id="toc-part-iii-bootstrap-logic" class="nav-link" data-scroll-target="#part-iii-bootstrap-logic">Part III — Bootstrap logic</a>
+  <ul class="collapse">
+  <li><a href="#resample-observations-with-replacement" id="toc-resample-observations-with-replacement" class="nav-link" data-scroll-target="#resample-observations-with-replacement">3. Resample observations with replacement</a>
+  <ul class="collapse">
+  <li><a href="#practice-3" id="toc-practice-3" class="nav-link" data-scroll-target="#practice-3">Practice 3</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-iv-bootstrap-confidence-intervals" id="toc-part-iv-bootstrap-confidence-intervals" class="nav-link" data-scroll-target="#part-iv-bootstrap-confidence-intervals">Part IV — Bootstrap confidence intervals</a>
+  <ul class="collapse">
+  <li><a href="#percentile-interval" id="toc-percentile-interval" class="nav-link" data-scroll-target="#percentile-interval">4. Percentile interval</a>
+  <ul class="collapse">
+  <li><a href="#practice-4" id="toc-practice-4" class="nav-link" data-scroll-target="#practice-4">Practice 4</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-v-confidence-level-is-a-property-of-a-procedure" id="toc-part-v-confidence-level-is-a-property-of-a-procedure" class="nav-link" data-scroll-target="#part-v-confidence-level-is-a-property-of-a-procedure">Part V — Confidence level is a property of a procedure</a>
+  <ul class="collapse">
+  <li><a href="#repeated-interval-thinking" id="toc-repeated-interval-thinking" class="nav-link" data-scroll-target="#repeated-interval-thinking">5. Repeated-interval thinking</a>
+  <ul class="collapse">
+  <li><a href="#practice-5" id="toc-practice-5" class="nav-link" data-scroll-target="#practice-5">Practice 5</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-vi-hypotheses-are-statistical-models" id="toc-part-vi-hypotheses-are-statistical-models" class="nav-link" data-scroll-target="#part-vi-hypotheses-are-statistical-models">Part VI — Hypotheses are statistical models</a>
+  <ul class="collapse">
+  <li><a href="#null-and-alternative" id="toc-null-and-alternative" class="nav-link" data-scroll-target="#null-and-alternative">6. Null and alternative</a>
+  <ul class="collapse">
+  <li><a href="#practice-6" id="toc-practice-6" class="nav-link" data-scroll-target="#practice-6">Practice 6</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-vii-permutation-logic" id="toc-part-vii-permutation-logic" class="nav-link" data-scroll-target="#part-vii-permutation-logic">Part VII — Permutation logic</a>
+  <ul class="collapse">
+  <li><a href="#shuffle-what-the-null-permits" id="toc-shuffle-what-the-null-permits" class="nav-link" data-scroll-target="#shuffle-what-the-null-permits">7. Shuffle what the null permits</a>
+  <ul class="collapse">
+  <li><a href="#practice-7" id="toc-practice-7" class="nav-link" data-scroll-target="#practice-7">Practice 7</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-viii-the-p-value" id="toc-part-viii-the-p-value" class="nav-link" data-scroll-target="#part-viii-the-p-value">Part VIII — The p-value</a>
+  <ul class="collapse">
+  <li><a href="#tail-probability-under-the-null" id="toc-tail-probability-under-the-null" class="nav-link" data-scroll-target="#tail-probability-under-the-null">8. Tail probability under the null</a>
+  <ul class="collapse">
+  <li><a href="#practice-8" id="toc-practice-8" class="nav-link" data-scroll-target="#practice-8">Practice 8</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-ix-bootstrap-and-permutation-answer-different-questions" id="toc-part-ix-bootstrap-and-permutation-answer-different-questions" class="nav-link" data-scroll-target="#part-ix-bootstrap-and-permutation-answer-different-questions">Part IX — Bootstrap and permutation answer different questions</a>
+  <ul class="collapse">
+  <li><a href="#two-resampling-tools" id="toc-two-resampling-tools" class="nav-link" data-scroll-target="#two-resampling-tools">9. Two resampling tools</a>
+  <ul class="collapse">
+  <li><a href="#practice-9" id="toc-practice-9" class="nav-link" data-scroll-target="#practice-9">Practice 9</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-x-statistical-significance-is-not-effect-magnitude" id="toc-part-x-statistical-significance-is-not-effect-magnitude" class="nav-link" data-scroll-target="#part-x-statistical-significance-is-not-effect-magnitude">Part X — Statistical significance is not effect magnitude</a>
+  <ul class="collapse">
+  <li><a href="#three-separate-questions" id="toc-three-separate-questions" class="nav-link" data-scroll-target="#three-separate-questions">10. Three separate questions</a>
+  <ul class="collapse">
+  <li><a href="#practice-10" id="toc-practice-10" class="nav-link" data-scroll-target="#practice-10">Practice 10</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-xi-load-the-teotihuacan-teaching-data" id="toc-part-xi-load-the-teotihuacan-teaching-data" class="nav-link" data-scroll-target="#part-xi-load-the-teotihuacan-teaching-data">Part XI — Load the Teotihuacan teaching data</a>
+  <ul class="collapse">
+  <li><a href="#portable-data-path" id="toc-portable-data-path" class="nav-link" data-scroll-target="#portable-data-path">11. Portable data path</a></li>
+  </ul></li>
+  <li><a href="#part-xii-define-the-comparison-before-calculating" id="toc-part-xii-define-the-comparison-before-calculating" class="nav-link" data-scroll-target="#part-xii-define-the-comparison-before-calculating">Part XII — Define the comparison before calculating</a>
+  <ul class="collapse">
+  <li><a href="#oztoyahualco-versus-moon-pyramid" id="toc-oztoyahualco-versus-moon-pyramid" class="nav-link" data-scroll-target="#oztoyahualco-versus-moon-pyramid">12. Oztoyahualco versus Moon Pyramid</a>
+  <ul class="collapse">
+  <li><a href="#practice-11" id="toc-practice-11" class="nav-link" data-scroll-target="#practice-11">Practice 11</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-xiii-describe-before-testing" id="toc-part-xiii-describe-before-testing" class="nav-link" data-scroll-target="#part-xiii-describe-before-testing">Part XIII — Describe before testing</a>
+  <ul class="collapse">
+  <li><a href="#group-summaries-and-distributions" id="toc-group-summaries-and-distributions" class="nav-link" data-scroll-target="#group-summaries-and-distributions">13. Group summaries and distributions</a>
+  <ul class="collapse">
+  <li><a href="#practice-12" id="toc-practice-12" class="nav-link" data-scroll-target="#practice-12">Practice 12</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-xiv-estimate-the-observed-contrast" id="toc-part-xiv-estimate-the-observed-contrast" class="nav-link" data-scroll-target="#part-xiv-estimate-the-observed-contrast">Part XIV — Estimate the observed contrast</a>
+  <ul class="collapse">
+  <li><a href="#difference-in-means" id="toc-difference-in-means" class="nav-link" data-scroll-target="#difference-in-means">14. Difference in means</a>
+  <ul class="collapse">
+  <li><a href="#practice-13" id="toc-practice-13" class="nav-link" data-scroll-target="#practice-13">Practice 13</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-xv-bootstrap-the-teotihuacan-effect" id="toc-part-xv-bootstrap-the-teotihuacan-effect" class="nav-link" data-scroll-target="#part-xv-bootstrap-the-teotihuacan-effect">Part XV — Bootstrap the Teotihuacan effect</a>
+  <ul class="collapse">
+  <li><a href="#resample-within-contexts" id="toc-resample-within-contexts" class="nav-link" data-scroll-target="#resample-within-contexts">15. Resample within contexts</a>
+  <ul class="collapse">
+  <li><a href="#practice-14" id="toc-practice-14" class="nav-link" data-scroll-target="#practice-14">Practice 14</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-xvi-specify-the-teotihuacan-null-model" id="toc-part-xvi-specify-the-teotihuacan-null-model" class="nav-link" data-scroll-target="#part-xvi-specify-the-teotihuacan-null-model">Part XVI — Specify the Teotihuacan null model</a>
+  <ul class="collapse">
+  <li><a href="#no-systematic-contextual-difference" id="toc-no-systematic-contextual-difference" class="nav-link" data-scroll-target="#no-systematic-contextual-difference">16. No systematic contextual difference</a>
+  <ul class="collapse">
+  <li><a href="#practice-15" id="toc-practice-15" class="nav-link" data-scroll-target="#practice-15">Practice 15</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-xvii-permutation-null-distribution" id="toc-part-xvii-permutation-null-distribution" class="nav-link" data-scroll-target="#part-xvii-permutation-null-distribution">Part XVII — Permutation null distribution</a>
+  <ul class="collapse">
+  <li><a href="#shuffle-context-labels" id="toc-shuffle-context-labels" class="nav-link" data-scroll-target="#shuffle-context-labels">17. Shuffle context labels</a></li>
+  </ul></li>
+  <li><a href="#part-xviii-permutation-p-value" id="toc-part-xviii-permutation-p-value" class="nav-link" data-scroll-target="#part-xviii-permutation-p-value">Part XVIII — Permutation p-value</a>
+  <ul class="collapse">
+  <li><a href="#two-sided-tail-probability" id="toc-two-sided-tail-probability" class="nav-link" data-scroll-target="#two-sided-tail-probability">18. Two-sided tail probability</a>
+  <ul class="collapse">
+  <li><a href="#practice-16" id="toc-practice-16" class="nav-link" data-scroll-target="#practice-16">Practice 16</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-xix-integrate-estimate-interval-and-test" id="toc-part-xix-integrate-estimate-interval-and-test" class="nav-link" data-scroll-target="#part-xix-integrate-estimate-interval-and-test">Part XIX — Integrate estimate, interval, and test</a>
+  <ul class="collapse">
+  <li><a href="#three-outputs-three-roles" id="toc-three-outputs-three-roles" class="nav-link" data-scroll-target="#three-outputs-three-roles">19. Three outputs, three roles</a>
+  <ul class="collapse">
+  <li><a href="#practice-17" id="toc-practice-17" class="nav-link" data-scroll-target="#practice-17">Practice 17</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-xx-return-to-teotihuacan-archaeology" id="toc-part-xx-return-to-teotihuacan-archaeology" class="nav-link" data-scroll-target="#part-xx-return-to-teotihuacan-archaeology">Part XX — Return to Teotihuacan archaeology</a>
+  <ul class="collapse">
+  <li><a href="#statistical-contrast-is-not-archaeological-explanation" id="toc-statistical-contrast-is-not-archaeological-explanation" class="nav-link" data-scroll-target="#statistical-contrast-is-not-archaeological-explanation">20. Statistical contrast is not archaeological explanation</a>
+  <ul class="collapse">
+  <li><a href="#practice-18" id="toc-practice-18" class="nav-link" data-scroll-target="#practice-18">Practice 18</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-xxi-statistical-versus-archaeological-significance" id="toc-part-xxi-statistical-versus-archaeological-significance" class="nav-link" data-scroll-target="#part-xxi-statistical-versus-archaeological-significance">Part XXI — Statistical versus archaeological significance</a>
+  <ul class="collapse">
+  <li><a href="#return-to-substantive-meaning" id="toc-return-to-substantive-meaning" class="nav-link" data-scroll-target="#return-to-substantive-meaning">21. Return to substantive meaning</a>
+  <ul class="collapse">
+  <li><a href="#practice-19" id="toc-practice-19" class="nav-link" data-scroll-target="#practice-19">Practice 19</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-xxii-conceptual-debugging" id="toc-part-xxii-conceptual-debugging" class="nav-link" data-scroll-target="#part-xxii-conceptual-debugging">Part XXII — Conceptual debugging</a>
+  <ul class="collapse">
+  <li><a href="#diagnose-the-mistake" id="toc-diagnose-the-mistake" class="nav-link" data-scroll-target="#diagnose-the-mistake">22. Diagnose the mistake</a></li>
+  </ul></li>
+  <li><a href="#part-xxiii-integrated-week-8-challenge" id="toc-part-xxiii-integrated-week-8-challenge" class="nav-link" data-scroll-target="#part-xxiii-integrated-week-8-challenge">Part XXIII — Integrated Week 8 challenge</a>
+  <ul class="collapse">
+  <li><a href="#build-the-full-inferential-chain" id="toc-build-the-full-inferential-chain" class="nav-link" data-scroll-target="#build-the-full-inferential-chain">23. Build the full inferential chain</a></li>
+  </ul></li>
+  <li><a href="#part-xxiv-mastery-checklist" id="toc-part-xxiv-mastery-checklist" class="nav-link" data-scroll-target="#part-xxiv-mastery-checklist">Part XXIV — Mastery checklist</a></li>
+  <li><a href="#final-challenge-explain-the-workflow-without-code" id="toc-final-challenge-explain-the-workflow-without-code" class="nav-link" data-scroll-target="#final-challenge-explain-the-workflow-without-code">Final challenge — explain the workflow without code</a></li>
+  <li><a href="#clean-render-test" id="toc-clean-render-test" class="nav-link" data-scroll-target="#clean-render-test">Clean Render Test</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">ANTH418 Week 8 Practice Workbook</h1>
+<p class="subtitle lead">Confidence Intervals and Hypothesis Testing</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-tip callout-titled" title="Start here — download the editable workbook">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Start here — download the editable workbook
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This webpage is the rendered version of an <strong>editable Quarto workbook</strong>.</p>
+<ol type="1">
+<li>Download the <strong>Week 8 Practice Package</strong>.</li>
+<li>Unzip it.</li>
+<li>Open <code>week08-practice.qmd</code> in RStudio.</li>
+<li>Keep the <code>data</code> folder beside the QMD.</li>
+<li>Work from top to bottom.</li>
+<li>For each exercise: <strong>predict → run → inspect → explain</strong>.</li>
+<li>Edit code and write explanations directly in the QMD.</li>
+<li>Render frequently.</li>
+<li>Finish with the <strong>Clean Render Test</strong>.</li>
+</ol>
+<p><strong>Do not copy this webpage into RStudio.</strong> The downloadable QMD is the editable source.</p>
+<p><a href="../downloads/practice-workbooks/ANTH418_Week08_Practice.zip"><strong>Download Week 8 Practice Package (.zip)</strong></a></p>
+</div>
+</div>
+<section id="how-to-use-this-workbook" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-use-this-workbook">How to use this workbook</h2>
+<p>Week 7 showed why statistics vary from sample to sample. Week 8 uses that variability for inference:</p>
+<blockquote class="blockquote">
+<p><strong>estimate → quantify uncertainty → specify a null model → construct a null distribution → calculate a p-value → return to effect magnitude and archaeology</strong></p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Bootstrap:</strong> How much might my estimate vary?</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Permutation:</strong> What differences would we expect if the null model held?</p>
+</blockquote>
+<p>A bootstrap distribution is a distribution of <strong>estimates</strong>. A permutation distribution is a <strong>null distribution</strong>.</p>
+</section>
+<section id="learning-objectives" class="level2">
+<h2 class="anchored" data-anchor-id="learning-objectives">Learning objectives</h2>
+<p>By the end, you should be able to distinguish point and interval estimates; construct and interpret bootstrap confidence intervals; distinguish bootstrap from permutation; state null and alternative hypotheses; construct a permutation null distribution; interpret a p-value as a tail probability conditional on a null model; explain what a p-value does not measure; distinguish statistical significance from effect magnitude and archaeological significance; and apply the complete workflow to Teotihuacan leporid δ13C data.</p>
+</section>
+<section id="part-i-sampling-variability-creates-uncertainty" class="level1">
+<h1>Part I — Sampling variability creates uncertainty</h1>
+<section id="from-week-7-to-week-8" class="level2">
+<h2 class="anchored" data-anchor-id="from-week-7-to-week-8">1. From Week 7 to Week 8</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">418</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>population <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">value =</span> <span class="fu">rgamma</span>(<span class="dv">10000</span>, <span class="at">shape =</span> <span class="dv">8</span>, <span class="at">scale =</span> <span class="dv">2</span>))</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>sample_dat <span class="ot">&lt;-</span> population <span class="sc">|&gt;</span> <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">40</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(sample_dat<span class="sc">$</span>value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 16.83137</code></pre>
+</div>
+</div>
+<section id="practice-1" class="level3">
+<h3 class="anchored" data-anchor-id="practice-1">Practice 1</h3>
+<p>Why is the sample mean useful but incomplete? What information about uncertainty is missing?</p>
+</section>
+</section>
+</section>
+<section id="part-ii-point-estimate-versus-interval-estimate" class="level1">
+<h1>Part II — Point estimate versus interval estimate</h1>
+<section id="one-number-versus-a-range" class="level2">
+<h2 class="anchored" data-anchor-id="one-number-versus-a-range">2. One number versus a range</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>point_estimate <span class="ot">&lt;-</span> <span class="fu">mean</span>(sample_dat<span class="sc">$</span>value)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>point_estimate</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 16.83137</code></pre>
+</div>
+</div>
+<p>A point estimate asks <strong>what is the observed estimate?</strong> An interval estimate adds <strong>how uncertain is it under the procedure being used?</strong></p>
+<section id="practice-2" class="level3">
+<h3 class="anchored" data-anchor-id="practice-2">Practice 2</h3>
+<p>Why should archaeological interpretation begin with direction and magnitude rather than a significance label?</p>
+</section>
+</section>
+</section>
+<section id="part-iii-bootstrap-logic" class="level1">
+<h1>Part III — Bootstrap logic</h1>
+<section id="resample-observations-with-replacement" class="level2">
+<h2 class="anchored" data-anchor-id="resample-observations-with-replacement">3. Resample observations with replacement</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">419</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>boot_means <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">rep =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5000</span>) <span class="sc">|&gt;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">boot_mean =</span> <span class="fu">map_dbl</span>(</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>      rep,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>      <span class="sc">~</span> <span class="fu">mean</span>(<span class="fu">sample</span>(sample_dat<span class="sc">$</span>value, <span class="fu">nrow</span>(sample_dat), <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(boot_means, <span class="fu">aes</span>(<span class="at">x =</span> boot_mean)) <span class="sc">+</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">40</span>) <span class="sc">+</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> point_estimate, <span class="at">linetype =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week08_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="practice-3" class="level3">
+<h3 class="anchored" data-anchor-id="practice-3">Practice 3</h3>
+<p>What does one bootstrap mean represent? Why is this not a distribution of individual observations?</p>
+</section>
+</section>
+</section>
+<section id="part-iv-bootstrap-confidence-intervals" class="level1">
+<h1>Part IV — Bootstrap confidence intervals</h1>
+<section id="percentile-interval" class="level2">
+<h2 class="anchored" data-anchor-id="percentile-interval">4. Percentile interval</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>boot_ci <span class="ot">&lt;-</span> <span class="fu">quantile</span>(boot_means<span class="sc">$</span>boot_mean, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>boot_ci</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    2.5%    97.5% 
+15.13876 18.64572 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(boot_means, <span class="fu">aes</span>(<span class="at">x =</span> boot_mean)) <span class="sc">+</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">40</span>) <span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> boot_ci, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> point_estimate) <span class="sc">+</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week08_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="practice-4" class="level3">
+<h3 class="anchored" data-anchor-id="practice-4">Practice 4</h3>
+<p>Interpret the interval in terms of magnitude and uncertainty. Do <strong>not</strong> say there is a 95% probability that the fixed population parameter lies inside this particular frequentist interval.</p>
+</section>
+</section>
+</section>
+<section id="part-v-confidence-level-is-a-property-of-a-procedure" class="level1">
+<h1>Part V — Confidence level is a property of a procedure</h1>
+<section id="repeated-interval-thinking" class="level2">
+<h2 class="anchored" data-anchor-id="repeated-interval-thinking">5. Repeated-interval thinking</h2>
+<p>The confidence level refers to long-run performance of the interval-producing procedure under its assumptions.</p>
+<section id="practice-5" class="level3">
+<h3 class="anchored" data-anchor-id="practice-5">Practice 5</h3>
+<p>Explain why this is preferable to saying “there is a 95% probability that the parameter is inside this particular interval.”</p>
+</section>
+</section>
+</section>
+<section id="part-vi-hypotheses-are-statistical-models" class="level1">
+<h1>Part VI — Hypotheses are statistical models</h1>
+<section id="null-and-alternative" class="level2">
+<h2 class="anchored" data-anchor-id="null-and-alternative">6. Null and alternative</h2>
+<p>For a difference between means:</p>
+<p><span class="math display">\[
+H_0:\mu_1-\mu_2=0
+\]</span></p>
+<p><span class="math display">\[
+H_A:\mu_1-\mu_2\neq0
+\]</span></p>
+<p>The null is a <strong>statistical reference model</strong>, not necessarily a claim that “nothing happened.”</p>
+<section id="practice-6" class="level3">
+<h3 class="anchored" data-anchor-id="practice-6">Practice 6</h3>
+<p>Why is “the isotope means differ” not equivalent to “people managed leporids”?</p>
+</section>
+</section>
+</section>
+<section id="part-vii-permutation-logic" class="level1">
+<h1>Part VII — Permutation logic</h1>
+<section id="shuffle-what-the-null-permits" class="level2">
+<h2 class="anchored" data-anchor-id="shuffle-what-the-null-permits">7. Shuffle what the null permits</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">420</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>perm_demo <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">group =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>), <span class="at">each =</span> <span class="dv">25</span>),</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">value =</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">25</span>, <span class="dv">10</span>, <span class="dv">2</span>), <span class="fu">rnorm</span>(<span class="dv">25</span>, <span class="dv">12</span>, <span class="dv">2</span>))</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>obs_diff_demo <span class="ot">&lt;-</span> <span class="fu">mean</span>(perm_demo<span class="sc">$</span>value[perm_demo<span class="sc">$</span>group <span class="sc">==</span> <span class="st">"B"</span>]) <span class="sc">-</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(perm_demo<span class="sc">$</span>value[perm_demo<span class="sc">$</span>group <span class="sc">==</span> <span class="st">"A"</span>])</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>obs_diff_demo</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.814086</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">421</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>perm_null_demo <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">rep =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5000</span>) <span class="sc">|&gt;</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">stat =</span> <span class="fu">map_dbl</span>(</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>      rep,</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>      <span class="sc">~</span> {</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>        shuffled <span class="ot">&lt;-</span> <span class="fu">sample</span>(perm_demo<span class="sc">$</span>group, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mean</span>(perm_demo<span class="sc">$</span>value[shuffled <span class="sc">==</span> <span class="st">"B"</span>]) <span class="sc">-</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>          <span class="fu">mean</span>(perm_demo<span class="sc">$</span>value[shuffled <span class="sc">==</span> <span class="st">"A"</span>])</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(perm_null_demo, <span class="fu">aes</span>(<span class="at">x =</span> stat)) <span class="sc">+</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">40</span>) <span class="sc">+</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fu">abs</span>(obs_diff_demo), <span class="fu">abs</span>(obs_diff_demo))) <span class="sc">+</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week08_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="practice-7" class="level3">
+<h3 class="anchored" data-anchor-id="practice-7">Practice 7</h3>
+<p>Why is the permutation scheme part of the model rather than merely a computational trick?</p>
+</section>
+</section>
+</section>
+<section id="part-viii-the-p-value" class="level1">
+<h1>Part VIII — The p-value</h1>
+<section id="tail-probability-under-the-null" class="level2">
+<h2 class="anchored" data-anchor-id="tail-probability-under-the-null">8. Tail probability under the null</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>p_demo <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">abs</span>(perm_null_demo<span class="sc">$</span>stat) <span class="sc">&gt;=</span> <span class="fu">abs</span>(obs_diff_demo))</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>p_demo</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.0028</code></pre>
+</div>
+</div>
+<p>The p-value asks how unusual a statistic at least this extreme would be <strong>if the null model were an adequate description of the data-generating process</strong>.</p>
+<section id="practice-8" class="level3">
+<h3 class="anchored" data-anchor-id="practice-8">Practice 8</h3>
+<p>Explain why a p-value is not the probability that H0 is true, the probability that chance caused the result, the effect size, the probability an archaeological explanation is true, or a measure of archaeological importance.</p>
+</section>
+</section>
+</section>
+<section id="part-ix-bootstrap-and-permutation-answer-different-questions" class="level1">
+<h1>Part IX — Bootstrap and permutation answer different questions</h1>
+<section id="two-resampling-tools" class="level2">
+<h2 class="anchored" data-anchor-id="two-resampling-tools">9. Two resampling tools</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Procedure</th>
+<th>What is resampled?</th>
+<th>Distribution</th>
+<th>Week 8 question</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Bootstrap</td>
+<td>observations with replacement</td>
+<td>estimates</td>
+<td>How much might my estimate vary?</td>
+</tr>
+<tr class="even">
+<td>Permutation</td>
+<td>labels allowed by H0</td>
+<td>null statistics</td>
+<td>What differences would occur if H0 held?</td>
+</tr>
+</tbody>
+</table>
+<section id="practice-9" class="level3">
+<h3 class="anchored" data-anchor-id="practice-9">Practice 9</h3>
+<p>Why is only the permutation distribution a null distribution here?</p>
+</section>
+</section>
+</section>
+<section id="part-x-statistical-significance-is-not-effect-magnitude" class="level1">
+<h1>Part X — Statistical significance is not effect magnitude</h1>
+<section id="three-separate-questions" class="level2">
+<h2 class="anchored" data-anchor-id="three-separate-questions">10. Three separate questions</h2>
+<ol type="1">
+<li><strong>How large is the observed effect?</strong></li>
+<li><strong>How uncertain is the estimate?</strong></li>
+<li><strong>How unusual is the result under a defined null model?</strong></li>
+</ol>
+<p>A p-value answers only the third.</p>
+<section id="practice-10" class="level3">
+<h3 class="anchored" data-anchor-id="practice-10">Practice 10</h3>
+<p>Why can a small effect be statistically detectable while an archaeologically important effect can remain uncertain?</p>
+</section>
+</section>
+</section>
+<section id="part-xi-load-the-teotihuacan-teaching-data" class="level1">
+<h1>Part XI — Load the Teotihuacan teaching data</h1>
+<section id="portable-data-path" class="level2">
+<h2 class="anchored" data-anchor-id="portable-data-path">11. Portable data path</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">file.exists</span>(<span class="st">"data/teotihuacan_leporids.csv"</span>)) {</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  data_path <span class="ot">&lt;-</span> <span class="st">"data/teotihuacan_leporids.csv"</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  project_root <span class="ot">&lt;-</span> <span class="cf">if</span> (<span class="fu">file.exists</span>(<span class="st">"_quarto.yml"</span>)) <span class="st">"."</span> <span class="cf">else</span> <span class="st">".."</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  data_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    project_root,</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"assignments"</span>,</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"assignment05_teotihuacan_inference"</span>,</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"data"</span>,</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"teotihuacan_leporids.csv"</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="fu">file.exists</span>(data_path)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(data_path, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(valid)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dat)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 115
+Columns: 6
+$ source_row_id &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 1…
+$ context       &lt;chr&gt; "Moon Pyramid", "Moon Pyramid", "Moon Pyramid", "Moon Py…
+$ species       &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ d13c          &lt;dbl&gt; -9.119858, -8.910117, -10.580149, -8.774417, -5.759000, …
+$ d18o          &lt;dbl&gt; 29.92882, 29.19396, 27.32381, 24.82915, 27.09857, 28.474…
+$ valid         &lt;lgl&gt; TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TR…</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(dat)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "source_row_id" "context"       "species"       "d13c"         
+[5] "d18o"          "valid"        </code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled" title="Know the archaeological comparison">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Know the archaeological comparison
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>One row is one source observation for a leporid specimen in the teaching file. <code>context</code> is the grouping variable and <code>d13c</code> is the numerical response in ‰ VPDB. <code>valid</code> refers to the δ13C exclusion rule documented for the teaching data.</p>
+<p>These specimens are <strong>not automatically a random probability sample of all leporids that lived at Teotihuacan</strong>.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="part-xii-define-the-comparison-before-calculating" class="level1">
+<h1>Part XII — Define the comparison before calculating</h1>
+<section id="oztoyahualco-versus-moon-pyramid" class="level2">
+<h2 class="anchored" data-anchor-id="oztoyahualco-versus-moon-pyramid">12. Oztoyahualco versus Moon Pyramid</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> dat <span class="sc">|&gt;</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(context <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Oztoyahualco"</span>, <span class="st">"Moon Pyramid"</span>))</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>d <span class="sc">|&gt;</span> <span class="fu">count</span>(context)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  context          n
+  &lt;chr&gt;        &lt;int&gt;
+1 Moon Pyramid    50
+2 Oztoyahualco    15</code></pre>
+</div>
+</div>
+<p>Throughout, define the effect as:</p>
+<blockquote class="blockquote">
+<p><strong>Oztoyahualco − Moon Pyramid</strong></p>
+</blockquote>
+<p>A positive difference means mean δ13C is higher (less negative) at Oztoyahualco.</p>
+<section id="practice-11" class="level3">
+<h3 class="anchored" data-anchor-id="practice-11">Practice 11</h3>
+<p>Why must contrast direction be defined before calculation and interpretation?</p>
+</section>
+</section>
+</section>
+<section id="part-xiii-describe-before-testing" class="level1">
+<h1>Part XIII — Describe before testing</h1>
+<section id="group-summaries-and-distributions" class="level2">
+<h2 class="anchored" data-anchor-id="group-summaries-and-distributions">13. Group summaries and distributions</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>group_summary <span class="ot">&lt;-</span> d <span class="sc">|&gt;</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(context) <span class="sc">|&gt;</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_d13c =</span> <span class="fu">mean</span>(d13c),</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_d13c =</span> <span class="fu">sd</span>(d13c),</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>group_summary</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 4
+  context          n mean_d13c sd_d13c
+  &lt;chr&gt;        &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+1 Moon Pyramid    50     -8.57    2.43
+2 Oztoyahualco    15     -5.92    2.08</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(d, <span class="fu">aes</span>(<span class="at">x =</span> context, <span class="at">y =</span> d13c)) <span class="sc">+</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">outlier.shape =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.08</span>, <span class="at">alpha =</span> <span class="fl">0.65</span>) <span class="sc">+</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"δ13C (‰ VPDB)"</span>) <span class="sc">+</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week08_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="practice-12" class="level3">
+<h3 class="anchored" data-anchor-id="practice-12">Practice 12</h3>
+<p>Describe direction, overlap, spread, and sample size <strong>before</strong> asking about statistical significance.</p>
+</section>
+</section>
+</section>
+<section id="part-xiv-estimate-the-observed-contrast" class="level1">
+<h1>Part XIV — Estimate the observed contrast</h1>
+<section id="difference-in-means" class="level2">
+<h2 class="anchored" data-anchor-id="difference-in-means">14. Difference in means</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>mean_ozto <span class="ot">&lt;-</span> <span class="fu">mean</span>(d<span class="sc">$</span>d13c[d<span class="sc">$</span>context <span class="sc">==</span> <span class="st">"Oztoyahualco"</span>])</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>mean_moon <span class="ot">&lt;-</span> <span class="fu">mean</span>(d<span class="sc">$</span>d13c[d<span class="sc">$</span>context <span class="sc">==</span> <span class="st">"Moon Pyramid"</span>])</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>obs_diff <span class="ot">&lt;-</span> mean_ozto <span class="sc">-</span> mean_moon</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>mean_ozto</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -5.920722</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>mean_moon</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -8.573512</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>obs_diff</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.65279</code></pre>
+</div>
+</div>
+<section id="practice-13" class="level3">
+<h3 class="anchored" data-anchor-id="practice-13">Practice 13</h3>
+<p>Interpret the sign and magnitude in ‰. What does the point estimate not tell you about uncertainty?</p>
+</section>
+</section>
+</section>
+<section id="part-xv-bootstrap-the-teotihuacan-effect" class="level1">
+<h1>Part XV — Bootstrap the Teotihuacan effect</h1>
+<section id="resample-within-contexts" class="level2">
+<h2 class="anchored" data-anchor-id="resample-within-contexts">15. Resample within contexts</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">418</span>)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>ozto <span class="ot">&lt;-</span> d<span class="sc">$</span>d13c[d<span class="sc">$</span>context <span class="sc">==</span> <span class="st">"Oztoyahualco"</span>]</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>moon <span class="ot">&lt;-</span> d<span class="sc">$</span>d13c[d<span class="sc">$</span>context <span class="sc">==</span> <span class="st">"Moon Pyramid"</span>]</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>boot_diff <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">rep =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>) <span class="sc">|&gt;</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">stat =</span> <span class="fu">map_dbl</span>(</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>      rep,</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>      <span class="sc">~</span> <span class="fu">mean</span>(<span class="fu">sample</span>(ozto, <span class="fu">length</span>(ozto), <span class="at">replace =</span> <span class="cn">TRUE</span>)) <span class="sc">-</span></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mean</span>(<span class="fu">sample</span>(moon, <span class="fu">length</span>(moon), <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>ci <span class="ot">&lt;-</span> <span class="fu">quantile</span>(boot_diff<span class="sc">$</span>stat, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))</span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>ci</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    2.5%    97.5% 
+1.401308 3.837902 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(boot_diff, <span class="fu">aes</span>(<span class="at">x =</span> stat)) <span class="sc">+</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">40</span>) <span class="sc">+</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> ci, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> obs_diff) <span class="sc">+</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Bootstrap difference in means (‰)"</span>,</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Count"</span>,</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Bootstrap distribution: Oztoyahualco − Moon Pyramid"</span></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week08_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="practice-14" class="level3">
+<h3 class="anchored" data-anchor-id="practice-14">Practice 14</h3>
+<p>Report the observed difference and interval. Interpret the interval for <strong>magnitude and uncertainty</strong>, not merely whether it includes zero.</p>
+</section>
+</section>
+</section>
+<section id="part-xvi-specify-the-teotihuacan-null-model" class="level1">
+<h1>Part XVI — Specify the Teotihuacan null model</h1>
+<section id="no-systematic-contextual-difference" class="level2">
+<h2 class="anchored" data-anchor-id="no-systematic-contextual-difference">16. No systematic contextual difference</h2>
+<p><span class="math display">\[
+H_0:\mu_{\text{Oztoyahualco}}-\mu_{\text{Moon Pyramid}}=0
+\]</span></p>
+<p><span class="math display">\[
+H_A:\mu_{\text{Oztoyahualco}}-\mu_{\text{Moon Pyramid}}\neq0
+\]</span></p>
+<p>Under H0, context carries no systematic information about δ13C for this comparison.</p>
+<section id="practice-15" class="level3">
+<h3 class="anchored" data-anchor-id="practice-15">Practice 15</h3>
+<p>Why is this not equivalent to saying that no provisioning or management occurred?</p>
+</section>
+</section>
+</section>
+<section id="part-xvii-permutation-null-distribution" class="level1">
+<h1>Part XVII — Permutation null distribution</h1>
+<section id="shuffle-context-labels" class="level2">
+<h2 class="anchored" data-anchor-id="shuffle-context-labels">17. Shuffle context labels</h2>
+<p>The observed δ13C values stay fixed; the labels are shuffled while group sizes are preserved.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">418</span>)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>n_ozto <span class="ot">&lt;-</span> <span class="fu">sum</span>(d<span class="sc">$</span>context <span class="sc">==</span> <span class="st">"Oztoyahualco"</span>)</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>perm_null <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">rep =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>) <span class="sc">|&gt;</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">stat =</span> <span class="fu">map_dbl</span>(</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>      rep,</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>      <span class="sc">~</span> {</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>        shuffled <span class="ot">&lt;-</span> <span class="fu">sample</span>(d<span class="sc">$</span>d13c, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mean</span>(shuffled[<span class="fu">seq_len</span>(n_ozto)]) <span class="sc">-</span></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>          <span class="fu">mean</span>(shuffled[(n_ozto <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">:</span><span class="fu">length</span>(shuffled)])</span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a>perm_null</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10,000 × 2
+     rep     stat
+   &lt;int&gt;    &lt;dbl&gt;
+ 1     1 -1.34   
+ 2     2  0.332  
+ 3     3  0.131  
+ 4     4  0.00155
+ 5     5  0.230  
+ 6     6  0.332  
+ 7     7  0.299  
+ 8     8 -0.663  
+ 9     9 -1.53   
+10    10 -0.372  
+# ℹ 9,990 more rows</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(perm_null, <span class="fu">aes</span>(<span class="at">x =</span> stat)) <span class="sc">+</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">40</span>) <span class="sc">+</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fu">abs</span>(obs_diff), <span class="fu">abs</span>(obs_diff))) <span class="sc">+</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Difference in means under H0 (‰)"</span>,</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Count"</span>,</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Permutation null distribution"</span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week08_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="part-xviii-permutation-p-value" class="level1">
+<h1>Part XVIII — Permutation p-value</h1>
+<section id="two-sided-tail-probability" class="level2">
+<h2 class="anchored" data-anchor-id="two-sided-tail-probability">18. Two-sided tail probability</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>p_value <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">abs</span>(perm_null<span class="sc">$</span>stat) <span class="sc">&gt;=</span> <span class="fu">abs</span>(obs_diff))</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>p_value</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1e-04</code></pre>
+</div>
+</div>
+<section id="practice-16" class="level3">
+<h3 class="anchored" data-anchor-id="practice-16">Practice 16</h3>
+<p>Write one correct sentence interpreting the p-value as a tail probability conditional on H0, and one sentence explaining what it does <strong>not</strong> tell you.</p>
+</section>
+</section>
+</section>
+<section id="part-xix-integrate-estimate-interval-and-test" class="level1">
+<h1>Part XIX — Integrate estimate, interval, and test</h1>
+<section id="three-outputs-three-roles" class="level2">
+<h2 class="anchored" data-anchor-id="three-outputs-three-roles">19. Three outputs, three roles</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">observed_difference =</span> obs_diff,</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">ci_lower =</span> <span class="fu">unname</span>(ci[<span class="dv">1</span>]),</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ci_upper =</span> <span class="fu">unname</span>(ci[<span class="dv">2</span>]),</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">permutation_p =</span> p_value</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 4
+  observed_difference ci_lower ci_upper permutation_p
+                &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;         &lt;dbl&gt;
+1                2.65     1.40     3.84        0.0001</code></pre>
+</div>
+</div>
+<section id="practice-17" class="level3">
+<h3 class="anchored" data-anchor-id="practice-17">Practice 17</h3>
+<p>Answer:</p>
+<ol type="1">
+<li>How large is the observed contrast?</li>
+<li>How uncertain is it?</li>
+<li>What range of differences is represented by the bootstrap interval?</li>
+<li>How unusual is the observed contrast under H0?</li>
+<li>Do estimate, interval, and null-model comparison tell a coherent statistical story?</li>
+</ol>
+<p>Do not let the p-value replace the effect estimate or uncertainty.</p>
+</section>
+</section>
+</section>
+<section id="part-xx-return-to-teotihuacan-archaeology" class="level1">
+<h1>Part XX — Return to Teotihuacan archaeology</h1>
+<section id="statistical-contrast-is-not-archaeological-explanation" class="level2">
+<h2 class="anchored" data-anchor-id="statistical-contrast-is-not-archaeological-explanation">20. Statistical contrast is not archaeological explanation</h2>
+<p>The Week 8 lecture emphasizes that Oztoyahualco leporids have higher mean carbon-isotope values than other sampled contexts. Higher δ13C is consistent with greater C4/CAM consumption. Access to cultivated foods can be consistent with human provisioning.</p>
+<p>But:</p>
+<blockquote class="blockquote">
+<p><strong>A statistical alternative such as “isotope means differ” is not equivalent to “people managed leporids.”</strong></p>
+</blockquote>
+<p>Archaeological interpretation requires context, chronology, ecology, alternative explanations, and other evidence.</p>
+<section id="practice-18" class="level3">
+<h3 class="anchored" data-anchor-id="practice-18">Practice 18</h3>
+<p>Discuss:</p>
+<ul>
+<li>what higher δ13C may imply about diet;</li>
+<li>why cultivated-food access may be consistent with provisioning;</li>
+<li>why provisioning is not automatically management or breeding;</li>
+<li>how archaeological context contributes to interpretation; and</li>
+<li>at least one limitation or alternative explanation.</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="part-xxi-statistical-versus-archaeological-significance" class="level1">
+<h1>Part XXI — Statistical versus archaeological significance</h1>
+<section id="return-to-substantive-meaning" class="level2">
+<h2 class="anchored" data-anchor-id="return-to-substantive-meaning">21. Return to substantive meaning</h2>
+<p>Statistical inference evaluates compatibility with a model and uncertainty around estimates. Archaeological significance asks whether the magnitude and pattern matter for understanding past behavior.</p>
+<section id="practice-19" class="level3">
+<h3 class="anchored" data-anchor-id="practice-19">Practice 19</h3>
+<p>Complete:</p>
+<blockquote class="blockquote">
+<p>The statistical analysis establishes __________________________.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>The broader archaeological evidence suggests __________________.</p>
+</blockquote>
+<p>Why should these statements not be collapsed into one?</p>
+</section>
+</section>
+</section>
+<section id="part-xxii-conceptual-debugging" class="level1">
+<h1>Part XXII — Conceptual debugging</h1>
+<section id="diagnose-the-mistake" class="level2">
+<h2 class="anchored" data-anchor-id="diagnose-the-mistake">22. Diagnose the mistake</h2>
+<ol type="1">
+<li>“A 95% CI means there is a 95% probability that the parameter is inside this interval.”</li>
+<li>“The bootstrap distribution is the distribution of specimens.”</li>
+<li>“Bootstrap and permutation are interchangeable.”</li>
+<li>“The null hypothesis means nothing happened.”</li>
+<li>“A p-value is the probability that H0 is true.”</li>
+<li>“p = .01 means there is a 1% probability that chance caused the result.”</li>
+<li>“A small p-value means a large effect.”</li>
+<li>“Statistical significance establishes archaeological importance.”</li>
+<li>“A significant isotope contrast proves leporid management.”</li>
+<li>“Once I have a p-value, I no longer need the estimate or confidence interval.”</li>
+</ol>
+</section>
+</section>
+<section id="part-xxiii-integrated-week-8-challenge" class="level1">
+<h1>Part XXIII — Integrated Week 8 challenge</h1>
+<section id="build-the-full-inferential-chain" class="level2">
+<h2 class="anchored" data-anchor-id="build-the-full-inferential-chain">23. Build the full inferential chain</h2>
+<p>Using the Teotihuacan teaching data:</p>
+<ol type="1">
+<li>Identify the observational unit.</li>
+<li>Define the grouping and response variables.</li>
+<li>State the direction of the contrast.</li>
+<li>Describe both groups.</li>
+<li>Calculate the observed difference.</li>
+<li>Bootstrap the difference.</li>
+<li>Construct a 95% percentile interval.</li>
+<li>State H0 and HA.</li>
+<li>Build the permutation null distribution.</li>
+<li>Calculate the two-sided p-value.</li>
+<li>Integrate effect magnitude, uncertainty, and null-model compatibility.</li>
+<li>Return to archaeological interpretation.</li>
+<li>State at least one alternative explanation or limitation.</li>
+<li>Distinguish the statistical result from the archaeological claim.</li>
+</ol>
+</section>
+</section>
+<section id="part-xxiv-mastery-checklist" class="level1">
+<h1>Part XXIV — Mastery checklist</h1>
+<ul class="task-list">
+<li><label><input type="checkbox">I distinguish point and interval estimates.</label></li>
+<li><label><input type="checkbox">I understand what a bootstrap distribution contains.</label></li>
+<li><label><input type="checkbox">I can construct a percentile bootstrap CI.</label></li>
+<li><label><input type="checkbox">I can state H0 and HA.</label></li>
+<li><label><input type="checkbox">I understand permutation as a null-model procedure.</label></li>
+<li><label><input type="checkbox">I distinguish bootstrap from permutation.</label></li>
+<li><label><input type="checkbox">I interpret a p-value as a conditional tail probability.</label></li>
+<li><label><input type="checkbox">I know what a p-value does not measure.</label></li>
+<li><label><input type="checkbox">I report effect magnitude before significance.</label></li>
+<li><label><input type="checkbox">I distinguish statistical from archaeological significance.</label></li>
+<li><label><input type="checkbox">I can integrate estimate, CI, and p-value.</label></li>
+<li><label><input type="checkbox">I can interpret the Teotihuacan isotope contrast cautiously.</label></li>
+</ul>
+</section>
+<section id="final-challenge-explain-the-workflow-without-code" class="level1">
+<h1>Final challenge — explain the workflow without code</h1>
+<p>Explain:</p>
+<blockquote class="blockquote">
+<p><strong>estimate → quantify uncertainty → specify H0 → construct a null distribution → calculate a p-value → integrate the evidence → return to archaeology</strong></p>
+</blockquote>
+<p>Why should <strong>estimation come before significance testing</strong>?</p>
+</section>
+<section id="clean-render-test" class="level1">
+<h1>Clean Render Test</h1>
+<ol type="1">
+<li>Save the QMD.</li>
+<li>Choose <strong>Session → Restart R</strong>.</li>
+<li>Do not recreate objects manually in the Console.</li>
+<li>Render the complete document.</li>
+<li>If it fails, identify what the document assumed but never created.</li>
+</ol>
+<p>A successful clean render shows that the inferential workflow is computationally self-contained.</p>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
