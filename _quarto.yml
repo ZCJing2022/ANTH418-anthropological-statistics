@@ -28,9 +28,9 @@ project:
     - readings/index.qmd
     - resources/*.qmd
 
-
   resources:
     - .nojekyll
+    - downloads/practice-workbooks/ANTH418_Week02_Practice.zip
 
 website:
   title: "ANTH418: Anthropological Statistics"

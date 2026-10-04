@@ -13,6 +13,28 @@ execute:
   message: false
 ---
 
+::: {.callout-tip title="Start here — download the editable workbook"}
+
+This webpage is the rendered version of an **editable Quarto workbook**.
+
+To practice the material yourself:
+
+1. Download the **Week 2 Practice Package** below.
+2. Unzip the package.
+3. Open `week02-practice.qmd` in RStudio.
+4. Keep the `data` folder beside the QMD file.
+5. Work through the workbook from top to bottom.
+6. For each exercise: **predict → run → inspect → explain**.
+7. Edit the code, add your own code, and write explanations directly in the QMD.
+8. Render frequently.
+9. Finish with the **Clean Render Test**.
+
+**Do not copy this webpage into RStudio.** This webpage is rendered HTML; `week02-practice.qmd` in the downloadable package is the editable source you should work in.
+
+[**Download Week 2 Practice Package (.zip)**](../downloads/practice-workbooks/ANTH418_Week02_Practice.zip)
+
+:::
+
 ## How to use this workbook
 
 This is a **learn-by-doing companion** to the Week 2 Study Guide. Work from top to bottom. For each exercise use **predict → run → inspect → explain**.
@@ -198,30 +220,37 @@ assignments/assignment01_knipper_descriptive/data/knipper2020_humans.csv
 ```
 
 ```{r}
-project_root <- if (file.exists("_quarto.yml")) "." else ".."
+if (file.exists("data/knipper2020_humans.csv")) {
 
-knipper_file <- file.path(
-  project_root,
-  "assignments",
-  "assignment01_knipper_descriptive",
-  "data",
-  "knipper2020_humans.csv"
-)
+  # Downloaded Week 2 Practice Package
+  knipper_file <- "data/knipper2020_humans.csv"
+
+} else {
+
+  # ANTH418 course website repository
+  project_root <- if (file.exists("_quarto.yml")) "." else ".."
+
+  knipper_file <- file.path(
+    project_root,
+    "assignments",
+    "assignment01_knipper_descriptive",
+    "data",
+    "knipper2020_humans.csv"
+  )
+}
 
 file.exists(knipper_file)
 ```
 
-If `FALSE`, diagnose the path before changing directories:
+If the result is `FALSE`, stop and diagnose the path before continuing:
 
 ```{r}
 getwd()
 list.files()
-project_root
-list.files(project_root)
-file.exists(file.path(project_root, "assignments"))
+file.exists(knipper_file)
 ```
 
-The important distinction is between the **current execution directory** and the **project root**. When this workbook is rendered by itself, R may execute from `practice-workbooks/`, while the ANTH418 project root is one level above. `project_root` lets the same document locate project files reproducibly in either context.
+The important principle is that the workbook uses a **relative path**, not a machine-specific absolute path. In the downloaded Week 2 Practice Package, keep the `data` folder beside `week02-practice.qmd`. The workbook will then find the teaching dataset at `data/knipper2020_humans.csv`.
 
 ::: {.callout-important}
 Prefer an RStudio Project and relative paths. Avoid relying on `setwd()` or absolute paths.
