@@ -18,6 +18,7 @@ project:
     - weeks/week11.qmd
     - practice-workbooks/week02.qmd
     - practice-workbooks/week03.qmd
+    - practice-workbooks/week04.qmd
     - assignments/index.qmd
     - assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.qmd
     - assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.qmd
@@ -33,6 +34,7 @@ project:
     - .nojekyll
     - downloads/practice-workbooks/ANTH418_Week02_Practice.zip
     - downloads/practice-workbooks/ANTH418_Week03_Practice.zip
+    - downloads/practice-workbooks/ANTH418_Week04_Practice.zip
 
 website:
   title: "ANTH418: Anthropological Statistics"
@@ -85,6 +87,9 @@ website:
 
           - href: practice-workbooks/week03.qmd
             text: "Week 3 — Measurement & Research Design"
+
+          - href: practice-workbooks/week04.qmd
+            text: "Week 4 — Central Tendency & Dispersion"
 
       - href: assignments/index.qmd
         text: Assignments

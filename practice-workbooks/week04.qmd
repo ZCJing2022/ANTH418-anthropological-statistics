@@ -1,0 +1,459 @@
+---
+title: "ANTH418 Week 4 Practice Workbook"
+subtitle: "Measures of Central Tendency and Dispersion"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    code-copy: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+::: {.callout-tip title="Start here — download the editable workbook"}
+This webpage is the rendered version of an **editable Quarto workbook**.
+
+1. Download the **Week 4 Practice Package**.
+2. Unzip it.
+3. Open `week04-practice.qmd` in RStudio.
+4. Keep the `data` folder beside the QMD.
+5. Work from top to bottom.
+6. For each exercise: **predict → run → inspect → explain**.
+7. Edit code and write explanations directly in the QMD.
+8. Render frequently.
+9. Finish with the **Clean Render Test**.
+
+**Do not copy this webpage into RStudio.** The downloadable QMD is the editable source.
+
+[**Download Week 4 Practice Package (.zip)**](../downloads/practice-workbooks/ANTH418_Week04_Practice.zip)
+:::
+
+## How to use this workbook
+
+Week 3 established that measurement and research design determine what numerical summaries can legitimately mean. Week 4 asks:
+
+> **Where is the center of a distribution, how widely do observations vary, and which summaries describe the empirical pattern responsibly?**
+
+> **inspect the distribution → locate the center → quantify spread → check resistance → compare summaries → interpret the empirical pattern**
+
+The governing principle is **describe before explaining**.
+
+## Learning objectives
+
+By the end, you should be able to calculate and interpret mode, median, mean, trimmed mean, range, IQR, variance, standard deviation, MAD, and CV; inspect distributions with histograms and boxplots; choose defensible summaries; calculate grouped descriptives; and separate statistical description from archaeological explanation.
+
+# Part I — Measurement level comes first
+
+## 1. Match the statistic to the variable
+
+| Measurement level | Useful center | Useful spread |
+|---|---|---|
+| Nominal | Mode | counts / proportions |
+| Ordinal | Median, mode | IQR, range |
+| Interval | Mean, median, mode | SD, variance, IQR |
+| Ratio | Mean, median, mode | SD, variance, IQR, CV |
+
+### Practice 1
+
+For artifact raw material, preservation rank, Celsius temperature, projectile-point length, grave-good count, and human stable-isotope measurement, identify the measurement level and a defensible center/spread summary. Explain why software being able to calculate a statistic does not make it meaningful.
+
+# Part II — Central tendency
+
+## 2. Mode
+
+```{r}
+library(tidyverse)
+
+artifact_material <- c("chert", "chert", "quartz", "chert",
+                       "quartzite", "quartz", "chert")
+table(artifact_material)
+```
+
+What is the mode? Why is mode useful for nominal variables?
+
+## 3. Median and resistance
+
+```{r}
+x <- c(4, 5, 5, 6, 7, 8, 9)
+x_extreme <- c(4, 5, 5, 6, 7, 8, 50)
+
+median(x)
+median(x_extreme)
+```
+
+Predict before running: how much will the median change?
+
+## 4. Mean and sensitivity
+
+```{r}
+mean(x)
+mean(x_extreme)
+```
+
+Compare the mean's change with the median's change. Explain **resistance** in your own words.
+
+## 5. Mean as balance point
+
+```{r}
+xbar <- mean(x)
+x - xbar
+sum(x - xbar)
+```
+
+Why do deviations from the arithmetic mean sum to approximately zero?
+
+## 6. Trimmed mean
+
+```{r}
+skewed_values <- c(10, 11, 11, 12, 12, 13, 13, 14, 15, 100)
+
+mean(skewed_values)
+median(skewed_values)
+mean(skewed_values, trim = 0.10)
+```
+
+Place the ordinary mean, trimmed mean, and median in order and explain what the comparison reveals.
+
+# Part III — Center alone is incomplete
+
+## 7. Same center, different spread
+
+```{r}
+low_spread <- c(8, 9, 10, 10, 10, 11, 12)
+wide_spread <- c(1, 5, 8, 10, 12, 15, 19)
+
+mean(low_spread); mean(wide_spread)
+median(low_spread); median(wide_spread)
+sd(low_spread); sd(wide_spread)
+```
+
+Explain why reporting only a mean can hide important structure.
+
+# Part IV — Range and IQR
+
+## 8. Range is fragile
+
+```{r}
+range_demo <- c(4, 5, 6, 7, 8)
+range_demo_extreme <- c(4, 5, 6, 7, 80)
+
+diff(range(range_demo))
+diff(range(range_demo_extreme))
+```
+
+Why does range depend so strongly on extremes?
+
+## 9. IQR describes the middle 50%
+
+```{r}
+IQR(range_demo)
+IQR(range_demo_extreme)
+quantile(range_demo_extreme, probs = c(.25, .50, .75))
+```
+
+Why does IQR pair naturally with the median?
+
+# Part V — Variance and standard deviation
+
+## 10. Deviations and variance
+
+```{r}
+values <- c(6, 8, 10, 12, 14)
+xbar <- mean(values)
+
+deviation_table <- tibble(
+  value = values,
+  deviation = value - xbar,
+  squared_deviation = (value - xbar)^2
+)
+
+deviation_table
+sum(deviation_table$deviation)
+sum(deviation_table$squared_deviation)
+var(values)
+```
+
+Why are deviations squared?
+
+## 11. Standard deviation returns to original units
+
+```{r}
+var(values)
+sd(values)
+sqrt(var(values))
+```
+
+Explain the units of variance versus standard deviation.
+
+# Part VI — MAD and robust spread
+
+## 12. Median absolute deviation
+
+```{r}
+robust_values <- c(10, 11, 11, 12, 12, 13, 13, 14, 100)
+med <- median(robust_values)
+
+median(abs(robust_values - med))
+mad(robust_values, constant = 1)
+sd(robust_values)
+IQR(robust_values)
+```
+
+Which spread measures are most affected by the extreme value?
+
+# Part VII — Coefficient of variation
+
+## 13. Relative variability
+
+\[
+CV = \frac{s}{\bar{x}}\times 100\%.
+\]
+
+```{r}
+group_A <- c(9, 10, 11)
+group_B <- c(90, 100, 110)
+
+sd(group_A); sd(group_B)
+100 * sd(group_A) / mean(group_A)
+100 * sd(group_B) / mean(group_B)
+```
+
+What does CV add beyond SD?
+
+::: {.callout-important}
+Use CV only when its scale and denominator are substantively defensible. Do not calculate it mechanically.
+:::
+
+# Part VIII — Distribution shape guides summary choice
+
+## 14. Symmetry and skew
+
+```{r}
+symmetric <- c(6, 7, 8, 9, 10, 11, 12)
+right_skewed <- c(6, 7, 8, 9, 10, 11, 30)
+
+tibble(
+  distribution = c("symmetric", "right_skewed"),
+  mean = c(mean(symmetric), mean(right_skewed)),
+  median = c(median(symmetric), median(right_skewed))
+)
+```
+
+```{r}
+shape_demo <- tibble(
+  value = c(symmetric, right_skewed),
+  distribution = rep(c("symmetric", "right_skewed"), each = 7)
+)
+
+ggplot(shape_demo, aes(x = value)) +
+  geom_histogram(binwidth = 2, boundary = 0) +
+  facet_wrap(~ distribution, scales = "free_y") +
+  theme_minimal()
+```
+
+For symmetric versus strongly skewed distributions, which center-and-spread pairings would you consider, and why?
+
+# Part IX — Boxplots and extreme observations
+
+## 15. Center and spread together
+
+```{r}
+ggplot(shape_demo, aes(x = distribution, y = value)) +
+  geom_boxplot() +
+  theme_minimal()
+```
+
+Why should an observation flagged by a boxplot **not** automatically be deleted? List at least three possibilities it could represent.
+
+# Part X — Load the Knipper teaching data
+
+## 16. Portable data path
+
+```{r}
+if (file.exists("data/knipper2020_humans.csv")) {
+  knipper_file <- "data/knipper2020_humans.csv"
+} else {
+  project_root <- if (file.exists("_quarto.yml")) "." else ".."
+  knipper_file <- file.path(
+    project_root, "assignments", "assignment01_knipper_descriptive",
+    "data", "knipper2020_humans.csv"
+  )
+}
+
+file.exists(knipper_file)
+```
+
+```{r}
+knipper <- read_csv(knipper_file, show_col_types = FALSE)
+
+dim(knipper)
+names(knipper)
+glimpse(knipper)
+head(knipper)
+colSums(is.na(knipper))
+```
+
+Before summarizing, identify the unit of analysis, sites, isotope variables, and missingness.
+
+# Part XI — Inspect distributions before summarizing
+
+## 17. Reshape the isotope variables
+
+```{r}
+iso_long <- knipper |>
+  select(site, d13c, d15n) |>
+  pivot_longer(
+    cols = c(d13c, d15n),
+    names_to = "isotope",
+    values_to = "value"
+  )
+
+glimpse(iso_long)
+```
+
+## 18. Histograms
+
+```{r}
+ggplot(iso_long, aes(x = value)) +
+  geom_histogram(bins = 12) +
+  facet_grid(isotope ~ site, scales = "free_x") +
+  theme_minimal()
+```
+
+Describe symmetry/skew, clustering, possible extremes, site differences, and isotope differences **before** reading summary numbers.
+
+# Part XII — Grouped descriptive statistics
+
+## 19. Center and spread together
+
+```{r}
+summary_tbl <- iso_long |>
+  group_by(site, isotope) |>
+  summarise(
+    n = sum(!is.na(value)),
+    mean = mean(value, na.rm = TRUE),
+    median = median(value, na.rm = TRUE),
+    sd = sd(value, na.rm = TRUE),
+    q1 = quantile(value, 0.25, na.rm = TRUE),
+    q3 = quantile(value, 0.75, na.rm = TRUE),
+    iqr = IQR(value, na.rm = TRUE),
+    mad = mad(value, constant = 1, na.rm = TRUE),
+    min = min(value, na.rm = TRUE),
+    max = max(value, na.rm = TRUE),
+    range = max(value, na.rm = TRUE) - min(value, na.rm = TRUE),
+    .groups = "drop"
+  ) |>
+  mutate(across(
+    c(mean, median, sd, q1, q3, iqr, mad, min, max, range),
+    ~ round(.x, 2)
+  ))
+
+summary_tbl
+```
+
+### Practice
+
+For each site × isotope combination, compare mean/median and SD/IQR; inspect min/max; choose a defensible center-and-spread pairing; justify it using numbers **and** distribution shape.
+
+# Part XIII — Boxplots of the case study
+
+## 20. Compare sites visually
+
+```{r}
+ggplot(iso_long, aes(x = site, y = value)) +
+  geom_boxplot() +
+  facet_wrap(~ isotope, scales = "free_y") +
+  theme_minimal()
+```
+
+Specify which isotope, which center, which spread, approximate magnitude, and whether extreme observations influence the comparison.
+
+# Part XIV — Inspect extreme observations
+
+## 21. Do not delete first and ask later
+
+```{r}
+knipper |>
+  arrange(d15n) |>
+  select(site, d13c, d15n) |>
+  slice(c(1:3, (n()-2):n()))
+```
+
+For an extreme isotope observation, ask whether it is a data-entry error, measurement problem, genuine biological observation, archaeologically meaningful value, or influential point. Explain why **outlier is a statistical description, not an archaeological explanation**.
+
+# Part XV — Description versus archaeological interpretation
+
+## 22. Keep two tasks separate
+
+Write two paragraphs:
+
+**A — Statistical description:** Describe human isotope distributions at La Bastida and Gatas using center, spread, sample size, and visual shape.
+
+**B — Archaeological interpretation:** State what contextual evidence would be required before explaining the pattern in terms of diet, farming, manuring, or social organization.
+
+# Part XVI — Integrated descriptive analysis
+
+## 23. Mini-analysis challenge
+
+Using the Knipper teaching data:
+
+1. Inspect structure and missingness.
+2. Reshape `d13c` and `d15n`.
+3. Plot distributions.
+4. Calculate `n`, mean, median, SD, Q1, Q3, IQR, minimum, maximum, and range.
+5. Compare mean with median and SD with IQR.
+6. Inspect possible extreme observations.
+7. Choose defensible summaries.
+8. Write a concise empirical description.
+9. State explicitly what the descriptive statistics **do not establish**.
+10. Render the document.
+
+# Part XVII — Conceptual debugging
+
+## 24. Diagnose the mistake
+
+Identify the problem:
+
+1. “The mean is always the best center.”
+2. “Same mean means same distribution.”
+3. “Range is robust.”
+4. “The boxplot flagged it, so I deleted it.”
+5. “SD = 2.4, therefore variance = 2.4.”
+6. “La Bastida's mean is higher, therefore people there necessarily ate more meat.”
+7. “Different sample sizes make descriptive comparison impossible.”
+8. “R calculated it, so it must be meaningful.”
+
+# Part XVIII — Mastery checklist
+
+- [ ] I can match measurement level to descriptive summaries.
+- [ ] I can interpret mode, median, mean, and trimmed mean.
+- [ ] I understand resistance.
+- [ ] I can interpret range and IQR.
+- [ ] I can explain variance and SD.
+- [ ] I can calculate unscaled MAD.
+- [ ] I understand CV and its limitations.
+- [ ] I inspect histograms and boxplots before choosing summaries.
+- [ ] I can calculate grouped descriptives with `dplyr`.
+- [ ] I compare center and spread together.
+- [ ] I do not automatically delete extreme observations.
+- [ ] I separate empirical description from archaeological explanation.
+
+# Final challenge — explain the workflow without code
+
+Explain:
+
+> **measurement level → distribution → center → spread → resistance → visualization → descriptive summary → archaeological interpretation**
+
+Why does Week 4 insist on **describe before explaining**?
+
+# Clean Render Test
+
+1. Save the QMD.
+2. Choose **Session → Restart R**.
+3. Do not recreate objects manually in the Console.
+4. Render the complete document.
+5. If it fails, identify what the document assumed but never created.
+
+A successful clean render shows that the descriptive analysis is computationally self-contained.
