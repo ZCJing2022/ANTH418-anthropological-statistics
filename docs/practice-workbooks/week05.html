@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>ANTH418 Week 5 Practice Workbook – ANTH418: Anthropological Statistics</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-7ff37d7dbb752a0b62676bb39137b3a2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">ANTH418: Anthropological Statistics</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../syllabus.html"> 
+<span class="menu-text">Syllabus</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../lecture-notes/index.html"> 
+<span class="menu-text">Lecture Notes</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-study-guides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Study Guides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-study-guides">    
+        <li>
+    <a class="dropdown-item" href="../weeks/week02.html">
+ <span class="dropdown-text">Week 2 — R, RStudio &amp; Quarto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../weeks/week03.html">
+ <span class="dropdown-text">Week 3 — Measurement &amp; Research Design</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../weeks/week04.html">
+ <span class="dropdown-text">Week 4 — Central Tendency &amp; Dispersion</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../weeks/week05.html">
+ <span class="dropdown-text">Week 5 — EDA &amp; Visualization</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../weeks/week06.html">
+ <span class="dropdown-text">Week 6 — Transformation &amp; Missing Data</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../weeks/week07.html">
+ <span class="dropdown-text">Week 7 — Probability &amp; Sampling</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../weeks/week08.html">
+ <span class="dropdown-text">Week 8 — Confidence Intervals &amp; Hypothesis Testing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../weeks/week09.html">
+ <span class="dropdown-text">Week 9 — Comparing Two Groups: t-tests</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../weeks/week11.html">
+ <span class="dropdown-text">Week 11 — Chi-Square &amp; Tests of Proportions</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-practice-workbooks" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Practice Workbooks</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-practice-workbooks">    
+        <li>
+    <a class="dropdown-item" href="../practice-workbooks/week02.html">
+ <span class="dropdown-text">Week 2 — R, RStudio &amp; Quarto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../practice-workbooks/week03.html">
+ <span class="dropdown-text">Week 3 — Measurement &amp; Research Design</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../practice-workbooks/week04.html">
+ <span class="dropdown-text">Week 4 — Central Tendency &amp; Dispersion</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../practice-workbooks/week05.html">
+ <span class="dropdown-text">Week 5 — EDA &amp; Visualization</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../assignments/index.html"> 
+<span class="menu-text">Assignments</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../readings/index.html"> 
+<span class="menu-text">Readings</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../resources/index.html"> 
+<span class="menu-text">Resources</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#how-to-use-this-workbook" id="toc-how-to-use-this-workbook" class="nav-link active" data-scroll-target="#how-to-use-this-workbook">How to use this workbook</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning objectives</a></li>
+  <li><a href="#part-i-eda-as-disciplined-visual-reasoning" id="toc-part-i-eda-as-disciplined-visual-reasoning" class="nav-link" data-scroll-target="#part-i-eda-as-disciplined-visual-reasoning">Part I — EDA as disciplined visual reasoning</a>
+  <ul class="collapse">
+  <li><a href="#description-is-not-inference" id="toc-description-is-not-inference" class="nav-link" data-scroll-target="#description-is-not-inference">1. Description is not inference</a></li>
+  </ul></li>
+  <li><a href="#part-ii-choose-the-graphic-from-variable-structure" id="toc-part-ii-choose-the-graphic-from-variable-structure" class="nav-link" data-scroll-target="#part-ii-choose-the-graphic-from-variable-structure">Part II — Choose the graphic from variable structure</a>
+  <ul class="collapse">
+  <li><a href="#different-variables-pose-different-visual-tasks" id="toc-different-variables-pose-different-visual-tasks" class="nav-link" data-scroll-target="#different-variables-pose-different-visual-tasks">2. Different variables pose different visual tasks</a></li>
+  </ul></li>
+  <li><a href="#part-iii-the-grammar-of-ggplot2" id="toc-part-iii-the-grammar-of-ggplot2" class="nav-link" data-scroll-target="#part-iii-the-grammar-of-ggplot2">Part III — The grammar of ggplot2</a>
+  <ul class="collapse">
+  <li><a href="#a-graph-is-a-specification" id="toc-a-graph-is-a-specification" class="nav-link" data-scroll-target="#a-graph-is-a-specification">3. A graph is a specification</a></li>
+  <li><a href="#mapping-versus-setting" id="toc-mapping-versus-setting" class="nav-link" data-scroll-target="#mapping-versus-setting">4. Mapping versus setting</a></li>
+  </ul></li>
+  <li><a href="#part-iv-histograms-and-binning" id="toc-part-iv-histograms-and-binning" class="nav-link" data-scroll-target="#part-iv-histograms-and-binning">Part IV — Histograms and binning</a>
+  <ul class="collapse">
+  <li><a href="#bin-width-changes-what-we-see" id="toc-bin-width-changes-what-we-see" class="nav-link" data-scroll-target="#bin-width-changes-what-we-see">5. Bin width changes what we see</a></li>
+  </ul></li>
+  <li><a href="#part-v-boxplots-summarize-but-also-hide" id="toc-part-v-boxplots-summarize-but-also-hide" class="nav-link" data-scroll-target="#part-v-boxplots-summarize-but-also-hide">Part V — Boxplots summarize but also hide</a>
+  <ul class="collapse">
+  <li><a href="#compact-summary-versus-raw-observations" id="toc-compact-summary-versus-raw-observations" class="nav-link" data-scroll-target="#compact-summary-versus-raw-observations">6. Compact summary versus raw observations</a></li>
+  </ul></li>
+  <li><a href="#part-vi-comparison-must-be-designed" id="toc-part-vi-comparison-must-be-designed" class="nav-link" data-scroll-target="#part-vi-comparison-must-be-designed">Part VI — Comparison must be designed</a>
+  <ul class="collapse">
+  <li><a href="#three-comparison-strategies" id="toc-three-comparison-strategies" class="nav-link" data-scroll-target="#three-comparison-strategies">7. Three comparison strategies</a></li>
+  </ul></li>
+  <li><a href="#part-vii-faceting-and-scales" id="toc-part-vii-faceting-and-scales" class="nav-link" data-scroll-target="#part-vii-faceting-and-scales">Part VII — Faceting and scales</a>
+  <ul class="collapse">
+  <li><a href="#fixed-versus-free-scales" id="toc-fixed-versus-free-scales" class="nav-link" data-scroll-target="#fixed-versus-free-scales">8. Fixed versus free scales</a></li>
+  </ul></li>
+  <li><a href="#part-viii-visual-channels-and-misleading-graphs" id="toc-part-viii-visual-channels-and-misleading-graphs" class="nav-link" data-scroll-target="#part-viii-visual-channels-and-misleading-graphs">Part VIII — Visual channels and misleading graphs</a>
+  <ul class="collapse">
+  <li><a href="#match-encoding-to-measurement-scale" id="toc-match-encoding-to-measurement-scale" class="nav-link" data-scroll-target="#match-encoding-to-measurement-scale">9. Match encoding to measurement scale</a></li>
+  <li><a href="#what-can-a-graph-hide" id="toc-what-can-a-graph-hide" class="nav-link" data-scroll-target="#what-can-a-graph-hide">10. What can a graph hide?</a></li>
+  </ul></li>
+  <li><a href="#part-ix-load-the-kinbank-teaching-data" id="toc-part-ix-load-the-kinbank-teaching-data" class="nav-link" data-scroll-target="#part-ix-load-the-kinbank-teaching-data">Part IX — Load the Kinbank teaching data</a>
+  <ul class="collapse">
+  <li><a href="#portable-data-path" id="toc-portable-data-path" class="nav-link" data-scroll-target="#portable-data-path">11. Portable data path</a></li>
+  </ul></li>
+  <li><a href="#part-x-audit-the-evidence-before-plotting" id="toc-part-x-audit-the-evidence-before-plotting" class="nav-link" data-scroll-target="#part-x-audit-the-evidence-before-plotting">Part X — Audit the evidence before plotting</a>
+  <ul class="collapse">
+  <li><a href="#missingness" id="toc-missingness" class="nav-link" data-scroll-target="#missingness">12. Missingness</a></li>
+  <li><a href="#sample-composition" id="toc-sample-composition" class="nav-link" data-scroll-target="#sample-composition">13. Sample composition</a></li>
+  </ul></li>
+  <li><a href="#part-xi-explore-kin_term_count" id="toc-part-xi-explore-kin_term_count" class="nav-link" data-scroll-target="#part-xi-explore-kin_term_count">Part XI — Explore kin_term_count</a>
+  <ul class="collapse">
+  <li><a href="#numerical-distribution" id="toc-numerical-distribution" class="nav-link" data-scroll-target="#numerical-distribution">14. Numerical distribution</a></li>
+  </ul></li>
+  <li><a href="#part-xii-purposeful-group-comparison" id="toc-part-xii-purposeful-group-comparison" class="nav-link" data-scroll-target="#part-xii-purposeful-group-comparison">Part XII — Purposeful group comparison</a>
+  <ul class="collapse">
+  <li><a href="#macroareas-with-observations-preserved" id="toc-macroareas-with-observations-preserved" class="nav-link" data-scroll-target="#macroareas-with-observations-preserved">15. Macroareas with observations preserved</a></li>
+  </ul></li>
+  <li><a href="#part-xiii-geography-and-overplotting" id="toc-part-xiii-geography-and-overplotting" class="nav-link" data-scroll-target="#part-xiii-geography-and-overplotting">Part XIII — Geography and overplotting</a>
+  <ul class="collapse">
+  <li><a href="#spatial-structure-of-the-sample" id="toc-spatial-structure-of-the-sample" class="nav-link" data-scroll-target="#spatial-structure-of-the-sample">16. Spatial structure of the sample</a></li>
+  </ul></li>
+  <li><a href="#part-xiv-a-third-variable-can-change-what-a-scatterplot-means" id="toc-part-xiv-a-third-variable-can-change-what-a-scatterplot-means" class="nav-link" data-scroll-target="#part-xiv-a-third-variable-can-change-what-a-scatterplot-means">Part XIV — A third variable can change what a scatterplot means</a>
+  <ul class="collapse">
+  <li><a href="#add-macroarea-as-an-encoding" id="toc-add-macroarea-as-an-encoding" class="nav-link" data-scroll-target="#add-macroarea-as-an-encoding">17. Add macroarea as an encoding</a></li>
+  </ul></li>
+  <li><a href="#part-xv-family-structure-and-faceting" id="toc-part-xv-family-structure-and-faceting" class="nav-link" data-scroll-target="#part-xv-family-structure-and-faceting">Part XV — Family structure and faceting</a>
+  <ul class="collapse">
+  <li><a href="#diagnose-dependence" id="toc-diagnose-dependence" class="nav-link" data-scroll-target="#diagnose-dependence">18. Diagnose dependence</a></li>
+  </ul></li>
+  <li><a href="#part-xvi-non-independence-in-cross-cultural-data" id="toc-part-xvi-non-independence-in-cross-cultural-data" class="nav-link" data-scroll-target="#part-xvi-non-independence-in-cross-cultural-data">Part XVI — Non-independence in cross-cultural data</a>
+  <ul class="collapse">
+  <li><a href="#phylogenetic-and-spatial-autocorrelation" id="toc-phylogenetic-and-spatial-autocorrelation" class="nav-link" data-scroll-target="#phylogenetic-and-spatial-autocorrelation">19. Phylogenetic and spatial autocorrelation</a></li>
+  </ul></li>
+  <li><a href="#part-xvii-kinbank-operationalization" id="toc-part-xvii-kinbank-operationalization" class="nav-link" data-scroll-target="#part-xvii-kinbank-operationalization">Part XVII — Kinbank operationalization</a>
+  <ul class="collapse">
+  <li><a href="#a-count-is-only-one-summary-of-a-relational-system" id="toc-a-count-is-only-one-summary-of-a-relational-system" class="nav-link" data-scroll-target="#a-count-is-only-one-summary-of-a-relational-system">20. A count is only one summary of a relational system</a></li>
+  </ul></li>
+  <li><a href="#part-xviii-integrated-eda-challenge" id="toc-part-xviii-integrated-eda-challenge" class="nav-link" data-scroll-target="#part-xviii-integrated-eda-challenge">Part XVIII — Integrated EDA challenge</a>
+  <ul class="collapse">
+  <li><a href="#build-a-disciplined-kinbank-exploration" id="toc-build-a-disciplined-kinbank-exploration" class="nav-link" data-scroll-target="#build-a-disciplined-kinbank-exploration">21. Build a disciplined Kinbank exploration</a></li>
+  </ul></li>
+  <li><a href="#part-xix-conceptual-debugging" id="toc-part-xix-conceptual-debugging" class="nav-link" data-scroll-target="#part-xix-conceptual-debugging">Part XIX — Conceptual debugging</a>
+  <ul class="collapse">
+  <li><a href="#diagnose-the-mistake" id="toc-diagnose-the-mistake" class="nav-link" data-scroll-target="#diagnose-the-mistake">22. Diagnose the mistake</a></li>
+  </ul></li>
+  <li><a href="#part-xx-mastery-checklist" id="toc-part-xx-mastery-checklist" class="nav-link" data-scroll-target="#part-xx-mastery-checklist">Part XX — Mastery checklist</a></li>
+  <li><a href="#final-challenge-explain-the-workflow-without-code" id="toc-final-challenge-explain-the-workflow-without-code" class="nav-link" data-scroll-target="#final-challenge-explain-the-workflow-without-code">Final challenge — explain the workflow without code</a></li>
+  <li><a href="#clean-render-test" id="toc-clean-render-test" class="nav-link" data-scroll-target="#clean-render-test">Clean Render Test</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">ANTH418 Week 5 Practice Workbook</h1>
+<p class="subtitle lead">Exploratory Data Analysis and Visualization</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-tip callout-titled" title="Start here — download the editable workbook">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Start here — download the editable workbook
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This webpage is the rendered version of an <strong>editable Quarto workbook</strong>.</p>
+<ol type="1">
+<li>Download the <strong>Week 5 Practice Package</strong>.</li>
+<li>Unzip it.</li>
+<li>Open <code>week05-practice.qmd</code> in RStudio.</li>
+<li>Keep the <code>data</code> folder beside the QMD.</li>
+<li>Work from top to bottom.</li>
+<li>For each exercise: <strong>predict → run → inspect → explain</strong>.</li>
+<li>Edit code and write explanations directly in the QMD.</li>
+<li>Render frequently.</li>
+<li>Finish with the <strong>Clean Render Test</strong>.</li>
+</ol>
+<p><strong>Do not copy this webpage into RStudio.</strong> The downloadable QMD is the editable source.</p>
+<p><a href="../downloads/practice-workbooks/ANTH418_Week05_Practice.zip"><strong>Download Week 5 Practice Package (.zip)</strong></a></p>
+</div>
+</div>
+<section id="how-to-use-this-workbook" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-use-this-workbook">How to use this workbook</h2>
+<p>Week 4 used numerical summaries to describe center and spread. Week 5 adds visualization as statistical reasoning.</p>
+<blockquote class="blockquote">
+<p><strong>inspect → describe → visualize → compare → question → revise → investigate</strong></p>
+</blockquote>
+<p>EDA is not a list of chart types. It is an iterative habit of asking whether values, distributions, comparisons, and observations make sense.</p>
+</section>
+<section id="learning-objectives" class="level2">
+<h2 class="anchored" data-anchor-id="learning-objectives">Learning objectives</h2>
+<p>By the end, you should be able to explain EDA as inquiry; distinguish description from inference; choose graphics from variable structure; use the <code>ggplot2</code> grammar; distinguish mapping from setting; investigate binning; combine summaries with raw observations; design group comparisons and facets; diagnose misleading displays; audit sample structure; explore Kinbank responsibly; and recognize phylogenetic and spatial non-independence.</p>
+</section>
+<section id="part-i-eda-as-disciplined-visual-reasoning" class="level1">
+<h1>Part I — EDA as disciplined visual reasoning</h1>
+<section id="description-is-not-inference" class="level2">
+<h2 class="anchored" data-anchor-id="description-is-not-inference">1. Description is not inference</h2>
+<p>Classify each statement as <strong>descriptive</strong> or <strong>inferential</strong>:</p>
+<ol type="1">
+<li>“In this teaching sample, <code>kin_term_count</code> is strongly right-skewed.”</li>
+<li>“All human languages have right-skewed kinship systems.”</li>
+<li>“The sampled languages are unevenly distributed across macroareas.”</li>
+<li>“Macroarea causes differences in kinship terminology.”</li>
+</ol>
+<p>Explain what additional design, uncertainty, or modelling would be needed before moving from description to inference.</p>
+</section>
+</section>
+<section id="part-ii-choose-the-graphic-from-variable-structure" class="level1">
+<h1>Part II — Choose the graphic from variable structure</h1>
+<section id="different-variables-pose-different-visual-tasks" class="level2">
+<h2 class="anchored" data-anchor-id="different-variables-pose-different-visual-tasks">2. Different variables pose different visual tasks</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable structure</th>
+<th>Typical task</th>
+<th>Useful graphics</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Categorical</td>
+<td>counts, proportions, composition</td>
+<td>bar chart, grouped bars, mosaic plot</td>
+</tr>
+<tr class="even">
+<td>Numerical</td>
+<td>location, spread, shape, outliers</td>
+<td>histogram, boxplot</td>
+</tr>
+<tr class="odd">
+<td>Two numerical variables</td>
+<td>relationship, clusters, outliers</td>
+<td>scatterplot</td>
+</tr>
+</tbody>
+</table>
+<p>Choose a first graphic for languages by macroarea; distribution of <code>kin_term_count</code>; <code>kin_term_count</code> across macroareas; longitude versus latitude; and latitude versus <code>kin_term_count</code>. Explain the visual task.</p>
+</section>
+</section>
+<section id="part-iii-the-grammar-of-ggplot2" class="level1">
+<h1>Part III — The grammar of ggplot2</h1>
+<section id="a-graph-is-a-specification" class="level2">
+<h2 class="anchored" data-anchor-id="a-graph-is-a-specification">3. A graph is a specification</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>toy <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">group =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>), <span class="at">each =</span> <span class="dv">5</span>),</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">10</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(toy, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week05_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The beginner grammar is <strong>data + aesthetic mappings + geom</strong>. The fuller grammar adds layers, statistical transformations, scales, coordinates, facets, and themes.</p>
+</section>
+<section id="mapping-versus-setting" class="level2">
+<h2 class="anchored" data-anchor-id="mapping-versus-setting">4. Mapping versus setting</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(toy, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">shape =</span> group)) <span class="sc">+</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week05_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(toy, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">17</span>, <span class="at">size =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week05_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>What is wrong with <code>geom_point(aes(colour = "steelblue"))</code>?</p>
+<blockquote class="blockquote">
+<p><strong>Variable inside <code>aes()</code>; fixed appearance outside <code>aes()</code>.</strong></p>
+</blockquote>
+</section>
+</section>
+<section id="part-iv-histograms-and-binning" class="level1">
+<h1>Part IV — Histograms and binning</h1>
+<section id="bin-width-changes-what-we-see" class="level2">
+<h2 class="anchored" data-anchor-id="bin-width-changes-what-we-see">5. Bin width changes what we see</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">418</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>hist_demo <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">value =</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">180</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="fu">rnorm</span>(<span class="dv">70</span>, <span class="fl">3.2</span>, <span class="fl">0.6</span>))</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(hist_demo, <span class="fu">aes</span>(<span class="at">x =</span> value)) <span class="sc">+</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">8</span>) <span class="sc">+</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week05_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(hist_demo, <span class="fu">aes</span>(<span class="at">x =</span> value)) <span class="sc">+</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">35</span>) <span class="sc">+</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week05_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Compare the displays. What structure becomes visible or hidden? Why should EDA try several reasonable bin widths?</p>
+</section>
+</section>
+<section id="part-v-boxplots-summarize-but-also-hide" class="level1">
+<h1>Part V — Boxplots summarize but also hide</h1>
+<section id="compact-summary-versus-raw-observations" class="level2">
+<h2 class="anchored" data-anchor-id="compact-summary-versus-raw-observations">6. Compact summary versus raw observations</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">419</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>box_demo <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">group =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>), <span class="at">each =</span> <span class="dv">25</span>),</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">value =</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">25</span>, <span class="dv">10</span>, <span class="fl">1.2</span>), <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">23</span>, <span class="dv">12</span>, <span class="fl">1.1</span>), <span class="dv">17</span>, <span class="dv">18</span>))</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(box_demo, <span class="fu">aes</span>(<span class="at">x =</span> group, <span class="at">y =</span> value)) <span class="sc">+</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week05_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(box_demo, <span class="fu">aes</span>(<span class="at">x =</span> group, <span class="at">y =</span> value)) <span class="sc">+</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">outlier.shape =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.10</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week05_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>What do raw points reveal that the boxplot alone hides?</p>
+</section>
+</section>
+<section id="part-vi-comparison-must-be-designed" class="level1">
+<h1>Part VI — Comparison must be designed</h1>
+<section id="three-comparison-strategies" class="level2">
+<h2 class="anchored" data-anchor-id="three-comparison-strategies">7. Three comparison strategies</h2>
+<p>Week 5 distinguishes <strong>juxtaposition</strong> (small multiples), <strong>superposition</strong> (overlay), and <strong>explicit encoding</strong>.</p>
+<p>For six groups, give one advantage and disadvantage of overlaying groups, faceting, and grouped boxplots with raw observations.</p>
+</section>
+</section>
+<section id="part-vii-faceting-and-scales" class="level1">
+<h1>Part VII — Faceting and scales</h1>
+<section id="fixed-versus-free-scales" class="level2">
+<h2 class="anchored" data-anchor-id="fixed-versus-free-scales">8. Fixed versus free scales</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">420</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>facet_demo <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"F1"</span>, <span class="st">"F2"</span>, <span class="st">"F3"</span>), <span class="at">each =</span> <span class="dv">40</span>),</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">40</span>, <span class="dv">3</span>),</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">c</span>(</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="fl">0.4</span> <span class="sc">*</span> (<span class="dv">1</span><span class="sc">:</span><span class="dv">40</span>) <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">40</span>, <span class="dv">0</span>, <span class="dv">3</span>),</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="fl">1.2</span> <span class="sc">*</span> (<span class="dv">1</span><span class="sc">:</span><span class="dv">40</span>) <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">40</span>, <span class="dv">0</span>, <span class="dv">8</span>),</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="fl">0.2</span> <span class="sc">*</span> (<span class="dv">1</span><span class="sc">:</span><span class="dv">40</span>) <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">40</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(facet_demo, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> family) <span class="sc">+</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week05_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(facet_demo, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> family, <span class="at">scales =</span> <span class="st">"free_y"</span>) <span class="sc">+</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week05_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Complete: fixed scales support __________ comparison; free scales reveal __________ detail but weaken __________ comparison.</p>
+</section>
+</section>
+<section id="part-viii-visual-channels-and-misleading-graphs" class="level1">
+<h1>Part VIII — Visual channels and misleading graphs</h1>
+<section id="match-encoding-to-measurement-scale" class="level2">
+<h2 class="anchored" data-anchor-id="match-encoding-to-measurement-scale">9. Match encoding to measurement scale</h2>
+<p>For magnitude/order, position and length are strong channels. For category identity, facets, hue, and a small number of shapes can work well. Why should colour carry information rather than decoration?</p>
+</section>
+<section id="what-can-a-graph-hide" class="level2">
+<h2 class="anchored" data-anchor-id="what-can-a-graph-hide">10. What can a graph hide?</h2>
+<p>Consider truncated axes, overplotting, unequal group sizes, proportions without denominators, too many colours, free facet scales, smoothers treated as truth, and outliers treated as errors. Explain how each could mislead interpretation.</p>
+</section>
+</section>
+<section id="part-ix-load-the-kinbank-teaching-data" class="level1">
+<h1>Part IX — Load the Kinbank teaching data</h1>
+<section id="portable-data-path" class="level2">
+<h2 class="anchored" data-anchor-id="portable-data-path">11. Portable data path</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">file.exists</span>(<span class="st">"data/kinbank_teaching.csv"</span>)) {</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  kinbank_file <span class="ot">&lt;-</span> <span class="st">"data/kinbank_teaching.csv"</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  project_root <span class="ot">&lt;-</span> <span class="cf">if</span> (<span class="fu">file.exists</span>(<span class="st">"_quarto.yml"</span>)) <span class="st">"."</span> <span class="cf">else</span> <span class="st">".."</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  kinbank_file <span class="ot">&lt;-</span> <span class="fu">file.path</span>(</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    project_root, <span class="st">"assignments"</span>, <span class="st">"assignment02_kinbank_visualization"</span>,</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"data"</span>, <span class="st">"kinbank_teaching.csv"</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="fu">file.exists</span>(kinbank_file)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>kinbank <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(kinbank_file, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(kinbank)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1287    7</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(kinbank)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "language_id"    "language"       "family"         "macroarea"     
+[5] "latitude"       "longitude"      "kin_term_count"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(kinbank)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 1,287
+Columns: 7
+$ language_id    &lt;chr&gt; "v_adnyamathanhaadny1235", "v_aghulaghu1253", "v_aguaru…
+$ language       &lt;chr&gt; "Adnyamathanha", "Aghul", "Aguaruna", "Akhvakh", "Akkad…
+$ family         &lt;chr&gt; "Pama-Nyungan", "Nakh-Daghestanian", NA, "Nakh-Daghesta…
+$ macroarea      &lt;chr&gt; "Australia", "Eurasia", "South America", "Eurasia", "Eu…
+$ latitude       &lt;dbl&gt; -30.14510, 41.92420, -5.30044, 42.40030, 33.10000, NA, …
+$ longitude      &lt;dbl&gt; 138.67100, 47.58430, -77.92180, 46.30370, 44.10000, NA,…
+$ kin_term_count &lt;dbl&gt; 304, 190, 235, 302, 152, 530, 180, 367, 176, 46, 294, 3…</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(kinbank)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 7
+  language_id        language family macroarea latitude longitude kin_term_count
+  &lt;chr&gt;              &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;          &lt;dbl&gt;
+1 v_adnyamathanhaad… Adnyama… Pama-… Australia   -30.1      139.             304
+2 v_aghulaghu1253    Aghul    Nakh-… Eurasia      41.9       47.6            190
+3 v_aguarunaagua1253 Aguaruna &lt;NA&gt;   South Am…    -5.30     -77.9            235
+4 v_akhvakhnorthern… Akhvakh  Nakh-… Eurasia      42.4       46.3            302
+5 v_akkadianakka1240 Akkadian Afro-… Eurasia      33.1       44.1            152
+6 v_albanianalba1267 Albanian Indo-… Eurasia      NA         NA              530</code></pre>
+</div>
+</div>
+<p>The teaching file contains <strong>1,287 represented languages</strong>. One row is one language represented by at least one Kinbank form record in the frozen ANTH418 snapshot.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Interpret kin_term_count carefully">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Interpret kin_term_count carefully
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>kin_term_count</code> counts Kinbank <strong>form records linked to a language</strong> in this teaching snapshot. It is not automatically the number of unique kin concepts and is not a direct measure of “kinship-system complexity.”</p>
+</div>
+</div>
+</section>
+</section>
+<section id="part-x-audit-the-evidence-before-plotting" class="level1">
+<h1>Part X — Audit the evidence before plotting</h1>
+<section id="missingness" class="level2">
+<h2 class="anchored" data-anchor-id="missingness">12. Missingness</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>kinbank <span class="sc">|&gt;</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(.x))))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 7
+  language_id language family macroarea latitude longitude kin_term_count
+        &lt;int&gt;    &lt;int&gt;  &lt;int&gt;     &lt;int&gt;    &lt;int&gt;     &lt;int&gt;          &lt;int&gt;
+1           0        0    199        38      130       130              0</code></pre>
+</div>
+</div>
+<p>Identify missingness in <code>family</code>, <code>macroarea</code>, <code>latitude</code>, and <code>longitude</code>. Why are metadata gaps not substantive categories?</p>
+</section>
+<section id="sample-composition" class="level2">
+<h2 class="anchored" data-anchor-id="sample-composition">13. Sample composition</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>kinbank <span class="sc">|&gt;</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(macroarea, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 7 × 2
+  macroarea         n
+  &lt;chr&gt;         &lt;int&gt;
+1 Papunesia       518
+2 Eurasia         209
+3 North America   165
+4 Africa          144
+5 Australia       116
+6 South America    97
+7 &lt;NA&gt;             38</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  kinbank <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(macroarea)),</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_infreq</span>(macroarea))</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Number of represented languages"</span>,</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Language representation by macroarea"</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week05_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Describe the <strong>structure of the evidence</strong> before making claims about kinship terminology. Why is sample composition not merely administrative information?</p>
+</section>
+</section>
+<section id="part-xi-explore-kin_term_count" class="level1">
+<h1>Part XI — Explore kin_term_count</h1>
+<section id="numerical-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="numerical-distribution">14. Numerical distribution</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(kinbank, <span class="fu">aes</span>(<span class="at">x =</span> kin_term_count)) <span class="sc">+</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">30</span>) <span class="sc">+</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Kinbank form records linked to language"</span>,</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Number of languages"</span>,</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Distribution of kin_term_count"</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week05_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(kinbank, <span class="fu">aes</span>(<span class="at">x =</span> kin_term_count)) <span class="sc">+</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">60</span>) <span class="sc">+</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week05_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>kinbank <span class="sc">|&gt;</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(kin_term_count),</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">median =</span> <span class="fu">median</span>(kin_term_count),</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd =</span> <span class="fu">sd</span>(kin_term_count),</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">q1 =</span> <span class="fu">quantile</span>(kin_term_count, .<span class="dv">25</span>),</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">q3 =</span> <span class="fu">quantile</span>(kin_term_count, .<span class="dv">75</span>),</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">min =</span> <span class="fu">min</span>(kin_term_count),</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">max =</span> <span class="fu">max</span>(kin_term_count)</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 8
+      n  mean median    sd    q1    q3   min   max
+  &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1  1287  170.    146  123.   102   202     6  1058</code></pre>
+</div>
+</div>
+<p>Describe shape, center, spread, and upper tail <strong>in this teaching sample</strong>.</p>
+</section>
+</section>
+<section id="part-xii-purposeful-group-comparison" class="level1">
+<h1>Part XII — Purposeful group comparison</h1>
+<section id="macroareas-with-observations-preserved" class="level2">
+<h2 class="anchored" data-anchor-id="macroareas-with-observations-preserved">15. Macroareas with observations preserved</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>macroarea_plot_data <span class="ot">&lt;-</span> kinbank <span class="sc">|&gt;</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(macroarea))</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  macroarea_plot_data,</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">reorder</span>(macroarea, kin_term_count, <span class="at">FUN =</span> median),</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> kin_term_count</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">outlier.shape =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.15</span>, <span class="at">alpha =</span> <span class="fl">0.25</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Kinbank form records linked to language"</span>,</span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"kin_term_count across macroareas"</span></span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week05_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Describe overlap, center, spread, unequal group sizes, and extreme observations. Why does this not establish causation?</p>
+</section>
+</section>
+<section id="part-xiii-geography-and-overplotting" class="level1">
+<h1>Part XIII — Geography and overplotting</h1>
+<section id="spatial-structure-of-the-sample" class="level2">
+<h2 class="anchored" data-anchor-id="spatial-structure-of-the-sample">16. Spatial structure of the sample</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>geo <span class="ot">&lt;-</span> kinbank <span class="sc">|&gt;</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(longitude), <span class="sc">!</span><span class="fu">is.na</span>(latitude))</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(geo, <span class="fu">aes</span>(<span class="at">x =</span> longitude, <span class="at">y =</span> latitude)) <span class="sc">+</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.45</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_quickmap</span>() <span class="sc">+</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Longitude"</span>,</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Latitude"</span>,</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Geographic distribution of represented languages"</span></span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week05_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Where does overplotting occur? What does clustering tell you about sample structure, and what does it not establish?</p>
+</section>
+</section>
+<section id="part-xiv-a-third-variable-can-change-what-a-scatterplot-means" class="level1">
+<h1>Part XIV — A third variable can change what a scatterplot means</h1>
+<section id="add-macroarea-as-an-encoding" class="level2">
+<h2 class="anchored" data-anchor-id="add-macroarea-as-an-encoding">17. Add macroarea as an encoding</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  kinbank <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(latitude), <span class="sc">!</span><span class="fu">is.na</span>(macroarea)),</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> latitude, <span class="at">y =</span> kin_term_count, <span class="at">colour =</span> macroarea)</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.55</span>) <span class="sc">+</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Latitude"</span>,</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Kinbank form records linked to language"</span>,</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">colour =</span> <span class="st">"Macroarea"</span></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week05_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>What structure becomes visible after adding <code>macroarea</code>? Why should apparent trends remain descriptive?</p>
+</section>
+</section>
+<section id="part-xv-family-structure-and-faceting" class="level1">
+<h1>Part XV — Family structure and faceting</h1>
+<section id="diagnose-dependence" class="level2">
+<h2 class="anchored" data-anchor-id="diagnose-dependence">18. Diagnose dependence</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>top_families <span class="ot">&lt;-</span> kinbank <span class="sc">|&gt;</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(family)) <span class="sc">|&gt;</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(family, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">6</span>) <span class="sc">|&gt;</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(family)</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>kinbank_top_families <span class="ot">&lt;-</span> kinbank <span class="sc">|&gt;</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(family <span class="sc">%in%</span> top_families)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(kinbank_top_families, <span class="fu">aes</span>(<span class="at">x =</span> kin_term_count)) <span class="sc">+</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">20</span>) <span class="sc">+</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> family) <span class="sc">+</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week05_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>What does faceting reveal about within-family and between-family structure? Why does it not make languages independent?</p>
+</section>
+</section>
+<section id="part-xvi-non-independence-in-cross-cultural-data" class="level1">
+<h1>Part XVI — Non-independence in cross-cultural data</h1>
+<section id="phylogenetic-and-spatial-autocorrelation" class="level2">
+<h2 class="anchored" data-anchor-id="phylogenetic-and-spatial-autocorrelation">19. Phylogenetic and spatial autocorrelation</h2>
+<p>Related languages may resemble one another because of common descent. Nearby languages may resemble one another because of contact, borrowing, regional history, or shared environments.</p>
+<blockquote class="blockquote">
+<p><strong>EDA can reveal dependence; it does not automatically correct for dependence.</strong></p>
+</blockquote>
+<p>Explain why twenty closely related languages are not necessarily twenty independent pieces of evidence; why proximity creates another dependence; what visualization can diagnose; and what it cannot fix.</p>
+</section>
+</section>
+<section id="part-xvii-kinbank-operationalization" class="level1">
+<h1>Part XVII — Kinbank operationalization</h1>
+<section id="a-count-is-only-one-summary-of-a-relational-system" class="level2">
+<h2 class="anchored" data-anchor-id="a-count-is-only-one-summary-of-a-relational-system">20. A count is only one summary of a relational system</h2>
+<p>Explain the difference among a culturally specific kin word, a genealogical relation/type, a form-record count, and a structural distinction in a kinship system. Why is the choice of what to visualize also a theoretical choice?</p>
+</section>
+</section>
+<section id="part-xviii-integrated-eda-challenge" class="level1">
+<h1>Part XVIII — Integrated EDA challenge</h1>
+<section id="build-a-disciplined-kinbank-exploration" class="level2">
+<h2 class="anchored" data-anchor-id="build-a-disciplined-kinbank-exploration">21. Build a disciplined Kinbank exploration</h2>
+<ol type="1">
+<li>Identify the unit of analysis.</li>
+<li>Inspect variables and provenance.</li>
+<li>Check missingness.</li>
+<li>Visualize sample composition.</li>
+<li>Explore <code>kin_term_count</code> with more than one binning.</li>
+<li>Summarize its distribution numerically.</li>
+<li>Make one purposeful group comparison.</li>
+<li>Visualize geographic structure.</li>
+<li>Examine family structure.</li>
+<li>Identify possible non-independence.</li>
+<li>Write a descriptive interpretation using <strong>“in this sample”</strong> language.</li>
+<li>State at least two claims the EDA does <strong>not</strong> support.</li>
+<li>End with one better question for later formal analysis.</li>
+</ol>
+</section>
+</section>
+<section id="part-xix-conceptual-debugging" class="level1">
+<h1>Part XIX — Conceptual debugging</h1>
+<section id="diagnose-the-mistake" class="level2">
+<h2 class="anchored" data-anchor-id="diagnose-the-mistake">22. Diagnose the mistake</h2>
+<p>Identify the problem:</p>
+<ol type="1">
+<li>“The graph is striking, therefore the population relationship is proven.”</li>
+<li>“I used <code>aes(colour = "steelblue")</code> to make all points blue.”</li>
+<li>“This histogram proves the distribution has exactly two modes.”</li>
+<li>“The boxplot is enough; I do not need to inspect observations.”</li>
+<li>“Free scales make every facet easier to compare quantitatively.”</li>
+<li>“There are 1,287 languages, therefore there are 1,287 independent cultural cases.”</li>
+<li>“<code>kin_term_count</code> is a direct measure of kinship complexity.”</li>
+<li>“Colouring points by family corrects phylogenetic autocorrelation.”</li>
+<li>“Missing macroarea is a cultural category.”</li>
+<li>“EDA should end with a conclusion rather than a better question.”</li>
+</ol>
+</section>
+</section>
+<section id="part-xx-mastery-checklist" class="level1">
+<h1>Part XX — Mastery checklist</h1>
+<ul class="task-list">
+<li><label><input type="checkbox">I understand EDA as iterative inquiry.</label></li>
+<li><label><input type="checkbox">I distinguish description from inference.</label></li>
+<li><label><input type="checkbox">I choose graphics from variable structure.</label></li>
+<li><label><input type="checkbox">I understand the <code>ggplot2</code> grammar.</label></li>
+<li><label><input type="checkbox">I distinguish mapping from setting.</label></li>
+<li><label><input type="checkbox">I test reasonable histogram binning.</label></li>
+<li><label><input type="checkbox">I understand what boxplots preserve and hide.</label></li>
+<li><label><input type="checkbox">I design comparisons intentionally.</label></li>
+<li><label><input type="checkbox">I understand fixed versus free facet scales.</label></li>
+<li><label><input type="checkbox">I inspect sample composition and missingness.</label></li>
+<li><label><input type="checkbox">I interpret <code>kin_term_count</code> as a form-record count.</label></li>
+<li><label><input type="checkbox">I can visualize geographic and family structure.</label></li>
+<li><label><input type="checkbox">I recognize phylogenetic and spatial non-independence.</label></li>
+<li><label><input type="checkbox">I know visualization diagnoses dependence but does not correct it.</label></li>
+<li><label><input type="checkbox">I end EDA with better questions rather than overconfident claims.</label></li>
+</ul>
+</section>
+<section id="final-challenge-explain-the-workflow-without-code" class="level1">
+<h1>Final challenge — explain the workflow without code</h1>
+<p>Explain:</p>
+<blockquote class="blockquote">
+<p><strong>know the unit → inspect variables → check missingness → plot one variable → compare groups → look for dependence → separate seeing from inferring → ask a better question</strong></p>
+</blockquote>
+<p>Why is visualization <strong>statistical reasoning rather than decoration</strong>?</p>
+</section>
+<section id="clean-render-test" class="level1">
+<h1>Clean Render Test</h1>
+<ol type="1">
+<li>Save the QMD.</li>
+<li>Choose <strong>Session → Restart R</strong>.</li>
+<li>Do not recreate objects manually in the Console.</li>
+<li>Render the complete document.</li>
+<li>If it fails, identify what the document assumed but never created.</li>
+</ol>
+<p>A successful clean render shows that your EDA is computationally self-contained.</p>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

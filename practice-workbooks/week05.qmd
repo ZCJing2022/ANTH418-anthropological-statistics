@@ -1,0 +1,485 @@
+---
+title: "ANTH418 Week 5 Practice Workbook"
+subtitle: "Exploratory Data Analysis and Visualization"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    code-copy: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+::: {.callout-tip title="Start here — download the editable workbook"}
+This webpage is the rendered version of an **editable Quarto workbook**.
+
+1. Download the **Week 5 Practice Package**.
+2. Unzip it.
+3. Open `week05-practice.qmd` in RStudio.
+4. Keep the `data` folder beside the QMD.
+5. Work from top to bottom.
+6. For each exercise: **predict → run → inspect → explain**.
+7. Edit code and write explanations directly in the QMD.
+8. Render frequently.
+9. Finish with the **Clean Render Test**.
+
+**Do not copy this webpage into RStudio.** The downloadable QMD is the editable source.
+
+[**Download Week 5 Practice Package (.zip)**](../downloads/practice-workbooks/ANTH418_Week05_Practice.zip)
+:::
+
+## How to use this workbook
+
+Week 4 used numerical summaries to describe center and spread. Week 5 adds visualization as statistical reasoning.
+
+> **inspect → describe → visualize → compare → question → revise → investigate**
+
+EDA is not a list of chart types. It is an iterative habit of asking whether values, distributions, comparisons, and observations make sense.
+
+## Learning objectives
+
+By the end, you should be able to explain EDA as inquiry; distinguish description from inference; choose graphics from variable structure; use the `ggplot2` grammar; distinguish mapping from setting; investigate binning; combine summaries with raw observations; design group comparisons and facets; diagnose misleading displays; audit sample structure; explore Kinbank responsibly; and recognize phylogenetic and spatial non-independence.
+
+# Part I — EDA as disciplined visual reasoning
+
+## 1. Description is not inference
+
+Classify each statement as **descriptive** or **inferential**:
+
+1. “In this teaching sample, `kin_term_count` is strongly right-skewed.”
+2. “All human languages have right-skewed kinship systems.”
+3. “The sampled languages are unevenly distributed across macroareas.”
+4. “Macroarea causes differences in kinship terminology.”
+
+Explain what additional design, uncertainty, or modelling would be needed before moving from description to inference.
+
+# Part II — Choose the graphic from variable structure
+
+## 2. Different variables pose different visual tasks
+
+| Variable structure | Typical task | Useful graphics |
+|---|---|---|
+| Categorical | counts, proportions, composition | bar chart, grouped bars, mosaic plot |
+| Numerical | location, spread, shape, outliers | histogram, boxplot |
+| Two numerical variables | relationship, clusters, outliers | scatterplot |
+
+Choose a first graphic for languages by macroarea; distribution of `kin_term_count`; `kin_term_count` across macroareas; longitude versus latitude; and latitude versus `kin_term_count`. Explain the visual task.
+
+# Part III — The grammar of ggplot2
+
+## 3. A graph is a specification
+
+```{r}
+library(tidyverse)
+
+toy <- tibble(
+  group = rep(c("A", "B"), each = 5),
+  x = 1:10,
+  y = c(3, 5, 4, 6, 7, 5, 7, 8, 8, 10)
+)
+
+ggplot(toy, aes(x = x, y = y)) +
+  geom_point()
+```
+
+The beginner grammar is **data + aesthetic mappings + geom**. The fuller grammar adds layers, statistical transformations, scales, coordinates, facets, and themes.
+
+## 4. Mapping versus setting
+
+```{r}
+ggplot(toy, aes(x = x, y = y, shape = group)) +
+  geom_point(size = 3)
+```
+
+```{r}
+ggplot(toy, aes(x = x, y = y)) +
+  geom_point(shape = 17, size = 3)
+```
+
+What is wrong with `geom_point(aes(colour = "steelblue"))`?
+
+> **Variable inside `aes()`; fixed appearance outside `aes()`.**
+
+# Part IV — Histograms and binning
+
+## 5. Bin width changes what we see
+
+```{r}
+set.seed(418)
+hist_demo <- tibble(
+  value = c(rnorm(180, 0, 1), rnorm(70, 3.2, 0.6))
+)
+
+ggplot(hist_demo, aes(x = value)) +
+  geom_histogram(bins = 8) +
+  theme_minimal()
+```
+
+```{r}
+ggplot(hist_demo, aes(x = value)) +
+  geom_histogram(bins = 35) +
+  theme_minimal()
+```
+
+Compare the displays. What structure becomes visible or hidden? Why should EDA try several reasonable bin widths?
+
+# Part V — Boxplots summarize but also hide
+
+## 6. Compact summary versus raw observations
+
+```{r}
+set.seed(419)
+box_demo <- tibble(
+  group = rep(c("A", "B"), each = 25),
+  value = c(rnorm(25, 10, 1.2), c(rnorm(23, 12, 1.1), 17, 18))
+)
+
+ggplot(box_demo, aes(x = group, y = value)) +
+  geom_boxplot() +
+  theme_minimal()
+```
+
+```{r}
+ggplot(box_demo, aes(x = group, y = value)) +
+  geom_boxplot(outlier.shape = NA) +
+  geom_jitter(width = 0.10, alpha = 0.6) +
+  theme_minimal()
+```
+
+What do raw points reveal that the boxplot alone hides?
+
+# Part VI — Comparison must be designed
+
+## 7. Three comparison strategies
+
+Week 5 distinguishes **juxtaposition** (small multiples), **superposition** (overlay), and **explicit encoding**.
+
+For six groups, give one advantage and disadvantage of overlaying groups, faceting, and grouped boxplots with raw observations.
+
+# Part VII — Faceting and scales
+
+## 8. Fixed versus free scales
+
+```{r}
+set.seed(420)
+facet_demo <- tibble(
+  family = rep(c("F1", "F2", "F3"), each = 40),
+  x = rep(1:40, 3),
+  y = c(
+    0.4 * (1:40) + rnorm(40, 0, 3),
+    1.2 * (1:40) + rnorm(40, 0, 8),
+    0.2 * (1:40) + rnorm(40, 0, 1)
+  )
+)
+
+ggplot(facet_demo, aes(x = x, y = y)) +
+  geom_point() +
+  facet_wrap(~ family) +
+  theme_minimal()
+```
+
+```{r}
+ggplot(facet_demo, aes(x = x, y = y)) +
+  geom_point() +
+  facet_wrap(~ family, scales = "free_y") +
+  theme_minimal()
+```
+
+Complete: fixed scales support __________ comparison; free scales reveal __________ detail but weaken __________ comparison.
+
+# Part VIII — Visual channels and misleading graphs
+
+## 9. Match encoding to measurement scale
+
+For magnitude/order, position and length are strong channels. For category identity, facets, hue, and a small number of shapes can work well. Why should colour carry information rather than decoration?
+
+## 10. What can a graph hide?
+
+Consider truncated axes, overplotting, unequal group sizes, proportions without denominators, too many colours, free facet scales, smoothers treated as truth, and outliers treated as errors. Explain how each could mislead interpretation.
+
+# Part IX — Load the Kinbank teaching data
+
+## 11. Portable data path
+
+```{r}
+if (file.exists("data/kinbank_teaching.csv")) {
+  kinbank_file <- "data/kinbank_teaching.csv"
+} else {
+  project_root <- if (file.exists("_quarto.yml")) "." else ".."
+  kinbank_file <- file.path(
+    project_root, "assignments", "assignment02_kinbank_visualization",
+    "data", "kinbank_teaching.csv"
+  )
+}
+
+file.exists(kinbank_file)
+```
+
+```{r}
+kinbank <- read_csv(kinbank_file, show_col_types = FALSE)
+
+dim(kinbank)
+names(kinbank)
+glimpse(kinbank)
+head(kinbank)
+```
+
+The teaching file contains **1,287 represented languages**. One row is one language represented by at least one Kinbank form record in the frozen ANTH418 snapshot.
+
+::: {.callout-important title="Interpret kin_term_count carefully"}
+`kin_term_count` counts Kinbank **form records linked to a language** in this teaching snapshot. It is not automatically the number of unique kin concepts and is not a direct measure of “kinship-system complexity.”
+:::
+
+# Part X — Audit the evidence before plotting
+
+## 12. Missingness
+
+```{r}
+kinbank |>
+  summarise(across(everything(), ~ sum(is.na(.x))))
+```
+
+Identify missingness in `family`, `macroarea`, `latitude`, and `longitude`. Why are metadata gaps not substantive categories?
+
+## 13. Sample composition
+
+```{r}
+kinbank |>
+  count(macroarea, sort = TRUE)
+```
+
+```{r}
+ggplot(
+  kinbank |> filter(!is.na(macroarea)),
+  aes(x = fct_infreq(macroarea))
+) +
+  geom_bar() +
+  coord_flip() +
+  labs(
+    x = NULL,
+    y = "Number of represented languages",
+    title = "Language representation by macroarea"
+  ) +
+  theme_minimal()
+```
+
+Describe the **structure of the evidence** before making claims about kinship terminology. Why is sample composition not merely administrative information?
+
+# Part XI — Explore kin_term_count
+
+## 14. Numerical distribution
+
+```{r}
+ggplot(kinbank, aes(x = kin_term_count)) +
+  geom_histogram(bins = 30) +
+  labs(
+    x = "Kinbank form records linked to language",
+    y = "Number of languages",
+    title = "Distribution of kin_term_count"
+  ) +
+  theme_minimal()
+```
+
+```{r}
+ggplot(kinbank, aes(x = kin_term_count)) +
+  geom_histogram(bins = 60) +
+  theme_minimal()
+```
+
+```{r}
+kinbank |>
+  summarise(
+    n = n(),
+    mean = mean(kin_term_count),
+    median = median(kin_term_count),
+    sd = sd(kin_term_count),
+    q1 = quantile(kin_term_count, .25),
+    q3 = quantile(kin_term_count, .75),
+    min = min(kin_term_count),
+    max = max(kin_term_count)
+  )
+```
+
+Describe shape, center, spread, and upper tail **in this teaching sample**.
+
+# Part XII — Purposeful group comparison
+
+## 15. Macroareas with observations preserved
+
+```{r}
+macroarea_plot_data <- kinbank |>
+  filter(!is.na(macroarea))
+
+ggplot(
+  macroarea_plot_data,
+  aes(
+    x = reorder(macroarea, kin_term_count, FUN = median),
+    y = kin_term_count
+  )
+) +
+  geom_boxplot(outlier.shape = NA) +
+  geom_jitter(width = 0.15, alpha = 0.25, size = 1) +
+  coord_flip() +
+  labs(
+    x = NULL,
+    y = "Kinbank form records linked to language",
+    title = "kin_term_count across macroareas"
+  ) +
+  theme_minimal()
+```
+
+Describe overlap, center, spread, unequal group sizes, and extreme observations. Why does this not establish causation?
+
+# Part XIII — Geography and overplotting
+
+## 16. Spatial structure of the sample
+
+```{r}
+geo <- kinbank |>
+  filter(!is.na(longitude), !is.na(latitude))
+
+ggplot(geo, aes(x = longitude, y = latitude)) +
+  geom_point(alpha = 0.45, size = 1) +
+  coord_quickmap() +
+  labs(
+    x = "Longitude",
+    y = "Latitude",
+    title = "Geographic distribution of represented languages"
+  ) +
+  theme_minimal()
+```
+
+Where does overplotting occur? What does clustering tell you about sample structure, and what does it not establish?
+
+# Part XIV — A third variable can change what a scatterplot means
+
+## 17. Add macroarea as an encoding
+
+```{r}
+ggplot(
+  kinbank |> filter(!is.na(latitude), !is.na(macroarea)),
+  aes(x = latitude, y = kin_term_count, colour = macroarea)
+) +
+  geom_point(alpha = 0.55) +
+  labs(
+    x = "Latitude",
+    y = "Kinbank form records linked to language",
+    colour = "Macroarea"
+  ) +
+  theme_minimal()
+```
+
+What structure becomes visible after adding `macroarea`? Why should apparent trends remain descriptive?
+
+# Part XV — Family structure and faceting
+
+## 18. Diagnose dependence
+
+```{r}
+top_families <- kinbank |>
+  filter(!is.na(family)) |>
+  count(family, sort = TRUE) |>
+  slice_head(n = 6) |>
+  pull(family)
+
+kinbank_top_families <- kinbank |>
+  filter(family %in% top_families)
+```
+
+```{r}
+ggplot(kinbank_top_families, aes(x = kin_term_count)) +
+  geom_histogram(bins = 20) +
+  facet_wrap(~ family) +
+  theme_minimal()
+```
+
+What does faceting reveal about within-family and between-family structure? Why does it not make languages independent?
+
+# Part XVI — Non-independence in cross-cultural data
+
+## 19. Phylogenetic and spatial autocorrelation
+
+Related languages may resemble one another because of common descent. Nearby languages may resemble one another because of contact, borrowing, regional history, or shared environments.
+
+> **EDA can reveal dependence; it does not automatically correct for dependence.**
+
+Explain why twenty closely related languages are not necessarily twenty independent pieces of evidence; why proximity creates another dependence; what visualization can diagnose; and what it cannot fix.
+
+# Part XVII — Kinbank operationalization
+
+## 20. A count is only one summary of a relational system
+
+Explain the difference among a culturally specific kin word, a genealogical relation/type, a form-record count, and a structural distinction in a kinship system. Why is the choice of what to visualize also a theoretical choice?
+
+# Part XVIII — Integrated EDA challenge
+
+## 21. Build a disciplined Kinbank exploration
+
+1. Identify the unit of analysis.
+2. Inspect variables and provenance.
+3. Check missingness.
+4. Visualize sample composition.
+5. Explore `kin_term_count` with more than one binning.
+6. Summarize its distribution numerically.
+7. Make one purposeful group comparison.
+8. Visualize geographic structure.
+9. Examine family structure.
+10. Identify possible non-independence.
+11. Write a descriptive interpretation using **“in this sample”** language.
+12. State at least two claims the EDA does **not** support.
+13. End with one better question for later formal analysis.
+
+# Part XIX — Conceptual debugging
+
+## 22. Diagnose the mistake
+
+Identify the problem:
+
+1. “The graph is striking, therefore the population relationship is proven.”
+2. “I used `aes(colour = "steelblue")` to make all points blue.”
+3. “This histogram proves the distribution has exactly two modes.”
+4. “The boxplot is enough; I do not need to inspect observations.”
+5. “Free scales make every facet easier to compare quantitatively.”
+6. “There are 1,287 languages, therefore there are 1,287 independent cultural cases.”
+7. “`kin_term_count` is a direct measure of kinship complexity.”
+8. “Colouring points by family corrects phylogenetic autocorrelation.”
+9. “Missing macroarea is a cultural category.”
+10. “EDA should end with a conclusion rather than a better question.”
+
+# Part XX — Mastery checklist
+
+- [ ] I understand EDA as iterative inquiry.
+- [ ] I distinguish description from inference.
+- [ ] I choose graphics from variable structure.
+- [ ] I understand the `ggplot2` grammar.
+- [ ] I distinguish mapping from setting.
+- [ ] I test reasonable histogram binning.
+- [ ] I understand what boxplots preserve and hide.
+- [ ] I design comparisons intentionally.
+- [ ] I understand fixed versus free facet scales.
+- [ ] I inspect sample composition and missingness.
+- [ ] I interpret `kin_term_count` as a form-record count.
+- [ ] I can visualize geographic and family structure.
+- [ ] I recognize phylogenetic and spatial non-independence.
+- [ ] I know visualization diagnoses dependence but does not correct it.
+- [ ] I end EDA with better questions rather than overconfident claims.
+
+# Final challenge — explain the workflow without code
+
+Explain:
+
+> **know the unit → inspect variables → check missingness → plot one variable → compare groups → look for dependence → separate seeing from inferring → ask a better question**
+
+Why is visualization **statistical reasoning rather than decoration**?
+
+# Clean Render Test
+
+1. Save the QMD.
+2. Choose **Session → Restart R**.
+3. Do not recreate objects manually in the Console.
+4. Render the complete document.
+5. If it fails, identify what the document assumed but never created.
+
+A successful clean render shows that your EDA is computationally self-contained.
