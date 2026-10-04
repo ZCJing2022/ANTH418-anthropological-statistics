@@ -1,0 +1,444 @@
+---
+title: "ANTH418 Week 3 Practice Workbook"
+subtitle: "Variables, Measurement, and Research Design"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    code-copy: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+::: {.callout-tip title="Start here — download the editable workbook"}
+This webpage is the rendered version of an **editable Quarto workbook**.
+
+1. Download the **Week 3 Practice Package**.
+2. Unzip it.
+3. Open `week03-practice.qmd` in RStudio.
+4. Keep the `data` folder beside the QMD.
+5. Work from top to bottom.
+6. For each exercise: **predict → run → inspect → explain**.
+7. Edit code and write explanations directly in the QMD.
+8. Render frequently.
+9. Finish with the **Clean Render Test**.
+
+**Do not copy this webpage into RStudio.** The downloadable QMD is the editable source.
+
+[**Download Week 3 Practice Package (.zip)**](../downloads/practice-workbooks/ANTH418_Week03_Practice.zip)
+:::
+
+## How to use this workbook
+
+Week 2 established the computational environment. Week 3 asks a more fundamental question: **What do our variables mean, how were they measured, and what can the design legitimately support?**
+
+> **concept → definition → operationalization → variable → measurement → design → inference**
+
+## Learning objectives
+
+By the end, you should be able to distinguish concepts, definitions, variables, and values; classify levels of measurement; distinguish reliability, precision, accuracy, and validity; identify units of analysis; classify research designs; state conditions for causal inference; and translate a question into a transparent research plan.
+
+# Part I — From concepts to empirical values
+
+## 1. Variables become evidence
+
+Social research moves from:
+
+> **abstract concept → conceptual definition → operational definition → empirical values**
+
+A variable is not the idea itself. It is an empirical property that can take different values or categories. The operational definition is the recipe that makes data generation visible.
+
+### Practice 1
+
+Choose an anthropological or archaeological concept.
+
+- **Abstract concept:** __________________
+- **Conceptual definition:** ______________
+- **Operational definition:** ______________
+- **Variable:** ___________________________
+- **Possible values:** ____________________
+
+What could go wrong if the operational definition captures only part of the concept?
+
+## 2. Unidimensional and multidimensional concepts
+
+```{r}
+library(tidyverse)
+
+concepts <- tibble(
+  concept = c("age", "height", "wealth", "political organization", "cultural consonance"),
+  dimensionality = c("unidimensional", "unidimensional",
+                     "multidimensional", "multidimensional", "multidimensional")
+)
+
+concepts
+```
+
+Add two examples of your own and explain why multidimensional concepts usually require multiple indicators.
+
+# Part II — Variable roles and theory
+
+## 3. Independent/predictor and dependent/outcome variables
+
+Theory assigns roles. In experiments, X may be manipulated; in observational research, variation in X is measured in relation to Y.
+
+### Practice 2
+
+Identify X and Y:
+
+1. Does distance from a raw-material source predict the proportion of local stone?
+2. Do human nitrogen-isotope values differ between archaeological sites?
+3. Does household wealth predict dietary diversity?
+
+Then explain why the same variable could have a different role in another question.
+
+# Part III — Levels of measurement
+
+## 4. Four levels
+
+| Level | Meaning | Examples |
+|---|---|---|
+| Nominal | named categories | site provenance, artifact class |
+| Ordinal | ranked categories, unequal distances | preservation rank, social class |
+| Interval | equal intervals, no true zero | Celsius, Fahrenheit, IQ |
+| Ratio | equal intervals and meaningful zero | age, counts, distance |
+
+```{r}
+measurement_practice <- tibble(
+  variable = c("site provenance", "preservation rank", "temperature in Celsius",
+               "artifact count", "distance in km", "social class rank"),
+  your_answer = c("", "", "", "", "", "")
+)
+
+measurement_practice
+```
+
+Fill in `your_answer` and explain each choice.
+
+## 5. Numerical codes are not automatically quantities
+
+```{r}
+artifact_code <- c(1, 2, 1, 3, 2, 1)
+mean(artifact_code)
+```
+
+If `1 = ceramic`, `2 = lithic`, and `3 = bone`, explain why R can calculate a mean even though the statistic has no defensible substantive meaning.
+
+# Part IV — Preserve information
+
+## 6. Measure at the highest defensible level
+
+```{r}
+ages <- tibble(
+  person = paste0("P", 1:12),
+  age = c(18, 22, 24, 29, 31, 35, 39, 44, 47, 53, 61, 68)
+)
+
+ages_grouped <- ages |>
+  mutate(age_group = cut(age,
+    breaks = c(0, 29, 49, Inf),
+    labels = c("under 30", "30–49", "50+")))
+
+ages_grouped
+```
+
+```{r}
+ages_grouped |>
+  group_by(age_group) |>
+  summarise(n = n(), min_age = min(age), max_age = max(age), .groups = "drop")
+```
+
+### Practice 3
+
+If you receive only `age_group`, can you reconstruct exact age? Explain why recoding can be useful but causes information loss.
+
+# Part V — Measurement quality
+
+## 7. Reliability, precision, accuracy, validity
+
+- **Reliability:** consistent/repeatable.
+- **Precision:** fine resolution.
+- **Accuracy:** low systematic bias.
+- **Validity:** measures the intended concept.
+
+```{r}
+measurement_demo <- tibble(
+  trial = 1:6,
+  instrument_A = c(10.0, 10.1, 9.9, 10.0, 10.1, 9.9),
+  instrument_B = c(12.0, 12.1, 11.9, 12.0, 12.1, 11.9),
+  target = 10
+)
+
+measurement_demo |>
+  summarise(
+    sd_A = sd(instrument_A),
+    bias_A = mean(instrument_A - target),
+    sd_B = sd(instrument_B),
+    bias_B = mean(instrument_B - target)
+  )
+```
+
+Which instrument is reliable? Which is accurate? Why can tightly clustered readings still be wrong?
+
+## 8. Reliability and validity are not the same
+
+Week 3 discusses reliability through **interobserver/intercoder, test-retest, parallel-form, and internal consistency**, and validity through **face, content, construct, and criterion** evidence.
+
+### Practice 4
+
+Two archaeologists classify the same 100 sherds identically 98% of the time.
+
+1. What quality does this directly address?
+2. Does it prove that the typology captures the intended historical phenomenon?
+3. What validity question remains?
+
+# Part VI — Research under constraints
+
+## 9. Research is iterative
+
+Real projects loop among questions, design, data, analysis, unexpected findings, revised protocols, and refined questions.
+
+### Practice 5 — feasibility audit
+
+For a research question of your choice, assess:
+
+| Criterion | Assessment |
+|---|---|
+| Enthusiasm | |
+| Testability | |
+| Time | |
+| Resources | |
+| Access | |
+
+What would you change if the ideal design were infeasible?
+
+# Part VII — Classes of social variables
+
+## 10. Five broad classes
+
+Week 3 distinguishes **internal states, external states, reported behavior, observed behavior, and artifacts/environment**.
+
+```{r}
+evidence_types <- tibble(
+  evidence = c("religious belief response", "household income",
+               "reported food consumption", "observed tool-making",
+               "stable-isotope value", "artifact raw material"),
+  class = c("", "", "", "", "", "")
+)
+
+evidence_types
+```
+
+Fill in the classes and explain why different evidence classes face different validity threats.
+
+# Part VIII — Qualitative and quantitative are not opposites
+
+## 11. Data type and analysis method can cross
+
+Classify these:
+
+1. Interpretive analysis of interview narratives.
+2. Free-list responses converted to frequencies.
+3. Interpretation of clusters from a numerical model.
+4. Regression using numerical measurements.
+
+Explain why “qualitative versus quantitative” is not always a simple either/or distinction.
+
+# Part IX — Unit of analysis
+
+## 12. What does one row represent?
+
+```{r}
+toy_archaeology <- tibble(
+  specimen_id = c("S1", "S2", "S3", "S4"),
+  individual_id = c("I1", "I1", "I2", "I3"),
+  site = c("A", "A", "A", "B"),
+  value = c(8.2, 8.4, 9.1, 7.9)
+)
+
+toy_archaeology
+nrow(toy_archaeology)
+n_distinct(toy_archaeology$individual_id)
+```
+
+### Practice 6
+
+What does one row represent? How many unique individuals exist? If S1 and S2 come from one individual, why would treating four rows as four independent people inflate the apparent sample size?
+
+## 13. Ecological fallacy
+
+Suppose sites with higher average wealth also have higher average dietary diversity. Does that prove that wealthier individuals *within* each site have more diverse diets? Explain.
+
+# Part X — Research-design typology
+
+## 14. Three binary decisions
+
+Week 3 distinguishes **observational/experimental**, **cross-sectional/longitudinal**, and **single/comparative** designs.
+
+```{r}
+designs <- crossing(
+  intervention = c("observational", "experimental"),
+  time = c("cross-sectional", "longitudinal"),
+  scope = c("single case", "comparative")
+)
+
+designs
+```
+
+Classify: (1) two archaeological sites at one period; (2) the same households followed five years; (3) randomized treatments measured once; (4) change through time in one settlement.
+
+# Part XI — Causal inference
+
+## 15. Four conditions
+
+A causal interpretation requires attention to:
+
+1. **Covariation**
+2. **Non-spuriousness**
+3. **Temporal precedence**
+4. **Mechanism**
+
+### Practice 7
+
+For “greater distance from a raw-material source causes lower use of that material,” write one question addressing each condition. Explain why correlation alone is insufficient.
+
+# Part XII — Audit a real archaeological dataset
+
+## 16. Locate and import the Knipper teaching data
+
+```{r}
+if (file.exists("data/knipper2020_humans.csv")) {
+  knipper_file <- "data/knipper2020_humans.csv"
+} else {
+  project_root <- if (file.exists("_quarto.yml")) "." else ".."
+  knipper_file <- file.path(
+    project_root, "assignments", "assignment01_knipper_descriptive",
+    "data", "knipper2020_humans.csv")
+}
+
+file.exists(knipper_file)
+```
+
+```{r}
+knipper <- read_csv(knipper_file, show_col_types = FALSE)
+
+dim(knipper)
+names(knipper)
+glimpse(knipper)
+head(knipper)
+colSums(is.na(knipper))
+```
+
+## 17. Research-design audit
+
+Before analyzing, answer:
+
+1. What does one row represent?
+2. What is the unit of analysis?
+3. Which variables are identifiers?
+4. Which are categorical?
+5. Which are numerical measurements?
+6. Which could serve as predictors or outcomes for a particular question?
+7. Which roles depend on theory rather than the column itself?
+8. What additional provenance or measurement information would you want?
+
+Create a codebook shell:
+
+```{r}
+measurement_audit <- tibble(
+  variable = names(knipper),
+  proposed_level = "",
+  substantive_meaning = ""
+)
+
+measurement_audit
+```
+
+Edit the last two columns for variables you understand.
+
+# Part XIII — From question to design
+
+## 18. Build a transparent research plan
+
+Complete:
+
+- **Research question:** __________________________________
+- **Unit of analysis:** ___________________________________
+- **Population of interest:** ______________________________
+- **Observed sample:** ____________________________________
+- **Outcome/dependent variable:** __________________________
+- **Predictor/independent variable:** _______________________
+- **Measurement level of each variable:** ___________________
+- **Operational definitions:** ______________________________
+- **Major validity threats:** _______________________________
+- **Independence concerns:** _______________________________
+- **Observational or experimental:** ________________________
+- **Cross-sectional or longitudinal:** ______________________
+- **Single case or comparative:** ___________________________
+- **What the design can establish:** ________________________
+- **What the design cannot establish:** _____________________
+
+# Part XIV — Conceptual debugging
+
+## 19. Diagnose the mistake
+
+For each, identify the problem:
+
+1. Averaging arbitrary numeric codes for artifact types.
+2. Treating repeated measurements from one individual as independent people.
+3. Claiming causation from an observational correlation alone.
+4. Using a highly repeatable instrument that measures the wrong construct.
+5. Collecting age only as broad categories when exact age was available.
+6. Inferring individual behavior from a group-level association.
+
+# Part XV — Integrated practice
+
+## 20. Mini research-design challenge
+
+Using the Knipper teaching data:
+
+1. Formulate one answerable research question.
+2. Identify the unit of analysis.
+3. Classify the variables and measurement levels.
+4. State how each key variable is operationalized.
+5. Inspect missingness and data structure.
+6. Identify predictor/outcome roles if appropriate.
+7. Classify the design.
+8. State at least two validity or inference limitations.
+9. Write a short **Research Design** section in prose.
+10. Include the R code used to audit the data.
+11. Render the document.
+
+# Part XVI — Mastery checklist
+
+- [ ] I can distinguish concept, definition, operationalization, variable, and value.
+- [ ] I can distinguish unidimensional and multidimensional concepts.
+- [ ] I can classify nominal, ordinal, interval, and ratio measurements.
+- [ ] I understand why recoding can lose information.
+- [ ] I can distinguish reliability, precision, accuracy, and validity.
+- [ ] I can identify the unit of analysis.
+- [ ] I can recognize pseudoreplication and ecological fallacy.
+- [ ] I can classify observational/experimental, cross-sectional/longitudinal, and single/comparative designs.
+- [ ] I can state the four conditions relevant to causal inference.
+- [ ] I can audit a dataset before choosing a statistical procedure.
+- [ ] I can explain what a research design can and cannot establish.
+
+# Final challenge — explain the chain without code
+
+In plain English, explain:
+
+> **concept → definition → operationalization → variable → measurement → unit of analysis → design → evidence → inference**
+
+If you can explain why each link matters, rather than merely name it, you have mastered the central Week 3 logic.
+
+# Clean Render Test
+
+1. Save the QMD.
+2. Choose **Session → Restart R**.
+3. Do not recreate objects manually in the Console.
+4. Render the complete document.
+5. If it fails, identify what the document assumed but never created.
+
+A successful clean render shows that your research-design audit is computationally self-contained.

@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>ANTH418 Week 3 Practice Workbook – ANTH418: Anthropological Statistics</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-7ff37d7dbb752a0b62676bb39137b3a2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">ANTH418: Anthropological Statistics</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../syllabus.html"> 
+<span class="menu-text">Syllabus</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../lecture-notes/index.html"> 
+<span class="menu-text">Lecture Notes</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-study-guides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Study Guides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-study-guides">    
+        <li>
+    <a class="dropdown-item" href="../weeks/week02.html">
+ <span class="dropdown-text">Week 2 — R, RStudio &amp; Quarto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../weeks/week03.html">
+ <span class="dropdown-text">Week 3 — Measurement &amp; Research Design</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../weeks/week04.html">
+ <span class="dropdown-text">Week 4 — Central Tendency &amp; Dispersion</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../weeks/week05.html">
+ <span class="dropdown-text">Week 5 — EDA &amp; Visualization</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../weeks/week06.html">
+ <span class="dropdown-text">Week 6 — Transformation &amp; Missing Data</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../weeks/week07.html">
+ <span class="dropdown-text">Week 7 — Probability &amp; Sampling</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../weeks/week08.html">
+ <span class="dropdown-text">Week 8 — Confidence Intervals &amp; Hypothesis Testing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../weeks/week09.html">
+ <span class="dropdown-text">Week 9 — Comparing Two Groups: t-tests</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../weeks/week11.html">
+ <span class="dropdown-text">Week 11 — Chi-Square &amp; Tests of Proportions</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-practice-workbooks" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Practice Workbooks</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-practice-workbooks">    
+        <li>
+    <a class="dropdown-item" href="../practice-workbooks/week02.html">
+ <span class="dropdown-text">Week 2 — R, RStudio &amp; Quarto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../practice-workbooks/week03.html">
+ <span class="dropdown-text">Week 3 — Measurement &amp; Research Design</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../assignments/index.html"> 
+<span class="menu-text">Assignments</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../readings/index.html"> 
+<span class="menu-text">Readings</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../resources/index.html"> 
+<span class="menu-text">Resources</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#how-to-use-this-workbook" id="toc-how-to-use-this-workbook" class="nav-link active" data-scroll-target="#how-to-use-this-workbook">How to use this workbook</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning objectives</a></li>
+  <li><a href="#part-i-from-concepts-to-empirical-values" id="toc-part-i-from-concepts-to-empirical-values" class="nav-link" data-scroll-target="#part-i-from-concepts-to-empirical-values">Part I — From concepts to empirical values</a>
+  <ul class="collapse">
+  <li><a href="#variables-become-evidence" id="toc-variables-become-evidence" class="nav-link" data-scroll-target="#variables-become-evidence">1. Variables become evidence</a>
+  <ul class="collapse">
+  <li><a href="#practice-1" id="toc-practice-1" class="nav-link" data-scroll-target="#practice-1">Practice 1</a></li>
+  </ul></li>
+  <li><a href="#unidimensional-and-multidimensional-concepts" id="toc-unidimensional-and-multidimensional-concepts" class="nav-link" data-scroll-target="#unidimensional-and-multidimensional-concepts">2. Unidimensional and multidimensional concepts</a></li>
+  </ul></li>
+  <li><a href="#part-ii-variable-roles-and-theory" id="toc-part-ii-variable-roles-and-theory" class="nav-link" data-scroll-target="#part-ii-variable-roles-and-theory">Part II — Variable roles and theory</a>
+  <ul class="collapse">
+  <li><a href="#independentpredictor-and-dependentoutcome-variables" id="toc-independentpredictor-and-dependentoutcome-variables" class="nav-link" data-scroll-target="#independentpredictor-and-dependentoutcome-variables">3. Independent/predictor and dependent/outcome variables</a>
+  <ul class="collapse">
+  <li><a href="#practice-2" id="toc-practice-2" class="nav-link" data-scroll-target="#practice-2">Practice 2</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-iii-levels-of-measurement" id="toc-part-iii-levels-of-measurement" class="nav-link" data-scroll-target="#part-iii-levels-of-measurement">Part III — Levels of measurement</a>
+  <ul class="collapse">
+  <li><a href="#four-levels" id="toc-four-levels" class="nav-link" data-scroll-target="#four-levels">4. Four levels</a></li>
+  <li><a href="#numerical-codes-are-not-automatically-quantities" id="toc-numerical-codes-are-not-automatically-quantities" class="nav-link" data-scroll-target="#numerical-codes-are-not-automatically-quantities">5. Numerical codes are not automatically quantities</a></li>
+  </ul></li>
+  <li><a href="#part-iv-preserve-information" id="toc-part-iv-preserve-information" class="nav-link" data-scroll-target="#part-iv-preserve-information">Part IV — Preserve information</a>
+  <ul class="collapse">
+  <li><a href="#measure-at-the-highest-defensible-level" id="toc-measure-at-the-highest-defensible-level" class="nav-link" data-scroll-target="#measure-at-the-highest-defensible-level">6. Measure at the highest defensible level</a>
+  <ul class="collapse">
+  <li><a href="#practice-3" id="toc-practice-3" class="nav-link" data-scroll-target="#practice-3">Practice 3</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-v-measurement-quality" id="toc-part-v-measurement-quality" class="nav-link" data-scroll-target="#part-v-measurement-quality">Part V — Measurement quality</a>
+  <ul class="collapse">
+  <li><a href="#reliability-precision-accuracy-validity" id="toc-reliability-precision-accuracy-validity" class="nav-link" data-scroll-target="#reliability-precision-accuracy-validity">7. Reliability, precision, accuracy, validity</a></li>
+  <li><a href="#reliability-and-validity-are-not-the-same" id="toc-reliability-and-validity-are-not-the-same" class="nav-link" data-scroll-target="#reliability-and-validity-are-not-the-same">8. Reliability and validity are not the same</a>
+  <ul class="collapse">
+  <li><a href="#practice-4" id="toc-practice-4" class="nav-link" data-scroll-target="#practice-4">Practice 4</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-vi-research-under-constraints" id="toc-part-vi-research-under-constraints" class="nav-link" data-scroll-target="#part-vi-research-under-constraints">Part VI — Research under constraints</a>
+  <ul class="collapse">
+  <li><a href="#research-is-iterative" id="toc-research-is-iterative" class="nav-link" data-scroll-target="#research-is-iterative">9. Research is iterative</a>
+  <ul class="collapse">
+  <li><a href="#practice-5-feasibility-audit" id="toc-practice-5-feasibility-audit" class="nav-link" data-scroll-target="#practice-5-feasibility-audit">Practice 5 — feasibility audit</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-vii-classes-of-social-variables" id="toc-part-vii-classes-of-social-variables" class="nav-link" data-scroll-target="#part-vii-classes-of-social-variables">Part VII — Classes of social variables</a>
+  <ul class="collapse">
+  <li><a href="#five-broad-classes" id="toc-five-broad-classes" class="nav-link" data-scroll-target="#five-broad-classes">10. Five broad classes</a></li>
+  </ul></li>
+  <li><a href="#part-viii-qualitative-and-quantitative-are-not-opposites" id="toc-part-viii-qualitative-and-quantitative-are-not-opposites" class="nav-link" data-scroll-target="#part-viii-qualitative-and-quantitative-are-not-opposites">Part VIII — Qualitative and quantitative are not opposites</a>
+  <ul class="collapse">
+  <li><a href="#data-type-and-analysis-method-can-cross" id="toc-data-type-and-analysis-method-can-cross" class="nav-link" data-scroll-target="#data-type-and-analysis-method-can-cross">11. Data type and analysis method can cross</a></li>
+  </ul></li>
+  <li><a href="#part-ix-unit-of-analysis" id="toc-part-ix-unit-of-analysis" class="nav-link" data-scroll-target="#part-ix-unit-of-analysis">Part IX — Unit of analysis</a>
+  <ul class="collapse">
+  <li><a href="#what-does-one-row-represent" id="toc-what-does-one-row-represent" class="nav-link" data-scroll-target="#what-does-one-row-represent">12. What does one row represent?</a>
+  <ul class="collapse">
+  <li><a href="#practice-6" id="toc-practice-6" class="nav-link" data-scroll-target="#practice-6">Practice 6</a></li>
+  </ul></li>
+  <li><a href="#ecological-fallacy" id="toc-ecological-fallacy" class="nav-link" data-scroll-target="#ecological-fallacy">13. Ecological fallacy</a></li>
+  </ul></li>
+  <li><a href="#part-x-research-design-typology" id="toc-part-x-research-design-typology" class="nav-link" data-scroll-target="#part-x-research-design-typology">Part X — Research-design typology</a>
+  <ul class="collapse">
+  <li><a href="#three-binary-decisions" id="toc-three-binary-decisions" class="nav-link" data-scroll-target="#three-binary-decisions">14. Three binary decisions</a></li>
+  </ul></li>
+  <li><a href="#part-xi-causal-inference" id="toc-part-xi-causal-inference" class="nav-link" data-scroll-target="#part-xi-causal-inference">Part XI — Causal inference</a>
+  <ul class="collapse">
+  <li><a href="#four-conditions" id="toc-four-conditions" class="nav-link" data-scroll-target="#four-conditions">15. Four conditions</a>
+  <ul class="collapse">
+  <li><a href="#practice-7" id="toc-practice-7" class="nav-link" data-scroll-target="#practice-7">Practice 7</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-xii-audit-a-real-archaeological-dataset" id="toc-part-xii-audit-a-real-archaeological-dataset" class="nav-link" data-scroll-target="#part-xii-audit-a-real-archaeological-dataset">Part XII — Audit a real archaeological dataset</a>
+  <ul class="collapse">
+  <li><a href="#locate-and-import-the-knipper-teaching-data" id="toc-locate-and-import-the-knipper-teaching-data" class="nav-link" data-scroll-target="#locate-and-import-the-knipper-teaching-data">16. Locate and import the Knipper teaching data</a></li>
+  <li><a href="#research-design-audit" id="toc-research-design-audit" class="nav-link" data-scroll-target="#research-design-audit">17. Research-design audit</a></li>
+  </ul></li>
+  <li><a href="#part-xiii-from-question-to-design" id="toc-part-xiii-from-question-to-design" class="nav-link" data-scroll-target="#part-xiii-from-question-to-design">Part XIII — From question to design</a>
+  <ul class="collapse">
+  <li><a href="#build-a-transparent-research-plan" id="toc-build-a-transparent-research-plan" class="nav-link" data-scroll-target="#build-a-transparent-research-plan">18. Build a transparent research plan</a></li>
+  </ul></li>
+  <li><a href="#part-xiv-conceptual-debugging" id="toc-part-xiv-conceptual-debugging" class="nav-link" data-scroll-target="#part-xiv-conceptual-debugging">Part XIV — Conceptual debugging</a>
+  <ul class="collapse">
+  <li><a href="#diagnose-the-mistake" id="toc-diagnose-the-mistake" class="nav-link" data-scroll-target="#diagnose-the-mistake">19. Diagnose the mistake</a></li>
+  </ul></li>
+  <li><a href="#part-xv-integrated-practice" id="toc-part-xv-integrated-practice" class="nav-link" data-scroll-target="#part-xv-integrated-practice">Part XV — Integrated practice</a>
+  <ul class="collapse">
+  <li><a href="#mini-research-design-challenge" id="toc-mini-research-design-challenge" class="nav-link" data-scroll-target="#mini-research-design-challenge">20. Mini research-design challenge</a></li>
+  </ul></li>
+  <li><a href="#part-xvi-mastery-checklist" id="toc-part-xvi-mastery-checklist" class="nav-link" data-scroll-target="#part-xvi-mastery-checklist">Part XVI — Mastery checklist</a></li>
+  <li><a href="#final-challenge-explain-the-chain-without-code" id="toc-final-challenge-explain-the-chain-without-code" class="nav-link" data-scroll-target="#final-challenge-explain-the-chain-without-code">Final challenge — explain the chain without code</a></li>
+  <li><a href="#clean-render-test" id="toc-clean-render-test" class="nav-link" data-scroll-target="#clean-render-test">Clean Render Test</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">ANTH418 Week 3 Practice Workbook</h1>
+<p class="subtitle lead">Variables, Measurement, and Research Design</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-tip callout-titled" title="Start here — download the editable workbook">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Start here — download the editable workbook
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This webpage is the rendered version of an <strong>editable Quarto workbook</strong>.</p>
+<ol type="1">
+<li>Download the <strong>Week 3 Practice Package</strong>.</li>
+<li>Unzip it.</li>
+<li>Open <code>week03-practice.qmd</code> in RStudio.</li>
+<li>Keep the <code>data</code> folder beside the QMD.</li>
+<li>Work from top to bottom.</li>
+<li>For each exercise: <strong>predict → run → inspect → explain</strong>.</li>
+<li>Edit code and write explanations directly in the QMD.</li>
+<li>Render frequently.</li>
+<li>Finish with the <strong>Clean Render Test</strong>.</li>
+</ol>
+<p><strong>Do not copy this webpage into RStudio.</strong> The downloadable QMD is the editable source.</p>
+<p><a href="../downloads/practice-workbooks/ANTH418_Week03_Practice.zip"><strong>Download Week 3 Practice Package (.zip)</strong></a></p>
+</div>
+</div>
+<section id="how-to-use-this-workbook" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-use-this-workbook">How to use this workbook</h2>
+<p>Week 2 established the computational environment. Week 3 asks a more fundamental question: <strong>What do our variables mean, how were they measured, and what can the design legitimately support?</strong></p>
+<blockquote class="blockquote">
+<p><strong>concept → definition → operationalization → variable → measurement → design → inference</strong></p>
+</blockquote>
+</section>
+<section id="learning-objectives" class="level2">
+<h2 class="anchored" data-anchor-id="learning-objectives">Learning objectives</h2>
+<p>By the end, you should be able to distinguish concepts, definitions, variables, and values; classify levels of measurement; distinguish reliability, precision, accuracy, and validity; identify units of analysis; classify research designs; state conditions for causal inference; and translate a question into a transparent research plan.</p>
+</section>
+<section id="part-i-from-concepts-to-empirical-values" class="level1">
+<h1>Part I — From concepts to empirical values</h1>
+<section id="variables-become-evidence" class="level2">
+<h2 class="anchored" data-anchor-id="variables-become-evidence">1. Variables become evidence</h2>
+<p>Social research moves from:</p>
+<blockquote class="blockquote">
+<p><strong>abstract concept → conceptual definition → operational definition → empirical values</strong></p>
+</blockquote>
+<p>A variable is not the idea itself. It is an empirical property that can take different values or categories. The operational definition is the recipe that makes data generation visible.</p>
+<section id="practice-1" class="level3">
+<h3 class="anchored" data-anchor-id="practice-1">Practice 1</h3>
+<p>Choose an anthropological or archaeological concept.</p>
+<ul>
+<li><strong>Abstract concept:</strong> __________________</li>
+<li><strong>Conceptual definition:</strong> ______________</li>
+<li><strong>Operational definition:</strong> ______________</li>
+<li><strong>Variable:</strong> ___________________________</li>
+<li><strong>Possible values:</strong> ____________________</li>
+</ul>
+<p>What could go wrong if the operational definition captures only part of the concept?</p>
+</section>
+</section>
+<section id="unidimensional-and-multidimensional-concepts" class="level2">
+<h2 class="anchored" data-anchor-id="unidimensional-and-multidimensional-concepts">2. Unidimensional and multidimensional concepts</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>concepts <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">concept =</span> <span class="fu">c</span>(<span class="st">"age"</span>, <span class="st">"height"</span>, <span class="st">"wealth"</span>, <span class="st">"political organization"</span>, <span class="st">"cultural consonance"</span>),</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">dimensionality =</span> <span class="fu">c</span>(<span class="st">"unidimensional"</span>, <span class="st">"unidimensional"</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"multidimensional"</span>, <span class="st">"multidimensional"</span>, <span class="st">"multidimensional"</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>concepts</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 2
+  concept                dimensionality  
+  &lt;chr&gt;                  &lt;chr&gt;           
+1 age                    unidimensional  
+2 height                 unidimensional  
+3 wealth                 multidimensional
+4 political organization multidimensional
+5 cultural consonance    multidimensional</code></pre>
+</div>
+</div>
+<p>Add two examples of your own and explain why multidimensional concepts usually require multiple indicators.</p>
+</section>
+</section>
+<section id="part-ii-variable-roles-and-theory" class="level1">
+<h1>Part II — Variable roles and theory</h1>
+<section id="independentpredictor-and-dependentoutcome-variables" class="level2">
+<h2 class="anchored" data-anchor-id="independentpredictor-and-dependentoutcome-variables">3. Independent/predictor and dependent/outcome variables</h2>
+<p>Theory assigns roles. In experiments, X may be manipulated; in observational research, variation in X is measured in relation to Y.</p>
+<section id="practice-2" class="level3">
+<h3 class="anchored" data-anchor-id="practice-2">Practice 2</h3>
+<p>Identify X and Y:</p>
+<ol type="1">
+<li>Does distance from a raw-material source predict the proportion of local stone?</li>
+<li>Do human nitrogen-isotope values differ between archaeological sites?</li>
+<li>Does household wealth predict dietary diversity?</li>
+</ol>
+<p>Then explain why the same variable could have a different role in another question.</p>
+</section>
+</section>
+</section>
+<section id="part-iii-levels-of-measurement" class="level1">
+<h1>Part III — Levels of measurement</h1>
+<section id="four-levels" class="level2">
+<h2 class="anchored" data-anchor-id="four-levels">4. Four levels</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Level</th>
+<th>Meaning</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Nominal</td>
+<td>named categories</td>
+<td>site provenance, artifact class</td>
+</tr>
+<tr class="even">
+<td>Ordinal</td>
+<td>ranked categories, unequal distances</td>
+<td>preservation rank, social class</td>
+</tr>
+<tr class="odd">
+<td>Interval</td>
+<td>equal intervals, no true zero</td>
+<td>Celsius, Fahrenheit, IQ</td>
+</tr>
+<tr class="even">
+<td>Ratio</td>
+<td>equal intervals and meaningful zero</td>
+<td>age, counts, distance</td>
+</tr>
+</tbody>
+</table>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>measurement_practice <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">variable =</span> <span class="fu">c</span>(<span class="st">"site provenance"</span>, <span class="st">"preservation rank"</span>, <span class="st">"temperature in Celsius"</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>               <span class="st">"artifact count"</span>, <span class="st">"distance in km"</span>, <span class="st">"social class rank"</span>),</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">your_answer =</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">""</span>, <span class="st">""</span>, <span class="st">""</span>, <span class="st">""</span>, <span class="st">""</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>measurement_practice</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  variable               your_answer
+  &lt;chr&gt;                  &lt;chr&gt;      
+1 site provenance        ""         
+2 preservation rank      ""         
+3 temperature in Celsius ""         
+4 artifact count         ""         
+5 distance in km         ""         
+6 social class rank      ""         </code></pre>
+</div>
+</div>
+<p>Fill in <code>your_answer</code> and explain each choice.</p>
+</section>
+<section id="numerical-codes-are-not-automatically-quantities" class="level2">
+<h2 class="anchored" data-anchor-id="numerical-codes-are-not-automatically-quantities">5. Numerical codes are not automatically quantities</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>artifact_code <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(artifact_code)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.666667</code></pre>
+</div>
+</div>
+<p>If <code>1 = ceramic</code>, <code>2 = lithic</code>, and <code>3 = bone</code>, explain why R can calculate a mean even though the statistic has no defensible substantive meaning.</p>
+</section>
+</section>
+<section id="part-iv-preserve-information" class="level1">
+<h1>Part IV — Preserve information</h1>
+<section id="measure-at-the-highest-defensible-level" class="level2">
+<h2 class="anchored" data-anchor-id="measure-at-the-highest-defensible-level">6. Measure at the highest defensible level</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ages <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">person =</span> <span class="fu">paste0</span>(<span class="st">"P"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>),</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">22</span>, <span class="dv">24</span>, <span class="dv">29</span>, <span class="dv">31</span>, <span class="dv">35</span>, <span class="dv">39</span>, <span class="dv">44</span>, <span class="dv">47</span>, <span class="dv">53</span>, <span class="dv">61</span>, <span class="dv">68</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>ages_grouped <span class="ot">&lt;-</span> ages <span class="sc">|&gt;</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_group =</span> <span class="fu">cut</span>(age,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">29</span>, <span class="dv">49</span>, <span class="cn">Inf</span>),</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"under 30"</span>, <span class="st">"30–49"</span>, <span class="st">"50+"</span>)))</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>ages_grouped</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 12 × 3
+   person   age age_group
+   &lt;chr&gt;  &lt;dbl&gt; &lt;fct&gt;    
+ 1 P1        18 under 30 
+ 2 P2        22 under 30 
+ 3 P3        24 under 30 
+ 4 P4        29 under 30 
+ 5 P5        31 30–49    
+ 6 P6        35 30–49    
+ 7 P7        39 30–49    
+ 8 P8        44 30–49    
+ 9 P9        47 30–49    
+10 P10       53 50+      
+11 P11       61 50+      
+12 P12       68 50+      </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ages_grouped <span class="sc">|&gt;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(age_group) <span class="sc">|&gt;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">min_age =</span> <span class="fu">min</span>(age), <span class="at">max_age =</span> <span class="fu">max</span>(age), <span class="at">.groups =</span> <span class="st">"drop"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 4
+  age_group     n min_age max_age
+  &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+1 under 30      4      18      29
+2 30–49         5      31      47
+3 50+           3      53      68</code></pre>
+</div>
+</div>
+<section id="practice-3" class="level3">
+<h3 class="anchored" data-anchor-id="practice-3">Practice 3</h3>
+<p>If you receive only <code>age_group</code>, can you reconstruct exact age? Explain why recoding can be useful but causes information loss.</p>
+</section>
+</section>
+</section>
+<section id="part-v-measurement-quality" class="level1">
+<h1>Part V — Measurement quality</h1>
+<section id="reliability-precision-accuracy-validity" class="level2">
+<h2 class="anchored" data-anchor-id="reliability-precision-accuracy-validity">7. Reliability, precision, accuracy, validity</h2>
+<ul>
+<li><strong>Reliability:</strong> consistent/repeatable.</li>
+<li><strong>Precision:</strong> fine resolution.</li>
+<li><strong>Accuracy:</strong> low systematic bias.</li>
+<li><strong>Validity:</strong> measures the intended concept.</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>measurement_demo <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">trial =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">instrument_A =</span> <span class="fu">c</span>(<span class="fl">10.0</span>, <span class="fl">10.1</span>, <span class="fl">9.9</span>, <span class="fl">10.0</span>, <span class="fl">10.1</span>, <span class="fl">9.9</span>),</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">instrument_B =</span> <span class="fu">c</span>(<span class="fl">12.0</span>, <span class="fl">12.1</span>, <span class="fl">11.9</span>, <span class="fl">12.0</span>, <span class="fl">12.1</span>, <span class="fl">11.9</span>),</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">target =</span> <span class="dv">10</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>measurement_demo <span class="sc">|&gt;</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_A =</span> <span class="fu">sd</span>(instrument_A),</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">bias_A =</span> <span class="fu">mean</span>(instrument_A <span class="sc">-</span> target),</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_B =</span> <span class="fu">sd</span>(instrument_B),</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">bias_B =</span> <span class="fu">mean</span>(instrument_B <span class="sc">-</span> target)</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 4
+    sd_A bias_A   sd_B bias_B
+   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+1 0.0894      0 0.0894      2</code></pre>
+</div>
+</div>
+<p>Which instrument is reliable? Which is accurate? Why can tightly clustered readings still be wrong?</p>
+</section>
+<section id="reliability-and-validity-are-not-the-same" class="level2">
+<h2 class="anchored" data-anchor-id="reliability-and-validity-are-not-the-same">8. Reliability and validity are not the same</h2>
+<p>Week 3 discusses reliability through <strong>interobserver/intercoder, test-retest, parallel-form, and internal consistency</strong>, and validity through <strong>face, content, construct, and criterion</strong> evidence.</p>
+<section id="practice-4" class="level3">
+<h3 class="anchored" data-anchor-id="practice-4">Practice 4</h3>
+<p>Two archaeologists classify the same 100 sherds identically 98% of the time.</p>
+<ol type="1">
+<li>What quality does this directly address?</li>
+<li>Does it prove that the typology captures the intended historical phenomenon?</li>
+<li>What validity question remains?</li>
+</ol>
+</section>
+</section>
+</section>
+<section id="part-vi-research-under-constraints" class="level1">
+<h1>Part VI — Research under constraints</h1>
+<section id="research-is-iterative" class="level2">
+<h2 class="anchored" data-anchor-id="research-is-iterative">9. Research is iterative</h2>
+<p>Real projects loop among questions, design, data, analysis, unexpected findings, revised protocols, and refined questions.</p>
+<section id="practice-5-feasibility-audit" class="level3">
+<h3 class="anchored" data-anchor-id="practice-5-feasibility-audit">Practice 5 — feasibility audit</h3>
+<p>For a research question of your choice, assess:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Criterion</th>
+<th>Assessment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Enthusiasm</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Testability</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Time</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Resources</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Access</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>What would you change if the ideal design were infeasible?</p>
+</section>
+</section>
+</section>
+<section id="part-vii-classes-of-social-variables" class="level1">
+<h1>Part VII — Classes of social variables</h1>
+<section id="five-broad-classes" class="level2">
+<h2 class="anchored" data-anchor-id="five-broad-classes">10. Five broad classes</h2>
+<p>Week 3 distinguishes <strong>internal states, external states, reported behavior, observed behavior, and artifacts/environment</strong>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>evidence_types <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">evidence =</span> <span class="fu">c</span>(<span class="st">"religious belief response"</span>, <span class="st">"household income"</span>,</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>               <span class="st">"reported food consumption"</span>, <span class="st">"observed tool-making"</span>,</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>               <span class="st">"stable-isotope value"</span>, <span class="st">"artifact raw material"</span>),</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">class =</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">""</span>, <span class="st">""</span>, <span class="st">""</span>, <span class="st">""</span>, <span class="st">""</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>evidence_types</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  evidence                  class
+  &lt;chr&gt;                     &lt;chr&gt;
+1 religious belief response ""   
+2 household income          ""   
+3 reported food consumption ""   
+4 observed tool-making      ""   
+5 stable-isotope value      ""   
+6 artifact raw material     ""   </code></pre>
+</div>
+</div>
+<p>Fill in the classes and explain why different evidence classes face different validity threats.</p>
+</section>
+</section>
+<section id="part-viii-qualitative-and-quantitative-are-not-opposites" class="level1">
+<h1>Part VIII — Qualitative and quantitative are not opposites</h1>
+<section id="data-type-and-analysis-method-can-cross" class="level2">
+<h2 class="anchored" data-anchor-id="data-type-and-analysis-method-can-cross">11. Data type and analysis method can cross</h2>
+<p>Classify these:</p>
+<ol type="1">
+<li>Interpretive analysis of interview narratives.</li>
+<li>Free-list responses converted to frequencies.</li>
+<li>Interpretation of clusters from a numerical model.</li>
+<li>Regression using numerical measurements.</li>
+</ol>
+<p>Explain why “qualitative versus quantitative” is not always a simple either/or distinction.</p>
+</section>
+</section>
+<section id="part-ix-unit-of-analysis" class="level1">
+<h1>Part IX — Unit of analysis</h1>
+<section id="what-does-one-row-represent" class="level2">
+<h2 class="anchored" data-anchor-id="what-does-one-row-represent">12. What does one row represent?</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>toy_archaeology <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">specimen_id =</span> <span class="fu">c</span>(<span class="st">"S1"</span>, <span class="st">"S2"</span>, <span class="st">"S3"</span>, <span class="st">"S4"</span>),</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">individual_id =</span> <span class="fu">c</span>(<span class="st">"I1"</span>, <span class="st">"I1"</span>, <span class="st">"I2"</span>, <span class="st">"I3"</span>),</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">site =</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"A"</span>, <span class="st">"A"</span>, <span class="st">"B"</span>),</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">value =</span> <span class="fu">c</span>(<span class="fl">8.2</span>, <span class="fl">8.4</span>, <span class="fl">9.1</span>, <span class="fl">7.9</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>toy_archaeology</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 4
+  specimen_id individual_id site  value
+  &lt;chr&gt;       &lt;chr&gt;         &lt;chr&gt; &lt;dbl&gt;
+1 S1          I1            A       8.2
+2 S2          I1            A       8.4
+3 S3          I2            A       9.1
+4 S4          I3            B       7.9</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(toy_archaeology)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">n_distinct</span>(toy_archaeology<span class="sc">$</span>individual_id)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+</div>
+<section id="practice-6" class="level3">
+<h3 class="anchored" data-anchor-id="practice-6">Practice 6</h3>
+<p>What does one row represent? How many unique individuals exist? If S1 and S2 come from one individual, why would treating four rows as four independent people inflate the apparent sample size?</p>
+</section>
+</section>
+<section id="ecological-fallacy" class="level2">
+<h2 class="anchored" data-anchor-id="ecological-fallacy">13. Ecological fallacy</h2>
+<p>Suppose sites with higher average wealth also have higher average dietary diversity. Does that prove that wealthier individuals <em>within</em> each site have more diverse diets? Explain.</p>
+</section>
+</section>
+<section id="part-x-research-design-typology" class="level1">
+<h1>Part X — Research-design typology</h1>
+<section id="three-binary-decisions" class="level2">
+<h2 class="anchored" data-anchor-id="three-binary-decisions">14. Three binary decisions</h2>
+<p>Week 3 distinguishes <strong>observational/experimental</strong>, <strong>cross-sectional/longitudinal</strong>, and <strong>single/comparative</strong> designs.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>designs <span class="ot">&lt;-</span> <span class="fu">crossing</span>(</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">intervention =</span> <span class="fu">c</span>(<span class="st">"observational"</span>, <span class="st">"experimental"</span>),</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">time =</span> <span class="fu">c</span>(<span class="st">"cross-sectional"</span>, <span class="st">"longitudinal"</span>),</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">scope =</span> <span class="fu">c</span>(<span class="st">"single case"</span>, <span class="st">"comparative"</span>)</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>designs</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8 × 3
+  intervention  time            scope      
+  &lt;chr&gt;         &lt;chr&gt;           &lt;chr&gt;      
+1 experimental  cross-sectional comparative
+2 experimental  cross-sectional single case
+3 experimental  longitudinal    comparative
+4 experimental  longitudinal    single case
+5 observational cross-sectional comparative
+6 observational cross-sectional single case
+7 observational longitudinal    comparative
+8 observational longitudinal    single case</code></pre>
+</div>
+</div>
+<p>Classify: (1) two archaeological sites at one period; (2) the same households followed five years; (3) randomized treatments measured once; (4) change through time in one settlement.</p>
+</section>
+</section>
+<section id="part-xi-causal-inference" class="level1">
+<h1>Part XI — Causal inference</h1>
+<section id="four-conditions" class="level2">
+<h2 class="anchored" data-anchor-id="four-conditions">15. Four conditions</h2>
+<p>A causal interpretation requires attention to:</p>
+<ol type="1">
+<li><strong>Covariation</strong></li>
+<li><strong>Non-spuriousness</strong></li>
+<li><strong>Temporal precedence</strong></li>
+<li><strong>Mechanism</strong></li>
+</ol>
+<section id="practice-7" class="level3">
+<h3 class="anchored" data-anchor-id="practice-7">Practice 7</h3>
+<p>For “greater distance from a raw-material source causes lower use of that material,” write one question addressing each condition. Explain why correlation alone is insufficient.</p>
+</section>
+</section>
+</section>
+<section id="part-xii-audit-a-real-archaeological-dataset" class="level1">
+<h1>Part XII — Audit a real archaeological dataset</h1>
+<section id="locate-and-import-the-knipper-teaching-data" class="level2">
+<h2 class="anchored" data-anchor-id="locate-and-import-the-knipper-teaching-data">16. Locate and import the Knipper teaching data</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">file.exists</span>(<span class="st">"data/knipper2020_humans.csv"</span>)) {</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  knipper_file <span class="ot">&lt;-</span> <span class="st">"data/knipper2020_humans.csv"</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  project_root <span class="ot">&lt;-</span> <span class="cf">if</span> (<span class="fu">file.exists</span>(<span class="st">"_quarto.yml"</span>)) <span class="st">"."</span> <span class="cf">else</span> <span class="st">".."</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  knipper_file <span class="ot">&lt;-</span> <span class="fu">file.path</span>(</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    project_root, <span class="st">"assignments"</span>, <span class="st">"assignment01_knipper_descriptive"</span>,</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"data"</span>, <span class="st">"knipper2020_humans.csv"</span>)</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="fu">file.exists</span>(knipper_file)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>knipper <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(knipper_file, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(knipper)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 69 10</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(knipper)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "source_row_id"   "grave_no"        "sample"          "site"           
+ [5] "d13c"            "d15n"            "sex"             "age_category"   
+ [9] "chronology"      "social_category"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(knipper)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 69
+Columns: 10
+$ source_row_id   &lt;dbl&gt; 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 1…
+$ grave_no        &lt;chr&gt; "BA 01", "BA 02", "BAS 4", "BA 05", "BA 06/1", "BA 06/…
+$ sample          &lt;chr&gt; "Costa", "Costa", "Phalanx media manus", "Costa", "Cos…
+$ site            &lt;chr&gt; "La Bastida", "La Bastida", "La Bastida", "La Bastida"…
+$ d13c            &lt;dbl&gt; -19.20070, -18.25818, -19.04190, -18.36669, -19.09329,…
+$ d15n            &lt;dbl&gt; 10.393354, 13.892656, 10.870000, 12.522246, 10.848756,…
+$ sex             &lt;chr&gt; "nd", "nd", "Male ?", "nd", "Male", "nd", "nd", "Male"…
+$ age_category    &lt;chr&gt; "Infans I", "Infans I", "Adult", "Infans I", "Young ad…
+$ chronology      &lt;chr&gt; "?", "3", "3", "3", NA, "3", "3", "2", "2", "3", "3", …
+$ social_category &lt;chr&gt; "5", "5", "3 – 4", "5", "4", "4", "5", "3", "3", "3", …</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(knipper)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 10
+  source_row_id grave_no sample  site   d13c  d15n sex   age_category chronology
+          &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;     
+1             3 BA 01    Costa   La B… -19.2  10.4 nd    Infans I     ?         
+2             4 BA 02    Costa   La B… -18.3  13.9 nd    Infans I     3         
+3             5 BAS 4    Phalan… La B… -19.0  10.9 Male… Adult        3         
+4             6 BA 05    Costa   La B… -18.4  12.5 nd    Infans I     3         
+5             7 BA 06/1  Costa   La B… -19.1  10.8 Male  Young adult  &lt;NA&gt;      
+6             8 BA 06/2  Costa   La B… -18.5  11.2 nd    Neonate      3         
+# ℹ 1 more variable: social_category &lt;chr&gt;</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(knipper))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  source_row_id        grave_no          sample            site            d13c 
+              0               0               0               0               0 
+           d15n             sex    age_category      chronology social_category 
+              0               0               0               4               0 </code></pre>
+</div>
+</div>
+</section>
+<section id="research-design-audit" class="level2">
+<h2 class="anchored" data-anchor-id="research-design-audit">17. Research-design audit</h2>
+<p>Before analyzing, answer:</p>
+<ol type="1">
+<li>What does one row represent?</li>
+<li>What is the unit of analysis?</li>
+<li>Which variables are identifiers?</li>
+<li>Which are categorical?</li>
+<li>Which are numerical measurements?</li>
+<li>Which could serve as predictors or outcomes for a particular question?</li>
+<li>Which roles depend on theory rather than the column itself?</li>
+<li>What additional provenance or measurement information would you want?</li>
+</ol>
+<p>Create a codebook shell:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>measurement_audit <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">variable =</span> <span class="fu">names</span>(knipper),</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">proposed_level =</span> <span class="st">""</span>,</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">substantive_meaning =</span> <span class="st">""</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>measurement_audit</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 3
+   variable        proposed_level substantive_meaning
+   &lt;chr&gt;           &lt;chr&gt;          &lt;chr&gt;              
+ 1 source_row_id   ""             ""                 
+ 2 grave_no        ""             ""                 
+ 3 sample          ""             ""                 
+ 4 site            ""             ""                 
+ 5 d13c            ""             ""                 
+ 6 d15n            ""             ""                 
+ 7 sex             ""             ""                 
+ 8 age_category    ""             ""                 
+ 9 chronology      ""             ""                 
+10 social_category ""             ""                 </code></pre>
+</div>
+</div>
+<p>Edit the last two columns for variables you understand.</p>
+</section>
+</section>
+<section id="part-xiii-from-question-to-design" class="level1">
+<h1>Part XIII — From question to design</h1>
+<section id="build-a-transparent-research-plan" class="level2">
+<h2 class="anchored" data-anchor-id="build-a-transparent-research-plan">18. Build a transparent research plan</h2>
+<p>Complete:</p>
+<ul>
+<li><strong>Research question:</strong> __________________________________</li>
+<li><strong>Unit of analysis:</strong> ___________________________________</li>
+<li><strong>Population of interest:</strong> ______________________________</li>
+<li><strong>Observed sample:</strong> ____________________________________</li>
+<li><strong>Outcome/dependent variable:</strong> __________________________</li>
+<li><strong>Predictor/independent variable:</strong> _______________________</li>
+<li><strong>Measurement level of each variable:</strong> ___________________</li>
+<li><strong>Operational definitions:</strong> ______________________________</li>
+<li><strong>Major validity threats:</strong> _______________________________</li>
+<li><strong>Independence concerns:</strong> _______________________________</li>
+<li><strong>Observational or experimental:</strong> ________________________</li>
+<li><strong>Cross-sectional or longitudinal:</strong> ______________________</li>
+<li><strong>Single case or comparative:</strong> ___________________________</li>
+<li><strong>What the design can establish:</strong> ________________________</li>
+<li><strong>What the design cannot establish:</strong> _____________________</li>
+</ul>
+</section>
+</section>
+<section id="part-xiv-conceptual-debugging" class="level1">
+<h1>Part XIV — Conceptual debugging</h1>
+<section id="diagnose-the-mistake" class="level2">
+<h2 class="anchored" data-anchor-id="diagnose-the-mistake">19. Diagnose the mistake</h2>
+<p>For each, identify the problem:</p>
+<ol type="1">
+<li>Averaging arbitrary numeric codes for artifact types.</li>
+<li>Treating repeated measurements from one individual as independent people.</li>
+<li>Claiming causation from an observational correlation alone.</li>
+<li>Using a highly repeatable instrument that measures the wrong construct.</li>
+<li>Collecting age only as broad categories when exact age was available.</li>
+<li>Inferring individual behavior from a group-level association.</li>
+</ol>
+</section>
+</section>
+<section id="part-xv-integrated-practice" class="level1">
+<h1>Part XV — Integrated practice</h1>
+<section id="mini-research-design-challenge" class="level2">
+<h2 class="anchored" data-anchor-id="mini-research-design-challenge">20. Mini research-design challenge</h2>
+<p>Using the Knipper teaching data:</p>
+<ol type="1">
+<li>Formulate one answerable research question.</li>
+<li>Identify the unit of analysis.</li>
+<li>Classify the variables and measurement levels.</li>
+<li>State how each key variable is operationalized.</li>
+<li>Inspect missingness and data structure.</li>
+<li>Identify predictor/outcome roles if appropriate.</li>
+<li>Classify the design.</li>
+<li>State at least two validity or inference limitations.</li>
+<li>Write a short <strong>Research Design</strong> section in prose.</li>
+<li>Include the R code used to audit the data.</li>
+<li>Render the document.</li>
+</ol>
+</section>
+</section>
+<section id="part-xvi-mastery-checklist" class="level1">
+<h1>Part XVI — Mastery checklist</h1>
+<ul class="task-list">
+<li><label><input type="checkbox">I can distinguish concept, definition, operationalization, variable, and value.</label></li>
+<li><label><input type="checkbox">I can distinguish unidimensional and multidimensional concepts.</label></li>
+<li><label><input type="checkbox">I can classify nominal, ordinal, interval, and ratio measurements.</label></li>
+<li><label><input type="checkbox">I understand why recoding can lose information.</label></li>
+<li><label><input type="checkbox">I can distinguish reliability, precision, accuracy, and validity.</label></li>
+<li><label><input type="checkbox">I can identify the unit of analysis.</label></li>
+<li><label><input type="checkbox">I can recognize pseudoreplication and ecological fallacy.</label></li>
+<li><label><input type="checkbox">I can classify observational/experimental, cross-sectional/longitudinal, and single/comparative designs.</label></li>
+<li><label><input type="checkbox">I can state the four conditions relevant to causal inference.</label></li>
+<li><label><input type="checkbox">I can audit a dataset before choosing a statistical procedure.</label></li>
+<li><label><input type="checkbox">I can explain what a research design can and cannot establish.</label></li>
+</ul>
+</section>
+<section id="final-challenge-explain-the-chain-without-code" class="level1">
+<h1>Final challenge — explain the chain without code</h1>
+<p>In plain English, explain:</p>
+<blockquote class="blockquote">
+<p><strong>concept → definition → operationalization → variable → measurement → unit of analysis → design → evidence → inference</strong></p>
+</blockquote>
+<p>If you can explain why each link matters, rather than merely name it, you have mastered the central Week 3 logic.</p>
+</section>
+<section id="clean-render-test" class="level1">
+<h1>Clean Render Test</h1>
+<ol type="1">
+<li>Save the QMD.</li>
+<li>Choose <strong>Session → Restart R</strong>.</li>
+<li>Do not recreate objects manually in the Console.</li>
+<li>Render the complete document.</li>
+<li>If it fails, identify what the document assumed but never created.</li>
+</ol>
+<p>A successful clean render shows that your research-design audit is computationally self-contained.</p>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
