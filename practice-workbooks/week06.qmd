@@ -1,0 +1,513 @@
+---
+title: "ANTH418 Week 6 Practice Workbook"
+subtitle: "Data Transformation and Missing Values"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    code-copy: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+::: {.callout-tip title="Start here — download the editable workbook"}
+This webpage is the rendered version of an **editable Quarto workbook**.
+
+1. Download the **Week 6 Practice Package**.
+2. Unzip it.
+3. Open `week06-practice.qmd` in RStudio.
+4. Keep the `data` folder beside the QMD.
+5. Work from top to bottom.
+6. For each exercise: **predict → run → inspect → explain**.
+7. Edit code and write explanations directly in the QMD.
+8. Render frequently.
+9. Finish with the **Clean Render Test**.
+
+**Do not copy this webpage into RStudio.** The downloadable QMD is the editable source.
+
+[**Download Week 6 Practice Package (.zip)**](../downloads/practice-workbooks/ANTH418_Week06_Practice.zip)
+:::
+
+## How to use this workbook
+
+Week 5 emphasized that visual choices shape what we see. Week 6 goes one step earlier:
+
+> **raw values → preparation decisions → transformed/missing-data representation → analysis → conclusion**
+
+The central claim is:
+
+> **Preparation is analysis.**
+
+Transformations alter mathematical relationships. Missing-data decisions determine which cases count and what an unknown value is allowed to mean.
+
+> **visual audit → diagnose → transform or handle missingness deliberately → compare alternatives → sensitivity analysis → document**
+
+## Learning objectives
+
+By the end, you should be able to diagnose reasons for transformation; compare log, square-root, Box-Cox, and Yeo-Johnson logic; distinguish transformation from z-standardization; explain compositional constraints; distinguish `NA` from zero and explicit from implicit missingness; explain MCAR, MAR, and MNAR; evaluate deletion and imputation; explain multiple imputation; reproduce the core Seshat sensitivity comparison; and document preparation choices.
+
+# Part I — Preparation is analysis
+
+## 1. Cleaning is not neutral bookkeeping
+
+Consider:
+
+1. Replace every unknown outcome with `0`.
+2. Apply `log()` to a strongly right-skewed variable.
+
+Both change the data used by later analysis.
+
+### Practice 1
+
+Explain what mathematical structure transformation changes, what evidential claim `NA → 0` makes, and why both decisions should be reported.
+
+# Part II — Why transform a variable?
+
+## 2. Four problems transformations may address
+
+Week 6 identifies:
+
+1. **Skewness correction**
+2. **Outlier mitigation**
+3. **Variance stabilization**
+4. **Linearizing relationships**
+
+A transformation should respond to a diagnosed problem.
+
+## 3. Right skew and tail compression
+
+```{r}
+library(tidyverse)
+
+set.seed(418)
+raw_x <- rexp(300, rate = 0.08)
+
+transform_demo <- tibble(
+  raw = raw_x,
+  log = log(raw_x),
+  sqrt = sqrt(raw_x)
+)
+
+transform_demo |>
+  pivot_longer(everything(), names_to = "scale", values_to = "value") |>
+  ggplot(aes(x = value)) +
+  geom_histogram(bins = 30) +
+  facet_wrap(~ scale, scales = "free") +
+  theme_minimal()
+```
+
+Compare raw, log, and square-root versions. Which compresses the tail most? Why must interpretation name the transformed scale?
+
+# Part III — Match the function to the data
+
+## 4. Common transformation families
+
+Week 6 introduces log transformations for severe right skew and positive values, roots for counts/milder skew, and reciprocal-type transformations for stronger compression.
+
+```{r}
+counts <- c(0, 1, 2, 4, 9, 16, 25)
+
+sqrt(counts)
+log(counts)
+```
+
+### Practice 2
+
+Why does `log(0)` create a problem? Why is `log(x + 1)` an analytical choice rather than a harmless technical fix?
+
+# Part IV — Box-Cox and Yeo-Johnson
+
+## 5. Search a transformation family
+
+Week 6 presents Box-Cox as a lambda spectrum: approximately no transformation at `λ = 1`, square root at `λ = .5`, log at `λ = 0`, and stronger inverse-style transformations at negative lambda. Box-Cox requires positive data; Yeo-Johnson extends the logic to zero and negative values.
+
+### Practice 3
+
+For values `-2, 0, 3, 7, 20`, explain why ordinary Box-Cox is not directly appropriate and why Yeo-Johnson might be considered.
+
+# Part V — Standardization is not transformation
+
+## 6. Z-scores change units
+
+\[
+z = \frac{X-\bar X}{s}
+\]
+
+```{r}
+measurements <- tibble(
+  length_mm = c(40, 45, 50, 55, 60),
+  weight_g = c(100, 130, 160, 190, 220)
+) |>
+  mutate(
+    z_length = as.numeric(scale(length_mm)),
+    z_weight = as.numeric(scale(weight_g))
+  )
+
+measurements
+```
+
+```{r}
+measurements |>
+  summarise(
+    mean_z_length = mean(z_length),
+    sd_z_length = sd(z_length),
+    mean_z_weight = mean(z_weight),
+    sd_z_weight = sd(z_weight)
+  )
+```
+
+Explain why z-scoring changes scale but does not necessarily remove skewness.
+
+# Part VI — Compositional data
+
+## 7. Some data live in constrained spaces
+
+Percentages constrained to sum to a constant can generate artificial correlations. Week 6 introduces log-ratio approaches such as ALR and CLR.
+
+### Practice 4
+
+If an assemblage is 50% A, 30% B, and 20% C, what must happen to another component if A increases while the total remains 100%? Why can closure make ordinary correlation misleading?
+
+# Part VII — Missing values are theoretical objects
+
+## 8. `NA` is not zero
+
+```{r}
+x <- c(1, 1, 0, NA, 1, NA, 0)
+
+table(x, useNA = "ifany")
+mean(x, na.rm = TRUE)
+
+x_wrong <- replace(x, is.na(x), 0)
+mean(x_wrong)
+```
+
+### Practice 5
+
+What changed when `NA` became `0`?
+
+> `NA` means ____________________.
+
+> `0` means _____________________.
+
+# Part VIII — Explicit and implicit missingness
+
+## 9. Missing cell versus missing row
+
+```{r}
+explicit <- tibble(
+  site = c("A", "A", "B", "B"),
+  period = c("early", "late", "early", "late"),
+  count = c(10, NA, 8, 12)
+)
+
+explicit
+```
+
+```{r}
+implicit <- tibble(
+  site = c("A", "B", "B"),
+  period = c("early", "early", "late"),
+  count = c(10, 8, 12)
+)
+
+implicit |>
+  complete(site, period)
+```
+
+Explain why a cell containing `NA` and an absent row are different data states, and why neither automatically means zero.
+
+# Part IX — Missing-data mechanisms
+
+## 10. MCAR, MAR, MNAR
+
+- **MCAR:** missingness is independent of observed and unobserved values.
+- **MAR:** missingness depends on other observed variables.
+- **MNAR:** missingness depends on the unobserved value itself or latent causes.
+
+### Practice 6
+
+Classify and justify:
+
+1. A random scanner malfunction deletes 5% of measurements.
+2. Older excavation records are more likely to lack coordinates, and record age is known.
+3. High-status burials are systematically underreported because access was politically restricted.
+
+Why is mechanism a substantive question rather than something R can determine automatically?
+
+# Part X — Deletion and single imputation have costs
+
+## 11. Listwise deletion changes the sample
+
+```{r}
+deletion_demo <- tibble(
+  id = 1:8,
+  group = c("A","A","A","A","B","B","B","B"),
+  x = c(2, 3, NA, 5, 8, 9, NA, 12),
+  y = c(4, 5, 6, NA, 10, 11, 12, 13)
+)
+
+deletion_demo
+deletion_demo |> drop_na(x, y)
+```
+
+Which cases disappear? Could deletion alter group composition?
+
+## 12. Mean imputation suppresses variability
+
+```{r}
+impute_demo <- c(4, 5, 6, 7, 8, NA, NA)
+
+observed_sd <- sd(impute_demo, na.rm = TRUE)
+mean_value <- mean(impute_demo, na.rm = TRUE)
+imputed <- replace(impute_demo, is.na(impute_demo), mean_value)
+
+observed_sd
+sd(imputed)
+```
+
+Why does constant replacement tend to reduce variance?
+
+# Part XI — Multiple imputation preserves uncertainty
+
+## 13. The logic of MICE
+
+Week 6 presents multiple imputation as:
+
+> **incomplete data → several plausible completed datasets → analyze each → pool estimates and standard errors**
+
+Explain why several plausible datasets represent missing-data uncertainty better than one spreadsheet filled with a single mean.
+
+# Part XII — Load the Seshat teaching summary
+
+## 14. Portable data path
+
+```{r}
+if (file.exists("data/seshat_missingness_counts.csv")) {
+  seshat_file <- "data/seshat_missingness_counts.csv"
+} else {
+  project_root <- if (file.exists("_quarto.yml")) "." else ".."
+  seshat_file <- file.path(
+    project_root,
+    "assignments",
+    "assignment03_seshat_missing",
+    "data",
+    "seshat_missingness_counts.csv"
+  )
+}
+
+file.exists(seshat_file)
+```
+
+```{r}
+seshat <- read_csv(seshat_file, show_col_types = FALSE)
+
+seshat
+glimpse(seshat)
+names(seshat)
+```
+
+::: {.callout-important title="Know the teaching-data unit"}
+This CSV is a **three-row aggregate summary**, not 801 individual cases. It summarizes the documented 801-observation Seshat regression frame used for the Week 6 missing-data exercise.
+:::
+
+# Part XIII — The documented Seshat states
+
+## 15. Presence, absence, and unknown
+
+The documented regression frame contains:
+
+- **299** known present;
+- **12** known absent;
+- **490** missing/unknown;
+- **801** observations total.
+
+The lecture summarizes this as approximately **37% present, 2% absent, and 61% missing**.
+
+### Practice 7
+
+Inspect the teaching file. Identify its status/category column and count column. Verify that the counts sum to 801.
+
+Because the released teaching file is deliberately aggregated, do not pretend it contains individual histories.
+
+# Part XIV — Preserve unknown as unknown
+
+## 16. Different denominators answer different questions
+
+```{r}
+known_present <- 299
+known_absent <- 12
+missing_unknown <- 490
+
+total <- known_present + known_absent + missing_unknown
+known_total <- known_present + known_absent
+
+present_among_known <- known_present / known_total
+present_among_all <- known_present / total
+
+present_among_known
+present_among_all
+```
+
+### Practice 8
+
+Explain why these proportions answer different questions. Which denominator is appropriate depends on the claim being made.
+
+# Part XV — Recode unknown as absence
+
+## 17. Sensitivity to recoding
+
+```{r}
+tibble(
+  scenario = c(
+    "Unknown retained: present among known outcomes",
+    "Unknown recoded absent: present among all observations"
+  ),
+  present_proportion = c(
+    present_among_known,
+    present_among_all
+  )
+)
+```
+
+```{r}
+tibble(
+  scenario = c("Known outcomes only", "Unknown → absent"),
+  present_proportion = c(present_among_known, present_among_all)
+) |>
+  ggplot(aes(x = scenario, y = present_proportion)) +
+  geom_col() +
+  coord_cartesian(ylim = c(0, 1)) +
+  labs(
+    x = NULL,
+    y = "Proportion coded present",
+    title = "The descriptive result depends on missing-data treatment"
+  ) +
+  theme_minimal()
+```
+
+Nothing new was observed when `NA` became `0`; the analyst changed its meaning. Explain why comparing these scenarios is a **sensitivity analysis**.
+
+# Part XVI — The Seshat missing-data debate
+
+## 18. Why coding mattered
+
+The Week 6 lecture uses the Seshat debate to show that unknown observations were treated as recorded absences in the disputed analysis. With extensive missingness, this decision strongly shaped the apparent pattern.
+
+> **Recoding unknown as absent imposes a historical claim onto unknown cases.**
+
+The lecture also highlights forward bias: if beliefs can exist before written documentation, coding unrecorded earlier periods as absence can push apparent origins later.
+
+### Practice 9
+
+Explain:
+
+> possible belief → no written record → unknown status
+
+versus
+
+> possible belief → no written record → recoded `0` → apparent absence
+
+Why can the second pathway manufacture a temporal pattern?
+
+# Part XVII — What sensitivity analysis establishes
+
+## 19. Do not overclaim
+
+This exercise shows that the descriptive pattern is highly sensitive to missing-data treatment.
+
+It does **not**, by itself, prove the true value of every missing case, that every missing case should be present, a universal causal sequence, or one uniform missingness mechanism.
+
+### Practice 10
+
+Write two paragraphs:
+
+**A — What the sensitivity analysis demonstrates**
+
+**B — What it does not establish**
+
+# Part XVIII — A practical Week 6 audit
+
+## 20. Rule set before inference
+
+1. **Visual audit** — distributions and missingness.
+2. **Diagnose** — skew, variance, nonlinearity, missingness.
+3. **Preserve semantics** — never make `NA` mean `0` without evidence.
+4. **Choose deliberately** — transformation, deletion, modeling, imputation.
+5. **Compare alternatives** — do conclusions change?
+6. **Document the pathway** — report preparation decisions.
+
+### Practice 11
+
+Apply this checklist to the Seshat teaching summary. Which steps can be completed with the aggregate file, and which require original case-level data?
+
+# Part XIX — Conceptual debugging
+
+## 21. Diagnose the mistake
+
+Identify the problem:
+
+1. “The data are skewed, so I always log-transform them.”
+2. “`log(0)` failed, so I added 1; that has no analytical consequences.”
+3. “Z-scoring makes a skewed distribution normal.”
+4. “A missing cell is the same as a recorded zero.”
+5. “No row means the count must be zero.”
+6. “Listwise deletion only reduces sample size.”
+7. “Mean imputation is safe because it preserves the mean.”
+8. “MICE discovers the true missing values.”
+9. “The 490 Seshat unknowns were really absences.”
+10. “If two missing-data treatments differ, one is automatically correct.”
+
+# Part XX — Integrated Week 6 challenge
+
+## 22. Build a transparent preparation argument
+
+1. Identify one transformation problem and a plausible transformation.
+2. Explain why the transformation fits the diagnosed problem.
+3. Distinguish transformation from standardization.
+4. Explain `NA ≠ 0`.
+5. Distinguish explicit from implicit missingness.
+6. Classify one hypothetical MCAR, MAR, and MNAR mechanism.
+7. Demonstrate one cost of deletion or single imputation.
+8. Reproduce the Seshat sensitivity comparison.
+9. Explain how the coding choice changes the descriptive result.
+10. State what the aggregate teaching file cannot reveal.
+11. Write a short **Data Preparation Decisions** section.
+12. Render the document.
+
+# Part XXI — Mastery checklist
+
+- [ ] I treat preparation as part of analysis.
+- [ ] I transform only after diagnosing a reason.
+- [ ] I understand log, root, Box-Cox, and Yeo-Johnson logic.
+- [ ] I distinguish transformation from z-standardization.
+- [ ] I recognize compositional constraints.
+- [ ] I understand `NA ≠ 0`.
+- [ ] I distinguish explicit and implicit missingness.
+- [ ] I can explain MCAR, MAR, and MNAR.
+- [ ] I understand costs of deletion and single imputation.
+- [ ] I understand the logic of multiple imputation.
+- [ ] I know the Seshat teaching CSV is a three-row aggregate.
+- [ ] I can reproduce the missing-data sensitivity comparison.
+- [ ] I distinguish sensitivity from proof.
+- [ ] I document preparation choices.
+
+# Final challenge — explain the workflow without code
+
+Explain:
+
+> **inspect → diagnose → preserve meaning → transform/handle missingness → compare alternatives → test sensitivity → document → interpret**
+
+Why is **preparation analysis rather than bookkeeping**?
+
+# Clean Render Test
+
+1. Save the QMD.
+2. Choose **Session → Restart R**.
+3. Do not recreate objects manually in the Console.
+4. Render the complete document.
+5. If it fails, identify what the document assumed but never created.
+
+A successful clean render shows that the preparation pathway is computationally self-contained.

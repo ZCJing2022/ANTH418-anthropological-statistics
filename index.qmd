@@ -31,6 +31,7 @@ This course develops practical statistical thinking for archaeology and anthropo
   - [Week 3 — Measurement and Research Design](practice-workbooks/week03.qmd)
   - [Week 4 — Measures of Central Tendency and Dispersion](practice-workbooks/week04.qmd)
   - [Week 5 — Exploratory Data Analysis and Visualization](practice-workbooks/week05.qmd)
+  - [Week 6 — Data Transformation and Missing Values](practice-workbooks/week06.qmd)
 
 - [Assignments](assignments/index.qmd)
 - [R, RStudio & Quarto Resources](resources/index.qmd)
