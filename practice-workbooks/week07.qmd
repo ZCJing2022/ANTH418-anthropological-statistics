@@ -1,0 +1,602 @@
+---
+title: "ANTH418 Week 7 Practice Workbook"
+subtitle: "Probability, Sampling, and Sampling Distributions"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    code-copy: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+::: {.callout-tip title="Start here — download the editable workbook"}
+This webpage is the rendered version of an **editable Quarto workbook**.
+
+1. Download the **Week 7 Practice Package**.
+2. Unzip it.
+3. Open `week07-practice.qmd` in RStudio.
+4. Keep the `data` folder beside the QMD.
+5. Work from top to bottom.
+6. For each exercise: **predict → run → inspect → explain**.
+7. Edit code and write explanations directly in the QMD.
+8. Render frequently.
+9. Finish with the **Clean Render Test**.
+
+**Do not copy this webpage into RStudio.** The downloadable QMD is the editable source.
+
+[**Download Week 7 Practice Package (.zip)**](../downloads/practice-workbooks/ANTH418_Week07_Practice.zip)
+:::
+
+## How to use this workbook
+
+Week 7 asks how partial observations can support defensible inference.
+
+> **population → sample → statistic → repeated sampling → sampling distribution → standard error → archaeological interpretation**
+
+The central distinction is:
+
+> **A data distribution describes observations. A sampling distribution describes how a statistic varies across repeated samples.**
+
+Simulation makes that distinction visible.
+
+## Learning objectives
+
+By the end, you should be able to explain probability as long-run relative frequency; distinguish population, sample, parameter, and statistic; explain major sampling strategies; distinguish sampling error from sampling bias; generate and interpret a sampling distribution; explain standard error and its relation to sample size; explain the Central Limit Theorem at an introductory level; distinguish sample size from sample quality; evaluate selection bias and representativeness; and use p3k14c teaching data to study archaeological sampling.
+
+# Part I — Probability as long-run frequency
+
+## 1. Repeated trials stabilize
+
+```{r}
+library(tidyverse)
+
+set.seed(418)
+
+coin_experiment <- tibble(n = c(10, 100, 1000, 10000)) |>
+  mutate(
+    heads = map_int(n, ~ sum(sample(c(0, 1), .x, replace = TRUE))),
+    proportion_heads = heads / n
+  )
+
+coin_experiment
+```
+
+### Practice 1
+
+Predict which sample size will usually be closest to 0.50. Why does a fair coin not promise exactly five heads in ten flips?
+
+# Part II — Population, sample, parameter, statistic
+
+## 2. Four terms that must not be confused
+
+- **Population:** full target set.
+- **Sample:** observed subset.
+- **Parameter:** numerical feature of a population.
+- **Statistic:** numerical feature calculated from a sample.
+
+```{r}
+set.seed(419)
+
+population <- tibble(
+  id = 1:10000,
+  age = rgamma(10000, shape = 9, scale = 500)
+)
+
+population_mean <- mean(population$age)
+
+one_sample <- population |>
+  slice_sample(n = 50)
+
+sample_mean <- mean(one_sample$age)
+
+population_mean
+sample_mean
+```
+
+### Practice 2
+
+Which number is the parameter? Which is the statistic? Why should they differ?
+
+# Part III — Random sampling is a design property
+
+## 3. Simple random sampling
+
+```{r}
+set.seed(420)
+
+srs <- population |>
+  slice_sample(n = 100)
+
+mean(srs$age)
+```
+
+Why is “I chose 100 cases” not enough to establish random sampling? What must you know about selection?
+
+# Part IV — Sampling strategies
+
+## 4. Designs for different constraints
+
+Week 7 distinguishes simple random, stratified, cluster, systematic, convenience, purposive/judgment, snowball, and quota sampling.
+
+### Practice 3
+
+Choose and justify a design for:
+
+1. 1,000 excavation grid units, budget to excavate 50.
+2. A regional survey where coastal, valley, and upland zones must all appear.
+3. A huge landscape where travel between localities is expensive.
+4. An ethnographic study seeking rare specialist knowledge.
+
+Which are probability samples?
+
+# Part V — Sampling error versus sampling bias
+
+## 5. Random samples vary
+
+```{r}
+set.seed(421)
+
+five_samples <- tibble(sample_id = 1:5) |>
+  mutate(
+    sample_mean = map_dbl(
+      sample_id,
+      ~ population |> slice_sample(n = 50) |> pull(age) |> mean()
+    )
+  )
+
+five_samples
+```
+
+## 6. Bias is different
+
+```{r}
+biased_frame <- population |>
+  filter(age > median(age))
+
+set.seed(422)
+
+biased_sample <- biased_frame |>
+  slice_sample(n = 200)
+
+mean(population$age)
+mean(biased_frame$age)
+mean(biased_sample$age)
+```
+
+### Practice 4
+
+> **Sampling error = random variation around a target.**
+
+> **Sampling bias = systematic displacement caused by selection.**
+
+Why can a large sample from a biased frame remain biased?
+
+# Part VI — Build a sampling distribution
+
+## 7. Repeat the sampling process
+
+```{r}
+set.seed(423)
+
+sampling_distribution_50 <- tibble(rep = 1:2000) |>
+  mutate(
+    sample_mean = map_dbl(
+      rep,
+      ~ population |> slice_sample(n = 50) |> pull(age) |> mean()
+    )
+  )
+
+ggplot(sampling_distribution_50, aes(x = sample_mean)) +
+  geom_histogram(bins = 35) +
+  geom_vline(xintercept = population_mean, linetype = 2) +
+  labs(
+    x = "Sample mean",
+    y = "Number of repeated samples",
+    title = "Sampling distribution of the mean, n = 50"
+  ) +
+  theme_minimal()
+```
+
+### Practice 5
+
+What does one value represent? Why is this not a histogram of the 10,000 population observations?
+
+# Part VII — Standard error
+
+## 8. Quantify sample-to-sample variation
+
+```{r}
+empirical_se_50 <- sd(sampling_distribution_50$sample_mean)
+theoretical_se_50 <- sd(population$age) / sqrt(50)
+
+empirical_se_50
+theoretical_se_50
+```
+
+Explain the difference among standard deviation, standard error, and one sample mean.
+
+# Part VIII — Sample size changes precision
+
+## 9. Compare n = 20, 50, and 200
+
+```{r}
+set.seed(424)
+
+simulate_means <- function(sample_n, reps = 2000) {
+  tibble(rep = 1:reps) |>
+    mutate(
+      n = sample_n,
+      sample_mean = map_dbl(
+        rep,
+        ~ population |>
+          slice_sample(n = sample_n) |>
+          pull(age) |>
+          mean()
+      )
+    )
+}
+
+sampling_sizes <- bind_rows(
+  simulate_means(20),
+  simulate_means(50),
+  simulate_means(200)
+)
+
+ggplot(sampling_sizes, aes(x = sample_mean)) +
+  geom_histogram(bins = 30) +
+  facet_wrap(~ n, scales = "free_y") +
+  geom_vline(xintercept = population_mean, linetype = 2) +
+  theme_minimal()
+```
+
+```{r}
+sampling_sizes |>
+  group_by(n) |>
+  summarise(
+    mean_of_means = mean(sample_mean),
+    empirical_se = sd(sample_mean),
+    .groups = "drop"
+  )
+```
+
+### Practice 6
+
+What happens to center, spread, and standard error as `n` increases? Why does precision improve approximately with $1/\sqrt{n}$?
+
+# Part IX — Central Limit Theorem
+
+## 10. Sampling distributions can become approximately normal
+
+```{r}
+ggplot(population, aes(x = age)) +
+  geom_histogram(bins = 40) +
+  theme_minimal()
+```
+
+```{r}
+set.seed(425)
+
+clt_demo <- bind_rows(
+  simulate_means(5),
+  simulate_means(30),
+  simulate_means(100)
+)
+
+ggplot(clt_demo, aes(x = sample_mean)) +
+  geom_histogram(bins = 30) +
+  facet_wrap(~ n, scales = "free") +
+  theme_minimal()
+```
+
+### Practice 7
+
+State the CLT carefully: it concerns the **sampling distribution of a statistic**, not a claim that raw observations become normal.
+
+# Part X — Sample size is not sample quality
+
+## 11. Large n cannot repair a bad frame
+
+```{r}
+set.seed(426)
+
+bias_comparison <- tibble(
+  design = c("Random n=50", "Random n=500", "Biased-frame n=500"),
+  estimate = c(
+    population |> slice_sample(n = 50) |> pull(age) |> mean(),
+    population |> slice_sample(n = 500) |> pull(age) |> mean(),
+    biased_frame |> slice_sample(n = 500) |> pull(age) |> mean()
+  )
+)
+
+bias_comparison
+```
+
+### Practice 8
+
+Which problem does increasing sample size address most directly: random sampling variability or systematic selection bias?
+
+> **A large sample can be very precisely wrong when the sampling frame is biased.**
+
+# Part XI — Load the p3k14c teaching data
+
+## 12. Portable data path
+
+```{r}
+if (file.exists("data/p3k14c_sampling.csv")) {
+  p3k_file <- "data/p3k14c_sampling.csv"
+} else {
+  project_root <- if (file.exists("_quarto.yml")) "." else ".."
+  p3k_file <- file.path(
+    project_root,
+    "assignments",
+    "assignment04_p3k14c_sampling",
+    "data",
+    "p3k14c_sampling.csv"
+  )
+}
+
+file.exists(p3k_file)
+```
+
+```{r}
+p3k <- read_csv(p3k_file, show_col_types = FALSE)
+
+dim(p3k)
+names(p3k)
+glimpse(p3k)
+head(p3k)
+```
+
+::: {.callout-important title="Know the empirical frame"}
+This is the frozen ANTH418 Assignment 4 teaching dataset derived from p3k14c and focused on **Southern California archaeological radiocarbon determinations**. Treat it as the empirical frame for these exercises. It is not all archaeological activity in Southern California and not the entire global p3k14c database.
+:::
+
+# Part XII — Audit the radiocarbon frame
+
+## 13. Inspect before sampling
+
+```{r}
+summary(p3k)
+```
+
+```{r}
+p3k |>
+  summarise(across(everything(), ~ sum(is.na(.x))))
+```
+
+### Practice 9
+
+Using the actual column names, identify the conventional radiocarbon-age variable, geographic/contextual variables, missingness, and the unit represented by one row. State what population this file can and cannot represent.
+
+# Part XIII — One archaeological sample
+
+## 14. Parameter of a frame versus statistic
+
+Inspect `names(p3k)` and assign the actual conventional-age column:
+
+```{r eval=FALSE}
+age_var <- "REPLACE_WITH_ACTUAL_AGE_COLUMN"
+```
+
+Then:
+
+```{r eval=FALSE}
+p3k_complete <- p3k |>
+  filter(!is.na(.data[[age_var]]))
+
+frame_mean <- mean(p3k_complete[[age_var]])
+
+set.seed(427)
+sample_50 <- p3k_complete |>
+  slice_sample(n = 50)
+
+sample_mean_50 <- mean(sample_50[[age_var]])
+
+frame_mean
+sample_mean_50
+```
+
+### Practice 10
+
+Why is `frame_mean` a parameter **of the supplied teaching frame**, rather than automatically “the true mean age of Southern California archaeology”?
+
+# Part XIV — Sampling distribution with p3k14c
+
+## 15. Repeat random samples
+
+```{r eval=FALSE}
+set.seed(428)
+
+p3k_sampling <- tibble(rep = 1:1000) |>
+  mutate(
+    mean_age = map_dbl(
+      rep,
+      ~ p3k_complete |>
+        slice_sample(n = 50) |>
+        pull(all_of(age_var)) |>
+        mean()
+    )
+  )
+
+ggplot(p3k_sampling, aes(x = mean_age)) +
+  geom_histogram(bins = 30) +
+  geom_vline(
+    xintercept = mean(p3k_complete[[age_var]]),
+    linetype = 2
+  ) +
+  theme_minimal()
+```
+
+### Practice 11
+
+What does the width of this sampling distribution mean archaeologically?
+
+# Part XV — Sample size and precision in p3k14c
+
+## 16. Compare several sample sizes
+
+```{r eval=FALSE}
+simulate_p3k_means <- function(sample_n, reps = 1000) {
+  tibble(rep = 1:reps) |>
+    mutate(
+      n = sample_n,
+      mean_age = map_dbl(
+        rep,
+        ~ p3k_complete |>
+          slice_sample(n = sample_n) |>
+          pull(all_of(age_var)) |>
+          mean()
+      )
+    )
+}
+
+p3k_sizes <- bind_rows(
+  simulate_p3k_means(25),
+  simulate_p3k_means(50),
+  simulate_p3k_means(100)
+)
+
+p3k_sizes |>
+  group_by(n) |>
+  summarise(empirical_se = sd(mean_age), .groups = "drop")
+```
+
+### Practice 12
+
+Why does this demonstrate precision **within the available frame**, not correction of archaeological sampling bias?
+
+# Part XVI — Construct a biased archaeological sample
+
+## 17. Selection can move an estimate
+
+Choose an actual geographic or contextual variable from the teaching file and create a deliberately restricted subset.
+
+```{r eval=FALSE}
+biased_subset <- p3k_complete |>
+  filter(REPLACE_WITH_A_REAL_RESTRICTION)
+
+mean(p3k_complete[[age_var]])
+mean(biased_subset[[age_var]])
+```
+
+### Practice 13
+
+Is the difference ordinary sampling variability, deliberate selection bias, or both? Does increasing the biased sample size remove the bias?
+
+# Part XVII — p3k14c is large, but not neutral
+
+## 18. Database size is not representativeness
+
+The Week 7 lecture emphasizes that the global p3k14c database is geographically uneven; Europe and North America dominate the compiled radiocarbon determinations.
+
+> **A big database can still be geographically and institutionally uneven.**
+
+### Practice 14
+
+Explain how preservation, excavation history, research funding, laboratory access, publication, database inclusion, and geographic research intensity can shape the observed database before statistical sampling begins.
+
+# Part XVIII — Dates-as-data
+
+## 19. Radiocarbon dates are observations produced by research
+
+A radiocarbon determination is not simply a person or event count.
+
+### Practice 15
+
+Why does “more radiocarbon dates in a period” not automatically mean “more people lived in that period”? What assumptions connect dates-as-data to demographic interpretation?
+
+# Part XIX — Sampling distributions versus chronological distributions
+
+## 20. Two different distributions
+
+A chronological distribution of radiocarbon ages describes **observed dates**.
+
+A sampling distribution describes **how a statistic varies across repeated samples**.
+
+### Practice 16
+
+Give an example of each and explain why they must not be confused.
+
+# Part XX — Simulation as a statistical laboratory
+
+## 21. Why simulation matters
+
+Simulation lets us specify a population or empirical frame, repeat a sampling process, calculate a statistic, and observe long-run behavior.
+
+### Practice 17
+
+Explain why simulation is useful for learning sampling variability, standard error, bias, sample-size effects, and the Central Limit Theorem. What can repeated simulation demonstrate that one observed sample cannot?
+
+# Part XXI — Integrated Week 7 challenge
+
+## 22. Build a sampling argument
+
+Using the p3k14c teaching data:
+
+1. Define the empirical sampling frame.
+2. Identify the unit of observation.
+3. Identify the conventional radiocarbon-age variable.
+4. Calculate the frame mean.
+5. Draw one random sample and calculate its mean.
+6. Repeat sampling many times.
+7. Plot the sampling distribution.
+8. Estimate its empirical standard error.
+9. Repeat with at least two sample sizes.
+10. Construct one deliberately biased subset.
+11. Compare precision and bias.
+12. Explain why large `n` does not guarantee representativeness.
+13. Identify archaeological filters shaping the database.
+14. Write an interpretation that distinguishes the empirical frame from the target population.
+
+# Part XXII — Conceptual debugging
+
+## 23. Diagnose the mistake
+
+1. “A random sample should exactly equal the population mean.”
+2. “A sample of 1,000 is automatically representative.”
+3. “Sampling error and sampling bias are the same.”
+4. “A sampling distribution is the histogram of raw observations.”
+5. “Standard error measures variation among individual observations.”
+6. “The CLT means the raw population becomes normal.”
+7. “Increasing `n` removes selection bias.”
+8. “The p3k14c teaching file is a random sample of all past human activity.”
+9. “More radiocarbon dates necessarily mean more people.”
+10. “Simulation is artificial, so it cannot teach us about sampling.”
+
+# Part XXIII — Mastery checklist
+
+- [ ] I understand probability as long-run relative frequency.
+- [ ] I distinguish population, sample, parameter, and statistic.
+- [ ] I understand that random sampling is a design property.
+- [ ] I distinguish probability and nonprobability sampling.
+- [ ] I distinguish sampling error from sampling bias.
+- [ ] I can generate a sampling distribution.
+- [ ] I distinguish a data distribution from a sampling distribution.
+- [ ] I understand standard error.
+- [ ] I understand how sample size affects precision.
+- [ ] I can explain the CLT without saying raw data become normal.
+- [ ] I understand that large `n` does not guarantee representativeness.
+- [ ] I can audit the p3k14c teaching frame.
+- [ ] I understand dates-as-data.
+- [ ] I can explain archaeological filters on radiocarbon databases.
+
+# Final challenge — explain the workflow without code
+
+Explain:
+
+> **define the target → identify the frame → sample → calculate a statistic → repeat → observe variability → quantify standard error → audit bias → interpret cautiously**
+
+Why does **representativeness matter more than raw sample size**?
+
+# Clean Render Test
+
+1. Save the QMD.
+2. Choose **Session → Restart R**.
+3. Do not recreate objects manually in the Console.
+4. Render the complete document.
+5. If it fails, identify what the document assumed but never created.
+
+A successful clean render shows that the sampling workflow is computationally self-contained.
