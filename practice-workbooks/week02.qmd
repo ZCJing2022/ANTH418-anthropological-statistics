@@ -1,0 +1,558 @@
+---
+title: "ANTH418 Week 2 Practice Workbook"
+subtitle: "Learn and practice R, RStudio, and Quarto"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    code-fold: false
+    code-copy: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+## How to use this workbook
+
+This is a **learn-by-doing companion** to the Week 2 Study Guide. Work from top to bottom. For each exercise use **predict → run → inspect → explain**.
+
+> **Week 2 principle: Do not separate doing the analysis from documenting the analysis.**
+
+## Learning objectives
+
+By the end, you should be able to distinguish R, RStudio, and Quarto; use the Console and Terminal correctly; create objects and vectors; use functions and help; inspect tibbles; use projects and relative paths; import CSV data; use pipes and core `dplyr` verbs; create a simple plot; understand YAML, Markdown, chunks, and inline R; diagnose common errors; and pass a clean-render test.
+
+# Part I — R, RStudio, and Quarto
+
+## 1. Three different tools
+
+| Tool | Role |
+|---|---|
+| **R** | Statistical programming language and computational engine |
+| **RStudio** | IDE for writing code, managing projects, and working with R |
+| **Quarto** | Publishing system combining prose, code, and output |
+
+### Practice
+
+Complete from memory:
+
+1. R is __________________________________.
+2. RStudio is _____________________________.
+3. Quarto is ______________________________.
+
+## 2. RStudio panes and Console vs. Terminal
+
+Know the **Source**, **Console**, **Environment**, and **Files/Plots/Packages/Help** panes.
+
+In the **R Console** run:
+
+```r
+1 + 1
+R.version.string
+```
+
+In the **RStudio Terminal** run:
+
+```bash
+quarto --version
+quarto check
+```
+
+Explain why these commands belong in different places.
+
+# Part II — R fundamentals
+
+## 3. R as a calculator
+
+```{r}
+2 + 3
+10 - 4
+6 * 7
+20 / 5
+2^3
+(10 + 2) / 3
+```
+
+### Practice 1 — predict first
+
+```{r}
+7 + 5 * 2
+(7 + 5) * 2
+100 / 4 + 3
+sqrt(81)
+```
+
+Explain why the first two results differ.
+
+## 4. Objects and `<-`
+
+```{r}
+site_name <- "Gatas"
+sample_size <- 12
+mean_d15n <- 9.8
+
+site_name
+sample_size
+mean_d15n
+```
+
+Look at the Environment pane. Explain what `<-` does.
+
+## 5. Vectors and types
+
+```{r}
+d15n_values <- c(8.1, 9.4, 10.2, 8.9, 9.7)
+sites <- c("Gatas", "Gatas", "La Bastida", "Gatas", "La Bastida")
+
+length(d15n_values)
+typeof(d15n_values)
+typeof(sites)
+```
+
+Create your own vector and calculate its `length()`, `mean()`, `min()`, and `max()`.
+
+Check basic types:
+
+```{r}
+typeof(3.14)
+typeof(3L)
+typeof("archaeology")
+typeof(TRUE)
+```
+
+## 6. Functions, arguments, missing values
+
+```{r}
+mean(d15n_values)
+round(mean(d15n_values), digits = 2)
+```
+
+```{r}
+measurements <- c(8.1, 9.4, NA, 8.9)
+mean(measurements)
+mean(measurements, na.rm = TRUE)
+```
+
+Explain the role of `na.rm`.
+
+## 7. Help system
+
+Run interactively:
+
+```r
+?mean
+help(mean)
+?readr::read_csv
+```
+
+Find what `na.rm`, `digits`, and `read_csv()` mean.
+
+# Part III — Tibbles and data structure
+
+## 8. Create and inspect a tibble
+
+```{r}
+library(tidyverse)
+
+toy_data <- tibble(
+  site = c("Gatas", "Gatas", "La Bastida", "La Bastida"),
+  d13c = c(-19.1, -18.7, -19.8, -19.5),
+  d15n = c(9.2, 9.8, 8.7, 9.0)
+)
+
+toy_data
+dim(toy_data)
+names(toy_data)
+glimpse(toy_data)
+```
+
+A **row** is an observation; a **column** is a variable.
+
+### Practice 2
+
+Answer: How many observations? How many variables? Which variable is categorical? What do `<chr>` and `<dbl>` mean?
+
+```{r}
+toy_data[1, ]
+toy_data$d15n
+nrow(toy_data)
+ncol(toy_data)
+```
+
+# Part IV — Projects and relative paths
+
+## 9. Reproducible paths
+
+Avoid machine-specific absolute paths. Inspect your current project:
+
+```{r}
+getwd()
+head(list.files(), 20)
+```
+
+The Week 2 teaching data should normally be at:
+
+```text
+assignments/assignment01_knipper_descriptive/data/knipper2020_humans.csv
+```
+
+```{r}
+project_root <- if (file.exists("_quarto.yml")) "." else ".."
+
+knipper_file <- file.path(
+  project_root,
+  "assignments",
+  "assignment01_knipper_descriptive",
+  "data",
+  "knipper2020_humans.csv"
+)
+
+file.exists(knipper_file)
+```
+
+If `FALSE`, diagnose the path before changing directories:
+
+```{r}
+getwd()
+list.files()
+project_root
+list.files(project_root)
+file.exists(file.path(project_root, "assignments"))
+```
+
+The important distinction is between the **current execution directory** and the **project root**. When this workbook is rendered by itself, R may execute from `practice-workbooks/`, while the ANTH418 project root is one level above. `project_root` lets the same document locate project files reproducibly in either context.
+
+::: {.callout-important}
+Prefer an RStudio Project and relative paths. Avoid relying on `setwd()` or absolute paths.
+:::
+
+# Part V — Packages and importing data
+
+## 10. Install once; load each session
+
+Install once per machine:
+
+```r
+install.packages("tidyverse")
+```
+
+Load each new session:
+
+```{r}
+library(tidyverse)
+```
+
+Explain why `install.packages()` should not normally appear in an analysis report.
+
+## 11. Import and inspect Knipper data
+
+```{r}
+knipper <- read_csv(knipper_file, show_col_types = FALSE)
+
+dim(knipper)
+names(knipper)
+glimpse(knipper)
+head(knipper)
+```
+
+### Practice 3 — understand before analyzing
+
+Answer: What does one row represent? How many rows and columns? Which variables are categorical/numerical? Which concern stable isotopes?
+
+Check missingness:
+
+```{r}
+colSums(is.na(knipper))
+```
+
+# Part VI — Pipes and dplyr
+
+## 12. Native pipe `|>`
+
+Read the pipe as **AND THEN**:
+
+```r
+data |>
+  operation_1() |>
+  operation_2()
+```
+
+Compare:
+
+```{r}
+mean(knipper$d15n, na.rm = TRUE)
+
+knipper$d15n |>
+  mean(na.rm = TRUE)
+```
+
+## 13. `select()` chooses columns
+
+```{r}
+knipper |>
+  select(site, d13c, d15n) |>
+  head()
+```
+
+Did the number of rows or columns change?
+
+## 14. `filter()` chooses rows
+
+```{r}
+gatas <- knipper |>
+  filter(site == "Gatas")
+
+nrow(gatas)
+unique(gatas$site)
+```
+
+Inspect `unique(knipper$site)`, then create a La Bastida subset using the exact label shown.
+
+## 15. Logical conditions
+
+| Operator | Meaning |
+|---|---|
+| `==` | equal |
+| `!=` | not equal |
+| `>` | greater than |
+| `<` | less than |
+| `>=` | greater than or equal |
+| `<=` | less than or equal |
+
+```{r}
+knipper |>
+  filter(d15n > 10) |>
+  select(site, d15n) |>
+  head()
+```
+
+### Practice 4
+
+Find observations with `d13c < -19` and retain only `site` and `d13c`.
+
+## 16. `mutate()` creates variables
+
+```{r}
+knipper_rounded <- knipper |>
+  mutate(
+    d13c_round = round(d13c, 1),
+    d15n_round = round(d15n, 1)
+  )
+
+knipper_rounded |>
+  select(site, d13c, d13c_round, d15n, d15n_round) |>
+  head()
+```
+
+### Practice 5
+
+Center `d15n` around its mean:
+
+```{r}
+knipper_centered <- knipper |>
+  mutate(d15n_centered = d15n - mean(d15n, na.rm = TRUE))
+
+mean(knipper_centered$d15n_centered, na.rm = TRUE)
+```
+
+Predict the result first.
+
+## 17. `group_by()` + `summarise()`
+
+```{r}
+site_summary <- knipper |>
+  group_by(site) |>
+  summarise(
+    n = sum(!is.na(d15n)),
+    mean_d15n = mean(d15n, na.rm = TRUE),
+    sd_d15n = sd(d15n, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+site_summary
+```
+
+### Practice 6
+
+Create grouped `d13c` summaries containing `n`, mean, median, SD, minimum, and maximum.
+
+## 18. Translate a pipeline into English
+
+```{r}
+knipper |>
+  filter(site == "Gatas") |>
+  select(site, d13c, d15n) |>
+  mutate(d15n_round = round(d15n, 1)) |>
+  head()
+```
+
+Describe this pipeline in plain English without using R syntax.
+
+# Part VII — First visualization
+
+## 19. ggplot2 grammar
+
+```{r}
+ggplot(knipper, aes(x = d13c, y = d15n, color = site)) +
+  geom_point() +
+  labs(
+    x = expression(delta^13*C),
+    y = expression(delta^15*N),
+    color = "Site"
+  ) +
+  theme_minimal()
+```
+
+Identify the **data**, **aesthetic mappings**, **geometry**, **labels**, and **theme**.
+
+### Practice 7
+
+Modify one thing at a time: remove and restore `color = site`, change point size, and add a meaningful title.
+
+# Part VIII — Quarto and literate programming
+
+## 20. Anatomy of a `.qmd`
+
+A Quarto document combines:
+
+1. **YAML** — document configuration;
+2. **Markdown** — scholarly narrative;
+3. **executable code chunks** — analysis and output.
+
+Markdown examples:
+
+```markdown
+## Heading
+**bold**
+*italic*
+- bullet
+```
+
+## 21. Chunk options
+
+A typical chunk can include:
+
+```text
+#| label: example
+#| echo: true
+#| warning: false
+#| message: false
+```
+
+Explain what each option controls.
+
+## 22. Inline R and dynamic reporting
+
+In QMD source, inline R can insert computed values into prose:
+
+```text
+The dataset contains `r nrow(knipper)` observations.
+```
+
+### Practice 8
+
+Add a sentence in the source that dynamically reports the number of variables using `ncol(knipper)`, then render.
+
+Dynamic reporting helps prevent prose, tables, and figures from silently disagreeing when data change.
+
+## 23. Literate programming
+
+Explain in your own words:
+
+> Why is an **essay diversified by code** more reproducible than copying numbers manually from statistical software into a word processor?
+
+## 24. AI and “vibe coding”
+
+AI can help generate or debug code, but you remain responsible for understanding what data were used, what transformations occurred, what operation was performed, and whether the output answers the research question.
+
+> **Never accept code merely because it runs.**
+
+# Part IX — Debugging
+
+## 25. Common errors
+
+**Object not found:** inspect object and column names with `names(knipper)`.
+
+**File not found:** inspect `getwd()`, `list.files()`, and `file.exists()`.
+
+**Function not found:** check whether the required package is loaded with `library()`.
+
+**Unexpected `NA`:** determine whether missing values are present and whether `na.rm = TRUE` is appropriate.
+
+### Debugging checklist
+
+1. Read the entire error message.
+2. Does the object exist?
+3. Is the name spelled exactly?
+4. Is the required package loaded?
+5. Does the file path exist?
+6. Are missing values involved?
+7. Did an earlier line fail?
+8. Can you reduce the problem to a smaller example?
+
+# Part X — Clean render and reproducibility
+
+## 26. The Clean Render Test
+
+Interactive success is not enough. Old objects may remain in the Environment.
+
+Before considering the workbook complete:
+
+1. Save the `.qmd`.
+2. Choose **Session → Restart R**.
+3. Do not manually recreate objects in the Console.
+4. Click **Render**.
+5. Confirm the document builds from top to bottom from a clean session.
+
+> If the document renders only because an object was left in memory, the analysis is incomplete.
+
+# Part XI — Integrated practice
+
+## 27. Mini-analysis challenge
+
+Without copying earlier code unless needed:
+
+**A. Import and inspect** — import the Knipper CSV, report dimensions, inspect names/types, and identify missingness.
+
+**B. Select and filter** — create a one-site dataset containing only `site`, `d13c`, and `d15n`.
+
+**C. Transform** — create rounded versions of both isotope variables.
+
+**D. Summarize** — by site calculate non-missing `n`, mean and SD for both isotopes.
+
+**E. Visualize** — make a scatterplot of `d13c` against `d15n`, colored by site.
+
+**F. Dynamic prose** — report total sample size with inline R.
+
+**G. Clean render** — restart R and render the entire workbook.
+
+# Part XII — Mastery checklist
+
+You are ready to move on when you can answer **yes** to all of these:
+
+- [ ] I can distinguish R, RStudio, and Quarto.
+- [ ] I know when to use the Console versus Terminal.
+- [ ] I can create and inspect R objects and vectors.
+- [ ] I understand basic data types.
+- [ ] I can use functions, arguments, and R help.
+- [ ] I understand rows, columns, observations, and variables.
+- [ ] I can explain why projects and relative paths improve reproducibility.
+- [ ] I can diagnose a missing-file problem.
+- [ ] I can install versus load a package appropriately.
+- [ ] I can import and inspect a CSV.
+- [ ] I can read and write a native R pipe.
+- [ ] I can use `select()`, `filter()`, `mutate()`, `group_by()`, and `summarise()`.
+- [ ] I can explain the structure of a `ggplot()`.
+- [ ] I understand YAML, Markdown, code chunks, and inline R.
+- [ ] I can explain literate programming in my own words.
+- [ ] I can debug common beginner errors systematically.
+- [ ] I can restart R and render successfully from a clean environment.
+
+# Final challenge — explain the workflow without code
+
+In plain English, explain this complete sequence:
+
+> **project → relative path → import → inspect → select/filter → transform → summarize → visualize → narrate dynamically → clean render**
+
+If you can explain **why** every step exists—not merely reproduce the syntax—you have mastered the core Week 2 workflow.
