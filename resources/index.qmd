@@ -34,19 +34,6 @@ The following online books are useful companions to ANTH418. You do not need to 
 
 - [**ggplot2: Elegant Graphics for Data Analysis (3e)**](https://ggplot2-book.org/) — Hadley Wickham, Danielle Navarro, and Thomas Lin Pedersen. A detailed guide to the grammar of graphics and to building effective visualizations with ggplot2.
 
-## Troubleshooting
-
-[Troubleshooting](troubleshooting.qmd)
-
-Start here when:
-
-- R cannot find a file;
-- a package will not load;
-- Quarto will not render;
-- an object cannot be found;
-- your code works in the Console but not when rendering; or
-- you are unsure how to interpret an error message.
-
 ## Core principle
 
 > **Rendering is the reproducibility test.**
