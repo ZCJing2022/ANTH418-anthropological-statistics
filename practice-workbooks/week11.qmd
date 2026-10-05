@@ -1,0 +1,614 @@
+---
+title: "ANTH418 Week 11 Practice Workbook"
+subtitle: "Chi-Square and Tests of Proportions"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    code-copy: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+::: {.callout-tip title="Start here — download the editable workbook"}
+This webpage is the rendered version of an **editable Quarto workbook**.
+
+1. Download the **Week 11 Practice Package**.
+2. Unzip it.
+3. Open `week11-practice.qmd` in RStudio.
+4. Keep the `data` folder beside the QMD.
+5. Work from top to bottom.
+6. For each exercise: **predict → run → inspect → explain**.
+7. Edit code and write explanations directly in the QMD.
+8. Render frequently.
+9. Finish with the **Clean Render Test**.
+
+**Do not copy this webpage into RStudio.** The downloadable QMD is the editable source.
+
+[**Download Week 11 Practice Package (.zip)**](../downloads/practice-workbooks/ANTH418_Week11_Practice.zip)
+:::
+
+# How to use this workbook
+
+Week 9 compared numerical outcomes between groups. Week 11 changes the statistical object: the evidence is **categorical counts**.
+
+> **define categories → identify units → count → proportions → visualize → expected counts → observed vs. expected → residuals → effect size → archaeology**
+
+> **Week 11 principle: A chi-square test is one part of a larger argument. Define categories, compare observed counts with an explicit expectation, then return to archaeology.**
+
+# Learning objectives
+
+By the end, you should be able to distinguish categorical from numerical variables; identify the unit of analysis; distinguish counts from proportions; choose denominators correctly; distinguish goodness-of-fit from independence tests; construct contingency tables; explain expected counts; interpret chi-square; inspect expected counts and standardized residuals; calculate Cramer's V; explain sparse-table alternatives; visualize categorical evidence; and interpret the Lesotho case without confusing association with causation.
+
+# Part I — Categorical evidence begins with units and labels
+
+## 1. Nominal, ordinal, and numerical variables
+
+```{r}
+library(tidyverse)
+
+variable_examples <- tibble(
+  variable = c("raw material", "cortex coverage", "artifact length"),
+  example = c("FineChert / Dolerite / Quartz", "low / medium / high", "42.6 mm"),
+  type = c("nominal", "ordinal", "numerical")
+)
+
+variable_examples
+```
+
+### Practice 1
+Why is the mean of codes such as `1 = chert`, `2 = quartz`, `3 = dolerite` meaningless? Why must the observational unit be identified before counting?
+
+# Part II — Counts and proportions answer different questions
+
+## 2. Counts preserve evidential weight
+
+```{r}
+counts_demo <- tibble(
+  assemblage = c("Layer A", "Layer B"),
+  chert = c(120, 48),
+  total = c(300, 120)
+) |>
+  mutate(proportion_chert = chert / total)
+
+counts_demo
+```
+
+Both are 40% chert, but they rest on different denominators.
+
+### Practice 2
+For every percentage ask: **percentage of what?** Why should counts remain visible?
+
+# Part III — Proportions have sampling uncertainty
+
+## 3. Same proportion, different precision
+
+$$
+SE(\hat p)=\sqrt{\frac{\hat p(1-\hat p)}{n}}
+$$
+
+```{r}
+tibble(n = c(10, 100, 1000), p_hat = .50) |>
+  mutate(
+    se = sqrt(p_hat * (1 - p_hat) / n),
+    lower_approx = p_hat - 1.96 * se,
+    upper_approx = p_hat + 1.96 * se
+  )
+```
+
+### Practice 3
+Why is 50% based on 10 observations less precise than 50% based on 1,000?
+
+# Part IV — Differences in proportions are effect magnitudes
+
+## 4. Absolute and relative differences
+
+```{r}
+p1 <- .40
+p2 <- .25
+p1 - p2
+(p1 - p2) / p2
+```
+
+The first is **15 percentage points**; the second is a **60% relative increase**.
+
+### Practice 4
+Why can both statements be correct while communicating different quantities?
+
+# Part V — Contingency tables expose the comparison
+
+## 5. Cross-classify two categorical variables
+
+```{r}
+demo_tab <- matrix(
+  c(120, 90, 90,
+     30, 60, 30),
+  nrow = 2, byrow = TRUE,
+  dimnames = list(
+    Layer = c("A", "B"),
+    Material = c("Chert", "Quartz", "Other")
+  )
+)
+
+demo_tab
+addmargins(demo_tab)
+prop.table(demo_tab, margin = 1)
+```
+
+### Practice 5
+Identify a cell count, row total, column total, grand total, and row proportion.
+
+# Part VI — Expected counts come from a null model
+
+## 6. Independence generates expected frequencies
+
+$$
+E_{ij}=\frac{(\text{row total}_i)(\text{column total}_j)}{\text{grand total}}
+$$
+
+```{r}
+demo_chi <- chisq.test(demo_tab)
+demo_chi$observed
+round(demo_chi$expected, 2)
+```
+
+### Practice 6
+Verify one expected count manually. Why do expected frequencies not normally mean equal counts?
+
+# Part VII — Chi-square accumulates discrepancies
+
+## 7. Observed versus expected
+
+$$
+\chi^2=\sum \frac{(O-E)^2}{E}
+$$
+
+```{r}
+demo_contrib <- (demo_chi$observed - demo_chi$expected)^2 / demo_chi$expected
+round(demo_contrib, 2)
+sum(demo_contrib)
+unname(demo_chi$statistic)
+```
+
+### Practice 7
+Which cells contribute most strongly to the demo statistic?
+
+# Part VIII — Goodness-of-fit and independence differ
+
+## 8. One categorical variable versus two
+
+```{r}
+observed <- c(A = 18, B = 22, C = 27, D = 33)
+chisq.test(observed, p = rep(.25, 4))
+```
+
+```{r}
+chisq.test(demo_tab)
+```
+
+Goodness-of-fit uses $df=k-1$; independence uses $df=(r-1)(c-1)$.
+
+### Practice 8
+Explain why the two tests share observed–expected logic but answer different questions.
+
+# Part IX — Assumptions belong to the design
+
+## 9. Before interpreting Pearson's chi-square
+
+Check **counts rather than percentages**, reasonably **independent observations**, adequate **expected counts**, and defensible sampling, recovery, preservation, and classification.
+
+### Practice 9
+Why can fragments from the same object or reduction event create pseudo-replication?
+
+# Part X — Residuals locate the pattern
+
+## 10. The overall test does not tell us where
+
+```{r}
+round(demo_chi$residuals, 2)
+round(demo_chi$stdres, 2)
+```
+
+Positive residuals indicate overrepresentation; negative residuals indicate underrepresentation.
+
+### Practice 10
+Why inspect residuals after the overall chi-square result?
+
+# Part XI — A p-value is not association strength
+
+## 11. Cramer's V
+
+```{r}
+demo_v <- sqrt(
+  unname(demo_chi$statistic) /
+    (sum(demo_tab) * min(nrow(demo_tab) - 1, ncol(demo_tab) - 1))
+)
+demo_v
+```
+
+### Practice 11
+What does the p-value tell you that Cramer's V does not, and vice versa?
+
+# Part XII — Sparse tables may need alternatives
+
+## 12. Fisher and simulation
+
+```{r}
+small_tab <- matrix(c(1, 8, 6, 2), nrow = 2, byrow = TRUE)
+small_tab
+chisq.test(small_tab)$expected
+fisher.test(small_tab)
+```
+
+```{r}
+set.seed(418)
+chisq.test(small_tab, simulate.p.value = TRUE, B = 5000)
+```
+
+### Practice 12
+Why do alternative reference distributions not repair poor sampling, dependence, or bad classification?
+
+# Part XIII — Visualization should show pattern and weight
+
+## 13. Counts and proportions reveal different things
+
+```{r}
+demo_long <- as.data.frame(demo_tab) |>
+  as_tibble()
+
+names(demo_long) <- c("layer", "material", "n")
+
+ggplot(demo_long, aes(x = material, y = n, fill = layer)) +
+  geom_col(position = "dodge") +
+  labs(x = NULL, y = "Count", title = "Counts preserve assemblage size") +
+  theme_minimal()
+```
+
+```{r}
+demo_prop <- demo_long |>
+  group_by(layer) |>
+  mutate(proportion = n / sum(n)) |>
+  ungroup()
+
+ggplot(demo_prop, aes(x = layer, y = proportion, fill = material)) +
+  geom_col() +
+  scale_y_continuous(labels = scales::percent) +
+  labs(x = NULL, y = "Within-layer proportion",
+       title = "Proportions emphasize composition") +
+  theme_minimal()
+```
+
+### Practice 13
+What does the count graph reveal that the proportion graph hides, and vice versa?
+
+# Part XIV — Load the Lesotho teaching data
+
+## 14. Portable data path
+
+```{r}
+if (file.exists("data/lesotho_raw_material.csv")) {
+  lesotho_file <- "data/lesotho_raw_material.csv"
+} else {
+  project_root <- if (file.exists("_quarto.yml")) "." else ".."
+  lesotho_file <- file.path(
+    project_root,
+    "assignments",
+    "assignment07_lesotho_chisquare",
+    "data",
+    "lesotho_raw_material.csv"
+  )
+}
+
+file.exists(lesotho_file)
+```
+
+```{r}
+lesotho <- read_csv(lesotho_file, show_col_types = FALSE)
+
+dim(lesotho)
+names(lesotho)
+glimpse(lesotho)
+head(lesotho)
+```
+
+The teaching population contains **1,060 source observations** across four published archaeological layers: BAS, RBL-CLBRF, RF, and BARF.
+
+::: {.callout-important title="Keep source data and analysis grouping distinct"}
+The seven source raw-material categories remain preserved in the CSV. `Other` is **not** a source category; it is created transparently at analysis time.
+:::
+
+# Part XV — Audit the categorical evidence
+
+## 15. Reproduce the source structure before recoding
+
+```{r}
+lesotho |> count(level)
+lesotho |> count(raw_material, sort = TRUE)
+lesotho |> count(level, raw_material)
+```
+
+Expected layer totals:
+
+> **BAS 234 · RBL-CLBRF 270 · RF 251 · BARF 305**
+
+### Practice 15
+Verify that these sum to 1,060. Why inspect the authentic source categories before recoding?
+
+# Part XVI — Create the transparent teaching grouping
+
+## 16. Preserve three categories; combine four as Other
+
+```{r}
+lesotho_grouped <- lesotho |>
+  mutate(
+    material_group = case_when(
+      raw_material == "FineChert" ~ "FineChert",
+      raw_material == "Dolerite" ~ "Dolerite",
+      raw_material == "CrystallineQuartz" ~ "CrystallineQuartz",
+      TRUE ~ "Other"
+    ),
+    level = factor(level, levels = c("BAS", "RBL-CLBRF", "RF", "BARF")),
+    material_group = factor(
+      material_group,
+      levels = c("CrystallineQuartz", "Dolerite", "FineChert", "Other")
+    )
+  )
+
+lesotho_grouped |> count(level, material_group)
+```
+
+`Other` combines Agate, CoarseChert, Quartzite, and Sandstone.
+
+### Practice 16
+Why is this transparent collapse preferable to deleting sparse categories? Why should categories not be collapsed merely to obtain significance?
+
+# Part XVII — Build the four-by-four contingency table
+
+## 17. Counts first
+
+```{r}
+lesotho_tab <- xtabs(~ level + material_group, data = lesotho_grouped)
+
+lesotho_tab
+addmargins(lesotho_tab)
+```
+
+Validated table:
+
+```text
+            CrystallineQuartz Dolerite FineChert Other
+BAS                        12       59       138    25
+RBL-CLBRF                  10       36       194    30
+RF                         21       56       140    34
+BARF                       44       28       201    32
+```
+
+### Practice 17
+Identify the largest and smallest cell counts. Which layer has the largest denominator?
+
+# Part XVIII — Proportions reveal composition
+
+## 18. Row proportions
+
+```{r}
+row_props <- prop.table(lesotho_tab, margin = 1)
+round(row_props, 3)
+```
+
+```{r}
+lesotho_plot <- as.data.frame(lesotho_tab) |>
+  as_tibble() |>
+  rename(n = Freq) |>
+  group_by(level) |>
+  mutate(proportion = n / sum(n)) |>
+  ungroup()
+
+ggplot(lesotho_plot, aes(x = level, y = proportion, fill = material_group)) +
+  geom_col() +
+  scale_y_continuous(labels = scales::percent) +
+  labs(x = NULL, y = "Within-layer proportion", fill = "Raw material",
+       title = "Raw-material composition across Sehonghong layers") +
+  theme_minimal()
+```
+
+### Practice 18
+Describe the main compositional differences without inferential language.
+
+# Part XIX — Pearson's chi-square test of independence
+
+## 19. Are layer and raw-material composition independent?
+
+```{r}
+lesotho_chi <- chisq.test(lesotho_tab)
+lesotho_chi
+```
+
+Validated teaching result:
+
+> **χ² ≈ 58.20 · df = 9 · p ≈ 2.98 × 10⁻⁹**
+
+### Practice 19
+State the null hypothesis in words. Why should the result not be summarized only as “significant”?
+
+# Part XX — Inspect expected counts
+
+## 20. Is the Pearson approximation reasonable?
+
+```{r}
+round(lesotho_chi$expected, 2)
+min(lesotho_chi$expected)
+sum(lesotho_chi$expected < 5)
+```
+
+Expected audit:
+
+> **minimum expected count ≈ 19.21 · cells below 5 = 0**
+
+### Practice 20
+Why is this check important? Does a small **observed** count automatically invalidate Pearson's test?
+
+# Part XXI — Residuals show where the association lives
+
+## 21. Standardized residuals
+
+```{r}
+stdres <- lesotho_chi$stdres
+round(stdres, 2)
+```
+
+Important validated patterns include:
+
+- BARF × CrystallineQuartz: strongly positive;
+- BAS × Dolerite: positive;
+- RBL-CLBRF × FineChert: positive;
+- BARF × Dolerite: strongly negative;
+- RF × FineChert: negative.
+
+### Practice 21
+Choose two positive and two negative residuals. Explain each in observed-versus-expected language.
+
+# Part XXII — Visualize observed-versus-expected departures
+
+## 22. Residual heat map
+
+```{r}
+residual_df <- as.data.frame(stdres) |>
+  as_tibble() |>
+  rename(std_residual = Freq)
+
+ggplot(residual_df, aes(x = material_group, y = level, fill = std_residual)) +
+  geom_tile() +
+  geom_text(aes(label = round(std_residual, 1))) +
+  labs(x = NULL, y = NULL, fill = "Std. residual",
+       title = "Which cells drive the layer × raw-material association?") +
+  theme_minimal()
+```
+
+### Practice 22
+How does this heat map add information beyond the stacked proportion chart?
+
+# Part XXIII — Quantify association strength
+
+## 23. Cramer's V
+
+```{r}
+cramers_v <- sqrt(
+  unname(lesotho_chi$statistic) /
+    (sum(lesotho_tab) * min(nrow(lesotho_tab) - 1, ncol(lesotho_tab) - 1))
+)
+
+cramers_v
+```
+
+Validated result:
+
+> **Cramer's V ≈ 0.135**
+
+### Practice 23
+Why should a very small p-value and a Cramer's V around 0.135 not be treated as contradictory?
+
+# Part XXIV — Alternatives are conditional, not ritual
+
+## 24. When would Fisher or simulation be preferable?
+
+For this validated four-by-four table, expected counts are comfortably above 5, so Pearson's approximation is not threatened by sparse expected cells.
+
+### Practice 24
+Describe a table for which you would consider Fisher's exact test, simulated p-values, or substantively justified category regrouping. Why is “run Fisher whenever any observed count is below 5” the wrong rule?
+
+# Part XXV — Return to Lesotho archaeology
+
+## 25. Association is not archaeological explanation
+
+The statistical result supports an association between **archaeological layer** and **raw-material composition** in the teaching dataset. Residuals show which cells contribute most strongly, and Cramer's V describes the overall strength of association.
+
+It does **not** identify a unique behavioral mechanism.
+
+Possible explanations require archaeological argument involving procurement preference, mobility, source accessibility, exchange, technology, taphonomy, sampling, classification, and other contextual evidence.
+
+The published Lesotho case also draws on independent evidence such as cortex form and technological ratios. The archaeological argument is therefore broader than a p-value.
+
+### Practice 25
+
+Separate your interpretation into four layers:
+
+1. **What was observed** — raw-material counts and proportions across BAS, RBL-CLBRF, RF, and BARF.
+2. **Statistical association** — chi-square, expected counts, residuals, and Cramer's V.
+3. **Possible archaeological meaning** — procurement, mobility, accessibility, exchange, technology, or formation processes.
+4. **What cannot be established** — a unique behavioral or environmental cause from the contingency table alone.
+
+# Part XXVI — Conceptual debugging
+
+## 26. Diagnose the mistake
+
+For each statement, identify the problem.
+
+1. “FineChert was coded 3, so its mean is larger than Dolerite coded 2.”
+2. “The layers have similar percentages, so sample sizes do not matter.”
+3. “Expected counts should be equal in every cell.”
+4. “One observed cell is below 5, so Pearson's chi-square is automatically invalid.”
+5. “The p-value is tiny, so the association must be strong.”
+6. “The overall chi-square tells us exactly which cells differ.”
+7. “Cramer's V tells us which cells drive the association.”
+8. “Because layer and raw material are associated, layer caused procurement choice.”
+9. “We should collapse categories until the test becomes significant.”
+10. “Fisher's exact test repairs dependence among observations.”
+
+# Part XXVII — Integrated practice
+
+## 27. Reconstruct the complete Week 11 argument
+
+Without copying earlier prose, write a short analysis that:
+
+1. identifies the observational unit;
+2. identifies the two categorical variables;
+3. reports layer totals;
+4. explains the analysis-time `Other` grouping;
+5. reports the four-by-four contingency table;
+6. reports row proportions;
+7. states the null hypothesis;
+8. reports chi-square and df;
+9. reports the expected-count audit;
+10. identifies the strongest residual patterns;
+11. reports Cramer's V;
+12. explains whether sparse-table alternatives are needed;
+13. gives an archaeological interpretation;
+14. states at least two claims the analysis does not establish.
+
+# Part XXVIII — Mastery checklist
+
+- [ ] I can distinguish nominal, ordinal, and numerical variables.
+- [ ] I identify the observational unit before counting.
+- [ ] I report counts as well as proportions.
+- [ ] I know that every percentage requires a denominator.
+- [ ] I distinguish goodness-of-fit from independence tests.
+- [ ] I understand how expected counts arise from the null model.
+- [ ] I can explain the chi-square statistic conceptually.
+- [ ] I inspect expected counts before interpreting Pearson's test.
+- [ ] I use standardized residuals to locate departures.
+- [ ] I distinguish evidence of association from association strength.
+- [ ] I can calculate and interpret Cramer's V.
+- [ ] I understand when Fisher or simulation may be useful.
+- [ ] I do not collapse categories merely to obtain significance.
+- [ ] I distinguish statistical association from archaeological mechanism.
+- [ ] I return statistical results to archaeological context.
+
+# Final challenge — explain the workflow without code
+
+Explain:
+
+> **categorical evidence → counts → proportions → contingency table → null model → expected counts → chi-square → residuals → effect size → alternatives → archaeological interpretation**
+
+Why do **categories and observational units come before the test**?
+
+# Clean Render Test
+
+1. Save the QMD.
+2. Choose **Session → Restart R**.
+3. Do not recreate objects manually in the Console.
+4. Render the complete document.
+5. If it fails, identify what the document assumed but never created.
+
+A successful clean render shows that the workflow is computationally self-contained.

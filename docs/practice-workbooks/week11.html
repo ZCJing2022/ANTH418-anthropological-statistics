@@ -1,0 +1,1870 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>ANTH418 Week 11 Practice Workbook – ANTH418: Anthropological Statistics</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-7ff37d7dbb752a0b62676bb39137b3a2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">ANTH418: Anthropological Statistics</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../syllabus.html"> 
+<span class="menu-text">Syllabus</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../lecture-notes/index.html"> 
+<span class="menu-text">Lecture Notes</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-study-guides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Study Guides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-study-guides">    
+        <li>
+    <a class="dropdown-item" href="../weeks/week02.html">
+ <span class="dropdown-text">Week 2 — R, RStudio &amp; Quarto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../weeks/week03.html">
+ <span class="dropdown-text">Week 3 — Measurement &amp; Research Design</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../weeks/week04.html">
+ <span class="dropdown-text">Week 4 — Central Tendency &amp; Dispersion</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../weeks/week05.html">
+ <span class="dropdown-text">Week 5 — EDA &amp; Visualization</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../weeks/week06.html">
+ <span class="dropdown-text">Week 6 — Transformation &amp; Missing Data</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../weeks/week07.html">
+ <span class="dropdown-text">Week 7 — Probability &amp; Sampling</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../weeks/week08.html">
+ <span class="dropdown-text">Week 8 — Confidence Intervals &amp; Hypothesis Testing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../weeks/week09.html">
+ <span class="dropdown-text">Week 9 — Comparing Two Groups: t-tests</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../weeks/week11.html">
+ <span class="dropdown-text">Week 11 — Chi-Square &amp; Tests of Proportions</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-practice-workbooks" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Practice Workbooks</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-practice-workbooks">    
+        <li>
+    <a class="dropdown-item" href="../practice-workbooks/week02.html">
+ <span class="dropdown-text">Week 2 — R, RStudio &amp; Quarto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../practice-workbooks/week03.html">
+ <span class="dropdown-text">Week 3 — Measurement &amp; Research Design</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../practice-workbooks/week04.html">
+ <span class="dropdown-text">Week 4 — Central Tendency &amp; Dispersion</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../practice-workbooks/week05.html">
+ <span class="dropdown-text">Week 5 — EDA &amp; Visualization</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../practice-workbooks/week06.html">
+ <span class="dropdown-text">Week 6 — Transformation &amp; Missing Data</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../practice-workbooks/week07.html">
+ <span class="dropdown-text">Week 7 — Probability &amp; Sampling</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../practice-workbooks/week08.html">
+ <span class="dropdown-text">Week 8 — Confidence Intervals &amp; Hypothesis Testing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../practice-workbooks/week09.html">
+ <span class="dropdown-text">Week 9 — Comparing Two Groups: t-tests</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../practice-workbooks/week11.html">
+ <span class="dropdown-text">Week 11 — Chi-Square &amp; Tests of Proportions</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../assignments/index.html"> 
+<span class="menu-text">Assignments</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../readings/index.html"> 
+<span class="menu-text">Readings</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../resources/index.html"> 
+<span class="menu-text">Resources</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#how-to-use-this-workbook" id="toc-how-to-use-this-workbook" class="nav-link active" data-scroll-target="#how-to-use-this-workbook">How to use this workbook</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning objectives</a></li>
+  <li><a href="#part-i-categorical-evidence-begins-with-units-and-labels" id="toc-part-i-categorical-evidence-begins-with-units-and-labels" class="nav-link" data-scroll-target="#part-i-categorical-evidence-begins-with-units-and-labels">Part I — Categorical evidence begins with units and labels</a>
+  <ul class="collapse">
+  <li><a href="#nominal-ordinal-and-numerical-variables" id="toc-nominal-ordinal-and-numerical-variables" class="nav-link" data-scroll-target="#nominal-ordinal-and-numerical-variables">1. Nominal, ordinal, and numerical variables</a>
+  <ul class="collapse">
+  <li><a href="#practice-1" id="toc-practice-1" class="nav-link" data-scroll-target="#practice-1">Practice 1</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-ii-counts-and-proportions-answer-different-questions" id="toc-part-ii-counts-and-proportions-answer-different-questions" class="nav-link" data-scroll-target="#part-ii-counts-and-proportions-answer-different-questions">Part II — Counts and proportions answer different questions</a>
+  <ul class="collapse">
+  <li><a href="#counts-preserve-evidential-weight" id="toc-counts-preserve-evidential-weight" class="nav-link" data-scroll-target="#counts-preserve-evidential-weight">2. Counts preserve evidential weight</a>
+  <ul class="collapse">
+  <li><a href="#practice-2" id="toc-practice-2" class="nav-link" data-scroll-target="#practice-2">Practice 2</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-iii-proportions-have-sampling-uncertainty" id="toc-part-iii-proportions-have-sampling-uncertainty" class="nav-link" data-scroll-target="#part-iii-proportions-have-sampling-uncertainty">Part III — Proportions have sampling uncertainty</a>
+  <ul class="collapse">
+  <li><a href="#same-proportion-different-precision" id="toc-same-proportion-different-precision" class="nav-link" data-scroll-target="#same-proportion-different-precision">3. Same proportion, different precision</a>
+  <ul class="collapse">
+  <li><a href="#practice-3" id="toc-practice-3" class="nav-link" data-scroll-target="#practice-3">Practice 3</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-iv-differences-in-proportions-are-effect-magnitudes" id="toc-part-iv-differences-in-proportions-are-effect-magnitudes" class="nav-link" data-scroll-target="#part-iv-differences-in-proportions-are-effect-magnitudes">Part IV — Differences in proportions are effect magnitudes</a>
+  <ul class="collapse">
+  <li><a href="#absolute-and-relative-differences" id="toc-absolute-and-relative-differences" class="nav-link" data-scroll-target="#absolute-and-relative-differences">4. Absolute and relative differences</a>
+  <ul class="collapse">
+  <li><a href="#practice-4" id="toc-practice-4" class="nav-link" data-scroll-target="#practice-4">Practice 4</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-v-contingency-tables-expose-the-comparison" id="toc-part-v-contingency-tables-expose-the-comparison" class="nav-link" data-scroll-target="#part-v-contingency-tables-expose-the-comparison">Part V — Contingency tables expose the comparison</a>
+  <ul class="collapse">
+  <li><a href="#cross-classify-two-categorical-variables" id="toc-cross-classify-two-categorical-variables" class="nav-link" data-scroll-target="#cross-classify-two-categorical-variables">5. Cross-classify two categorical variables</a>
+  <ul class="collapse">
+  <li><a href="#practice-5" id="toc-practice-5" class="nav-link" data-scroll-target="#practice-5">Practice 5</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-vi-expected-counts-come-from-a-null-model" id="toc-part-vi-expected-counts-come-from-a-null-model" class="nav-link" data-scroll-target="#part-vi-expected-counts-come-from-a-null-model">Part VI — Expected counts come from a null model</a>
+  <ul class="collapse">
+  <li><a href="#independence-generates-expected-frequencies" id="toc-independence-generates-expected-frequencies" class="nav-link" data-scroll-target="#independence-generates-expected-frequencies">6. Independence generates expected frequencies</a>
+  <ul class="collapse">
+  <li><a href="#practice-6" id="toc-practice-6" class="nav-link" data-scroll-target="#practice-6">Practice 6</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-vii-chi-square-accumulates-discrepancies" id="toc-part-vii-chi-square-accumulates-discrepancies" class="nav-link" data-scroll-target="#part-vii-chi-square-accumulates-discrepancies">Part VII — Chi-square accumulates discrepancies</a>
+  <ul class="collapse">
+  <li><a href="#observed-versus-expected" id="toc-observed-versus-expected" class="nav-link" data-scroll-target="#observed-versus-expected">7. Observed versus expected</a>
+  <ul class="collapse">
+  <li><a href="#practice-7" id="toc-practice-7" class="nav-link" data-scroll-target="#practice-7">Practice 7</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-viii-goodness-of-fit-and-independence-differ" id="toc-part-viii-goodness-of-fit-and-independence-differ" class="nav-link" data-scroll-target="#part-viii-goodness-of-fit-and-independence-differ">Part VIII — Goodness-of-fit and independence differ</a>
+  <ul class="collapse">
+  <li><a href="#one-categorical-variable-versus-two" id="toc-one-categorical-variable-versus-two" class="nav-link" data-scroll-target="#one-categorical-variable-versus-two">8. One categorical variable versus two</a>
+  <ul class="collapse">
+  <li><a href="#practice-8" id="toc-practice-8" class="nav-link" data-scroll-target="#practice-8">Practice 8</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-ix-assumptions-belong-to-the-design" id="toc-part-ix-assumptions-belong-to-the-design" class="nav-link" data-scroll-target="#part-ix-assumptions-belong-to-the-design">Part IX — Assumptions belong to the design</a>
+  <ul class="collapse">
+  <li><a href="#before-interpreting-pearsons-chi-square" id="toc-before-interpreting-pearsons-chi-square" class="nav-link" data-scroll-target="#before-interpreting-pearsons-chi-square">9. Before interpreting Pearson’s chi-square</a>
+  <ul class="collapse">
+  <li><a href="#practice-9" id="toc-practice-9" class="nav-link" data-scroll-target="#practice-9">Practice 9</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-x-residuals-locate-the-pattern" id="toc-part-x-residuals-locate-the-pattern" class="nav-link" data-scroll-target="#part-x-residuals-locate-the-pattern">Part X — Residuals locate the pattern</a>
+  <ul class="collapse">
+  <li><a href="#the-overall-test-does-not-tell-us-where" id="toc-the-overall-test-does-not-tell-us-where" class="nav-link" data-scroll-target="#the-overall-test-does-not-tell-us-where">10. The overall test does not tell us where</a>
+  <ul class="collapse">
+  <li><a href="#practice-10" id="toc-practice-10" class="nav-link" data-scroll-target="#practice-10">Practice 10</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-xi-a-p-value-is-not-association-strength" id="toc-part-xi-a-p-value-is-not-association-strength" class="nav-link" data-scroll-target="#part-xi-a-p-value-is-not-association-strength">Part XI — A p-value is not association strength</a>
+  <ul class="collapse">
+  <li><a href="#cramers-v" id="toc-cramers-v" class="nav-link" data-scroll-target="#cramers-v">11. Cramer’s V</a>
+  <ul class="collapse">
+  <li><a href="#practice-11" id="toc-practice-11" class="nav-link" data-scroll-target="#practice-11">Practice 11</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-xii-sparse-tables-may-need-alternatives" id="toc-part-xii-sparse-tables-may-need-alternatives" class="nav-link" data-scroll-target="#part-xii-sparse-tables-may-need-alternatives">Part XII — Sparse tables may need alternatives</a>
+  <ul class="collapse">
+  <li><a href="#fisher-and-simulation" id="toc-fisher-and-simulation" class="nav-link" data-scroll-target="#fisher-and-simulation">12. Fisher and simulation</a>
+  <ul class="collapse">
+  <li><a href="#practice-12" id="toc-practice-12" class="nav-link" data-scroll-target="#practice-12">Practice 12</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-xiii-visualization-should-show-pattern-and-weight" id="toc-part-xiii-visualization-should-show-pattern-and-weight" class="nav-link" data-scroll-target="#part-xiii-visualization-should-show-pattern-and-weight">Part XIII — Visualization should show pattern and weight</a>
+  <ul class="collapse">
+  <li><a href="#counts-and-proportions-reveal-different-things" id="toc-counts-and-proportions-reveal-different-things" class="nav-link" data-scroll-target="#counts-and-proportions-reveal-different-things">13. Counts and proportions reveal different things</a>
+  <ul class="collapse">
+  <li><a href="#practice-13" id="toc-practice-13" class="nav-link" data-scroll-target="#practice-13">Practice 13</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-xiv-load-the-lesotho-teaching-data" id="toc-part-xiv-load-the-lesotho-teaching-data" class="nav-link" data-scroll-target="#part-xiv-load-the-lesotho-teaching-data">Part XIV — Load the Lesotho teaching data</a>
+  <ul class="collapse">
+  <li><a href="#portable-data-path" id="toc-portable-data-path" class="nav-link" data-scroll-target="#portable-data-path">14. Portable data path</a></li>
+  </ul></li>
+  <li><a href="#part-xv-audit-the-categorical-evidence" id="toc-part-xv-audit-the-categorical-evidence" class="nav-link" data-scroll-target="#part-xv-audit-the-categorical-evidence">Part XV — Audit the categorical evidence</a>
+  <ul class="collapse">
+  <li><a href="#reproduce-the-source-structure-before-recoding" id="toc-reproduce-the-source-structure-before-recoding" class="nav-link" data-scroll-target="#reproduce-the-source-structure-before-recoding">15. Reproduce the source structure before recoding</a>
+  <ul class="collapse">
+  <li><a href="#practice-15" id="toc-practice-15" class="nav-link" data-scroll-target="#practice-15">Practice 15</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-xvi-create-the-transparent-teaching-grouping" id="toc-part-xvi-create-the-transparent-teaching-grouping" class="nav-link" data-scroll-target="#part-xvi-create-the-transparent-teaching-grouping">Part XVI — Create the transparent teaching grouping</a>
+  <ul class="collapse">
+  <li><a href="#preserve-three-categories-combine-four-as-other" id="toc-preserve-three-categories-combine-four-as-other" class="nav-link" data-scroll-target="#preserve-three-categories-combine-four-as-other">16. Preserve three categories; combine four as Other</a>
+  <ul class="collapse">
+  <li><a href="#practice-16" id="toc-practice-16" class="nav-link" data-scroll-target="#practice-16">Practice 16</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-xvii-build-the-four-by-four-contingency-table" id="toc-part-xvii-build-the-four-by-four-contingency-table" class="nav-link" data-scroll-target="#part-xvii-build-the-four-by-four-contingency-table">Part XVII — Build the four-by-four contingency table</a>
+  <ul class="collapse">
+  <li><a href="#counts-first" id="toc-counts-first" class="nav-link" data-scroll-target="#counts-first">17. Counts first</a>
+  <ul class="collapse">
+  <li><a href="#practice-17" id="toc-practice-17" class="nav-link" data-scroll-target="#practice-17">Practice 17</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-xviii-proportions-reveal-composition" id="toc-part-xviii-proportions-reveal-composition" class="nav-link" data-scroll-target="#part-xviii-proportions-reveal-composition">Part XVIII — Proportions reveal composition</a>
+  <ul class="collapse">
+  <li><a href="#row-proportions" id="toc-row-proportions" class="nav-link" data-scroll-target="#row-proportions">18. Row proportions</a>
+  <ul class="collapse">
+  <li><a href="#practice-18" id="toc-practice-18" class="nav-link" data-scroll-target="#practice-18">Practice 18</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-xix-pearsons-chi-square-test-of-independence" id="toc-part-xix-pearsons-chi-square-test-of-independence" class="nav-link" data-scroll-target="#part-xix-pearsons-chi-square-test-of-independence">Part XIX — Pearson’s chi-square test of independence</a>
+  <ul class="collapse">
+  <li><a href="#are-layer-and-raw-material-composition-independent" id="toc-are-layer-and-raw-material-composition-independent" class="nav-link" data-scroll-target="#are-layer-and-raw-material-composition-independent">19. Are layer and raw-material composition independent?</a>
+  <ul class="collapse">
+  <li><a href="#practice-19" id="toc-practice-19" class="nav-link" data-scroll-target="#practice-19">Practice 19</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-xx-inspect-expected-counts" id="toc-part-xx-inspect-expected-counts" class="nav-link" data-scroll-target="#part-xx-inspect-expected-counts">Part XX — Inspect expected counts</a>
+  <ul class="collapse">
+  <li><a href="#is-the-pearson-approximation-reasonable" id="toc-is-the-pearson-approximation-reasonable" class="nav-link" data-scroll-target="#is-the-pearson-approximation-reasonable">20. Is the Pearson approximation reasonable?</a>
+  <ul class="collapse">
+  <li><a href="#practice-20" id="toc-practice-20" class="nav-link" data-scroll-target="#practice-20">Practice 20</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-xxi-residuals-show-where-the-association-lives" id="toc-part-xxi-residuals-show-where-the-association-lives" class="nav-link" data-scroll-target="#part-xxi-residuals-show-where-the-association-lives">Part XXI — Residuals show where the association lives</a>
+  <ul class="collapse">
+  <li><a href="#standardized-residuals" id="toc-standardized-residuals" class="nav-link" data-scroll-target="#standardized-residuals">21. Standardized residuals</a>
+  <ul class="collapse">
+  <li><a href="#practice-21" id="toc-practice-21" class="nav-link" data-scroll-target="#practice-21">Practice 21</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-xxii-visualize-observed-versus-expected-departures" id="toc-part-xxii-visualize-observed-versus-expected-departures" class="nav-link" data-scroll-target="#part-xxii-visualize-observed-versus-expected-departures">Part XXII — Visualize observed-versus-expected departures</a>
+  <ul class="collapse">
+  <li><a href="#residual-heat-map" id="toc-residual-heat-map" class="nav-link" data-scroll-target="#residual-heat-map">22. Residual heat map</a>
+  <ul class="collapse">
+  <li><a href="#practice-22" id="toc-practice-22" class="nav-link" data-scroll-target="#practice-22">Practice 22</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-xxiii-quantify-association-strength" id="toc-part-xxiii-quantify-association-strength" class="nav-link" data-scroll-target="#part-xxiii-quantify-association-strength">Part XXIII — Quantify association strength</a>
+  <ul class="collapse">
+  <li><a href="#cramers-v-1" id="toc-cramers-v-1" class="nav-link" data-scroll-target="#cramers-v-1">23. Cramer’s V</a>
+  <ul class="collapse">
+  <li><a href="#practice-23" id="toc-practice-23" class="nav-link" data-scroll-target="#practice-23">Practice 23</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-xxiv-alternatives-are-conditional-not-ritual" id="toc-part-xxiv-alternatives-are-conditional-not-ritual" class="nav-link" data-scroll-target="#part-xxiv-alternatives-are-conditional-not-ritual">Part XXIV — Alternatives are conditional, not ritual</a>
+  <ul class="collapse">
+  <li><a href="#when-would-fisher-or-simulation-be-preferable" id="toc-when-would-fisher-or-simulation-be-preferable" class="nav-link" data-scroll-target="#when-would-fisher-or-simulation-be-preferable">24. When would Fisher or simulation be preferable?</a>
+  <ul class="collapse">
+  <li><a href="#practice-24" id="toc-practice-24" class="nav-link" data-scroll-target="#practice-24">Practice 24</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-xxv-return-to-lesotho-archaeology" id="toc-part-xxv-return-to-lesotho-archaeology" class="nav-link" data-scroll-target="#part-xxv-return-to-lesotho-archaeology">Part XXV — Return to Lesotho archaeology</a>
+  <ul class="collapse">
+  <li><a href="#association-is-not-archaeological-explanation" id="toc-association-is-not-archaeological-explanation" class="nav-link" data-scroll-target="#association-is-not-archaeological-explanation">25. Association is not archaeological explanation</a>
+  <ul class="collapse">
+  <li><a href="#practice-25" id="toc-practice-25" class="nav-link" data-scroll-target="#practice-25">Practice 25</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-xxvi-conceptual-debugging" id="toc-part-xxvi-conceptual-debugging" class="nav-link" data-scroll-target="#part-xxvi-conceptual-debugging">Part XXVI — Conceptual debugging</a>
+  <ul class="collapse">
+  <li><a href="#diagnose-the-mistake" id="toc-diagnose-the-mistake" class="nav-link" data-scroll-target="#diagnose-the-mistake">26. Diagnose the mistake</a></li>
+  </ul></li>
+  <li><a href="#part-xxvii-integrated-practice" id="toc-part-xxvii-integrated-practice" class="nav-link" data-scroll-target="#part-xxvii-integrated-practice">Part XXVII — Integrated practice</a>
+  <ul class="collapse">
+  <li><a href="#reconstruct-the-complete-week-11-argument" id="toc-reconstruct-the-complete-week-11-argument" class="nav-link" data-scroll-target="#reconstruct-the-complete-week-11-argument">27. Reconstruct the complete Week 11 argument</a></li>
+  </ul></li>
+  <li><a href="#part-xxviii-mastery-checklist" id="toc-part-xxviii-mastery-checklist" class="nav-link" data-scroll-target="#part-xxviii-mastery-checklist">Part XXVIII — Mastery checklist</a></li>
+  <li><a href="#final-challenge-explain-the-workflow-without-code" id="toc-final-challenge-explain-the-workflow-without-code" class="nav-link" data-scroll-target="#final-challenge-explain-the-workflow-without-code">Final challenge — explain the workflow without code</a></li>
+  <li><a href="#clean-render-test" id="toc-clean-render-test" class="nav-link" data-scroll-target="#clean-render-test">Clean Render Test</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">ANTH418 Week 11 Practice Workbook</h1>
+<p class="subtitle lead">Chi-Square and Tests of Proportions</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-tip callout-titled" title="Start here — download the editable workbook">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Start here — download the editable workbook
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This webpage is the rendered version of an <strong>editable Quarto workbook</strong>.</p>
+<ol type="1">
+<li>Download the <strong>Week 11 Practice Package</strong>.</li>
+<li>Unzip it.</li>
+<li>Open <code>week11-practice.qmd</code> in RStudio.</li>
+<li>Keep the <code>data</code> folder beside the QMD.</li>
+<li>Work from top to bottom.</li>
+<li>For each exercise: <strong>predict → run → inspect → explain</strong>.</li>
+<li>Edit code and write explanations directly in the QMD.</li>
+<li>Render frequently.</li>
+<li>Finish with the <strong>Clean Render Test</strong>.</li>
+</ol>
+<p><strong>Do not copy this webpage into RStudio.</strong> The downloadable QMD is the editable source.</p>
+<p><a href="../downloads/practice-workbooks/ANTH418_Week11_Practice.zip"><strong>Download Week 11 Practice Package (.zip)</strong></a></p>
+</div>
+</div>
+<section id="how-to-use-this-workbook" class="level1">
+<h1>How to use this workbook</h1>
+<p>Week 9 compared numerical outcomes between groups. Week 11 changes the statistical object: the evidence is <strong>categorical counts</strong>.</p>
+<blockquote class="blockquote">
+<p><strong>define categories → identify units → count → proportions → visualize → expected counts → observed vs.&nbsp;expected → residuals → effect size → archaeology</strong></p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Week 11 principle: A chi-square test is one part of a larger argument. Define categories, compare observed counts with an explicit expectation, then return to archaeology.</strong></p>
+</blockquote>
+</section>
+<section id="learning-objectives" class="level1">
+<h1>Learning objectives</h1>
+<p>By the end, you should be able to distinguish categorical from numerical variables; identify the unit of analysis; distinguish counts from proportions; choose denominators correctly; distinguish goodness-of-fit from independence tests; construct contingency tables; explain expected counts; interpret chi-square; inspect expected counts and standardized residuals; calculate Cramer’s V; explain sparse-table alternatives; visualize categorical evidence; and interpret the Lesotho case without confusing association with causation.</p>
+</section>
+<section id="part-i-categorical-evidence-begins-with-units-and-labels" class="level1">
+<h1>Part I — Categorical evidence begins with units and labels</h1>
+<section id="nominal-ordinal-and-numerical-variables" class="level2">
+<h2 class="anchored" data-anchor-id="nominal-ordinal-and-numerical-variables">1. Nominal, ordinal, and numerical variables</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>variable_examples <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">variable =</span> <span class="fu">c</span>(<span class="st">"raw material"</span>, <span class="st">"cortex coverage"</span>, <span class="st">"artifact length"</span>),</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">example =</span> <span class="fu">c</span>(<span class="st">"FineChert / Dolerite / Quartz"</span>, <span class="st">"low / medium / high"</span>, <span class="st">"42.6 mm"</span>),</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="fu">c</span>(<span class="st">"nominal"</span>, <span class="st">"ordinal"</span>, <span class="st">"numerical"</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>variable_examples</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  variable        example                       type     
+  &lt;chr&gt;           &lt;chr&gt;                         &lt;chr&gt;    
+1 raw material    FineChert / Dolerite / Quartz nominal  
+2 cortex coverage low / medium / high           ordinal  
+3 artifact length 42.6 mm                       numerical</code></pre>
+</div>
+</div>
+<section id="practice-1" class="level3">
+<h3 class="anchored" data-anchor-id="practice-1">Practice 1</h3>
+<p>Why is the mean of codes such as <code>1 = chert</code>, <code>2 = quartz</code>, <code>3 = dolerite</code> meaningless? Why must the observational unit be identified before counting?</p>
+</section>
+</section>
+</section>
+<section id="part-ii-counts-and-proportions-answer-different-questions" class="level1">
+<h1>Part II — Counts and proportions answer different questions</h1>
+<section id="counts-preserve-evidential-weight" class="level2">
+<h2 class="anchored" data-anchor-id="counts-preserve-evidential-weight">2. Counts preserve evidential weight</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>counts_demo <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">assemblage =</span> <span class="fu">c</span>(<span class="st">"Layer A"</span>, <span class="st">"Layer B"</span>),</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">chert =</span> <span class="fu">c</span>(<span class="dv">120</span>, <span class="dv">48</span>),</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">total =</span> <span class="fu">c</span>(<span class="dv">300</span>, <span class="dv">120</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">proportion_chert =</span> chert <span class="sc">/</span> total)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>counts_demo</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 4
+  assemblage chert total proportion_chert
+  &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt;            &lt;dbl&gt;
+1 Layer A      120   300              0.4
+2 Layer B       48   120              0.4</code></pre>
+</div>
+</div>
+<p>Both are 40% chert, but they rest on different denominators.</p>
+<section id="practice-2" class="level3">
+<h3 class="anchored" data-anchor-id="practice-2">Practice 2</h3>
+<p>For every percentage ask: <strong>percentage of what?</strong> Why should counts remain visible?</p>
+</section>
+</section>
+</section>
+<section id="part-iii-proportions-have-sampling-uncertainty" class="level1">
+<h1>Part III — Proportions have sampling uncertainty</h1>
+<section id="same-proportion-different-precision" class="level2">
+<h2 class="anchored" data-anchor-id="same-proportion-different-precision">3. Same proportion, different precision</h2>
+<p><span class="math display">\[
+SE(\hat p)=\sqrt{\frac{\hat p(1-\hat p)}{n}}
+\]</span></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">n =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1000</span>), <span class="at">p_hat =</span> .<span class="dv">50</span>) <span class="sc">|&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">se =</span> <span class="fu">sqrt</span>(p_hat <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p_hat) <span class="sc">/</span> n),</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">lower_approx =</span> p_hat <span class="sc">-</span> <span class="fl">1.96</span> <span class="sc">*</span> se,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">upper_approx =</span> p_hat <span class="sc">+</span> <span class="fl">1.96</span> <span class="sc">*</span> se</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 5
+      n p_hat     se lower_approx upper_approx
+  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;
+1    10   0.5 0.158         0.190        0.810
+2   100   0.5 0.05          0.402        0.598
+3  1000   0.5 0.0158        0.469        0.531</code></pre>
+</div>
+</div>
+<section id="practice-3" class="level3">
+<h3 class="anchored" data-anchor-id="practice-3">Practice 3</h3>
+<p>Why is 50% based on 10 observations less precise than 50% based on 1,000?</p>
+</section>
+</section>
+</section>
+<section id="part-iv-differences-in-proportions-are-effect-magnitudes" class="level1">
+<h1>Part IV — Differences in proportions are effect magnitudes</h1>
+<section id="absolute-and-relative-differences" class="level2">
+<h2 class="anchored" data-anchor-id="absolute-and-relative-differences">4. Absolute and relative differences</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> .<span class="dv">40</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> .<span class="dv">25</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">-</span> p2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.15</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(p1 <span class="sc">-</span> p2) <span class="sc">/</span> p2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6</code></pre>
+</div>
+</div>
+<p>The first is <strong>15 percentage points</strong>; the second is a <strong>60% relative increase</strong>.</p>
+<section id="practice-4" class="level3">
+<h3 class="anchored" data-anchor-id="practice-4">Practice 4</h3>
+<p>Why can both statements be correct while communicating different quantities?</p>
+</section>
+</section>
+</section>
+<section id="part-v-contingency-tables-expose-the-comparison" class="level1">
+<h1>Part V — Contingency tables expose the comparison</h1>
+<section id="cross-classify-two-categorical-variables" class="level2">
+<h2 class="anchored" data-anchor-id="cross-classify-two-categorical-variables">5. Cross-classify two categorical variables</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>demo_tab <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">120</span>, <span class="dv">90</span>, <span class="dv">90</span>,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>     <span class="dv">30</span>, <span class="dv">60</span>, <span class="dv">30</span>),</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">dimnames =</span> <span class="fu">list</span>(</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">Layer =</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>),</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">Material =</span> <span class="fu">c</span>(<span class="st">"Chert"</span>, <span class="st">"Quartz"</span>, <span class="st">"Other"</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>demo_tab</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     Material
+Layer Chert Quartz Other
+    A   120     90    90
+    B    30     60    30</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">addmargins</span>(demo_tab)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     Material
+Layer Chert Quartz Other Sum
+  A     120     90    90 300
+  B      30     60    30 120
+  Sum   150    150   120 420</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(demo_tab, <span class="at">margin =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     Material
+Layer Chert Quartz Other
+    A  0.40    0.3  0.30
+    B  0.25    0.5  0.25</code></pre>
+</div>
+</div>
+<section id="practice-5" class="level3">
+<h3 class="anchored" data-anchor-id="practice-5">Practice 5</h3>
+<p>Identify a cell count, row total, column total, grand total, and row proportion.</p>
+</section>
+</section>
+</section>
+<section id="part-vi-expected-counts-come-from-a-null-model" class="level1">
+<h1>Part VI — Expected counts come from a null model</h1>
+<section id="independence-generates-expected-frequencies" class="level2">
+<h2 class="anchored" data-anchor-id="independence-generates-expected-frequencies">6. Independence generates expected frequencies</h2>
+<p><span class="math display">\[
+E_{ij}=\frac{(\text{row total}_i)(\text{column total}_j)}{\text{grand total}}
+\]</span></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>demo_chi <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(demo_tab)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>demo_chi<span class="sc">$</span>observed</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     Material
+Layer Chert Quartz Other
+    A   120     90    90
+    B    30     60    30</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(demo_chi<span class="sc">$</span>expected, <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     Material
+Layer  Chert Quartz Other
+    A 107.14 107.14 85.71
+    B  42.86  42.86 34.29</code></pre>
+</div>
+</div>
+<section id="practice-6" class="level3">
+<h3 class="anchored" data-anchor-id="practice-6">Practice 6</h3>
+<p>Verify one expected count manually. Why do expected frequencies not normally mean equal counts?</p>
+</section>
+</section>
+</section>
+<section id="part-vii-chi-square-accumulates-discrepancies" class="level1">
+<h1>Part VII — Chi-square accumulates discrepancies</h1>
+<section id="observed-versus-expected" class="level2">
+<h2 class="anchored" data-anchor-id="observed-versus-expected">7. Observed versus expected</h2>
+<p><span class="math display">\[
+\chi^2=\sum \frac{(O-E)^2}{E}
+\]</span></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>demo_contrib <span class="ot">&lt;-</span> (demo_chi<span class="sc">$</span>observed <span class="sc">-</span> demo_chi<span class="sc">$</span>expected)<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> demo_chi<span class="sc">$</span>expected</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(demo_contrib, <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     Material
+Layer Chert Quartz Other
+    A  1.54   2.74  0.21
+    B  3.86   6.86  0.54</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(demo_contrib)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 15.75</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unname</span>(demo_chi<span class="sc">$</span>statistic)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 15.75</code></pre>
+</div>
+</div>
+<section id="practice-7" class="level3">
+<h3 class="anchored" data-anchor-id="practice-7">Practice 7</h3>
+<p>Which cells contribute most strongly to the demo statistic?</p>
+</section>
+</section>
+</section>
+<section id="part-viii-goodness-of-fit-and-independence-differ" class="level1">
+<h1>Part VIII — Goodness-of-fit and independence differ</h1>
+<section id="one-categorical-variable-versus-two" class="level2">
+<h2 class="anchored" data-anchor-id="one-categorical-variable-versus-two">8. One categorical variable versus two</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>observed <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">A =</span> <span class="dv">18</span>, <span class="at">B =</span> <span class="dv">22</span>, <span class="at">C =</span> <span class="dv">27</span>, <span class="at">D =</span> <span class="dv">33</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(observed, <span class="at">p =</span> <span class="fu">rep</span>(.<span class="dv">25</span>, <span class="dv">4</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Chi-squared test for given probabilities
+
+data:  observed
+X-squared = 5.04, df = 3, p-value = 0.1689</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(demo_tab)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's Chi-squared test
+
+data:  demo_tab
+X-squared = 15.75, df = 2, p-value = 0.0003801</code></pre>
+</div>
+</div>
+<p>Goodness-of-fit uses <span class="math inline">\(df=k-1\)</span>; independence uses <span class="math inline">\(df=(r-1)(c-1)\)</span>.</p>
+<section id="practice-8" class="level3">
+<h3 class="anchored" data-anchor-id="practice-8">Practice 8</h3>
+<p>Explain why the two tests share observed–expected logic but answer different questions.</p>
+</section>
+</section>
+</section>
+<section id="part-ix-assumptions-belong-to-the-design" class="level1">
+<h1>Part IX — Assumptions belong to the design</h1>
+<section id="before-interpreting-pearsons-chi-square" class="level2">
+<h2 class="anchored" data-anchor-id="before-interpreting-pearsons-chi-square">9. Before interpreting Pearson’s chi-square</h2>
+<p>Check <strong>counts rather than percentages</strong>, reasonably <strong>independent observations</strong>, adequate <strong>expected counts</strong>, and defensible sampling, recovery, preservation, and classification.</p>
+<section id="practice-9" class="level3">
+<h3 class="anchored" data-anchor-id="practice-9">Practice 9</h3>
+<p>Why can fragments from the same object or reduction event create pseudo-replication?</p>
+</section>
+</section>
+</section>
+<section id="part-x-residuals-locate-the-pattern" class="level1">
+<h1>Part X — Residuals locate the pattern</h1>
+<section id="the-overall-test-does-not-tell-us-where" class="level2">
+<h2 class="anchored" data-anchor-id="the-overall-test-does-not-tell-us-where">10. The overall test does not tell us where</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(demo_chi<span class="sc">$</span>residuals, <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     Material
+Layer Chert Quartz Other
+    A  1.24  -1.66  0.46
+    B -1.96   2.62 -0.73</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(demo_chi<span class="sc">$</span>stdres, <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     Material
+Layer Chert Quartz Other
+    A   2.9  -3.86  1.02
+    B  -2.9   3.86 -1.02</code></pre>
+</div>
+</div>
+<p>Positive residuals indicate overrepresentation; negative residuals indicate underrepresentation.</p>
+<section id="practice-10" class="level3">
+<h3 class="anchored" data-anchor-id="practice-10">Practice 10</h3>
+<p>Why inspect residuals after the overall chi-square result?</p>
+</section>
+</section>
+</section>
+<section id="part-xi-a-p-value-is-not-association-strength" class="level1">
+<h1>Part XI — A p-value is not association strength</h1>
+<section id="cramers-v" class="level2">
+<h2 class="anchored" data-anchor-id="cramers-v">11. Cramer’s V</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>demo_v <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unname</span>(demo_chi<span class="sc">$</span>statistic) <span class="sc">/</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    (<span class="fu">sum</span>(demo_tab) <span class="sc">*</span> <span class="fu">min</span>(<span class="fu">nrow</span>(demo_tab) <span class="sc">-</span> <span class="dv">1</span>, <span class="fu">ncol</span>(demo_tab) <span class="sc">-</span> <span class="dv">1</span>))</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>demo_v</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1936492</code></pre>
+</div>
+</div>
+<section id="practice-11" class="level3">
+<h3 class="anchored" data-anchor-id="practice-11">Practice 11</h3>
+<p>What does the p-value tell you that Cramer’s V does not, and vice versa?</p>
+</section>
+</section>
+</section>
+<section id="part-xii-sparse-tables-may-need-alternatives" class="level1">
+<h1>Part XII — Sparse tables may need alternatives</h1>
+<section id="fisher-and-simulation" class="level2">
+<h2 class="anchored" data-anchor-id="fisher-and-simulation">12. Fisher and simulation</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>small_tab <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">8</span>, <span class="dv">6</span>, <span class="dv">2</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>small_tab</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,]    1    8
+[2,]    6    2</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(small_tab)<span class="sc">$</span>expected</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         [,1]     [,2]
+[1,] 3.705882 5.294118
+[2,] 3.294118 4.705882</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fisher.test</span>(small_tab)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Fisher's Exact Test for Count Data
+
+data:  small_tab
+p-value = 0.01522
+alternative hypothesis: true odds ratio is not equal to 1
+95 percent confidence interval:
+ 0.0008175465 0.7867209028
+sample estimates:
+odds ratio 
+0.05423538 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">418</span>)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(small_tab, <span class="at">simulate.p.value =</span> <span class="cn">TRUE</span>, <span class="at">B =</span> <span class="dv">5000</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's Chi-squared test with simulated p-value (based on 5000
+    replicates)
+
+data:  small_tab
+X-squared = 7.1373, df = NA, p-value = 0.019</code></pre>
+</div>
+</div>
+<section id="practice-12" class="level3">
+<h3 class="anchored" data-anchor-id="practice-12">Practice 12</h3>
+<p>Why do alternative reference distributions not repair poor sampling, dependence, or bad classification?</p>
+</section>
+</section>
+</section>
+<section id="part-xiii-visualization-should-show-pattern-and-weight" class="level1">
+<h1>Part XIII — Visualization should show pattern and weight</h1>
+<section id="counts-and-proportions-reveal-different-things" class="level2">
+<h2 class="anchored" data-anchor-id="counts-and-proportions-reveal-different-things">13. Counts and proportions reveal different things</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>demo_long <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(demo_tab) <span class="sc">|&gt;</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>()</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(demo_long) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"layer"</span>, <span class="st">"material"</span>, <span class="st">"n"</span>)</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(demo_long, <span class="fu">aes</span>(<span class="at">x =</span> material, <span class="at">y =</span> n, <span class="at">fill =</span> layer)) <span class="sc">+</span></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"Count"</span>, <span class="at">title =</span> <span class="st">"Counts preserve assemblage size"</span>) <span class="sc">+</span></span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week11_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>demo_prop <span class="ot">&lt;-</span> demo_long <span class="sc">|&gt;</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(layer) <span class="sc">|&gt;</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">proportion =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">|&gt;</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(demo_prop, <span class="fu">aes</span>(<span class="at">x =</span> layer, <span class="at">y =</span> proportion, <span class="at">fill =</span> material)) <span class="sc">+</span></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"Within-layer proportion"</span>,</span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Proportions emphasize composition"</span>) <span class="sc">+</span></span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week11_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="practice-13" class="level3">
+<h3 class="anchored" data-anchor-id="practice-13">Practice 13</h3>
+<p>What does the count graph reveal that the proportion graph hides, and vice versa?</p>
+</section>
+</section>
+</section>
+<section id="part-xiv-load-the-lesotho-teaching-data" class="level1">
+<h1>Part XIV — Load the Lesotho teaching data</h1>
+<section id="portable-data-path" class="level2">
+<h2 class="anchored" data-anchor-id="portable-data-path">14. Portable data path</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">file.exists</span>(<span class="st">"data/lesotho_raw_material.csv"</span>)) {</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  lesotho_file <span class="ot">&lt;-</span> <span class="st">"data/lesotho_raw_material.csv"</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>  project_root <span class="ot">&lt;-</span> <span class="cf">if</span> (<span class="fu">file.exists</span>(<span class="st">"_quarto.yml"</span>)) <span class="st">"."</span> <span class="cf">else</span> <span class="st">".."</span></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>  lesotho_file <span class="ot">&lt;-</span> <span class="fu">file.path</span>(</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>    project_root,</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"assignments"</span>,</span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"assignment07_lesotho_chisquare"</span>,</span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"data"</span>,</span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"lesotho_raw_material.csv"</span></span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a><span class="fu">file.exists</span>(lesotho_file)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>lesotho <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(lesotho_file, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(lesotho)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1060    5</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(lesotho)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "artifact_id"    "level"          "raw_material"   "artifact_class"
+[5] "completeness"  </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(lesotho)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 1,060
+Columns: 5
+$ artifact_id    &lt;dbl&gt; 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19…
+$ level          &lt;chr&gt; "BARF", "BARF", "BARF", "BARF", "BARF", "BARF", "BARF",…
+$ raw_material   &lt;chr&gt; "CrystallineQuartz", "CrystallineQuartz", "CrystallineQ…
+$ artifact_class &lt;chr&gt; "CompFlake", "CompFlake", "CompFlake", "FlakeFrag", "Fl…
+$ completeness   &lt;chr&gt; "Complete", "Complete", "Complete", "Fragment", "Fragme…</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lesotho)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 5
+  artifact_id level raw_material      artifact_class completeness
+        &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;             &lt;chr&gt;          &lt;chr&gt;       
+1           3 BARF  CrystallineQuartz CompFlake      Complete    
+2           4 BARF  CrystallineQuartz CompFlake      Complete    
+3           5 BARF  CrystallineQuartz CompFlake      Complete    
+4           6 BARF  CrystallineQuartz FlakeFrag      Fragment    
+5           7 BARF  CrystallineQuartz FlakeFrag      Fragment    
+6           8 BARF  CrystallineQuartz FlakeFrag      Fragment    </code></pre>
+</div>
+</div>
+<p>The teaching population contains <strong>1,060 source observations</strong> across four published archaeological layers: BAS, RBL-CLBRF, RF, and BARF.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Keep source data and analysis grouping distinct">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Keep source data and analysis grouping distinct
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The seven source raw-material categories remain preserved in the CSV. <code>Other</code> is <strong>not</strong> a source category; it is created transparently at analysis time.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="part-xv-audit-the-categorical-evidence" class="level1">
+<h1>Part XV — Audit the categorical evidence</h1>
+<section id="reproduce-the-source-structure-before-recoding" class="level2">
+<h2 class="anchored" data-anchor-id="reproduce-the-source-structure-before-recoding">15. Reproduce the source structure before recoding</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>lesotho <span class="sc">|&gt;</span> <span class="fu">count</span>(level)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 2
+  level         n
+  &lt;chr&gt;     &lt;int&gt;
+1 BARF        305
+2 BAS         234
+3 RBL-CLBRF   270
+4 RF          251</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>lesotho <span class="sc">|&gt;</span> <span class="fu">count</span>(raw_material, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 7 × 2
+  raw_material          n
+  &lt;chr&gt;             &lt;int&gt;
+1 FineChert           673
+2 Dolerite            179
+3 CrystallineQuartz    87
+4 CoarseChert          74
+5 Quartzite            27
+6 Sandstone            11
+7 Agate                 9</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>lesotho <span class="sc">|&gt;</span> <span class="fu">count</span>(level, raw_material)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 26 × 3
+   level raw_material          n
+   &lt;chr&gt; &lt;chr&gt;             &lt;int&gt;
+ 1 BARF  Agate                 3
+ 2 BARF  CoarseChert          29
+ 3 BARF  CrystallineQuartz    44
+ 4 BARF  Dolerite             28
+ 5 BARF  FineChert           201
+ 6 BAS   Agate                 3
+ 7 BAS   CoarseChert          16
+ 8 BAS   CrystallineQuartz    12
+ 9 BAS   Dolerite             59
+10 BAS   FineChert           138
+# ℹ 16 more rows</code></pre>
+</div>
+</div>
+<p>Expected layer totals:</p>
+<blockquote class="blockquote">
+<p><strong>BAS 234 · RBL-CLBRF 270 · RF 251 · BARF 305</strong></p>
+</blockquote>
+<section id="practice-15" class="level3">
+<h3 class="anchored" data-anchor-id="practice-15">Practice 15</h3>
+<p>Verify that these sum to 1,060. Why inspect the authentic source categories before recoding?</p>
+</section>
+</section>
+</section>
+<section id="part-xvi-create-the-transparent-teaching-grouping" class="level1">
+<h1>Part XVI — Create the transparent teaching grouping</h1>
+<section id="preserve-three-categories-combine-four-as-other" class="level2">
+<h2 class="anchored" data-anchor-id="preserve-three-categories-combine-four-as-other">16. Preserve three categories; combine four as Other</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>lesotho_grouped <span class="ot">&lt;-</span> lesotho <span class="sc">|&gt;</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">material_group =</span> <span class="fu">case_when</span>(</span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>      raw_material <span class="sc">==</span> <span class="st">"FineChert"</span> <span class="sc">~</span> <span class="st">"FineChert"</span>,</span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a>      raw_material <span class="sc">==</span> <span class="st">"Dolerite"</span> <span class="sc">~</span> <span class="st">"Dolerite"</span>,</span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a>      raw_material <span class="sc">==</span> <span class="st">"CrystallineQuartz"</span> <span class="sc">~</span> <span class="st">"CrystallineQuartz"</span>,</span>
+<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Other"</span></span>
+<span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb63-9"><a href="#cb63-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">level =</span> <span class="fu">factor</span>(level, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"BAS"</span>, <span class="st">"RBL-CLBRF"</span>, <span class="st">"RF"</span>, <span class="st">"BARF"</span>)),</span>
+<span id="cb63-10"><a href="#cb63-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">material_group =</span> <span class="fu">factor</span>(</span>
+<span id="cb63-11"><a href="#cb63-11" aria-hidden="true" tabindex="-1"></a>      material_group,</span>
+<span id="cb63-12"><a href="#cb63-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"CrystallineQuartz"</span>, <span class="st">"Dolerite"</span>, <span class="st">"FineChert"</span>, <span class="st">"Other"</span>)</span>
+<span id="cb63-13"><a href="#cb63-13" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb63-14"><a href="#cb63-14" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb63-15"><a href="#cb63-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-16"><a href="#cb63-16" aria-hidden="true" tabindex="-1"></a>lesotho_grouped <span class="sc">|&gt;</span> <span class="fu">count</span>(level, material_group)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 16 × 3
+   level     material_group        n
+   &lt;fct&gt;     &lt;fct&gt;             &lt;int&gt;
+ 1 BAS       CrystallineQuartz    12
+ 2 BAS       Dolerite             59
+ 3 BAS       FineChert           138
+ 4 BAS       Other                25
+ 5 RBL-CLBRF CrystallineQuartz    10
+ 6 RBL-CLBRF Dolerite             36
+ 7 RBL-CLBRF FineChert           194
+ 8 RBL-CLBRF Other                30
+ 9 RF        CrystallineQuartz    21
+10 RF        Dolerite             56
+11 RF        FineChert           140
+12 RF        Other                34
+13 BARF      CrystallineQuartz    44
+14 BARF      Dolerite             28
+15 BARF      FineChert           201
+16 BARF      Other                32</code></pre>
+</div>
+</div>
+<p><code>Other</code> combines Agate, CoarseChert, Quartzite, and Sandstone.</p>
+<section id="practice-16" class="level3">
+<h3 class="anchored" data-anchor-id="practice-16">Practice 16</h3>
+<p>Why is this transparent collapse preferable to deleting sparse categories? Why should categories not be collapsed merely to obtain significance?</p>
+</section>
+</section>
+</section>
+<section id="part-xvii-build-the-four-by-four-contingency-table" class="level1">
+<h1>Part XVII — Build the four-by-four contingency table</h1>
+<section id="counts-first" class="level2">
+<h2 class="anchored" data-anchor-id="counts-first">17. Counts first</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>lesotho_tab <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(<span class="sc">~</span> level <span class="sc">+</span> material_group, <span class="at">data =</span> lesotho_grouped)</span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>lesotho_tab</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           material_group
+level       CrystallineQuartz Dolerite FineChert Other
+  BAS                      12       59       138    25
+  RBL-CLBRF                10       36       194    30
+  RF                       21       56       140    34
+  BARF                     44       28       201    32</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">addmargins</span>(lesotho_tab)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           material_group
+level       CrystallineQuartz Dolerite FineChert Other  Sum
+  BAS                      12       59       138    25  234
+  RBL-CLBRF                10       36       194    30  270
+  RF                       21       56       140    34  251
+  BARF                     44       28       201    32  305
+  Sum                      87      179       673   121 1060</code></pre>
+</div>
+</div>
+<p>Validated table:</p>
+<pre class="text"><code>            CrystallineQuartz Dolerite FineChert Other
+BAS                        12       59       138    25
+RBL-CLBRF                  10       36       194    30
+RF                         21       56       140    34
+BARF                       44       28       201    32</code></pre>
+<section id="practice-17" class="level3">
+<h3 class="anchored" data-anchor-id="practice-17">Practice 17</h3>
+<p>Identify the largest and smallest cell counts. Which layer has the largest denominator?</p>
+</section>
+</section>
+</section>
+<section id="part-xviii-proportions-reveal-composition" class="level1">
+<h1>Part XVIII — Proportions reveal composition</h1>
+<section id="row-proportions" class="level2">
+<h2 class="anchored" data-anchor-id="row-proportions">18. Row proportions</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>row_props <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(lesotho_tab, <span class="at">margin =</span> <span class="dv">1</span>)</span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(row_props, <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           material_group
+level       CrystallineQuartz Dolerite FineChert Other
+  BAS                   0.051    0.252     0.590 0.107
+  RBL-CLBRF             0.037    0.133     0.719 0.111
+  RF                    0.084    0.223     0.558 0.135
+  BARF                  0.144    0.092     0.659 0.105</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>lesotho_plot <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(lesotho_tab) <span class="sc">|&gt;</span></span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span></span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">n =</span> Freq) <span class="sc">|&gt;</span></span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(level) <span class="sc">|&gt;</span></span>
+<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">proportion =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">|&gt;</span></span>
+<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb72-7"><a href="#cb72-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-8"><a href="#cb72-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(lesotho_plot, <span class="fu">aes</span>(<span class="at">x =</span> level, <span class="at">y =</span> proportion, <span class="at">fill =</span> material_group)) <span class="sc">+</span></span>
+<span id="cb72-9"><a href="#cb72-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb72-10"><a href="#cb72-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
+<span id="cb72-11"><a href="#cb72-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"Within-layer proportion"</span>, <span class="at">fill =</span> <span class="st">"Raw material"</span>,</span>
+<span id="cb72-12"><a href="#cb72-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Raw-material composition across Sehonghong layers"</span>) <span class="sc">+</span></span>
+<span id="cb72-13"><a href="#cb72-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week11_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="practice-18" class="level3">
+<h3 class="anchored" data-anchor-id="practice-18">Practice 18</h3>
+<p>Describe the main compositional differences without inferential language.</p>
+</section>
+</section>
+</section>
+<section id="part-xix-pearsons-chi-square-test-of-independence" class="level1">
+<h1>Part XIX — Pearson’s chi-square test of independence</h1>
+<section id="are-layer-and-raw-material-composition-independent" class="level2">
+<h2 class="anchored" data-anchor-id="are-layer-and-raw-material-composition-independent">19. Are layer and raw-material composition independent?</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>lesotho_chi <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(lesotho_tab)</span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>lesotho_chi</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's Chi-squared test
+
+data:  lesotho_tab
+X-squared = 58.195, df = 9, p-value = 2.982e-09</code></pre>
+</div>
+</div>
+<p>Validated teaching result:</p>
+<blockquote class="blockquote">
+<p><strong>χ² ≈ 58.20 · df = 9 · p ≈ 2.98 × 10⁻⁹</strong></p>
+</blockquote>
+<section id="practice-19" class="level3">
+<h3 class="anchored" data-anchor-id="practice-19">Practice 19</h3>
+<p>State the null hypothesis in words. Why should the result not be summarized only as “significant”?</p>
+</section>
+</section>
+</section>
+<section id="part-xx-inspect-expected-counts" class="level1">
+<h1>Part XX — Inspect expected counts</h1>
+<section id="is-the-pearson-approximation-reasonable" class="level2">
+<h2 class="anchored" data-anchor-id="is-the-pearson-approximation-reasonable">20. Is the Pearson approximation reasonable?</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(lesotho_chi<span class="sc">$</span>expected, <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           material_group
+level       CrystallineQuartz Dolerite FineChert Other
+  BAS                   19.21    39.52    148.57 26.71
+  RBL-CLBRF             22.16    45.59    171.42 30.82
+  RF                    20.60    42.39    159.36 28.65
+  BARF                  25.03    51.50    193.65 34.82</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(lesotho_chi<span class="sc">$</span>expected)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 19.20566</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(lesotho_chi<span class="sc">$</span>expected <span class="sc">&lt;</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
+</div>
+</div>
+<p>Expected audit:</p>
+<blockquote class="blockquote">
+<p><strong>minimum expected count ≈ 19.21 · cells below 5 = 0</strong></p>
+</blockquote>
+<section id="practice-20" class="level3">
+<h3 class="anchored" data-anchor-id="practice-20">Practice 20</h3>
+<p>Why is this check important? Does a small <strong>observed</strong> count automatically invalidate Pearson’s test?</p>
+</section>
+</section>
+</section>
+<section id="part-xxi-residuals-show-where-the-association-lives" class="level1">
+<h1>Part XXI — Residuals show where the association lives</h1>
+<section id="standardized-residuals" class="level2">
+<h2 class="anchored" data-anchor-id="standardized-residuals">21. Standardized residuals</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>stdres <span class="ot">&lt;-</span> lesotho_chi<span class="sc">$</span>stdres</span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(stdres, <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           material_group
+level       CrystallineQuartz Dolerite FineChert Other
+  BAS                   -1.94     3.85     -1.63 -0.40
+  RBL-CLBRF             -3.12    -1.81      3.31 -0.18
+  RF                     0.11     2.63     -2.91  1.22
+  BARF                   4.69    -4.26      1.04 -0.60</code></pre>
+</div>
+</div>
+<p>Important validated patterns include:</p>
+<ul>
+<li>BARF × CrystallineQuartz: strongly positive;</li>
+<li>BAS × Dolerite: positive;</li>
+<li>RBL-CLBRF × FineChert: positive;</li>
+<li>BARF × Dolerite: strongly negative;</li>
+<li>RF × FineChert: negative.</li>
+</ul>
+<section id="practice-21" class="level3">
+<h3 class="anchored" data-anchor-id="practice-21">Practice 21</h3>
+<p>Choose two positive and two negative residuals. Explain each in observed-versus-expected language.</p>
+</section>
+</section>
+</section>
+<section id="part-xxii-visualize-observed-versus-expected-departures" class="level1">
+<h1>Part XXII — Visualize observed-versus-expected departures</h1>
+<section id="residual-heat-map" class="level2">
+<h2 class="anchored" data-anchor-id="residual-heat-map">22. Residual heat map</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>residual_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(stdres) <span class="sc">|&gt;</span></span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span></span>
+<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">std_residual =</span> Freq)</span>
+<span id="cb83-4"><a href="#cb83-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-5"><a href="#cb83-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(residual_df, <span class="fu">aes</span>(<span class="at">x =</span> material_group, <span class="at">y =</span> level, <span class="at">fill =</span> std_residual)) <span class="sc">+</span></span>
+<span id="cb83-6"><a href="#cb83-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span></span>
+<span id="cb83-7"><a href="#cb83-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(std_residual, <span class="dv">1</span>))) <span class="sc">+</span></span>
+<span id="cb83-8"><a href="#cb83-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">fill =</span> <span class="st">"Std. residual"</span>,</span>
+<span id="cb83-9"><a href="#cb83-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Which cells drive the layer × raw-material association?"</span>) <span class="sc">+</span></span>
+<span id="cb83-10"><a href="#cb83-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week11_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="practice-22" class="level3">
+<h3 class="anchored" data-anchor-id="practice-22">Practice 22</h3>
+<p>How does this heat map add information beyond the stacked proportion chart?</p>
+</section>
+</section>
+</section>
+<section id="part-xxiii-quantify-association-strength" class="level1">
+<h1>Part XXIII — Quantify association strength</h1>
+<section id="cramers-v-1" class="level2">
+<h2 class="anchored" data-anchor-id="cramers-v-1">23. Cramer’s V</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>cramers_v <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(</span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unname</span>(lesotho_chi<span class="sc">$</span>statistic) <span class="sc">/</span></span>
+<span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a>    (<span class="fu">sum</span>(lesotho_tab) <span class="sc">*</span> <span class="fu">min</span>(<span class="fu">nrow</span>(lesotho_tab) <span class="sc">-</span> <span class="dv">1</span>, <span class="fu">ncol</span>(lesotho_tab) <span class="sc">-</span> <span class="dv">1</span>))</span>
+<span id="cb84-4"><a href="#cb84-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb84-5"><a href="#cb84-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-6"><a href="#cb84-6" aria-hidden="true" tabindex="-1"></a>cramers_v</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1352789</code></pre>
+</div>
+</div>
+<p>Validated result:</p>
+<blockquote class="blockquote">
+<p><strong>Cramer’s V ≈ 0.135</strong></p>
+</blockquote>
+<section id="practice-23" class="level3">
+<h3 class="anchored" data-anchor-id="practice-23">Practice 23</h3>
+<p>Why should a very small p-value and a Cramer’s V around 0.135 not be treated as contradictory?</p>
+</section>
+</section>
+</section>
+<section id="part-xxiv-alternatives-are-conditional-not-ritual" class="level1">
+<h1>Part XXIV — Alternatives are conditional, not ritual</h1>
+<section id="when-would-fisher-or-simulation-be-preferable" class="level2">
+<h2 class="anchored" data-anchor-id="when-would-fisher-or-simulation-be-preferable">24. When would Fisher or simulation be preferable?</h2>
+<p>For this validated four-by-four table, expected counts are comfortably above 5, so Pearson’s approximation is not threatened by sparse expected cells.</p>
+<section id="practice-24" class="level3">
+<h3 class="anchored" data-anchor-id="practice-24">Practice 24</h3>
+<p>Describe a table for which you would consider Fisher’s exact test, simulated p-values, or substantively justified category regrouping. Why is “run Fisher whenever any observed count is below 5” the wrong rule?</p>
+</section>
+</section>
+</section>
+<section id="part-xxv-return-to-lesotho-archaeology" class="level1">
+<h1>Part XXV — Return to Lesotho archaeology</h1>
+<section id="association-is-not-archaeological-explanation" class="level2">
+<h2 class="anchored" data-anchor-id="association-is-not-archaeological-explanation">25. Association is not archaeological explanation</h2>
+<p>The statistical result supports an association between <strong>archaeological layer</strong> and <strong>raw-material composition</strong> in the teaching dataset. Residuals show which cells contribute most strongly, and Cramer’s V describes the overall strength of association.</p>
+<p>It does <strong>not</strong> identify a unique behavioral mechanism.</p>
+<p>Possible explanations require archaeological argument involving procurement preference, mobility, source accessibility, exchange, technology, taphonomy, sampling, classification, and other contextual evidence.</p>
+<p>The published Lesotho case also draws on independent evidence such as cortex form and technological ratios. The archaeological argument is therefore broader than a p-value.</p>
+<section id="practice-25" class="level3">
+<h3 class="anchored" data-anchor-id="practice-25">Practice 25</h3>
+<p>Separate your interpretation into four layers:</p>
+<ol type="1">
+<li><strong>What was observed</strong> — raw-material counts and proportions across BAS, RBL-CLBRF, RF, and BARF.</li>
+<li><strong>Statistical association</strong> — chi-square, expected counts, residuals, and Cramer’s V.</li>
+<li><strong>Possible archaeological meaning</strong> — procurement, mobility, accessibility, exchange, technology, or formation processes.</li>
+<li><strong>What cannot be established</strong> — a unique behavioral or environmental cause from the contingency table alone.</li>
+</ol>
+</section>
+</section>
+</section>
+<section id="part-xxvi-conceptual-debugging" class="level1">
+<h1>Part XXVI — Conceptual debugging</h1>
+<section id="diagnose-the-mistake" class="level2">
+<h2 class="anchored" data-anchor-id="diagnose-the-mistake">26. Diagnose the mistake</h2>
+<p>For each statement, identify the problem.</p>
+<ol type="1">
+<li>“FineChert was coded 3, so its mean is larger than Dolerite coded 2.”</li>
+<li>“The layers have similar percentages, so sample sizes do not matter.”</li>
+<li>“Expected counts should be equal in every cell.”</li>
+<li>“One observed cell is below 5, so Pearson’s chi-square is automatically invalid.”</li>
+<li>“The p-value is tiny, so the association must be strong.”</li>
+<li>“The overall chi-square tells us exactly which cells differ.”</li>
+<li>“Cramer’s V tells us which cells drive the association.”</li>
+<li>“Because layer and raw material are associated, layer caused procurement choice.”</li>
+<li>“We should collapse categories until the test becomes significant.”</li>
+<li>“Fisher’s exact test repairs dependence among observations.”</li>
+</ol>
+</section>
+</section>
+<section id="part-xxvii-integrated-practice" class="level1">
+<h1>Part XXVII — Integrated practice</h1>
+<section id="reconstruct-the-complete-week-11-argument" class="level2">
+<h2 class="anchored" data-anchor-id="reconstruct-the-complete-week-11-argument">27. Reconstruct the complete Week 11 argument</h2>
+<p>Without copying earlier prose, write a short analysis that:</p>
+<ol type="1">
+<li>identifies the observational unit;</li>
+<li>identifies the two categorical variables;</li>
+<li>reports layer totals;</li>
+<li>explains the analysis-time <code>Other</code> grouping;</li>
+<li>reports the four-by-four contingency table;</li>
+<li>reports row proportions;</li>
+<li>states the null hypothesis;</li>
+<li>reports chi-square and df;</li>
+<li>reports the expected-count audit;</li>
+<li>identifies the strongest residual patterns;</li>
+<li>reports Cramer’s V;</li>
+<li>explains whether sparse-table alternatives are needed;</li>
+<li>gives an archaeological interpretation;</li>
+<li>states at least two claims the analysis does not establish.</li>
+</ol>
+</section>
+</section>
+<section id="part-xxviii-mastery-checklist" class="level1">
+<h1>Part XXVIII — Mastery checklist</h1>
+<ul class="task-list">
+<li><label><input type="checkbox">I can distinguish nominal, ordinal, and numerical variables.</label></li>
+<li><label><input type="checkbox">I identify the observational unit before counting.</label></li>
+<li><label><input type="checkbox">I report counts as well as proportions.</label></li>
+<li><label><input type="checkbox">I know that every percentage requires a denominator.</label></li>
+<li><label><input type="checkbox">I distinguish goodness-of-fit from independence tests.</label></li>
+<li><label><input type="checkbox">I understand how expected counts arise from the null model.</label></li>
+<li><label><input type="checkbox">I can explain the chi-square statistic conceptually.</label></li>
+<li><label><input type="checkbox">I inspect expected counts before interpreting Pearson’s test.</label></li>
+<li><label><input type="checkbox">I use standardized residuals to locate departures.</label></li>
+<li><label><input type="checkbox">I distinguish evidence of association from association strength.</label></li>
+<li><label><input type="checkbox">I can calculate and interpret Cramer’s V.</label></li>
+<li><label><input type="checkbox">I understand when Fisher or simulation may be useful.</label></li>
+<li><label><input type="checkbox">I do not collapse categories merely to obtain significance.</label></li>
+<li><label><input type="checkbox">I distinguish statistical association from archaeological mechanism.</label></li>
+<li><label><input type="checkbox">I return statistical results to archaeological context.</label></li>
+</ul>
+</section>
+<section id="final-challenge-explain-the-workflow-without-code" class="level1">
+<h1>Final challenge — explain the workflow without code</h1>
+<p>Explain:</p>
+<blockquote class="blockquote">
+<p><strong>categorical evidence → counts → proportions → contingency table → null model → expected counts → chi-square → residuals → effect size → alternatives → archaeological interpretation</strong></p>
+</blockquote>
+<p>Why do <strong>categories and observational units come before the test</strong>?</p>
+</section>
+<section id="clean-render-test" class="level1">
+<h1>Clean Render Test</h1>
+<ol type="1">
+<li>Save the QMD.</li>
+<li>Choose <strong>Session → Restart R</strong>.</li>
+<li>Do not recreate objects manually in the Console.</li>
+<li>Render the complete document.</li>
+<li>If it fails, identify what the document assumed but never created.</li>
+</ol>
+<p>A successful clean render shows that the workflow is computationally self-contained.</p>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

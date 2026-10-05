@@ -35,6 +35,7 @@ This course develops practical statistical thinking for archaeology and anthropo
   - [Week 7 — Probability, Sampling, and Sampling Distributions](practice-workbooks/week07.qmd)
   - [Week 8 — Confidence Intervals and Hypothesis Testing](practice-workbooks/week08.qmd)
   - [Week 9 — Comparing Two Groups: t-tests](practice-workbooks/week09.qmd)
+  - [Week 11 — Chi-Square and Tests of Proportions](practice-workbooks/week11.qmd)
  
 - [Assignments](assignments/index.qmd)
 - [R, RStudio & Quarto Resources](resources/index.qmd)

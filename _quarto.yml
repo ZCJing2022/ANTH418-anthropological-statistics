@@ -24,6 +24,7 @@ project:
     - practice-workbooks/week07.qmd
     - practice-workbooks/week08.qmd
     - practice-workbooks/week09.qmd
+    - practice-workbooks/week11.qmd
     - assignments/index.qmd
     - assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.qmd
     - assignments/assignment02_kinbank_visualization/assignment02_kinbank_visualization.qmd
@@ -45,6 +46,7 @@ project:
     - downloads/practice-workbooks/ANTH418_Week07_Practice.zip
     - downloads/practice-workbooks/ANTH418_Week08_Practice.zip
     - downloads/practice-workbooks/ANTH418_Week09_Practice.zip
+    - downloads/practice-workbooks/ANTH418_Week11_Practice.zip
 
 website:
   title: "ANTH418: Anthropological Statistics"
@@ -115,6 +117,9 @@ website:
 
           - href: practice-workbooks/week09.qmd
             text: "Week 9 — Comparing Two Groups: t-tests"
+
+          - href: practice-workbooks/week11.qmd
+            text: "Week 11 — Chi-Square & Tests of Proportions"
 
       - href: assignments/index.qmd
         text: Assignments
