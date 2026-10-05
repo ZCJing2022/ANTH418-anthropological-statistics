@@ -1,0 +1,640 @@
+---
+title: "ANTH418 Week 9 Practice Workbook"
+subtitle: "Comparing Two Groups: t-tests"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    code-copy: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+::: {.callout-tip title="Start here — download the editable workbook"}
+This webpage is the rendered version of an **editable Quarto workbook**.
+
+1. Download the **Week 9 Practice Package**.
+2. Unzip it.
+3. Open `week09-practice.qmd` in RStudio.
+4. Keep the `data` folder beside the QMD.
+5. Work from top to bottom.
+6. For each exercise: **predict → run → inspect → explain**.
+7. Edit code and write explanations directly in the QMD.
+8. Render frequently.
+9. Finish with the **Clean Render Test**.
+
+**Do not copy this webpage into RStudio.** The downloadable QMD is the editable source.
+
+[**Download Week 9 Practice Package (.zip)**](../downloads/practice-workbooks/ANTH418_Week09_Practice.zip)
+:::
+
+## How to use this workbook
+
+Week 8 established the general logic of statistical inference. Week 9 applies that logic to **comparing two groups**.
+
+> **research design → inspect the groups → estimate the difference → estimate SE → calculate t → quantify uncertainty → assess magnitude → diagnose assumptions → choose alternatives if needed → archaeological interpretation**
+
+> **Do not begin with `t.test()`. Begin with the research question, the observational unit, the distributions, and the size and direction of the difference.**
+
+## Learning objectives
+
+By the end, you should be able to distinguish independent and paired designs; calculate and interpret a mean difference; explain the standard error of a difference; interpret the t statistic and degrees of freedom; explain why Welch's t-test is the independent-samples default; inspect assumptions and robustness; interpret a t-based confidence interval; distinguish raw from standardized effect magnitude; calculate Cohen's d and Hedges' g; explain rank-based and permutation alternatives; and apply the workflow to Tell Tweini isotope evidence.
+
+# Part I — Design comes first
+
+## 1. Independent versus paired observations
+
+```{r}
+library(tidyverse)
+
+independent_demo <- tibble(
+  phase = rep(c("MBA", "LBA"), each = 5),
+  delta13c = c(
+    -4.8, -5.1, -4.6, -5.3, -4.9,
+    -5.7, -5.4, -6.0, -5.6, -5.8
+  )
+)
+
+paired_demo <- tibble(
+  specimen = 1:8,
+  observer_1 = c(41.2, 38.7, 44.0, 40.1, 39.4, 42.8, 37.9, 43.2),
+  observer_2 = c(41.0, 38.9, 43.7, 40.0, 39.6, 42.5, 38.0, 43.1)
+)
+
+independent_demo
+paired_demo
+```
+
+### Practice 1
+
+Explain why MBA versus LBA plant observations are independent rather than paired. Why are two measurements of the same specimen paired?
+
+# Part II — The effect must have a direction
+
+## 2. Define Group 1 − Group 2
+
+For independent groups:
+
+$$
+\widehat{\Delta}=\bar X_1-\bar X_2
+$$
+
+For paired observations:
+
+$$
+D_i=X_{1i}-X_{2i}, \qquad \bar D=\frac{\sum D_i}{N}
+$$
+
+```{r}
+mba_mean <- independent_demo |>
+  filter(phase == "MBA") |>
+  summarise(m = mean(delta13c)) |>
+  pull(m)
+
+lba_mean <- independent_demo |>
+  filter(phase == "LBA") |>
+  summarise(m = mean(delta13c)) |>
+  pull(m)
+
+mba_minus_lba <- mba_mean - lba_mean
+
+mba_mean
+lba_mean
+mba_minus_lba
+```
+
+### Practice 2
+
+Interpret the sign of **MBA − LBA**. What changes if the subtraction order is reversed?
+
+# Part III — Standard error belongs to the difference
+
+## 3. Sampling uncertainty for two means
+
+Welch:
+
+$$
+SE_{\text{Welch}}=\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}
+$$
+
+Paired:
+
+$$
+SE_{\bar D}=\frac{s_D}{\sqrt{N}}
+$$
+
+```{r}
+mba_demo <- independent_demo$delta13c[independent_demo$phase == "MBA"]
+lba_demo <- independent_demo$delta13c[independent_demo$phase == "LBA"]
+
+welch_se <- sqrt(
+  var(mba_demo) / length(mba_demo) +
+    var(lba_demo) / length(lba_demo)
+)
+welch_se
+```
+
+### Practice 3
+
+Why does the standard-error formula depend on the research design?
+
+# Part IV — The t statistic scales signal by uncertainty
+
+## 4. Difference divided by standard error
+
+$$
+t=\frac{(\bar X_1-\bar X_2)-0}{SE_{\text{diff}}}
+$$
+
+```{r}
+t_manual <- mba_minus_lba / welch_se
+t_manual
+```
+
+### Practice 4
+
+Explain t as **difference relative to uncertainty**. Why can the same raw difference produce different t values?
+
+# Part V — Degrees of freedom shape the reference distribution
+
+## 5. Different designs use different df
+
+Student independent: $df=n_1+n_2-2$
+
+Paired: $df=N_{\text{pairs}}-1$
+
+Welch uses the Welch–Satterthwaite approximation and can return fractional df.
+
+```{r}
+welch_demo <- t.test(delta13c ~ phase, data = independent_demo)
+welch_demo
+```
+
+### Practice 5
+
+Locate t, df, p, CI, and group means in the R output. Why can Welch df be fractional?
+
+# Part VI — Welch is the independent-samples default
+
+## 6. Student pools; Welch separates
+
+```{r}
+t.test(delta13c ~ phase, data = independent_demo)
+t.test(delta13c ~ phase, data = independent_demo, var.equal = TRUE)
+```
+
+Welch does not require equal population variances. Student's independent t-test does.
+
+### Practice 6
+
+Why should Student's test not be chosen simply because an equal-variance pretest failed to reject?
+
+# Part VII — Paired t-tests analyze difference scores
+
+## 7. Pairing changes the information structure
+
+```{r}
+paired_demo <- paired_demo |> mutate(diff = observer_1 - observer_2)
+
+paired_demo
+mean(paired_demo$diff)
+sd(paired_demo$diff) / sqrt(nrow(paired_demo))
+```
+
+```{r}
+t.test(paired_demo$observer_1, paired_demo$observer_2, paired = TRUE)
+```
+
+### Practice 7
+
+Why would treating these measurements as independent throw away information?
+
+# Part VIII — Inspect before testing
+
+## 8. Distributions, outliers, and sample size
+
+```{r}
+ggplot(independent_demo, aes(x = phase, y = delta13c)) +
+  geom_boxplot(outlier.shape = NA) +
+  geom_jitter(width = 0.08, size = 2) +
+  labs(x = NULL, y = "δ13C (‰)") +
+  theme_minimal()
+```
+
+```{r}
+ggplot(independent_demo, aes(sample = delta13c)) +
+  stat_qq() +
+  stat_qq_line() +
+  facet_wrap(~ phase, scales = "free") +
+  theme_minimal()
+```
+
+### Practice 8
+
+With small samples, what can a Q–Q plot tell you? What can it not establish? Why can no normality test diagnose archaeological independence?
+
+# Part IX — Assumptions and robustness
+
+## 9. Four distinct issues
+
+- **Scale:** the response should support meaningful means.
+- **Independence:** determined by design and archaeological context.
+- **Distribution shape:** severe skew and influential outliers matter especially at small n.
+- **Variance structure:** Student assumes equal variances; Welch relaxes this.
+
+::: {.callout-important}
+**Independence is not a visual property of a histogram and cannot be rescued by a large sample.** Repeated measurements, fragments from one original object, or observations clustered within one context may contain less independent information than the row count suggests.
+:::
+
+### Practice 9
+
+Give an archaeological example in which many rows do not equal many independent observations.
+
+# Part X — Confidence interval for the mean difference
+
+## 10. Estimate first
+
+$$
+\text{difference}\pm t_{\text{crit}}\times SE_{\text{diff}}
+$$
+
+```{r}
+welch_demo$conf.int
+```
+
+### Practice 10
+
+Interpret the interval as a range of plausible effect magnitudes under the procedure. Why is “crosses zero / does not cross zero” incomplete?
+
+# Part XI — Raw and standardized effect magnitude
+
+## 11. Original units remain primary
+
+```{r}
+n1 <- length(mba_demo)
+n2 <- length(lba_demo)
+s1 <- sd(mba_demo)
+s2 <- sd(lba_demo)
+
+sp <- sqrt(((n1 - 1) * s1^2 + (n2 - 1) * s2^2) / (n1 + n2 - 2))
+cohen_d <- (mean(mba_demo) - mean(lba_demo)) / sp
+
+df_pooled <- n1 + n2 - 2
+J <- 1 - 3 / (4 * df_pooled - 1)
+hedges_g <- J * cohen_d
+
+cohen_d
+hedges_g
+```
+
+### Practice 11
+
+Why is the raw isotope difference more archaeologically legible than Cohen's d? What does Hedges' g correct for?
+
+# Part XII — Alternatives depend on question and design
+
+## 12. Rank-based and resampling alternatives
+
+```{r}
+wilcox.test(delta13c ~ phase, data = independent_demo, exact = FALSE)
+```
+
+```{r}
+wilcox.test(paired_demo$observer_1, paired_demo$observer_2, paired = TRUE, exact = FALSE)
+```
+
+Permutation tests construct empirical null distributions when exchangeability is defensible.
+
+### Practice 12
+
+Why are Welch t, rank-based tests, and permutation tests not interchangeable rituals?
+
+
+# Part XIII — Load the Tell Tweini teaching data
+
+## 13. Portable data path
+
+The Week 9 case study uses a focused teaching extract from the published Tell Tweini plant dataset.
+
+```{r}
+if (file.exists("data/tell_tweini_ttest.csv")) {
+  tweini_file <- "data/tell_tweini_ttest.csv"
+} else {
+  project_root <- if (file.exists("_quarto.yml")) "." else ".."
+  tweini_file <- file.path(project_root, "assignments", "assignment06_tell_tweini_ttest", "data", "tell_tweini_ttest.csv")
+}
+file.exists(tweini_file)
+```
+
+```{r}
+tweini <- read_csv(tweini_file, show_col_types = FALSE)
+dim(tweini)
+names(tweini)
+glimpse(tweini)
+head(tweini)
+```
+
+The teaching dataset has **410 rows and 5 variables**: `source_row_id`, `period`, `taxon`, `measure`, and `isotope_value`.
+
+::: {.callout-important title="Know what is being measured"}
+One row represents one plant Δ13C observation in the teaching dataset. The outcome is **Δ13C**, identified by `measure == "delta13c"` and stored numerically in `isotope_value`. It is **not raw measured plant δ13C**.
+:::
+
+### Practice 13 — Audit before analysis
+
+Identify the observational unit, period variable, taxon variable, measurement variable, and numerical outcome. Why must the observational unit be understood before running a t-test?
+
+# Part XIV — Verify the archaeological sample structure
+
+## 14. Period, measure, and taxon counts
+
+```{r}
+tweini |> count(period)
+```
+
+The validated teaching dataset contains **Early Bronze Age 24 · Middle Bronze Age 144 · Late Bronze Age 135 · Iron Age 107**.
+
+```{r}
+tweini |> count(measure)
+tweini |> count(taxon, sort = TRUE)
+```
+
+### Practice 14
+
+Why are these counts part of statistical analysis rather than merely housekeeping? What should you do if they do not reproduce the expected data structure?
+
+# Part XV — Define the Tell Tweini comparison
+
+## 15. Wild ryegrass: Middle Bronze Age versus Late Bronze Age
+
+The research question is:
+
+> **How large is the difference in wild ryegrass (*Lolium cf. multiflorum*) Δ13C between the Middle Bronze Age and Late Bronze Age at Tell Tweini, how uncertain is that difference, and what does a Welch two-sample t-test contribute to its interpretation?**
+
+```{r}
+ryegrass <- tweini |>
+  filter(
+    taxon == "Lolium cf. multiflorum",
+    period %in% c("Middle Bronze Age", "Late Bronze Age"),
+    measure == "delta13c"
+  )
+ryegrass |> count(period)
+glimpse(ryegrass)
+```
+
+You should obtain **Middle Bronze Age: n = 10** and **Late Bronze Age: n = 10**.
+
+Throughout this workbook define the effect as **Middle Bronze Age − Late Bronze Age**. A positive difference therefore means that mean Δ13C is higher in the Middle Bronze Age.
+
+### Practice 15
+
+State the observational unit, numerical outcome, grouping variable, why the groups are independent rather than paired, and the direction of the contrast.
+
+# Part XVI — Visualize and describe before testing
+
+## 16. Every observation matters
+
+```{r}
+ggplot(ryegrass, aes(x = period, y = isotope_value)) +
+  geom_boxplot(outlier.shape = NA) +
+  geom_jitter(width = 0.06, size = 3) +
+  labs(x = NULL, y = "Plant Δ13C", title = "Wild ryegrass Δ13C at Tell Tweini") +
+  theme_minimal()
+```
+
+```{r}
+ryegrass_summary <- ryegrass |>
+  group_by(period) |>
+  summarise(n = n(), mean = mean(isotope_value), sd = sd(isotope_value), median = median(isotope_value), iqr = IQR(isotope_value), .groups = "drop")
+ryegrass_summary
+```
+
+### Practice 16
+
+Describe center, spread, overlap, unusual observations, and sample size. Do not make an inferential claim from the plot alone.
+
+# Part XVII — Estimate the observed effect
+
+## 17. Middle Bronze Age − Late Bronze Age
+
+```{r}
+mba <- ryegrass |> filter(period == "Middle Bronze Age") |> pull(isotope_value)
+lba <- ryegrass |> filter(period == "Late Bronze Age") |> pull(isotope_value)
+mean_mba <- mean(mba)
+mean_lba <- mean(lba)
+raw_diff <- mean_mba - mean_lba
+mean_mba
+mean_lba
+raw_diff
+```
+
+### Practice 17
+
+Interpret the sign and magnitude before looking at a p-value. Why does the raw Δ13C difference remain archaeologically important even if we later standardize it?
+
+# Part XVIII — Diagnose assumptions without turning them into gates
+
+## 18. Design, distributions, and Shapiro–Wilk diagnostics
+
+```{r}
+ggplot(ryegrass, aes(sample = isotope_value)) +
+  stat_qq() + stat_qq_line() + facet_wrap(~ period, scales = "free") + theme_minimal()
+```
+
+```{r}
+shapiro_results <- ryegrass |>
+  group_by(period) |>
+  summarise(W = unname(shapiro.test(isotope_value)$statistic), p_value = shapiro.test(isotope_value)$p.value, .groups = "drop")
+shapiro_results
+```
+
+::: {.callout-warning title="Do not turn diagnostics into a pass/fail ritual"}
+With **n = 10 per group**, formal normality diagnostics have limited power. A Shapiro–Wilk p-value cannot establish independence and should not mechanically determine whether you are “allowed” to use a t-test.
+:::
+
+### Practice 18
+
+Consider independence, distribution shape, unusual observations, group spread, and sample size separately. Explain whether a mean-based comparison is reasonable.
+
+# Part XIX — Welch two-sample t-test
+
+## 19. Primary inferential analysis
+
+To preserve **Middle Bronze Age − Late Bronze Age**, supply the vectors in that order:
+
+```{r}
+welch_result <- t.test(mba, lba, var.equal = FALSE)
+welch_result
+```
+
+```{r}
+welch_t <- unname(welch_result$statistic)
+welch_df <- unname(welch_result$parameter)
+welch_p <- welch_result$p.value
+welch_ci <- welch_result$conf.int
+welch_t
+welch_df
+welch_p
+welch_ci
+```
+
+The t statistic represents the **observed mean difference relative to its estimated standard error**.
+
+### Practice 19
+
+Report both group means, MBA − LBA, the 95% CI, t, Welch–Satterthwaite df, and the two-sided p-value. Do not reduce the result to “significant” or “not significant.”
+
+# Part XX — Effect magnitude
+
+## 20. Raw difference and Cohen's d
+
+```{r}
+n_mba <- length(mba)
+n_lba <- length(lba)
+sd_mba <- sd(mba)
+sd_lba <- sd(lba)
+pooled_sd <- sqrt(((n_mba - 1) * sd_mba^2 + (n_lba - 1) * sd_lba^2) / (n_mba + n_lba - 2))
+cohen_d <- raw_diff / pooled_sd
+raw_diff
+cohen_d
+```
+
+Cohen's d expresses the observed difference in pooled within-group standard-deviation units.
+
+### Optional extension — Hedges' g
+
+```{r}
+df_pooled <- n_mba + n_lba - 2
+J <- 1 - 3 / (4 * df_pooled - 1)
+hedges_g <- J * cohen_d
+hedges_g
+```
+
+### Practice 20
+
+Why should the raw difference, Cohen's d, and Hedges' g not be treated as interchangeable? Why is the raw Δ13C contrast especially important archaeologically?
+
+# Part XXI — Compare Welch with the pooled Student t-test
+
+## 21. Same observed means, different variance model
+
+```{r}
+student_result <- t.test(mba, lba, var.equal = TRUE)
+student_result
+```
+
+```{r}
+comparison <- tibble(
+  method = c("Welch", "Student pooled"),
+  t = c(unname(welch_result$statistic), unname(student_result$statistic)),
+  df = c(unname(welch_result$parameter), unname(student_result$parameter)),
+  p_value = c(welch_result$p.value, student_result$p.value),
+  ci_lower = c(welch_result$conf.int[1], student_result$conf.int[1]),
+  ci_upper = c(welch_result$conf.int[2], student_result$conf.int[2])
+)
+comparison
+```
+
+The **observed mean difference does not change**. What changes is how sampling uncertainty is modeled.
+
+### Practice 21
+
+Compare t, df, p-value, and CI. Does the substantive conclusion materially change? Why is Welch still a useful default when equal population variances cannot safely be assumed?
+
+# Part XXII — Alternatives and archaeological interpretation
+
+## 22. Changing the procedure can change the question
+
+If severe skew, influential extreme observations, or other features made a mean-based t-test difficult to justify, a commonly used rank-based alternative for two independent groups is the **Mann–Whitney/Wilcoxon rank-sum test**. It should not simply be called “the t-test for non-normal data.”
+
+### Practice 22A
+
+Why is “Shapiro–Wilk p < .05 → automatically use Mann–Whitney” too mechanical? What should be considered in addition to a normality diagnostic?
+
+## 23. Return to Tell Tweini archaeology
+
+The measured contrast is a **period difference in wild ryegrass Δ13C**. The isotope pattern may relate to differences in plant water status and growing conditions. Archaeological explanations may involve crop-field association, agricultural water availability, environmental change, or other processes.
+
+> **The t-test does not identify the mechanism that produced the contrast.**
+
+### Practice 22B
+
+Separate your interpretation into four layers:
+
+1. **What was measured** — the observed period difference in wild ryegrass Δ13C.
+2. **Statistical inference** — the estimate, CI, Welch t, df, and p-value.
+3. **Possible archaeological meaning** — implications for plant water status, growing conditions, agricultural practices, or environmental change.
+4. **What cannot be established** — a unique climatic or agricultural cause.
+
+# Part XXIII — Conceptual debugging
+
+## 23. Diagnose the mistake
+
+1. “Two groups means independent samples.”
+2. “Equal sample sizes mean the design is paired.”
+3. “A large t means the raw effect must be large.”
+4. “Degrees of freedom are just a reporting convention.”
+5. “Welch is only for data that fail a variance test.”
+6. “A nonsignificant variance test proves equal variances.”
+7. “If p < .05, the effect is archaeologically important.”
+8. “Cohen's d is always more meaningful than the raw isotope difference.”
+9. “A valid t-test proves the observations were independent.”
+10. “A significant isotope difference establishes its causal mechanism.”
+
+# Part XXIV — Integrated Week 9 challenge
+
+## 24. Build the full two-group analysis
+
+Using the Tell Tweini teaching data:
+
+1. State an archaeological two-group question.
+2. Identify the observational unit.
+3. Decide whether the design is independent or paired.
+4. Define the direction of the contrast.
+5. Inspect individual observations and distributions.
+6. Report n, mean, SD, median, and IQR.
+7. Calculate the raw difference.
+8. Explain the appropriate standard error.
+9. Run Welch's t-test for an independent comparison.
+10. Report t, df, p, and the 95% CI.
+11. Calculate a standardized effect and retain the raw effect.
+12. Explain whether a rank-based or permutation alternative would answer the same question.
+13. Interpret the result archaeologically.
+14. State limitations involving independence, recovery, phase, measurement, or causal interpretation.
+
+# Part XXV — Mastery checklist
+
+- [ ] I distinguish independent from paired designs.
+- [ ] I define contrast direction before calculating.
+- [ ] I understand SE of a mean difference.
+- [ ] I interpret t as difference relative to uncertainty.
+- [ ] I understand why df shapes the t distribution.
+- [ ] I use Welch as the independent-samples default.
+- [ ] I know when a paired t-test is appropriate.
+- [ ] I inspect distributions rather than relying on one diagnostic test.
+- [ ] I interpret a CI as an estimate of effect uncertainty.
+- [ ] I report the raw effect in archaeological units.
+- [ ] I understand Cohen's d and Hedges' g.
+- [ ] I distinguish t-tests from rank-based and permutation alternatives.
+- [ ] I do not confuse statistical significance with archaeological importance.
+- [ ] I return every statistical result to archaeological context.
+
+# Final challenge — explain the workflow without code
+
+Explain:
+
+> **design → comparison → standard error → t + df → confidence interval → effect magnitude → diagnostics → alternative if needed → archaeological interpretation**
+
+Why does **design come before the test**?
+
+# Clean Render Test
+
+1. Save the QMD.
+2. Choose **Session → Restart R**.
+3. Do not recreate objects manually in the Console.
+4. Render the complete document.
+5. If it fails, identify what the document assumed but never created.
+
+A successful clean render shows that the workflow is computationally self-contained.
