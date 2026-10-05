@@ -20,6 +20,20 @@ Use this page when setting up your computer for the course or checking that your
 
 A short reference explaining the roles of the three main tools used in ANTH418 and the workflow we will follow throughout the course.
 
+## Recommended Online Books
+
+The following online books are useful companions to ANTH418. You do not need to read them from beginning to end. Use them as references when you need additional explanation, examples, or guidance with R, statistics, or data visualization.
+
+- [**R for Data Science (2e)**](https://r4ds.hadley.nz/) — Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund. A practical guide to importing, transforming, visualizing, and working reproducibly with data in R and the tidyverse.
+
+- [**R and Statistics for Archaeologists**](https://rchaeology.github.io/RchaeoStats/) — An archaeology-oriented introduction to statistical analysis in R, connecting statistical methods with archaeological questions and data.
+
+- [**Modern Statistics with R**](https://www.modernstatisticswithr.com/) — Måns Thulin. An accessible introduction to modern statistical analysis with R, useful for both statistical concepts and their implementation.
+
+- [**Data Visualization: A Practical Introduction**](https://socviz.co/) — Kieran Healy. A clear introduction to principled data visualization using R and ggplot2, especially useful for exploratory data analysis and graphical communication.
+
+- [**ggplot2: Elegant Graphics for Data Analysis (3e)**](https://ggplot2-book.org/) — Hadley Wickham, Danielle Navarro, and Thomas Lin Pedersen. A detailed guide to the grammar of graphics and to building effective visualizations with ggplot2.
+
 ## Troubleshooting
 
 [Troubleshooting](troubleshooting.qmd)
