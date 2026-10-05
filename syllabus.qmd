@@ -382,7 +382,7 @@ Research-design lab: What does one row represent? Compare archaeological observa
 **Required:** Perkins, Mark A.\
 2026. [*Using R for Introductory Statistics in Social Sciences*. Springer,](https://go.exlibris.link/W3PgDGBM) Switzerland. Chapter 3, Statistical Concepts, pp. 19–37; Chapter 4, Running Descriptive Statistics and Frequencies in R, pp. 39–51.
 
-**Required:** Knipper, C., Rihuete-Herrada, C., Voltas, J., Held, P., Lull, V., Micó, R., Risch, R., & Alt, K. W.\
+Knipper, C., Rihuete-Herrada, C., Voltas, J., Held, P., Lull, V., Micó, R., Risch, R., & Alt, K. W.\
 2020. [Reconstructing Bronze Age diets and farming strategies at the early Bronze Age sites of La Bastida and Gatas (southeast Iberia) using stable isotope analysis.](https://go.exlibris.link/6yymcZkz). *PLOS ONE* 15(3):e0229398.
 
 Carlson, David Lee.\
@@ -466,17 +466,17 @@ Kirby, Kathryn R., Russell D. Gray, Simon J. Greenhill, et al.\
 
 **Readings**
 
-**Required:** Bernard, H. Russell.\
-2018. [*Research Methods in Anthropology: Qualitative and Quantitative Approaches*](https://go.exlibris.link/H6KWD7l7). Lanham: Rowman & Littlefield. Chapter 5, Sampling I: the Basics, pp. 114–130; Chapter 6, Sampling II: Theory, pp. 131–144; Chapter 7, Sampling III: Nonprobability Samples and Choosing Informants, pp. 145–162.
+**Required:** Cumming, G., & Calin-Jageman, R.\
+2024. *Introduction to the New Statistics: Estimation, Open Science, and Beyond*. 2nd ed. Routledge. Chapter 4, The Normal Distribution and Sampling, pp. 74–100.
 
-**Required:** Thulin, Måns.\
-2025. [*Modern Statistics with R: From Wrangling and Exploring Data to Inference and Predictive Modelling*](https://go.exlibris.link/MzlcbQGN). Chapman and Hall/CRC, New York. Chapter 7, The Role of Simulation in Modern Statistics, pp. 248–273.
-
-Bird, Darcy, Lux Miranda, Marc Vander Linden, Erick Robinson, R. Kyle Bocinsky, Chris Nicholson, José M. Capriles, et al.\
+**Required:** Bird, Darcy, Lux Miranda, Marc Vander Linden, Erick Robinson, R. Kyle Bocinsky, Chris Nicholson, José M. Capriles, et al.\
 2022. [P3k14c, a Synthetic Global Database of Archaeological Radiocarbon Dates](https://go.exlibris.link/xrl4LHfQ). *Scientific Data* 9(1):27.
 
-Großmann, Ralph, Mara Weinelt, and Johannes Müller.\
-2023. [Demographic Dynamics between 5500 and 3500 calBP (3550–1550 BCE) in Selected Study Regions of Central Europe and the Role of Regional Climate Influences](https://go.exlibris.link/wps9N4CL). *PLOS ONE* 18(10):e0291956.
+Bernard, H. Russell.\
+2018. [*Research Methods in Anthropology: Qualitative and Quantitative Approaches*](https://go.exlibris.link/H6KWD7l7). Lanham: Rowman & Littlefield. Chapter 5, Sampling I: the Basics, pp. 114–130; Chapter 6, Sampling II: Theory, pp. 131–144; Chapter 7, Sampling III: Nonprobability Samples and Choosing Informants, pp. 145–162.
+
+Thulin, Måns.\
+2025. [*Modern Statistics with R: From Wrangling and Exploring Data to Inference and Predictive Modelling*](https://go.exlibris.link/MzlcbQGN). Chapman and Hall/CRC, New York. Chapter 7, The Role of Simulation in Modern Statistics, pp. 248–273.
 
 ## Week 8 — 26 & 28 October 2026
 
@@ -496,8 +496,11 @@ Großmann, Ralph, Mara Weinelt, and Johannes Müller.\
 
 **Readings**
 
-**Required:** Carlson, David Lee.\
-2017. [*Quantitative Methods in Archaeology Using R*](https://go.exlibris.link/HTjrgFKw). Cambridge University Press, Cambridge. Chapter 8.2, Confidence Intervals, pp. 162–168; Chapter 8.3, Hypothesis Testing, pp. 169–170.
+**Required:** Cumming, G., & Calin-Jageman, R.\
+2024. *Introduction to the New Statistics: Estimation, Open Science, and Beyond*. 2nd ed. Routledge. Chapters 5–6.
+
+**Required:** Somerville, Andrew D., Nawa Sugiyama, Linda R. Manzanilla, and Margaret J. Schoeninger.\
+2016. [Animal Management at the Ancient Metropolis of Teotihuacan, Mexico: Stable Isotope Analysis of Leporid (Cottontail and Jackrabbit) Bone Mineral](https://go.exlibris.link/1jBTLscV). *PLOS ONE* 11(8):e0159982.
 
 **Required:** Thulin, Måns.\
 2024. [*Modern Statistics with R: From Wrangling and Exploring Data to Inference and Predictive Modelling*](https://go.exlibris.link/MzlcbQGN). 2nd ed. Chapman and Hall/CRC, New York. Chapter 3.3, Hypothesis Testing and p-values, pp. 63–69; Chapter 3.3, Confidence Intervals, pp. 73–75.
@@ -505,8 +508,8 @@ Großmann, Ralph, Mara Weinelt, and Johannes Müller.\
 Beecham, Roger.\
 2025. [*Visualization for Social Data Science*](https://go.exlibris.link/NqsBPTc3). Chapter 7, Uncertainty, pp. 147–165.
 
-Somerville, Andrew D., Nawa Sugiyama, Linda R. Manzanilla, and Margaret J. Schoeninger.\
-2016. [Animal Management at the Ancient Metropolis of Teotihuacan, Mexico: Stable Isotope Analysis of Leporid (Cottontail and Jackrabbit) Bone Mineral](https://go.exlibris.link/1jBTLscV). *PLOS ONE* 11(8):e0159982.
+Carlson, David Lee.\
+2017. [*Quantitative Methods in Archaeology Using R*](https://go.exlibris.link/HTjrgFKw). Cambridge University Press, Cambridge. Chapter 8.2, Confidence Intervals, pp. 162–168; Chapter 8.3, Hypothesis Testing, pp. 169–170.
 
 ## Week 9 — 2 & 4 November 2026
 
@@ -532,11 +535,14 @@ Somerville, Andrew D., Nawa Sugiyama, Linda R. Manzanilla, and Margaret J. Schoe
 **Required:** Perkins, Mark A.\
 2026. [*Using R for Introductory Statistics in Social Sciences*](https://go.exlibris.link/W3PgDGBM). Springer, Switzerland. Chapter 7, Group Comparisons with Scale Dependent Variables, pp. 85–111.
 
-Thulin, Måns.\
-2024. [*Modern Statistics with R: From Wrangling and Exploring Data to Inference and Predictive Modelling*](https://go.exlibris.link/MzlcbQGN). Chapman and Hall/CRC, New York. Chapter 3.6, Comparing Mean Values, pp. 76–83.
-
-Fuller, Benjamin T., Simone Riehl, Veerle Linseele, Elena Marinova, Bea De Cupere, Joachim Bretschneider, Michael P. Richards, and Wim Van Neer.\
+**Required:** Fuller, Benjamin T., Simone Riehl, Veerle Linseele, Elena Marinova, Bea De Cupere, Joachim Bretschneider, Michael P. Richards, and Wim Van Neer.\
 2024. [Agropastoral and Dietary Practices of the Northern Levant Facing Late Holocene Climate and Environmental Change: Isotopic Analysis of Plants, Animals and Humans from Bronze to Iron Age Tell Tweini](https://go.exlibris.link/0hbhgqPT). *PLOS ONE* 19(6):e0301775.
+
+Drennan, R. D.\
+2010. *Statistics for Archaeologists: A Commonsense Approach*. 2nd ed. Springer. Chapter 12, Comparing Two Sample Means, pp. 147–164.
+
+Williams, L. L., & Quave, K.\
+2019. *Quantitative Anthropology: A Workbook*. Academic Press. Chapter 7, Comparing Two Groups: t-Tests, pp. 89–104.
 
 ## Week 10 — 9 & 11 November 2026
 
@@ -560,14 +566,20 @@ Fuller, Benjamin T., Simone Riehl, Veerle Linseele, Elena Marinova, Bea De Cuper
 
 **Readings**
 
-**Required:** Carlson, David Lee.\
-2017. [*Quantitative Methods in Archaeology Using R*](https://go.exlibris.link/HTjrgFKw). Cambridge University Press, Cambridge. Chapter 9.1, Categorical Data, pp. 190–197.
-
 **Required:** Perkins, Mark A.\
 2026. [*Using R for Introductory Statistics in Social Sciences*](https://go.exlibris.link/W3PgDGBM). Springer, Switzerland. Chapter 6, The Chi-Square Family of Tests, pp. 73–84.
 
-Gregory, Alex, Peter Mitchell, and Justin Pargeter.\
+**Required:** Williams, L. L., & Quave, K.\
+2019. *Quantitative Anthropology: A Workbook*. Academic Press. Chapter 10, Tests of Proportions: Chi-Square, Likelihood Ratio, Fisher’s Exact Test, pp. 123–141.
+
+**Required:** Gregory, Alex, Peter Mitchell, and Justin Pargeter.\
 2023. [Raw Material Surveys and Their Behavioral Implications in Highland Lesotho](https://go.exlibris.link/7pDL9g6j). *Journal of Paleolithic Archaeology* 6(1).
+
+Carlson, David Lee.\
+2017. [*Quantitative Methods in Archaeology Using R*](https://go.exlibris.link/HTjrgFKw). Cambridge University Press, Cambridge. Chapter 9.1, Categorical Data, pp. 190–197.
+
+Cumming, G., & Calin-Jageman, R.\
+2024. *Introduction to the New Statistics: Estimation, Open Science, and Beyond*. 2nd ed. Routledge. Chapter 13, Frequencies, Proportions, and Risk, pp. 387–414.
 
 ## Week 12 — 23 & 25 November 2026
 
