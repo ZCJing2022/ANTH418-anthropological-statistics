@@ -354,7 +354,7 @@
     "href": "assignments/index.html#assignment-8-comparing-iron-geochemistry-with-anova",
     "title": "Assignments",
     "section": "Assignment 8 — Comparing Iron Geochemistry with ANOVA",
-    "text": "Assignment 8 — Comparing Iron Geochemistry with ANOVA\nStatistical method: One-way ANOVA, post-hoc comparison, and robustness checks\nCase study: Roman-period iron-smelting geochemistry\nView Assignment 8 materials\nDownload complete Assignment 8 package"
+    "text": "Assignment 8 — Comparing Iron Geochemistry with ANOVA\nStatistical method: One-way ANOVA, post-hoc comparison, and robustness checks\nCase study: Roman-period iron-smelting geochemistry\nOpen Assignment 8\nDownload complete Assignment 8 package"
   },
   {
     "objectID": "assignments/index.html#assignment-9-hawaiian-kukui-isotopes",
@@ -2636,7 +2636,7 @@
     "href": "index.html#start-here",
     "title": "ANTH418: Anthropological Statistics",
     "section": "Start here",
-    "text": "Start here\n\nCourse Syllabus\nStudy Guides\n\nWeek 2 — Using R, RStudio, and Quarto\nWeek 3 — Measurement and Research Design\nWeek 4 — Measures of Central Tendency and Dispersion\nWeek 5 — Exploratory Data Analysis and Visualization\nWeek 6 — Data Transformation and Missing Values\nWeek 7 — Probability, Sampling, and Sampling Distributions\nWeek 8 — Confidence Intervals and Hypothesis Testing\nWeek 9 — Comparing Two Groups: t-tests\nWeek 11 — Chi-Square and Tests of Proportions\n\nPractice Workbooks\n\nWeek 2 — R, RStudio, and Quarto\nWeek 3 — Measurement and Research Design\nWeek 4 — Measures of Central Tendency and Dispersion\nWeek 5 — Exploratory Data Analysis and Visualization\nWeek 6 — Data Transformation and Missing Values\nWeek 7 — Probability, Sampling, and Sampling Distributions\nWeek 8 — Confidence Intervals and Hypothesis Testing\nWeek 9 — Comparing Two Groups: t-tests\nWeek 11 — Chi-Square and Tests of Proportions\n\nAssignments\n\nAssignment 1 — Knipper: Descriptive Statistics\nAssignment 2 — Kinbank: Data Visualization\nAssignment 3 — Seshat: Missing Data\nAssignment 4 — p3k14c: Sampling\nAssignment 5 — Teotihuacan: Statistical Inference\nAssignment 6 — Tell Tweini: t-tests\nAssignment 7 — Lesotho: Chi-Square\n\nR, RStudio & Quarto Resources"
+    "text": "Start here\n\nCourse Syllabus\nStudy Guides\n\nWeek 2 — Using R, RStudio, and Quarto\nWeek 3 — Measurement and Research Design\nWeek 4 — Measures of Central Tendency and Dispersion\nWeek 5 — Exploratory Data Analysis and Visualization\nWeek 6 — Data Transformation and Missing Values\nWeek 7 — Probability, Sampling, and Sampling Distributions\nWeek 8 — Confidence Intervals and Hypothesis Testing\nWeek 9 — Comparing Two Groups: t-tests\nWeek 11 — Chi-Square and Tests of Proportions\n\nPractice Workbooks\n\nWeek 2 — R, RStudio, and Quarto\nWeek 3 — Measurement and Research Design\nWeek 4 — Measures of Central Tendency and Dispersion\nWeek 5 — Exploratory Data Analysis and Visualization\nWeek 6 — Data Transformation and Missing Values\nWeek 7 — Probability, Sampling, and Sampling Distributions\nWeek 8 — Confidence Intervals and Hypothesis Testing\nWeek 9 — Comparing Two Groups: t-tests\nWeek 11 — Chi-Square and Tests of Proportions\n\nAssignments\n\nAssignment 1 — Knipper: Descriptive Statistics\nAssignment 2 — Kinbank: Data Visualization\nAssignment 3 — Seshat: Missing Data\nAssignment 4 — p3k14c: Sampling\nAssignment 5 — Teotihuacan: Statistical Inference\nAssignment 6 — Tell Tweini: t-tests\nAssignment 7 — Lesotho: Chi-Square\nAssignment 8 — Iron-Smelting Geochemistry: ANOVA\n\nR, RStudio & Quarto Resources"
   },
   {
     "objectID": "index.html#course-platforms",
@@ -4779,5 +4779,82 @@
     "title": "ANTH418: Anthropological Statistics",
     "section": "",
     "text": "Back to top"
+  },
+  {
+    "objectID": "assignments/assignment08_iron_anova/assignment08_iron_anova.html",
+    "href": "assignments/assignment08_iron_anova/assignment08_iron_anova.html",
+    "title": "ANTH418 Assignment 8: Roman-Period Iron-Smelting Geochemistry",
+    "section": "",
+    "text": "Does mean CLR-Si differ across HCM, MAS, SIL, and JUR in the teaching dataset, and how robust is the conclusion to imperfect ANOVA assumptions?"
+  },
+  {
+    "objectID": "assignments/assignment08_iron_anova/assignment08_iron_anova.html#research-question",
+    "href": "assignments/assignment08_iron_anova/assignment08_iron_anova.html#research-question",
+    "title": "ANTH418 Assignment 8: Roman-Period Iron-Smelting Geochemistry",
+    "section": "",
+    "text": "Does mean CLR-Si differ across HCM, MAS, SIL, and JUR in the teaching dataset, and how robust is the conclusion to imperfect ANOVA assumptions?"
+  },
+  {
+    "objectID": "assignments/assignment08_iron_anova/assignment08_iron_anova.html#case-study",
+    "href": "assignments/assignment08_iron_anova/assignment08_iron_anova.html#case-study",
+    "title": "ANTH418 Assignment 8: Roman-Period Iron-Smelting Geochemistry",
+    "section": "Case study",
+    "text": "Case study\nŻabiński, Grzegorz, Jarosław Gramacki, Artur Gramacki, Ivan S. Stepanov, and Marcin Woźniak. 2023. Old Wine into New Wineskins? “Legacy Data” in Research on Roman Period East Germanic Iron Smelting. PLOS ONE 18(10): e0289771. Read the case study.\nHCM is the Holy Cross Mountains, MAS is Masovia, and SIL is Silesia. JUR is the Kraków–Częstochowa Jura comparator, which includes late-medieval slag and modern ore from different contexts than the main study groups.\nThe observational unit is one legacy chemical analysis of a slag or ore sample. Multiple observations can come from the same site or locality, so they may be more alike than observations from different sites. The teaching file has no site identifiers to assess that dependence.\n\nlibrary(tidyverse)\n\ndata_path &lt;- if (file.exists(\"data/iron_anova.csv\")) {\n  \"data/iron_anova.csv\"\n} else {\n  \"assignments/assignment08_iron_anova/data/iron_anova.csv\"\n}\n\ndat &lt;- read_csv(data_path, show_col_types = FALSE)\n\ncount(dat, region)\n\n# A tibble: 4 × 2\n  region     n\n  &lt;chr&gt;  &lt;int&gt;\n1 HCM       80\n2 JUR       12\n3 MAS       64\n4 SIL       84\n\nunique(dat$element)\n\n[1] \"Si_CLR\"\n\nglimpse(dat)\n\nRows: 240\nColumns: 4\n$ source_row_id &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 1…\n$ region        &lt;chr&gt; \"HCM\", \"HCM\", \"HCM\", \"HCM\", \"HCM\", \"HCM\", \"HCM\", \"HCM\", …\n$ element       &lt;chr&gt; \"Si_CLR\", \"Si_CLR\", \"Si_CLR\", \"Si_CLR\", \"Si_CLR\", \"Si_CL…\n$ element_value &lt;dbl&gt; 1.538017, 1.586957, 1.586957, 1.030527, 1.445042, 2.3567…\n\n\nThe teaching file contains 240 observations and the fixed teaching variable Si_CLR.\nelement_value is a centered-log-ratio (CLR) transformed Si value, not a raw Si concentration. It is the log of Si divided by the geometric mean of Si, Ca, Al, and Mn for that observation, using the source study’s imputed composition."
+  },
+  {
+    "objectID": "assignments/assignment08_iron_anova/assignment08_iron_anova.html#visualize-and-describe-the-four-groups",
+    "href": "assignments/assignment08_iron_anova/assignment08_iron_anova.html#visualize-and-describe-the-four-groups",
+    "title": "ANTH418 Assignment 8: Roman-Period Iron-Smelting Geochemistry",
+    "section": "1. Visualize and describe the four groups",
+    "text": "1. Visualize and describe the four groups\nPlot the group distributions with boxplots and lightly jittered observations. Show the group sizes and label the response axis CLR-Si. Report group n, mean, SD, and median.\n\n# Your code\n\nDescribe visible differences in center, spread, and distribution shape."
+  },
+  {
+    "objectID": "assignments/assignment08_iron_anova/assignment08_iron_anova.html#check-assumptions",
+    "href": "assignments/assignment08_iron_anova/assignment08_iron_anova.html#check-assumptions",
+    "title": "ANTH418 Assignment 8: Roman-Period Iron-Smelting Geochemistry",
+    "section": "2. Check assumptions",
+    "text": "2. Check assumptions\nAssess:\n\ndistribution shape and possible outliers;\nnormality by region;\nvariance homogeneity.\n\nUse the distribution plots and group SDs alongside formal diagnostics. Use a Q–Q plot for each group to assess normality. Consider the small Jura sample when interpreting its diagnostics, and explain how you treated any potential outliers.\nAll three omnibus tests assume independent observations. Discuss how site-level clustering could affect the results.\n\n# Your code\n\nFor normality, use Shapiro–Wilk by region.\nFor variance homogeneity, use a Levene-style mean-centered absolute-deviation test as the primary diagnostic. Use the absolute distance from each value to its group’s mean as the response for this diagnostic. You may also report Bartlett’s test as a supplementary check, keeping in mind its sensitivity to departures from normality.\nDo not interpret a non-significant assumption test as proof that an assumption is true."
+  },
+  {
+    "objectID": "assignments/assignment08_iron_anova/assignment08_iron_anova.html#classical-one-way-anova",
+    "href": "assignments/assignment08_iron_anova/assignment08_iron_anova.html#classical-one-way-anova",
+    "title": "ANTH418 Assignment 8: Roman-Period Iron-Smelting Geochemistry",
+    "section": "3. Classical one-way ANOVA",
+    "text": "3. Classical one-way ANOVA\nFit the ordinary one-way ANOVA:\nelement_value ~ region\nState the null hypothesis of equal group means. The classical ANOVA assumes independent observations, approximately normal errors within groups, and a common within-group variance. Report the F statistic, both degrees of freedom, and p-value. Use a significance level of 0.05.\n\n# Your code"
+  },
+  {
+    "objectID": "assignments/assignment08_iron_anova/assignment08_iron_anova.html#effect-size",
+    "href": "assignments/assignment08_iron_anova/assignment08_iron_anova.html#effect-size",
+    "title": "ANTH418 Assignment 8: Roman-Period Iron-Smelting Geochemistry",
+    "section": "4. Effect size",
+    "text": "4. Effect size\nCalculate eta-squared:\neta_sq = SS_between / SS_total\n\n# Your code\n\nInterpret eta-squared as the proportion of observed CLR-Si variation associated with group membership in this one-way ANOVA.\nDo not confuse a small p-value with a large effect."
+  },
+  {
+    "objectID": "assignments/assignment08_iron_anova/assignment08_iron_anova.html#sensitivity-checks",
+    "href": "assignments/assignment08_iron_anova/assignment08_iron_anova.html#sensitivity-checks",
+    "title": "ANTH418 Assignment 8: Roman-Period Iron-Smelting Geochemistry",
+    "section": "5. Sensitivity checks",
+    "text": "5. Sensitivity checks\nCompare the classical ANOVA conclusion with:\n\nWelch one-way ANOVA, which also tests equal means and allows unequal variances. It still assumes independence and relies on approximate normality for its reference distribution, especially with small groups.\nKruskal–Wallis, which compares groups using ranks without requiring normality. With similarly shaped group distributions, a difference in ranks can be interpreted as a shift in location.\n\n\n# Your code\n\nReport the test statistics, degrees of freedom, and p-values. Do the methods agree on the broad conclusion? Explain what the agreement or disagreement tells you about robustness and why possible site dependence still matters."
+  },
+  {
+    "objectID": "assignments/assignment08_iron_anova/assignment08_iron_anova.html#post-hoc-comparisons",
+    "href": "assignments/assignment08_iron_anova/assignment08_iron_anova.html#post-hoc-comparisons",
+    "title": "ANTH418 Assignment 8: Roman-Period Iron-Smelting Geochemistry",
+    "section": "6. Post-hoc comparisons",
+    "text": "6. Post-hoc comparisons\nUse Tukey HSD with the classical ANOVA fit. For all six pairs, report the mean difference in CLR-Si, its direction, the simultaneous 95% confidence interval, and the adjusted p-value. Identify the pairs that differ at the 0.05 level and interpret the comparisons in light of the classical ANOVA assumptions.\n\n# Your code\n\nExplain why a significant omnibus ANOVA does not imply that every regional pair differs."
+  },
+  {
+    "objectID": "assignments/assignment08_iron_anova/assignment08_iron_anova.html#interpretation",
+    "href": "assignments/assignment08_iron_anova/assignment08_iron_anova.html#interpretation",
+    "title": "ANTH418 Assignment 8: Roman-Period Iron-Smelting Geochemistry",
+    "section": "7. Interpretation",
+    "text": "7. Interpretation\nSeparate:\n\nthe omnibus ANOVA result;\neta-squared;\nWelch and Kruskal–Wallis sensitivity checks;\nTukey pairwise comparisons;\nthe assumption caveat.\n\nInterpret regional differences as differences in relative compositional balance, not simply as differences in raw Si concentration."
+  },
+  {
+    "objectID": "assignments/assignment08_iron_anova/assignment08_iron_anova.html#final-interpretation",
+    "href": "assignments/assignment08_iron_anova/assignment08_iron_anova.html#final-interpretation",
+    "title": "ANTH418 Assignment 8: Roman-Period Iron-Smelting Geochemistry",
+    "section": "Final interpretation",
+    "text": "Final interpretation\nAnswer the following questions in complete sentences:\n\nWhat is the unit of analysis, and what does CLR-Si represent?\nWhat does the classical ANOVA indicate about regional differences?\nWhat do eta-squared, Welch ANOVA, Kruskal–Wallis, and Tukey HSD add to the interpretation?\nHow do possible site-level clustering, the mix of slag and ore, and the Jura comparator limit interpretation? What additional evidence would you need to make a claim about iron production, ore sources, technological traditions, or artefact provenance?"
   }
 ]

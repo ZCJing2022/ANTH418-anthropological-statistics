@@ -45,6 +45,7 @@ This course develops practical statistical thinking for archaeology and anthropo
   - [Assignment 5 — Teotihuacan: Statistical Inference](assignments/assignment05_teotihuacan_inference/assignment05_teotihuacan_inference.qmd)
   - [Assignment 6 — Tell Tweini: t-tests](assignments/assignment06_tell_tweini_ttest/assignment06_tell_tweini_ttest.qmd)
   - [Assignment 7 — Lesotho: Chi-Square](assignments/assignment07_lesotho_chisquare/assignment07_lesotho_chisquare.qmd)
+  - [Assignment 8 — Iron-Smelting Geochemistry: ANOVA](assignments/assignment08_iron_anova/assignment08_iron_anova.qmd)
 - [R, RStudio & Quarto Resources](resources/index.qmd)
 
 ## Course platforms

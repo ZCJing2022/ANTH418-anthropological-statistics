@@ -1,0 +1,148 @@
+---
+title: "ANTH418 Assignment 8: Roman-Period Iron-Smelting Geochemistry"
+format:
+  html:
+    toc: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+## Research question
+
+Does **mean CLR-Si** differ across HCM, MAS, SIL, and JUR in the teaching dataset, and how robust is the conclusion to imperfect ANOVA assumptions?
+
+## Case study
+
+Żabiński, Grzegorz, Jarosław Gramacki, Artur Gramacki, Ivan S. Stepanov, and Marcin Woźniak. 2023. Old Wine into New Wineskins? “Legacy Data” in Research on Roman Period East Germanic Iron Smelting. *PLOS ONE* 18(10): e0289771. [Read the case study](https://doi.org/10.1371/journal.pone.0289771).
+
+HCM is the Holy Cross Mountains, MAS is Masovia, and SIL is Silesia. JUR is the Kraków–Częstochowa Jura comparator, which includes late-medieval slag and modern ore from different contexts than the main study groups.
+
+The **observational unit** is one legacy chemical analysis of a slag or ore sample. Multiple observations can come from the same site or locality, so they may be more alike than observations from different sites. The teaching file has no site identifiers to assess that dependence.
+
+```{r}
+library(tidyverse)
+
+data_path <- if (file.exists("data/iron_anova.csv")) {
+  "data/iron_anova.csv"
+} else {
+  "assignments/assignment08_iron_anova/data/iron_anova.csv"
+}
+
+dat <- read_csv(data_path, show_col_types = FALSE)
+
+count(dat, region)
+unique(dat$element)
+glimpse(dat)
+```
+
+The teaching file contains **240 observations** and the fixed teaching variable `Si_CLR`.
+
+`element_value` is a **centered-log-ratio (CLR) transformed Si value**, not a raw Si concentration. It is the log of Si divided by the geometric mean of Si, Ca, Al, and Mn for that observation, using the source study’s imputed composition.
+
+## 1. Visualize and describe the four groups
+
+Plot the group distributions with boxplots and lightly jittered observations. Show the group sizes and label the response axis CLR-Si. Report group `n`, mean, SD, and median.
+
+```{r}
+# Your code
+```
+
+Describe visible differences in center, spread, and distribution shape.
+
+## 2. Check assumptions
+
+Assess:
+
+- distribution shape and possible outliers;
+- normality by region;
+- variance homogeneity.
+
+Use the distribution plots and group SDs alongside formal diagnostics. Use a Q–Q plot for each group to assess normality. Consider the small Jura sample when interpreting its diagnostics, and explain how you treated any potential outliers.
+
+All three omnibus tests assume independent observations. Discuss how site-level clustering could affect the results.
+
+```{r}
+# Your code
+```
+
+For normality, use Shapiro–Wilk by region.
+
+For variance homogeneity, use a Levene-style mean-centered absolute-deviation test as the primary diagnostic. Use the absolute distance from each value to its group's mean as the response for this diagnostic. You may also report Bartlett's test as a supplementary check, keeping in mind its sensitivity to departures from normality.
+
+Do **not** interpret a non-significant assumption test as proof that an assumption is true.
+
+## 3. Classical one-way ANOVA
+
+Fit the ordinary one-way ANOVA:
+
+```r
+element_value ~ region
+```
+
+State the null hypothesis of equal group means. The classical ANOVA assumes independent observations, approximately normal errors within groups, and a common within-group variance. Report the F statistic, both degrees of freedom, and p-value. Use a significance level of 0.05.
+
+```{r}
+# Your code
+```
+
+## 4. Effect size
+
+Calculate **eta-squared**:
+
+```r
+eta_sq = SS_between / SS_total
+```
+
+```{r}
+# Your code
+```
+
+Interpret eta-squared as the proportion of observed CLR-Si variation associated with group membership in this one-way ANOVA.
+
+Do **not** confuse a small p-value with a large effect.
+
+## 5. Sensitivity checks
+
+Compare the classical ANOVA conclusion with:
+
+- **Welch one-way ANOVA**, which also tests equal means and allows unequal variances. It still assumes independence and relies on approximate normality for its reference distribution, especially with small groups.
+- **Kruskal–Wallis**, which compares groups using ranks without requiring normality. With similarly shaped group distributions, a difference in ranks can be interpreted as a shift in location.
+
+```{r}
+# Your code
+```
+
+Report the test statistics, degrees of freedom, and p-values. Do the methods agree on the broad conclusion? Explain what the agreement or disagreement tells you about robustness and why possible site dependence still matters.
+
+## 6. Post-hoc comparisons
+
+Use Tukey HSD with the classical ANOVA fit. For all six pairs, report the mean difference in CLR-Si, its direction, the simultaneous 95% confidence interval, and the adjusted p-value. Identify the pairs that differ at the 0.05 level and interpret the comparisons in light of the classical ANOVA assumptions.
+
+```{r}
+# Your code
+```
+
+Explain why a significant omnibus ANOVA does **not** imply that every regional pair differs.
+
+## 7. Interpretation
+
+Separate:
+
+- the omnibus ANOVA result;
+- eta-squared;
+- Welch and Kruskal–Wallis sensitivity checks;
+- Tukey pairwise comparisons;
+- the assumption caveat.
+
+Interpret regional differences as differences in **relative compositional balance**, not simply as differences in raw Si concentration.
+
+## Final interpretation
+
+Answer the following questions in complete sentences:
+
+1. What is the unit of analysis, and what does CLR-Si represent?
+2. What does the classical ANOVA indicate about regional differences?
+3. What do eta-squared, Welch ANOVA, Kruskal–Wallis, and Tukey HSD add to the interpretation?
+4. How do possible site-level clustering, the mix of slag and ore, and the Jura comparator limit interpretation? What additional evidence would you need to make a claim about iron production, ore sources, technological traditions, or artefact provenance?
