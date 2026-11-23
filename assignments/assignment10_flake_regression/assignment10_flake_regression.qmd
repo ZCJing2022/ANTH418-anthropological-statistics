@@ -1,0 +1,136 @@
+---
+title: "ANTH418 Assignment 10: Predicting Flake Mass"
+format:
+  html:
+    toc: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+## Research question
+
+How well does mean flake thickness predict log-transformed flake mass, and what do the fitted line and residuals reveal about the model?
+
+## Case study
+
+Bustos-Pérez, Guillermo, and Javier Baena. 2021. Predicting Flake Mass: A View from Machine Learning. *Lithic Technology* 46(2):130–142. [Read the case study](https://doi.org/10.1080/01977261.2021.1881267).
+
+The teaching dataset contains **300 experimental flint flakes** from the published study.
+
+```{r}
+library(tidyverse)
+
+data_path <- if (file.exists("data/flake_regression.csv")) {
+  "data/flake_regression.csv"
+} else {
+  "assignments/assignment10_flake_regression/data/flake_regression.csv"
+}
+
+dat <- read_csv(data_path, show_col_types = FALSE) |>
+  mutate(
+    log_weight = log10(weight)
+  )
+
+glimpse(dat)
+```
+
+## 1. Inspect and visualize
+
+The unit of analysis is **one experimental flake**. The predictor is mean thickness in millimetres. The response is the base-10 logarithm of flake mass measured in grams.
+
+Summarize `weight`, `mean_thickness`, and `log_weight`.
+
+Then make a scatterplot of `mean_thickness` versus `log_weight` with a fitted linear regression line and a 95% confidence band for the mean log response. Label the axes with the predictor units and the response scale.
+
+```{r}
+# Your code
+```
+
+Before fitting the model, describe:
+
+- the direction and form of the relationship;
+- whether the relationship appears approximately linear on the log-mass scale;
+- whether there are obvious unusual observations.
+
+## 2. Fit the simple linear regression
+
+Fit the model:
+
+`log10(weight) ~ mean_thickness`
+
+```{r}
+# Your code
+```
+
+The model assumes an approximately linear mean response on the log scale, independent errors, and roughly constant residual spread. Approximate normality of errors supports the usual model-based intervals. Flakes produced under shared experimental conditions may have related errors. The teaching file has no grouping identifiers to assess this.
+
+Report:
+
+- the fitted intercept;
+- the fitted slope;
+- the 95% confidence interval for the slope;
+- the p-value for the slope;
+- R-squared.
+
+## 3. Interpret the slope on the original mass scale
+
+The slope is the fitted change in log₁₀ mass per millimetre of mean thickness.
+
+For a one-millimetre increase in mean thickness, calculate:
+
+```{r}
+# If b1 is your fitted slope:
+# 10^b1
+# (10^b1 - 1) * 100
+```
+
+Interpret:
+
+- the multiplicative change in fitted geometric-mean mass;
+- the approximate percentage change in fitted geometric-mean mass.
+
+## 4. Examine residuals
+
+Create a residual-versus-fitted plot.
+
+Also inspect a normal Q–Q plot of the residuals. To discuss influence, inspect the standard regression residuals-versus-leverage plot with Cook’s distance contours.
+
+```{r}
+# Your code
+```
+
+Discuss whether the residuals show:
+
+- obvious curvature;
+- strongly changing spread;
+- large residuals, unusual thickness values (high leverage), or points that can materially change the fitted line;
+- major departures from an approximately normal residual distribution.
+
+Use the diagnostic plots to judge how well the simple model represents these data. Investigate unusual points and explain their relevance. An unusual point alone is insufficient reason to exclude a flake.
+
+## 5. Interpretation and limits of prediction
+
+Interpret the intercept carefully.
+
+The observed mean-thickness range is **1.8–20.2 mm**, so an intercept corresponding to 0 mm thickness is outside the observed data range and should not receive a physical interpretation.
+
+Explain:
+
+- what R-squared tells you about the variation in `log10(weight)` explained by mean thickness;
+- what the residuals reveal about prediction error on the fitted data;
+- why the confidence band for the mean log response is narrower than a prediction interval for one comparable new flake at the same thickness;
+- why in-sample R-squared and residuals describe fit to these flakes and cannot establish predictive accuracy on unseen assemblages;
+- why a statistically strong relationship does not mean that mean thickness alone determines flake mass;
+- why the fitted trend may be unreliable outside the observed 1.8–20.2 mm range;
+- why results from this experimental assemblage should not automatically be generalized to every archaeological lithic assemblage.
+
+## Final interpretation
+
+Answer the following questions in complete sentences:
+
+1. What is the unit of analysis?
+2. What are the estimated slope, its 95% confidence interval, and R-squared?
+3. What does the slope mean on the original flake-mass scale?
+4. What do the residuals and the experimental data-generating process imply about the limits of prediction and archaeological generalization?

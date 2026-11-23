@@ -130,6 +130,6 @@ Students may browse the materials online or download the complete assignment pac
 
 **Case study:** Predicting experimental flake mass from mean flake thickness
 
-[View Assignment 10 materials](assignment10_flake_regression/)
+[Open Assignment 10](assignment10_flake_regression/assignment10_flake_regression.qmd)
 
 [Download complete Assignment 10 package](../downloads/assignments/ANTH418_assignment10_flake_regression.zip)

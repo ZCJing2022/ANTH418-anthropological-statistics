@@ -35,6 +35,7 @@ project:
     - assignments/assignment07_lesotho_chisquare/assignment07_lesotho_chisquare.qmd
     - assignments/assignment08_iron_anova/assignment08_iron_anova.qmd
     - assignments/assignment09_kukui_correlation/assignment09_kukui_correlation.qmd
+    - assignments/assignment10_flake_regression/assignment10_flake_regression.qmd
     - readings/index.qmd
     - resources/*.qmd
 
@@ -42,6 +43,7 @@ project:
     - .nojekyll
     - downloads/assignments/ANTH418_assignment08_iron_anova.zip
     - downloads/assignments/ANTH418_assignment09_kukui_correlation.zip
+    - downloads/assignments/ANTH418_assignment10_flake_regression.zip
     - downloads/practice-workbooks/ANTH418_Week02_Practice.zip
     - downloads/practice-workbooks/ANTH418_Week03_Practice.zip
     - downloads/practice-workbooks/ANTH418_Week04_Practice.zip

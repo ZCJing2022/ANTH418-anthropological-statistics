@@ -368,7 +368,7 @@
     "href": "assignments/index.html#assignment-10-predicting-flake-mass",
     "title": "Assignments",
     "section": "Assignment 10 — Predicting Flake Mass",
-    "text": "Assignment 10 — Predicting Flake Mass\nStatistical method: Simple linear regression\nCase study: Predicting experimental flake mass from mean flake thickness\nView Assignment 10 materials\nDownload complete Assignment 10 package"
+    "text": "Assignment 10 — Predicting Flake Mass\nStatistical method: Simple linear regression\nCase study: Predicting experimental flake mass from mean flake thickness\nOpen Assignment 10\nDownload complete Assignment 10 package"
   },
   {
     "objectID": "practice-workbooks/week09.html",
@@ -2636,7 +2636,7 @@
     "href": "index.html#start-here",
     "title": "ANTH418: Anthropological Statistics",
     "section": "Start here",
-    "text": "Start here\n\nCourse Syllabus\nStudy Guides\n\nWeek 2 — Using R, RStudio, and Quarto\nWeek 3 — Measurement and Research Design\nWeek 4 — Measures of Central Tendency and Dispersion\nWeek 5 — Exploratory Data Analysis and Visualization\nWeek 6 — Data Transformation and Missing Values\nWeek 7 — Probability, Sampling, and Sampling Distributions\nWeek 8 — Confidence Intervals and Hypothesis Testing\nWeek 9 — Comparing Two Groups: t-tests\nWeek 11 — Chi-Square and Tests of Proportions\n\nPractice Workbooks\n\nWeek 2 — R, RStudio, and Quarto\nWeek 3 — Measurement and Research Design\nWeek 4 — Measures of Central Tendency and Dispersion\nWeek 5 — Exploratory Data Analysis and Visualization\nWeek 6 — Data Transformation and Missing Values\nWeek 7 — Probability, Sampling, and Sampling Distributions\nWeek 8 — Confidence Intervals and Hypothesis Testing\nWeek 9 — Comparing Two Groups: t-tests\nWeek 11 — Chi-Square and Tests of Proportions\n\nAssignments\n\nAssignment 1 — Knipper: Descriptive Statistics\nAssignment 2 — Kinbank: Data Visualization\nAssignment 3 — Seshat: Missing Data\nAssignment 4 — p3k14c: Sampling\nAssignment 5 — Teotihuacan: Statistical Inference\nAssignment 6 — Tell Tweini: t-tests\nAssignment 7 — Lesotho: Chi-Square\nAssignment 8 — Iron-Smelting Geochemistry: ANOVA\nAssignment 9 — Hawaiian Kukui Isotopes: Correlation\n\nR, RStudio & Quarto Resources"
+    "text": "Start here\n\nCourse Syllabus\nStudy Guides\n\nWeek 2 — Using R, RStudio, and Quarto\nWeek 3 — Measurement and Research Design\nWeek 4 — Measures of Central Tendency and Dispersion\nWeek 5 — Exploratory Data Analysis and Visualization\nWeek 6 — Data Transformation and Missing Values\nWeek 7 — Probability, Sampling, and Sampling Distributions\nWeek 8 — Confidence Intervals and Hypothesis Testing\nWeek 9 — Comparing Two Groups: t-tests\nWeek 11 — Chi-Square and Tests of Proportions\n\nPractice Workbooks\n\nWeek 2 — R, RStudio, and Quarto\nWeek 3 — Measurement and Research Design\nWeek 4 — Measures of Central Tendency and Dispersion\nWeek 5 — Exploratory Data Analysis and Visualization\nWeek 6 — Data Transformation and Missing Values\nWeek 7 — Probability, Sampling, and Sampling Distributions\nWeek 8 — Confidence Intervals and Hypothesis Testing\nWeek 9 — Comparing Two Groups: t-tests\nWeek 11 — Chi-Square and Tests of Proportions\n\nAssignments\n\nAssignment 1 — Knipper: Descriptive Statistics\nAssignment 2 — Kinbank: Data Visualization\nAssignment 3 — Seshat: Missing Data\nAssignment 4 — p3k14c: Sampling\nAssignment 5 — Teotihuacan: Statistical Inference\nAssignment 6 — Tell Tweini: t-tests\nAssignment 7 — Lesotho: Chi-Square\nAssignment 8 — Iron-Smelting Geochemistry: ANOVA\nAssignment 9 — Hawaiian Kukui Isotopes: Correlation\nAssignment 10 — Predicting Flake Mass: Regression\n\nR, RStudio & Quarto Resources"
   },
   {
     "objectID": "index.html#course-platforms",
@@ -4912,5 +4912,68 @@
     "title": "ANTH418 Assignment 9: Hawaiian Kukui Isotopes",
     "section": "Final interpretation",
     "text": "Final interpretation\nAnswer the following questions in complete sentences:\n\nWhat is the unit of analysis?\nWhat are the direction, magnitude, 95% confidence interval, and p-value for the elevation–δ13C correlation?\nWhat does examining rainfall add to your interpretation of that association?\nWhat causal or archaeological inference does this correlation not establish?"
+  },
+  {
+    "objectID": "assignments/assignment10_flake_regression/assignment10_flake_regression.html",
+    "href": "assignments/assignment10_flake_regression/assignment10_flake_regression.html",
+    "title": "ANTH418 Assignment 10: Predicting Flake Mass",
+    "section": "",
+    "text": "How well does mean flake thickness predict log-transformed flake mass, and what do the fitted line and residuals reveal about the model?"
+  },
+  {
+    "objectID": "assignments/assignment10_flake_regression/assignment10_flake_regression.html#research-question",
+    "href": "assignments/assignment10_flake_regression/assignment10_flake_regression.html#research-question",
+    "title": "ANTH418 Assignment 10: Predicting Flake Mass",
+    "section": "",
+    "text": "How well does mean flake thickness predict log-transformed flake mass, and what do the fitted line and residuals reveal about the model?"
+  },
+  {
+    "objectID": "assignments/assignment10_flake_regression/assignment10_flake_regression.html#case-study",
+    "href": "assignments/assignment10_flake_regression/assignment10_flake_regression.html#case-study",
+    "title": "ANTH418 Assignment 10: Predicting Flake Mass",
+    "section": "Case study",
+    "text": "Case study\nBustos-Pérez, Guillermo, and Javier Baena. 2021. Predicting Flake Mass: A View from Machine Learning. Lithic Technology 46(2):130–142. Read the case study.\nThe teaching dataset contains 300 experimental flint flakes from the published study.\n\nlibrary(tidyverse)\n\ndata_path &lt;- if (file.exists(\"data/flake_regression.csv\")) {\n  \"data/flake_regression.csv\"\n} else {\n  \"assignments/assignment10_flake_regression/data/flake_regression.csv\"\n}\n\ndat &lt;- read_csv(data_path, show_col_types = FALSE) |&gt;\n  mutate(\n    log_weight = log10(weight)\n  )\n\nglimpse(dat)\n\nRows: 300\nColumns: 8\n$ source_row_id  &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, …\n$ length         &lt;dbl&gt; 51.3, 49.1, 30.8, 30.2, 57.1, 37.5, 65.6, 86.8, 39.2, 4…\n$ width          &lt;dbl&gt; 29.8, 30.0, 43.8, 19.6, 37.8, 34.2, 41.9, 70.8, 54.7, 6…\n$ mean_thickness &lt;dbl&gt; 10.066667, 8.566667, 11.566667, 5.500000, 11.166667, 5.…\n$ max_thickness  &lt;dbl&gt; 13.1, 9.7, 16.8, 6.7, 13.3, 6.7, 14.6, 19.2, 27.3, 14.0…\n$ weight         &lt;dbl&gt; 17.83, 13.33, 20.33, 3.98, 22.18, 7.97, 24.16, 96.20, 3…\n$ platform_area  &lt;dbl&gt; 83.58500, 90.48000, 40.50000, 59.67000, 109.80000, 51.3…\n$ log_weight     &lt;dbl&gt; 1.2511513, 1.1248301, 1.3081374, 0.5998831, 1.3459615, …"
+  },
+  {
+    "objectID": "assignments/assignment10_flake_regression/assignment10_flake_regression.html#inspect-and-visualize",
+    "href": "assignments/assignment10_flake_regression/assignment10_flake_regression.html#inspect-and-visualize",
+    "title": "ANTH418 Assignment 10: Predicting Flake Mass",
+    "section": "1. Inspect and visualize",
+    "text": "1. Inspect and visualize\nThe unit of analysis is one experimental flake. The predictor is mean thickness in millimetres. The response is the base-10 logarithm of flake mass measured in grams.\nSummarize weight, mean_thickness, and log_weight.\nThen make a scatterplot of mean_thickness versus log_weight with a fitted linear regression line and a 95% confidence band for the mean log response. Label the axes with the predictor units and the response scale.\n\n# Your code\n\nBefore fitting the model, describe:\n\nthe direction and form of the relationship;\nwhether the relationship appears approximately linear on the log-mass scale;\nwhether there are obvious unusual observations."
+  },
+  {
+    "objectID": "assignments/assignment10_flake_regression/assignment10_flake_regression.html#fit-the-simple-linear-regression",
+    "href": "assignments/assignment10_flake_regression/assignment10_flake_regression.html#fit-the-simple-linear-regression",
+    "title": "ANTH418 Assignment 10: Predicting Flake Mass",
+    "section": "2. Fit the simple linear regression",
+    "text": "2. Fit the simple linear regression\nFit the model:\nlog10(weight) ~ mean_thickness\n\n# Your code\n\nThe model assumes an approximately linear mean response on the log scale, independent errors, and roughly constant residual spread. Approximate normality of errors supports the usual model-based intervals. Flakes produced under shared experimental conditions may have related errors. The teaching file has no grouping identifiers to assess this.\nReport:\n\nthe fitted intercept;\nthe fitted slope;\nthe 95% confidence interval for the slope;\nthe p-value for the slope;\nR-squared."
+  },
+  {
+    "objectID": "assignments/assignment10_flake_regression/assignment10_flake_regression.html#interpret-the-slope-on-the-original-mass-scale",
+    "href": "assignments/assignment10_flake_regression/assignment10_flake_regression.html#interpret-the-slope-on-the-original-mass-scale",
+    "title": "ANTH418 Assignment 10: Predicting Flake Mass",
+    "section": "3. Interpret the slope on the original mass scale",
+    "text": "3. Interpret the slope on the original mass scale\nThe slope is the fitted change in log₁₀ mass per millimetre of mean thickness.\nFor a one-millimetre increase in mean thickness, calculate:\n\n# If b1 is your fitted slope:\n# 10^b1\n# (10^b1 - 1) * 100\n\nInterpret:\n\nthe multiplicative change in fitted geometric-mean mass;\nthe approximate percentage change in fitted geometric-mean mass."
+  },
+  {
+    "objectID": "assignments/assignment10_flake_regression/assignment10_flake_regression.html#examine-residuals",
+    "href": "assignments/assignment10_flake_regression/assignment10_flake_regression.html#examine-residuals",
+    "title": "ANTH418 Assignment 10: Predicting Flake Mass",
+    "section": "4. Examine residuals",
+    "text": "4. Examine residuals\nCreate a residual-versus-fitted plot.\nAlso inspect a normal Q–Q plot of the residuals. To discuss influence, inspect the standard regression residuals-versus-leverage plot with Cook’s distance contours.\n\n# Your code\n\nDiscuss whether the residuals show:\n\nobvious curvature;\nstrongly changing spread;\nlarge residuals, unusual thickness values (high leverage), or points that can materially change the fitted line;\nmajor departures from an approximately normal residual distribution.\n\nUse the diagnostic plots to judge how well the simple model represents these data. Investigate unusual points and explain their relevance. An unusual point alone is insufficient reason to exclude a flake."
+  },
+  {
+    "objectID": "assignments/assignment10_flake_regression/assignment10_flake_regression.html#interpretation-and-limits-of-prediction",
+    "href": "assignments/assignment10_flake_regression/assignment10_flake_regression.html#interpretation-and-limits-of-prediction",
+    "title": "ANTH418 Assignment 10: Predicting Flake Mass",
+    "section": "5. Interpretation and limits of prediction",
+    "text": "5. Interpretation and limits of prediction\nInterpret the intercept carefully.\nThe observed mean-thickness range is 1.8–20.2 mm, so an intercept corresponding to 0 mm thickness is outside the observed data range and should not receive a physical interpretation.\nExplain:\n\nwhat R-squared tells you about the variation in log10(weight) explained by mean thickness;\nwhat the residuals reveal about prediction error on the fitted data;\nwhy the confidence band for the mean log response is narrower than a prediction interval for one comparable new flake at the same thickness;\nwhy in-sample R-squared and residuals describe fit to these flakes and cannot establish predictive accuracy on unseen assemblages;\nwhy a statistically strong relationship does not mean that mean thickness alone determines flake mass;\nwhy the fitted trend may be unreliable outside the observed 1.8–20.2 mm range;\nwhy results from this experimental assemblage should not automatically be generalized to every archaeological lithic assemblage."
+  },
+  {
+    "objectID": "assignments/assignment10_flake_regression/assignment10_flake_regression.html#final-interpretation",
+    "href": "assignments/assignment10_flake_regression/assignment10_flake_regression.html#final-interpretation",
+    "title": "ANTH418 Assignment 10: Predicting Flake Mass",
+    "section": "Final interpretation",
+    "text": "Final interpretation\nAnswer the following questions in complete sentences:\n\nWhat is the unit of analysis?\nWhat are the estimated slope, its 95% confidence interval, and R-squared?\nWhat does the slope mean on the original flake-mass scale?\nWhat do the residuals and the experimental data-generating process imply about the limits of prediction and archaeological generalization?"
   }
 ]
