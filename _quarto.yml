@@ -16,6 +16,7 @@ project:
     - weeks/week08.qmd
     - weeks/week09.qmd
     - weeks/week11.qmd
+    - weeks/week12.qmd
     - practice-workbooks/week02.qmd
     - practice-workbooks/week03.qmd
     - practice-workbooks/week04.qmd
@@ -97,6 +98,9 @@ website:
 
           - href: weeks/week11.qmd
             text: "Week 11 — Chi-Square & Tests of Proportions"
+
+          - href: weeks/week12.qmd
+            text: "Week 12 — Analysis of Variance"
 
       - text: Practice Workbooks
         menu:

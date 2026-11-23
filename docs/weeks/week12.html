@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Week 12 — Analysis of Variance – ANTH418: Anthropological Statistics</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-7ff37d7dbb752a0b62676bb39137b3a2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">ANTH418: Anthropological Statistics</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html">
+<span class="menu-text">Home</span></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../syllabus.html">
+<span class="menu-text">Syllabus</span></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../lecture-notes/index.html">
+<span class="menu-text">Lecture Notes</span></a>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-study-guides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Study Guides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-study-guides">
+        <li>
+    <a class="dropdown-item" href="../weeks/week02.html">
+ <span class="dropdown-text">Week 2 — R, RStudio &amp; Quarto</span></a>
+  </li>
+        <li>
+    <a class="dropdown-item" href="../weeks/week03.html">
+ <span class="dropdown-text">Week 3 — Measurement &amp; Research Design</span></a>
+  </li>
+        <li>
+    <a class="dropdown-item" href="../weeks/week04.html">
+ <span class="dropdown-text">Week 4 — Central Tendency &amp; Dispersion</span></a>
+  </li>
+        <li>
+    <a class="dropdown-item" href="../weeks/week05.html">
+ <span class="dropdown-text">Week 5 — EDA &amp; Visualization</span></a>
+  </li>
+        <li>
+    <a class="dropdown-item" href="../weeks/week06.html">
+ <span class="dropdown-text">Week 6 — Transformation &amp; Missing Data</span></a>
+  </li>
+        <li>
+    <a class="dropdown-item" href="../weeks/week07.html">
+ <span class="dropdown-text">Week 7 — Probability &amp; Sampling</span></a>
+  </li>
+        <li>
+    <a class="dropdown-item" href="../weeks/week08.html">
+ <span class="dropdown-text">Week 8 — Confidence Intervals &amp; Hypothesis Testing</span></a>
+  </li>
+        <li>
+    <a class="dropdown-item" href="../weeks/week09.html">
+ <span class="dropdown-text">Week 9 — Comparing Two Groups: t-tests</span></a>
+  </li>
+        <li>
+    <a class="dropdown-item" href="../weeks/week11.html">
+ <span class="dropdown-text">Week 11 — Chi-Square &amp; Tests of Proportions</span></a>
+  </li>
+        <li>
+    <a class="dropdown-item" href="../weeks/week12.html">
+ <span class="dropdown-text">Week 12 — Analysis of Variance</span></a>
+  </li>
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-practice-workbooks" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Practice Workbooks</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-practice-workbooks">
+        <li>
+    <a class="dropdown-item" href="../practice-workbooks/week02.html">
+ <span class="dropdown-text">Week 2 — R, RStudio &amp; Quarto</span></a>
+  </li>
+        <li>
+    <a class="dropdown-item" href="../practice-workbooks/week03.html">
+ <span class="dropdown-text">Week 3 — Measurement &amp; Research Design</span></a>
+  </li>
+        <li>
+    <a class="dropdown-item" href="../practice-workbooks/week04.html">
+ <span class="dropdown-text">Week 4 — Central Tendency &amp; Dispersion</span></a>
+  </li>
+        <li>
+    <a class="dropdown-item" href="../practice-workbooks/week05.html">
+ <span class="dropdown-text">Week 5 — EDA &amp; Visualization</span></a>
+  </li>
+        <li>
+    <a class="dropdown-item" href="../practice-workbooks/week06.html">
+ <span class="dropdown-text">Week 6 — Transformation &amp; Missing Data</span></a>
+  </li>
+        <li>
+    <a class="dropdown-item" href="../practice-workbooks/week07.html">
+ <span class="dropdown-text">Week 7 — Probability &amp; Sampling</span></a>
+  </li>
+        <li>
+    <a class="dropdown-item" href="../practice-workbooks/week08.html">
+ <span class="dropdown-text">Week 8 — Confidence Intervals &amp; Hypothesis Testing</span></a>
+  </li>
+        <li>
+    <a class="dropdown-item" href="../practice-workbooks/week09.html">
+ <span class="dropdown-text">Week 9 — Comparing Two Groups: t-tests</span></a>
+  </li>
+        <li>
+    <a class="dropdown-item" href="../practice-workbooks/week11.html">
+ <span class="dropdown-text">Week 11 — Chi-Square &amp; Tests of Proportions</span></a>
+  </li>
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../assignments/index.html">
+<span class="menu-text">Assignments</span></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../readings/index.html">
+<span class="menu-text">Readings</span></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../resources/index.html">
+<span class="menu-text">Resources</span></a>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#required-readings" id="toc-required-readings" class="nav-link" data-scroll-target="#required-readings">Required Readings</a></li>
+  <li><a href="#supplementary-readings" id="toc-supplementary-readings" class="nav-link" data-scroll-target="#supplementary-readings">Supplementary Readings</a></li>
+  <li><a href="#movement-i-design-variation-f" id="toc-movement-i-design-variation-f" class="nav-link" data-scroll-target="#movement-i-design-variation-f">Movement I — Design → Variation → F</a>
+  <ul class="collapse">
+  <li><a href="#comparing-more-than-two-group-means" id="toc-comparing-more-than-two-group-means" class="nav-link" data-scroll-target="#comparing-more-than-two-group-means">1. Comparing more than two group means</a></li>
+  <li><a href="#between-group-and-within-group-variability" id="toc-between-group-and-within-group-variability" class="nav-link" data-scroll-target="#between-group-and-within-group-variability">2. Between-group and within-group variability</a></li>
+  <li><a href="#the-f-statistic" id="toc-the-f-statistic" class="nav-link" data-scroll-target="#the-f-statistic">3. The F statistic</a></li>
+  </ul></li>
+  <li><a href="#movement-ii-fit-diagnose-interpret" id="toc-movement-ii-fit-diagnose-interpret" class="nav-link" data-scroll-target="#movement-ii-fit-diagnose-interpret">Movement II — Fit → Diagnose → Interpret</a>
+  <ul class="collapse">
+  <li><a href="#one-way-anova-and-interpretation" id="toc-one-way-anova-and-interpretation" class="nav-link" data-scroll-target="#one-way-anova-and-interpretation">4. One-way ANOVA and interpretation</a></li>
+  <li><a href="#assumptions-and-diagnostics" id="toc-assumptions-and-diagnostics" class="nav-link" data-scroll-target="#assumptions-and-diagnostics">5. Assumptions and diagnostics</a></li>
+  <li><a href="#effect-size-and-robustness" id="toc-effect-size-and-robustness" class="nav-link" data-scroll-target="#effect-size-and-robustness">6. Effect size and robustness</a></li>
+  <li><a href="#post-hoc-comparisons-and-tukey-hsd" id="toc-post-hoc-comparisons-and-tukey-hsd" class="nav-link" data-scroll-target="#post-hoc-comparisons-and-tukey-hsd">7. Post-hoc comparisons and Tukey HSD</a></li>
+  </ul></li>
+  <li><a href="#movement-iii-archaeological-interpretation" id="toc-movement-iii-archaeological-interpretation" class="nav-link" data-scroll-target="#movement-iii-archaeological-interpretation">Movement III — Archaeological Interpretation</a>
+  <ul class="collapse">
+  <li><a href="#roman-period-iron-smelting-geochemistry" id="toc-roman-period-iron-smelting-geochemistry" class="nav-link" data-scroll-target="#roman-period-iron-smelting-geochemistry">8. Roman-period iron-smelting geochemistry</a>
+  <ul class="collapse">
+  <li><a href="#reading-a-clr-value" id="toc-reading-a-clr-value" class="nav-link" data-scroll-target="#reading-a-clr-value">Reading a CLR value</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#r-workflow-for-week-12" id="toc-r-workflow-for-week-12" class="nav-link" data-scroll-target="#r-workflow-for-week-12">R Workflow for Week 12</a>
+  <ul class="collapse">
+  <li><a href="#from-vessel-measurements-to-the-anova-table" id="toc-from-vessel-measurements-to-the-anova-table" class="nav-link" data-scroll-target="#from-vessel-measurements-to-the-anova-table">From vessel measurements to the ANOVA table</a></li>
+  <li><a href="#key-distinctions-to-remember" id="toc-key-distinctions-to-remember" class="nav-link" data-scroll-target="#key-distinctions-to-remember">Key Distinctions to Remember</a></li>
+  <li><a href="#study-questions-and-preparation-for-assignment-8" id="toc-study-questions-and-preparation-for-assignment-8" class="nav-link" data-scroll-target="#study-questions-and-preparation-for-assignment-8">9. Study Questions and Preparation for Assignment 8</a></li>
+  <li><a href="#take-home-message" id="toc-take-home-message" class="nav-link" data-scroll-target="#take-home-message">Take-Home Message</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Week 12 — Analysis of Variance</h1>
+<p class="subtitle lead">Group means → variation → the F statistic → archaeological interpretation</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+
+
+
+  </div>
+
+
+
+</header>
+
+
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p><strong>23 and 25 November 2026</strong></p>
+<p>Suppose archaeologists measure vessel wall thickness in three contexts. The contexts have different sample means, and vessels also vary within each context. How much separation among those means would be surprising given the scatter among vessels from the same context?</p>
+<p>One-way analysis of variance (ANOVA) answers by comparing two sources of variation. This week we <strong>define the groups and measurement → compare sources of variation → read the omnibus test → diagnose assumptions → estimate magnitude and compare pairs → interpret the archaeology</strong>. Fictional vessel measurements illustrate the R workflow. The iron-smelting case prepares you for Assignment 8.</p>
+</section>
+<section id="learning-objectives" class="level2">
+<h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
+<p>By the end of this week, you should be able to:</p>
+<ul>
+<li>identify the observational unit, numerical response, and grouping variable;</li>
+<li>explain between-group and within-group variability and read the ANOVA table;</li>
+<li>use the F distribution to explain the omnibus p-value;</li>
+<li>combine plots, study design, and diagnostic tests to assess assumptions;</li>
+<li>interpret eta-squared, compare classical ANOVA with Welch and Kruskal–Wallis, and read Tukey intervals; and</li>
+<li>explain what a regional difference in CLR-Si can tell us about the sampled material.</li>
+</ul>
+</section>
+<section id="required-readings" class="level2">
+<h2 class="anchored" data-anchor-id="required-readings">Required Readings</h2>
+<ul>
+<li>Carlson, D. L. (2017). <em>Quantitative methods in archaeology using R</em>. Cambridge University Press. <a href="https://doi.org/10.1017/9781139628730" class="uri">https://doi.org/10.1017/9781139628730</a> Read §8.5, “Comparing More Than Two Samples,” pp.&nbsp;178–189. Follow the Snodgrass example from the ANOVA table to pairwise comparisons.</li>
+<li>Perkins, M. A. (2026). <em>Using R for introductory statistics in social sciences</em>. Springer. <a href="https://doi.org/10.1007/978-3-032-17145-0" class="uri">https://doi.org/10.1007/978-3-032-17145-0</a> Read Chapter 7, “Group Comparisons with Scale Dependent Variables,” pp.&nbsp;85–111. Focus on §§7.4–7.5 and how to interpret the R output.</li>
+<li>Żabiński, G., Gramacki, J., Gramacki, A., Stepanov, I. S., &amp; Woźniak, M. (2023). Old wine into new wineskins? “Legacy data” in research on Roman period East Germanic iron smelting. <em>PLOS ONE, 18</em>(10), e0289771. <a href="https://doi.org/10.1371/journal.pone.0289771" style="overflow-wrap: anywhere;">https://doi.org/10.1371/journal.pone.0289771</a> Focus on the sample makeup, preprocessing, and what the geochemistry can establish.</li>
+</ul>
+</section>
+<section id="supplementary-readings" class="level2">
+<h2 class="anchored" data-anchor-id="supplementary-readings">Supplementary Readings</h2>
+<ul>
+<li>Dressler, W. W. (2015). <em>The 5 things you need to know about statistics: Quantification in ethnographic research</em>. Left Coast Press. Chapter 4, pp.&nbsp;63–77, explains how grouping accounts for variation and why that falls short of a causal explanation.</li>
+<li>Cumming, G., &amp; Calin-Jageman, R. (2024). <em>Introduction to the new statistics: Estimation, open science, and beyond</em> (2nd ed.). Routledge. <a href="https://doi.org/10.4324/9781032689470" class="uri">https://doi.org/10.4324/9781032689470</a> Chapter 14, pp.&nbsp;415–447, discusses interpreting differences and confidence intervals in studies with several groups.</li>
+</ul>
+</section>
+<section id="movement-i-design-variation-f" class="level1">
+<h1>Movement I — Design → Variation → F</h1>
+<section id="comparing-more-than-two-group-means" class="level2">
+<h2 class="anchored" data-anchor-id="comparing-more-than-two-group-means">1. Comparing more than two group means</h2>
+<p>In Week 9, the comparison had two groups. This week a single <strong>factor</strong> defines several groups. Its levels might be contexts, production regions, or periods. The <strong>response</strong> is a numerical measurement on each observation. In the pottery example, context is the factor, thickness in millimetres is the response, and one vessel is the observational unit. If three sherds came from the same vessel, treating them as independent vessels would overstate how much information we have.</p>
+<p>Week 9’s pooled two-sample <em>t</em>-test and classical one-way ANOVA use the same within-group variance estimate when there are two independent groups and a common variance is assumed. In that equivalent model, <span class="math inline">\(F=t^2\)</span>. Squaring removes the sign of <em>t</em>, and the upper-tail F test gives the same p-value as the two-sided pooled <em>t</em>-test. Week 9’s unequal-variance Welch <em>t</em>-test uses a different variance estimate (Dressler, 2015).</p>
+<p>For three groups, the null hypothesis is <span class="math inline">\(H_0: \mu_A = \mu_B = \mu_C\)</span>, where each <span class="math inline">\(\mu\)</span> is a population mean. The alternative is that at least two population means differ. One <strong>omnibus</strong> test assesses the overall evidence against equal means. Testing the pairs separately would give several opportunities for a false positive (Carlson, 2017, §8.5).</p>
+</section>
+<section id="between-group-and-within-group-variability" class="level2">
+<h2 class="anchored" data-anchor-id="between-group-and-within-group-variability">2. Between-group and within-group variability</h2>
+<p>Look at the same measurements in two ways. In the pooled view, every vessel has a distance from the <strong>grand mean</strong>, the mean of all vessels. In the grouped view, each vessel also has a distance from <strong>its own group mean</strong>. If group means are close together, knowing the context hardly improves our description. If the means are far apart relative to the scatter within groups, context helps describe the measurements (Dressler, 2015; Madrigal, 2012).</p>
+<ul>
+<li><strong>Between-group variation</strong> measures how far group means are from the grand mean. Each squared distance is weighted by the number of observations in that group.</li>
+<li><strong>Within-group variation</strong> measures how far observations are from their own group means. These signed distances are the model’s <strong>residuals</strong>. Squaring keeps positive and negative deviations from cancelling.</li>
+</ul>
+<p><span class="math display">\[
+SS_{\mathrm{total}} = SS_{\mathrm{between}} + SS_{\mathrm{within}}.
+\]</span></p>
+<p>The total squared variation around the grand mean splits into the part associated with the group means and the remaining squared variation within groups. The partition describes how the data vary. The cause of that variation is a separate archaeological question (Dressler, 2015).</p>
+</section>
+<section id="the-f-statistic" class="level2">
+<h2 class="anchored" data-anchor-id="the-f-statistic">3. The F statistic</h2>
+<p>The sums of squares are based on different numbers of degrees of freedom. Divide each by its degrees of freedom to get a <strong>mean square</strong>:</p>
+<p><span class="math display">\[
+F = \frac{MS_{\mathrm{between}}}{MS_{\mathrm{within}}}
+  = \frac{SS_{\mathrm{between}}/(k-1)}{SS_{\mathrm{within}}/(N-k)}.
+\]</span></p>
+<p>Here <span class="math inline">\(k\)</span> is the number of groups and <span class="math inline">\(N\)</span> the total number of observations. The numerator has <span class="math inline">\(k-1\)</span> degrees of freedom because the weighted deviations of group means around the grand mean sum to zero. The denominator has <span class="math inline">\(N-k\)</span> because one mean is fitted in each group. Under the equal-means null, both mean squares estimate the same error variance. When population means differ, the numerator tends to increase relative to the denominator (Carlson, 2017; Perkins, 2026; Privitera, 2024).</p>
+<p>Even when the null holds, different samples give different F values. Under the classical assumptions they follow an <strong>F distribution</strong> with the two degrees of freedom above. It is nonnegative and right-skewed. The p-value is the area to the right of the observed F. It describes how often an F at least this large would arise under the equal-means model and its assumptions. An F above 1 by itself is insufficient evidence of a difference.</p>
+<p>F expresses separation among sample means relative to within-group variation, after accounting for degrees of freedom. The reference distribution turns that ratio into evidence against the null model. The same mean difference can produce a larger F when there is less scatter within groups. Use estimated differences and effect sizes to describe magnitude, and study design and archaeological evidence to assess causal or substantive importance.</p>
+</section>
+</section>
+<section id="movement-ii-fit-diagnose-interpret" class="level1">
+<h1>Movement II — Fit → Diagnose → Interpret</h1>
+<section id="one-way-anova-and-interpretation" class="level2">
+<h2 class="anchored" data-anchor-id="one-way-anova-and-interpretation">4. One-way ANOVA and interpretation</h2>
+<p>Read the rows before the p-value. In R, the factor row contains the between-group information. The residual row contains the within-group information.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Column</th>
+<th>What it tells you</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Df</td>
+<td>Degrees of freedom</td>
+</tr>
+<tr class="even">
+<td>Sum Sq</td>
+<td>Squared variation associated with the factor or left within groups</td>
+</tr>
+<tr class="odd">
+<td>Mean Sq</td>
+<td>Sum of squares divided by its degrees of freedom</td>
+</tr>
+<tr class="even">
+<td>F value</td>
+<td>Between-group mean square divided by residual mean square</td>
+</tr>
+<tr class="odd">
+<td>Pr(&gt;F)</td>
+<td>Upper-tail probability under the null model</td>
+</tr>
+</tbody>
+</table>
+<p>Report the group summaries, F with both degrees of freedom, and the p-value. A small p-value gives evidence of some mean difference under the model. A large p-value can leave a range of differences plausible, especially with small samples. Inspect the estimated differences and their uncertainty before describing substantive importance (Carlson, 2017; Cumming &amp; Calin-Jageman, 2024).</p>
+</section>
+<section id="assumptions-and-diagnostics" class="level2">
+<h2 class="anchored" data-anchor-id="assumptions-and-diagnostics">5. Assumptions and diagnostics</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Issue</th>
+<th>How to assess it</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Independent observations</td>
+<td>Check how observations were sampled and measured. Items from one vessel, site, or analytical batch can share sources of variation.</td>
+</tr>
+<tr class="even">
+<td>Approximately normal errors within groups</td>
+<td>Inspect dot plots and within-group Q–Q plots. Compare observations with their own group centres. Pooled data may look irregular simply because group means differ.</td>
+</tr>
+<tr class="odd">
+<td>A common within-group variance</td>
+<td>Compare group spreads and sample sizes. Look for systematic changes in residual spread. Unequal variances are especially concerning when group sizes also differ.</td>
+</tr>
+<tr class="even">
+<td>Outliers</td>
+<td>Inspect extreme values against sampling and measurement records. Document any exclusion and its reason. An extreme value may carry archaeological information.</td>
+</tr>
+</tbody>
+</table>
+<p>Assignment 8 asks for <strong>Shapiro–Wilk</strong> by group and a <strong>mean-centered Levene</strong> check. Shapiro–Wilk assesses departure from normality. Small samples may miss consequential departures, while large samples can detect small ones. The mean-centered Levene check compares the absolute distances from observations to their own group means. A small p-value suggests differing spreads. Bartlett’s test is an optional check that is sensitive to departures from normality. Interpret these results alongside the plots and design. A large diagnostic p-value alone cannot establish that an assumption holds (Madrigal, 2012; Perkins, 2026).</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Independence starts with the design">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Independence starts with the design
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>One row per analysis can still mean several related observations from one locality. Switching the test does not remove that dependence.</p>
+</div>
+</div>
+</section>
+<section id="effect-size-and-robustness" class="level2">
+<h2 class="anchored" data-anchor-id="effect-size-and-robustness">6. Effect size and robustness</h2>
+<p><strong>Eta-squared</strong> describes the share of observed variation associated with group membership in the one-way model:</p>
+<p><span class="math display">\[
+\eta^2 = \frac{SS_{\mathrm{between}}}{SS_{\mathrm{total}}}.
+\]</span></p>
+<p>Multiply by 100 to express the share as a percentage. This sample measure gives neither a direction nor a difference in the original units. Report group summaries alongside it. A small p-value can accompany a modest effect. Archaeological importance also depends on measurement quality, the magnitude of differences, and what the study sampled (Dressler, 2015; Privitera, 2024).</p>
+<p>A sensitivity check asks whether an interpretation changes under different assumptions.</p>
+<ul>
+<li><strong>Welch one-way ANOVA</strong> tests equality of means while allowing different group variances. It uses group-specific variance estimates and an approximate reference distribution. Independence and the behaviour of group means still matter, particularly in small, skewed groups.</li>
+<li><strong>Kruskal–Wallis</strong> pools and ranks the observations before comparing groups. The test assesses a common distribution through differences in ranks. With similarly shaped distributions, evidence of a difference can be read as a location shift. Differences in shape or spread can also affect the result, so a median interpretation needs justification (Carlson, 2017; Perkins, 2026).</li>
+</ul>
+<p>Agreement supports a broad interpretation of group differences under several working assumptions. Disagreement can prompt a closer look at distribution shape, spread and group sizes. All three tests rely on independent observations.</p>
+</section>
+<section id="post-hoc-comparisons-and-tukey-hsd" class="level2">
+<h2 class="anchored" data-anchor-id="post-hoc-comparisons-and-tukey-hsd">7. Post-hoc comparisons and Tukey HSD</h2>
+<p>If there is evidence against equal means, ask where the differences are and how large they are. With <span class="math inline">\(k\)</span> groups there are <span class="math inline">\(k(k-1)/2\)</span> distinct pairs. Four groups give six comparisons. A series of unadjusted tests increases the chance of at least one false positive across those comparisons (Carlson, 2017; Perkins, 2026).</p>
+<p>Tukey HSD uses the residual variation from classical ANOVA to compare all pairs. Under its model assumptions it controls the familywise error rate and gives simultaneous confidence intervals. For each pair, read the signed difference, the interval, and the adjusted p-value. In R’s default output, B–A subtracts the mean of A from the mean of B. A positive difference means the estimated mean of B is higher. An interval containing zero leaves equal means compatible with that comparison. A significant overall test can occur when only some pairs show clear differences.</p>
+<p>Tukey inherits the classical model’s assumptions. Marked variance differences can make pooled comparisons misleading. Give the pairwise estimates and intervals in context, and think carefully before interpreting whichever comparison happens to look largest in the observed data (Cumming &amp; Calin-Jageman, 2024).</p>
+</section>
+</section>
+<section id="movement-iii-archaeological-interpretation" class="level1">
+<h1>Movement III — Archaeological Interpretation</h1>
+<section id="roman-period-iron-smelting-geochemistry" class="level2">
+<h2 class="anchored" data-anchor-id="roman-period-iron-smelting-geochemistry">8. Roman-period iron-smelting geochemistry</h2>
+<p>Żabiński et al.&nbsp;(2023) ask what older chemical analyses of slag and iron ores can tell us about regional patterns in iron production associated with the Przeworsk Culture. The compilation contains 240 chemical observations. The three principal groups represent the Holy Cross Mountains, Masovia, and Silesia. The Kraków–Częstochowa Jura is a comparator that includes late medieval slag and modern ore.</p>
+<p>The measurements come from different studies and analytical methods, often with incomplete documentation of detection limits, precision, or context. Some localities contribute several observations. One row is one chemical analysis. The number of rows therefore does not give the number of independent localities. A model using region alone cannot separate geography from material, chronology, and selection into the legacy record.</p>
+<section id="reading-a-clr-value" class="level3">
+<h3 class="anchored" data-anchor-id="reading-a-clr-value">Reading a CLR value</h3>
+<p>Geochemical compositions describe parts relative to a whole. The authors replaced missing entries in the selected elements using regional minima and used a <strong>centered log-ratio</strong> (CLR) transformation. Assignment 8 uses the Si coordinate. Let <span class="math inline">\(g\)</span> be the geometric mean of the four positive values for Si, Ca, Al, and Mn within that observation.</p>
+<p><span class="math display">\[
+\operatorname{CLR}(\mathrm{Si}) =
+\log\!\left(\frac{\mathrm{Si}}{g}\right).
+\]</span></p>
+<p>A higher CLR-Si means Si is higher <strong>relative to that four-element reference</strong>. Changing Ca, Al, or Mn can change CLR-Si while Si stays fixed. Likewise, replacing a missing value in any of the four parts can affect the ratio (Żabiński et al., 2023).</p>
+<div class="callout callout-style-default callout-note callout-titled" title="From a group pattern to an archaeological claim">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>From a group pattern to an archaeological claim
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A difference in mean CLR-Si would describe a relative chemical pattern among the sampled groups. An argument about technological traditions, ore sources, or artefact provenance needs further evidence, such as material-specific comparisons, chronological control, and direct evidence from the artefacts under study.</p>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="r-workflow-for-week-12" class="level1">
+<h1>R Workflow for Week 12</h1>
+<p>Run these chunks in order. The data are fictional measurements from independently sampled vessels for illustration. The code uses base R.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>vessels <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">context =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>), <span class="at">each =</span> <span class="dv">8</span>)),</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">thickness =</span> <span class="fu">c</span>(</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="dv">17</span>, <span class="dv">18</span>, <span class="dv">19</span>, <span class="fl">19.5</span>, <span class="fl">20.5</span>, <span class="dv">21</span>, <span class="dv">22</span>, <span class="dv">23</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="dv">18</span>, <span class="dv">19</span>, <span class="dv">20</span>, <span class="fl">20.5</span>, <span class="fl">21.5</span>, <span class="dv">22</span>, <span class="dv">23</span>, <span class="dv">24</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="dv">21</span>, <span class="dv">22</span>, <span class="dv">23</span>, <span class="fl">23.5</span>, <span class="fl">24.5</span>, <span class="dv">25</span>, <span class="dv">26</span>, <span class="dv">27</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(thickness <span class="sc">~</span> context, <span class="at">data =</span> vessels,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Context"</span>, <span class="at">ylab =</span> <span class="st">"Wall thickness (mm)"</span>, <span class="at">col =</span> <span class="st">"#dae8ed"</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">stripchart</span>(thickness <span class="sc">~</span> context, <span class="at">data =</span> vessels, <span class="at">vertical =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>           <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col =</span> <span class="st">"#214b5a"</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>group_means <span class="ot">&lt;-</span> <span class="fu">with</span>(vessels, <span class="fu">tapply</span>(thickness, context, mean))</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="fu">seq_along</span>(group_means), group_means, <span class="at">pch =</span> <span class="dv">4</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div id="fig-thickness-by-context" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-thickness-by-context-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="week12_files/figure-html/fig-thickness-by-context-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-thickness-by-context-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Fictional vessel thickness by context. Crosses show group means.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<section id="from-vessel-measurements-to-the-anova-table" class="level3">
+<h3 class="anchored" data-anchor-id="from-vessel-measurements-to-the-anova-table">From vessel measurements to the ANOVA table</h3>
+<p>Each context has eight vessels. The group means are 20, 21, and 24 mm, so the grand mean is 21.666… mm. Equal sample sizes make the grand mean the simple average of the group means in this example. In general, weight each group mean by its sample size.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Context</th>
+<th style="text-align: right;">Mean (mm)</th>
+<th style="text-align: right;">Between SS</th>
+<th style="text-align: right;">Within SS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">22.222</td>
+<td style="text-align: right;">28.500</td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">3.556</td>
+<td style="text-align: right;">28.500</td>
+</tr>
+<tr class="odd">
+<td>C</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">43.556</td>
+<td style="text-align: right;">28.500</td>
+</tr>
+<tr class="even">
+<td>Total</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">69.333</td>
+<td style="text-align: right;">85.500</td>
+</tr>
+</tbody>
+</table>
+<p>For the between-group column, square each group mean’s distance from the grand mean and multiply by eight. For example, A contributes <span class="math inline">\(8(20 - 21.666\ldots)^2\)</span>, about 22.222 mm². For the within-group column, subtract the group mean from each vessel measurement, square the result, and add within the group. The 17 mm vessel in A contributes <span class="math inline">\((17-20)^2=9\)</span> mm² to its group’s 28.500 mm². The SS columns are in mm². Totals use the unrounded contributions.</p>
+<p>R reports 69.333 mm² in the context row and 85.500 mm² in the residual row. Together they give 154.833 mm² of total variation. Dividing by the respective degrees of freedom, 2 and 21, gives mean squares of 34.667 and 4.071 mm². Their ratio, about 8.51, is the F statistic.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Group summaries, ANOVA and eta-squared</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(vessels, <span class="fu">table</span>(context))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>context
+A B C
+8 8 8 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(vessels, <span class="fu">tapply</span>(thickness, context, sd))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       A        B        C
+2.017778 2.017778 2.017778 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>group_sizes <span class="ot">&lt;-</span> <span class="fu">with</span>(vessels, <span class="fu">table</span>(context))</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>grand_mean <span class="ot">&lt;-</span> <span class="fu">mean</span>(vessels<span class="sc">$</span>thickness)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>context_names <span class="ot">&lt;-</span> <span class="fu">as.character</span>(vessels<span class="sc">$</span>context)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>vessel_group_means <span class="ot">&lt;-</span> group_means[context_names]</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">grand_mean =</span> grand_mean,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">ss_between =</span> <span class="fu">sum</span>(group_sizes <span class="sc">*</span> (group_means <span class="sc">-</span> grand_mean)<span class="sc">^</span><span class="dv">2</span>),</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">ss_within =</span> <span class="fu">sum</span>((vessels<span class="sc">$</span>thickness <span class="sc">-</span> vessel_group_means)<span class="sc">^</span><span class="dv">2</span>),</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">ss_total =</span> <span class="fu">sum</span>((vessels<span class="sc">$</span>thickness <span class="sc">-</span> grand_mean)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>grand_mean ss_between  ss_within   ss_total
+  21.66667   69.33333   85.50000  154.83333 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">aov</span>(thickness <span class="sc">~</span> context, <span class="at">data =</span> vessels)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>anova_table <span class="ot">&lt;-</span> <span class="fu">anova</span>(fit)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>anova_table</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Response: thickness
+          Df Sum Sq Mean Sq F value   Pr(&gt;F)
+context    2 69.333  34.667  8.5146 0.001959 **
+Residuals 21 85.500   4.071
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>ss <span class="ot">&lt;-</span> anova_table[[<span class="st">"Sum Sq"</span>]]</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>ss[<span class="dv">1</span>] <span class="sc">/</span> <span class="fu">sum</span>(ss)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4477933</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>previous <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">fitted</span>(fit), <span class="fu">residuals</span>(fit), <span class="at">pch =</span> <span class="dv">16</span>,</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Fitted thickness (mm)"</span>, <span class="at">ylab =</span> <span class="st">"Residual (mm)"</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(<span class="fu">residuals</span>(fit), <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">main =</span> <span class="st">"Normal Q–Q plot"</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(<span class="fu">residuals</span>(fit))</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(previous)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div id="fig-vessel-residuals" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-vessel-residuals-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="week12_files/figure-html/fig-vessel-residuals-1.png" class="img-fluid figure-img" width="768">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-vessel-residuals-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Residual diagnostics for the fictional vessel example.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The residual plot displays scatter around the fitted group means. The pooled Q–Q plot provides a summary. For Assignment 8, inspect distributions or Q–Q plots by group as well. Eight observations per group give limited information about tail behaviour.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnose, compare sensitivity, and read pairwise estimates</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">vapply</span>(<span class="fu">split</span>(vessels<span class="sc">$</span>thickness, vessels<span class="sc">$</span>context),</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>       <span class="cf">function</span>(values) <span class="fu">shapiro.test</span>(values)<span class="sc">$</span>p.value, <span class="fu">numeric</span>(<span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       A        B        C
+0.987628 0.987628 0.987628 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>vessels<span class="sc">$</span>abs_deviation <span class="ot">&lt;-</span> <span class="fu">with</span>(</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  vessels, <span class="fu">abs</span>(thickness <span class="sc">-</span> <span class="fu">ave</span>(thickness, context, <span class="at">FUN =</span> mean))</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(<span class="fu">aov</span>(abs_deviation <span class="sc">~</span> context, <span class="at">data =</span> vessels))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Response: abs_deviation
+          Df Sum Sq Mean Sq F value Pr(&gt;F)
+context    2  0.000  0.0000       0      1
+Residuals 21 22.125  1.0536               </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">oneway.test</span>(thickness <span class="sc">~</span> context, <span class="at">data =</span> vessels, <span class="at">var.equal =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    One-way analysis of means (not assuming equal variances)
+
+data:  thickness and context
+F = 8.1276, num df = 2, denom df = 14, p-value = 0.004543</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kruskal.test</span>(thickness <span class="sc">~</span> context, <span class="at">data =</span> vessels)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Kruskal-Wallis rank sum test
+
+data:  thickness by context
+Kruskal-Wallis chi-squared = 10.194, df = 2, p-value = 0.006114</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">TukeyHSD</span>(fit, <span class="st">"context"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = thickness ~ context, data = vessels)
+
+$context
+    diff        lwr      upr     p adj
+B-A    1 -1.5429758 3.542976 0.5903442
+C-A    4  1.4570242 6.542976 0.0019587
+C-B    3  0.4570242 5.542976 0.0190298</code></pre>
+</div>
+</div>
+<p>The fitted group means are 20, 21, and 24 mm. The classical result, <span class="math inline">\(F(2, 21) = 8.51\)</span>, <span class="math inline">\(p = .002\)</span> (rounded), gives evidence of a difference somewhere among the means. Eta-squared is about .45, so context accounts for about 45% of the observed squared variation in these fictional measurements. The Tukey estimate for B–A is 1 mm, and its interval includes zero. The intervals comparing C with A and B lie above zero. This example shows why the omnibus result, share of variation, and estimated differences each belong in the interpretation.</p>
+<p>The group spreads in this constructed example are identical. Real measurements seldom align so neatly. In Assignment 8, use the diagnostics and sensitivity results to explain how the distributions and design affect your interpretation.</p>
+</section>
+<section id="key-distinctions-to-remember" class="level2">
+<h2 class="anchored" data-anchor-id="key-distinctions-to-remember">Key Distinctions to Remember</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Question</th>
+<th>Evidence to report</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>How do the groups look?</td>
+<td>Group sizes, centres, spreads, and plots</td>
+</tr>
+<tr class="even">
+<td>Is there evidence against equality of means?</td>
+<td>F, degrees of freedom, p-value, and assumptions</td>
+</tr>
+<tr class="odd">
+<td>How much observed variation is associated with the groups?</td>
+<td>Eta-squared and group summaries</td>
+</tr>
+<tr class="even">
+<td>Which means differ, and by how much?</td>
+<td>Tukey estimates, simultaneous intervals, and adjusted p-values</td>
+</tr>
+<tr class="odd">
+<td>How sensitive is the conclusion?</td>
+<td>Welch and Kruskal–Wallis results with their assumptions and targets</td>
+</tr>
+<tr class="even">
+<td>What can we say archaeologically?</td>
+<td>Sampling, measurement quality, independent evidence, and alternative explanations</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="study-questions-and-preparation-for-assignment-8" class="level2">
+<h2 class="anchored" data-anchor-id="study-questions-and-preparation-for-assignment-8">9. Study Questions and Preparation for Assignment 8</h2>
+<ol type="1">
+<li>If group means stay fixed and scatter within the groups increases, what happens to F? Which part of the ratio changes?</li>
+<li>Why does an ANOVA with four groups have three numerator degrees of freedom? What question does its single p-value address?</li>
+<li>Suppose the smallest group has a much larger SD, but the variance diagnostic has a large p-value. What would you inspect, and what could Welch tell you?</li>
+<li>Why might Kruskal–Wallis detect differences in distributions even when group means tell an unclear story?</li>
+<li>What does a Tukey interval for a mean difference tell you that the omnibus test and eta-squared leave open?</li>
+<li>Why might several chemical analyses from one locality be dependent? How could that affect the strength of a claim?</li>
+<li>How could CLR-Si change while raw Si stays fixed?</li>
+<li>In the vessel ANOVA table, which row measures scatter around each context’s mean? Use the sums of squares and degrees of freedom to reconstruct the two mean squares and F.</li>
+<li>Read the Tukey intervals for B–A and C–B. Give the estimated direction and range of each difference. Which interval includes zero, and what does that tell you about the claim that the two means differ?</li>
+</ol>
+<p>Before <a href="../assignments/assignment08_iron_anova/assignment08_iron_anova.html">Assignment 8</a>, read the case study, teaching-file documentation and codebook. Identify the response, group labels, and observational unit. Plan the plots and summaries first, then follow the assignment’s diagnostics, tests, effect size, and comparisons. Finish by connecting the results to the sampling and measurement context.</p>
+</section>
+<section id="take-home-message" class="level2">
+<h2 class="anchored" data-anchor-id="take-home-message">Take-Home Message</h2>
+<p>ANOVA uses within-group variation to judge how much separation among group means would be surprising under the equal-means model. Use effect sizes and intervals to describe that separation, and use archaeological evidence to judge what it can mean.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p>Carlson, D. L. (2017). <em>Quantitative methods in archaeology using R</em>. Cambridge University Press. <a href="https://doi.org/10.1017/9781139628730" class="uri">https://doi.org/10.1017/9781139628730</a></p>
+<p>Cumming, G., &amp; Calin-Jageman, R. (2024). <em>Introduction to the new statistics: Estimation, open science, and beyond</em> (2nd ed.). Routledge. <a href="https://doi.org/10.4324/9781032689470" class="uri">https://doi.org/10.4324/9781032689470</a></p>
+<p>Dressler, W. W. (2015). <em>The 5 things you need to know about statistics: Quantification in ethnographic research</em>. Left Coast Press.</p>
+<p>Madrigal, L. (2012). <em>Statistics for anthropology</em> (2nd ed.). Cambridge University Press. <a href="https://doi.org/10.1017/CBO9781139022699" class="uri">https://doi.org/10.1017/CBO9781139022699</a></p>
+<p>Perkins, M. A. (2026). <em>Using R for introductory statistics in social sciences</em>. Springer. <a href="https://doi.org/10.1007/978-3-032-17145-0" class="uri">https://doi.org/10.1007/978-3-032-17145-0</a></p>
+<p>Privitera, G. J. (2024). <em>Statistics for the behavioral sciences</em> (4th ed.). SAGE Publications.</p>
+<p>Żabiński, G., Gramacki, J., Gramacki, A., Stepanov, I. S., &amp; Woźniak, M. (2023). Old wine into new wineskins? “Legacy data” in research on Roman period East Germanic iron smelting. <em>PLOS ONE, 18</em>(10), e0289771. <a href="https://doi.org/10.1371/journal.pone.0289771" class="uri">https://doi.org/10.1371/journal.pone.0289771</a></p>
+
+
+</section>
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button,
+          { trigger: "manual",
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config);
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined;
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              }
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            }
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

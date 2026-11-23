@@ -1,0 +1,300 @@
+---
+title: "Week 12 — Analysis of Variance"
+subtitle: "Group means → variation → the F statistic → archaeological interpretation"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+execute:
+  echo: true
+---
+
+## Overview
+
+**23 and 25 November 2026**
+
+Suppose archaeologists measure vessel wall thickness in three contexts. The contexts have different sample means, and vessels also vary within each context. How much separation among those means would be surprising given the scatter among vessels from the same context?
+
+One-way analysis of variance (ANOVA) answers by comparing two sources of variation. This week we **define the groups and measurement → compare sources of variation → read the omnibus test → diagnose assumptions → estimate magnitude and compare pairs → interpret the archaeology**. Fictional vessel measurements illustrate the R workflow. The iron-smelting case prepares you for Assignment 8.
+
+## Learning Objectives
+
+By the end of this week, you should be able to:
+
+- identify the observational unit, numerical response, and grouping variable;
+- explain between-group and within-group variability and read the ANOVA table;
+- use the F distribution to explain the omnibus p-value;
+- combine plots, study design, and diagnostic tests to assess assumptions;
+- interpret eta-squared, compare classical ANOVA with Welch and Kruskal–Wallis, and read Tukey intervals; and
+- explain what a regional difference in CLR-Si can tell us about the sampled material.
+
+## Required Readings
+
+- Carlson, D. L. (2017). *Quantitative methods in archaeology using R*. Cambridge University Press. <https://doi.org/10.1017/9781139628730> Read §8.5, “Comparing More Than Two Samples,” pp. 178–189. Follow the Snodgrass example from the ANOVA table to pairwise comparisons.
+- Perkins, M. A. (2026). *Using R for introductory statistics in social sciences*. Springer. <https://doi.org/10.1007/978-3-032-17145-0> Read Chapter 7, “Group Comparisons with Scale Dependent Variables,” pp. 85–111. Focus on §§7.4–7.5 and how to interpret the R output.
+- Żabiński, G., Gramacki, J., Gramacki, A., Stepanov, I. S., & Woźniak, M. (2023). Old wine into new wineskins? “Legacy data” in research on Roman period East Germanic iron smelting. *PLOS ONE, 18*(10), e0289771. [https://doi.org/10.1371/journal.pone.0289771](https://doi.org/10.1371/journal.pone.0289771){style="overflow-wrap: anywhere;"} Focus on the sample makeup, preprocessing, and what the geochemistry can establish.
+
+## Supplementary Readings
+
+- Dressler, W. W. (2015). *The 5 things you need to know about statistics: Quantification in ethnographic research*. Left Coast Press. Chapter 4, pp. 63–77, explains how grouping accounts for variation and why that falls short of a causal explanation.
+- Cumming, G., & Calin-Jageman, R. (2024). *Introduction to the new statistics: Estimation, open science, and beyond* (2nd ed.). Routledge. <https://doi.org/10.4324/9781032689470> Chapter 14, pp. 415–447, discusses interpreting differences and confidence intervals in studies with several groups.
+
+# Movement I — Design → Variation → F
+
+## 1. Comparing more than two group means
+
+In Week 9, the comparison had two groups. This week a single **factor** defines several groups. Its levels might be contexts, production regions, or periods. The **response** is a numerical measurement on each observation. In the pottery example, context is the factor, thickness in millimetres is the response, and one vessel is the observational unit. If three sherds came from the same vessel, treating them as independent vessels would overstate how much information we have.
+
+Week 9’s pooled two-sample *t*-test and classical one-way ANOVA use the same within-group variance estimate when there are two independent groups and a common variance is assumed. In that equivalent model, $F=t^2$. Squaring removes the sign of *t*, and the upper-tail F test gives the same p-value as the two-sided pooled *t*-test. Week 9’s unequal-variance Welch *t*-test uses a different variance estimate (Dressler, 2015).
+
+For three groups, the null hypothesis is $H_0: \mu_A = \mu_B = \mu_C$, where each $\mu$ is a population mean. The alternative is that at least two population means differ. One **omnibus** test assesses the overall evidence against equal means. Testing the pairs separately would give several opportunities for a false positive (Carlson, 2017, §8.5).
+
+## 2. Between-group and within-group variability
+
+Look at the same measurements in two ways. In the pooled view, every vessel has a distance from the **grand mean**, the mean of all vessels. In the grouped view, each vessel also has a distance from **its own group mean**. If group means are close together, knowing the context hardly improves our description. If the means are far apart relative to the scatter within groups, context helps describe the measurements (Dressler, 2015; Madrigal, 2012).
+
+- **Between-group variation** measures how far group means are from the grand mean. Each squared distance is weighted by the number of observations in that group.
+- **Within-group variation** measures how far observations are from their own group means. These signed distances are the model’s **residuals**. Squaring keeps positive and negative deviations from cancelling.
+
+$$
+SS_{\mathrm{total}} = SS_{\mathrm{between}} + SS_{\mathrm{within}}.
+$$
+
+The total squared variation around the grand mean splits into the part associated with the group means and the remaining squared variation within groups. The partition describes how the data vary. The cause of that variation is a separate archaeological question (Dressler, 2015).
+
+## 3. The F statistic
+
+The sums of squares are based on different numbers of degrees of freedom. Divide each by its degrees of freedom to get a **mean square**:
+
+$$
+F = \frac{MS_{\mathrm{between}}}{MS_{\mathrm{within}}}
+  = \frac{SS_{\mathrm{between}}/(k-1)}{SS_{\mathrm{within}}/(N-k)}.
+$$
+
+Here $k$ is the number of groups and $N$ the total number of observations. The numerator has $k-1$ degrees of freedom because the weighted deviations of group means around the grand mean sum to zero. The denominator has $N-k$ because one mean is fitted in each group. Under the equal-means null, both mean squares estimate the same error variance. When population means differ, the numerator tends to increase relative to the denominator (Carlson, 2017; Perkins, 2026; Privitera, 2024).
+
+Even when the null holds, different samples give different F values. Under the classical assumptions they follow an **F distribution** with the two degrees of freedom above. It is nonnegative and right-skewed. The p-value is the area to the right of the observed F. It describes how often an F at least this large would arise under the equal-means model and its assumptions. An F above 1 by itself is insufficient evidence of a difference.
+
+F expresses separation among sample means relative to within-group variation, after accounting for degrees of freedom. The reference distribution turns that ratio into evidence against the null model. The same mean difference can produce a larger F when there is less scatter within groups. Use estimated differences and effect sizes to describe magnitude, and study design and archaeological evidence to assess causal or substantive importance.
+
+# Movement II — Fit → Diagnose → Interpret
+
+## 4. One-way ANOVA and interpretation
+
+Read the rows before the p-value. In R, the factor row contains the between-group information. The residual row contains the within-group information.
+
+| Column | What it tells you |
+|---|---|
+| Df | Degrees of freedom |
+| Sum Sq | Squared variation associated with the factor or left within groups |
+| Mean Sq | Sum of squares divided by its degrees of freedom |
+| F value | Between-group mean square divided by residual mean square |
+| Pr(>F) | Upper-tail probability under the null model |
+
+Report the group summaries, F with both degrees of freedom, and the p-value. A small p-value gives evidence of some mean difference under the model. A large p-value can leave a range of differences plausible, especially with small samples. Inspect the estimated differences and their uncertainty before describing substantive importance (Carlson, 2017; Cumming & Calin-Jageman, 2024).
+
+## 5. Assumptions and diagnostics
+
+| Issue | How to assess it |
+|---|---|
+| Independent observations | Check how observations were sampled and measured. Items from one vessel, site, or analytical batch can share sources of variation. |
+| Approximately normal errors within groups | Inspect dot plots and within-group Q–Q plots. Compare observations with their own group centres. Pooled data may look irregular simply because group means differ. |
+| A common within-group variance | Compare group spreads and sample sizes. Look for systematic changes in residual spread. Unequal variances are especially concerning when group sizes also differ. |
+| Outliers | Inspect extreme values against sampling and measurement records. Document any exclusion and its reason. An extreme value may carry archaeological information. |
+
+Assignment 8 asks for **Shapiro–Wilk** by group and a **mean-centered Levene** check. Shapiro–Wilk assesses departure from normality. Small samples may miss consequential departures, while large samples can detect small ones. The mean-centered Levene check compares the absolute distances from observations to their own group means. A small p-value suggests differing spreads. Bartlett’s test is an optional check that is sensitive to departures from normality. Interpret these results alongside the plots and design. A large diagnostic p-value alone cannot establish that an assumption holds (Madrigal, 2012; Perkins, 2026).
+
+::: {.callout-important title="Independence starts with the design"}
+One row per analysis can still mean several related observations from one locality. Switching the test does not remove that dependence.
+:::
+
+## 6. Effect size and robustness
+
+**Eta-squared** describes the share of observed variation associated with group membership in the one-way model:
+
+$$
+\eta^2 = \frac{SS_{\mathrm{between}}}{SS_{\mathrm{total}}}.
+$$
+
+Multiply by 100 to express the share as a percentage. This sample measure gives neither a direction nor a difference in the original units. Report group summaries alongside it. A small p-value can accompany a modest effect. Archaeological importance also depends on measurement quality, the magnitude of differences, and what the study sampled (Dressler, 2015; Privitera, 2024).
+
+A sensitivity check asks whether an interpretation changes under different assumptions.
+
+- **Welch one-way ANOVA** tests equality of means while allowing different group variances. It uses group-specific variance estimates and an approximate reference distribution. Independence and the behaviour of group means still matter, particularly in small, skewed groups.
+- **Kruskal–Wallis** pools and ranks the observations before comparing groups. The test assesses a common distribution through differences in ranks. With similarly shaped distributions, evidence of a difference can be read as a location shift. Differences in shape or spread can also affect the result, so a median interpretation needs justification (Carlson, 2017; Perkins, 2026).
+
+Agreement supports a broad interpretation of group differences under several working assumptions. Disagreement can prompt a closer look at distribution shape, spread and group sizes. All three tests rely on independent observations.
+
+## 7. Post-hoc comparisons and Tukey HSD
+
+If there is evidence against equal means, ask where the differences are and how large they are. With $k$ groups there are $k(k-1)/2$ distinct pairs. Four groups give six comparisons. A series of unadjusted tests increases the chance of at least one false positive across those comparisons (Carlson, 2017; Perkins, 2026).
+
+Tukey HSD uses the residual variation from classical ANOVA to compare all pairs. Under its model assumptions it controls the familywise error rate and gives simultaneous confidence intervals. For each pair, read the signed difference, the interval, and the adjusted p-value. In R’s default output, B–A subtracts the mean of A from the mean of B. A positive difference means the estimated mean of B is higher. An interval containing zero leaves equal means compatible with that comparison. A significant overall test can occur when only some pairs show clear differences.
+
+Tukey inherits the classical model’s assumptions. Marked variance differences can make pooled comparisons misleading. Give the pairwise estimates and intervals in context, and think carefully before interpreting whichever comparison happens to look largest in the observed data (Cumming & Calin-Jageman, 2024).
+
+# Movement III — Archaeological Interpretation
+
+## 8. Roman-period iron-smelting geochemistry
+
+Żabiński et al. (2023) ask what older chemical analyses of slag and iron ores can tell us about regional patterns in iron production associated with the Przeworsk Culture. The compilation contains 240 chemical observations. The three principal groups represent the Holy Cross Mountains, Masovia, and Silesia. The Kraków–Częstochowa Jura is a comparator that includes late medieval slag and modern ore.
+
+The measurements come from different studies and analytical methods, often with incomplete documentation of detection limits, precision, or context. Some localities contribute several observations. One row is one chemical analysis. The number of rows therefore does not give the number of independent localities. A model using region alone cannot separate geography from material, chronology, and selection into the legacy record.
+
+### Reading a CLR value
+
+Geochemical compositions describe parts relative to a whole. The authors replaced missing entries in the selected elements using regional minima and used a **centered log-ratio** (CLR) transformation. Assignment 8 uses the Si coordinate. Let $g$ be the geometric mean of the four positive values for Si, Ca, Al, and Mn within that observation.
+
+$$
+\operatorname{CLR}(\mathrm{Si}) =
+\log\!\left(\frac{\mathrm{Si}}{g}\right).
+$$
+
+A higher CLR-Si means Si is higher **relative to that four-element reference**. Changing Ca, Al, or Mn can change CLR-Si while Si stays fixed. Likewise, replacing a missing value in any of the four parts can affect the ratio (Żabiński et al., 2023).
+
+::: {.callout-note title="From a group pattern to an archaeological claim"}
+A difference in mean CLR-Si would describe a relative chemical pattern among the sampled groups. An argument about technological traditions, ore sources, or artefact provenance needs further evidence, such as material-specific comparisons, chronological control, and direct evidence from the artefacts under study.
+:::
+
+# R Workflow for Week 12
+
+Run these chunks in order. The data are fictional measurements from independently sampled vessels for illustration. The code uses base R.
+
+```{r}
+#| label: fig-thickness-by-context
+#| fig-cap: "Fictional vessel thickness by context. Crosses show group means."
+#| fig-width: 7
+#| fig-height: 4
+
+vessels <- data.frame(
+  context = factor(rep(c("A", "B", "C"), each = 8)),
+  thickness = c(
+    17, 18, 19, 19.5, 20.5, 21, 22, 23,
+    18, 19, 20, 20.5, 21.5, 22, 23, 24,
+    21, 22, 23, 23.5, 24.5, 25, 26, 27
+  )
+)
+
+boxplot(thickness ~ context, data = vessels,
+        xlab = "Context", ylab = "Wall thickness (mm)", col = "#dae8ed")
+stripchart(thickness ~ context, data = vessels, vertical = TRUE,
+           add = TRUE, pch = 16, col = "#214b5a")
+group_means <- with(vessels, tapply(thickness, context, mean))
+points(seq_along(group_means), group_means, pch = 4, lwd = 2)
+```
+
+### From vessel measurements to the ANOVA table
+
+Each context has eight vessels. The group means are 20, 21, and 24 mm, so the grand mean is 21.666… mm. Equal sample sizes make the grand mean the simple average of the group means in this example. In general, weight each group mean by its sample size.
+
+| Context | Mean (mm) | Between SS | Within SS |
+|---|---:|---:|---:|
+| A | 20 | 22.222 | 28.500 |
+| B | 21 | 3.556 | 28.500 |
+| C | 24 | 43.556 | 28.500 |
+| Total | | 69.333 | 85.500 |
+
+For the between-group column, square each group mean’s distance from the grand mean and multiply by eight. For example, A contributes $8(20 - 21.666\ldots)^2$, about 22.222 mm². For the within-group column, subtract the group mean from each vessel measurement, square the result, and add within the group. The 17 mm vessel in A contributes $(17-20)^2=9$ mm² to its group’s 28.500 mm². The SS columns are in mm². Totals use the unrounded contributions.
+
+R reports 69.333 mm² in the context row and 85.500 mm² in the residual row. Together they give 154.833 mm² of total variation. Dividing by the respective degrees of freedom, 2 and 21, gives mean squares of 34.667 and 4.071 mm². Their ratio, about 8.51, is the F statistic.
+
+```{r}
+# Group summaries, ANOVA and eta-squared
+with(vessels, table(context))
+with(vessels, tapply(thickness, context, sd))
+group_sizes <- with(vessels, table(context))
+grand_mean <- mean(vessels$thickness)
+context_names <- as.character(vessels$context)
+vessel_group_means <- group_means[context_names]
+c(
+  grand_mean = grand_mean,
+  ss_between = sum(group_sizes * (group_means - grand_mean)^2),
+  ss_within = sum((vessels$thickness - vessel_group_means)^2),
+  ss_total = sum((vessels$thickness - grand_mean)^2)
+)
+
+fit <- aov(thickness ~ context, data = vessels)
+anova_table <- anova(fit)
+anova_table
+ss <- anova_table[["Sum Sq"]]
+ss[1] / sum(ss)
+```
+
+```{r}
+#| label: fig-vessel-residuals
+#| fig-cap: "Residual diagnostics for the fictional vessel example."
+#| fig-width: 8
+#| fig-height: 4
+
+previous <- par(mfrow = c(1, 2))
+plot(fitted(fit), residuals(fit), pch = 16,
+     xlab = "Fitted thickness (mm)", ylab = "Residual (mm)")
+abline(h = 0, lty = 2)
+qqnorm(residuals(fit), pch = 16, main = "Normal Q–Q plot")
+qqline(residuals(fit))
+par(previous)
+```
+
+The residual plot displays scatter around the fitted group means. The pooled Q–Q plot provides a summary. For Assignment 8, inspect distributions or Q–Q plots by group as well. Eight observations per group give limited information about tail behaviour.
+
+```{r}
+# Diagnose, compare sensitivity, and read pairwise estimates
+vapply(split(vessels$thickness, vessels$context),
+       function(values) shapiro.test(values)$p.value, numeric(1))
+vessels$abs_deviation <- with(
+  vessels, abs(thickness - ave(thickness, context, FUN = mean))
+)
+anova(aov(abs_deviation ~ context, data = vessels))
+oneway.test(thickness ~ context, data = vessels, var.equal = FALSE)
+kruskal.test(thickness ~ context, data = vessels)
+TukeyHSD(fit, "context")
+```
+
+The fitted group means are 20, 21, and 24 mm. The classical result, $F(2, 21) = 8.51$, $p = .002$ (rounded), gives evidence of a difference somewhere among the means. Eta-squared is about .45, so context accounts for about 45% of the observed squared variation in these fictional measurements. The Tukey estimate for B–A is 1 mm, and its interval includes zero. The intervals comparing C with A and B lie above zero. This example shows why the omnibus result, share of variation, and estimated differences each belong in the interpretation.
+
+The group spreads in this constructed example are identical. Real measurements seldom align so neatly. In Assignment 8, use the diagnostics and sensitivity results to explain how the distributions and design affect your interpretation.
+
+## Key Distinctions to Remember
+
+| Question | Evidence to report |
+|---|---|
+| How do the groups look? | Group sizes, centres, spreads, and plots |
+| Is there evidence against equality of means? | F, degrees of freedom, p-value, and assumptions |
+| How much observed variation is associated with the groups? | Eta-squared and group summaries |
+| Which means differ, and by how much? | Tukey estimates, simultaneous intervals, and adjusted p-values |
+| How sensitive is the conclusion? | Welch and Kruskal–Wallis results with their assumptions and targets |
+| What can we say archaeologically? | Sampling, measurement quality, independent evidence, and alternative explanations |
+
+## 9. Study Questions and Preparation for Assignment 8
+
+1. If group means stay fixed and scatter within the groups increases, what happens to F? Which part of the ratio changes?
+2. Why does an ANOVA with four groups have three numerator degrees of freedom? What question does its single p-value address?
+3. Suppose the smallest group has a much larger SD, but the variance diagnostic has a large p-value. What would you inspect, and what could Welch tell you?
+4. Why might Kruskal–Wallis detect differences in distributions even when group means tell an unclear story?
+5. What does a Tukey interval for a mean difference tell you that the omnibus test and eta-squared leave open?
+6. Why might several chemical analyses from one locality be dependent? How could that affect the strength of a claim?
+7. How could CLR-Si change while raw Si stays fixed?
+8. In the vessel ANOVA table, which row measures scatter around each context’s mean? Use the sums of squares and degrees of freedom to reconstruct the two mean squares and F.
+9. Read the Tukey intervals for B–A and C–B. Give the estimated direction and range of each difference. Which interval includes zero, and what does that tell you about the claim that the two means differ?
+
+Before [Assignment 8](../assignments/assignment08_iron_anova/assignment08_iron_anova.qmd), read the case study, teaching-file documentation and codebook. Identify the response, group labels, and observational unit. Plan the plots and summaries first, then follow the assignment’s diagnostics, tests, effect size, and comparisons. Finish by connecting the results to the sampling and measurement context.
+
+## Take-Home Message
+
+ANOVA uses within-group variation to judge how much separation among group means would be surprising under the equal-means model. Use effect sizes and intervals to describe that separation, and use archaeological evidence to judge what it can mean.
+
+## References
+
+Carlson, D. L. (2017). *Quantitative methods in archaeology using R*. Cambridge University Press. <https://doi.org/10.1017/9781139628730>
+
+Cumming, G., & Calin-Jageman, R. (2024). *Introduction to the new statistics: Estimation, open science, and beyond* (2nd ed.). Routledge. <https://doi.org/10.4324/9781032689470>
+
+Dressler, W. W. (2015). *The 5 things you need to know about statistics: Quantification in ethnographic research*. Left Coast Press.
+
+Madrigal, L. (2012). *Statistics for anthropology* (2nd ed.). Cambridge University Press. <https://doi.org/10.1017/CBO9781139022699>
+
+Perkins, M. A. (2026). *Using R for introductory statistics in social sciences*. Springer. <https://doi.org/10.1007/978-3-032-17145-0>
+
+Privitera, G. J. (2024). *Statistics for the behavioral sciences* (4th ed.). SAGE Publications.
+
+Żabiński, G., Gramacki, J., Gramacki, A., Stepanov, I. S., & Woźniak, M. (2023). Old wine into new wineskins? “Legacy data” in research on Roman period East Germanic iron smelting. *PLOS ONE, 18*(10), e0289771. <https://doi.org/10.1371/journal.pone.0289771>

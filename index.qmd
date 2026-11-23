@@ -25,6 +25,7 @@ This course develops practical statistical thinking for archaeology and anthropo
   - [Week 8 — Confidence Intervals and Hypothesis Testing](weeks/week08.qmd)
   - [Week 9 — Comparing Two Groups: t-tests](weeks/week09.qmd)
   - [Week 11 — Chi-Square and Tests of Proportions](weeks/week11.qmd)
+  - [Week 12 — Analysis of Variance](weeks/week12.qmd)
 
 - **Practice Workbooks**
   - [Week 2 — R, RStudio, and Quarto](practice-workbooks/week02.qmd)
