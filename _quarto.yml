@@ -33,11 +33,13 @@ project:
     - assignments/assignment05_teotihuacan_inference/assignment05_teotihuacan_inference.qmd
     - assignments/assignment06_tell_tweini_ttest/assignment06_tell_tweini_ttest.qmd
     - assignments/assignment07_lesotho_chisquare/assignment07_lesotho_chisquare.qmd
+    - assignments/assignment08_iron_anova/assignment08_iron_anova.qmd
     - readings/index.qmd
     - resources/*.qmd
 
   resources:
     - .nojekyll
+    - downloads/assignments/ANTH418_assignment08_iron_anova.zip
     - downloads/practice-workbooks/ANTH418_Week02_Practice.zip
     - downloads/practice-workbooks/ANTH418_Week03_Practice.zip
     - downloads/practice-workbooks/ANTH418_Week04_Practice.zip

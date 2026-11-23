@@ -106,7 +106,7 @@ Students may browse the materials online or download the complete assignment pac
 
 **Case study:** Roman-period iron-smelting geochemistry
 
-[View Assignment 8 materials](assignment08_iron_anova/)
+[Open Assignment 8](assignment08_iron_anova/assignment08_iron_anova.qmd)
 
 [Download complete Assignment 8 package](../downloads/assignments/ANTH418_assignment08_iron_anova.zip)
 
