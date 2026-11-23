@@ -118,7 +118,7 @@ Students may browse the materials online or download the complete assignment pac
 
 **Case study:** Kukui δ13C variation along elevation and rainfall gradients in Hawaiʻi
 
-[View Assignment 9 materials](assignment09_kukui_correlation/)
+[Open Assignment 9](assignment09_kukui_correlation/assignment09_kukui_correlation.qmd)
 
 [Download complete Assignment 9 package](../downloads/assignments/ANTH418_assignment09_kukui_correlation.zip)
 
