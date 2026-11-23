@@ -1,0 +1,428 @@
+---
+title: "ANTH418 Week 12 Practice Workbook"
+subtitle: "Analysis of Variance"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    code-copy: true
+execute:
+  echo: true
+---
+
+::: {.callout-tip title="Start here — download the editable workbook"}
+This page shows a rendered Quarto workbook. [Download the Week 12 Practice Package (.zip)](../downloads/practice-workbooks/ANTH418_Week12_Practice.zip), extract it, and open **week12-practice.qmd** in RStudio. Keep the data and documentation folders beside it. Edit your copy of the QMD and render it as you work. Use the [Week 12 Study Guide](../weeks/week12.qmd) for background and open [Assignment 8](../assignments/assignment08_iron_anova/assignment08_iron_anova.qmd) separately.
+:::
+
+## How to use this workbook
+
+Work in order. Before running each chunk, **predict** what will happen. **Run** it, **inspect** the results, and **explain** any mismatch with your prediction in the QMD. For exercises without code, make a prediction, then check it against the study description, an earlier result, or the supplied documentation. Render frequently. The workbook uses base R.
+
+By the end, you should be able to define the observational unit and factor, build and interpret a one-way ANOVA table, evaluate diagnostics, describe effect magnitude and uncertainty, and connect a statistical result to the evidence available in an archaeological study.
+
+# Part I — Define the comparison and describe the groups
+
+## 1. Identify the response and factor
+
+A fictional archaeologist measures one wall thickness per vessel in three contexts. These are the fictional measurements from the Week 12 Study Guide. All modifications and numerical analyses through Exercise 24 also use fictional data.
+
+**Predict → Run → Inspect → Explain.** Predict how R will store thickness and context. Inspect the object, then name the response, units, factor, and its levels.
+
+```{r}
+vessels <- data.frame(
+  context = factor(rep(c("A", "B", "C"), each = 8)),
+  thickness = c(
+    17, 18, 19, 19.5, 20.5, 21, 22, 23,
+    18, 19, 20, 20.5, 21.5, 22, 23, 24,
+    21, 22, 23, 23.5, 24.5, 25, 26, 27
+  )
+)
+str(vessels)
+```
+
+## 2. Identify the observational unit
+
+The fictional study samples vessels independently. Now imagine that eight measurements attributed to context A actually come from two vessels, with four measurements per vessel.
+
+**Predict → Inspect → Explain.** Predict whether the eight measurements provide the same information as eight independent vessels. Sketch the two sampling designs and explain what a row represents in each.
+
+## 3. Move from two means to several
+
+For two independent groups under the classical equal-variance model, the one-way F statistic equals the pooled two-sample t statistic squared. The omnibus F test for three groups asks whether all three population means are equal.
+
+**Predict → Run → Inspect → Explain.** Predict which summary drops the direction of the A–B difference. Compare the statistics and p-values.
+
+```{r}
+two_contexts <- droplevels(subset(vessels, context %in% c("A", "B")))
+pooled_t <- t.test(thickness ~ context, data = two_contexts, var.equal = TRUE)
+two_anova <- anova(aov(thickness ~ context, data = two_contexts))
+c(t = unname(pooled_t$statistic), t_squared = unname(pooled_t$statistic)^2,
+  F = two_anova[1, "F value"])
+c(pooled_t = pooled_t$p.value, anova = two_anova[1, "Pr(>F)"])
+```
+
+## 4. Describe each group
+
+Keep sample sizes alongside summaries of centre and spread. Groups with similar means can still have very different distributions.
+
+**Predict → Run → Inspect → Explain.** Predict the ordering of means and SDs. Describe one similarity and one difference after looking at the summaries.
+
+```{r}
+group_values <- split(vessels$thickness, vessels$context)
+group_summary <- t(vapply(group_values, function(x) {
+  c(n = length(x), mean = mean(x), median = median(x), sd = sd(x))
+}, numeric(4)))
+round(group_summary, 3)
+```
+
+## 5. Put the observations on the plot
+
+A boxplot summarizes centre and spread. The overlaid dots show the individual measurements.
+
+**Predict → Run → Inspect → Explain.** Predict which contexts overlap. Use specific observations from the plot to explain why comparing means alone misses part of the story.
+
+```{r}
+#| label: fig-vessels
+#| fig-cap: "Fictional vessel thickness. Dots are individual vessels."
+#| fig-alt: "Three boxplots of vessel thickness with individual points. The C box is highest, and observations overlap across contexts."
+#| fig-width: 7
+#| fig-height: 4
+
+boxplot(thickness ~ context, data = vessels, col = "#d9e8ee",
+        xlab = "Context", ylab = "Wall thickness (mm)")
+stripchart(thickness ~ context, data = vessels, vertical = TRUE,
+           add = TRUE, pch = 19, col = "#24576a")
+```
+
+# Part II — Reconstruct the ANOVA table
+
+## 6. Find the grand mean
+
+The grand mean averages observations. It equals the unweighted mean of group means here because each group has eight vessels.
+
+**Predict → Run → Inspect → Explain.** Predict the direction of change if context C contributes four fewer fictional vessels while keeping its mean. The code retains two symmetric pairs in C.
+
+```{r}
+grand_mean <- mean(vessels$thickness)
+n_group <- group_summary[, "n"]
+mean_group <- group_summary[, "mean"]
+unequal_n <- vessels[c(1:16, 17, 18, 23, 24), ]
+c(balanced = grand_mean, weighted = weighted.mean(mean_group, n_group),
+  fewer_C = mean(unequal_n$thickness))
+```
+
+## 7. Measure between-group variation
+
+For each context, square the distance from its mean to the grand mean and multiply by its number of observations.
+
+**Predict → Run → Inspect → Explain.** Predict which context contributes most. Why is the weight part of this calculation?
+
+```{r}
+between_parts <- n_group * (mean_group - grand_mean)^2
+ss_between <- sum(between_parts)
+round(c(between_parts, total = ss_between), 3)
+```
+
+## 8. Measure within-group variation
+
+A residual is an observation minus its own group mean. Its squared value contributes to the within-group sum of squares.
+
+**Predict → Run → Inspect → Explain.** Hand-calculate the contribution of the first A vessel, then check it in R. Why do positive and negative deviations need to be squared before adding?
+
+```{r}
+fitted_means <- mean_group[as.character(vessels$context)]
+vessel_residuals <- vessels$thickness - fitted_means
+within_parts <- tapply(vessel_residuals^2, vessels$context, sum)
+ss_within <- sum(within_parts)
+c(first_vessel = unname(vessel_residuals[1]^2), within_parts, total = ss_within)
+```
+
+## 9. Partition total variation
+
+The total sum of squares uses distances from the grand mean. The group and residual components account for the same total.
+
+**Predict → Run → Inspect → Explain.** Predict the outcome of the equality check. Explain what the within-group part retains that the context labels leave unexplained.
+
+```{r}
+ss_total <- sum((vessels$thickness - grand_mean)^2)
+c(from_all_vessels = ss_total, from_two_parts = ss_between + ss_within)
+all.equal(ss_total, ss_between + ss_within)
+```
+
+## 10. Count degrees of freedom
+
+With $k$ groups and $N$ observations, the factor uses $k-1$ degrees of freedom. Residuals use $N-k$ because one mean is estimated in each group.
+
+**Predict → Run → Inspect → Explain.** Working from the sample sizes, predict both degrees of freedom. Why would using $N-1$ for the residual row be incorrect?
+
+```{r}
+k <- nlevels(vessels$context)
+N <- nrow(vessels)
+df_between <- k - 1
+df_within <- N - k
+c(between = df_between, within = df_within, total = N - 1)
+```
+
+## 11. Convert sums of squares to mean squares
+
+A mean square is a sum of squares divided by its degrees of freedom. Both mean squares here have units of mm².
+
+**Predict → Run → Inspect → Explain.** Predict which mean square is larger. Explain how this can happen even when the raw between-group sum of squares is smaller.
+
+```{r}
+ms_between <- ss_between / df_between
+ms_within <- ss_within / df_within
+c(between = ms_between, within = ms_within)
+```
+
+## 12. Compare signal with scatter
+
+F is the ratio of the between-group to the within-group mean square. These controlled changes alter one feature at a time.
+
+**Predict → Run → Inspect → Explain.** Predict how F will respond when means move closer and when residuals grow. For each change, name the affected mean square.
+
+```{r}
+closer <- transform(vessels, thickness = grand_mean +
+                      0.5 * (fitted_means - grand_mean) + vessel_residuals)
+more_scatter <- transform(vessels, thickness = fitted_means + 2 * vessel_residuals)
+c(original = ms_between / ms_within,
+  closer_means = anova(aov(thickness ~ context, data = closer))[1, "F value"],
+  more_scatter = anova(aov(thickness ~ context, data = more_scatter))[1, "F value"])
+```
+
+## 13. Read the upper tail
+
+Under the classical equal-means null and its assumptions, F follows a reference distribution with the two degrees of freedom above. The p-value is the probability of obtaining an F at least as large as the observed value under that model.
+
+**Predict → Run → Inspect → Explain.** Predict whether the observed F is beyond the 95th percentile. Describe the shaded area without referring to the probability that the null is true.
+
+```{r}
+#| label: fig-f-tail
+#| fig-cap: "Classical F reference distribution for the fictional example."
+#| fig-alt: "Right-skewed F density with a small shaded upper tail beginning at the observed F."
+#| fig-width: 7
+#| fig-height: 4
+
+observed_f <- ms_between / ms_within
+critical_f <- qf(0.95, df_between, df_within)
+c(observed = observed_f, cutoff = critical_f,
+  p = pf(observed_f, df_between, df_within, lower.tail = FALSE))
+x <- seq(0, observed_f + 4, length.out = 300)
+tail_x <- seq(observed_f, max(x), length.out = 100)
+plot(x, df(x, df_between, df_within), type = "l",
+     xlab = "F under equal means", ylab = "Density")
+polygon(c(tail_x, rev(tail_x)),
+        c(df(tail_x, df_between, df_within), rep(0, length(tail_x))),
+        col = "#db9b52", border = NA)
+abline(v = observed_f, lty = 2)
+```
+
+## 14. Fit the classical model in R
+
+Write the numerical response on the left of the formula and the factor on the right.
+
+**Predict → Run → Inspect → Explain.** Predict where each hand-calculated sum of squares should appear. Match both rows to the quantities you computed.
+
+```{r}
+fit <- aov(thickness ~ context, data = vessels)
+anova_table <- anova(fit)
+anova_table
+```
+
+## 15. Report the omnibus result
+
+The omnibus table summarizes the comparison across all contexts. The F statistic has no direction, and the p-value alone does not identify which mean differs.
+
+**Predict → Run → Inspect → Explain.** Recreate the result from the manual quantities, then write a sentence reporting F, both degrees of freedom, and p in context.
+
+```{r}
+c(F = observed_f, numerator_df = df_between, denominator_df = df_within,
+  p = anova_table[1, "Pr(>F)"])
+```
+
+## 16. Quantify the observed variation associated with context
+
+Eta-squared divides between-group sum of squares by total sum of squares. It describes the share of observed variation associated with group membership in this one-way model.
+
+**Predict → Run → Inspect → Explain.** Predict whether the share is above or below one-half. Express the result as a percentage without making a causal claim.
+
+```{r}
+eta_squared <- ss_between / ss_total
+c(eta_squared = eta_squared, percent = 100 * eta_squared)
+```
+
+# Part III — Diagnose, compare, and interpret
+
+## 17. Check independence before interpreting a p-value
+
+Imagine that all context C measurements came from a single workshop deposit with several vessels made in the same batch.
+
+**Predict → Inspect → Explain.** Predict which parts of the fitted table would change if no values changed but you discovered the shared batch. Compare the numerical result with the newly defensible interpretation. What sampling records would help?
+
+## 18. Inspect residuals and an extreme value
+
+Replace one fictional C value with 38 mm, keeping the original data available. A residual-versus-fitted plot shows scatter around group means. A normal Q–Q plot compares ordered residuals to a normal reference.
+
+**Predict → Run → Inspect → Explain.** Predict changes in the C mean and its residual spread. Compare the plots with your expectation. What would you check before excluding the observation?
+
+```{r}
+#| label: fig-extreme
+#| fig-cap: "Residual diagnostics after changing one fictional measurement."
+#| fig-alt: "Residual plot and Q–Q plot showing one unusually large positive residual after a fictional observation is changed."
+#| fig-width: 8
+#| fig-height: 4
+
+extreme <- vessels
+extreme$thickness[24] <- 38
+extreme_fit <- aov(thickness ~ context, data = extreme)
+previous <- par(mfrow = c(1, 2))
+plot(fitted(extreme_fit), residuals(extreme_fit), pch = 19,
+     xlab = "Fitted thickness (mm)", ylab = "Residual (mm)")
+abline(h = 0, lty = 2)
+qqnorm(residuals(extreme_fit), pch = 19, main = "Normal Q–Q")
+qqline(residuals(extreme_fit))
+par(previous)
+```
+
+## 19. Interpret formal diagnostics with plots
+
+Give the smaller C group greater spread without changing its mean. Shapiro–Wilk assesses normality within each group. For the mean-centered Levene check, compare absolute distances from each observation to its group mean.
+
+**Predict → Run → Inspect → Explain.** Predict which spread is greatest. Use the SDs and diagnostic outputs together. Why would a large diagnostic p-value be weak grounds for declaring that an assumption holds, especially for four observations?
+
+```{r}
+unequal_spread <- unequal_n
+is_c <- unequal_spread$context == "C"
+unequal_spread$thickness[is_c] <- 24 +
+  2 * (unequal_spread$thickness[is_c] - 24)
+with(unequal_spread, tapply(thickness, context, sd))
+vapply(split(unequal_spread$thickness, unequal_spread$context),
+       function(x) shapiro.test(x)$p.value, numeric(1))
+unequal_spread$distance <- with(
+  unequal_spread, abs(thickness - ave(thickness, context, FUN = mean))
+)
+anova(aov(distance ~ context, data = unequal_spread))
+```
+
+## 20. Compare classical ANOVA with Welch
+
+Both procedures test equality of means. Welch allows different group variances and uses an approximate reference distribution. It still relies on independent observations.
+
+**Predict → Run → Inspect → Explain.** Predict whether the outputs will have the same denominator degrees of freedom on the unequal-size, unequal-spread data. Compare the conclusions at .05. Explain why changing the test cannot repair clustering.
+
+```{r}
+anova(aov(thickness ~ context, data = unequal_spread))
+oneway.test(thickness ~ context, data = unequal_spread, var.equal = FALSE)
+```
+
+## 21. Compare groups using ranks
+
+Kruskal–Wallis compares pooled ranks across groups. With similarly shaped distributions, a rank difference can reflect a location shift. With different shapes or spreads, a median-only interpretation needs justification.
+
+**Predict → Run → Inspect → Explain.** Predict which original context has the largest mean rank. Compare the rank-test conclusion with classical ANOVA, keeping their statistical questions distinct.
+
+```{r}
+tapply(rank(vessels$thickness), vessels$context, mean)
+kruskal.test(thickness ~ context, data = vessels)
+```
+
+## 22. Count the family of comparisons
+
+An omnibus result gives a reason to examine individual differences. Repeated unadjusted tests increase opportunities for a false positive across the family.
+
+**Predict → Run → Inspect → Explain.** List the three pairs before running the code. How many pairs would four contexts produce? Why would treating each comparison as an isolated test miss part of the problem?
+
+```{r}
+combn(levels(vessels$context), 2)
+choose(c(3, 4), 2)
+```
+
+## 23. Read Tukey intervals and adjusted p-values
+
+Tukey HSD uses the classical model’s pooled residual variance. It gives simultaneous intervals and adjusted p-values for the family of pairwise differences.
+
+**Predict → Run → Inspect → Explain.** Predict the signs of B–A and C–B. For both pairs, identify the estimate in mm, the interval, and the adjusted p-value. Explain what an interval containing zero leaves plausible.
+
+```{r}
+TukeyHSD(fit, "context", conf.level = 0.95)
+```
+
+## 24. Separate statistical evidence from effect magnitude
+
+Convert the fictional vessel thickness from millimetres to centimetres. The numerical mean differences change units. The F ratio and eta-squared are unitless.
+
+**Predict → Run → Inspect → Explain.** Predict what happens to each sum of squares, F, and eta-squared. What additional context would you need to decide whether a 1 mm difference matters archaeologically?
+
+```{r}
+in_cm <- transform(vessels, thickness = thickness / 10)
+cm_table <- anova(aov(thickness ~ context, data = in_cm))
+rbind(
+  mm = c(SS_between = ss_between, F = observed_f, eta_sq = eta_squared),
+  cm = c(SS_between = cm_table[1, "Sum Sq"], F = cm_table[1, "F value"],
+         eta_sq = cm_table[1, "Sum Sq"] / sum(cm_table[["Sum Sq"]]))
+)
+```
+
+# Part IV — Return to the iron-smelting evidence
+
+## 25. Audit the authentic teaching file
+
+The Assignment 8 CSV contains legacy analyses of slag and ore. Each row represents one chemical analysis. The compilation includes repeated localities and a Jura comparator with late medieval slag and modern ore. The teaching file has no site, material, or chronology fields. Consult the course codebook and provenance in the package’s **documentation** folder and the [published case study](https://doi.org/10.1371/journal.pone.0289771).
+
+**Predict → Run → Inspect → Explain.** Before running the code, predict why the number of rows may differ from the number of independent localities. Report the variable roles and regional sample sizes, and identify a limitation you cannot check from the CSV.
+
+```{r}
+iron_path <- if (file.exists("data/iron_anova.csv")) {
+  "data/iron_anova.csv"
+} else {
+  "assignments/assignment08_iron_anova/data/iron_anova.csv"
+}
+iron <- read.csv(iron_path)
+str(iron[0, ])
+nrow(iron)
+table(iron$region)
+unique(iron$element)
+colSums(is.na(iron))
+```
+
+## 26. Interpret CLR-Si with a fictional composition
+
+CLR-Si is the log of Si divided by the geometric mean of the Si–Ca–Al–Mn composition within a row. The original study replaced missing component values before transforming. An imputed value in any component can change the ratio. These example compositions are invented.
+
+**Predict → Run → Inspect → Explain.** Si is held fixed while Ca increases. Predict which denominator is larger and explain why CLR-Si changes.
+
+```{r}
+example_a <- c(Si = 8, Ca = 2, Al = 2, Mn = 2)
+example_b <- c(Si = 8, Ca = 8, Al = 2, Mn = 2)
+clr_si <- function(parts) {
+  unname(log(parts["Si"]) - mean(log(parts)))
+}
+c(example_a = clr_si(example_a), example_b = clr_si(example_b))
+```
+
+## 27. Debug an archaeological claim
+
+A draft says: “The regional file contains independent observations because every row has an ID. If the omnibus test is significant, every pair differs, and the group with higher CLR-Si must use a different ore source.”
+
+**Predict → Inspect → Explain.** Mark one design error, one statistical error, and one compositional or archaeological error. Check your reasoning against Exercises 17, 23, 25, and 26. Rewrite the claim as a conditional interpretation and name two additional forms of evidence you would need to argue for an ore source.
+
+# Mastery checklist
+
+- [ ] I can define the response, factor, observational unit, and independence conditions.
+- [ ] I can show how group means and residuals produce the ANOVA table.
+- [ ] I can report F with both degrees of freedom and explain its upper-tail p-value.
+- [ ] I use plots and design alongside diagnostic tests.
+- [ ] I can distinguish classical ANOVA, Welch ANOVA, and Kruskal–Wallis.
+- [ ] I can explain eta-squared and read a signed Tukey estimate, interval, and adjusted p-value.
+- [ ] I can explain CLR-Si and distinguish an observed pattern from an archaeological explanation.
+
+# Final challenge — make an argument without code
+
+Write a brief report using the **fictional vessels**. State the observational unit and equal-means null, summarize the group distributions, and report the omnibus result, eta-squared, and one Tukey comparison with its interval. Explain what changed in the unequal-size, unequal-spread scenario and what evidence would be needed to rule out a sampling explanation. Finish with two sentences on why you would be more cautious when interpreting the legacy iron data. Use the actual Assignment 8 QMD for its inferential work.
+
+# Clean Render Test
+
+1. Save the workbook and keep the data folder beside your QMD.
+2. In RStudio choose **Session → Restart R**.
+3. Without creating objects in the Console, render the entire QMD. From a terminal in the extracted folder you can also run `quarto render week12-practice.qmd`.
+4. Check that the figures, worked outputs, and authentic data audit appear. If a chunk fails, check which earlier chunk creates its input or whether the data folder moved.
