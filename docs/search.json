@@ -2636,7 +2636,7 @@
     "href": "index.html#start-here",
     "title": "ANTH418: Anthropological Statistics",
     "section": "Start here",
-    "text": "Start here\n\nCourse Syllabus\nStudy Guides\n\nWeek 2 — Using R, RStudio, and Quarto\nWeek 3 — Measurement and Research Design\nWeek 4 — Measures of Central Tendency and Dispersion\nWeek 5 — Exploratory Data Analysis and Visualization\nWeek 6 — Data Transformation and Missing Values\nWeek 7 — Probability, Sampling, and Sampling Distributions\nWeek 8 — Confidence Intervals and Hypothesis Testing\nWeek 9 — Comparing Two Groups: t-tests\nWeek 11 — Chi-Square and Tests of Proportions\nWeek 12 — Analysis of Variance\n\nPractice Workbooks\n\nWeek 2 — R, RStudio, and Quarto\nWeek 3 — Measurement and Research Design\nWeek 4 — Measures of Central Tendency and Dispersion\nWeek 5 — Exploratory Data Analysis and Visualization\nWeek 6 — Data Transformation and Missing Values\nWeek 7 — Probability, Sampling, and Sampling Distributions\nWeek 8 — Confidence Intervals and Hypothesis Testing\nWeek 9 — Comparing Two Groups: t-tests\nWeek 11 — Chi-Square and Tests of Proportions\n\nAssignments\n\nAssignment 1 — Knipper: Descriptive Statistics\nAssignment 2 — Kinbank: Data Visualization\nAssignment 3 — Seshat: Missing Data\nAssignment 4 — p3k14c: Sampling\nAssignment 5 — Teotihuacan: Statistical Inference\nAssignment 6 — Tell Tweini: t-tests\nAssignment 7 — Lesotho: Chi-Square\nAssignment 8 — Iron-Smelting Geochemistry: ANOVA\nAssignment 9 — Hawaiian Kukui Isotopes: Correlation\nAssignment 10 — Predicting Flake Mass: Regression\n\nR, RStudio & Quarto Resources"
+    "text": "Start here\n\nCourse Syllabus\nStudy Guides\n\nWeek 2 — Using R, RStudio, and Quarto\nWeek 3 — Measurement and Research Design\nWeek 4 — Measures of Central Tendency and Dispersion\nWeek 5 — Exploratory Data Analysis and Visualization\nWeek 6 — Data Transformation and Missing Values\nWeek 7 — Probability, Sampling, and Sampling Distributions\nWeek 8 — Confidence Intervals and Hypothesis Testing\nWeek 9 — Comparing Two Groups: t-tests\nWeek 11 — Chi-Square and Tests of Proportions\nWeek 12 — Analysis of Variance\n\nPractice Workbooks\n\nWeek 2 — R, RStudio, and Quarto\nWeek 3 — Measurement and Research Design\nWeek 4 — Measures of Central Tendency and Dispersion\nWeek 5 — Exploratory Data Analysis and Visualization\nWeek 6 — Data Transformation and Missing Values\nWeek 7 — Probability, Sampling, and Sampling Distributions\nWeek 8 — Confidence Intervals and Hypothesis Testing\nWeek 9 — Comparing Two Groups: t-tests\nWeek 11 — Chi-Square and Tests of Proportions\nWeek 12 — Analysis of Variance\n\nAssignments\n\nAssignment 1 — Knipper: Descriptive Statistics\nAssignment 2 — Kinbank: Data Visualization\nAssignment 3 — Seshat: Missing Data\nAssignment 4 — p3k14c: Sampling\nAssignment 5 — Teotihuacan: Statistical Inference\nAssignment 6 — Tell Tweini: t-tests\nAssignment 7 — Lesotho: Chi-Square\nAssignment 8 — Iron-Smelting Geochemistry: ANOVA\nAssignment 9 — Hawaiian Kukui Isotopes: Correlation\nAssignment 10 — Predicting Flake Mass: Regression\n\nR, RStudio & Quarto Resources"
   },
   {
     "objectID": "index.html#course-platforms",
@@ -5094,5 +5094,208 @@
     "title": "Week 12 — Analysis of Variance",
     "section": "References",
     "text": "References\nCarlson, D. L. (2017). Quantitative methods in archaeology using R. Cambridge University Press. https://doi.org/10.1017/9781139628730\nCumming, G., & Calin-Jageman, R. (2024). Introduction to the new statistics: Estimation, open science, and beyond (2nd ed.). Routledge. https://doi.org/10.4324/9781032689470\nDressler, W. W. (2015). The 5 things you need to know about statistics: Quantification in ethnographic research. Left Coast Press.\nMadrigal, L. (2012). Statistics for anthropology (2nd ed.). Cambridge University Press. https://doi.org/10.1017/CBO9781139022699\nPerkins, M. A. (2026). Using R for introductory statistics in social sciences. Springer. https://doi.org/10.1007/978-3-032-17145-0\nPrivitera, G. J. (2024). Statistics for the behavioral sciences (4th ed.). SAGE Publications.\nŻabiński, G., Gramacki, J., Gramacki, A., Stepanov, I. S., & Woźniak, M. (2023). Old wine into new wineskins? “Legacy data” in research on Roman period East Germanic iron smelting. PLOS ONE, 18(10), e0289771. https://doi.org/10.1371/journal.pone.0289771"
+  },
+  {
+    "objectID": "practice-workbooks/week12.html",
+    "href": "practice-workbooks/week12.html",
+    "title": "ANTH418 Week 12 Practice Workbook",
+    "section": "",
+    "text": "TipStart here — download the editable workbook\n\n\n\nThis page shows a rendered Quarto workbook. Download the Week 12 Practice Package (.zip), extract it, and open week12-practice.qmd in RStudio. Keep the data and documentation folders beside it. Edit your copy of the QMD and render it as you work. Use the Week 12 Study Guide for background and open Assignment 8 separately."
+  },
+  {
+    "objectID": "practice-workbooks/week12.html#how-to-use-this-workbook",
+    "href": "practice-workbooks/week12.html#how-to-use-this-workbook",
+    "title": "ANTH418 Week 12 Practice Workbook",
+    "section": "How to use this workbook",
+    "text": "How to use this workbook\nWork in order. Before running each chunk, predict what will happen. Run it, inspect the results, and explain any mismatch with your prediction in the QMD. For exercises without code, make a prediction, then check it against the study description, an earlier result, or the supplied documentation. Render frequently. The workbook uses base R.\nBy the end, you should be able to define the observational unit and factor, build and interpret a one-way ANOVA table, evaluate diagnostics, describe effect magnitude and uncertainty, and connect a statistical result to the evidence available in an archaeological study."
+  },
+  {
+    "objectID": "practice-workbooks/week12.html#identify-the-response-and-factor",
+    "href": "practice-workbooks/week12.html#identify-the-response-and-factor",
+    "title": "ANTH418 Week 12 Practice Workbook",
+    "section": "1. Identify the response and factor",
+    "text": "1. Identify the response and factor\nA fictional archaeologist measures one wall thickness per vessel in three contexts. These are the fictional measurements from the Week 12 Study Guide. All modifications and numerical analyses through Exercise 24 also use fictional data.\nPredict → Run → Inspect → Explain. Predict how R will store thickness and context. Inspect the object, then name the response, units, factor, and its levels.\n\nvessels &lt;- data.frame(\n  context = factor(rep(c(\"A\", \"B\", \"C\"), each = 8)),\n  thickness = c(\n    17, 18, 19, 19.5, 20.5, 21, 22, 23,\n    18, 19, 20, 20.5, 21.5, 22, 23, 24,\n    21, 22, 23, 23.5, 24.5, 25, 26, 27\n  )\n)\nstr(vessels)\n\n'data.frame':   24 obs. of  2 variables:\n $ context  : Factor w/ 3 levels \"A\",\"B\",\"C\": 1 1 1 1 1 1 1 1 2 2 ...\n $ thickness: num  17 18 19 19.5 20.5 21 22 23 18 19 ..."
+  },
+  {
+    "objectID": "practice-workbooks/week12.html#identify-the-observational-unit",
+    "href": "practice-workbooks/week12.html#identify-the-observational-unit",
+    "title": "ANTH418 Week 12 Practice Workbook",
+    "section": "2. Identify the observational unit",
+    "text": "2. Identify the observational unit\nThe fictional study samples vessels independently. Now imagine that eight measurements attributed to context A actually come from two vessels, with four measurements per vessel.\nPredict → Inspect → Explain. Predict whether the eight measurements provide the same information as eight independent vessels. Sketch the two sampling designs and explain what a row represents in each."
+  },
+  {
+    "objectID": "practice-workbooks/week12.html#move-from-two-means-to-several",
+    "href": "practice-workbooks/week12.html#move-from-two-means-to-several",
+    "title": "ANTH418 Week 12 Practice Workbook",
+    "section": "3. Move from two means to several",
+    "text": "3. Move from two means to several\nFor two independent groups under the classical equal-variance model, the one-way F statistic equals the pooled two-sample t statistic squared. The omnibus F test for three groups asks whether all three population means are equal.\nPredict → Run → Inspect → Explain. Predict which summary drops the direction of the A–B difference. Compare the statistics and p-values.\n\ntwo_contexts &lt;- droplevels(subset(vessels, context %in% c(\"A\", \"B\")))\npooled_t &lt;- t.test(thickness ~ context, data = two_contexts, var.equal = TRUE)\ntwo_anova &lt;- anova(aov(thickness ~ context, data = two_contexts))\nc(t = unname(pooled_t$statistic), t_squared = unname(pooled_t$statistic)^2,\n  F = two_anova[1, \"F value\"])\n\n         t  t_squared          F \n-0.9911893  0.9824561  0.9824561 \n\nc(pooled_t = pooled_t$p.value, anova = two_anova[1, \"Pr(&gt;F)\"])\n\n pooled_t     anova \n0.3384161 0.3384161"
+  },
+  {
+    "objectID": "practice-workbooks/week12.html#describe-each-group",
+    "href": "practice-workbooks/week12.html#describe-each-group",
+    "title": "ANTH418 Week 12 Practice Workbook",
+    "section": "4. Describe each group",
+    "text": "4. Describe each group\nKeep sample sizes alongside summaries of centre and spread. Groups with similar means can still have very different distributions.\nPredict → Run → Inspect → Explain. Predict the ordering of means and SDs. Describe one similarity and one difference after looking at the summaries.\n\ngroup_values &lt;- split(vessels$thickness, vessels$context)\ngroup_summary &lt;- t(vapply(group_values, function(x) {\n  c(n = length(x), mean = mean(x), median = median(x), sd = sd(x))\n}, numeric(4)))\nround(group_summary, 3)\n\n  n mean median    sd\nA 8   20     20 2.018\nB 8   21     21 2.018\nC 8   24     24 2.018"
+  },
+  {
+    "objectID": "practice-workbooks/week12.html#put-the-observations-on-the-plot",
+    "href": "practice-workbooks/week12.html#put-the-observations-on-the-plot",
+    "title": "ANTH418 Week 12 Practice Workbook",
+    "section": "5. Put the observations on the plot",
+    "text": "5. Put the observations on the plot\nA boxplot summarizes centre and spread. The overlaid dots show the individual measurements.\nPredict → Run → Inspect → Explain. Predict which contexts overlap. Use specific observations from the plot to explain why comparing means alone misses part of the story.\n\nboxplot(thickness ~ context, data = vessels, col = \"#d9e8ee\",\n        xlab = \"Context\", ylab = \"Wall thickness (mm)\")\nstripchart(thickness ~ context, data = vessels, vertical = TRUE,\n           add = TRUE, pch = 19, col = \"#24576a\")\n\n\n\n\n\n\n\nFigure 1: Fictional vessel thickness. Dots are individual vessels."
+  },
+  {
+    "objectID": "practice-workbooks/week12.html#find-the-grand-mean",
+    "href": "practice-workbooks/week12.html#find-the-grand-mean",
+    "title": "ANTH418 Week 12 Practice Workbook",
+    "section": "6. Find the grand mean",
+    "text": "6. Find the grand mean\nThe grand mean averages observations. It equals the unweighted mean of group means here because each group has eight vessels.\nPredict → Run → Inspect → Explain. Predict the direction of change if context C contributes four fewer fictional vessels while keeping its mean. The code retains two symmetric pairs in C.\n\ngrand_mean &lt;- mean(vessels$thickness)\nn_group &lt;- group_summary[, \"n\"]\nmean_group &lt;- group_summary[, \"mean\"]\nunequal_n &lt;- vessels[c(1:16, 17, 18, 23, 24), ]\nc(balanced = grand_mean, weighted = weighted.mean(mean_group, n_group),\n  fewer_C = mean(unequal_n$thickness))\n\nbalanced weighted  fewer_C \n21.66667 21.66667 21.20000"
+  },
+  {
+    "objectID": "practice-workbooks/week12.html#measure-between-group-variation",
+    "href": "practice-workbooks/week12.html#measure-between-group-variation",
+    "title": "ANTH418 Week 12 Practice Workbook",
+    "section": "7. Measure between-group variation",
+    "text": "7. Measure between-group variation\nFor each context, square the distance from its mean to the grand mean and multiply by its number of observations.\nPredict → Run → Inspect → Explain. Predict which context contributes most. Why is the weight part of this calculation?\n\nbetween_parts &lt;- n_group * (mean_group - grand_mean)^2\nss_between &lt;- sum(between_parts)\nround(c(between_parts, total = ss_between), 3)\n\n     A      B      C  total \n22.222  3.556 43.556 69.333"
+  },
+  {
+    "objectID": "practice-workbooks/week12.html#measure-within-group-variation",
+    "href": "practice-workbooks/week12.html#measure-within-group-variation",
+    "title": "ANTH418 Week 12 Practice Workbook",
+    "section": "8. Measure within-group variation",
+    "text": "8. Measure within-group variation\nA residual is an observation minus its own group mean. Its squared value contributes to the within-group sum of squares.\nPredict → Run → Inspect → Explain. Hand-calculate the contribution of the first A vessel, then check it in R. Why do positive and negative deviations need to be squared before adding?\n\nfitted_means &lt;- mean_group[as.character(vessels$context)]\nvessel_residuals &lt;- vessels$thickness - fitted_means\nwithin_parts &lt;- tapply(vessel_residuals^2, vessels$context, sum)\nss_within &lt;- sum(within_parts)\nc(first_vessel = unname(vessel_residuals[1]^2), within_parts, total = ss_within)\n\nfirst_vessel            A            B            C        total \n         9.0         28.5         28.5         28.5         85.5"
+  },
+  {
+    "objectID": "practice-workbooks/week12.html#partition-total-variation",
+    "href": "practice-workbooks/week12.html#partition-total-variation",
+    "title": "ANTH418 Week 12 Practice Workbook",
+    "section": "9. Partition total variation",
+    "text": "9. Partition total variation\nThe total sum of squares uses distances from the grand mean. The group and residual components account for the same total.\nPredict → Run → Inspect → Explain. Predict the outcome of the equality check. Explain what the within-group part retains that the context labels leave unexplained.\n\nss_total &lt;- sum((vessels$thickness - grand_mean)^2)\nc(from_all_vessels = ss_total, from_two_parts = ss_between + ss_within)\n\nfrom_all_vessels   from_two_parts \n        154.8333         154.8333 \n\nall.equal(ss_total, ss_between + ss_within)\n\n[1] TRUE"
+  },
+  {
+    "objectID": "practice-workbooks/week12.html#count-degrees-of-freedom",
+    "href": "practice-workbooks/week12.html#count-degrees-of-freedom",
+    "title": "ANTH418 Week 12 Practice Workbook",
+    "section": "10. Count degrees of freedom",
+    "text": "10. Count degrees of freedom\nWith \\(k\\) groups and \\(N\\) observations, the factor uses \\(k-1\\) degrees of freedom. Residuals use \\(N-k\\) because one mean is estimated in each group.\nPredict → Run → Inspect → Explain. Working from the sample sizes, predict both degrees of freedom. Why would using \\(N-1\\) for the residual row be incorrect?\n\nk &lt;- nlevels(vessels$context)\nN &lt;- nrow(vessels)\ndf_between &lt;- k - 1\ndf_within &lt;- N - k\nc(between = df_between, within = df_within, total = N - 1)\n\nbetween  within   total \n      2      21      23"
+  },
+  {
+    "objectID": "practice-workbooks/week12.html#convert-sums-of-squares-to-mean-squares",
+    "href": "practice-workbooks/week12.html#convert-sums-of-squares-to-mean-squares",
+    "title": "ANTH418 Week 12 Practice Workbook",
+    "section": "11. Convert sums of squares to mean squares",
+    "text": "11. Convert sums of squares to mean squares\nA mean square is a sum of squares divided by its degrees of freedom. Both mean squares here have units of mm².\nPredict → Run → Inspect → Explain. Predict which mean square is larger. Explain how this can happen even when the raw between-group sum of squares is smaller.\n\nms_between &lt;- ss_between / df_between\nms_within &lt;- ss_within / df_within\nc(between = ms_between, within = ms_within)\n\n  between    within \n34.666667  4.071429"
+  },
+  {
+    "objectID": "practice-workbooks/week12.html#compare-signal-with-scatter",
+    "href": "practice-workbooks/week12.html#compare-signal-with-scatter",
+    "title": "ANTH418 Week 12 Practice Workbook",
+    "section": "12. Compare signal with scatter",
+    "text": "12. Compare signal with scatter\nF is the ratio of the between-group to the within-group mean square. These controlled changes alter one feature at a time.\nPredict → Run → Inspect → Explain. Predict how F will respond when means move closer and when residuals grow. For each change, name the affected mean square.\n\ncloser &lt;- transform(vessels, thickness = grand_mean +\n                      0.5 * (fitted_means - grand_mean) + vessel_residuals)\nmore_scatter &lt;- transform(vessels, thickness = fitted_means + 2 * vessel_residuals)\nc(original = ms_between / ms_within,\n  closer_means = anova(aov(thickness ~ context, data = closer))[1, \"F value\"],\n  more_scatter = anova(aov(thickness ~ context, data = more_scatter))[1, \"F value\"])\n\n    original closer_means more_scatter \n    8.514620     2.128655     2.128655"
+  },
+  {
+    "objectID": "practice-workbooks/week12.html#read-the-upper-tail",
+    "href": "practice-workbooks/week12.html#read-the-upper-tail",
+    "title": "ANTH418 Week 12 Practice Workbook",
+    "section": "13. Read the upper tail",
+    "text": "13. Read the upper tail\nUnder the classical equal-means null and its assumptions, F follows a reference distribution with the two degrees of freedom above. The p-value is the probability of obtaining an F at least as large as the observed value under that model.\nPredict → Run → Inspect → Explain. Predict whether the observed F is beyond the 95th percentile. Describe the shaded area without referring to the probability that the null is true.\n\nobserved_f &lt;- ms_between / ms_within\ncritical_f &lt;- qf(0.95, df_between, df_within)\nc(observed = observed_f, cutoff = critical_f,\n  p = pf(observed_f, df_between, df_within, lower.tail = FALSE))\n\n   observed      cutoff           p \n8.514619883 3.466800112 0.001959148 \n\nx &lt;- seq(0, observed_f + 4, length.out = 300)\ntail_x &lt;- seq(observed_f, max(x), length.out = 100)\nplot(x, df(x, df_between, df_within), type = \"l\",\n     xlab = \"F under equal means\", ylab = \"Density\")\npolygon(c(tail_x, rev(tail_x)),\n        c(df(tail_x, df_between, df_within), rep(0, length(tail_x))),\n        col = \"#db9b52\", border = NA)\nabline(v = observed_f, lty = 2)\n\n\n\n\n\n\n\nFigure 2: Classical F reference distribution for the fictional example."
+  },
+  {
+    "objectID": "practice-workbooks/week12.html#fit-the-classical-model-in-r",
+    "href": "practice-workbooks/week12.html#fit-the-classical-model-in-r",
+    "title": "ANTH418 Week 12 Practice Workbook",
+    "section": "14. Fit the classical model in R",
+    "text": "14. Fit the classical model in R\nWrite the numerical response on the left of the formula and the factor on the right.\nPredict → Run → Inspect → Explain. Predict where each hand-calculated sum of squares should appear. Match both rows to the quantities you computed.\n\nfit &lt;- aov(thickness ~ context, data = vessels)\nanova_table &lt;- anova(fit)\nanova_table\n\nAnalysis of Variance Table\n\nResponse: thickness\n          Df Sum Sq Mean Sq F value   Pr(&gt;F)   \ncontext    2 69.333  34.667  8.5146 0.001959 **\nResiduals 21 85.500   4.071                    \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1"
+  },
+  {
+    "objectID": "practice-workbooks/week12.html#report-the-omnibus-result",
+    "href": "practice-workbooks/week12.html#report-the-omnibus-result",
+    "title": "ANTH418 Week 12 Practice Workbook",
+    "section": "15. Report the omnibus result",
+    "text": "15. Report the omnibus result\nThe omnibus table summarizes the comparison across all contexts. The F statistic has no direction, and the p-value alone does not identify which mean differs.\nPredict → Run → Inspect → Explain. Recreate the result from the manual quantities, then write a sentence reporting F, both degrees of freedom, and p in context.\n\nc(F = observed_f, numerator_df = df_between, denominator_df = df_within,\n  p = anova_table[1, \"Pr(&gt;F)\"])\n\n             F   numerator_df denominator_df              p \n   8.514619883    2.000000000   21.000000000    0.001959148"
+  },
+  {
+    "objectID": "practice-workbooks/week12.html#quantify-the-observed-variation-associated-with-context",
+    "href": "practice-workbooks/week12.html#quantify-the-observed-variation-associated-with-context",
+    "title": "ANTH418 Week 12 Practice Workbook",
+    "section": "16. Quantify the observed variation associated with context",
+    "text": "16. Quantify the observed variation associated with context\nEta-squared divides between-group sum of squares by total sum of squares. It describes the share of observed variation associated with group membership in this one-way model.\nPredict → Run → Inspect → Explain. Predict whether the share is above or below one-half. Express the result as a percentage without making a causal claim.\n\neta_squared &lt;- ss_between / ss_total\nc(eta_squared = eta_squared, percent = 100 * eta_squared)\n\neta_squared     percent \n  0.4477933  44.7793326"
+  },
+  {
+    "objectID": "practice-workbooks/week12.html#check-independence-before-interpreting-a-p-value",
+    "href": "practice-workbooks/week12.html#check-independence-before-interpreting-a-p-value",
+    "title": "ANTH418 Week 12 Practice Workbook",
+    "section": "17. Check independence before interpreting a p-value",
+    "text": "17. Check independence before interpreting a p-value\nImagine that all context C measurements came from a single workshop deposit with several vessels made in the same batch.\nPredict → Inspect → Explain. Predict which parts of the fitted table would change if no values changed but you discovered the shared batch. Compare the numerical result with the newly defensible interpretation. What sampling records would help?"
+  },
+  {
+    "objectID": "practice-workbooks/week12.html#inspect-residuals-and-an-extreme-value",
+    "href": "practice-workbooks/week12.html#inspect-residuals-and-an-extreme-value",
+    "title": "ANTH418 Week 12 Practice Workbook",
+    "section": "18. Inspect residuals and an extreme value",
+    "text": "18. Inspect residuals and an extreme value\nReplace one fictional C value with 38 mm, keeping the original data available. A residual-versus-fitted plot shows scatter around group means. A normal Q–Q plot compares ordered residuals to a normal reference.\nPredict → Run → Inspect → Explain. Predict changes in the C mean and its residual spread. Compare the plots with your expectation. What would you check before excluding the observation?\n\nextreme &lt;- vessels\nextreme$thickness[24] &lt;- 38\nextreme_fit &lt;- aov(thickness ~ context, data = extreme)\nprevious &lt;- par(mfrow = c(1, 2))\nplot(fitted(extreme_fit), residuals(extreme_fit), pch = 19,\n     xlab = \"Fitted thickness (mm)\", ylab = \"Residual (mm)\")\nabline(h = 0, lty = 2)\nqqnorm(residuals(extreme_fit), pch = 19, main = \"Normal Q–Q\")\nqqline(residuals(extreme_fit))\npar(previous)\n\n\n\n\n\n\n\nFigure 3: Residual diagnostics after changing one fictional measurement."
+  },
+  {
+    "objectID": "practice-workbooks/week12.html#interpret-formal-diagnostics-with-plots",
+    "href": "practice-workbooks/week12.html#interpret-formal-diagnostics-with-plots",
+    "title": "ANTH418 Week 12 Practice Workbook",
+    "section": "19. Interpret formal diagnostics with plots",
+    "text": "19. Interpret formal diagnostics with plots\nGive the smaller C group greater spread without changing its mean. Shapiro–Wilk assesses normality within each group. For the mean-centered Levene check, compare absolute distances from each observation to its group mean.\nPredict → Run → Inspect → Explain. Predict which spread is greatest. Use the SDs and diagnostic outputs together. Why would a large diagnostic p-value be weak grounds for declaring that an assumption holds, especially for four observations?\n\nunequal_spread &lt;- unequal_n\nis_c &lt;- unequal_spread$context == \"C\"\nunequal_spread$thickness[is_c] &lt;- 24 +\n  2 * (unequal_spread$thickness[is_c] - 24)\nwith(unequal_spread, tapply(thickness, context, sd))\n\n       A        B        C \n2.017778 2.017778 5.887841 \n\nvapply(split(unequal_spread$thickness, unequal_spread$context),\n       function(x) shapiro.test(x)$p.value, numeric(1))\n\n        A         B         C \n0.9876280 0.9876280 0.3475596 \n\nunequal_spread$distance &lt;- with(\n  unequal_spread, abs(thickness - ave(thickness, context, FUN = mean))\n)\nanova(aov(distance ~ context, data = unequal_spread))\n\nAnalysis of Variance Table\n\nResponse: distance\n          Df Sum Sq Mean Sq F value    Pr(&gt;F)    \ncontext    2  36.45 18.2250  16.524 0.0001033 ***\nResiduals 17  18.75  1.1029                      \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1"
+  },
+  {
+    "objectID": "practice-workbooks/week12.html#compare-classical-anova-with-welch",
+    "href": "practice-workbooks/week12.html#compare-classical-anova-with-welch",
+    "title": "ANTH418 Week 12 Practice Workbook",
+    "section": "20. Compare classical ANOVA with Welch",
+    "text": "20. Compare classical ANOVA with Welch\nBoth procedures test equality of means. Welch allows different group variances and uses an approximate reference distribution. It still relies on independent observations.\nPredict → Run → Inspect → Explain. Predict whether the outputs will have the same denominator degrees of freedom on the unequal-size, unequal-spread data. Compare the conclusions at .05. Explain why changing the test cannot repair clustering.\n\nanova(aov(thickness ~ context, data = unequal_spread))\n\nAnalysis of Variance Table\n\nResponse: thickness\n          Df Sum Sq Mean Sq F value Pr(&gt;F)\ncontext    2   43.2 21.6000  2.2807 0.1326\nResiduals 17  161.0  9.4706               \n\noneway.test(thickness ~ context, data = unequal_spread, var.equal = FALSE)\n\n\n    One-way analysis of means (not assuming equal variances)\n\ndata:  thickness and context\nF = 1.0731, num df = 2.000, denom df = 6.835, p-value = 0.3933"
+  },
+  {
+    "objectID": "practice-workbooks/week12.html#compare-groups-using-ranks",
+    "href": "practice-workbooks/week12.html#compare-groups-using-ranks",
+    "title": "ANTH418 Week 12 Practice Workbook",
+    "section": "21. Compare groups using ranks",
+    "text": "21. Compare groups using ranks\nKruskal–Wallis compares pooled ranks across groups. With similarly shaped distributions, a rank difference can reflect a location shift. With different shapes or spreads, a median-only interpretation needs justification.\nPredict → Run → Inspect → Explain. Predict which original context has the largest mean rank. Compare the rank-test conclusion with classical ANOVA, keeping their statistical questions distinct.\n\ntapply(rank(vessels$thickness), vessels$context, mean)\n\n      A       B       C \n 8.0000 10.6875 18.8125 \n\nkruskal.test(thickness ~ context, data = vessels)\n\n\n    Kruskal-Wallis rank sum test\n\ndata:  thickness by context\nKruskal-Wallis chi-squared = 10.194, df = 2, p-value = 0.006114"
+  },
+  {
+    "objectID": "practice-workbooks/week12.html#count-the-family-of-comparisons",
+    "href": "practice-workbooks/week12.html#count-the-family-of-comparisons",
+    "title": "ANTH418 Week 12 Practice Workbook",
+    "section": "22. Count the family of comparisons",
+    "text": "22. Count the family of comparisons\nAn omnibus result gives a reason to examine individual differences. Repeated unadjusted tests increase opportunities for a false positive across the family.\nPredict → Run → Inspect → Explain. List the three pairs before running the code. How many pairs would four contexts produce? Why would treating each comparison as an isolated test miss part of the problem?\n\ncombn(levels(vessels$context), 2)\n\n     [,1] [,2] [,3]\n[1,] \"A\"  \"A\"  \"B\" \n[2,] \"B\"  \"C\"  \"C\" \n\nchoose(c(3, 4), 2)\n\n[1] 3 6"
+  },
+  {
+    "objectID": "practice-workbooks/week12.html#read-tukey-intervals-and-adjusted-p-values",
+    "href": "practice-workbooks/week12.html#read-tukey-intervals-and-adjusted-p-values",
+    "title": "ANTH418 Week 12 Practice Workbook",
+    "section": "23. Read Tukey intervals and adjusted p-values",
+    "text": "23. Read Tukey intervals and adjusted p-values\nTukey HSD uses the classical model’s pooled residual variance. It gives simultaneous intervals and adjusted p-values for the family of pairwise differences.\nPredict → Run → Inspect → Explain. Predict the signs of B–A and C–B. For both pairs, identify the estimate in mm, the interval, and the adjusted p-value. Explain what an interval containing zero leaves plausible.\n\nTukeyHSD(fit, \"context\", conf.level = 0.95)\n\n  Tukey multiple comparisons of means\n    95% family-wise confidence level\n\nFit: aov(formula = thickness ~ context, data = vessels)\n\n$context\n    diff        lwr      upr     p adj\nB-A    1 -1.5429758 3.542976 0.5903442\nC-A    4  1.4570242 6.542976 0.0019587\nC-B    3  0.4570242 5.542976 0.0190298"
+  },
+  {
+    "objectID": "practice-workbooks/week12.html#separate-statistical-evidence-from-effect-magnitude",
+    "href": "practice-workbooks/week12.html#separate-statistical-evidence-from-effect-magnitude",
+    "title": "ANTH418 Week 12 Practice Workbook",
+    "section": "24. Separate statistical evidence from effect magnitude",
+    "text": "24. Separate statistical evidence from effect magnitude\nConvert the fictional vessel thickness from millimetres to centimetres. The numerical mean differences change units. The F ratio and eta-squared are unitless.\nPredict → Run → Inspect → Explain. Predict what happens to each sum of squares, F, and eta-squared. What additional context would you need to decide whether a 1 mm difference matters archaeologically?\n\nin_cm &lt;- transform(vessels, thickness = thickness / 10)\ncm_table &lt;- anova(aov(thickness ~ context, data = in_cm))\nrbind(\n  mm = c(SS_between = ss_between, F = observed_f, eta_sq = eta_squared),\n  cm = c(SS_between = cm_table[1, \"Sum Sq\"], F = cm_table[1, \"F value\"],\n         eta_sq = cm_table[1, \"Sum Sq\"] / sum(cm_table[[\"Sum Sq\"]]))\n)\n\n   SS_between       F    eta_sq\nmm 69.3333333 8.51462 0.4477933\ncm  0.6933333 8.51462 0.4477933"
+  },
+  {
+    "objectID": "practice-workbooks/week12.html#audit-the-authentic-teaching-file",
+    "href": "practice-workbooks/week12.html#audit-the-authentic-teaching-file",
+    "title": "ANTH418 Week 12 Practice Workbook",
+    "section": "25. Audit the authentic teaching file",
+    "text": "25. Audit the authentic teaching file\nThe Assignment 8 CSV contains legacy analyses of slag and ore. Each row represents one chemical analysis. The compilation includes repeated localities and a Jura comparator with late medieval slag and modern ore. The teaching file has no site, material, or chronology fields. Consult the course codebook and provenance in the package’s documentation folder and the published case study.\nPredict → Run → Inspect → Explain. Before running the code, predict why the number of rows may differ from the number of independent localities. Report the variable roles and regional sample sizes, and identify a limitation you cannot check from the CSV.\n\niron_path &lt;- if (file.exists(\"data/iron_anova.csv\")) {\n  \"data/iron_anova.csv\"\n} else {\n  \"assignments/assignment08_iron_anova/data/iron_anova.csv\"\n}\niron &lt;- read.csv(iron_path)\nstr(iron[0, ])\n\n'data.frame':   0 obs. of  4 variables:\n $ source_row_id: int \n $ region       : chr \n $ element      : chr \n $ element_value: num \n\nnrow(iron)\n\n[1] 240\n\ntable(iron$region)\n\n\nHCM JUR MAS SIL \n 80  12  64  84 \n\nunique(iron$element)\n\n[1] \"Si_CLR\"\n\ncolSums(is.na(iron))\n\nsource_row_id        region       element element_value \n            0             0             0             0"
+  },
+  {
+    "objectID": "practice-workbooks/week12.html#interpret-clr-si-with-a-fictional-composition",
+    "href": "practice-workbooks/week12.html#interpret-clr-si-with-a-fictional-composition",
+    "title": "ANTH418 Week 12 Practice Workbook",
+    "section": "26. Interpret CLR-Si with a fictional composition",
+    "text": "26. Interpret CLR-Si with a fictional composition\nCLR-Si is the log of Si divided by the geometric mean of the Si–Ca–Al–Mn composition within a row. The original study replaced missing component values before transforming. An imputed value in any component can change the ratio. These example compositions are invented.\nPredict → Run → Inspect → Explain. Si is held fixed while Ca increases. Predict which denominator is larger and explain why CLR-Si changes.\n\nexample_a &lt;- c(Si = 8, Ca = 2, Al = 2, Mn = 2)\nexample_b &lt;- c(Si = 8, Ca = 8, Al = 2, Mn = 2)\nclr_si &lt;- function(parts) {\n  unname(log(parts[\"Si\"]) - mean(log(parts)))\n}\nc(example_a = clr_si(example_a), example_b = clr_si(example_b))\n\nexample_a example_b \n1.0397208 0.6931472"
+  },
+  {
+    "objectID": "practice-workbooks/week12.html#debug-an-archaeological-claim",
+    "href": "practice-workbooks/week12.html#debug-an-archaeological-claim",
+    "title": "ANTH418 Week 12 Practice Workbook",
+    "section": "27. Debug an archaeological claim",
+    "text": "27. Debug an archaeological claim\nA draft says: “The regional file contains independent observations because every row has an ID. If the omnibus test is significant, every pair differs, and the group with higher CLR-Si must use a different ore source.”\nPredict → Inspect → Explain. Mark one design error, one statistical error, and one compositional or archaeological error. Check your reasoning against Exercises 17, 23, 25, and 26. Rewrite the claim as a conditional interpretation and name two additional forms of evidence you would need to argue for an ore source."
   }
 ]

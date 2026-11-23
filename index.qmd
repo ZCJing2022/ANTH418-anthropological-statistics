@@ -37,6 +37,7 @@ This course develops practical statistical thinking for archaeology and anthropo
   - [Week 8 — Confidence Intervals and Hypothesis Testing](practice-workbooks/week08.qmd)
   - [Week 9 — Comparing Two Groups: t-tests](practice-workbooks/week09.qmd)
   - [Week 11 — Chi-Square and Tests of Proportions](practice-workbooks/week11.qmd)
+  - [Week 12 — Analysis of Variance](practice-workbooks/week12.qmd)
  
 - [Assignments](assignments/index.qmd)
   - [Assignment 1 — Knipper: Descriptive Statistics](assignments/assignment01_knipper_descriptive/assignment01_knipper_descriptive.qmd)
