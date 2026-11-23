@@ -1,0 +1,109 @@
+---
+title: "ANTH418 Assignment 9: Hawaiian Kukui Isotopes"
+format:
+  html:
+    toc: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+## Research question
+
+Is kukui carbon-isotope composition associated with elevation, and what does rainfall add to the interpretation of that relationship?
+
+## Case study
+
+Lincoln, Noa Kekuewa, Mark D. McCoy, and Thegn N. Ladefoged. 2018. Stable Carbon and Nitrogen Isotopes in Kukui (*Aleurites moluccanus*) Endocarp along Rainfall and Elevation Gradients: Archaeological Implications. *PLOS ONE* 13(10): e0204654. [Read the case study](https://doi.org/10.1371/journal.pone.0204654).
+
+```{r}
+library(tidyverse)
+
+data_path <- if (file.exists("data/kukui_sites.csv")) {
+  "data/kukui_sites.csv"
+} else {
+  "assignments/assignment09_kukui_correlation/data/kukui_sites.csv"
+}
+
+dat <- read_csv(data_path, show_col_types = FALSE)
+
+glimpse(dat)
+```
+
+The teaching file contains **71 sampled sites on Hawaiʻi Island**. One observation is one site record. The isotope values summarize multiple fruits from each site.
+
+Elevation (m) is the main variable compared with kukui carbon-isotope composition (δ¹³C, in ‰). Annual rainfall (mm/year) is a second environmental variable used to explore the association.
+
+## 1. Inspect the data and visualize elevation versus δ13C
+
+Summarize `elevation`, `rainfall`, and `d13c`.
+
+Then make a scatterplot of `elevation` versus `d13c` with a fitted linear trend. Label elevation in metres and δ¹³C in per mil (‰).
+
+```{r}
+# Your code
+```
+
+Before calculating Pearson's correlation, comment on:
+
+- whether the relationship appears approximately linear;
+- whether there are obvious unusual or potentially influential observations;
+- whether the spread appears reasonably stable across the range of elevation.
+
+## 2. Pearson correlation
+
+Calculate Pearson's correlation between `elevation` and `d13c`. Pearson's r summarizes **linear association**. A single r can hide curvature or a relationship that changes across the gradient. The usual confidence interval and p-value assume independent site pairs and rely on an approximately bivariate normal distribution. Use your plot to judge whether the linear summary and its uncertainty are useful here.
+
+Report:
+
+- Pearson's `r`;
+- the 95% confidence interval;
+- the p-value.
+
+```{r}
+# Your code
+```
+
+Interpret both the **direction** and **magnitude** of the association.
+
+## 3. Explore rainfall continuously
+
+Do **not** divide rainfall into arbitrary categories.
+
+Explore rainfall as a continuous variable.
+
+Create:
+
+1. a plot of `rainfall` versus `d13c`;
+2. a plot of `elevation` versus `d13c` in which rainfall is represented visually, for example by point color.
+
+Before calculating the correlations, inspect both plots for curvature, changes in spread, and unusual points. Also look at a scatterplot of elevation versus rainfall. Keep rainfall continuous and label its units in each display.
+
+Then calculate:
+
+- the Pearson correlation between `elevation` and `rainfall`;
+- the Pearson correlation between `rainfall` and `d13c`.
+
+```{r}
+# Your code
+```
+
+Use these exploratory results to discuss whether rainfall may help explain or complicate the simple elevation–δ13C association.
+
+The rainfall plots and correlations describe associations in the observed data. Estimating an association adjusted for rainfall would require a multivariable model, which is outside this exercise.
+
+## 4. Interpretation
+
+Explain why the elevation–δ13C correlation does not by itself establish a causal mechanism.
+
+Nearby sites may share environmental conditions, so site records can be dependent even though each row represents a different site. This can affect the usual uncertainty estimates. Rainfall and other environmental conditions can covary with elevation. These observational data describe modern sampled sites and cannot isolate a causal mechanism or establish the growing conditions of an archaeological specimen on their own.
+
+## Final interpretation
+
+Answer the following questions in complete sentences:
+
+1. What is the unit of analysis?
+2. What are the direction, magnitude, 95% confidence interval, and p-value for the elevation–δ13C correlation?
+3. What does examining rainfall add to your interpretation of that association?
+4. What causal or archaeological inference does this correlation **not** establish?
